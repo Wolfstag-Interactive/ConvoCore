@@ -1,0 +1,71 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 458f605aa420aee44acb27c723607006, type: 3}
+  m_Name: ConvoCoreData
+  m_EditorClassIdentifier: 
+  ConversationParticipantProfiles:
+  - {fileID: 11400000, guid: 0f13e856e33cbad419d585e534d03a55, type: 2}
+  dialogueLines:
+  - ConversationID: Conversation1
+    ConversationLineIndex: 0
+    characterID: NPC1
+    AlternateRepresentation: 
+    SelectedEmotionName: Elsie Annoyed
+    LocalizedDialogues:
+    - Language: EN
+      Text: Hello there!
+    - Language: FR
+      Text: Bonjour!
+    - Language: ES
+      Text: "\xA1Hola!"
+    clip: {fileID: 0}
+    ActionsBeforeDialogueLine: []
+    ActionsAfterDialogueLine: []
+    UserInputMethod: 0
+    TimeBeforeNextLine: 0
+  - ConversationID: Conversation1
+    ConversationLineIndex: 1
+    characterID: NPC1
+    AlternateRepresentation: 
+    SelectedEmotionName: Elsie Annoyed
+    LocalizedDialogues:
+    - Language: EN
+      Text: Ive grown since we last met count! Ive grown since we last met count!Ive
+        grown since we last met count!Ive grown since we last met count!
+    - Language: FR
+      Text: We we!
+    - Language: ES
+      Text: "\xA1Ey Campadre!"
+    clip: {fileID: 0}
+    ActionsBeforeDialogueLine: []
+    ActionsAfterDialogueLine: []
+    UserInputMethod: 0
+    TimeBeforeNextLine: 0
+  - ConversationID: Conversation1
+    ConversationLineIndex: 2
+    characterID: NPC1
+    AlternateRepresentation: 
+    SelectedEmotionName: Elsie Annoyed
+    LocalizedDialogues:
+    - Language: EN
+      Text: Goodbye!
+    - Language: FR
+      Text: Au revoir cunt!
+    - Language: ES
+      Text: "\xA1Adi\xF3s!"
+    clip: {fileID: 0}
+    ActionsBeforeDialogueLine: []
+    ActionsAfterDialogueLine: []
+    UserInputMethod: 0
+    TimeBeforeNextLine: 0
+  FilePath: DialogueScriptTest.yml
+  ConversationKey: Conversation1
