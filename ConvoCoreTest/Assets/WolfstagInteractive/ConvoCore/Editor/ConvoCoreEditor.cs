@@ -33,6 +33,7 @@ namespace WolfstagInteractive.ConvoCore.Editor
                 }
                 return; // Prevent further rendering if the LanguageManager is invalid
             }
+            DrawDefaultInspector();
 
             // Display the current language
             EditorGUILayout.LabelField("Current Language:", _convoCoreLanguageManager.CurrentLanguage);
@@ -92,8 +93,6 @@ namespace WolfstagInteractive.ConvoCore.Editor
             EditorGUILayout.Space();
             EditorGUILayout.LabelField("Current Conversation State:", convoCore._currentDialogueState.ToString());
 
-            // Draw the rest of the default inspector
-            DrawDefaultInspector();
         }
     }
 }
