@@ -6,7 +6,7 @@ namespace WolfstagInteractive.ConvoCore.Editor
 {
     public static class ConvoCoreEditorUtilities
     {
-        [MenuItem("Wolfstag Interactive/ConvoCore/Create LanguageSettings")]
+        [MenuItem("Tools/Wolfstag Interactive/ConvoCore/Create LanguageSettings")]
         public static void CreateLanguageSettingsAsset()
         {
             // Define the Resources folder path relative to the project root.

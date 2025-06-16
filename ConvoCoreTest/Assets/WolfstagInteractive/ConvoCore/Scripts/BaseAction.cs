@@ -19,20 +19,13 @@ namespace WolfstagInteractive.ConvoCore
     [System.Serializable]
     public class BaseAction : ScriptableObject
     {
-        public float WaitTimer;
-        public AudioClip AudioClipToPlay;
-
         public virtual IEnumerator DoAction()
         {
             //logic called before base.DoAction will execute before the timer
 
-            yield return new WaitForSecondsRealtime(WaitTimer); //wait for the time listed in waittimer
+            yield return new WaitForSecondsRealtime(0); //wait for the time listed in waittimer
             //logic called after base.DoAction will execute after the timer
         }
-        public IEnumerator PlayAudioClipWithAction()
-        {
-            if (AudioClipToPlay == null) yield break;
-            yield return null;
-        }
+       
     }
 }
