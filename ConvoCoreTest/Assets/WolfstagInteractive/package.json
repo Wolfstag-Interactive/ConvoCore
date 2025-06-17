@@ -1,0 +1,11 @@
+{
+  "name": "com.WolfstagInteractive.ConvoCore",
+  "version": "1.0.0",
+  "displayName": "ConvoCore",
+  "description": "A Dialogue Tool",
+  "unity": "2021.3",
+  "author": {
+    "name": "Dylan Alter",
+    "email": "support@wolfstaginteractive.com"
+  }
+}
