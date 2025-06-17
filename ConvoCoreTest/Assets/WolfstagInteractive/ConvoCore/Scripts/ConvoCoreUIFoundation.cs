@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 namespace WolfstagInteractive.ConvoCore
@@ -8,8 +9,10 @@ namespace WolfstagInteractive.ConvoCore
     /// </summary>
     public class ConvoCoreUIFoundation : MonoBehaviour, IUIFoundation
     {
-        public virtual void InitializeUI(ConvoCore ConvoCoreInstance)
+        protected ConvoCore ConvoCoreInstance;
+        public virtual void InitializeUI(ConvoCore convoCoreInstance)
         {
+            ConvoCoreInstance = convoCoreInstance;
         }
         public virtual void UpdateDialogueUI(ConvoCoreConversationData.DialogueLines dialogueLine, 
             string localizedText, string speakingCharacterName, Sprite portrait)
@@ -18,6 +21,12 @@ namespace WolfstagInteractive.ConvoCore
         public virtual void UpdateForLanguageChange(string newLanguage)
         {
         }
+
+        public virtual IEnumerator WaitForUserInput()
+        {
+            yield return null;
+        }
+
         public virtual void Dispose()
         {
         }

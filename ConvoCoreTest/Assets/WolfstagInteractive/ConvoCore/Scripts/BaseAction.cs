@@ -11,7 +11,7 @@ using System.Collections;
 /// Make sure To Copy the below commented out lines over the class name into the derivative class and remove the slashes on the beginning of each line
 /// </summary>
 
-// [CreateAssetMenu(fileName = "CustomActionTransform", menuName = "ConvoCore/CustomActionTransform")] //creates button in unity to make copy of object make sure to change menu and file name to match new action or else it wont show up in editor
+// [CreateAssetMenu(fileName = "CustomActionTransform", menuName = "ConvoCore/CustomAction")] //creates button in unity to make copy of object make sure to change menu and file name to match new action or else it wont show up in editor
 //[System.Serializable] // required to make sure values in the inspector are saved
 
 namespace WolfstagInteractive.ConvoCore
@@ -26,6 +26,5 @@ namespace WolfstagInteractive.ConvoCore
             yield return new WaitForSecondsRealtime(0); //wait for the time listed in waittimer
             //logic called after base.DoAction will execute after the timer
         }
-       
     }
 }

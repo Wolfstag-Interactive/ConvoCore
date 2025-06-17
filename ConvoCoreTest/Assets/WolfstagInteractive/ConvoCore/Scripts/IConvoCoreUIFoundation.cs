@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 namespace WolfstagInteractive.ConvoCore
@@ -26,6 +27,12 @@ namespace WolfstagInteractive.ConvoCore
         /// </summary>
         /// <param name="newLanguage">The new language code.</param>
         public void UpdateForLanguageChange(string newLanguage);
+        /// <summary>
+        /// Wait until the UI signals that the user has provided input.
+        /// The actual waiting is delegated to the UI implementation.
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerator WaitForUserInput();
 
         /// <summary>
         /// Handles cleanup when the UI builder is no longer needed.

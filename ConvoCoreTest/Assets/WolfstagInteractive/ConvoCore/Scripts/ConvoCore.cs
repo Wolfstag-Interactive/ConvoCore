@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace WolfstagInteractive.ConvoCore
 {
@@ -16,7 +15,7 @@ namespace WolfstagInteractive.ConvoCore
     [RequireComponent(typeof(AudioSource))][DisallowMultipleComponent]
     public class ConvoCore : MonoBehaviour
     {
-        public ConvoCoreConversationData ConversationDataData; // Reference to your dialogue data
+        public ConvoCoreConversationData ConversationData; // Reference to your dialogue data
         private AudioSource audioSource; //used for playing audio from dialogue lines
         public ConversationState _currentDialogueState { get;private set; } = ConversationState.Idle;
         private ConvoCoreDialogueLocalizationHandler _localizationHandler { get; set; }
@@ -75,7 +74,7 @@ namespace WolfstagInteractive.ConvoCore
         }
         public void UpdateUIForLanguage(string newLanguage)
         {
-            if (ConversationDataData == null)
+            if (ConversationData == null)
             {
                 Debug.LogWarning("No conversation object found to update UI.");
                 return;
@@ -88,7 +87,7 @@ namespace WolfstagInteractive.ConvoCore
         }
         public void StartConversation()
         {
-            ConversationDataData.InitializeDialogueData();
+            ConversationData.InitializeDialogueData();
             StartCoroutine(RunConversation());
         }
        
@@ -107,16 +106,16 @@ namespace WolfstagInteractive.ConvoCore
             yield return OnConversationStart();
 
             // Get all profiles from the conversation object
-            var profiles = ConversationDataData.ConversationParticipantProfiles;
+            var profiles = ConversationData.ConversationParticipantProfiles;
            
             // Iterate through all dialogue lines
             _currentDialogueState = ConversationState.Playing;
-            for (currentLineIndex = 0; currentLineIndex < ConversationDataData.dialogueLines.Count; currentLineIndex++)
+            for (currentLineIndex = 0; currentLineIndex < ConversationData.dialogueLines.Count; currentLineIndex++)
             {
-                var line = ConversationDataData.dialogueLines[currentLineIndex];
+                var line = ConversationData.dialogueLines[currentLineIndex];
 
                 // Resolve character profile for the line
-                var profile = ConversationDataData.ResolveCharacterProfile(profiles, line.characterID);
+                var profile = ConversationData.ResolveCharacterProfile(profiles, line.characterID);
                 if (profile == null)
                 {
                     Debug.LogError($"Cannot resolve profile for CharacterID '{line.characterID}'. Skipping line.");
@@ -135,7 +134,7 @@ namespace WolfstagInteractive.ConvoCore
                 // Actions before the dialogue line
                 if (line.ActionsBeforeDialogueLine != null && line.ActionsBeforeDialogueLine.Count > 0)
                 {
-                    yield return StartCoroutine(ConversationDataData.ActionsBeforeDialogueLine(this, line));
+                    yield return StartCoroutine(ConversationData.ActionsBeforeDialogueLine(this, line));
                 }
                 // Play audio and display dialogue
                 yield return StartCoroutine(PlayAudioClipWithAction(line.clip));
@@ -149,7 +148,7 @@ namespace WolfstagInteractive.ConvoCore
                 // Actions after the dialogue line
                 if (line.ActionsAfterDialogueLine != null && line.ActionsAfterDialogueLine.Count > 0)
                 {
-                    yield return StartCoroutine(ConversationDataData.DoActionsAfterDialogueLine(this, line));
+                    yield return StartCoroutine(ConversationData.DoActionsAfterDialogueLine(this, line));
                 }
             }
 
@@ -181,6 +180,7 @@ namespace WolfstagInteractive.ConvoCore
             {
                 case ConvoCoreConversationData.DialogueLineProgressionMethod.UserInput:
                     // Wait for user input
+                    yield return uiFoundationInstance.WaitForUserInput();
                     break;
                 case ConvoCoreConversationData.DialogueLineProgressionMethod.Timed:
                     // Skip user input
@@ -190,10 +190,10 @@ namespace WolfstagInteractive.ConvoCore
         }
         public ConvoCoreConversationData.DialogueLines? GetCurrentlyDisplayedDialogueLine()
         {
-            if (currentLineIndex >= 0 && currentLineIndex < ConversationDataData.dialogueLines.Count)
+            if (currentLineIndex >= 0 && currentLineIndex < ConversationData.dialogueLines.Count)
             {
                 // Explicit cast to transform the base type or derived type
-                return ConversationDataData.dialogueLines[currentLineIndex];
+                return ConversationData.dialogueLines[currentLineIndex];
             }
             Debug.LogWarning("No currently displayed dialogue line or index is out of range.");
             return null;
@@ -243,7 +243,7 @@ namespace WolfstagInteractive.ConvoCore
             {
                 return;
             }
-            if (index >= 0 && index < ConversationDataData.dialogueLines.Count)
+            if (index >= 0 && index < ConversationData.dialogueLines.Count)
             {
                 currentLineIndex = index;
             }
@@ -251,6 +251,15 @@ namespace WolfstagInteractive.ConvoCore
             {
                 Debug.LogWarning("Invalid index for changing current dialogue line.");
             }
+        }
+        public int GetConversationLineCount()
+        {
+            return ConversationData.dialogueLines.Count;
+        }
+
+        public int GetCurrentDialogueLineIndex()
+        {
+            return currentLineIndex;
         }
     }
 }
