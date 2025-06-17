@@ -81,7 +81,7 @@ namespace WolfstagInteractive.ConvoCore
             }
             if (_currentDialogueState == ConversationState.Playing)
             {
-                RefreshLocalizedText(this);
+                RefreshLocalizedText();
                 _uiFoundation?.UpdateForLanguageChange(newLanguage);
             }
         }
@@ -209,10 +209,10 @@ namespace WolfstagInteractive.ConvoCore
             // Implement your own logic to run before the dialogue tool ends by overriding this function
             yield return null;
         }
-        private void RefreshLocalizedText(ConvoCore convoCore)
+        private void RefreshLocalizedText()
         {
             // Fetch the currently displayed dialogue line using the helper function
-            var currentDialogueLine = convoCore.GetCurrentlyDisplayedDialogueLine();
+            var currentDialogueLine = GetCurrentlyDisplayedDialogueLine();
 
             if (currentDialogueLine == null)
             {
