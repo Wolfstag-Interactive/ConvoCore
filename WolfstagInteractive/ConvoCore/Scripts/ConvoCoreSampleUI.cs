@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,25 +7,25 @@ namespace WolfstagInteractive.ConvoCore
 {
     public class ConvoCoreSampleUI : ConvoCoreUIFoundation
     {
-        [SerializeField] private TextMeshProUGUI dialogueText;
-        [SerializeField] private TextMeshProUGUI speakerName;
-        [SerializeField] private GameObject dialoguePanel;
-        [SerializeField] private Image SpeakerPotraitImage;
-        [SerializeField] private Button continueButton;
-        private bool continuePressed = false;
+        [SerializeField] private TextMeshProUGUI DialogueText;
+        [SerializeField] private TextMeshProUGUI SpeakerName;
+        [SerializeField] private GameObject DialoguePanel;
+        [SerializeField] private Image SpeakerPortraitImage;
+        [SerializeField] private Button ContinueButton;
+        private bool _continuePressed = false;
 
         private void Awake()
         {
-            if (dialoguePanel != null)
+            if (DialoguePanel != null)
             {
-                dialoguePanel.SetActive(false); // Hide the panel initially
+                DialoguePanel.SetActive(false); // Hide the panel initially
             }
 
-            if (continueButton != null)
+            if (ContinueButton != null)
             {
-                continueButton.onClick.AddListener(OnContinueButtonPressed);
+                ContinueButton.onClick.AddListener(OnContinueButtonPressed);
             }
-            DontDestroyOnLoad(this.gameObject);
+            DontDestroyOnLoad(gameObject);
         }
         /// <summary>
         /// Displays the dialogue line on the UI.
@@ -34,14 +33,14 @@ namespace WolfstagInteractive.ConvoCore
         /// <param name="text">The dialogue text to display.</param>
         private void DisplayDialogue(string text)
         {
-            if (dialogueText != null)
+            if (DialogueText != null)
             {
-                dialogueText.text = text;
+                DialogueText.text = text;
             }
 
-            if (dialoguePanel != null)
+            if (DialoguePanel != null)
             {
-                dialoguePanel.SetActive(true); // Show the panel
+                DialoguePanel.SetActive(true); // Show the panel
             }
         }
         /// <summary>
@@ -49,22 +48,25 @@ namespace WolfstagInteractive.ConvoCore
         /// </summary>
         private void HideDialogue()
         {
-            if (dialoguePanel != null)
+            if (DialoguePanel != null)
             {
-                dialoguePanel.SetActive(false); // Hide the panel
+                DialoguePanel.SetActive(false); // Hide the panel
             }
         }
         private void SetDialogue(string lineDialogue,string lineSpeakerName, Sprite portrait)
         {
             DisplayDialogue(lineDialogue);
-            if (speakerName != null)
+            if (SpeakerName != null)
             {
-                speakerName.text = lineSpeakerName;
+                SpeakerName.text = lineSpeakerName;
             }
-            SpeakerPotraitImage.sprite = portrait;
+            SpeakerPortraitImage.sprite = portrait;
         }
-
-        public void RefreshUI(string language)
+        /// <summary>
+        /// Refreshes the UI text with the provided language
+        /// </summary>
+        /// <param name="language"></param>
+        private void RefreshUI(string language)
         {
             DisplayDialogue(language);
         }
@@ -86,22 +88,22 @@ namespace WolfstagInteractive.ConvoCore
         public override IEnumerator WaitForUserInput()
         {
             // Reset the input flag.
-            continuePressed = false;
+            _continuePressed = false;
 
             // If a continue button is available, we rely on its OnClick callback.
-            if (continueButton != null)
+            if (ContinueButton != null)
             {
                 // ensure the button is visible/enabled.
                 if (ConvoCoreInstance.CurrentDialogueState != ConversationState.Ended)
                 {
-                    continueButton.gameObject.SetActive(true);
+                    ContinueButton.gameObject.SetActive(true);
                 }
 
                 // Wait until the user clicks the button.
-                yield return new WaitUntil(() => continuePressed);
+                yield return new WaitUntil(() => _continuePressed);
 
                 // Optionally, hide or disable the button after input.
-                continueButton.gameObject.SetActive(false);
+                ContinueButton.gameObject.SetActive(false);
             }
             else
             {
@@ -115,16 +117,17 @@ namespace WolfstagInteractive.ConvoCore
         /// </summary>
         private void OnContinueButtonPressed()
         {
-            continuePressed = true;
+            _continuePressed = true;
         }
-
-
+        /// <summary>
+        ///Hide Dialogue UI and unsubscribe
+        /// </summary>
         public override void Dispose()
         {
             HideDialogue();
-            if (continueButton != null)
+            if (ContinueButton != null)
             {
-                continueButton.onClick.RemoveListener(OnContinueButtonPressed);
+                ContinueButton.onClick.RemoveListener(OnContinueButtonPressed);
             }
         }
     }

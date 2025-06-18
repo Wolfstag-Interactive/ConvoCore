@@ -114,11 +114,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5413f2d59be099247a912f4b4417ff81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueText: {fileID: 8770564722129453552}
-  speakerName: {fileID: 8398786262638070346}
-  dialoguePanel: {fileID: 7673858324034960611}
-  SpeakerPotraitImage: {fileID: 5209833270802110201}
-  continueButton: {fileID: 1644093088017464568}
+  DialogueText: {fileID: 8770564722129453552}
+  SpeakerName: {fileID: 8398786262638070346}
+  DialoguePanel: {fileID: 6394558387167986242}
+  SpeakerPortraitImage: {fileID: 5209833270802110201}
+  ContinueButton: {fileID: 1644093088017464568}
 --- !u!1 &6394558387167986242
 GameObject:
   m_ObjectHideFlags: 0
