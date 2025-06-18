@@ -173,7 +173,7 @@ namespace WolfstagInteractive.ConvoCore
             CurrentDialogueState = ConversationState.Ended;
             yield return OnConversationEnd();
             CurrentDialogueState = ConversationState.Idle;
-
+            _currentLineIndex = -1;
         }
         /// <summary>
         /// Plays the audio clip associated with the dialogue line

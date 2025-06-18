@@ -69,7 +69,7 @@ namespace WolfstagInteractive.ConvoCore.Editor
                 else
                 {
                     ConvoCoreConversationData obj = (ConvoCoreConversationData)target;
-                    obj.ImportFromYamlForKey(_conversationKey.stringValue);
+                    obj.ConvoCoreYamlUtilities.ImportFromYamlForKey(_conversationKey.stringValue);
                 }
             }
 

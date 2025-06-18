@@ -53,6 +53,12 @@ namespace WolfstagInteractive.ConvoCore
                 DialoguePanel.SetActive(false); // Hide the panel
             }
         }
+        /// <summary>
+        /// Set the dialogue info for the provided line
+        /// </summary>
+        /// <param name="lineDialogue"></param>
+        /// <param name="lineSpeakerName"></param>
+        /// <param name="portrait"></param>
         private void SetDialogue(string lineDialogue,string lineSpeakerName, Sprite portrait)
         {
             DisplayDialogue(lineDialogue);
@@ -70,12 +76,21 @@ namespace WolfstagInteractive.ConvoCore
         {
             DisplayDialogue(language);
         }
-
+        /// <summary>
+        /// Update the current UI for the language
+        /// </summary>
+        /// <param name="language"></param>
         public override void UpdateForLanguageChange(string language)
         {
             RefreshUI(language);
         }
-
+        /// <summary>
+        /// Updates the UI with the current dialogue line.
+        /// </summary>
+        /// <param name="dialogueLine">The current dialogue line.</param>
+        /// <param name="localizedText">The current localized text to be displayed</param>
+        /// <param name="speakingCharacterName">The name of the speaking character</param>
+        /// <param name="portrait">The speaking characters portrait</param>
         public override void UpdateDialogueUI(ConvoCoreConversationData.DialogueLines dialogueLine,
             string localizedText, string speakingCharacterName, Sprite portrait)
         {
