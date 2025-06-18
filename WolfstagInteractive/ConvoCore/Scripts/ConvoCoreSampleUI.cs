@@ -92,7 +92,7 @@ namespace WolfstagInteractive.ConvoCore
             if (continueButton != null)
             {
                 // ensure the button is visible/enabled.
-                if (ConvoCoreInstance._currentDialogueState != ConversationState.Ended)
+                if (ConvoCoreInstance.CurrentDialogueState != ConversationState.Ended)
                 {
                     continueButton.gameObject.SetActive(true);
                 }

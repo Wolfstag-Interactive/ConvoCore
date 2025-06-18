@@ -1,10 +1,11 @@
 using UnityEngine;
 using System.Collections;
-using WolfstagInteractive.ConvoCore;
 
-[CreateAssetMenu(menuName = "ConvoCore/Actions/ModifyTransform")] [System.Serializable]
-public class ConvoCoreAction_ModifyTransform : BaseAction
+namespace WolfstagInteractive.ConvoCore
 {
+    [CreateAssetMenu(menuName = "ConvoCore/Actions/ModifyTransform")] [System.Serializable]
+    public class ConvoCoreAction_ModifyTransform : BaseAction
+    {
         public string TransformName;
         public Vector3 NewPosition;
         public Vector3 NewRotation;
@@ -21,5 +22,5 @@ public class ConvoCoreAction_ModifyTransform : BaseAction
             transform.localScale = NewScale;
             yield return null; 
         }
-        
+    }
 }

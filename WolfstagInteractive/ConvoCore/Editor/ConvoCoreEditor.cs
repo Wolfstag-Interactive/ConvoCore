@@ -91,7 +91,7 @@ namespace WolfstagInteractive.ConvoCore.Editor
                 convoCore.StartConversation();
             }
             EditorGUILayout.Space();
-            EditorGUILayout.LabelField("Current Conversation State:", convoCore._currentDialogueState.ToString());
+            EditorGUILayout.LabelField("Current Conversation State:", convoCore.CurrentDialogueState.ToString());
 
         }
     }

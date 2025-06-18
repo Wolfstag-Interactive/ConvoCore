@@ -1,0 +1,3 @@
+YamlDotNet for Unity
+Licensed under the MIT License
+https://assetstore.unity.com/packages/tools/integration/yamldotnet-for-unity-36292
