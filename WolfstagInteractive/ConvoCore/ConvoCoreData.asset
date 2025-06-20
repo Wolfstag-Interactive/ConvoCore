@@ -39,8 +39,7 @@ MonoBehaviour:
     SelectedEmotionName: Elsie Annoyed
     LocalizedDialogues:
     - Language: EN
-      Text: Ive grown since we last met count! Ive grown since we last met count!Ive
-        grown since we last met count!Ive grown since we last met count!
+      Text: Good to meet you!
     - Language: FR
       Text: We we!
     - Language: ES
@@ -59,7 +58,7 @@ MonoBehaviour:
     - Language: EN
       Text: Goodbye!
     - Language: FR
-      Text: Au revoir cunt!
+      Text: Au revoir!
     - Language: ES
       Text: "\xA1Adi\xF3s!"
     clip: {fileID: 0}
@@ -67,5 +66,5 @@ MonoBehaviour:
     ActionsAfterDialogueLine: []
     UserInputMethod: 0
     TimeBeforeNextLine: 0
-  FilePath: DialogueScriptTest.yml
+  FilePath: DialogueScriptSample.yml
   ConversationKey: Conversation1
