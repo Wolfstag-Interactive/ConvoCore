@@ -153,13 +153,16 @@ namespace WolfstagInteractive.ConvoCore
                 {
                     yield return StartCoroutine(ConversationData.ActionsBeforeDialogueLine(this, line));
                 }
+                //check and get player placeholder name and replace with name of player in line
+               string finalOutputString = ReplacePlayerNameInDialogueLine(localizedResult.Text);
+                
                 // Play audio and display dialogue
                 yield return StartCoroutine(PlayAudioClipWithAction(line.clip));
                 var characterName = profile.GetNameForRepresentation(line.AlternateRepresentation);
                 var portrait = profile.GetEmotionForRepresentation(line.SelectedEmotionName, line.AlternateRepresentation);
 
                 yield return StartCoroutine(
-                    PlayDialogueLine(_uiFoundation, line, localizedResult.Text, characterName, portrait)
+                    PlayDialogueLine(_uiFoundation, line, finalOutputString, characterName, portrait)
                 );
 
                 // Actions after the dialogue line
@@ -192,6 +195,27 @@ namespace WolfstagInteractive.ConvoCore
             {
                 yield return null;
             }
+        }
+       
+        private string ReplacePlayerNameInDialogueLine(string dialogueLine)
+        {
+            // Find the player profile
+            var playerProfile = ConversationData.GetPlayerProfile();
+            if (playerProfile != null)
+            {
+                if (!string.IsNullOrEmpty(playerProfile.CharacterName) &&
+                    !string.IsNullOrEmpty(playerProfile.PlayerPlaceholder))
+                {
+                    dialogueLine = dialogueLine.Replace(playerProfile.PlayerPlaceholder, playerProfile.CharacterName);
+                    return dialogueLine; // Replace the placeholder with the player's custom set name'
+                }
+                
+                Debug.LogWarning("Player profile is missing a custom name or placeholder.");
+                return dialogueLine; // Return the original line if the player profile is missing a custom name or placeholder
+                
+            }
+            return dialogueLine;
+            
         }
         /// <summary>
         /// Plays a dialogue line and handles user input

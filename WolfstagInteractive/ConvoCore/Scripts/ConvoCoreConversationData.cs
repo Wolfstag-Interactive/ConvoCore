@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System;
 using YamlDotNet.Serialization;
 using System.IO;
+using System.Linq;
 
 namespace WolfstagInteractive.ConvoCore
 {
@@ -44,8 +45,7 @@ namespace WolfstagInteractive.ConvoCore
             public List<BaseAction> ActionsBeforeDialogueLine; // Actions before the dialogue line
             public List<BaseAction> ActionsAfterDialogueLine; // Actions after the dialogue line
 
-            public DialogueLineProgressionMethod
-                UserInputMethod; // Whether to wait for user input before continuing to the next line
+            public DialogueLineProgressionMethod UserInputMethod; // Whether to wait for user input before continuing to the next line
 
             public float TimeBeforeNextLine; // Time in seconds to wait before continuing to the next line
         }
@@ -164,12 +164,13 @@ namespace WolfstagInteractive.ConvoCore
             }
         }
 
-        private string ReplacePlayerNameInDialogueLine(string dataDialogue)
+        // Finds the player's profile from the list based on the IsPlayer flag.
+        public ConvoCoreCharacterProfileBaseData GetPlayerProfile()
         {
-            string playerStringSymbolToReplace = "<PlayerName>";
-            string playerChosenName = "";
-            return dataDialogue.Replace(playerStringSymbolToReplace, playerChosenName);
+            return ConversationParticipantProfiles.FirstOrDefault(profile => profile.IsPlayerCharacter);
         }
+       
+
 
         public IEnumerator ActionsBeforeDialogueLine(ConvoCore core, DialogueLines line)
         {

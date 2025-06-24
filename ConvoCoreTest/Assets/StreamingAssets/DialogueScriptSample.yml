@@ -3,7 +3,7 @@ contents:
 Conversation1:
   - CharacterID: "NPC1"
     LocalizedDialogue:
-      EN: "Hello there!"
+      EN: "Hello there! <Player>"
       FR: "Bonjour!"
       ES: "¡Hola!"
   - CharacterID: "NPC1"

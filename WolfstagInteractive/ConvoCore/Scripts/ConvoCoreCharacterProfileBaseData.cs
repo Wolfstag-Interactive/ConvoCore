@@ -7,7 +7,19 @@ namespace WolfstagInteractive.ConvoCore
     [CreateAssetMenu(fileName = "NewCharacterProfile", menuName = "ConvoCore/CharacterProfile")]
     public class ConvoCoreCharacterProfileBaseData : ScriptableObject
     {
+        /// <summary>
+        /// Is this character profile the player character
+        /// </summary>
+        public bool IsPlayerCharacter;
+        /// <summary>
+        /// The Characters Name used if they are not the player
+        /// </summary>
         public string CharacterName;
+        /// <summary>
+        /// Allows setting the placeholder player name used when 
+        /// </summary>
+        public string PlayerPlaceholder;
+
         public Sprite DefaultPortrait;
         public string CharacterID;
 
