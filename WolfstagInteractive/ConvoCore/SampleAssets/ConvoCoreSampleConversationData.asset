@@ -1,0 +1,448 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 458f605aa420aee44acb27c723607006, type: 3}
+  m_Name: ConvoCoreSampleConversationData
+  m_EditorClassIdentifier: 
+  ConversationParticipantProfiles:
+  - {fileID: 11400000, guid: 086dcde826a3fcb4b903e747228d482b, type: 2}
+  - {fileID: 11400000, guid: 871b502169fa7f74e9d3d3a7b87b6503, type: 2}
+  - {fileID: 11400000, guid: cca04ff07be1b1a478acbfc412045f2e, type: 2}
+  dialogueLines:
+  - ConversationID: Conversation1
+    ConversationLineIndex: 0
+    characterID: Ava
+    AlternateRepresentation: 
+    SelectedEmotionName: Neutral
+    LocalizedDialogues:
+    - Language: EN
+      Text: "Jared... we\u2019re definitely off-trail."
+    - Language: FR
+      Text: "Jared... on s'est clairement \xE9gar\xE9s."
+    - Language: ES
+      Text: Jared... definitivamente nos perdimos del sendero.
+    clip: {fileID: 0}
+    ActionsBeforeDialogueLine: []
+    ActionsAfterDialogueLine: []
+    UserInputMethod: 0
+    TimeBeforeNextLine: 0
+  - ConversationID: Conversation1
+    ConversationLineIndex: 1
+    characterID: Jared
+    AlternateRepresentation: 
+    SelectedEmotionName: Neutral
+    LocalizedDialogues:
+    - Language: EN
+      Text: "Technically, we\u2019re *still* in the forest. Nature counts."
+    - Language: FR
+      Text: "Techniquement, on est toujours dans la for\xEAt. \xC7a compte, non?"
+    - Language: ES
+      Text: "T\xE9cnicamente, seguimos en el bosque. Eso cuenta."
+    clip: {fileID: 0}
+    ActionsBeforeDialogueLine: []
+    ActionsAfterDialogueLine: []
+    UserInputMethod: 0
+    TimeBeforeNextLine: 0
+  - ConversationID: Conversation1
+    ConversationLineIndex: 2
+    characterID: Ava
+    AlternateRepresentation: 
+    SelectedEmotionName: Neutral
+    LocalizedDialogues:
+    - Language: EN
+      Text: "We\u2019ve circled that tree three times now."
+    - Language: FR
+      Text: "On a tourn\xE9 autour de cet arbre trois fois."
+    - Language: ES
+      Text: "Hemos rodeado ese \xE1rbol tres veces."
+    clip: {fileID: 0}
+    ActionsBeforeDialogueLine: []
+    ActionsAfterDialogueLine: []
+    UserInputMethod: 0
+    TimeBeforeNextLine: 0
+  - ConversationID: Conversation1
+    ConversationLineIndex: 3
+    characterID: Jared
+    AlternateRepresentation: 
+    SelectedEmotionName: Neutral
+    LocalizedDialogues:
+    - Language: EN
+      Text: "It\u2019s a popular tree. Five stars on TreeAdvisor."
+    - Language: FR
+      Text: "C\u2019est un arbre populaire. Cinq \xE9toiles sur TreeAdvisor."
+    - Language: ES
+      Text: "Es un \xE1rbol famoso. Cinco estrellas en TreeAdvisor."
+    clip: {fileID: 0}
+    ActionsBeforeDialogueLine: []
+    ActionsAfterDialogueLine: []
+    UserInputMethod: 0
+    TimeBeforeNextLine: 0
+  - ConversationID: Conversation1
+    ConversationLineIndex: 4
+    characterID: Ava
+    AlternateRepresentation: 
+    SelectedEmotionName: Scared
+    LocalizedDialogues:
+    - Language: EN
+      Text: Shh! Did you hear that?
+    - Language: FR
+      Text: "Chut! T\u2019as entendu \xE7a ?"
+    - Language: ES
+      Text: "\xA1Shh! \xBFEscuchaste eso?"
+    clip: {fileID: 0}
+    ActionsBeforeDialogueLine: []
+    ActionsAfterDialogueLine: []
+    UserInputMethod: 0
+    TimeBeforeNextLine: 0
+  - ConversationID: Conversation1
+    ConversationLineIndex: 5
+    characterID: Jared
+    AlternateRepresentation: 
+    SelectedEmotionName: Neutral
+    LocalizedDialogues:
+    - Language: EN
+      Text: "Maybe it\u2019s a bear. Or a ranger with snacks."
+    - Language: FR
+      Text: "Peut-\xEAtre un ours. Ou un garde forestier avec des snacks."
+    - Language: ES
+      Text: "Quiz\xE1s un oso. O un guardabosques con bocadillos."
+    clip: {fileID: 0}
+    ActionsBeforeDialogueLine: []
+    ActionsAfterDialogueLine: []
+    UserInputMethod: 0
+    TimeBeforeNextLine: 0
+  - ConversationID: Conversation1
+    ConversationLineIndex: 6
+    characterID: Wolfstag
+    AlternateRepresentation: ???
+    SelectedEmotionName: Neutral
+    LocalizedDialogues:
+    - Language: EN
+      Text: '*A towering silhouette appears between the trees. Antlers like twisted
+        branches.*'
+    - Language: FR
+      Text: "*Une silhouette massive \xE9merge entre les arbres. Des bois torsad\xE9s.*"
+    - Language: ES
+      Text: "*Una silueta imponente aparece entre los \xE1rboles. Astas retorcidas.*"
+    clip: {fileID: 0}
+    ActionsBeforeDialogueLine: []
+    ActionsAfterDialogueLine: []
+    UserInputMethod: 0
+    TimeBeforeNextLine: 0
+  - ConversationID: Conversation1
+    ConversationLineIndex: 7
+    characterID: Ava
+    AlternateRepresentation: 
+    SelectedEmotionName: Neutral
+    LocalizedDialogues:
+    - Language: EN
+      Text: What is *that?!*
+    - Language: FR
+      Text: "C\u2019est quoi *\xE7a* ?!"
+    - Language: ES
+      Text: "\xBF\xA1Qu\xE9 es *eso*!?"
+    clip: {fileID: 0}
+    ActionsBeforeDialogueLine: []
+    ActionsAfterDialogueLine: []
+    UserInputMethod: 0
+    TimeBeforeNextLine: 0
+  - ConversationID: Conversation1
+    ConversationLineIndex: 8
+    characterID: Jared
+    AlternateRepresentation: 
+    SelectedEmotionName: HeartEyes
+    LocalizedDialogues:
+    - Language: EN
+      Text: '*gasps* Whoooooa. Look at you!'
+    - Language: FR
+      Text: "*hal\xE8tement* Wooooow. Regarde-moi \xE7a!"
+    - Language: ES
+      Text: "*jadea* \xA1Wooooow! \xA1M\xEDrate!"
+    clip: {fileID: 0}
+    ActionsBeforeDialogueLine: []
+    ActionsAfterDialogueLine: []
+    UserInputMethod: 0
+    TimeBeforeNextLine: 0
+  - ConversationID: Conversation1
+    ConversationLineIndex: 9
+    characterID: Jared
+    AlternateRepresentation: 
+    SelectedEmotionName: HeartEyes
+    LocalizedDialogues:
+    - Language: EN
+      Text: "Are you lost too, buddy? You need scritches? Huh? Who\u2019s a majestic
+        forest beast? *You* are!"
+    - Language: FR
+      Text: "Tu t\u2019es perdu aussi, mon grand ? Tu veux des gratouilles ? Qui
+        est une b\xEAte majestueuse ? *C\u2019est toi!*"
+    - Language: ES
+      Text: "\xBFTambi\xE9n est\xE1s perdido, amigo? \xBFQuieres caricias? \xBFQui\xE9n
+        es una bestia majestuosa? \xA1*T\xFA*!"
+    clip: {fileID: 0}
+    ActionsBeforeDialogueLine: []
+    ActionsAfterDialogueLine: []
+    UserInputMethod: 0
+    TimeBeforeNextLine: 0
+  - ConversationID: Conversation1
+    ConversationLineIndex: 10
+    characterID: Wolfstag
+    AlternateRepresentation: 
+    SelectedEmotionName: Neutral
+    LocalizedDialogues:
+    - Language: EN
+      Text: '*It tilts its head slightly. Curious.*'
+    - Language: FR
+      Text: "*Il incline l\xE9g\xE8rement la t\xEAte. Curieux.*"
+    - Language: ES
+      Text: '*Inclina ligeramente la cabeza. Curioso.*'
+    clip: {fileID: 0}
+    ActionsBeforeDialogueLine: []
+    ActionsAfterDialogueLine: []
+    UserInputMethod: 0
+    TimeBeforeNextLine: 0
+  - ConversationID: Conversation1
+    ConversationLineIndex: 11
+    characterID: Ava
+    AlternateRepresentation: 
+    SelectedEmotionName: Scared
+    LocalizedDialogues:
+    - Language: EN
+      Text: "Jared\u2026 stop trying to pet the antler demon!"
+    - Language: FR
+      Text: "Jared\u2026 arr\xEAte d\u2019essayer de caresser le d\xE9mon \xE0 bois!"
+    - Language: ES
+      Text: "\xA1Jared... deja de intentar acariciar al demonio de los cuernos!"
+    clip: {fileID: 0}
+    ActionsBeforeDialogueLine: []
+    ActionsAfterDialogueLine: []
+    UserInputMethod: 0
+    TimeBeforeNextLine: 0
+  - ConversationID: Conversation1
+    ConversationLineIndex: 12
+    characterID: Wolfstag
+    AlternateRepresentation: 
+    SelectedEmotionName: Neutral
+    LocalizedDialogues:
+    - Language: EN
+      Text: "*The shadows melt away. The creature\u2019s full form is revealed\u2014fur
+        glows silver in the moonlight.*"
+    - Language: FR
+      Text: "*Les ombres se dissipent. La cr\xE9ature se d\xE9voile \u2014 sa fourrure
+        luit \xE0 la lumi\xE8re lunaire.*"
+    - Language: ES
+      Text: "*Las sombras se desvanecen. Su forma completa aparece \u2014 su pelaje
+        brilla bajo la luna.*"
+    clip: {fileID: 0}
+    ActionsBeforeDialogueLine: []
+    ActionsAfterDialogueLine: []
+    UserInputMethod: 0
+    TimeBeforeNextLine: 0
+  - ConversationID: Conversation1
+    ConversationLineIndex: 13
+    characterID: Jared
+    AlternateRepresentation: 
+    SelectedEmotionName: Neutral
+    LocalizedDialogues:
+    - Language: EN
+      Text: "Oh my god. He\u2019s gorgeous. I want ten of him."
+    - Language: FR
+      Text: "Oh mon dieu. Il est splendide. J\u2019en veux dix."
+    - Language: ES
+      Text: "Dios m\xEDo. Es hermoso. Quiero diez."
+    clip: {fileID: 0}
+    ActionsBeforeDialogueLine: []
+    ActionsAfterDialogueLine: []
+    UserInputMethod: 0
+    TimeBeforeNextLine: 0
+  - ConversationID: Conversation1
+    ConversationLineIndex: 14
+    characterID: Ava
+    AlternateRepresentation: 
+    SelectedEmotionName: Neutral
+    LocalizedDialogues:
+    - Language: EN
+      Text: "...I think he\u2019s leading us somewhere."
+    - Language: FR
+      Text: "...Je crois qu\u2019il nous guide quelque part."
+    - Language: ES
+      Text: "...Creo que nos est\xE1 guiando."
+    clip: {fileID: 0}
+    ActionsBeforeDialogueLine: []
+    ActionsAfterDialogueLine: []
+    UserInputMethod: 0
+    TimeBeforeNextLine: 0
+  - ConversationID: Conversation1
+    ConversationLineIndex: 15
+    characterID: Wolfstag
+    AlternateRepresentation: 
+    SelectedEmotionName: Neutral
+    LocalizedDialogues:
+    - Language: EN
+      Text: '*He glances back, takes a few careful steps, then waits.*'
+    - Language: FR
+      Text: "*Il jette un regard en arri\xE8re, avance lentement, puis s\u2019arr\xEAte.*"
+    - Language: ES
+      Text: "*Mira hacia atr\xE1s, da unos pasos y espera.*"
+    clip: {fileID: 0}
+    ActionsBeforeDialogueLine: []
+    ActionsAfterDialogueLine: []
+    UserInputMethod: 0
+    TimeBeforeNextLine: 0
+  - ConversationID: Conversation1
+    ConversationLineIndex: 16
+    characterID: Jared
+    AlternateRepresentation: 
+    SelectedEmotionName: Neutral
+    LocalizedDialogues:
+    - Language: EN
+      Text: "Look at him! He\u2019s so polite. Trail angel confirmed."
+    - Language: FR
+      Text: "Regarde-le ! Trop poli. Ange du sentier confirm\xE9."
+    - Language: ES
+      Text: "\xA1M\xEDralo! Tan educado. \xC1ngel del sendero confirmado."
+    clip: {fileID: 0}
+    ActionsBeforeDialogueLine: []
+    ActionsAfterDialogueLine: []
+    UserInputMethod: 0
+    TimeBeforeNextLine: 0
+  - ConversationID: Conversation1
+    ConversationLineIndex: 17
+    characterID: Ava
+    AlternateRepresentation: 
+    SelectedEmotionName: Neutral
+    LocalizedDialogues:
+    - Language: EN
+      Text: I think he wants us to follow. And... I think we should.
+    - Language: FR
+      Text: "Il veut qu\u2019on le suive. Et... je crois qu\u2019on devrait."
+    - Language: ES
+      Text: Quiere que lo sigamos. Y... creo que debemos hacerlo.
+    clip: {fileID: 0}
+    ActionsBeforeDialogueLine: []
+    ActionsAfterDialogueLine: []
+    UserInputMethod: 0
+    TimeBeforeNextLine: 0
+  - ConversationID: Conversation1
+    ConversationLineIndex: 18
+    characterID: Wolfstag
+    AlternateRepresentation: 
+    SelectedEmotionName: Neutral
+    LocalizedDialogues:
+    - Language: EN
+      Text: '*The creature moves ahead again, parting the brush. Bits of a path peek
+        through behind him.*'
+    - Language: FR
+      Text: "*La cr\xE9ature avance \xE0 nouveau, \xE9cartant les buissons. Un sentier
+        appara\xEEt derri\xE8re lui.*"
+    - Language: ES
+      Text: "*La criatura avanza, apartando los arbustos. Se revela un sendero detr\xE1s
+        de \xE9l.*"
+    clip: {fileID: 0}
+    ActionsBeforeDialogueLine: []
+    ActionsAfterDialogueLine: []
+    UserInputMethod: 0
+    TimeBeforeNextLine: 0
+  - ConversationID: Conversation1
+    ConversationLineIndex: 19
+    characterID: Jared
+    AlternateRepresentation: 
+    SelectedEmotionName: Neutral
+    LocalizedDialogues:
+    - Language: EN
+      Text: "Wait... this looks familiar. That\u2019s the ridge! That\u2019s the
+        way back!"
+    - Language: FR
+      Text: "Attends... \xE7a me dit quelque chose. C\u2019est la cr\xEAte ! C\u2019est
+        le bon chemin !"
+    - Language: ES
+      Text: "Espera... esto me suena. \xA1Esa es la cresta! \xA1Ese es el camino
+        de regreso!"
+    clip: {fileID: 0}
+    ActionsBeforeDialogueLine: []
+    ActionsAfterDialogueLine: []
+    UserInputMethod: 0
+    TimeBeforeNextLine: 0
+  - ConversationID: Conversation1
+    ConversationLineIndex: 20
+    characterID: Ava
+    AlternateRepresentation: 
+    SelectedEmotionName: Neutral
+    LocalizedDialogues:
+    - Language: EN
+      Text: He really *is* guiding us...
+    - Language: FR
+      Text: Il nous guide vraiment...
+    - Language: ES
+      Text: "De verdad nos est\xE1 guiando..."
+    clip: {fileID: 0}
+    ActionsBeforeDialogueLine: []
+    ActionsAfterDialogueLine: []
+    UserInputMethod: 0
+    TimeBeforeNextLine: 0
+  - ConversationID: Conversation1
+    ConversationLineIndex: 21
+    characterID: Wolfstag
+    AlternateRepresentation: 
+    SelectedEmotionName: Neutral
+    LocalizedDialogues:
+    - Language: EN
+      Text: '*He pauses at the clearing''s edge, makes eye contact, then silently
+        disappears into the mist.*'
+    - Language: FR
+      Text: "*Il s\u2019arr\xEAte \xE0 la lisi\xE8re de la clairi\xE8re, nous regarde,
+        puis dispara\xEEt dans la brume.*"
+    - Language: ES
+      Text: '*Se detiene en el borde del claro, nos mira y desaparece entre la niebla.*'
+    clip: {fileID: 0}
+    ActionsBeforeDialogueLine: []
+    ActionsAfterDialogueLine: []
+    UserInputMethod: 0
+    TimeBeforeNextLine: 0
+  - ConversationID: Conversation1
+    ConversationLineIndex: 22
+    characterID: Jared
+    AlternateRepresentation: 
+    SelectedEmotionName: Neutral
+    LocalizedDialogues:
+    - Language: EN
+      Text: ...Goodbye, magic antler puppy. I hope you find your own trail home.
+    - Language: FR
+      Text: "...Adieu, chien magique \xE0 bois. J\u2019esp\xE8re que tu retrouveras
+        ton chemin."
+    - Language: ES
+      Text: "...Adi\xF3s, cachorro m\xE1gico de astas. Ojal\xE1 encuentres tu camino."
+    clip: {fileID: 0}
+    ActionsBeforeDialogueLine: []
+    ActionsAfterDialogueLine: []
+    UserInputMethod: 0
+    TimeBeforeNextLine: 0
+  - ConversationID: Conversation1
+    ConversationLineIndex: 23
+    characterID: Ava
+    AlternateRepresentation: 
+    SelectedEmotionName: Neutral
+    LocalizedDialogues:
+    - Language: EN
+      Text: "...Next time, I\u2019m bringing a map and a compass. And maybe pepper
+        spray."
+    - Language: FR
+      Text: ...La prochaine fois, je prends une carte, une boussole... et du spray
+        au poivre.
+    - Language: ES
+      Text: "...La pr\xF3xima vez, llevar\xE9 un mapa, una br\xFAjula... y tal vez
+        gas pimienta."
+    clip: {fileID: 0}
+    ActionsBeforeDialogueLine: []
+    ActionsAfterDialogueLine: []
+    UserInputMethod: 1
+    TimeBeforeNextLine: 0
+  FilePath: DialogueScriptSample.yml
+  ConversationKey: Conversation1

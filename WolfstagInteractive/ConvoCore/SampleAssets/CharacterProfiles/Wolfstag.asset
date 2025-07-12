@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1541ec584fa83f46b6a50f7124ceaba, type: 3}
+  m_Name: Wolfstag
+  m_EditorClassIdentifier: 
+  IsPlayerCharacter: 0
+  CharacterName: Wolfstag
+  PlayerPlaceholder: 
+  DefaultPortrait: {fileID: 21300000, guid: cb0ab1e48fc22124d8cf58d7aee3049e, type: 3}
+  CharacterID: Wolfstag
+  CharacterEmotions:
+  - {fileID: 11400000, guid: 030e75813957d884492d17e5a02525ce, type: 2}
+  AlternateRepresentations:
+  - AliasName: ???
+    AliasPortrait: {fileID: 21300000, guid: e478f6b22da95074b8016725c9fd61c5, type: 3}
+    RepresentationID: ???

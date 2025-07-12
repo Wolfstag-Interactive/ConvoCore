@@ -16,7 +16,7 @@ namespace WolfstagInteractive.ConvoCore
         /// </summary>
         public string CharacterName;
         /// <summary>
-        /// Allows setting the placeholder player name used when 
+        /// Allows setting the placeholder player name. This is used as an indentifier within the dialogue to replace with the name set in the editor before final presentation of the dialogue line. 
         /// </summary>
         public string PlayerPlaceholder;
 

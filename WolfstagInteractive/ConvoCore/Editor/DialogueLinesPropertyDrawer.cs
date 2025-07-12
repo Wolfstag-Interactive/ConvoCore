@@ -39,6 +39,7 @@ namespace WolfstagInteractive.ConvoCore.Editor
             // Draw Line Index
             EditorGUI.LabelField(currentRect, "Line Index: ", indexProp.intValue.ToString());
             currentRect.y += lineHeight + spacing;
+
             // Draw Character ID
             EditorGUI.LabelField(currentRect, "Character ID:", characterIDProp.stringValue);
             currentRect.y += lineHeight + spacing;
@@ -57,7 +58,6 @@ namespace WolfstagInteractive.ConvoCore.Editor
                     .Where(p => p != null)
                     .FirstOrDefault(p => p.CharacterID == characterID);
 
-
                 if (profile != null)
                 {
                     // Get all available alternate representations from the profile
@@ -73,11 +73,13 @@ namespace WolfstagInteractive.ConvoCore.Editor
                         // Find the currently selected representation index
                         int currentSelection = string.IsNullOrEmpty(alternateRepresentationProp.stringValue)
                             ? 0 // Default selected
-                            : representations.IndexOf(
-                                profile.GetNameForRepresentation(alternateRepresentationProp.stringValue));
+                            : representations.IndexOf(profile.GetNameForRepresentation(alternateRepresentationProp.stringValue));
 
                         // Ensure valid index
-                        if (currentSelection < 0) currentSelection = 0;
+                        if (currentSelection < 0)
+                        {
+                            currentSelection = 0;
+                        }
 
                         // Draw the dropdown
                         currentSelection = EditorGUI.Popup(currentRect, "Alternate Representation:", currentSelection,
@@ -91,10 +93,9 @@ namespace WolfstagInteractive.ConvoCore.Editor
                         }
                         else
                         {
-                            // Set the selected representation ID
+                            // Set the selected representation ID (offset the index by 1 for the "Default" option)
                             alternateRepresentationProp.stringValue =
-                                profile.AlternateRepresentations[currentSelection - 1]
-                                    .RepresentationID; // Offset by 1 for the "Default" option
+                                profile.AlternateRepresentations[currentSelection - 1].RepresentationID;
                         }
                     }
                     else
@@ -113,8 +114,10 @@ namespace WolfstagInteractive.ConvoCore.Editor
             }
 
             currentRect.y += lineHeight + spacing;
+
             // Input Method Dropdown
-            ConvoCoreConversationData.DialogueLineProgressionMethod currentInputMethod = (ConvoCoreConversationData.DialogueLineProgressionMethod)selectedLineProgressionProp.enumValueIndex;
+            ConvoCoreConversationData.DialogueLineProgressionMethod currentInputMethod =
+                (ConvoCoreConversationData.DialogueLineProgressionMethod)selectedLineProgressionProp.enumValueIndex;
             currentInputMethod = (ConvoCoreConversationData.DialogueLineProgressionMethod)EditorGUI.EnumPopup(currentRect, "Input Method:", currentInputMethod);
             selectedLineProgressionProp.enumValueIndex = (int)currentInputMethod;
             currentRect.y += lineHeight + spacing;
@@ -132,33 +135,49 @@ namespace WolfstagInteractive.ConvoCore.Editor
                 new GUIContent("Audio Clip:"));
             currentRect.y += clipHeight + spacing;
 
-            // Draw Selected Emotion Dropdown
+            // Draw Selected Emotion Dropdown with additional null checks
             if (conversationObject != null)
             {
                 string characterID = characterIDProp.stringValue;
-                var profile =
-                    conversationObject.ConversationParticipantProfiles.Where(p=>p!=null).FirstOrDefault(p =>
-                        p.CharacterID == characterID);
+                var profile = conversationObject.ConversationParticipantProfiles.Where(p => p != null)
+                    .FirstOrDefault(p => p.CharacterID == characterID);
 
                 if (profile != null)
                 {
                     string representationID = alternateRepresentationProp.stringValue;
+                    List<string> emotionNames = new List<string>();
 
-                    // Gather and display emotion names for the selected representation
-                    List<string> emotionNames = string.IsNullOrEmpty(representationID)
-                        ? profile.CharacterEmotions.Select(e => e.emotionName).ToList()
-                        : profile.CharacterEmotions
-                            .Where(e => e.RepresentationOverrides.Any(r => r.RepresentationID == representationID))
-                            .Select(e => e.emotionName)
-                            .ToList();
+                    // Ensure the emotion list is not null before proceeding.
+                    if (profile.CharacterEmotions != null)
+                    {
+                        // Branch based on whether a representation ID is set.
+                        if (string.IsNullOrEmpty(representationID))
+                        {
+                            emotionNames = profile.CharacterEmotions
+                                .Where(e => e != null) // Skip null entries
+                                .Select(e => e.emotionName)
+                                .ToList();
+                        }
+                        else
+                        {
+                            emotionNames = profile.CharacterEmotions
+                                .Where(e => e != null &&
+                                            e.RepresentationOverrides != null &&
+                                            e.RepresentationOverrides.Any(r => r.RepresentationID == representationID))
+                                .Select(e => e.emotionName)
+                                .ToList();
+                        }
+                    }
 
                     if (emotionNames.Count > 0)
                     {
                         int currentEmotionIndex = emotionNames.IndexOf(selectedEmotionProp.stringValue);
-                        if (currentEmotionIndex == -1) currentEmotionIndex = 0; // Default to first emotion if invalid
+                        if (currentEmotionIndex == -1)
+                        {
+                            currentEmotionIndex = 0; // default to first emotion if invalid
+                        }
 
-                        currentEmotionIndex = EditorGUI.Popup(currentRect, "Emotion:", currentEmotionIndex,
-                            emotionNames.ToArray());
+                        currentEmotionIndex = EditorGUI.Popup(currentRect, "Emotion:", currentEmotionIndex, emotionNames.ToArray());
                         selectedEmotionProp.stringValue = emotionNames[currentEmotionIndex];
                     }
                     else
@@ -184,7 +203,7 @@ namespace WolfstagInteractive.ConvoCore.Editor
                 string currentLanguage = ConvoCoreLanguageManager.Instance.CurrentLanguage;
                 SerializedProperty matchingDialogue = null;
 
-                // Iterate through array to find the localized dialogue in the selected language
+                // Iterate through the array to find the localized dialogue in the selected language
                 for (int i = 0; i < localizedDialoguesProp.arraySize; i++)
                 {
                     SerializedProperty element = localizedDialoguesProp.GetArrayElementAtIndex(i);

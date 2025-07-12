@@ -9,10 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26a80c581a98b864092ac6c05f13d4fe, type: 3}
-  m_Name: LanguageSettings
+  m_Script: {fileID: 11500000, guid: 6eafa2259e902a44cbedda481ee20b96, type: 3}
+  m_Name: AvaScared
   m_EditorClassIdentifier: 
-  SupportedLanguages:
-  - EN
-  - FR
-  - ES
+  emotionName: Scared
+  CharacterEmotionSprite: {fileID: 21300000, guid: c23cf1f29a24c5d4dae63a0e54b1366f, type: 3}
+  RepresentationOverrides: []
