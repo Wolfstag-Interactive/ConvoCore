@@ -57,13 +57,13 @@ namespace WolfstagInteractive.ConvoCore
 
             // Get the dialogue lines for the specified key
             Debug.Log($"Importing {yamlConfigs.Count} lines for conversation key '{conversationKey}'.");
-            if (_convoCoreConversationData.dialogueLines == null)
+            if (_convoCoreConversationData.DialogueLines == null)
             {
-                _convoCoreConversationData.dialogueLines = new List<ConvoCoreConversationData.DialogueLines>();
+                _convoCoreConversationData.DialogueLines = new List<ConvoCoreConversationData.DialogueLineInfo>();
             }
 
             // Temporary list for the updated dialogue lines
-            List<ConvoCoreConversationData.DialogueLines> updatedDialogueLines = new List<ConvoCoreConversationData.DialogueLines>();
+            List<ConvoCoreConversationData.DialogueLineInfo> updatedDialogueLines = new List<ConvoCoreConversationData.DialogueLineInfo>();
 
             for (int i = 0; i < yamlConfigs.Count; i++)
             {
@@ -81,7 +81,7 @@ namespace WolfstagInteractive.ConvoCore
                 }
 
                 // Create a new DialogueLine and map the fields correctly
-                ConvoCoreConversationData.DialogueLines newLine = new ConvoCoreConversationData.DialogueLines
+                ConvoCoreConversationData.DialogueLineInfo newLineInfo = new ConvoCoreConversationData.DialogueLineInfo
                 {
                     ConversationID = conversationKey,
                     characterID = yamlConfig.CharacterID,
@@ -92,11 +92,11 @@ namespace WolfstagInteractive.ConvoCore
                     clip = null
                 };
 
-                updatedDialogueLines.Add(newLine);
+                updatedDialogueLines.Add(newLineInfo);
             }
 
             // Replace the dialogueLines with the updated list
-            _convoCoreConversationData.dialogueLines = updatedDialogueLines;
+            _convoCoreConversationData.DialogueLines = updatedDialogueLines;
         }
     }
 }

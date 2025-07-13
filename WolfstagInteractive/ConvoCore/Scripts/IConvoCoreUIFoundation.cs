@@ -15,11 +15,11 @@ namespace WolfstagInteractive.ConvoCore
         /// <summary>
         /// Updates the displayed UI elements based on the ConvoCore instances current state.
         /// </summary>
-        /// <param name="dialogueLine">Details of the current dialogue line.</param>
+        /// <param name="dialogueLineInfo">Details of the current dialogue line.</param>
         /// <param name="localizedText">The current localized text to be displayed</param>
         /// <param name="speakingCharacterName">The name of the speaking character</param>
         /// <param name="portrait">The speaking characters portrait</param>
-        public void UpdateDialogueUI(ConvoCoreConversationData.DialogueLines dialogueLine, string localizedText, 
+        public void UpdateDialogueUI(ConvoCoreConversationData.DialogueLineInfo dialogueLineInfo, string localizedText, 
             string speakingCharacterName, Sprite portrait);
 
         /// <summary>

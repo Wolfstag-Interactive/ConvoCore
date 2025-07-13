@@ -19,16 +19,16 @@ namespace WolfstagInteractive.ConvoCore
         /// <summary>
         /// Gets localized text for a dialogue line, handling fallbacks and logging.
         /// </summary>
-        public LocalizedDialogueResult GetLocalizedDialogue(ConvoCoreConversationData.DialogueLines line)
+        public LocalizedDialogueResult GetLocalizedDialogue(ConvoCoreConversationData.DialogueLineInfo lineInfo)
         {
-            if (line.LocalizedDialogues == null || line.LocalizedDialogues.Count == 0)
+            if (lineInfo.LocalizedDialogues == null || lineInfo.LocalizedDialogues.Count == 0)
             {
                 return new LocalizedDialogueResult
                 {
                     Success = false,
                     Text = "[Error: Missing Translations]",
                     ErrorMessage =
-                        $"LocalizedDialogues is null or empty for line {line.ConversationLineIndex} in '{line.ConversationID}'"
+                        $"LocalizedDialogues is null or empty for line {lineInfo.ConversationLineIndex} in '{lineInfo.ConversationID}'"
                 };
             }
 
@@ -36,7 +36,7 @@ namespace WolfstagInteractive.ConvoCore
             string currentLanguage = languageManager.CurrentLanguage;
 
             // Try to find the translation for the current language.
-            var localizedDialogue = line.LocalizedDialogues
+            var localizedDialogue = lineInfo.LocalizedDialogues
                 .FirstOrDefault(ld => ld.Language == currentLanguage);
 
             if (localizedDialogue.Language != null)
@@ -52,7 +52,7 @@ namespace WolfstagInteractive.ConvoCore
             // Try the fallback language if current language doesn't exist.
             if (currentLanguage != languageManager.CurrentLanguage)
             {
-                var fallbackDialogue = line.LocalizedDialogues
+                var fallbackDialogue = lineInfo.LocalizedDialogues
                     .FirstOrDefault(ld => ld.Language == languageManager.CurrentLanguage);
 
                 if (fallbackDialogue.Language != null)
@@ -70,7 +70,7 @@ namespace WolfstagInteractive.ConvoCore
             }
 
             // If no specific language is available, use the first available translation.
-            var defaultDialogue = line.LocalizedDialogues.FirstOrDefault();
+            var defaultDialogue = lineInfo.LocalizedDialogues.FirstOrDefault();
 
             if (defaultDialogue.Language != null)
             {
@@ -91,7 +91,7 @@ namespace WolfstagInteractive.ConvoCore
                 Success = false,
                 Text = "[Missing Translation]",
                 ErrorMessage =
-                    $"No translations available for line {line.ConversationLineIndex} in '{line.ConversationID}'"
+                    $"No translations available for line {lineInfo.ConversationLineIndex} in '{lineInfo.ConversationID}'"
             };
         }
     }

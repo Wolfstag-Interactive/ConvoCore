@@ -16,13 +16,15 @@ namespace WolfstagInteractive.ConvoCore
         /// </summary>
         public string CharacterName;
         /// <summary>
-        /// Allows setting the placeholder player name. This is used as an indentifier within the dialogue to replace with the name set in the editor before final presentation of the dialogue line. 
+        /// Allows setting the placeholder player name. This is used as an identifier within the dialogue to replace with the name set in the editor before final presentation of the dialogue line. 
         /// </summary>
         public string PlayerPlaceholder;
 
         public Sprite DefaultPortrait;
         public string CharacterID;
-
+        
+        public List<RepresentationPair> Representations = new List<RepresentationPair>();
+        
         [Header("Portraits Per Emotion")]
         public List<ConvoCoreCharacterEmotion> CharacterEmotions = new List<ConvoCoreCharacterEmotion>();
         [Header("Alternate Representations")]
@@ -94,4 +96,14 @@ namespace WolfstagInteractive.ConvoCore
         public Sprite AliasPortrait; // Alternate sprite/portrait for the character
         public string RepresentationID; // Optional identifier for this representation (e.g., "hidden", "discovered")
     }
+    [System.Serializable]
+    public class RepresentationPair
+    {
+        [Tooltip("A unique identifier for the representation (e.g., 'idle', 'happy', etc.).")]
+        public string CharacterRepresentationName;
+    
+        [Tooltip("Assign the character representation for this key.")]
+        public CharacterRepresentationBase CharacterRepresentation;
+    }
+
 }

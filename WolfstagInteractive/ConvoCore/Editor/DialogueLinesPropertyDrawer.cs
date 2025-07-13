@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace WolfstagInteractive.ConvoCore.Editor
 {
-    [CustomPropertyDrawer(typeof(ConvoCoreConversationData.DialogueLines))]
+    [CustomPropertyDrawer(typeof(ConvoCoreConversationData.DialogueLineInfo))]
     public class DialogueLinesPropertyDrawer : PropertyDrawer
     {
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)

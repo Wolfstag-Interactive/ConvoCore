@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Diagnostics.CodeAnalysis;
 using UnityEngine;
 
 namespace WolfstagInteractive.ConvoCore
@@ -13,6 +14,7 @@ namespace WolfstagInteractive.ConvoCore
         Ended
     }
     [RequireComponent(typeof(AudioSource))][DisallowMultipleComponent]
+    [SuppressMessage("ReSharper", "ClassWithVirtualMembersNeverInherited.Global")]
     public class ConvoCore : MonoBehaviour
     {
         public ConvoCoreConversationData ConversationData; // Reference to your dialogue data
@@ -33,7 +35,7 @@ namespace WolfstagInteractive.ConvoCore
         /// <summary>
         /// Set the UI from code
         /// </summary>
-        public void SetUI(IUIFoundation uiFoundation)
+        protected void SetUI(IUIFoundation uiFoundation)
         {
             _uiFoundation = uiFoundation;
             _uiFoundation.InitializeUI(this);
@@ -127,9 +129,9 @@ namespace WolfstagInteractive.ConvoCore
            
             // Iterate through all dialogue lines
             CurrentDialogueState = ConversationState.Playing;
-            for (_currentLineIndex = 0; _currentLineIndex < ConversationData.dialogueLines.Count; _currentLineIndex++)
+            for (_currentLineIndex = 0; _currentLineIndex < ConversationData.DialogueLines.Count; _currentLineIndex++)
             {
-                var line = ConversationData.dialogueLines[_currentLineIndex];
+                var line = ConversationData.DialogueLines[_currentLineIndex];
 
                 // Resolve character profile for the line
                 var profile = ConversationData.ResolveCharacterProfile(profiles, line.characterID);
@@ -207,7 +209,7 @@ namespace WolfstagInteractive.ConvoCore
                     !string.IsNullOrEmpty(playerProfile.PlayerPlaceholder))
                 {
                     dialogueLine = dialogueLine.Replace(playerProfile.PlayerPlaceholder, playerProfile.CharacterName);
-                    return dialogueLine; // Replace the placeholder with the player's custom set name'
+                    return dialogueLine; // Replace the placeholder with the player's custom set name
                 }
                 
                 Debug.LogWarning("Player profile is missing a custom name or placeholder.");
@@ -217,19 +219,21 @@ namespace WolfstagInteractive.ConvoCore
             return dialogueLine;
             
         }
+
         /// <summary>
         /// Plays a dialogue line and handles user input
         /// </summary>
-        /// <param name="line">The current dialogue line data</param>
+        /// <param name="uiFoundationInstance">The set ui we are communicating with</param>
+        /// <param name="lineInfo">The current dialogue line data</param>
         /// <param name="localizedText">The current localizations text</param>
         /// <param name="characterName">The name of the speaking character of the dialogue line</param>
-        /// <param name="portrait">The potrait from the speaking characters character data</param>
+        /// <param name="portrait">The portrait from the speaking characters character data</param>
         /// <returns></returns>
-        private IEnumerator PlayDialogueLine(IUIFoundation uiFoundationInstance,ConvoCoreConversationData.DialogueLines line
+        private IEnumerator PlayDialogueLine(IUIFoundation uiFoundationInstance,ConvoCoreConversationData.DialogueLineInfo lineInfo
             , string localizedText, string characterName, Sprite portrait)
         {
-            uiFoundationInstance.UpdateDialogueUI(line, localizedText, characterName, portrait);
-            switch (line.UserInputMethod)
+            uiFoundationInstance.UpdateDialogueUI(lineInfo, localizedText, characterName, portrait);
+            switch (lineInfo.UserInputMethod)
             {
                 case ConvoCoreConversationData.DialogueLineProgressionMethod.UserInput:
                     // Wait for user input
@@ -237,7 +241,7 @@ namespace WolfstagInteractive.ConvoCore
                     break;
                 case ConvoCoreConversationData.DialogueLineProgressionMethod.Timed:
                     // Skip user input
-                    yield return new WaitForSeconds(line.TimeBeforeNextLine);
+                    yield return new WaitForSeconds(lineInfo.TimeBeforeNextLine);
                     break;
             }
         }
@@ -245,18 +249,18 @@ namespace WolfstagInteractive.ConvoCore
         /// Get the currently displayed dialogue line struct data
         /// </summary>
         /// <returns></returns>
-        public ConvoCoreConversationData.DialogueLines? GetCurrentlyDisplayedDialogueLine()
+        public ConvoCoreConversationData.DialogueLineInfo? GetCurrentlyDisplayedDialogueLine()
         {
-            if (_currentLineIndex >= 0 && _currentLineIndex < ConversationData.dialogueLines.Count)
+            if (_currentLineIndex >= 0 && _currentLineIndex < ConversationData.DialogueLines.Count)
             {
                 // Explicit cast to transform the base type or derived type
-                return ConversationData.dialogueLines[_currentLineIndex];
+                return ConversationData.DialogueLines[_currentLineIndex];
             }
             Debug.LogWarning("No currently displayed dialogue line or index is out of range.");
             return null;
         }
         /// <summary>
-        /// Logic to perform when the conversation ends, avaible to be overridden if needed.
+        /// Logic to perform when the conversation ends, available to be overridden if needed.
         /// </summary>
         /// <returns></returns>
         protected virtual IEnumerator OnConversationStart()
@@ -266,7 +270,7 @@ namespace WolfstagInteractive.ConvoCore
             yield return null;
         }
         /// <summary>
-        /// Logic to perform when the conversation ends, avaible to be overridden if needed.
+        /// Logic to perform when the conversation ends, available to be overridden if needed.
         /// </summary>
         /// <returns></returns>
         protected virtual IEnumerator OnConversationEnd()
@@ -316,7 +320,7 @@ namespace WolfstagInteractive.ConvoCore
             {
                 return;
             }
-            if (index >= 0 && index < ConversationData.dialogueLines.Count)
+            if (index >= 0 && index < ConversationData.DialogueLines.Count)
             {
                 _currentLineIndex = index;
             }
@@ -331,7 +335,7 @@ namespace WolfstagInteractive.ConvoCore
         /// <returns></returns>
         public int GetConversationLineCount()
         {
-            return ConversationData.dialogueLines.Count;
+            return ConversationData.DialogueLines.Count;
         }
         /// <summary>
         /// Get the current dialogues line index within the conversation

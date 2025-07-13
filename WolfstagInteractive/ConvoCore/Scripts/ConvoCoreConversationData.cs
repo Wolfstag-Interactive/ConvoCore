@@ -5,6 +5,7 @@ using System;
 using YamlDotNet.Serialization;
 using System.IO;
 using System.Linq;
+using UnityEngine.Serialization;
 
 namespace WolfstagInteractive.ConvoCore
 {
@@ -30,7 +31,7 @@ namespace WolfstagInteractive.ConvoCore
         }
 
         [Serializable]
-        public struct DialogueLines
+        public struct DialogueLineInfo
         {
             public string ConversationID; // Key or ConversationID in the YAML
             public int ConversationLineIndex; // Line index within the conversation
@@ -50,7 +51,7 @@ namespace WolfstagInteractive.ConvoCore
             public float TimeBeforeNextLine; // Time in seconds to wait before continuing to the next line
         }
 
-        public List<DialogueLines> dialogueLines; // Metadata for all dialogues in the YAML
+        [FormerlySerializedAs("dialogueLines")] public List<DialogueLineInfo> DialogueLines; // Metadata for all dialogues in the YAML
 
         [Tooltip("Specify the YAML file path from StreamingAssets.")]
         public string FilePath; // Path to the YAML file
@@ -114,9 +115,9 @@ namespace WolfstagInteractive.ConvoCore
                 _dialogueDataByKey = deserializer.Deserialize<Dictionary<string, List<DialogueYamlConfig>>>(yamlData);
                 Debug.Log($"Successfully loaded YAML data. Found {_dialogueDataByKey.Count} conversation sections.");
 
-                for (int i = 0; i < dialogueLines.Count; i++)
+                for (int i = 0; i < DialogueLines.Count; i++)
                 {
-                    var currentLine = dialogueLines[i];
+                    var currentLine = DialogueLines[i];
 
                     if (_dialogueDataByKey.TryGetValue(currentLine.ConversationID, out var configList))
                     {
@@ -125,7 +126,7 @@ namespace WolfstagInteractive.ConvoCore
                             ? configList[currentLine.ConversationLineIndex]
                             : null;
 
-                        if (matchingConfig != null && matchingConfig.LocalizedDialogue != null)
+                        if (matchingConfig is { LocalizedDialogue: not null })
                         {
                             // Initialize or update the list of localized dialogues
                             List<LocalizedDialogue> localizedDialogueList = new List<LocalizedDialogue>();
@@ -139,9 +140,9 @@ namespace WolfstagInteractive.ConvoCore
                             }
 
                             // Update the dialogue line with localization data
-                            var dialogueLine = dialogueLines[i];
+                            var dialogueLine = DialogueLines[i];
                             dialogueLine.LocalizedDialogues = localizedDialogueList;
-                            dialogueLines[i] = dialogueLine;
+                            DialogueLines[i] = dialogueLine;
 
                             Debug.Log($"Updated line {i} with {localizedDialogueList.Count} translations");
                         }
@@ -172,9 +173,9 @@ namespace WolfstagInteractive.ConvoCore
        
 
 
-        public IEnumerator ActionsBeforeDialogueLine(ConvoCore core, DialogueLines line)
+        public IEnumerator ActionsBeforeDialogueLine(ConvoCore core, DialogueLineInfo lineInfo)
         {
-            foreach (BaseAction action in line.ActionsBeforeDialogueLine)
+            foreach (BaseAction action in lineInfo.ActionsBeforeDialogueLine)
             {
                 if (action != null)
                 {
@@ -189,14 +190,14 @@ namespace WolfstagInteractive.ConvoCore
                 }
                 else
                 {
-                    Debug.LogError("Line " + line.ConversationLineIndex + " has null action");
+                    Debug.LogError("Line " + lineInfo.ConversationLineIndex + " has null action");
                 }
             }
         }
 
-        public IEnumerator DoActionsAfterDialogueLine(ConvoCore core, DialogueLines line)
+        public IEnumerator DoActionsAfterDialogueLine(ConvoCore core, DialogueLineInfo lineInfo)
         {
-            foreach (BaseAction action in line.ActionsAfterDialogueLine)
+            foreach (BaseAction action in lineInfo.ActionsAfterDialogueLine)
             {
                 if (action != null)
                 {
@@ -211,7 +212,7 @@ namespace WolfstagInteractive.ConvoCore
                 }
                 else
                 {
-                    Debug.LogError("Line " + line.ConversationLineIndex + " has null action");
+                    Debug.LogError("Line " + lineInfo.ConversationLineIndex + " has null action");
                 }
             }
         }
