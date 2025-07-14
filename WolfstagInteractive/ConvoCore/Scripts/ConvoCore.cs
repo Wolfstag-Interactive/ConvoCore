@@ -276,6 +276,7 @@ namespace WolfstagInteractive.ConvoCore
         protected virtual IEnumerator OnConversationEnd()
         {
             OnConversationEndEvent?.Invoke();
+            _uiFoundation?.Dispose();
             // Implement your own logic to run before the dialogue tool ends by overriding this function
             yield return null;
         }

@@ -40,8 +40,9 @@ namespace WolfstagInteractive.ConvoCore
 
             if (DialoguePanel != null)
             {
-                DialoguePanel.SetActive(true); // Show the panel
+                DialoguePanel.SetActive(true); 
             }
+            
         }
         /// <summary>
         /// Hides the dialogue UI.
@@ -140,10 +141,6 @@ namespace WolfstagInteractive.ConvoCore
         public override void Dispose()
         {
             HideDialogue();
-            if (ContinueButton != null)
-            {
-                ContinueButton.onClick.RemoveListener(OnContinueButtonPressed);
-            }
         }
     }
 }
