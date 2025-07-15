@@ -82,7 +82,7 @@ namespace WolfstagInteractive.ConvoCore
             }
 
             // Calculate height based on foldout state
-            if (FoldoutStates.TryGetValue(this, out bool foldoutState) && foldoutState)
+            if (_foldoutStates.TryGetValue(this, out bool foldoutState) && foldoutState)
             {
                 // Expanded: Include dropdown, both sprites, and spacing
                 var mapping = EmotionMappings[0];
@@ -126,21 +126,21 @@ namespace WolfstagInteractive.ConvoCore
             const float spriteHeight = 64f;   // Height of each sprite preview
             const float spacing = 5f;         // Spacing between sprites
             // Ensure foldout state is tracked with a stable object reference
-            if (!FoldoutStates.TryGetValue(this, out _))
+            if (!_foldoutStates.TryGetValue(this, out bool foldoutState))
             {
-                FoldoutStates[this] = false; // Default to collapsed
+                _foldoutStates[this] = false; // Default to collapsed
             }
             // Draw the toggle button
             Rect buttonRect = new Rect(position.x, position.y, position.width, buttonHeight);
-            if (GUI.Button(buttonRect, FoldoutStates[this] ? "Hide Sprites" : "Show Sprites"))
+            if (GUI.Button(buttonRect, _foldoutStates[this] ? "Hide Sprites" : "Show Sprites"))
             {
                 // Toggle the visibility state
-                FoldoutStates[this] = !FoldoutStates[this];
+                _foldoutStates[this] = !_foldoutStates[this];
             }
 
 
             // If the foldout is collapsed, skip rendering further content
-            if (!FoldoutStates[this])
+            if (!_foldoutStates[this])
             {
                 return;
             }
@@ -181,7 +181,7 @@ namespace WolfstagInteractive.ConvoCore
         /// Cache for foldout states based on objects being inspected.
         /// Prevents foldout states from resetting across UI refreshes.
         /// </summary>
-        private static readonly Dictionary<object, bool> FoldoutStates = new Dictionary<object, bool>();
+        private static Dictionary<object, bool> _foldoutStates = new Dictionary<object, bool>();
 #endif
 
     }

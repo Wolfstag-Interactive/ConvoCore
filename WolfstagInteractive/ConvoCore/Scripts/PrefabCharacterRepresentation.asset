@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32c649907e2db674684d795adc21be6b, type: 3}
   m_Name: PrefabCharacterRepresentation
   m_EditorClassIdentifier: 
-  CharacterPrefab: {fileID: 0}
+  CharacterPrefab: {fileID: 279964220987834641, guid: 6d159673e38ff7742913ba71b8b3c32a, type: 3}
   EmotionMappings:
   - EmotionID: sad
     AnimatorOverride: {fileID: 0}
