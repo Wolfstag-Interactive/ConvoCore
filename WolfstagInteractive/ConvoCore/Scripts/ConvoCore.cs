@@ -118,68 +118,91 @@ namespace WolfstagInteractive.ConvoCore
         /// Runs the character conversation line by line
         /// </summary>
         /// <returns></returns>
-       private IEnumerator RunConversation()
+     private IEnumerator RunConversation()
+{
+    // Lock UI elements or other systems as needed
+    CurrentDialogueState = ConversationState.Starting;
+    yield return OnConversationStart();
+
+    // Get all profiles from the conversation object
+    var profiles = ConversationData.ConversationParticipantProfiles;
+
+    // Iterate through all dialogue lines
+    CurrentDialogueState = ConversationState.Playing;
+    for (_currentLineIndex = 0; _currentLineIndex < ConversationData.DialogueLines.Count; _currentLineIndex++)
+    {
+        var line = ConversationData.DialogueLines[_currentLineIndex];
+
+        // Resolve character profile for the line
+        var profile = ConversationData.ResolveCharacterProfile(profiles, line.characterID);
+        if (profile == null)
         {
-            // Lock UI elements or other systems as needed
-            CurrentDialogueState = ConversationState.Starting;
-            yield return OnConversationStart();
-
-            // Get all profiles from the conversation object
-            var profiles = ConversationData.ConversationParticipantProfiles;
-           
-            // Iterate through all dialogue lines
-            CurrentDialogueState = ConversationState.Playing;
-            for (_currentLineIndex = 0; _currentLineIndex < ConversationData.DialogueLines.Count; _currentLineIndex++)
-            {
-                var line = ConversationData.DialogueLines[_currentLineIndex];
-
-                // Resolve character profile for the line
-                var profile = ConversationData.ResolveCharacterProfile(profiles, line.characterID);
-                if (profile == null)
-                {
-                    Debug.LogError($"Cannot resolve profile for CharacterID '{line.characterID}'. Skipping line.");
-                    continue; // Skip if no profile is found
-                }
-                // Get localized dialogue
-                var localizedResult = LocalizationHandler.GetLocalizedDialogue(line);
-                if (!localizedResult.Success)
-                {
-                    Debug.LogError(localizedResult.ErrorMessage);
-                }
-                else if (localizedResult.IsFallback)
-                {
-                    Debug.LogWarning(localizedResult.ErrorMessage);
-                }
-                // Actions before the dialogue line
-                if (line.ActionsBeforeDialogueLine != null && line.ActionsBeforeDialogueLine.Count > 0)
-                {
-                    yield return StartCoroutine(ConversationData.ActionsBeforeDialogueLine(this, line));
-                }
-                //check and get player placeholder name and replace with name of player in line
-               string finalOutputString = ReplacePlayerNameInDialogueLine(localizedResult.Text);
-                
-                // Play audio and display dialogue
-                yield return StartCoroutine(PlayAudioClipWithAction(line.clip));
-                var characterName = profile.GetNameForRepresentation(line.AlternateRepresentation);
-                var portrait = profile.GetEmotionForRepresentation(line.SelectedEmotionName, line.AlternateRepresentation);
-
-                yield return StartCoroutine(
-                    PlayDialogueLine(_uiFoundation, line, finalOutputString, characterName, portrait)
-                );
-
-                // Actions after the dialogue line
-                if (line.ActionsAfterDialogueLine != null && line.ActionsAfterDialogueLine.Count > 0)
-                {
-                    yield return StartCoroutine(ConversationData.DoActionsAfterDialogueLine(this, line));
-                }
-            }
-
-            // Conversation end
-            CurrentDialogueState = ConversationState.Ended;
-            yield return OnConversationEnd();
-            CurrentDialogueState = ConversationState.Idle;
-            _currentLineIndex = -1;
+            Debug.LogError($"Cannot resolve profile for CharacterID '{line.characterID}'. Skipping line.");
+            continue; // Skip if no profile is found
         }
+
+        // Get the appropriate representation based on the provided alternate representation ID
+        var representation = profile.GetRepresentation(line.SelectedRepresentationName);
+        if (representation == null)
+        {
+            Debug.LogError($"Neither alternate representation ('{line.SelectedRepresentationName}') nor default representation found for character '{profile.CharacterName}'. Skipping line.");
+            continue;
+        }
+
+        // Process the emotion and get the mapping
+        var emotionMapping = representation.ProcessEmotion(line.SelectedEmotionName) as EmotionMapping;
+        if (emotionMapping == null)
+        {
+            Debug.LogWarning($"No valid emotion mapping returned for '{profile.CharacterName}' with emotion ID '{line.SelectedEmotionName}'. Skipping.");
+            continue;
+        }
+
+        // Get localized dialogue
+        var localizedResult = LocalizationHandler.GetLocalizedDialogue(line);
+        if (!localizedResult.Success)
+        {
+            Debug.LogError(localizedResult.ErrorMessage);
+            continue; // Skip the current line if localization fails
+        }
+        else if (localizedResult.IsFallback)
+        {
+            Debug.LogWarning(localizedResult.ErrorMessage);
+        }
+
+        // Actions before the dialogue line
+        if (line.ActionsBeforeDialogueLine != null && line.ActionsBeforeDialogueLine.Count > 0)
+        {
+            yield return StartCoroutine(ConversationData.ActionsBeforeDialogueLine(this, line));
+        }
+
+        // Check and get the player placeholder name and replace with the player's name in the line
+        string finalOutputString = ReplacePlayerNameInDialogueLine(localizedResult.Text);
+
+        // Play audio and display dialogue
+        yield return StartCoroutine(PlayAudioClipWithAction(line.clip)); // Play line clip or emotion-specific sound
+        yield return StartCoroutine(
+            PlayDialogueLine(
+                _uiFoundation,
+                line,
+                finalOutputString,
+                profile.CharacterName,
+                emotionMapping // Pass the emotion mapping to the ui for display
+            )
+        );
+
+        // Actions after the dialogue line
+        if (line.ActionsAfterDialogueLine != null && line.ActionsAfterDialogueLine.Count > 0)
+        {
+            yield return StartCoroutine(ConversationData.DoActionsAfterDialogueLine(this, line));
+        }
+    }
+
+    // Conversation end
+    CurrentDialogueState = ConversationState.Ended;
+    yield return OnConversationEnd();
+    CurrentDialogueState = ConversationState.Idle;
+    _currentLineIndex = -1;
+}
         /// <summary>
         /// Plays the audio clip associated with the dialogue line
         /// </summary>
@@ -230,7 +253,7 @@ namespace WolfstagInteractive.ConvoCore
         /// <param name="portrait">The portrait from the speaking characters character data</param>
         /// <returns></returns>
         private IEnumerator PlayDialogueLine(IUIFoundation uiFoundationInstance,ConvoCoreConversationData.DialogueLineInfo lineInfo
-            , string localizedText, string characterName, Sprite portrait)
+            , string localizedText, string characterName, object portrait)
         {
             uiFoundationInstance.UpdateDialogueUI(lineInfo, localizedText, characterName, portrait);
             switch (lineInfo.UserInputMethod)

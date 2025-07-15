@@ -18,7 +18,6 @@ namespace WolfstagInteractive.ConvoCore.Editor
             isPlayerProp = serializedObject.FindProperty("IsPlayerCharacter");
             characterNameProp = serializedObject.FindProperty("CharacterName");
             playerPlaceholderProp = serializedObject.FindProperty("PlayerPlaceholder");
-            characterEmotionsProp = serializedObject.FindProperty("CharacterEmotions");
         }
 
         public override void OnInspectorGUI()

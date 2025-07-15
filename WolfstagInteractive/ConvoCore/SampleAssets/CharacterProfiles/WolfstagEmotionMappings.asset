@@ -9,9 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6eafa2259e902a44cbedda481ee20b96, type: 3}
-  m_Name: AvaScared
+  m_Script: {fileID: 11500000, guid: a4f87662d85a74a4987127e6d5773630, type: 3}
+  m_Name: WolfstagEmotionMappings
   m_EditorClassIdentifier: 
-  emotionName: Scared
-  CharacterEmotionSprite: {fileID: 21300000, guid: c23cf1f29a24c5d4dae63a0e54b1366f, type: 3}
-  RepresentationOverrides: []
+  EmotionMappings: []

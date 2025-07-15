@@ -1,4 +1,8 @@
 using System.Collections.Generic;
+using System.Linq;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 using UnityEngine;
 
 namespace WolfstagInteractive.ConvoCore
@@ -23,6 +27,7 @@ namespace WolfstagInteractive.ConvoCore
             }
             _instantiatedPrefab = Instantiate(CharacterPrefab);
             _instantiatedPrefab.name = CharacterPrefab.name;
+            
         }
 
         public override void SetEmotion(string emotionID)
@@ -67,6 +72,72 @@ namespace WolfstagInteractive.ConvoCore
                 _instantiatedPrefab = null;
             }
         }
+
+        public override object ProcessEmotion(string emotionID)
+        {
+            if (_instantiatedPrefab == null)
+            {
+                Initialize(); // Ensure prefab is instantiated
+            }
+
+            // Attempt to find the emotion mapping
+            var mapping = EmotionMappings.FirstOrDefault(emotion => emotion.EmotionID == emotionID);
+
+            if (mapping != null)
+            {
+                // Apply the animation override or other settings to the prefab
+                mapping.Apply(_instantiatedPrefab);
+                return mapping; // Return the found mapping for further use
+            }
+
+            Debug.LogWarning($"Prefab Emotion ID '{emotionID}' not found. Returning null.");
+            return null;
+        }
+
+       
+#if UNITY_EDITOR
+        /// <summary>
+        /// Calculates the height required to display an inline prefab preview.
+        /// </summary>
+        public override float GetPreviewHeight()
+        {
+            // Define a standard preview height (in pixels) for prefabs
+            const float prefabPreviewHeight = 100f;
+
+            // If no prefab is assigned, return 0 (no preview height)
+            if (CharacterPrefab == null) return 0f;
+
+            // Return the defined preview height
+            return prefabPreviewHeight;
+        }
+
+        /// <summary>
+        /// Draws an inline editor preview for the prefab.
+        /// </summary>
+        public override void DrawInlineEditorPreview(object mappingData, Rect position)
+        {
+            // Cast the generic mapping data to EmotionPrefabMapping
+            var prefabMapping = mappingData as EmotionPrefabMapping;
+            if (CharacterPrefab == null || prefabMapping == null)
+            {
+                EditorGUI.LabelField(position, "Invalid or null prefab mapping for preview.");
+                return;
+            }
+
+            // Render the prefab preview
+            Texture2D previewTexture = AssetPreview.GetAssetPreview(CharacterPrefab);
+            if (previewTexture != null)
+            {
+                GUI.DrawTexture(position, previewTexture, ScaleMode.ScaleToFit);
+            }
+            else
+            {
+                EditorGUI.LabelField(position, "Prefab preview not available.");
+            }
+        }
+    }
+
+#endif
     }
 
     [System.Serializable]
@@ -84,5 +155,3 @@ namespace WolfstagInteractive.ConvoCore
             }
         }
     }
-
-}

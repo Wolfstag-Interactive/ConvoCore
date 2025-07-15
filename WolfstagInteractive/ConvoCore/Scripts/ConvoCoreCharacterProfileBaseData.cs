@@ -7,103 +7,48 @@ namespace WolfstagInteractive.ConvoCore
     [CreateAssetMenu(fileName = "NewCharacterProfile", menuName = "ConvoCore/CharacterProfile")]
     public class ConvoCoreCharacterProfileBaseData : ScriptableObject
     {
-        /// <summary>
-        /// Is this character profile the player character
-        /// </summary>
+        // Basic character information
         public bool IsPlayerCharacter;
-        /// <summary>
-        /// The Characters Name used if they are not the player
-        /// </summary>
         public string CharacterName;
-        /// <summary>
-        /// Allows setting the placeholder player name. This is used as an identifier within the dialogue to replace with the name set in the editor before final presentation of the dialogue line. 
-        /// </summary>
         public string PlayerPlaceholder;
-
-        public Sprite DefaultPortrait;
         public string CharacterID;
-        
+
+        [Tooltip("Each element maps a unique representation identifier (e.g., 'happy', 'angry') to a representation asset.")]
         public List<RepresentationPair> Representations = new List<RepresentationPair>();
-        
-        [Header("Portraits Per Emotion")]
-        public List<ConvoCoreCharacterEmotion> CharacterEmotions = new List<ConvoCoreCharacterEmotion>();
-        [Header("Alternate Representations")]
-        public List<CharacterRepresentation> AlternateRepresentations = new List<CharacterRepresentation>();
 
-        // Fetch correct portrait for specific emotion and representation context
-        public Sprite GetEmotionForRepresentation(string emotionName, string representationId)
+        /// <summary>
+        /// Returns the representation matching the provided representationId.
+        /// If no specific representation ID is provided or found, the first representation in the list is returned.
+        /// </summary>
+        /// <param name="representationId">The identifier for the desired representation (e.g., 'happy', 'angry').</param>
+        /// <returns>The matching representation or the first representation if none is found.</returns>
+        public CharacterRepresentationBase GetRepresentation(string representationId)
         {
-            // Handle cases where no specific representation is provided (use the default)
-            if (string.IsNullOrEmpty(representationId))
+            // If no specific ID is provided, or if not found, return the first representation.
+            if (string.IsNullOrEmpty(representationId) || Representations.All(r => r.CharacterRepresentationName != representationId))
             {
-                // Default representation: find and return the emotion sprite
-                var defaultEmotion = CharacterEmotions.FirstOrDefault(e => e.emotionName == emotionName);
-                if (defaultEmotion == null)
+                if (Representations.Count > 0)
                 {
-                    Debug.LogWarning(
-                        $"Emotion '{emotionName}' not found for character '{CharacterName}'. Using default portrait.");
-                    return DefaultPortrait;
-                }
-                return defaultEmotion.CharacterEmotionSprite; // Return default emotion sprite
-            }
-            // Alternate representation: check for representation-specific override
-            var representation =
-                AlternateRepresentations.FirstOrDefault(rep => rep.RepresentationID == representationId);
-            if (representation != null)
-            {
-                // If no specific emotion sprite found, fallback to the representation-level portrait
-                if (representation.AliasPortrait != null)
-                {
-                    return representation.AliasPortrait;
-                }
-                // Try to find an alternate emotion tied to this representation
-                foreach (var emotion in CharacterEmotions)
-                {
-                    if (emotion.emotionName == emotionName)
-                    {
-                        var specificEmotionPortrait = emotion.GetEmotionSpriteForRepresentation(representationId);
-                        Debug.Log(specificEmotionPortrait != null
-                            ? $"Found specific emotion sprite for representation '{representationId}'."
-                            : $"No specific sprite found for representation '{representationId}', falling back.");
-                        if (specificEmotionPortrait != null) return specificEmotionPortrait;
-                    }
+                    return Representations[0].CharacterRepresentation;
                 }
 
-               
+                Debug.LogError($"No representations are defined for character '{CharacterName}'.");
+                return null;
             }
-            // Fallback: No representation-specific emotion or alternate found, return default emotion
-            var fallbackEmotion = CharacterEmotions.FirstOrDefault(e => e.emotionName == emotionName);
-            if (fallbackEmotion == null)
-            {
-                Debug.LogWarning(
-                    $"Emotion '{emotionName}' not found for character '{CharacterName}'. Using default portrait.");
-                return DefaultPortrait;
-            }
-            return fallbackEmotion.CharacterEmotionSprite;
-        }
-        // Fetch the name, considering which representation is active
-        public string GetNameForRepresentation(string representationId)
-        {
-            var representation =
-                AlternateRepresentations.FirstOrDefault(rep => rep.RepresentationID == representationId);
-            return representation?.AliasName ?? CharacterName;
+
+            // Find the specified representation.
+            var pair = Representations.FirstOrDefault(rep => rep.CharacterRepresentationName == representationId);
+            return pair?.CharacterRepresentation;
         }
     }
-    [System.Serializable]
-    public class CharacterRepresentation
-    {
-        public string AliasName; // Alternate name for the character (e.g., "???", "Stranger")
-        public Sprite AliasPortrait; // Alternate sprite/portrait for the character
-        public string RepresentationID; // Optional identifier for this representation (e.g., "hidden", "discovered")
-    }
+
     [System.Serializable]
     public class RepresentationPair
     {
-        [Tooltip("A unique identifier for the representation (e.g., 'idle', 'happy', etc.).")]
+        [Tooltip("A unique identifier for this representation (e.g., 'default', 'happy', 'angry').")]
         public string CharacterRepresentationName;
-    
-        [Tooltip("Assign the character representation for this key.")]
+
+        [Tooltip("The representation asset implementing the representation system (e.g., sprite or prefab based).")]
         public CharacterRepresentationBase CharacterRepresentation;
     }
-
 }

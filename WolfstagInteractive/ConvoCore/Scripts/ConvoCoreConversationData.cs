@@ -36,8 +36,8 @@ namespace WolfstagInteractive.ConvoCore
             public string ConversationID; // Key or ConversationID in the YAML
             public int ConversationLineIndex; // Line index within the conversation
             public string characterID; //ID of the character speaking the line
-            public string AlternateRepresentation;
-
+            public string SelectedRepresentationName;
+            public CharacterRepresentationBase SelectedRepresentation;
             [Tooltip("Specify the emotion for this dialogue line by name.")]
             public string SelectedEmotionName; // Name of the emotion selected via dropdown
 
@@ -162,6 +162,14 @@ namespace WolfstagInteractive.ConvoCore
             {
                 Debug.LogError($"Failed to initialize dialogue data: {ex.Message}\n{ex.StackTrace}");
                 _dialogueDataByKey = null;
+            }
+
+            foreach (var profile in ConversationParticipantProfiles)
+            {
+                foreach (var representationPair in profile.Representations)
+                {
+                    representationPair.CharacterRepresentation.Initialize();
+                }
             }
         }
 
