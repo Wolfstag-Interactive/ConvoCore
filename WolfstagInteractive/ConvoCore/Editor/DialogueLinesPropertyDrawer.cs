@@ -32,6 +32,7 @@ namespace WolfstagInteractive.ConvoCore.Editor
             SerializedProperty localizedDialoguesProp = property.FindPropertyRelative("LocalizedDialogues");
             SerializedProperty selectedRepProp = property.FindPropertyRelative("SelectedRepresentation");
             SerializedProperty selectedRepNameProp = property.FindPropertyRelative("SelectedRepresentationName");
+            SerializedProperty selectedRepEmotionProp = property.FindPropertyRelative("SelectedRepresentationEmotion");
 
             // Draw Conversation ID (Editable Field)
             EditorGUI.LabelField(currentRect, "Conversation ID", keyProp.stringValue);
@@ -118,98 +119,86 @@ namespace WolfstagInteractive.ConvoCore.Editor
                 return;
             }
 
-            // Validate the conversation object (e.g., check missing data)
-    if (conversationObject == null)
-    {
-        EditorGUI.LabelField(currentRect, "Error: Missing Conversation Data!");
-        currentRect.y += lineHeight + spacing;
-        return;
-    }
+            // Fetch the profile for the character using CharacterID
+            var profile = conversationObject.ConversationParticipantProfiles
+                ?.FirstOrDefault(p => p != null && p.CharacterID == characterIDProp.stringValue);
 
-    // Fetch the profile for the character using CharacterID
-    var profile = conversationObject.ConversationParticipantProfiles
-        ?.FirstOrDefault(p => p != null && p.CharacterID == characterIDProp.stringValue);
+            if (profile == null)
+            {
+                EditorGUI.LabelField(currentRect, "Error: Character profile not found!");
+                currentRect.y += lineHeight + spacing;
+                return;
+            }
 
-    // Validate the profile
-    if (profile == null)
-    {
-        EditorGUI.LabelField(currentRect, "Error: Character profile not found!");
-        currentRect.y += lineHeight + spacing;
-        return;
-    }
+            // Fetch representations
+            var representationNames = profile.Representations
+                .Where(rep => rep != null && !string.IsNullOrEmpty(rep.CharacterRepresentationName))
+                .Select(rep => rep.CharacterRepresentationName)
+                .ToList();
+            string selectedRepresentationName = selectedRepNameProp.stringValue;
 
-    // Fetch representation names from the profile and validate them
-    List<string> representationNames = profile.Representations
-        .Where(rep => rep != null && !string.IsNullOrEmpty(rep.CharacterRepresentationName))
-        .Select(rep => rep.CharacterRepresentationName)
-        .ToList();
+            if (representationNames.Count == 0)
+            {
+                EditorGUI.LabelField(currentRect, "No representations available for this character.");
+                currentRect.y += lineHeight + spacing;
+                return;
+            }
 
-    if (representationNames.Count == 0)
-    {
-        // No representations available
-        EditorGUI.LabelField(currentRect, "No representations available for this character.");
-        currentRect.y += lineHeight + spacing;
-        return;
-    }
+            // Draw Representation Dropdown
+            int selectedIndex = Mathf.Max(0, representationNames.IndexOf(selectedRepresentationName));
+            selectedIndex = EditorGUI.Popup(currentRect, "Representation:", selectedIndex,
+                representationNames.ToArray());
+            string newRepresentationName = representationNames[selectedIndex];
 
-    // Validate the selected representation
-    string currentRepName = selectedRepNameProp.stringValue;
+            if (newRepresentationName != selectedRepresentationName)
+            {
+                selectedRepNameProp.stringValue = newRepresentationName;
+                selectedRepEmotionProp.stringValue = ""; // Reset emotion when representation changes
+                serializedObject.ApplyModifiedProperties();
+            }
 
-    if (string.IsNullOrEmpty(currentRepName) || !representationNames.Contains(currentRepName))
-    {
-        // Default to the first representation if none is selected or invalid
-        currentRepName = representationNames[0];
-        selectedRepNameProp.stringValue = currentRepName;
-    }
+            currentRect.y += lineHeight + spacing;
 
-    // Dropdown to display the available representations
-    int currentIndex = representationNames.IndexOf(currentRepName);
-    currentIndex = EditorGUI.Popup(currentRect, "Representation:", currentIndex, representationNames.ToArray());
-    currentRepName = representationNames[currentIndex];
-    selectedRepNameProp.stringValue = currentRepName; // Update property
-    currentRect.y += lineHeight + spacing;
+            // Get the selected representation and fetch emotion IDs
+            var selectedRepresentation = profile.GetRepresentation(newRepresentationName);
+            if (selectedRepresentation != null)
+            {
+                var emotionIDs = selectedRepresentation.GetEmotionIDs();
+                if (emotionIDs == null || emotionIDs.Count == 0)
+                {
+                    EditorGUI.LabelField(currentRect, "No emotions available for this representation.");
+                    currentRect.y += lineHeight + spacing;
+                    return;
+                }
 
-    // Fetch the selected representation object from the profile
-    CharacterRepresentationBase selectedRepresentation = profile.GetRepresentation(currentRepName);
+                // Use the local SelectedRepresentationEmotion for this line
+                string currentEmotionID = selectedRepEmotionProp.stringValue;
 
-    if (selectedRepresentation == null)
-    {
-        EditorGUI.LabelField(currentRect, "Error: Selected representation is missing.");
-        currentRect.y += lineHeight + spacing;
-        return;
-    }
+                // Ensure emotion ID is valid
+                if (string.IsNullOrEmpty(currentEmotionID) || !emotionIDs.Contains(currentEmotionID))
+                {
+                    currentEmotionID = emotionIDs[0];
+                    selectedRepEmotionProp.stringValue = currentEmotionID; // Default to first emotion
+                    serializedObject.ApplyModifiedProperties();
+                }
 
+                // Draw an Emotion Dropdown
+                int currentEmotionIndex = emotionIDs.IndexOf(currentEmotionID);
+                int newEmotionIndex =
+                    EditorGUI.Popup(currentRect, "Emotion:", currentEmotionIndex, emotionIDs.ToArray());
+                if (newEmotionIndex != currentEmotionIndex)
+                {
+                    string newEmotionID = emotionIDs[newEmotionIndex];
+                    selectedRepEmotionProp.stringValue = newEmotionID;
+                    serializedObject.ApplyModifiedProperties();
+                }
 
-    // Check if the selected representation implements IEditorPreviewableRepresentation
-    if (selectedRepresentation is IEditorPreviewableRepresentation previewableRepresentation)
-    {
-        // Fetch height for the inline preview
-        float previewHeight = previewableRepresentation.GetPreviewHeight();
-        var mappingData = profile.Representations
-            .FirstOrDefault(r => r.CharacterRepresentationName == selectedRepNameProp.stringValue)
-            ?.CharacterRepresentation
-            ?.ProcessEmotion(selectedRepProp.name);
-
-        // Draw inline preview (provided by the representation)
-        Rect previewRect = new Rect(currentRect.x, currentRect.y, position.width, previewHeight);
-        previewableRepresentation.DrawInlineEditorPreview(mappingData, previewRect);
-
-        currentRect.y += previewHeight + spacing; // Adjust position after drawing preview
-    }
-    else
-    {
-        EditorGUI.LabelField(currentRect, "No inline preview available for this representation.");
-        currentRect.y += lineHeight + spacing;
-    }
-
+                currentRect.y += lineHeight + spacing;
+            }
 
             EditorGUI.EndProperty();
             GUI.EndGroup();
-
-
-
         }
-
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
         {
             // Base height for standard fields

@@ -39,7 +39,7 @@ namespace WolfstagInteractive.ConvoCore
             public string SelectedRepresentationName;
             public CharacterRepresentationBase SelectedRepresentation;
             [Tooltip("Specify the emotion for this dialogue line by name.")]
-            public string SelectedEmotionName; // Name of the emotion selected via dropdown
+            public string SelectedRepresentationEmotion; // Name of the emotion selected via dropdown
 
             public List<LocalizedDialogue> LocalizedDialogues; // Localized dialogues per language
             public AudioClip clip; // Audio associated with the line

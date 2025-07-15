@@ -167,11 +167,11 @@ namespace WolfstagInteractive.ConvoCore
                 }
 
                 // Process the emotion and get the mapping
-                var emotionMapping = representation.ProcessEmotion(line.SelectedEmotionName) as EmotionMapping;
+                var emotionMapping = representation.ProcessEmotion(line.SelectedRepresentationEmotion) as EmotionMapping;
                 if (emotionMapping == null)
                 {
                     Debug.LogWarning(
-                        $"No valid emotion mapping returned for '{profile.CharacterName}' with emotion ID '{line.SelectedEmotionName}'. Skipping.");
+                        $"No valid emotion mapping returned for '{profile.CharacterName}' with emotion ID '{line.SelectedRepresentationEmotion}'. Skipping.");
                     continue;
                 }
 

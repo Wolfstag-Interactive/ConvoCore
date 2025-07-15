@@ -17,7 +17,12 @@ namespace WolfstagInteractive.ConvoCore
         public List<EmotionPrefabMapping> EmotionMappings = new List<EmotionPrefabMapping>();
 
         private GameObject _instantiatedPrefab;
-
+        // Override to provide the list of emotion IDs
+        public override List<string> GetEmotionIDs()
+        {
+            // Collect and return IDs from the emotion mappings
+            return EmotionMappings.Select(mapping => mapping.EmotionID).ToList();
+        }
         public override void Initialize()
         {
             if (CharacterPrefab == null)

@@ -22,7 +22,7 @@ MonoBehaviour:
     characterID: Ava
     SelectedRepresentationName: Sprites
     SelectedRepresentation: {fileID: 0}
-    SelectedEmotionName: Sprites
+    SelectedRepresentationEmotion: Default
     LocalizedDialogues:
     - Language: EN
       Text: "Jared... we\u2019re definitely off-trail."
@@ -40,7 +40,7 @@ MonoBehaviour:
     characterID: Jared
     SelectedRepresentationName: Sprites
     SelectedRepresentation: {fileID: 0}
-    SelectedEmotionName: Sprites
+    SelectedRepresentationEmotion: Default
     LocalizedDialogues:
     - Language: EN
       Text: "Technically, we\u2019re *still* in the forest. Nature counts."
@@ -58,7 +58,7 @@ MonoBehaviour:
     characterID: Ava
     SelectedRepresentationName: Sprites
     SelectedRepresentation: {fileID: 0}
-    SelectedEmotionName: Sprites
+    SelectedRepresentationEmotion: Default
     LocalizedDialogues:
     - Language: EN
       Text: "We\u2019ve circled that tree three times now."
@@ -76,7 +76,7 @@ MonoBehaviour:
     characterID: Jared
     SelectedRepresentationName: Sprites
     SelectedRepresentation: {fileID: 0}
-    SelectedEmotionName: Sprites
+    SelectedRepresentationEmotion: Default
     LocalizedDialogues:
     - Language: EN
       Text: "It\u2019s a popular tree. Five stars on TreeAdvisor."
@@ -94,7 +94,7 @@ MonoBehaviour:
     characterID: Ava
     SelectedRepresentationName: Sprites
     SelectedRepresentation: {fileID: 0}
-    SelectedEmotionName: Sprites
+    SelectedRepresentationEmotion: Default
     LocalizedDialogues:
     - Language: EN
       Text: Shh! Did you hear that?
@@ -112,7 +112,7 @@ MonoBehaviour:
     characterID: Jared
     SelectedRepresentationName: Sprites
     SelectedRepresentation: {fileID: 0}
-    SelectedEmotionName: Sprites
+    SelectedRepresentationEmotion: Default
     LocalizedDialogues:
     - Language: EN
       Text: "Maybe it\u2019s a bear. Or a ranger with snacks."
@@ -130,7 +130,7 @@ MonoBehaviour:
     characterID: Wolfstag
     SelectedRepresentationName: Sprites
     SelectedRepresentation: {fileID: 0}
-    SelectedEmotionName: Sprites
+    SelectedRepresentationEmotion: Default
     LocalizedDialogues:
     - Language: EN
       Text: '*A towering silhouette appears between the trees. Antlers like twisted
@@ -149,7 +149,7 @@ MonoBehaviour:
     characterID: Ava
     SelectedRepresentationName: Sprites
     SelectedRepresentation: {fileID: 0}
-    SelectedEmotionName: Sprites
+    SelectedRepresentationEmotion: Default
     LocalizedDialogues:
     - Language: EN
       Text: What is *that?!*
@@ -167,7 +167,7 @@ MonoBehaviour:
     characterID: Jared
     SelectedRepresentationName: Sprites
     SelectedRepresentation: {fileID: 0}
-    SelectedEmotionName: Sprites
+    SelectedRepresentationEmotion: Default
     LocalizedDialogues:
     - Language: EN
       Text: '*gasps* Whoooooa. Look at you!'
@@ -185,7 +185,7 @@ MonoBehaviour:
     characterID: Jared
     SelectedRepresentationName: Sprites
     SelectedRepresentation: {fileID: 0}
-    SelectedEmotionName: Sprites
+    SelectedRepresentationEmotion: Default
     LocalizedDialogues:
     - Language: EN
       Text: "Are you lost too, buddy? You need scritches? Huh? Who\u2019s a majestic
@@ -206,7 +206,7 @@ MonoBehaviour:
     characterID: Wolfstag
     SelectedRepresentationName: Sprites
     SelectedRepresentation: {fileID: 0}
-    SelectedEmotionName: Sprites
+    SelectedRepresentationEmotion: 
     LocalizedDialogues:
     - Language: EN
       Text: '*It tilts its head slightly. Curious.*'
@@ -224,7 +224,7 @@ MonoBehaviour:
     characterID: Ava
     SelectedRepresentationName: Sprites
     SelectedRepresentation: {fileID: 0}
-    SelectedEmotionName: Sprites
+    SelectedRepresentationEmotion: 
     LocalizedDialogues:
     - Language: EN
       Text: "Jared\u2026 stop trying to pet the antler demon!"
@@ -242,7 +242,7 @@ MonoBehaviour:
     characterID: Wolfstag
     SelectedRepresentationName: Sprites
     SelectedRepresentation: {fileID: 0}
-    SelectedEmotionName: Sprites
+    SelectedRepresentationEmotion: 
     LocalizedDialogues:
     - Language: EN
       Text: "*The shadows melt away. The creature\u2019s full form is revealed\u2014fur
@@ -263,7 +263,7 @@ MonoBehaviour:
     characterID: Jared
     SelectedRepresentationName: Sprites
     SelectedRepresentation: {fileID: 0}
-    SelectedEmotionName: Sprites
+    SelectedRepresentationEmotion: 
     LocalizedDialogues:
     - Language: EN
       Text: "Oh my god. He\u2019s gorgeous. I want ten of him."
@@ -281,7 +281,7 @@ MonoBehaviour:
     characterID: Ava
     SelectedRepresentationName: Sprites
     SelectedRepresentation: {fileID: 0}
-    SelectedEmotionName: Sprites
+    SelectedRepresentationEmotion: 
     LocalizedDialogues:
     - Language: EN
       Text: "...I think he\u2019s leading us somewhere."
@@ -299,7 +299,7 @@ MonoBehaviour:
     characterID: Wolfstag
     SelectedRepresentationName: Sprites
     SelectedRepresentation: {fileID: 0}
-    SelectedEmotionName: Sprites
+    SelectedRepresentationEmotion: 
     LocalizedDialogues:
     - Language: EN
       Text: '*He glances back, takes a few careful steps, then waits.*'
@@ -317,7 +317,7 @@ MonoBehaviour:
     characterID: Jared
     SelectedRepresentationName: Sprites
     SelectedRepresentation: {fileID: 0}
-    SelectedEmotionName: Sprites
+    SelectedRepresentationEmotion: 
     LocalizedDialogues:
     - Language: EN
       Text: "Look at him! He\u2019s so polite. Trail angel confirmed."
@@ -335,7 +335,7 @@ MonoBehaviour:
     characterID: Ava
     SelectedRepresentationName: Sprites
     SelectedRepresentation: {fileID: 0}
-    SelectedEmotionName: Sprites
+    SelectedRepresentationEmotion: 
     LocalizedDialogues:
     - Language: EN
       Text: I think he wants us to follow. And... I think we should.
@@ -353,7 +353,7 @@ MonoBehaviour:
     characterID: Wolfstag
     SelectedRepresentationName: Sprites
     SelectedRepresentation: {fileID: 0}
-    SelectedEmotionName: Sprites
+    SelectedRepresentationEmotion: 
     LocalizedDialogues:
     - Language: EN
       Text: '*The creature moves ahead again, parting the brush. Bits of a path peek
@@ -374,7 +374,7 @@ MonoBehaviour:
     characterID: Jared
     SelectedRepresentationName: Sprites
     SelectedRepresentation: {fileID: 0}
-    SelectedEmotionName: Sprites
+    SelectedRepresentationEmotion: 
     LocalizedDialogues:
     - Language: EN
       Text: "Wait... this looks familiar. That\u2019s the ridge! That\u2019s the
@@ -395,7 +395,7 @@ MonoBehaviour:
     characterID: Ava
     SelectedRepresentationName: Sprites
     SelectedRepresentation: {fileID: 0}
-    SelectedEmotionName: Sprites
+    SelectedRepresentationEmotion: 
     LocalizedDialogues:
     - Language: EN
       Text: He really *is* guiding us...
@@ -413,7 +413,7 @@ MonoBehaviour:
     characterID: Wolfstag
     SelectedRepresentationName: Sprites
     SelectedRepresentation: {fileID: 0}
-    SelectedEmotionName: Sprites
+    SelectedRepresentationEmotion: 
     LocalizedDialogues:
     - Language: EN
       Text: '*He pauses at the clearing''s edge, makes eye contact, then silently
@@ -433,7 +433,7 @@ MonoBehaviour:
     characterID: Jared
     SelectedRepresentationName: Sprites
     SelectedRepresentation: {fileID: 0}
-    SelectedEmotionName: Sprites
+    SelectedRepresentationEmotion: 
     LocalizedDialogues:
     - Language: EN
       Text: ...Goodbye, magic antler puppy. I hope you find your own trail home.
@@ -452,7 +452,7 @@ MonoBehaviour:
     characterID: Ava
     SelectedRepresentationName: Sprites
     SelectedRepresentation: {fileID: 0}
-    SelectedEmotionName: Sprites
+    SelectedRepresentationEmotion: 
     LocalizedDialogues:
     - Language: EN
       Text: "...Next time, I\u2019m bringing a map and a compass. And maybe pepper

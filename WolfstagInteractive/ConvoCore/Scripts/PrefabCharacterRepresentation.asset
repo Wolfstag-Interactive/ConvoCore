@@ -16,3 +16,5 @@ MonoBehaviour:
   EmotionMappings:
   - EmotionID: sad
     AnimatorOverride: {fileID: 0}
+  - EmotionID: sad
+    AnimatorOverride: {fileID: 0}

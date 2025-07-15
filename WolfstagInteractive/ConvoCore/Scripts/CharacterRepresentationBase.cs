@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace WolfstagInteractive.ConvoCore
@@ -20,11 +21,16 @@ namespace WolfstagInteractive.ConvoCore
         /// <param name="emotionID">The emotion to process.</param>
         /// <returns>Object related to the current representation, e.g., Sprite, GameObject, etc.</returns>
         public abstract object ProcessEmotion(string emotionID);
+        // Abstract or virtual method to get the emotion IDs for the representation
+        public abstract List<string> GetEmotionIDs();
+
+
 
     }
 
     public abstract class CharacterRepresentationBase : ScriptableObject, ICharacterRepresentation,IEditorPreviewableRepresentation
     {
+
         public abstract void Initialize();
         public abstract void SetEmotion(string emotionID);
         public abstract void Show();
@@ -37,6 +43,10 @@ namespace WolfstagInteractive.ConvoCore
         /// <param name="emotionID">The emotion to process.</param>
         /// <returns>Object related to the current representation, e.g., Sprite, GameObject, etc.</returns>
         public abstract object ProcessEmotion(string emotionID);
+        
+        // Abstract or virtual method to get the emotion IDs for the representation
+        public abstract List<string> GetEmotionIDs();
+
 
         public abstract void DrawInlineEditorPreview(object emotionMapping, Rect position);
 

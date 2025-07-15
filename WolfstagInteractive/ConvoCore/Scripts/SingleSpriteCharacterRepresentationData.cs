@@ -14,6 +14,12 @@ namespace WolfstagInteractive.ConvoCore
         [Header("Emotion Mappings")]
         [Tooltip("List of emotion mappings that pair an emotion ID with a portrait and full body sprite.")]
         public List<EmotionMapping> EmotionMappings = new List<EmotionMapping>();
+        // Override to provide the list of emotion IDs
+        public override List<string> GetEmotionIDs()
+        {
+            // Collect and return IDs from the emotion mappings
+            return EmotionMappings.Select(mapping => mapping.EmotionID).ToList();
+        }
 
         // Override runtime methods with empty implementations
         public override void Initialize()
@@ -49,6 +55,7 @@ namespace WolfstagInteractive.ConvoCore
 
             if (mapping != null)
             {
+                Debug.Log($"Mapping found for emotion ID '{emotionID}': {mapping.EmotionID}");
                 return mapping; // Return the found mapping directly
             }
 
@@ -56,8 +63,8 @@ namespace WolfstagInteractive.ConvoCore
             if (EmotionMappings.Count > 0)
             {
                 var defaultMapping = EmotionMappings[0];
-                /*Debug.LogWarning(
-                    $"Emotion ID '{emotionID}' not found. Using first available emotion '{defaultMapping.EmotionID}'.");*/
+                Debug.LogWarning(
+                    $"Emotion ID '{emotionID}' not found. Using first available emotion '{defaultMapping.EmotionID}'.");
                 return defaultMapping;
             }
 
