@@ -15,15 +15,7 @@ MonoBehaviour:
   IsPlayerCharacter: 0
   CharacterName: Ava
   PlayerPlaceholder: 
-  DefaultPortrait: {fileID: 21300000, guid: 3f9821c6c17797d4b8cf1f1f5d5e72c9, type: 3}
   CharacterID: Ava
   Representations:
-  - CharacterRepresentationName: Strict one sprite version
+  - CharacterRepresentationName: Sprites
     CharacterRepresentation: {fileID: 11400000, guid: cf61be94e9ae46b4da28bb23d0bfa60f, type: 2}
-  - CharacterRepresentationName: More Custom prefab version
-    CharacterRepresentation: {fileID: 11400000, guid: 6283402e5f3ffd343854ea7db0d0b6d9, type: 2}
-  CharacterEmotions:
-  - {fileID: 11400000, guid: e0abddced4d0e2e4b89f96ff905d20b5, type: 2}
-  - {fileID: 11400000, guid: 16ec40e9e3ca649498a2d219738f9fa8, type: 2}
-  - {fileID: 11400000, guid: 2b451983360ef2e4d86a0b052ffd72c3, type: 2}
-  AlternateRepresentations: []

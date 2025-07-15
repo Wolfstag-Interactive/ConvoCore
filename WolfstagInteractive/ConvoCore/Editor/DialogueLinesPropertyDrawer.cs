@@ -70,7 +70,7 @@ namespace WolfstagInteractive.ConvoCore.Editor
             currentRect.y += clipHeight + spacing;
 
             // Draw Localized Dialogues
-            if (localizedDialoguesProp != null && localizedDialoguesProp.isArray)
+            if (localizedDialoguesProp is { isArray: true })
             {
                 string currentLanguage = ConvoCoreLanguageManager.Instance.CurrentLanguage;
                 SerializedProperty matchingDialogue = null;
@@ -119,95 +119,85 @@ namespace WolfstagInteractive.ConvoCore.Editor
             }
 
             // Validate the conversation object (e.g., check missing data)
-    if (conversationObject == null)
-    {
-        EditorGUI.LabelField(currentRect, "Error: Missing Conversation Data!");
-        currentRect.y += lineHeight + spacing;
-        return;
-    }
+            if (conversationObject == null)
+            {
+                EditorGUI.LabelField(currentRect, "Error: Missing Conversation Data!");
+                currentRect.y += lineHeight + spacing;
+                return;
+            }
 
-    // Fetch the profile for the character using CharacterID
-    var profile = conversationObject.ConversationParticipantProfiles
-        ?.FirstOrDefault(p => p != null && p.CharacterID == characterIDProp.stringValue);
+            // Fetch the profile for the character using CharacterID
+            var profile = conversationObject.ConversationParticipantProfiles
+                ?.FirstOrDefault(p => p != null && p.CharacterID == characterIDProp.stringValue);
 
-    // Validate the profile
-    if (profile == null)
-    {
-        EditorGUI.LabelField(currentRect, "Error: Character profile not found!");
-        currentRect.y += lineHeight + spacing;
-        return;
-    }
+            // Validate the profile
+            if (profile == null)
+            {
+                EditorGUI.LabelField(currentRect, "Error: Character profile not found!");
+                currentRect.y += lineHeight + spacing;
+                return;
+            }
 
-    // Fetch representation names from the profile and validate them
-    List<string> representationNames = profile.Representations
-        .Where(rep => rep != null && !string.IsNullOrEmpty(rep.CharacterRepresentationName))
-        .Select(rep => rep.CharacterRepresentationName)
-        .ToList();
+            // Fetch representation names from the profile and validate them
+            List<string> representationNames = profile.Representations
+                .Where(rep => rep != null && !string.IsNullOrEmpty(rep.CharacterRepresentationName))
+                .Select(rep => rep.CharacterRepresentationName)
+                .ToList();
 
-    if (representationNames.Count == 0)
-    {
-        // No representations available
-        EditorGUI.LabelField(currentRect, "No representations available for this character.");
-        currentRect.y += lineHeight + spacing;
-        return;
-    }
+            if (representationNames.Count == 0)
+            {
+                // No representations available
+                EditorGUI.LabelField(currentRect, "No representations available for this character.");
+                currentRect.y += lineHeight + spacing;
+                return;
+            }
 
-    // Validate the selected representation
-    string currentRepName = selectedRepNameProp.stringValue;
+            // Validate the selected representation
+            string currentRepName = selectedRepNameProp.stringValue;
 
-    if (string.IsNullOrEmpty(currentRepName) || !representationNames.Contains(currentRepName))
-    {
-        // Default to the first representation if none is selected or invalid
-        currentRepName = representationNames[0];
-        selectedRepNameProp.stringValue = currentRepName;
-    }
+            if (string.IsNullOrEmpty(currentRepName) || !representationNames.Contains(currentRepName))
+            {
+                // Default to the first representation if none is selected or invalid
+                currentRepName = representationNames[0];
+                selectedRepNameProp.stringValue = currentRepName;
+            }
 
-    // Dropdown to display the available representations
-    int currentIndex = representationNames.IndexOf(currentRepName);
-    currentIndex = EditorGUI.Popup(currentRect, "Representation:", currentIndex, representationNames.ToArray());
-    currentRepName = representationNames[currentIndex];
-    selectedRepNameProp.stringValue = currentRepName; // Update property
-    currentRect.y += lineHeight + spacing;
+            // Dropdown to display the available representations
+            int currentIndex = representationNames.IndexOf(currentRepName);
+            currentIndex = EditorGUI.Popup(currentRect, "Representation:", currentIndex, representationNames.ToArray());
+            currentRepName = representationNames[currentIndex];
+            selectedRepNameProp.stringValue = currentRepName; // Update property
+            currentRect.y += lineHeight + spacing;
 
-    // Fetch the selected representation object from the profile
-    CharacterRepresentationBase selectedRepresentation = profile.GetRepresentation(currentRepName);
+            // Fetch the selected representation object from the profile
+            CharacterRepresentationBase selectedRepresentation = profile.GetRepresentation(currentRepName);
 
-    if (selectedRepresentation == null)
-    {
-        EditorGUI.LabelField(currentRect, "Error: Selected representation is missing.");
-        currentRect.y += lineHeight + spacing;
-        return;
-    }
+            if (selectedRepresentation == null)
+            {
+                EditorGUI.LabelField(currentRect, "Error: Selected representation is missing.");
+                currentRect.y += lineHeight + spacing;
+                return;
+            }
 
+            // Check if the selected representation implements IEditorPreviewableRepresentation
+            if (selectedRepresentation is IEditorPreviewableRepresentation previewableRepresentation)
+            {
+                // Fetch height for the inline preview
+                float previewHeight = previewableRepresentation.GetPreviewHeight();
+                var mappingData = profile.Representations
+                    .FirstOrDefault(r => r.CharacterRepresentationName == selectedRepNameProp.stringValue)
+                    ?.CharacterRepresentation
+                    ?.ProcessEmotion(selectedRepProp.name);
 
-    // Check if the selected representation implements IEditorPreviewableRepresentation
-    if (selectedRepresentation is IEditorPreviewableRepresentation previewableRepresentation)
-    {
-        // Fetch height for the inline preview
-        float previewHeight = previewableRepresentation.GetPreviewHeight();
-        var mappingData = profile.Representations
-            .FirstOrDefault(r => r.CharacterRepresentationName == selectedRepNameProp.stringValue)
-            ?.CharacterRepresentation
-            ?.ProcessEmotion(selectedRepProp.name);
+                // Draw inline preview (provided by the representation)
+                Rect previewRect = new Rect(currentRect.x, currentRect.y, position.width, previewHeight);
+                previewableRepresentation.DrawInlineEditorPreview(mappingData, previewRect);
 
-        // Draw inline preview (provided by the representation)
-        Rect previewRect = new Rect(currentRect.x, currentRect.y, position.width, previewHeight);
-        previewableRepresentation.DrawInlineEditorPreview(mappingData, previewRect);
-
-        currentRect.y += previewHeight + spacing; // Adjust position after drawing preview
-    }
-    else
-    {
-        EditorGUI.LabelField(currentRect, "No inline preview available for this representation.");
-        currentRect.y += lineHeight + spacing;
-    }
-
+                currentRect.y += previewHeight + spacing; // Adjust position after drawing preview
+            }
 
             EditorGUI.EndProperty();
             GUI.EndGroup();
-
-
-
         }
 
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
@@ -227,7 +217,7 @@ namespace WolfstagInteractive.ConvoCore.Editor
 
             // Add height for localized dialogues
             SerializedProperty localizedDialoguesProp = property.FindPropertyRelative("LocalizedDialogues");
-            if (localizedDialoguesProp != null && localizedDialoguesProp.isArray)
+            if (localizedDialoguesProp is { isArray: true })
             {
                 totalHeight += localizedDialoguesProp.arraySize * (EditorGUIUtility.singleLineHeight + 2f);
             }

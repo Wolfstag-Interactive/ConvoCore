@@ -12,8 +12,10 @@ namespace WolfstagInteractive.ConvoCore
     [SerializeField] private TextMeshProUGUI SpeakerName;
     [SerializeField] private GameObject DialoguePanel;
     [SerializeField] private Image SpeakerPortraitImage;
+    [SerializeField] private Image FullBodyImageLeft;
+    [SerializeField] private Image FullBodyImageRight;
+
     [SerializeField] private Button ContinueButton;
-    [SerializeField] private Image FullBodyImage;
     private bool _continuePressed = false;
     private bool isWaitingForInput = false;
 
@@ -21,7 +23,7 @@ namespace WolfstagInteractive.ConvoCore
     {
         if (DialoguePanel != null)
         {
-            DialoguePanel.SetActive(false); // Hide the panel initially
+            HideDialogue();
         }
 
         if (ContinueButton != null)
@@ -40,16 +42,15 @@ namespace WolfstagInteractive.ConvoCore
     /// <param name="emotionMappingObject">The emotion mapping object output by ProcessEmotion().</param>
     public override void UpdateDialogueUI(ConvoCoreConversationData.DialogueLineInfo dialogueLineInfo, string localizedText, string speakingCharacterName, object emotionMappingObject)
     {
-        // Update dialogue text
-        DialogueText.text = localizedText;
+        DisplayDialogue(localizedText);
         
         // Update speaker name
         SpeakerName.text = speakingCharacterName;
 
         // Clear visuals by default
         SpeakerPortraitImage.sprite = null;
-        FullBodyImage.sprite = null;
-
+        FullBodyImageLeft.sprite = null;
+        FullBodyImageRight.sprite = null;
         // Handle emotion mapping output
         if (emotionMappingObject is EmotionMapping emotionMapping)
         {
@@ -65,14 +66,14 @@ namespace WolfstagInteractive.ConvoCore
             }
 
             // Optionally update the full-body sprite (if available)
-            if (FullBodyImage != null && emotionMapping.FullBodySprite != null)
+            if (FullBodyImageLeft != null && emotionMapping.FullBodySprite != null)
             {
-                FullBodyImage.sprite = emotionMapping.FullBodySprite;
-                FullBodyImage.gameObject.SetActive(true);
+                FullBodyImageLeft.sprite = emotionMapping.FullBodySprite;
+                FullBodyImageLeft.gameObject.SetActive(true);
             }
-            else if (FullBodyImage != null)
+            else if (FullBodyImageLeft != null)
             {
-                FullBodyImage.gameObject.SetActive(false);
+                FullBodyImageLeft.gameObject.SetActive(false);
             }
         }
         else
@@ -102,9 +103,9 @@ namespace WolfstagInteractive.ConvoCore
         SpeakerName.gameObject.SetActive(false);
         SpeakerPortraitImage.gameObject.SetActive(false);
 
-        if (FullBodyImage != null)
+        if (FullBodyImageLeft != null)
         {
-            FullBodyImage.gameObject.SetActive(false);
+            FullBodyImageLeft.gameObject.SetActive(false);
         }
 
         ContinueButton.gameObject.SetActive(false);

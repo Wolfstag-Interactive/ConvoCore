@@ -15,11 +15,7 @@ MonoBehaviour:
   IsPlayerCharacter: 0
   CharacterName: Wolfstag
   PlayerPlaceholder: 
-  DefaultPortrait: {fileID: 21300000, guid: cb0ab1e48fc22124d8cf58d7aee3049e, type: 3}
   CharacterID: Wolfstag
-  CharacterEmotions:
-  - {fileID: 11400000, guid: 030e75813957d884492d17e5a02525ce, type: 2}
-  AlternateRepresentations:
-  - AliasName: ???
-    AliasPortrait: {fileID: 21300000, guid: e478f6b22da95074b8016725c9fd61c5, type: 3}
-    RepresentationID: ???
+  Representations:
+  - CharacterRepresentationName: Sprites
+    CharacterRepresentation: {fileID: 11400000, guid: 52e24c290fb50014b8aee74d5f275726, type: 2}

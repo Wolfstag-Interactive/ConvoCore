@@ -15,9 +15,7 @@ MonoBehaviour:
   IsPlayerCharacter: 0
   CharacterName: Jared
   PlayerPlaceholder: 
-  DefaultPortrait: {fileID: 21300000, guid: 2fa25cd6b98124c4abbb1212b77c0d34, type: 3}
   CharacterID: Jared
-  CharacterEmotions:
-  - {fileID: 11400000, guid: 90dc2f21cad16ab4ab452d908ba0c6b2, type: 2}
-  - {fileID: 11400000, guid: 0d6cfc2d74e714146a1078931a317d26, type: 2}
-  AlternateRepresentations: []
+  Representations:
+  - CharacterRepresentationName: Sprites
+    CharacterRepresentation: {fileID: 11400000, guid: 5b9d585132056d5479e01ea082d4b2be, type: 2}
