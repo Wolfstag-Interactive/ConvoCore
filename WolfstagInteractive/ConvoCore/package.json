@@ -7,5 +7,12 @@
   "author": {
     "name": "Dylan Alter",
     "email": "support@wolfstaginteractive.com"
-  }
+  },
+  "samples": [
+    {
+      "displayName": "Sample Assets",
+      "description": "A sample scene demonstrating how to use ConvoCore.",
+      "path": "Samples~/SampleAssets"
+    }
+  ]
 }
