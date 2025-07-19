@@ -30,6 +30,8 @@ namespace WolfstagInteractive.ConvoCore.Editor
             SerializedProperty timedValueProp = property.FindPropertyRelative("TimeBeforeNextLine");
             SerializedProperty clipProp = property.FindPropertyRelative("clip");
             SerializedProperty localizedDialoguesProp = property.FindPropertyRelative("LocalizedDialogues");
+            SerializedProperty actionsBeforeDialogueLineProp = property.FindPropertyRelative("ActionsBeforeDialogueLine");
+            SerializedProperty actionsAfterDialogueLineProp = property.FindPropertyRelative("ActionsAfterDialogueLine");
             SerializedProperty selectedRepProp = property.FindPropertyRelative("SelectedRepresentation");
             SerializedProperty selectedRepNameProp = property.FindPropertyRelative("SelectedRepresentationName");
             SerializedProperty selectedRepEmotionProp = property.FindPropertyRelative("SelectedRepresentationEmotion");
@@ -109,6 +111,16 @@ namespace WolfstagInteractive.ConvoCore.Editor
             {
                 EditorGUI.LabelField(currentRect, "Localized Dialogues not available.");
             }
+            
+            // Draw Actions Before Dialogue Line
+            EditorGUI.PropertyField(currentRect, actionsBeforeDialogueLineProp, new GUIContent("Actions Before Line:"), true);
+            currentRect.y += EditorGUI.GetPropertyHeight(actionsBeforeDialogueLineProp, true) + spacing;
+
+            // Draw Actions After Dialogue Line
+            EditorGUI.PropertyField(currentRect, actionsAfterDialogueLineProp, new GUIContent("Actions After Line:"), true);
+            currentRect.y += EditorGUI.GetPropertyHeight(actionsAfterDialogueLineProp, true) + spacing;
+
+            
 
             // Ensure we are working on ConvoCoreConversationData
             var conversationObject = serializedObject.targetObject as ConvoCoreConversationData;
@@ -220,6 +232,14 @@ namespace WolfstagInteractive.ConvoCore.Editor
             {
                 totalHeight += localizedDialoguesProp.arraySize * (EditorGUIUtility.singleLineHeight + 2f);
             }
+            // Add height for Actions Before Dialogue Line
+            SerializedProperty actionsBeforeDialogueLineProp = property.FindPropertyRelative("ActionsBeforeDialogueLine");
+            totalHeight += EditorGUI.GetPropertyHeight(actionsBeforeDialogueLineProp, true);
+
+            // Add height for Actions After Dialogue Line
+            SerializedProperty actionsAfterDialogueLineProp = property.FindPropertyRelative("ActionsAfterDialogueLine");
+            totalHeight += EditorGUI.GetPropertyHeight(actionsAfterDialogueLineProp, true);
+
 
             // Add height for representation dropdown
             totalHeight += EditorGUIUtility.singleLineHeight + 2f;
