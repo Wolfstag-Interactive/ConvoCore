@@ -205,7 +205,7 @@ namespace WolfstagInteractive.ConvoCore
                         line,
                         finalOutputString,
                         profile.CharacterName,
-                        emotionMapping // Pass the emotion mapping to the ui for display
+                        representation // Pass the representation to the ui for display
                     )
                 );
 
@@ -277,9 +277,9 @@ namespace WolfstagInteractive.ConvoCore
         /// <returns></returns>
         private IEnumerator PlayDialogueLine(IUIFoundation uiFoundationInstance,
             ConvoCoreConversationData.DialogueLineInfo lineInfo
-            , string localizedText, string characterName, object portrait)
+            , string localizedText, string characterName, CharacterRepresentationBase representation)
         {
-            uiFoundationInstance.UpdateDialogueUI(lineInfo, localizedText, characterName, portrait);
+            uiFoundationInstance.UpdateDialogueUI(lineInfo, localizedText, characterName, representation);
             switch (lineInfo.UserInputMethod)
             {
                 case ConvoCoreConversationData.DialogueLineProgressionMethod.UserInput:

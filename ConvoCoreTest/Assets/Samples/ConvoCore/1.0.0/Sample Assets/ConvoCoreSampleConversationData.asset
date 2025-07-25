@@ -22,7 +22,7 @@ MonoBehaviour:
     characterID: Ava
     SelectedRepresentationName: Sprites
     SelectedRepresentation: {fileID: 0}
-    SelectedRepresentationEmotion: Default
+    SelectedRepresentationEmotion: Scared
     LocalizedDialogues:
     - Language: EN
       Text: "Jared... we\u2019re definitely off-trail."
@@ -49,8 +49,7 @@ MonoBehaviour:
     - Language: ES
       Text: "T\xE9cnicamente, seguimos en el bosque. Eso cuenta."
     clip: {fileID: 0}
-    ActionsBeforeDialogueLine:
-    - {fileID: 0}
+    ActionsBeforeDialogueLine: []
     ActionsAfterDialogueLine: []
     UserInputMethod: 0
     TimeBeforeNextLine: 0
@@ -318,7 +317,7 @@ MonoBehaviour:
     characterID: Jared
     SelectedRepresentationName: Sprites
     SelectedRepresentation: {fileID: 0}
-    SelectedRepresentationEmotion: 
+    SelectedRepresentationEmotion: Default
     LocalizedDialogues:
     - Language: EN
       Text: "Look at him! He\u2019s so polite. Trail angel confirmed."
@@ -336,7 +335,7 @@ MonoBehaviour:
     characterID: Ava
     SelectedRepresentationName: Sprites
     SelectedRepresentation: {fileID: 0}
-    SelectedRepresentationEmotion: 
+    SelectedRepresentationEmotion: Default
     LocalizedDialogues:
     - Language: EN
       Text: I think he wants us to follow. And... I think we should.
@@ -354,7 +353,7 @@ MonoBehaviour:
     characterID: Wolfstag
     SelectedRepresentationName: Sprites
     SelectedRepresentation: {fileID: 0}
-    SelectedRepresentationEmotion: 
+    SelectedRepresentationEmotion: Default
     LocalizedDialogues:
     - Language: EN
       Text: '*The creature moves ahead again, parting the brush. Bits of a path peek
@@ -375,7 +374,7 @@ MonoBehaviour:
     characterID: Jared
     SelectedRepresentationName: Sprites
     SelectedRepresentation: {fileID: 0}
-    SelectedRepresentationEmotion: 
+    SelectedRepresentationEmotion: Default
     LocalizedDialogues:
     - Language: EN
       Text: "Wait... this looks familiar. That\u2019s the ridge! That\u2019s the
@@ -396,7 +395,7 @@ MonoBehaviour:
     characterID: Ava
     SelectedRepresentationName: Sprites
     SelectedRepresentation: {fileID: 0}
-    SelectedRepresentationEmotion: 
+    SelectedRepresentationEmotion: Default
     LocalizedDialogues:
     - Language: EN
       Text: He really *is* guiding us...
@@ -414,7 +413,7 @@ MonoBehaviour:
     characterID: Wolfstag
     SelectedRepresentationName: Sprites
     SelectedRepresentation: {fileID: 0}
-    SelectedRepresentationEmotion: 
+    SelectedRepresentationEmotion: Default
     LocalizedDialogues:
     - Language: EN
       Text: '*He pauses at the clearing''s edge, makes eye contact, then silently
@@ -434,7 +433,7 @@ MonoBehaviour:
     characterID: Jared
     SelectedRepresentationName: Sprites
     SelectedRepresentation: {fileID: 0}
-    SelectedRepresentationEmotion: 
+    SelectedRepresentationEmotion: Default
     LocalizedDialogues:
     - Language: EN
       Text: ...Goodbye, magic antler puppy. I hope you find your own trail home.
@@ -453,7 +452,7 @@ MonoBehaviour:
     characterID: Ava
     SelectedRepresentationName: Sprites
     SelectedRepresentation: {fileID: 0}
-    SelectedRepresentationEmotion: 
+    SelectedRepresentationEmotion: Default
     LocalizedDialogues:
     - Language: EN
       Text: "...Next time, I\u2019m bringing a map and a compass. And maybe pepper

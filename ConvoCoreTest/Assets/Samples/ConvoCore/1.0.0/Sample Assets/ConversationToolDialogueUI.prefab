@@ -121,6 +121,7 @@ MonoBehaviour:
   FullBodyImageLeft: {fileID: 4407448410953663419}
   FullBodyImageRight: {fileID: 3298351425223639175}
   ContinueButton: {fileID: 1644093088017464568}
+  AllowClickAnywhereToAdvanceLine: 1
 --- !u!1 &1446910199070653478
 GameObject:
   m_ObjectHideFlags: 0

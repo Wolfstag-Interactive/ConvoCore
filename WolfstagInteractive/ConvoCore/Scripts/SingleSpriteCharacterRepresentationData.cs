@@ -14,6 +14,7 @@ namespace WolfstagInteractive.ConvoCore
         [Header("Emotion Mappings")]
         [Tooltip("List of emotion mappings that pair an emotion ID with a portrait and full body sprite.")]
         public List<EmotionMapping> EmotionMappings = new List<EmotionMapping>();
+       
         // Override to provide the list of emotion IDs
         public override List<string> GetEmotionIDs()
         {
@@ -203,5 +204,9 @@ namespace WolfstagInteractive.ConvoCore
     
         [Tooltip("Full body sprite for the emotion.")]
         public Sprite FullBodySprite;
+        [Header("Display Options")]
+        [Tooltip("Display options for how the character is rendered for each line.")]
+        public DialogueLineDisplayOptions DisplayOptions = new DialogueLineDisplayOptions();
+
     }
 }
