@@ -1,8 +1,11 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
+#if ENABLE_INPUT_SYSTEM
+using UnityEngine.InputSystem; 
+#endif
+
 
 namespace WolfstagInteractive.ConvoCore
 {
@@ -16,11 +19,17 @@ namespace WolfstagInteractive.ConvoCore
         [SerializeField] private Image SpeakerPortraitImage;
         [SerializeField] private Image FullBodyImageLeft;
         [SerializeField] private Image FullBodyImageRight;
-
         [SerializeField] private Button ContinueButton;
         private bool _continuePressed = false;
         private bool isWaitingForInput = false;
         [Header("Settings")] [SerializeField] private bool AllowClickAnywhereToAdvanceLine = false;
+        [Header("Input Settings")]
+        [SerializeField] 
+        private KeyCode AdvanceDialogueKey = KeyCode.Space;
+        #if ENABLE_INPUT_SYSTEM
+        [SerializeField]
+        private InputAction AdvanceDialogueAction;
+        #endif
 
         private void Awake()
         {
@@ -33,6 +42,13 @@ namespace WolfstagInteractive.ConvoCore
             {
                 ContinueButton.onClick.AddListener(OnContinueButtonPressed);
             }
+            #if ENABLE_INPUT_SYSTEM
+                // Enable the new input action for dialogue progression
+                if (AdvanceDialogueAction != null)
+                {
+                    AdvanceDialogueAction.Enable();
+                }
+            #endif
 
             DontDestroyOnLoad(gameObject);
         }
@@ -152,6 +168,23 @@ namespace WolfstagInteractive.ConvoCore
 
             while (isWaitingForInput)
             {
+                #if ENABLE_INPUT_SYSTEM
+                // New Input System: Check for input actions
+                if (AdvanceDialogueAction != null && AdvanceDialogueAction.triggered && !inputProcessed)
+                {
+                    inputProcessed = true;
+                    OnContinueButtonPressed();
+                }
+                #else
+                // Legacy Input System: Check KeyCode
+                if (Input.GetKeyDown(AdvanceDialogueKey) && !inputProcessed)
+                {
+                    inputProcessed = true;
+                    OnContinueButtonPressed();
+                }
+                #endif
+
+
                 // Check if "click anywhere" feature is enabled
                 if (AllowClickAnywhereToAdvanceLine && Input.GetMouseButtonDown(0) && !inputProcessed)
                 {
@@ -196,6 +229,15 @@ namespace WolfstagInteractive.ConvoCore
             return false; // Pointer is not over the UI element
         }
 
+        private void OnDestroy()
+        {
+        #if ENABLE_INPUT_SYSTEM
+        if (AdvanceDialogueAction != null)
+        {
+            AdvanceDialogueAction.Disable();
+        }
+        #endif
+        }
 
     }
 
