@@ -13,7 +13,7 @@ namespace WolfstagInteractive.ConvoCore
     {
         [Header("Emotion Mappings")]
         [Tooltip("List of emotion mappings that pair an emotion ID with a portrait and full body sprite.")]
-        public List<EmotionMapping> EmotionMappings = new List<EmotionMapping>();
+        public List<SpriteEmotionMapping> EmotionMappings = new List<SpriteEmotionMapping>();
        
         // Override to provide the list of emotion IDs
         public override List<string> GetEmotionIDs()
@@ -121,7 +121,7 @@ namespace WolfstagInteractive.ConvoCore
         public override void DrawInlineEditorPreview(object mappingData, Rect position)
         {
             // Cast the generic mapping data to EmotionMapping
-            var emotionMapping = mappingData as EmotionMapping;
+            var emotionMapping = mappingData as SpriteEmotionMapping;
             if (emotionMapping == null)
             {
                 EditorGUI.LabelField(position, "Invalid or null mapping for preview.");
@@ -194,7 +194,7 @@ namespace WolfstagInteractive.ConvoCore
 
     }
     [System.Serializable]
-    public class EmotionMapping
+    public class SpriteEmotionMapping
     {
         [Tooltip("The unique identifier for the emotion (e.g., 'happy', 'sad').")]
         public string EmotionID;

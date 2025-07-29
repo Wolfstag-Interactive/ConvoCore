@@ -167,7 +167,7 @@ namespace WolfstagInteractive.ConvoCore
                 }
 
                 // Process the emotion and get the mapping
-                var emotionMapping = representation.ProcessEmotion(line.SelectedRepresentationEmotion) as EmotionMapping;
+                var emotionMapping = representation.ProcessEmotion(line.SelectedRepresentationEmotion) as SpriteEmotionMapping;
                 if (emotionMapping == null)
                 {
                     Debug.LogWarning(

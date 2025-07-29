@@ -16,7 +16,7 @@
     "versionDefines": [
         {
             "name": "com.unity.inputsystem",
-            "expression": "1.0.0",
+            "expression": "1.4.4",
             "define": "ENABLE_INPUT_SYSTEM"
         }
     ],

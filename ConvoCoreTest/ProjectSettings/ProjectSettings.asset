@@ -709,10 +709,12 @@ PlayerSettings:
   webGLDecompressionFallback: 0
   webGLPowerPreference: 2
   scriptingDefineSymbols:
-    Standalone: ENABLE_INPUT_SYSTEM
-  additionalCompilerArguments: {}
+    Standalone: 
+  additionalCompilerArguments:
+    Standalone: []
   platformArchitecture: {}
-  scriptingBackend: {}
+  scriptingBackend:
+    Standalone: 1
   il2cppCompilerConfiguration: {}
   managedStrippingLevel:
     EmbeddedLinux: 1

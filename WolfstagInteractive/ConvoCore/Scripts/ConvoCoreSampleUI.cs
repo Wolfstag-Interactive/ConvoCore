@@ -2,10 +2,8 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-#if ENABLE_INPUT_SYSTEM
-using UnityEngine.InputSystem; 
-#endif
-
+using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 
 namespace WolfstagInteractive.ConvoCore
 {
@@ -22,15 +20,12 @@ namespace WolfstagInteractive.ConvoCore
         [SerializeField] private Button ContinueButton;
         private bool _continuePressed = false;
         private bool isWaitingForInput = false;
-        [Header("Settings")] [SerializeField] private bool AllowClickAnywhereToAdvanceLine = false;
+        [Header("Settings")] 
+        [SerializeField] private bool AllowLineAdvanceOutsideButton = false;
         [Header("Input Settings")]
-        [SerializeField] 
-        private KeyCode AdvanceDialogueKey = KeyCode.Space;
-        #if ENABLE_INPUT_SYSTEM
         [SerializeField]
         private InputAction AdvanceDialogueAction;
-        #endif
-
+        
         private void Awake()
         {
             if (DialoguePanel != null)
@@ -42,15 +37,45 @@ namespace WolfstagInteractive.ConvoCore
             {
                 ContinueButton.onClick.AddListener(OnContinueButtonPressed);
             }
-            #if ENABLE_INPUT_SYSTEM
-                // Enable the new input action for dialogue progression
-                if (AdvanceDialogueAction != null)
-                {
-                    AdvanceDialogueAction.Enable();
-                }
-            #endif
+            if (AdvanceDialogueAction != null)
+            {
+                AdvanceDialogueAction.Enable();
+            }
 
             DontDestroyOnLoad(gameObject);
+        }
+        private void OnEnable()
+        {
+            // Enable and bind AdvanceDialogueAction
+            if (AdvanceDialogueAction != null)
+            {
+                AdvanceDialogueAction.Enable();
+                AdvanceDialogueAction.performed += OnAdvanceDialoguePerformed;
+            }
+            else
+            {
+                Debug.LogError("AdvanceDialogueAction is not assigned!");
+            }
+        }
+        private void OnDisable()
+        {
+            if (AdvanceDialogueAction != null)
+            {
+                AdvanceDialogueAction.Disable();
+                AdvanceDialogueAction.performed -= OnAdvanceDialoguePerformed;
+            }
+        }
+
+        /// <summary>
+        /// Listener for the AdvanceDialogueAction input event (keyboard or click).
+        /// </summary>
+        /// <param name="context">Input action callback context.</param>
+        private void OnAdvanceDialoguePerformed(InputAction.CallbackContext context)
+        {
+            if (isWaitingForInput && (AllowLineAdvanceOutsideButton || !IsPointerOverUIElement(ContinueButton)))
+            {
+                OnContinueButtonPressed();
+            }
         }
 
         /// <summary>
@@ -59,9 +84,9 @@ namespace WolfstagInteractive.ConvoCore
         /// <param name="dialogueLineInfo">Dialogue line metadata.</param>
         /// <param name="localizedText">The localized dialogue text to display.</param>
         /// <param name="speakingCharacterName">The name of the speaking character.</param>
-        /// <param name="representationObject">The emotion mapping object output by ProcessEmotion().</param>
+        /// <param name="emotionMappingData">The emotion mapping object output by ProcessEmotion().</param>
         public override void UpdateDialogueUI(ConvoCoreConversationData.DialogueLineInfo dialogueLineInfo,
-            string localizedText, string speakingCharacterName, object representationObject)
+            string localizedText, string speakingCharacterName, CharacterRepresentationBase emotionMappingData)
         {
             DisplayDialogue(localizedText);
             SpeakerName.text = speakingCharacterName;
@@ -71,12 +96,12 @@ namespace WolfstagInteractive.ConvoCore
             FullBodyImageLeft.sprite = null;
             FullBodyImageRight.sprite = null;
 
-            if (representationObject is CharacterRepresentationBase representation)
+            if (emotionMappingData is  CharacterRepresentationBase representation)
             {
                 object emotionMappingObject =
                     representation.ProcessEmotion(dialogueLineInfo.SelectedRepresentationEmotion);
 
-                if (emotionMappingObject is EmotionMapping spriteMapping)
+                if (emotionMappingObject is SpriteEmotionMapping spriteMapping)
                 {
                     // Extract the DisplayOptions specific to this emotion
                     var options = spriteMapping.DisplayOptions;
@@ -162,45 +187,17 @@ namespace WolfstagInteractive.ConvoCore
         public override IEnumerator WaitForUserInput()
         {
             isWaitingForInput = true;
-            bool inputProcessed = false; // Flag to ensure input is processed only once
-
             ContinueButton.gameObject.SetActive(true);
 
+            // Wait for user input (via key press or click)
             while (isWaitingForInput)
             {
-                #if ENABLE_INPUT_SYSTEM
-                // New Input System: Check for input actions
-                if (AdvanceDialogueAction != null && AdvanceDialogueAction.triggered && !inputProcessed)
-                {
-                    inputProcessed = true;
-                    OnContinueButtonPressed();
-                }
-                #else
-                // Legacy Input System: Check KeyCode
-                if (Input.GetKeyDown(AdvanceDialogueKey) && !inputProcessed)
-                {
-                    inputProcessed = true;
-                    OnContinueButtonPressed();
-                }
-                #endif
-
-
-                // Check if "click anywhere" feature is enabled
-                if (AllowClickAnywhereToAdvanceLine && Input.GetMouseButtonDown(0) && !inputProcessed)
-                {
-                    // Check if the click is outside the ContinueButton
-                    if (!IsPointerOverUIElement(ContinueButton))
-                    {
-                        inputProcessed = true; // Mark input as processed
-                        OnContinueButtonPressed();
-                    }
-                }
-
-                yield return null; // Wait until user presses a button or clicks
+                yield return null;
             }
 
             ContinueButton.gameObject.SetActive(false); // Hide the button when input is received
         }
+
 
 
         /// <summary>
@@ -210,7 +207,7 @@ namespace WolfstagInteractive.ConvoCore
         {
             if (!isWaitingForInput) return; // Ensure this is only executed while waiting for input
 
-            isWaitingForInput = false; // Signal that input was received
+            isWaitingForInput = false; 
         }
         /// <summary>
         /// Determines if the pointer is currently over the specified UI element.
@@ -219,15 +216,17 @@ namespace WolfstagInteractive.ConvoCore
         /// <returns>True if the pointer is over the element; false otherwise.</returns>
         private bool IsPointerOverUIElement(Button uiElement)
         {
-            // Perform a raycast to check if the pointer is over the UI element
+            if (uiElement == null) return false;
+
             RectTransform rectTransform = uiElement.GetComponent<RectTransform>();
             if (rectTransform != null)
             {
-                Vector2 localMousePosition = rectTransform.InverseTransformPoint(Input.mousePosition);
+                Vector2 localMousePosition = rectTransform.InverseTransformPoint(Mouse.current.position.ReadValue());
                 return rectTransform.rect.Contains(localMousePosition);
             }
             return false; // Pointer is not over the UI element
         }
+
 
         private void OnDestroy()
         {

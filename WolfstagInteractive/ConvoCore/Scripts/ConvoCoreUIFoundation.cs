@@ -15,8 +15,9 @@ namespace WolfstagInteractive.ConvoCore
             ConvoCoreInstance = convoCoreInstance;
         }
 
-        public virtual void UpdateDialogueUI(ConvoCoreConversationData.DialogueLineInfo dialogueLineInfo, string localizedText, string speakingCharacterName,
-            object emotionMappingData)
+        public virtual void UpdateDialogueUI(ConvoCoreConversationData.DialogueLineInfo dialogueLineInfo, 
+            string localizedText, string speakingCharacterName,
+            CharacterRepresentationBase emotionMappingData)
         {
         }
         public virtual void UpdateForLanguageChange(string newLanguage)
