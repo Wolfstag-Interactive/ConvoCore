@@ -158,20 +158,23 @@ namespace WolfstagInteractive.ConvoCore
                 }
 
                 // Get the appropriate representation based on the provided alternate representation ID
-                var representation = profile.GetRepresentation(line.SelectedRepresentationName);
+                var representation = profile.GetRepresentation(line.PrimaryCharacterRepresentation.SelectedRepresentationEmotion);
                 if (representation == null)
                 {
                     Debug.LogError(
-                        $"Neither alternate representation ('{line.SelectedRepresentationName}') nor default representation found for character '{profile.CharacterName}'. Skipping line.");
+                        $"Neither alternate representation ('{line.PrimaryCharacterRepresentation.SelectedRepresentationEmotion}') " +
+                        $"nor default representation found for character '{profile.CharacterName}'. Skipping line.");
                     continue;
                 }
 
                 // Process the emotion and get the mapping
-                var emotionMapping = representation.ProcessEmotion(line.SelectedRepresentationEmotion) as SpriteEmotionMapping;
+                var emotionMapping = representation.ProcessEmotion
+                    (line.PrimaryCharacterRepresentation.SelectedRepresentationEmotion) as SpriteEmotionMapping;
                 if (emotionMapping == null)
                 {
                     Debug.LogWarning(
-                        $"No valid emotion mapping returned for '{profile.CharacterName}' with emotion ID '{line.SelectedRepresentationEmotion}'. Skipping.");
+                        $"No valid emotion mapping returned for '{profile.CharacterName}' with emotion ID '" +
+                        $"{line.PrimaryCharacterRepresentation.SelectedRepresentationEmotion}'. Skipping.");
                     continue;
                 }
 
@@ -347,7 +350,7 @@ namespace WolfstagInteractive.ConvoCore
             }
 
             // Use the localization handler to get the localized text for the current dialogue line
-            var localizedResult = LocalizationHandler.GetLocalizedDialogue(currentDialogueLine.Value);
+            var localizedResult = LocalizationHandler.GetLocalizedDialogue(currentDialogueLine);
 
             // Check if the localized dialogue result was successful
             if (!localizedResult.Success)

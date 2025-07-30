@@ -11,45 +11,10 @@ namespace WolfstagInteractive.ConvoCore
 {
     [CreateAssetMenu(fileName = "ConvoCoreData",
         menuName = "ConvoCore/ConversationDialogueObject")]
-    public class ConvoCoreConversationData : ScriptableObject
+    public partial class ConvoCoreConversationData : ScriptableObject
     {
         public List<ConvoCoreCharacterProfileBaseData> ConversationParticipantProfiles =
             new List<ConvoCoreCharacterProfileBaseData>();
-
-        [Serializable]
-        public struct LocalizedDialogue
-        {
-            public string Language;
-            public string Text;
-        }
-
-        [Serializable]
-        public enum DialogueLineProgressionMethod
-        {
-            UserInput,
-            Timed
-        }
-
-        [Serializable]
-        public struct DialogueLineInfo
-        {
-            public string ConversationID; // Key or ConversationID in the YAML
-            public int ConversationLineIndex; // Line index within the conversation
-            public string characterID; //ID of the character speaking the line
-            public string SelectedRepresentationName;
-            public CharacterRepresentationBase SelectedRepresentation;
-            [Tooltip("Specify the emotion for this dialogue line by name.")]
-            public string SelectedRepresentationEmotion; // Name of the emotion selected via dropdown
-
-            public List<LocalizedDialogue> LocalizedDialogues; // Localized dialogues per language
-            public AudioClip clip; // Audio associated with the line
-            public List<BaseAction> ActionsBeforeDialogueLine; // Actions before the dialogue line
-            public List<BaseAction> ActionsAfterDialogueLine; // Actions after the dialogue line
-
-            public DialogueLineProgressionMethod UserInputMethod; // Whether to wait for user input before continuing to the next line
-
-            public float TimeBeforeNextLine; // Time in seconds to wait before continuing to the next line
-        }
 
         [FormerlySerializedAs("dialogueLines")] public List<DialogueLineInfo> DialogueLines; // Metadata for all dialogues in the YAML
 

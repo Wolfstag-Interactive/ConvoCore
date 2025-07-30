@@ -8,8 +8,8 @@ using UnityEngine;
 
 namespace WolfstagInteractive.ConvoCore
 {
-    [CreateAssetMenu(fileName = "SingleSpriteRepresentation", menuName = "ConvoCore/Sprite Representation")]
-    public class SingleSpriteCharacterRepresentationData : CharacterRepresentationBase
+    [CreateAssetMenu(fileName = "SpriteRepresentation", menuName = "ConvoCore/Sprite Representation")]
+    public class SpriteCharacterRepresentationData : CharacterRepresentationBase
     {
         [Header("Emotion Mappings")]
         [Tooltip("List of emotion mappings that pair an emotion ID with a portrait and full body sprite.")]
@@ -22,7 +22,6 @@ namespace WolfstagInteractive.ConvoCore
             return EmotionMappings.Select(mapping => mapping.EmotionID).ToList();
         }
 
-        // Override runtime methods with empty implementations
         public override void Initialize()
         {
         }
@@ -136,7 +135,7 @@ namespace WolfstagInteractive.ConvoCore
             // Ensure foldout state is tracked with a stable object reference
             if (!_foldoutStates.TryGetValue(this, out bool foldoutState))
             {
-                _foldoutStates[this] = false; // Default to collapsed
+                _foldoutStates[this] = false; 
             }
             // Draw the toggle button
             Rect buttonRect = new Rect(position.x, position.y, position.width, buttonHeight);
@@ -198,10 +197,8 @@ namespace WolfstagInteractive.ConvoCore
     {
         [Tooltip("The unique identifier for the emotion (e.g., 'happy', 'sad').")]
         public string EmotionID;
-    
         [Tooltip("Portrait sprite for the emotion.")]
         public Sprite PortraitSprite;
-    
         [Tooltip("Full body sprite for the emotion.")]
         public Sprite FullBodySprite;
         [Header("Display Options")]

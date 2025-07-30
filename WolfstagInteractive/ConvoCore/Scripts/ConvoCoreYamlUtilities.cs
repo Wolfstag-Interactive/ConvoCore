@@ -81,7 +81,7 @@ namespace WolfstagInteractive.ConvoCore
                 }
 
                 // Create a new DialogueLine and map the fields correctly
-                ConvoCoreConversationData.DialogueLineInfo newLineInfo = new ConvoCoreConversationData.DialogueLineInfo
+                ConvoCoreConversationData.DialogueLineInfo newLineInfo = new ConvoCoreConversationData.DialogueLineInfo(conversationKey)
                 {
                     ConversationID = conversationKey,
                     characterID = yamlConfig.CharacterID,

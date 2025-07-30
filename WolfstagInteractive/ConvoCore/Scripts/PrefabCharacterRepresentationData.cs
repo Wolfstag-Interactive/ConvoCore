@@ -7,22 +7,24 @@ using UnityEngine;
 
 namespace WolfstagInteractive.ConvoCore
 {
-    [CreateAssetMenu(fileName = "PrefabCharacterRepresentation", menuName = "ConvoCore/Prefab Character Representation")]
+    [CreateAssetMenu(fileName = "PrefabCharacterRepresentation",
+        menuName = "ConvoCore/Prefab Character Representation")]
     public class PrefabCharacterRepresentationData : CharacterRepresentationBase
     {
-        [Header("Prefab Settings")]
-        public GameObject CharacterPrefab;
+        [Header("Prefab Settings")] public GameObject CharacterPrefab;
 
         [Header("Prefab Emotion Mappings")]
         public List<EmotionPrefabMapping> EmotionMappings = new List<EmotionPrefabMapping>();
 
         private GameObject _instantiatedPrefab;
+
         // Override to provide the list of emotion IDs
         public override List<string> GetEmotionIDs()
         {
             // Collect and return IDs from the emotion mappings
             return EmotionMappings.Select(mapping => mapping.EmotionID).ToList();
         }
+
         public override void Initialize()
         {
             if (CharacterPrefab == null)
@@ -30,9 +32,10 @@ namespace WolfstagInteractive.ConvoCore
                 Debug.LogWarning("No prefab assigned for prefab representation.");
                 return;
             }
+
             _instantiatedPrefab = Instantiate(CharacterPrefab);
             _instantiatedPrefab.name = CharacterPrefab.name;
-            
+
         }
 
         public override void SetEmotion(string emotionID)
@@ -42,6 +45,7 @@ namespace WolfstagInteractive.ConvoCore
                 Debug.LogWarning("Prefab has not been instantiated. Call Initialize() first.");
                 return;
             }
+
             var mapping = EmotionMappings.Find(m => m.EmotionID == emotionID);
             if (mapping != null)
             {
@@ -99,7 +103,7 @@ namespace WolfstagInteractive.ConvoCore
             return null;
         }
 
-       
+
 #if UNITY_EDITOR
         /// <summary>
         /// Calculates the height required to display an inline prefab preview.
@@ -115,7 +119,6 @@ namespace WolfstagInteractive.ConvoCore
             // Return the defined preview height
             return prefabPreviewHeight;
         }
-
         /// <summary>
         /// Draws an inline editor preview for the prefab.
         /// </summary>
@@ -142,21 +145,22 @@ namespace WolfstagInteractive.ConvoCore
         }
     }
 
+
 #endif
-    }
 
-    [System.Serializable]
-    public class EmotionPrefabMapping
-    {
-        public string EmotionID;
-        public AnimatorOverrideController AnimatorOverride;
-
-        public void Apply(GameObject instance)
+        [System.Serializable]
+        public class EmotionPrefabMapping
         {
-            var animator = instance.GetComponent<Animator>();
-            if (animator != null && AnimatorOverride != null)
+            public string EmotionID;
+            public AnimatorOverrideController AnimatorOverride;
+
+            public void Apply(GameObject instance)
             {
-                animator.runtimeAnimatorController = AnimatorOverride;
+                var animator = instance.GetComponent<Animator>();
+                if (animator != null && AnimatorOverride != null)
+                {
+                    animator.runtimeAnimatorController = AnimatorOverride;
+                }
             }
         }
     }

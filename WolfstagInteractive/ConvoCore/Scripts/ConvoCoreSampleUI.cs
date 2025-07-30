@@ -96,49 +96,58 @@ namespace WolfstagInteractive.ConvoCore
             FullBodyImageLeft.sprite = null;
             FullBodyImageRight.sprite = null;
 
-            if (emotionMappingData is  CharacterRepresentationBase representation)
+            // Render primary character representation (speaker)
+            RenderCharacterRepresentation(dialogueLineInfo.PrimaryCharacterRepresentation, 
+                SpeakerPortraitImage, 
+                FullBodyImageLeft);
+
+            // Render secondary character representation
+            RenderCharacterRepresentation(dialogueLineInfo.SecondaryCharacterRepresentation, 
+                null, 
+                FullBodyImageRight);
+
+            // Render tertiary character representation
+            RenderCharacterRepresentation(dialogueLineInfo.TertiaryCharacterRepresentation, 
+                null, 
+                FullBodyImageRight);
+
+            // Show continue button
+            ContinueButton.gameObject.SetActive(true);
+        }
+
+        void RenderCharacterRepresentation(ConvoCoreConversationData.CharacterRepresentationData representationData,
+            Image portraitImage,Image fullBodyImage)
+        {
+            if (representationData.SelectedRepresentation != null)
             {
-                object emotionMappingObject =
-                    representation.ProcessEmotion(dialogueLineInfo.SelectedRepresentationEmotion);
+                object emotionMappingObject = representationData.SelectedRepresentation
+                    .ProcessEmotion(representationData.SelectedRepresentationEmotion);
 
                 if (emotionMappingObject is SpriteEmotionMapping spriteMapping)
                 {
-                    // Extract the DisplayOptions specific to this emotion
-                    var options = spriteMapping.DisplayOptions;
+                    // Extract the DisplayOptions for this emotion
+                    DialogueLineDisplayOptions options = spriteMapping.DisplayOptions;
 
-                    // Render portrait sprite with emotion-specific display options
-                    if (spriteMapping.PortraitSprite != null)
+                    // Render portrait sprite
+                    if (spriteMapping.PortraitSprite != null && portraitImage != null)
                     {
-                        SpeakerPortraitImage.sprite = spriteMapping.PortraitSprite;
-                        SpeakerPortraitImage.gameObject.SetActive(true);
+                        portraitImage.sprite = spriteMapping.PortraitSprite;
+                        portraitImage.gameObject.SetActive(true);
 
-                        SpeakerPortraitImage.rectTransform.localScale = new Vector3(
+                        portraitImage.rectTransform.localScale = new Vector3(
                             options.FlipPortraitX ? -options.PortraitScale.x : options.PortraitScale.x,
                             options.FlipPortraitY ? -options.PortraitScale.y : options.PortraitScale.y,
                             options.PortraitScale.z
                         );
                     }
 
-                    // Render full-body sprite with emotion-specific display options
-                    if (spriteMapping.FullBodySprite != null)
+                    // Render full-body sprite
+                    if (spriteMapping.FullBodySprite != null && fullBodyImage != null)
                     {
-                        FullBodyImageLeft.sprite = spriteMapping.FullBodySprite;
-                        FullBodyImageLeft.gameObject.SetActive(true);
+                        fullBodyImage.sprite = spriteMapping.FullBodySprite;
+                        fullBodyImage.gameObject.SetActive(true);
 
-                        if (spriteMapping.DisplayOptions.DisplayPosition ==
-                            DialogueLineDisplayOptions.CharacterPosition.Left)
-                        {
-                            FullBodyImageRight.sprite = spriteMapping.FullBodySprite;
-                            FullBodyImageRight.gameObject.SetActive(true);
-                        }
-                        else if(spriteMapping.DisplayOptions.DisplayPosition == 
-                                DialogueLineDisplayOptions.CharacterPosition.Right)
-                        {
-                            FullBodyImageRight.sprite = spriteMapping.FullBodySprite;
-                            FullBodyImageRight.gameObject.SetActive(true);
-                        }
-                        
-                        FullBodyImageLeft.rectTransform.localScale = new Vector3(
+                        fullBodyImage.rectTransform.localScale = new Vector3(
                             options.FlipFullBodyX ? -options.FullBodyScale.x : options.FullBodyScale.x,
                             options.FlipFullBodyY ? -options.FullBodyScale.y : options.FullBodyScale.y,
                             options.FullBodyScale.z
@@ -146,14 +155,8 @@ namespace WolfstagInteractive.ConvoCore
                     }
                 }
             }
-
-
-            // Show continue button
-            ContinueButton.gameObject.SetActive(true);
         }
-
-
-
+        
         /// <summary>
         /// Displays a piece of dialogue.
         /// </summary>
