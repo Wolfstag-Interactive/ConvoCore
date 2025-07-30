@@ -29,7 +29,7 @@ namespace WolfstagInteractive.ConvoCore
             {
                 if (Representations.Count > 0)
                 {
-                    return Representations[0].CharacterRepresentation;
+                    return Representations[0].CharacterRepresentationType;
                 }
 
                 Debug.LogError($"No representations are defined for character '{CharacterName}'.");
@@ -38,7 +38,7 @@ namespace WolfstagInteractive.ConvoCore
 
             // Find the specified representation.
             var pair = Representations.FirstOrDefault(rep => rep.CharacterRepresentationName == representationId);
-            return pair?.CharacterRepresentation;
+            return pair?.CharacterRepresentationType;
         }
     }
 
@@ -49,6 +49,6 @@ namespace WolfstagInteractive.ConvoCore
         public string CharacterRepresentationName;
 
         [Tooltip("The representation asset implementing the representation system (e.g., sprite or prefab based).")]
-        public CharacterRepresentationBase CharacterRepresentation;
+        public CharacterRepresentationBase CharacterRepresentationType;
     }
 }

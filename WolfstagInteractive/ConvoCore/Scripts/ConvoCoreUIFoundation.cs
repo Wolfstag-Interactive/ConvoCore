@@ -32,5 +32,9 @@ namespace WolfstagInteractive.ConvoCore
         public virtual void Dispose()
         {
         }
+
+        public virtual void HideDialogue()
+        {
+        }
     }
 }

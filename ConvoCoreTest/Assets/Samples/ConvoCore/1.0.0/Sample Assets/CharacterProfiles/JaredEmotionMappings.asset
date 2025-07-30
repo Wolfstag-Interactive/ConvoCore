@@ -16,6 +16,22 @@ MonoBehaviour:
   - EmotionID: Default
     PortraitSprite: {fileID: 21300000, guid: e569f51e3e275404cae0a379a95da902, type: 3}
     FullBodySprite: {fileID: 21300000, guid: 2fa25cd6b98124c4abbb1212b77c0d34, type: 3}
+    DisplayOptions:
+      FlipPortraitX: 0
+      FlipPortraitY: 0
+      FlipFullBodyX: 0
+      FlipFullBodyY: 0
+      DisplayPosition: 1
+      PortraitScale: {x: 1, y: 1, z: 1}
+      FullBodyScale: {x: 1, y: 1, z: 1}
   - EmotionID: HeartEyes
     PortraitSprite: {fileID: 21300000, guid: e2c175607127be344b864298b05bbbce, type: 3}
     FullBodySprite: {fileID: 21300000, guid: 8f83a54b998f436488bb8c1123dc5f76, type: 3}
+    DisplayOptions:
+      FlipPortraitX: 0
+      FlipPortraitY: 0
+      FlipFullBodyX: 0
+      FlipFullBodyY: 0
+      DisplayPosition: 1
+      PortraitScale: {x: 1, y: 1, z: 1}
+      FullBodyScale: {x: 1, y: 1, z: 1}

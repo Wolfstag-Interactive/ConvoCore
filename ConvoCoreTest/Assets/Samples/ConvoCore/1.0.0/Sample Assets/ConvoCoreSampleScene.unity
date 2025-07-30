@@ -400,7 +400,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ConversationData: {fileID: 11400000, guid: 939c62473d966244bab0eb28ef86023a, type: 2}
-  ConversationUI: {fileID: 8703669978597215545}
+  _uiFoundation: {fileID: 8703669978597215545}
+  CurrentDialogueState: 1
 --- !u!4 &639238755
 Transform:
   m_ObjectHideFlags: 0

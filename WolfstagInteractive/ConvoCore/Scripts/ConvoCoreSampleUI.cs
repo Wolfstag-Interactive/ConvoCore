@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -85,77 +86,136 @@ namespace WolfstagInteractive.ConvoCore
         /// <param name="localizedText">The localized dialogue text to display.</param>
         /// <param name="speakingCharacterName">The name of the speaking character.</param>
         /// <param name="emotionMappingData">The emotion mapping object output by ProcessEmotion().</param>
-        public override void UpdateDialogueUI(ConvoCoreConversationData.DialogueLineInfo dialogueLineInfo,
-            string localizedText, string speakingCharacterName, CharacterRepresentationBase emotionMappingData)
+      /// <summary>
+/// Updates the dialogue UI based on the provided dialogue line information.
+/// </summary>
+/// <param name="dialogueLineInfo">Dialogue line metadata.</param>
+/// <param name="localizedText">The localized dialogue text to display.</param>
+/// <param name="speakingCharacterName">The name of the speaking character.</param>
+/// <param name="emotionMappingData">The emotion mapping object output by ProcessEmotion().</param>
+public override void UpdateDialogueUI(ConvoCoreConversationData.DialogueLineInfo dialogueLineInfo,
+    string localizedText, string speakingCharacterName, CharacterRepresentationBase emotionMappingData)
+{
+    DisplayDialogue(localizedText);
+    SpeakerName.text = speakingCharacterName;
+
+    // Clear visuals by default
+    if (SpeakerPortraitImage != null) SpeakerPortraitImage.sprite = null;
+    if (FullBodyImageLeft != null) FullBodyImageLeft.sprite = null;
+    if (FullBodyImageRight != null) FullBodyImageRight.sprite = null;
+
+    // Hide all images initially
+    if (SpeakerPortraitImage != null) SpeakerPortraitImage.gameObject.SetActive(false);
+    if (FullBodyImageLeft != null) FullBodyImageLeft.gameObject.SetActive(false);
+    if (FullBodyImageRight != null) FullBodyImageRight.gameObject.SetActive(false);
+
+    // Get conversation data to resolve character profiles
+    var conversationData = FindObjectOfType<ConvoCore>()?.ConversationData;
+    if (conversationData == null)
+    {
+        Debug.LogError("Could not find ConversationData to resolve character representations");
+        return;
+    }
+
+    // Render primary character representation (speaker)
+    RenderCharacterRepresentation(
+        conversationData, 
+        dialogueLineInfo.PrimaryCharacterRepresentation, 
+        SpeakerPortraitImage, 
+        FullBodyImageLeft);
+
+    // Render secondary character representation
+    RenderCharacterRepresentation(
+        conversationData,
+        dialogueLineInfo.SecondaryCharacterRepresentation, 
+        null, // No portrait for secondary
+        FullBodyImageRight);
+
+    // Render tertiary character representation (this might overlap with secondary - handle as needed)
+    RenderCharacterRepresentation(
+        conversationData,
+        dialogueLineInfo.TertiaryCharacterRepresentation, 
+        null, // No portrait for tertiary
+        FullBodyImageRight); // You might want a separate image for tertiary
+
+    // Show continue button
+    ContinueButton.gameObject.SetActive(true);
+}
+
+void RenderCharacterRepresentation(
+    ConvoCoreConversationData conversationData,
+    ConvoCoreConversationData.CharacterRepresentationData representationData,
+    Image portraitImage, 
+    Image fullBodyImage)
+{
+    CharacterRepresentationBase representation = GetCharacterRepresentationFromData(conversationData, representationData);
+    
+    if (representation != null)
+    {
+        string emotionID = representationData.SelectedRepresentationEmotion;
+        object emotionMappingObject = representation.ProcessEmotion(emotionID);
+
+        if (emotionMappingObject is SpriteEmotionMapping spriteMapping)
         {
-            DisplayDialogue(localizedText);
-            SpeakerName.text = speakingCharacterName;
+            // Extract the DisplayOptions for this emotion
+            DialogueLineDisplayOptions options = spriteMapping.DisplayOptions;
 
-            // Clear visuals by default
-            SpeakerPortraitImage.sprite = null;
-            FullBodyImageLeft.sprite = null;
-            FullBodyImageRight.sprite = null;
-
-            // Render primary character representation (speaker)
-            RenderCharacterRepresentation(dialogueLineInfo.PrimaryCharacterRepresentation, 
-                SpeakerPortraitImage, 
-                FullBodyImageLeft);
-
-            // Render secondary character representation
-            RenderCharacterRepresentation(dialogueLineInfo.SecondaryCharacterRepresentation, 
-                null, 
-                FullBodyImageRight);
-
-            // Render tertiary character representation
-            RenderCharacterRepresentation(dialogueLineInfo.TertiaryCharacterRepresentation, 
-                null, 
-                FullBodyImageRight);
-
-            // Show continue button
-            ContinueButton.gameObject.SetActive(true);
-        }
-
-        void RenderCharacterRepresentation(ConvoCoreConversationData.CharacterRepresentationData representationData,
-            Image portraitImage,Image fullBodyImage)
-        {
-            if (representationData.SelectedRepresentation != null)
+            // Render portrait sprite
+            if (spriteMapping.PortraitSprite != null && portraitImage != null)
             {
-                object emotionMappingObject = representationData.SelectedRepresentation
-                    .ProcessEmotion(representationData.SelectedRepresentationEmotion);
+                portraitImage.sprite = spriteMapping.PortraitSprite;
+                portraitImage.gameObject.SetActive(true);
 
-                if (emotionMappingObject is SpriteEmotionMapping spriteMapping)
-                {
-                    // Extract the DisplayOptions for this emotion
-                    DialogueLineDisplayOptions options = spriteMapping.DisplayOptions;
+                portraitImage.rectTransform.localScale = new Vector3(
+                    options.FlipPortraitX ? -options.PortraitScale.x : options.PortraitScale.x,
+                    options.FlipPortraitY ? -options.PortraitScale.y : options.PortraitScale.y,
+                    options.PortraitScale.z
+                );
+            }
 
-                    // Render portrait sprite
-                    if (spriteMapping.PortraitSprite != null && portraitImage != null)
-                    {
-                        portraitImage.sprite = spriteMapping.PortraitSprite;
-                        portraitImage.gameObject.SetActive(true);
+            // Render full-body sprite
+            if (spriteMapping.FullBodySprite != null && fullBodyImage != null)
+            {
+                fullBodyImage.sprite = spriteMapping.FullBodySprite;
+                fullBodyImage.gameObject.SetActive(true);
 
-                        portraitImage.rectTransform.localScale = new Vector3(
-                            options.FlipPortraitX ? -options.PortraitScale.x : options.PortraitScale.x,
-                            options.FlipPortraitY ? -options.PortraitScale.y : options.PortraitScale.y,
-                            options.PortraitScale.z
-                        );
-                    }
-
-                    // Render full-body sprite
-                    if (spriteMapping.FullBodySprite != null && fullBodyImage != null)
-                    {
-                        fullBodyImage.sprite = spriteMapping.FullBodySprite;
-                        fullBodyImage.gameObject.SetActive(true);
-
-                        fullBodyImage.rectTransform.localScale = new Vector3(
-                            options.FlipFullBodyX ? -options.FullBodyScale.x : options.FullBodyScale.x,
-                            options.FlipFullBodyY ? -options.FullBodyScale.y : options.FullBodyScale.y,
-                            options.FullBodyScale.z
-                        );
-                    }
-                }
+                fullBodyImage.rectTransform.localScale = new Vector3(
+                    options.FlipFullBodyX ? -options.FullBodyScale.x : options.FullBodyScale.x,
+                    options.FlipFullBodyY ? -options.FullBodyScale.y : options.FullBodyScale.y,
+                    options.FullBodyScale.z
+                );
             }
         }
+    }
+}
+
+/// <summary>
+/// Helper method to resolve character representation from representation data
+/// </summary>
+private CharacterRepresentationBase GetCharacterRepresentationFromData(
+    ConvoCoreConversationData conversationData, 
+    ConvoCoreConversationData.CharacterRepresentationData representationData)
+{
+    // Check if this is using the new secondary/tertiary system (has SelectedCharacterID)
+    if (!string.IsNullOrEmpty(representationData.SelectedCharacterID))
+    {
+        // Find the profile by the selected character ID
+        var selectedProfile = conversationData.ConversationParticipantProfiles
+            .FirstOrDefault(p => p != null && p.CharacterID == representationData.SelectedCharacterID);
+        
+        if (selectedProfile != null && !string.IsNullOrEmpty(representationData.SelectedRepresentationName))
+        {
+            return selectedProfile.GetRepresentation(representationData.SelectedRepresentationName);
+        }
+    }
+    else
+    {
+        // Use the old system - SelectedRepresentation directly
+        return representationData.SelectedRepresentation;
+    }
+    
+    return null;
+}
         
         /// <summary>
         /// Displays a piece of dialogue.
@@ -169,7 +229,7 @@ namespace WolfstagInteractive.ConvoCore
         /// <summary>
         /// Hides the dialogue display.
         /// </summary>
-        public void HideDialogue()
+        public override void HideDialogue()
         {
             DialogueText.gameObject.SetActive(false);
             SpeakerName.gameObject.SetActive(false);

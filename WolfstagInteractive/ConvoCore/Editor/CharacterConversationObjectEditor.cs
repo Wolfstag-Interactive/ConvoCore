@@ -22,6 +22,9 @@ namespace WolfstagInteractive.ConvoCore.Editor
             EditorGUILayout.LabelField("Conversation Data Editor", EditorStyles.boldLabel);
             EditorGUILayout.HelpBox("Edit and manage YAML-based conversation data. Ensure 'FilePath' points to a valid file inside the StreamingAssets folder.", MessageType.Info);
 
+            // Track if any changes are made for validation
+            EditorGUI.BeginChangeCheck();
+
             // Draw properties using custom iteration to handle overrides
             SerializedProperty property = serializedObject.GetIterator();
             property.NextVisible(true); // Skip script field
@@ -43,9 +46,82 @@ namespace WolfstagInteractive.ConvoCore.Editor
             // Draw 'ConversationKey' field with the import button
             DrawConversationKeyField();
 
+            // If any changes were made, validate the data
+            if (EditorGUI.EndChangeCheck())
+            {
+                serializedObject.ApplyModifiedProperties();
+                var conversationData = (ConvoCoreConversationData)target;
+                conversationData.ValidateAndFixDialogueLines();
+                EditorUtility.SetDirty(target);
+            }
+
+            // Add validation tools section
+            DrawValidationToolsSection();
+
             // Apply any modified properties
             serializedObject.ApplyModifiedProperties();
         }
+
+        /// <summary>
+        /// Draws validation tools section with buttons for manual validation
+        /// </summary>
+        private void DrawValidationToolsSection()
+        {
+            GUILayout.Space(10);
+            EditorGUILayout.LabelField("Validation Tools", EditorStyles.boldLabel);
+    
+            EditorGUILayout.HelpBox(
+                "Use these tools to validate and debug your dialogue data. " +
+                "The validation will automatically fix missing primary character representations.",
+                MessageType.Info
+            );
+
+            // Create a horizontal layout for the buttons
+            EditorGUILayout.BeginHorizontal();
+
+            // Validate and Fix button
+            if (GUILayout.Button("Validate & Fix All Dialogue Lines", GUILayout.Height(25)))
+            {
+                var conversationData = (ConvoCoreConversationData)target;
+                conversationData.ValidateAndFixDialogueLines();
+                EditorUtility.SetDirty(target);
+                Debug.Log($"Manual validation completed for {conversationData.name}");
+            }
+
+            // Debug profiles button
+            if (GUILayout.Button("Debug Character Profiles", GUILayout.Height(25)))
+            {
+                var conversationData = (ConvoCoreConversationData)target;
+                conversationData.DebugCharacterProfiles();
+            }
+
+            EditorGUILayout.EndHorizontal();
+
+            // Second row of buttons
+            EditorGUILayout.BeginHorizontal();
+
+            // Sync object references button
+            if (GUILayout.Button("Sync Object References", GUILayout.Height(25)))
+            {
+                var conversationData = (ConvoCoreConversationData)target;
+                conversationData.SyncAllRepresentationObjectReferences();
+                EditorUtility.SetDirty(target);
+                Debug.Log($"Object reference sync completed for {conversationData.name}");
+            }
+
+            // Force save button
+            if (GUILayout.Button("Force Save Asset", GUILayout.Height(25)))
+            {
+                EditorUtility.SetDirty(target);
+                AssetDatabase.SaveAssets();
+                Debug.Log($"Forced save completed for {target.name}");
+            }
+
+            EditorGUILayout.EndHorizontal();
+
+            GUILayout.Space(5);
+        }
+
 
         /// <summary>
         /// Draws the File Path field with browse functionality.
@@ -117,6 +193,10 @@ namespace WolfstagInteractive.ConvoCore.Editor
                     // Safely import the conversation using the provided key
                     ConvoCoreConversationData obj = (ConvoCoreConversationData)target;
                     obj.ConvoCoreYamlUtilities.ImportFromYamlForKey(_conversationKey.stringValue);
+                    
+                    // After import, validate the data
+                    obj.ValidateAndFixDialogueLines();
+                    EditorUtility.SetDirty(target);
                 }
             }
         }

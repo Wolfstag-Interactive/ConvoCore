@@ -18,4 +18,4 @@ MonoBehaviour:
   CharacterID: Ava
   Representations:
   - CharacterRepresentationName: Sprites
-    CharacterRepresentation: {fileID: 11400000, guid: cf61be94e9ae46b4da28bb23d0bfa60f, type: 2}
+    CharacterRepresentationType: {fileID: 11400000, guid: cf61be94e9ae46b4da28bb23d0bfa60f, type: 2}

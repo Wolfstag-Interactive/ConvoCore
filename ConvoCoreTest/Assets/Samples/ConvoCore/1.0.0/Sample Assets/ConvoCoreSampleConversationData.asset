@@ -13,16 +13,28 @@ MonoBehaviour:
   m_Name: ConvoCoreSampleConversationData
   m_EditorClassIdentifier: 
   ConversationParticipantProfiles:
-  - {fileID: 11400000, guid: 086dcde826a3fcb4b903e747228d482b, type: 2}
-  - {fileID: 11400000, guid: 871b502169fa7f74e9d3d3a7b87b6503, type: 2}
   - {fileID: 11400000, guid: cca04ff07be1b1a478acbfc412045f2e, type: 2}
+  - {fileID: 11400000, guid: 871b502169fa7f74e9d3d3a7b87b6503, type: 2}
+  - {fileID: 11400000, guid: 086dcde826a3fcb4b903e747228d482b, type: 2}
   DialogueLines:
   - ConversationID: Conversation1
     ConversationLineIndex: 0
     characterID: Ava
-    SelectedRepresentationName: Sprites
-    SelectedRepresentation: {fileID: 0}
-    SelectedRepresentationEmotion: Scared
+    PrimaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: Sprites
+      SelectedRepresentation: {fileID: 11400000, guid: cf61be94e9ae46b4da28bb23d0bfa60f, type: 2}
+      SelectedRepresentationEmotion: Scared
+    SecondaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedRepresentationEmotion: 
+    TertiaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedRepresentationEmotion: 
     LocalizedDialogues:
     - Language: EN
       Text: "Jared... we\u2019re definitely off-trail."
@@ -38,9 +50,21 @@ MonoBehaviour:
   - ConversationID: Conversation1
     ConversationLineIndex: 1
     characterID: Jared
-    SelectedRepresentationName: Sprites
-    SelectedRepresentation: {fileID: 0}
-    SelectedRepresentationEmotion: Default
+    PrimaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: Sprites
+      SelectedRepresentation: {fileID: 11400000, guid: 5b9d585132056d5479e01ea082d4b2be, type: 2}
+      SelectedRepresentationEmotion: Default
+    SecondaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedRepresentationEmotion: 
+    TertiaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedRepresentationEmotion: 
     LocalizedDialogues:
     - Language: EN
       Text: "Technically, we\u2019re *still* in the forest. Nature counts."
@@ -56,9 +80,21 @@ MonoBehaviour:
   - ConversationID: Conversation1
     ConversationLineIndex: 2
     characterID: Ava
-    SelectedRepresentationName: Sprites
-    SelectedRepresentation: {fileID: 0}
-    SelectedRepresentationEmotion: Default
+    PrimaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: Sprites
+      SelectedRepresentation: {fileID: 11400000, guid: cf61be94e9ae46b4da28bb23d0bfa60f, type: 2}
+      SelectedRepresentationEmotion: Default
+    SecondaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedRepresentationEmotion: 
+    TertiaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedRepresentationEmotion: 
     LocalizedDialogues:
     - Language: EN
       Text: "We\u2019ve circled that tree three times now."
@@ -74,9 +110,21 @@ MonoBehaviour:
   - ConversationID: Conversation1
     ConversationLineIndex: 3
     characterID: Jared
-    SelectedRepresentationName: Sprites
-    SelectedRepresentation: {fileID: 0}
-    SelectedRepresentationEmotion: Default
+    PrimaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: Sprites
+      SelectedRepresentation: {fileID: 11400000, guid: 5b9d585132056d5479e01ea082d4b2be, type: 2}
+      SelectedRepresentationEmotion: Default
+    SecondaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedRepresentationEmotion: 
+    TertiaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedRepresentationEmotion: 
     LocalizedDialogues:
     - Language: EN
       Text: "It\u2019s a popular tree. Five stars on TreeAdvisor."
@@ -92,9 +140,21 @@ MonoBehaviour:
   - ConversationID: Conversation1
     ConversationLineIndex: 4
     characterID: Ava
-    SelectedRepresentationName: Sprites
-    SelectedRepresentation: {fileID: 0}
-    SelectedRepresentationEmotion: Default
+    PrimaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: Sprites
+      SelectedRepresentation: {fileID: 11400000, guid: cf61be94e9ae46b4da28bb23d0bfa60f, type: 2}
+      SelectedRepresentationEmotion: Default
+    SecondaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedRepresentationEmotion: 
+    TertiaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedRepresentationEmotion: 
     LocalizedDialogues:
     - Language: EN
       Text: Shh! Did you hear that?
@@ -110,9 +170,21 @@ MonoBehaviour:
   - ConversationID: Conversation1
     ConversationLineIndex: 5
     characterID: Jared
-    SelectedRepresentationName: Sprites
-    SelectedRepresentation: {fileID: 0}
-    SelectedRepresentationEmotion: Default
+    PrimaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: Sprites
+      SelectedRepresentation: {fileID: 11400000, guid: 5b9d585132056d5479e01ea082d4b2be, type: 2}
+      SelectedRepresentationEmotion: Default
+    SecondaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedRepresentationEmotion: 
+    TertiaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedRepresentationEmotion: 
     LocalizedDialogues:
     - Language: EN
       Text: "Maybe it\u2019s a bear. Or a ranger with snacks."
@@ -128,9 +200,21 @@ MonoBehaviour:
   - ConversationID: Conversation1
     ConversationLineIndex: 6
     characterID: Wolfstag
-    SelectedRepresentationName: Sprites
-    SelectedRepresentation: {fileID: 0}
-    SelectedRepresentationEmotion: Default
+    PrimaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: Sprites
+      SelectedRepresentation: {fileID: 11400000, guid: 52e24c290fb50014b8aee74d5f275726, type: 2}
+      SelectedRepresentationEmotion: Default
+    SecondaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedRepresentationEmotion: 
+    TertiaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedRepresentationEmotion: 
     LocalizedDialogues:
     - Language: EN
       Text: '*A towering silhouette appears between the trees. Antlers like twisted
@@ -147,9 +231,21 @@ MonoBehaviour:
   - ConversationID: Conversation1
     ConversationLineIndex: 7
     characterID: Ava
-    SelectedRepresentationName: Sprites
-    SelectedRepresentation: {fileID: 0}
-    SelectedRepresentationEmotion: Default
+    PrimaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: Sprites
+      SelectedRepresentation: {fileID: 11400000, guid: cf61be94e9ae46b4da28bb23d0bfa60f, type: 2}
+      SelectedRepresentationEmotion: Default
+    SecondaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedRepresentationEmotion: 
+    TertiaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedRepresentationEmotion: 
     LocalizedDialogues:
     - Language: EN
       Text: What is *that?!*
@@ -165,9 +261,21 @@ MonoBehaviour:
   - ConversationID: Conversation1
     ConversationLineIndex: 8
     characterID: Jared
-    SelectedRepresentationName: Sprites
-    SelectedRepresentation: {fileID: 0}
-    SelectedRepresentationEmotion: Default
+    PrimaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: Sprites
+      SelectedRepresentation: {fileID: 11400000, guid: 5b9d585132056d5479e01ea082d4b2be, type: 2}
+      SelectedRepresentationEmotion: Default
+    SecondaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedRepresentationEmotion: 
+    TertiaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedRepresentationEmotion: 
     LocalizedDialogues:
     - Language: EN
       Text: '*gasps* Whoooooa. Look at you!'
@@ -183,9 +291,21 @@ MonoBehaviour:
   - ConversationID: Conversation1
     ConversationLineIndex: 9
     characterID: Jared
-    SelectedRepresentationName: Sprites
-    SelectedRepresentation: {fileID: 0}
-    SelectedRepresentationEmotion: Default
+    PrimaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: Sprites
+      SelectedRepresentation: {fileID: 11400000, guid: 5b9d585132056d5479e01ea082d4b2be, type: 2}
+      SelectedRepresentationEmotion: Default
+    SecondaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedRepresentationEmotion: 
+    TertiaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedRepresentationEmotion: 
     LocalizedDialogues:
     - Language: EN
       Text: "Are you lost too, buddy? You need scritches? Huh? Who\u2019s a majestic
@@ -204,9 +324,21 @@ MonoBehaviour:
   - ConversationID: Conversation1
     ConversationLineIndex: 10
     characterID: Wolfstag
-    SelectedRepresentationName: Sprites
-    SelectedRepresentation: {fileID: 0}
-    SelectedRepresentationEmotion: Default
+    PrimaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: Sprites
+      SelectedRepresentation: {fileID: 11400000, guid: 52e24c290fb50014b8aee74d5f275726, type: 2}
+      SelectedRepresentationEmotion: Default
+    SecondaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedRepresentationEmotion: 
+    TertiaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedRepresentationEmotion: 
     LocalizedDialogues:
     - Language: EN
       Text: '*It tilts its head slightly. Curious.*'
@@ -222,9 +354,21 @@ MonoBehaviour:
   - ConversationID: Conversation1
     ConversationLineIndex: 11
     characterID: Ava
-    SelectedRepresentationName: Sprites
-    SelectedRepresentation: {fileID: 0}
-    SelectedRepresentationEmotion: Default
+    PrimaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: Sprites
+      SelectedRepresentation: {fileID: 11400000, guid: cf61be94e9ae46b4da28bb23d0bfa60f, type: 2}
+      SelectedRepresentationEmotion: Default
+    SecondaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedRepresentationEmotion: 
+    TertiaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedRepresentationEmotion: 
     LocalizedDialogues:
     - Language: EN
       Text: "Jared\u2026 stop trying to pet the antler demon!"
@@ -240,9 +384,21 @@ MonoBehaviour:
   - ConversationID: Conversation1
     ConversationLineIndex: 12
     characterID: Wolfstag
-    SelectedRepresentationName: Sprites
-    SelectedRepresentation: {fileID: 0}
-    SelectedRepresentationEmotion: Default
+    PrimaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: Sprites
+      SelectedRepresentation: {fileID: 11400000, guid: 52e24c290fb50014b8aee74d5f275726, type: 2}
+      SelectedRepresentationEmotion: Default
+    SecondaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedRepresentationEmotion: 
+    TertiaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedRepresentationEmotion: 
     LocalizedDialogues:
     - Language: EN
       Text: "*The shadows melt away. The creature\u2019s full form is revealed\u2014fur
@@ -261,9 +417,21 @@ MonoBehaviour:
   - ConversationID: Conversation1
     ConversationLineIndex: 13
     characterID: Jared
-    SelectedRepresentationName: Sprites
-    SelectedRepresentation: {fileID: 0}
-    SelectedRepresentationEmotion: Default
+    PrimaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: Sprites
+      SelectedRepresentation: {fileID: 11400000, guid: 5b9d585132056d5479e01ea082d4b2be, type: 2}
+      SelectedRepresentationEmotion: Default
+    SecondaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedRepresentationEmotion: 
+    TertiaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedRepresentationEmotion: 
     LocalizedDialogues:
     - Language: EN
       Text: "Oh my god. He\u2019s gorgeous. I want ten of him."
@@ -279,9 +447,21 @@ MonoBehaviour:
   - ConversationID: Conversation1
     ConversationLineIndex: 14
     characterID: Ava
-    SelectedRepresentationName: Sprites
-    SelectedRepresentation: {fileID: 0}
-    SelectedRepresentationEmotion: Default
+    PrimaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: Sprites
+      SelectedRepresentation: {fileID: 11400000, guid: cf61be94e9ae46b4da28bb23d0bfa60f, type: 2}
+      SelectedRepresentationEmotion: Default
+    SecondaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedRepresentationEmotion: 
+    TertiaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedRepresentationEmotion: 
     LocalizedDialogues:
     - Language: EN
       Text: "...I think he\u2019s leading us somewhere."
@@ -297,9 +477,21 @@ MonoBehaviour:
   - ConversationID: Conversation1
     ConversationLineIndex: 15
     characterID: Wolfstag
-    SelectedRepresentationName: Sprites
-    SelectedRepresentation: {fileID: 0}
-    SelectedRepresentationEmotion: Default
+    PrimaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: Sprites
+      SelectedRepresentation: {fileID: 11400000, guid: 52e24c290fb50014b8aee74d5f275726, type: 2}
+      SelectedRepresentationEmotion: Default
+    SecondaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedRepresentationEmotion: 
+    TertiaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedRepresentationEmotion: 
     LocalizedDialogues:
     - Language: EN
       Text: '*He glances back, takes a few careful steps, then waits.*'
@@ -315,9 +507,21 @@ MonoBehaviour:
   - ConversationID: Conversation1
     ConversationLineIndex: 16
     characterID: Jared
-    SelectedRepresentationName: Sprites
-    SelectedRepresentation: {fileID: 0}
-    SelectedRepresentationEmotion: Default
+    PrimaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: Sprites
+      SelectedRepresentation: {fileID: 11400000, guid: 5b9d585132056d5479e01ea082d4b2be, type: 2}
+      SelectedRepresentationEmotion: Default
+    SecondaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedRepresentationEmotion: 
+    TertiaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedRepresentationEmotion: 
     LocalizedDialogues:
     - Language: EN
       Text: "Look at him! He\u2019s so polite. Trail angel confirmed."
@@ -333,9 +537,21 @@ MonoBehaviour:
   - ConversationID: Conversation1
     ConversationLineIndex: 17
     characterID: Ava
-    SelectedRepresentationName: Sprites
-    SelectedRepresentation: {fileID: 0}
-    SelectedRepresentationEmotion: Default
+    PrimaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: Sprites
+      SelectedRepresentation: {fileID: 11400000, guid: cf61be94e9ae46b4da28bb23d0bfa60f, type: 2}
+      SelectedRepresentationEmotion: Default
+    SecondaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedRepresentationEmotion: 
+    TertiaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedRepresentationEmotion: 
     LocalizedDialogues:
     - Language: EN
       Text: I think he wants us to follow. And... I think we should.
@@ -351,9 +567,21 @@ MonoBehaviour:
   - ConversationID: Conversation1
     ConversationLineIndex: 18
     characterID: Wolfstag
-    SelectedRepresentationName: Sprites
-    SelectedRepresentation: {fileID: 0}
-    SelectedRepresentationEmotion: Default
+    PrimaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: Sprites
+      SelectedRepresentation: {fileID: 11400000, guid: 52e24c290fb50014b8aee74d5f275726, type: 2}
+      SelectedRepresentationEmotion: Default
+    SecondaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedRepresentationEmotion: 
+    TertiaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedRepresentationEmotion: 
     LocalizedDialogues:
     - Language: EN
       Text: '*The creature moves ahead again, parting the brush. Bits of a path peek
@@ -372,9 +600,21 @@ MonoBehaviour:
   - ConversationID: Conversation1
     ConversationLineIndex: 19
     characterID: Jared
-    SelectedRepresentationName: Sprites
-    SelectedRepresentation: {fileID: 0}
-    SelectedRepresentationEmotion: Default
+    PrimaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: Sprites
+      SelectedRepresentation: {fileID: 11400000, guid: 5b9d585132056d5479e01ea082d4b2be, type: 2}
+      SelectedRepresentationEmotion: Default
+    SecondaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedRepresentationEmotion: 
+    TertiaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedRepresentationEmotion: 
     LocalizedDialogues:
     - Language: EN
       Text: "Wait... this looks familiar. That\u2019s the ridge! That\u2019s the
@@ -393,9 +633,21 @@ MonoBehaviour:
   - ConversationID: Conversation1
     ConversationLineIndex: 20
     characterID: Ava
-    SelectedRepresentationName: Sprites
-    SelectedRepresentation: {fileID: 0}
-    SelectedRepresentationEmotion: Default
+    PrimaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: Sprites
+      SelectedRepresentation: {fileID: 11400000, guid: cf61be94e9ae46b4da28bb23d0bfa60f, type: 2}
+      SelectedRepresentationEmotion: Default
+    SecondaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedRepresentationEmotion: 
+    TertiaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedRepresentationEmotion: 
     LocalizedDialogues:
     - Language: EN
       Text: He really *is* guiding us...
@@ -411,9 +663,21 @@ MonoBehaviour:
   - ConversationID: Conversation1
     ConversationLineIndex: 21
     characterID: Wolfstag
-    SelectedRepresentationName: Sprites
-    SelectedRepresentation: {fileID: 0}
-    SelectedRepresentationEmotion: Default
+    PrimaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: Sprites
+      SelectedRepresentation: {fileID: 11400000, guid: 52e24c290fb50014b8aee74d5f275726, type: 2}
+      SelectedRepresentationEmotion: Default
+    SecondaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedRepresentationEmotion: 
+    TertiaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedRepresentationEmotion: 
     LocalizedDialogues:
     - Language: EN
       Text: '*He pauses at the clearing''s edge, makes eye contact, then silently
@@ -431,9 +695,21 @@ MonoBehaviour:
   - ConversationID: Conversation1
     ConversationLineIndex: 22
     characterID: Jared
-    SelectedRepresentationName: Sprites
-    SelectedRepresentation: {fileID: 0}
-    SelectedRepresentationEmotion: Default
+    PrimaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: Sprites
+      SelectedRepresentation: {fileID: 11400000, guid: 5b9d585132056d5479e01ea082d4b2be, type: 2}
+      SelectedRepresentationEmotion: Default
+    SecondaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedRepresentationEmotion: 
+    TertiaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedRepresentationEmotion: 
     LocalizedDialogues:
     - Language: EN
       Text: ...Goodbye, magic antler puppy. I hope you find your own trail home.
@@ -450,9 +726,21 @@ MonoBehaviour:
   - ConversationID: Conversation1
     ConversationLineIndex: 23
     characterID: Ava
-    SelectedRepresentationName: Sprites
-    SelectedRepresentation: {fileID: 0}
-    SelectedRepresentationEmotion: Default
+    PrimaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: Sprites
+      SelectedRepresentation: {fileID: 11400000, guid: cf61be94e9ae46b4da28bb23d0bfa60f, type: 2}
+      SelectedRepresentationEmotion: Default
+    SecondaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedRepresentationEmotion: 
+    TertiaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedRepresentationEmotion: 
     LocalizedDialogues:
     - Language: EN
       Text: "...Next time, I\u2019m bringing a map and a compass. And maybe pepper

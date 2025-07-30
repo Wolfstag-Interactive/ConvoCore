@@ -18,4 +18,4 @@ MonoBehaviour:
   CharacterID: Jared
   Representations:
   - CharacterRepresentationName: Sprites
-    CharacterRepresentation: {fileID: 11400000, guid: 5b9d585132056d5479e01ea082d4b2be, type: 2}
+    CharacterRepresentationType: {fileID: 11400000, guid: 5b9d585132056d5479e01ea082d4b2be, type: 2}
