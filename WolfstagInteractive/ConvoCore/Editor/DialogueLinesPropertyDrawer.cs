@@ -10,7 +10,7 @@ namespace WolfstagInteractive.ConvoCore.Editor
     {
         // Add static field to store foldout states
         private static Dictionary<string, bool> _characterRepresentationFoldouts = new Dictionary<string, bool>();
-        
+
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
             EditorGUI.BeginProperty(position, label, property);
@@ -32,7 +32,7 @@ namespace WolfstagInteractive.ConvoCore.Editor
             if (EditorGUI.EndChangeCheck())
             {
                 property.serializedObject.ApplyModifiedProperties();
-        
+
                 // Get the conversation data object and validate
                 var conversationData = property.serializedObject.targetObject as ConvoCoreConversationData;
                 if (conversationData != null)
@@ -188,141 +188,145 @@ namespace WolfstagInteractive.ConvoCore.Editor
         }
 
 
-private Rect DrawCharacterRepresentation(Rect rect, SerializedProperty property, float spacing)
-{
-    // Create a unique key for this property's foldout state
-    string foldoutKey = $"{property.serializedObject.targetObject.GetInstanceID()}_{property.propertyPath}_CharacterRep";
-    
-    // Get or initialize the foldout state
-    if (!_characterRepresentationFoldouts.ContainsKey(foldoutKey))
-    {
-        _characterRepresentationFoldouts[foldoutKey] = true; // Default to expanded
-    }
-
-    // Draw the foldout header with bold style
-    bool isExpanded = _characterRepresentationFoldouts[foldoutKey];
-    EditorGUI.BeginChangeCheck();
-    
-    // Create a header style that's bold
-    GUIStyle foldoutStyle = new GUIStyle(EditorStyles.foldout);
-    foldoutStyle.fontStyle = FontStyle.Bold;
-    
-    bool newExpanded = EditorGUI.Foldout(rect, isExpanded, "Character Representations", true, foldoutStyle);
-    
-    if (EditorGUI.EndChangeCheck())
-    {
-        _characterRepresentationFoldouts[foldoutKey] = newExpanded;
-        // Force repaint to update immediately
-        EditorUtility.SetDirty(property.serializedObject.targetObject);
-    }
-    
-    rect.y += EditorGUIUtility.singleLineHeight + spacing;
-
-    // Only draw the content if expanded
-    if (newExpanded)
-    {
-        // Draw a separator line
-        rect.y += spacing;
-        Rect separatorRect = new Rect(rect.x, rect.y, rect.width, 1);
-        EditorGUI.DrawRect(separatorRect, new Color(0.5f, 0.5f, 0.5f, 1));
-        rect.y += 1 + spacing * 2;
-        
-        // Check for valid profiles before drawing character representation fields
-        SerializedObject serializedObject = property.serializedObject;
-        var conversationObject = serializedObject.targetObject as ConvoCoreConversationData;
-        
-        if (conversationObject == null)
+        private Rect DrawCharacterRepresentation(Rect rect, SerializedProperty property, float spacing)
         {
-            EditorGUI.indentLevel++;
-            EditorGUI.LabelField(rect, "Error: Conversation data is missing.");
-            EditorGUI.indentLevel--;
+            // Create a unique key for this property's foldout state
+            string foldoutKey =
+                $"{property.serializedObject.targetObject.GetInstanceID()}_{property.propertyPath}_CharacterRep";
+
+            // Get or initialize the foldout state
+            if (!_characterRepresentationFoldouts.ContainsKey(foldoutKey))
+            {
+                _characterRepresentationFoldouts[foldoutKey] = true; // Default to expanded
+            }
+
+            // Draw the foldout header with bold style
+            bool isExpanded = _characterRepresentationFoldouts[foldoutKey];
+            EditorGUI.BeginChangeCheck();
+
+            // Create a header style that's bold
+            GUIStyle foldoutStyle = new GUIStyle(EditorStyles.foldout);
+            foldoutStyle.fontStyle = FontStyle.Bold;
+
+            bool newExpanded = EditorGUI.Foldout(rect, isExpanded, "Character Representations", true, foldoutStyle);
+
+            if (EditorGUI.EndChangeCheck())
+            {
+                _characterRepresentationFoldouts[foldoutKey] = newExpanded;
+                // Force repaint to update immediately
+                EditorUtility.SetDirty(property.serializedObject.targetObject);
+            }
+
             rect.y += EditorGUIUtility.singleLineHeight + spacing;
+
+            // Only draw the content if expanded
+            if (newExpanded)
+            {
+                // Draw a separator line
+                rect.y += spacing;
+                Rect separatorRect = new Rect(rect.x, rect.y, rect.width, 1);
+                EditorGUI.DrawRect(separatorRect, new Color(0.5f, 0.5f, 0.5f, 1));
+                rect.y += 1 + spacing * 2;
+
+                // Check for valid profiles before drawing character representation fields
+                SerializedObject serializedObject = property.serializedObject;
+                var conversationObject = serializedObject.targetObject as ConvoCoreConversationData;
+
+                if (conversationObject == null)
+                {
+                    EditorGUI.indentLevel++;
+                    EditorGUI.LabelField(rect, "Error: Conversation data is missing.");
+                    EditorGUI.indentLevel--;
+                    rect.y += EditorGUIUtility.singleLineHeight + spacing;
+                    return rect;
+                }
+
+                // Filter valid profiles, ensuring null check
+                var validProfiles = conversationObject.ConversationParticipantProfiles
+                    .Where(p => p != null)
+                    .ToList();
+
+                if (validProfiles.Count == 0)
+                {
+                    EditorGUI.indentLevel++;
+
+                    // Show a helpful message with styling
+                    GUIStyle helpBoxStyle = new GUIStyle(EditorStyles.helpBox);
+                    helpBoxStyle.fontSize = 11;
+                    helpBoxStyle.wordWrap = true;
+
+                    Rect helpBoxRect = new Rect(rect.x, rect.y, rect.width, EditorGUIUtility.singleLineHeight * 2.5f);
+                    EditorGUI.LabelField(helpBoxRect,
+                        "No conversation participants are configured. Please add character profiles to the ConversationParticipantProfiles list in the Conversation Data to configure character representations.",
+                        helpBoxStyle);
+
+                    rect.y += EditorGUIUtility.singleLineHeight * 2.5f + spacing;
+
+                    EditorGUI.indentLevel--;
+                    return rect;
+                }
+
+                // Indent the content
+                EditorGUI.indentLevel++;
+
+                // Draw Primary Character Representation using CharacterID
+                rect = DrawSingleCharacterRepresentation(
+                    rect,
+                    property.FindPropertyRelative("PrimaryCharacterRepresentation"),
+                    "Primary Character",
+                    property.FindPropertyRelative("characterID"),
+                    spacing,
+                    useRepresentationNameInsteadOfID: false);
+
+                // Draw Secondary Character Representation
+                rect = DrawSingleCharacterRepresentation(
+                    rect,
+                    property.FindPropertyRelative("SecondaryCharacterRepresentation"),
+                    "Secondary Character",
+                    property.FindPropertyRelative("SecondaryCharacterRepresentation"),
+                    spacing,
+                    useRepresentationNameInsteadOfID: true);
+
+                // Draw Tertiary Character Representation
+                rect = DrawSingleCharacterRepresentation(
+                    rect,
+                    property.FindPropertyRelative("TertiaryCharacterRepresentation"),
+                    "Tertiary Character",
+                    property.FindPropertyRelative("TertiaryCharacterRepresentation"),
+                    spacing,
+                    useRepresentationNameInsteadOfID: true);
+
+                // Restore indent level
+                EditorGUI.indentLevel--;
+
+                // Add space after the expanded section
+                rect.y += 5f;
+            }
+            else
+            {
+                // Add a small space after collapsed foldout for better visual separation
+                rect.y += 2f;
+            }
+
             return rect;
         }
 
-        // Filter valid profiles, ensuring null check
-        var validProfiles = conversationObject.ConversationParticipantProfiles
-            .Where(p => p != null)
-            .ToList();
-
-        if (validProfiles.Count == 0)
-        {
-            EditorGUI.indentLevel++;
-            
-            // Show a helpful message with styling
-            GUIStyle helpBoxStyle = new GUIStyle(EditorStyles.helpBox);
-            helpBoxStyle.fontSize = 11;
-            helpBoxStyle.wordWrap = true;
-            
-            Rect helpBoxRect = new Rect(rect.x, rect.y, rect.width, EditorGUIUtility.singleLineHeight * 2.5f);
-            EditorGUI.LabelField(helpBoxRect, 
-                "No conversation participants are configured. Please add character profiles to the ConversationParticipantProfiles list in the Conversation Data to configure character representations.", 
-                helpBoxStyle);
-            
-            rect.y += EditorGUIUtility.singleLineHeight * 2.5f + spacing;
-            
-            EditorGUI.indentLevel--;
-            return rect;
-        }
-        
-        // Indent the content
-        EditorGUI.indentLevel++;
-
-        // Draw Primary Character Representation using CharacterID
-        rect = DrawSingleCharacterRepresentation(
-            rect,
-            property.FindPropertyRelative("PrimaryCharacterRepresentation"),
-            "Primary Character",
-            property.FindPropertyRelative("characterID"),
-            spacing,
-            useRepresentationNameInsteadOfID: false);
-
-        // Draw Secondary Character Representation
-        rect = DrawSingleCharacterRepresentation(
-            rect,
-            property.FindPropertyRelative("SecondaryCharacterRepresentation"),
-            "Secondary Character",
-            property.FindPropertyRelative("SecondaryCharacterRepresentation"),
-            spacing,
-            useRepresentationNameInsteadOfID: true);
-
-        // Draw Tertiary Character Representation
-        rect = DrawSingleCharacterRepresentation(
-            rect,
-            property.FindPropertyRelative("TertiaryCharacterRepresentation"),
-            "Tertiary Character",
-            property.FindPropertyRelative("TertiaryCharacterRepresentation"),
-            spacing,
-            useRepresentationNameInsteadOfID: true);
-
-        // Restore indent level
-        EditorGUI.indentLevel--;
-        
-        // Add space after the expanded section
-        rect.y += 5f;
-    }
-    else
-    {
-        // Add a small space after collapsed foldout for better visual separation
-        rect.y += 2f;
-    }
-
-    return rect;
-}
         private Rect DrawSingleCharacterRepresentation(
-            Rect rect, 
-            SerializedProperty representationProp, 
-            string label, 
-            SerializedProperty identifierProp, 
-            float spacing, 
+            Rect rect,
+            SerializedProperty representationProp,
+            string label,
+            SerializedProperty identifierProp,
+            float spacing,
             bool useRepresentationNameInsteadOfID
         )
         {
             SerializedObject serializedObject = representationProp.serializedObject;
 
             SerializedProperty selectedCharacterIDProp = representationProp.FindPropertyRelative("SelectedCharacterID");
-            SerializedProperty selectedRepNameProp = representationProp.FindPropertyRelative("SelectedRepresentationName");
-            SerializedProperty selectedRepEmotionProp = representationProp.FindPropertyRelative("SelectedRepresentationEmotion");
+            SerializedProperty selectedRepNameProp =
+                representationProp.FindPropertyRelative("SelectedRepresentationName");
+            SerializedProperty selectedRepEmotionProp =
+                representationProp.FindPropertyRelative("SelectedRepresentationEmotion");
 
             // Draw Header (no longer need bold style since it's inside a foldout)
             EditorGUI.LabelField(rect, $"{label}:");
@@ -349,13 +353,16 @@ private Rect DrawCharacterRepresentation(Rect rect, SerializedProperty property,
                 return rect;
             }
 
+            CharacterRepresentationBase selectedRepresentation = null;
+            string currentEmotionID = selectedRepEmotionProp.stringValue;
+
             // For secondary/tertiary characters, we need to show a profile selection dropdown first
             if (useRepresentationNameInsteadOfID)
             {
                 // Get the current selected character ID
                 string currentCharacterID = selectedCharacterIDProp.stringValue;
                 ConvoCoreCharacterProfileBaseData currentProfile = null;
-                
+
                 if (!string.IsNullOrEmpty(currentCharacterID))
                 {
                     currentProfile = validProfiles.FirstOrDefault(p => p.CharacterID == currentCharacterID);
@@ -376,7 +383,8 @@ private Rect DrawCharacterRepresentation(Rect rect, SerializedProperty property,
                     if (foundIndex > 0) currentProfileIndex = foundIndex;
                 }
 
-                int newProfileIndex = EditorGUI.Popup(rect, $"{label} Profile:", currentProfileIndex, profileNames.ToArray());
+                int newProfileIndex =
+                    EditorGUI.Popup(rect, $"{label} Profile:", currentProfileIndex, profileNames.ToArray());
                 rect.y += EditorGUIUtility.singleLineHeight + spacing;
 
                 // Handle profile selection change
@@ -394,7 +402,7 @@ private Rect DrawCharacterRepresentation(Rect rect, SerializedProperty property,
                     {
                         var selectedProfile = validProfiles[newProfileIndex - 1]; // -1 because of "None" option
                         selectedCharacterIDProp.stringValue = selectedProfile.CharacterID;
-                        
+
                         // Set to first representation of selected profile
                         var firstRep = selectedProfile.Representations?.FirstOrDefault(r => r != null);
                         selectedRepNameProp.stringValue = firstRep?.CharacterRepresentationName ?? "";
@@ -431,14 +439,16 @@ private Rect DrawCharacterRepresentation(Rect rect, SerializedProperty property,
                         serializedObject.ApplyModifiedProperties();
                     }
 
+                    // Get the selected representation for display options
+                    selectedRepresentation = currentProfile.GetRepresentation(newRepresentationName);
+
                     // Show emotion dropdown
-                    var selectedRepresentation = currentProfile.GetRepresentation(newRepresentationName);
                     if (selectedRepresentation != null)
                     {
                         var emotionIDs = selectedRepresentation.GetEmotionIDs();
                         if (emotionIDs != null && emotionIDs.Count > 0)
                         {
-                            string currentEmotionID = selectedRepEmotionProp.stringValue;
+                            currentEmotionID = selectedRepEmotionProp.stringValue;
                             if (string.IsNullOrEmpty(currentEmotionID) || !emotionIDs.Contains(currentEmotionID))
                             {
                                 currentEmotionID = emotionIDs[0];
@@ -451,122 +461,182 @@ private Rect DrawCharacterRepresentation(Rect rect, SerializedProperty property,
                             if (newEmotionIndex != emotionIndex)
                             {
                                 selectedRepEmotionProp.stringValue = emotionIDs[newEmotionIndex];
+                                currentEmotionID = emotionIDs[newEmotionIndex];
                                 serializedObject.ApplyModifiedProperties();
                             }
+
+                            rect.y += EditorGUIUtility.singleLineHeight + spacing;
+                        }
+                    }
+                }
+            }
+            else
+            {
+                string characterID = identifierProp.stringValue;
+                var profile = validProfiles.FirstOrDefault(p => p.CharacterID == characterID);
+
+                if (profile == null)
+                {
+                    var participantNames = validProfiles
+                        .Where(p => !string.IsNullOrEmpty(p.CharacterName))
+                        .Select(p => p.CharacterName)
+                        .ToArray();
+
+                    int participantIndex = 0;
+                    if (!string.IsNullOrEmpty(characterID))
+                    {
+                        participantIndex = System.Array.IndexOf(participantNames, characterID);
+                        participantIndex = Mathf.Max(participantIndex, 0);
+                    }
+
+                    participantIndex =
+                        EditorGUI.Popup(rect, $"{label} Participant:", participantIndex, participantNames);
+                    rect.y += EditorGUIUtility.singleLineHeight + spacing;
+
+                    if (participantIndex < participantNames.Length)
+                    {
+                        var selectedProfile = validProfiles[participantIndex];
+                        identifierProp.stringValue = selectedProfile.CharacterID;
+                        serializedObject.ApplyModifiedProperties();
+                    }
+
+                    return rect;
+                }
+
+                // Continue with representation dropdown for primary character
+                var representationNames = profile.Representations
+                    .Where(r => r != null && !string.IsNullOrEmpty(r.CharacterRepresentationName))
+                    .Select(r => r.CharacterRepresentationName)
+                    .ToList();
+
+                if (representationNames.Count > 0)
+                {
+                    string selectedRepresentationName = selectedRepNameProp.stringValue;
+
+                    // If no representation name is set, try to get it from the old SelectedRepresentation field
+                    if (string.IsNullOrEmpty(selectedRepresentationName))
+                    {
+                        SerializedProperty selectedRepProp =
+                            representationProp.FindPropertyRelative("SelectedRepresentation");
+                        if (selectedRepProp != null &&
+                            selectedRepProp.objectReferenceValue is CharacterRepresentationBase oldRep)
+                        {
+                            // Find the representation name from the profile's representations list
+                            var matchingPair =
+                                profile.Representations.FirstOrDefault(r => r.CharacterRepresentationType == oldRep);
+                            if (matchingPair != null)
+                            {
+                                selectedRepresentationName = matchingPair.CharacterRepresentationName;
+                                selectedRepNameProp.stringValue = selectedRepresentationName;
+                                serializedObject.ApplyModifiedProperties();
+                            }
+                        }
+                    }
+
+                    int repIndex = Mathf.Max(0, representationNames.IndexOf(selectedRepresentationName));
+                    repIndex = EditorGUI.Popup(rect, "Representation:", repIndex, representationNames.ToArray());
+                    string newRepresentationName = representationNames[repIndex];
+                    rect.y += EditorGUIUtility.singleLineHeight + spacing;
+
+                    if (newRepresentationName != selectedRepresentationName)
+                    {
+                        selectedRepNameProp.stringValue = newRepresentationName;
+
+                        // Also update the old SelectedRepresentation field for backward compatibility
+                        SerializedProperty selectedRepProp =
+                            representationProp.FindPropertyRelative("SelectedRepresentation");
+                        if (selectedRepProp != null)
+                        {
+                            var newRepresentation = profile.GetRepresentation(newRepresentationName);
+                            selectedRepProp.objectReferenceValue = newRepresentation;
+                        }
+
+                        selectedRepEmotionProp.stringValue = "";
+                        serializedObject.ApplyModifiedProperties();
+                    }
+
+                    // Get the selected representation for display options
+                    selectedRepresentation = profile.GetRepresentation(newRepresentationName);
+
+                    // Show emotion dropdown
+                    if (selectedRepresentation != null)
+                    {
+                        var emotionIDs = selectedRepresentation.GetEmotionIDs();
+                        if (emotionIDs != null && emotionIDs.Count > 0)
+                        {
+                            currentEmotionID = selectedRepEmotionProp.stringValue;
+                            if (string.IsNullOrEmpty(currentEmotionID) || !emotionIDs.Contains(currentEmotionID))
+                            {
+                                currentEmotionID = emotionIDs[0];
+                                selectedRepEmotionProp.stringValue = currentEmotionID;
+                                serializedObject.ApplyModifiedProperties();
+                            }
+
+                            int emotionIndex = emotionIDs.IndexOf(currentEmotionID);
+                            int newEmotionIndex = EditorGUI.Popup(rect, "Emotion:", emotionIndex, emotionIDs.ToArray());
+                            if (newEmotionIndex != emotionIndex)
+                            {
+                                selectedRepEmotionProp.stringValue = emotionIDs[newEmotionIndex];
+                                currentEmotionID = emotionIDs[newEmotionIndex];
+                                serializedObject.ApplyModifiedProperties();
+                            }
+
                             rect.y += EditorGUIUtility.singleLineHeight + spacing;
                         }
                     }
                 }
             }
 
-else
-{
-    string characterID = identifierProp.stringValue;
-    var profile = validProfiles.FirstOrDefault(p => p.CharacterID == characterID);
-
-    if (profile == null)
-    {
-        var participantNames = validProfiles
-            .Where(p => !string.IsNullOrEmpty(p.CharacterName))
-            .Select(p => p.CharacterName)
-            .ToArray();
-
-        int participantIndex = 0;
-        if (!string.IsNullOrEmpty(characterID))
-        {
-            participantIndex = System.Array.IndexOf(participantNames, characterID);
-            participantIndex = Mathf.Max(participantIndex, 0);
-        }
-
-        participantIndex = EditorGUI.Popup(rect, $"{label} Participant:", participantIndex, participantNames);
-        rect.y += EditorGUIUtility.singleLineHeight + spacing;
-
-        if (participantIndex < participantNames.Length)
-        {
-            var selectedProfile = validProfiles[participantIndex];
-            identifierProp.stringValue = selectedProfile.CharacterID;
-            serializedObject.ApplyModifiedProperties();
-        }
-        return rect;
-    }
-
-    // Continue with representation dropdown for primary character
-    var representationNames = profile.Representations
-        .Where(r => r != null && !string.IsNullOrEmpty(r.CharacterRepresentationName))
-        .Select(r => r.CharacterRepresentationName)
-        .ToList();
-
-    if (representationNames.Count > 0)
-    {
-        string selectedRepresentationName = selectedRepNameProp.stringValue;
-        
-        // If no representation name is set, try to get it from the old SelectedRepresentation field
-        if (string.IsNullOrEmpty(selectedRepresentationName))
-        {
-            SerializedProperty selectedRepProp = representationProp.FindPropertyRelative("SelectedRepresentation");
-            if (selectedRepProp != null && selectedRepProp.objectReferenceValue is CharacterRepresentationBase oldRep)
+            // NEW SECTION: Display representation-specific display options
+            if (selectedRepresentation != null && !string.IsNullOrEmpty(currentEmotionID))
             {
-                // Find the representation name from the profile's representations list
-                var matchingPair = profile.Representations.FirstOrDefault(r => r.CharacterRepresentationType == oldRep);
-                if (matchingPair != null)
-                {
-                    selectedRepresentationName = matchingPair.CharacterRepresentationName;
-                    selectedRepNameProp.stringValue = selectedRepresentationName;
-                    serializedObject.ApplyModifiedProperties();
-                }
+                rect = DrawRepresentationSpecificOptions(rect, representationProp, selectedRepresentation,
+                    currentEmotionID, spacing);
             }
-        }
-        
-        int repIndex = Mathf.Max(0, representationNames.IndexOf(selectedRepresentationName));
-        repIndex = EditorGUI.Popup(rect, "Representation:", repIndex, representationNames.ToArray());
-        string newRepresentationName = representationNames[repIndex];
-        rect.y += EditorGUIUtility.singleLineHeight + spacing;
-
-        if (newRepresentationName != selectedRepresentationName)
-        {
-            selectedRepNameProp.stringValue = newRepresentationName;
-            
-            // Also update the old SelectedRepresentation field for backward compatibility
-            SerializedProperty selectedRepProp = representationProp.FindPropertyRelative("SelectedRepresentation");
-            if (selectedRepProp != null)
-            {
-                var newRepresentation = profile.GetRepresentation(newRepresentationName);
-                selectedRepProp.objectReferenceValue = newRepresentation;
-            }
-            
-            selectedRepEmotionProp.stringValue = "";
-            serializedObject.ApplyModifiedProperties();
-        }
-
-        // Show emotion dropdown
-        var selectedRepresentation = profile.GetRepresentation(newRepresentationName);
-        if (selectedRepresentation != null)
-        {
-            var emotionIDs = selectedRepresentation.GetEmotionIDs();
-            if (emotionIDs != null && emotionIDs.Count > 0)
-            {
-                string currentEmotionID = selectedRepEmotionProp.stringValue;
-                if (string.IsNullOrEmpty(currentEmotionID) || !emotionIDs.Contains(currentEmotionID))
-                {
-                    currentEmotionID = emotionIDs[0];
-                    selectedRepEmotionProp.stringValue = currentEmotionID;
-                    serializedObject.ApplyModifiedProperties();
-                }
-
-                int emotionIndex = emotionIDs.IndexOf(currentEmotionID);
-                int newEmotionIndex = EditorGUI.Popup(rect, "Emotion:", emotionIndex, emotionIDs.ToArray());
-                if (newEmotionIndex != emotionIndex)
-                {
-                    selectedRepEmotionProp.stringValue = emotionIDs[newEmotionIndex];
-                    serializedObject.ApplyModifiedProperties();
-                }
-                rect.y += EditorGUIUtility.singleLineHeight + spacing;
-            }
-        }
-    }
-}
 
             return rect;
+        }
+
+        /// <summary>
+        /// Draws representation-specific display options if the representation supports it
+        /// </summary>
+        private Rect DrawRepresentationSpecificOptions(Rect rect, SerializedProperty representationProp,
+            CharacterRepresentationBase representation, string emotionID, float spacing)
+        {
+#if UNITY_EDITOR
+            // Check if this representation supports custom dialogue line options
+            if (representation is IDialogueLineEditorCustomizable customizable)
+            {
+                // Get the LineSpecificDisplayOptions property
+                var displayOptionsProp = representationProp.FindPropertyRelative("LineSpecificDisplayOptions");
+                if (displayOptionsProp != null)
+                {
+                    rect = customizable.DrawDialogueLineOptions(rect, emotionID, displayOptionsProp, spacing);
+                }
+            }
+#endif
+
+            return rect;
+        }
+
+        /// <summary>
+        /// Calculates additional height needed for representation-specific display options
+        /// </summary>
+        private float GetRepresentationSpecificOptionsHeight(CharacterRepresentationBase representation,
+            string emotionID, SerializedProperty representationProp)
+        {
+#if UNITY_EDITOR
+            if (representation is IDialogueLineEditorCustomizable customizable)
+            {
+                var displayOptionsProp = representationProp.FindPropertyRelative("LineSpecificDisplayOptions");
+                if (displayOptionsProp != null)
+                {
+                    return customizable.GetDialogueLineOptionsHeight(emotionID, displayOptionsProp);
+                }
+            }
+#endif
+
+            return 0f;
         }
 
         // ---- Height Calculation Methods ----
@@ -623,61 +693,68 @@ else
         }
 
 
-private float GetCharacterRepresentationSectionHeight(SerializedProperty property)
-{
-    float height = 0f;
-    float spacing = 2f;
-    
-    // Always add height for the foldout header
-    height += EditorGUIUtility.singleLineHeight + spacing;
-    
-    // Create a unique key for this property's foldout state
-    string foldoutKey = $"{property.serializedObject.targetObject.GetInstanceID()}_{property.propertyPath}_CharacterRep";
-    
-    // Check if the foldout is expanded
-    if (_characterRepresentationFoldouts.ContainsKey(foldoutKey) && _characterRepresentationFoldouts[foldoutKey])
-    {
-        // Add height for separator line + spacing
-        height += 1 + spacing * 3;
-        
-        // Check if we have valid profiles
-        SerializedObject serializedObject = property.serializedObject;
-        var conversationObject = serializedObject.targetObject as ConvoCoreConversationData;
-        
-        if (conversationObject == null)
+        private float GetCharacterRepresentationSectionHeight(SerializedProperty property)
         {
-            // Add height for error message
+            float height = 0f;
+            float spacing = 2f;
+
+            // Always add height for the foldout header
             height += EditorGUIUtility.singleLineHeight + spacing;
-        }
-        else
-        {
-            var validProfiles = conversationObject.ConversationParticipantProfiles?.Where(p => p != null).ToList();
-            
-            if (validProfiles == null || validProfiles.Count == 0)
+
+            // Create a unique key for this property's foldout state
+            string foldoutKey =
+                $"{property.serializedObject.targetObject.GetInstanceID()}_{property.propertyPath}_CharacterRep";
+
+            // Check if the foldout is expanded
+            if (_characterRepresentationFoldouts.ContainsKey(foldoutKey) &&
+                _characterRepresentationFoldouts[foldoutKey])
             {
-                // Add height for the help message (2.5 lines)
-                height += EditorGUIUtility.singleLineHeight * 2.5f + spacing;
+                // Add height for separator line + spacing
+                height += 1 + spacing * 3;
+
+                // Check if we have valid profiles
+                SerializedObject serializedObject = property.serializedObject;
+                var conversationObject = serializedObject.targetObject as ConvoCoreConversationData;
+
+                if (conversationObject == null)
+                {
+                    // Add height for error message
+                    height += EditorGUIUtility.singleLineHeight + spacing;
+                }
+                else
+                {
+                    var validProfiles = conversationObject.ConversationParticipantProfiles?.Where(p => p != null)
+                        .ToList();
+
+                    if (validProfiles == null || validProfiles.Count == 0)
+                    {
+                        // Add height for the help message (2.5 lines)
+                        height += EditorGUIUtility.singleLineHeight * 2.5f + spacing;
+                    }
+                    else
+                    {
+                        // Add heights for individual character representations when expanded
+                        height += GetSingleCharacterRepresentationHeight(
+                            property.FindPropertyRelative("PrimaryCharacterRepresentation"), property, false);
+                        height += GetSingleCharacterRepresentationHeight(
+                            property.FindPropertyRelative("SecondaryCharacterRepresentation"), property, true);
+                        height += GetSingleCharacterRepresentationHeight(
+                            property.FindPropertyRelative("TertiaryCharacterRepresentation"), property, true);
+                    }
+                }
+
+                // Add final space after expanded content
+                height += 5f;
             }
             else
             {
-                // Add heights for individual character representations when expanded
-                height += GetCharacterRepresentationHeight(property.FindPropertyRelative("PrimaryCharacterRepresentation"));
-                height += GetCharacterRepresentationHeight(property.FindPropertyRelative("SecondaryCharacterRepresentation"));
-                height += GetCharacterRepresentationHeight(property.FindPropertyRelative("TertiaryCharacterRepresentation"));
+                // Add small space after collapsed foldout
+                height += 2f;
             }
+
+            return height;
         }
-        
-        // Add final space after expanded content
-        height += 5f;
-    }
-    else
-    {
-        // Add small space after collapsed foldout
-        height += 2f;
-    }
-    
-    return height;
-}
+
         private float GetCharacterRepresentationHeight(SerializedProperty property)
         {
             if (property == null) return 0f;
@@ -720,7 +797,8 @@ private float GetCharacterRepresentationSectionHeight(SerializedProperty propert
                         height += EditorGUIUtility.singleLineHeight + 2f;
 
                         // Check if representation has emotions
-                        SerializedProperty selectedRepNameProp = property.FindPropertyRelative("SelectedRepresentationName");
+                        SerializedProperty selectedRepNameProp =
+                            property.FindPropertyRelative("SelectedRepresentationName");
                         if (selectedRepNameProp != null && !string.IsNullOrEmpty(selectedRepNameProp.stringValue))
                         {
                             var representation = selectedProfile.GetRepresentation(selectedRepNameProp.stringValue);
@@ -731,6 +809,13 @@ private float GetCharacterRepresentationSectionHeight(SerializedProperty propert
                                 {
                                     // Add height for emotion dropdown
                                     height += EditorGUIUtility.singleLineHeight + 2f;
+
+                                    // Add height for representation-specific display options
+                                    SerializedProperty selectedRepEmotionProp = property.FindPropertyRelative("SelectedRepresentationEmotion");
+                                    if (selectedRepEmotionProp != null && !string.IsNullOrEmpty(selectedRepEmotionProp.stringValue))
+                                    {
+                                        height += GetRepresentationSpecificOptionsHeight(representation, selectedRepEmotionProp.stringValue, property);
+                                    }
                                 }
                             }
                         }
@@ -739,7 +824,7 @@ private float GetCharacterRepresentationSectionHeight(SerializedProperty propert
             }
             else
             {
-                // Primary character logic - existing height calculation
+                // Primary character logic
                 height += 2 * (EditorGUIUtility.singleLineHeight + 2f); // For representation and emotion dropdowns
 
                 SerializedProperty selectedRepProp = property.FindPropertyRelative("SelectedRepresentation");
@@ -749,6 +834,13 @@ private float GetCharacterRepresentationSectionHeight(SerializedProperty propert
                     if (emotionIDs != null && emotionIDs.Count > 0)
                     {
                         height += EditorGUIUtility.singleLineHeight + 2f;
+
+                        // Add height for representation-specific display options
+                        SerializedProperty selectedRepEmotionProp = property.FindPropertyRelative("SelectedRepresentationEmotion");
+                        if (selectedRepEmotionProp != null && !string.IsNullOrEmpty(selectedRepEmotionProp.stringValue))
+                        {
+                            height += GetRepresentationSpecificOptionsHeight(characterRepresentation, selectedRepEmotionProp.stringValue, property);
+                        }
                     }
                 }
 
@@ -757,6 +849,120 @@ private float GetCharacterRepresentationSectionHeight(SerializedProperty propert
                 {
                     height += previewableRepresentation.GetPreviewHeight() + 2f;
                 }
+            }
+
+            return height;
+        }
+
+        /// <summary>
+        ///Calculates height for a single character representation, including representation-specific options
+        /// </summary>
+        private float GetSingleCharacterRepresentationHeight(SerializedProperty property, SerializedProperty mainProperty, bool useRepresentationNameInsteadOfID)
+        {
+            if (property == null) return 0f;
+
+            float height = 0f;
+            float spacing = 2f;
+            
+            // Add height for character label
+            height += EditorGUIUtility.singleLineHeight + spacing;
+
+            SerializedObject serializedObject = property.serializedObject;
+            var conversationObject = serializedObject.targetObject as ConvoCoreConversationData;
+
+            if (conversationObject == null)
+            {
+                return height + EditorGUIUtility.singleLineHeight + spacing; // Just for error message
+            }
+
+            var validProfiles = conversationObject.ConversationParticipantProfiles?.Where(p => p != null).ToList();
+            if (validProfiles == null || validProfiles.Count == 0)
+            {
+                return height + EditorGUIUtility.singleLineHeight + spacing; // Just for "no participants" message
+            }
+
+            CharacterRepresentationBase selectedRepresentation = null;
+            string currentEmotionID = "";
+
+            if (useRepresentationNameInsteadOfID)
+            {
+                // Secondary/Tertiary character logic
+                var selectedCharacterIDProp = property.FindPropertyRelative("SelectedCharacterID");
+                var selectedRepNameProp = property.FindPropertyRelative("SelectedRepresentationName");
+                var selectedRepEmotionProp = property.FindPropertyRelative("SelectedRepresentationEmotion");
+
+                // Profile selection dropdown
+                height += EditorGUIUtility.singleLineHeight + spacing;
+
+                string selectedCharacterID = selectedCharacterIDProp?.stringValue ?? "";
+                if (!string.IsNullOrEmpty(selectedCharacterID))
+                {
+                    var selectedProfile = validProfiles.FirstOrDefault(p => p.CharacterID == selectedCharacterID);
+                    if (selectedProfile != null)
+                    {
+                        // Representation dropdown
+                        height += EditorGUIUtility.singleLineHeight + spacing;
+
+                        string selectedRepresentationName = selectedRepNameProp?.stringValue ?? "";
+                        if (!string.IsNullOrEmpty(selectedRepresentationName))
+                        {
+                            selectedRepresentation = selectedProfile.GetRepresentation(selectedRepresentationName);
+                            if (selectedRepresentation != null)
+                            {
+                                var emotionIDs = selectedRepresentation.GetEmotionIDs();
+                                if (emotionIDs != null && emotionIDs.Count > 0)
+                                {
+                                    // Emotion dropdown
+                                    height += EditorGUIUtility.singleLineHeight + spacing;
+                                    currentEmotionID = selectedRepEmotionProp?.stringValue ?? "";
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            else
+            {
+                // Primary character logic
+                var characterIDProp = mainProperty.FindPropertyRelative("characterID");
+                var selectedRepNameProp = property.FindPropertyRelative("SelectedRepresentationName");
+                var selectedRepEmotionProp = property.FindPropertyRelative("SelectedRepresentationEmotion");
+
+                string characterID = characterIDProp?.stringValue ?? "";
+                var profile = validProfiles.FirstOrDefault(p => p.CharacterID == characterID);
+
+                if (profile != null)
+                {
+                    // Representation dropdown
+                    height += EditorGUIUtility.singleLineHeight + spacing;
+
+                    string selectedRepresentationName = selectedRepNameProp?.stringValue ?? "";
+                    if (!string.IsNullOrEmpty(selectedRepresentationName))
+                    {
+                        selectedRepresentation = profile.GetRepresentation(selectedRepresentationName);
+                        if (selectedRepresentation != null)
+                        {
+                            var emotionIDs = selectedRepresentation.GetEmotionIDs();
+                            if (emotionIDs != null && emotionIDs.Count > 0)
+                            {
+                                // Emotion dropdown
+                                height += EditorGUIUtility.singleLineHeight + spacing;
+                                currentEmotionID = selectedRepEmotionProp?.stringValue ?? "";
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    // Just participant selection dropdown
+                    height += EditorGUIUtility.singleLineHeight + spacing;
+                }
+            }
+
+            // Add height for representation-specific display options
+            if (selectedRepresentation != null && !string.IsNullOrEmpty(currentEmotionID))
+            {
+                height += GetRepresentationSpecificOptionsHeight(selectedRepresentation, currentEmotionID, property);
             }
 
             return height;

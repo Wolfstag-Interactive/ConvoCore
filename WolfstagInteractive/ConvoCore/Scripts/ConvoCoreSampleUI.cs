@@ -157,8 +157,8 @@ void RenderCharacterRepresentation(
 
         if (emotionMappingObject is SpriteEmotionMapping spriteMapping)
         {
-            // Extract the DisplayOptions for this emotion
-            DialogueLineDisplayOptions options = spriteMapping.DisplayOptions;
+            // Use per-line display options if available, otherwise fall back to emotion defaults
+            DialogueLineDisplayOptions options = representationData.LineSpecificDisplayOptions ?? spriteMapping.DisplayOptions;
 
             // Render portrait sprite
             if (spriteMapping.PortraitSprite != null && portraitImage != null)
@@ -188,6 +188,7 @@ void RenderCharacterRepresentation(
         }
     }
 }
+
 
 /// <summary>
 /// Helper method to resolve character representation from representation data

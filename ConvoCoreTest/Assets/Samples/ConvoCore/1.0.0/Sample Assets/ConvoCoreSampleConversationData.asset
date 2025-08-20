@@ -25,16 +25,40 @@ MonoBehaviour:
       SelectedRepresentationName: Sprites
       SelectedRepresentation: {fileID: 11400000, guid: cf61be94e9ae46b4da28bb23d0bfa60f, type: 2}
       SelectedRepresentationEmotion: Scared
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
     SecondaryCharacterRepresentation:
-      SelectedCharacterID: 
-      SelectedRepresentationName: 
+      SelectedCharacterID: Jared
+      SelectedRepresentationName: Sprites
       SelectedRepresentation: {fileID: 0}
-      SelectedRepresentationEmotion: 
+      SelectedRepresentationEmotion: Default
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
     TertiaryCharacterRepresentation:
       SelectedCharacterID: 
       SelectedRepresentationName: 
       SelectedRepresentation: {fileID: 0}
       SelectedRepresentationEmotion: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
     - Language: EN
       Text: "Jared... we\u2019re definitely off-trail."
@@ -55,16 +79,40 @@ MonoBehaviour:
       SelectedRepresentationName: Sprites
       SelectedRepresentation: {fileID: 11400000, guid: 5b9d585132056d5479e01ea082d4b2be, type: 2}
       SelectedRepresentationEmotion: Default
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
     SecondaryCharacterRepresentation:
       SelectedCharacterID: 
       SelectedRepresentationName: 
       SelectedRepresentation: {fileID: 0}
       SelectedRepresentationEmotion: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
     TertiaryCharacterRepresentation:
       SelectedCharacterID: 
       SelectedRepresentationName: 
       SelectedRepresentation: {fileID: 0}
       SelectedRepresentationEmotion: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
     - Language: EN
       Text: "Technically, we\u2019re *still* in the forest. Nature counts."
@@ -85,16 +133,40 @@ MonoBehaviour:
       SelectedRepresentationName: Sprites
       SelectedRepresentation: {fileID: 11400000, guid: cf61be94e9ae46b4da28bb23d0bfa60f, type: 2}
       SelectedRepresentationEmotion: Default
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
     SecondaryCharacterRepresentation:
       SelectedCharacterID: 
       SelectedRepresentationName: 
       SelectedRepresentation: {fileID: 0}
       SelectedRepresentationEmotion: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
     TertiaryCharacterRepresentation:
       SelectedCharacterID: 
       SelectedRepresentationName: 
       SelectedRepresentation: {fileID: 0}
       SelectedRepresentationEmotion: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
     - Language: EN
       Text: "We\u2019ve circled that tree three times now."
@@ -115,16 +187,40 @@ MonoBehaviour:
       SelectedRepresentationName: Sprites
       SelectedRepresentation: {fileID: 11400000, guid: 5b9d585132056d5479e01ea082d4b2be, type: 2}
       SelectedRepresentationEmotion: Default
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
     SecondaryCharacterRepresentation:
       SelectedCharacterID: 
       SelectedRepresentationName: 
       SelectedRepresentation: {fileID: 0}
       SelectedRepresentationEmotion: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
     TertiaryCharacterRepresentation:
       SelectedCharacterID: 
       SelectedRepresentationName: 
       SelectedRepresentation: {fileID: 0}
       SelectedRepresentationEmotion: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
     - Language: EN
       Text: "It\u2019s a popular tree. Five stars on TreeAdvisor."
@@ -145,16 +241,40 @@ MonoBehaviour:
       SelectedRepresentationName: Sprites
       SelectedRepresentation: {fileID: 11400000, guid: cf61be94e9ae46b4da28bb23d0bfa60f, type: 2}
       SelectedRepresentationEmotion: Default
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
     SecondaryCharacterRepresentation:
       SelectedCharacterID: 
       SelectedRepresentationName: 
       SelectedRepresentation: {fileID: 0}
       SelectedRepresentationEmotion: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
     TertiaryCharacterRepresentation:
       SelectedCharacterID: 
       SelectedRepresentationName: 
       SelectedRepresentation: {fileID: 0}
       SelectedRepresentationEmotion: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
     - Language: EN
       Text: Shh! Did you hear that?
@@ -175,16 +295,40 @@ MonoBehaviour:
       SelectedRepresentationName: Sprites
       SelectedRepresentation: {fileID: 11400000, guid: 5b9d585132056d5479e01ea082d4b2be, type: 2}
       SelectedRepresentationEmotion: Default
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
     SecondaryCharacterRepresentation:
       SelectedCharacterID: 
       SelectedRepresentationName: 
       SelectedRepresentation: {fileID: 0}
       SelectedRepresentationEmotion: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
     TertiaryCharacterRepresentation:
       SelectedCharacterID: 
       SelectedRepresentationName: 
       SelectedRepresentation: {fileID: 0}
       SelectedRepresentationEmotion: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
     - Language: EN
       Text: "Maybe it\u2019s a bear. Or a ranger with snacks."
@@ -204,17 +348,41 @@ MonoBehaviour:
       SelectedCharacterID: 
       SelectedRepresentationName: Sprites
       SelectedRepresentation: {fileID: 11400000, guid: 52e24c290fb50014b8aee74d5f275726, type: 2}
-      SelectedRepresentationEmotion: Default
+      SelectedRepresentationEmotion: ???
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
     SecondaryCharacterRepresentation:
       SelectedCharacterID: 
       SelectedRepresentationName: 
       SelectedRepresentation: {fileID: 0}
       SelectedRepresentationEmotion: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
     TertiaryCharacterRepresentation:
       SelectedCharacterID: 
       SelectedRepresentationName: 
       SelectedRepresentation: {fileID: 0}
       SelectedRepresentationEmotion: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
     - Language: EN
       Text: '*A towering silhouette appears between the trees. Antlers like twisted
@@ -236,16 +404,40 @@ MonoBehaviour:
       SelectedRepresentationName: Sprites
       SelectedRepresentation: {fileID: 11400000, guid: cf61be94e9ae46b4da28bb23d0bfa60f, type: 2}
       SelectedRepresentationEmotion: Default
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
     SecondaryCharacterRepresentation:
       SelectedCharacterID: 
       SelectedRepresentationName: 
       SelectedRepresentation: {fileID: 0}
       SelectedRepresentationEmotion: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
     TertiaryCharacterRepresentation:
       SelectedCharacterID: 
       SelectedRepresentationName: 
       SelectedRepresentation: {fileID: 0}
       SelectedRepresentationEmotion: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
     - Language: EN
       Text: What is *that?!*
@@ -265,17 +457,41 @@ MonoBehaviour:
       SelectedCharacterID: 
       SelectedRepresentationName: Sprites
       SelectedRepresentation: {fileID: 11400000, guid: 5b9d585132056d5479e01ea082d4b2be, type: 2}
-      SelectedRepresentationEmotion: Default
+      SelectedRepresentationEmotion: HeartEyes
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
     SecondaryCharacterRepresentation:
-      SelectedCharacterID: 
-      SelectedRepresentationName: 
+      SelectedCharacterID: Wolfstag
+      SelectedRepresentationName: Sprites
       SelectedRepresentation: {fileID: 0}
-      SelectedRepresentationEmotion: 
+      SelectedRepresentationEmotion: Default
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
     TertiaryCharacterRepresentation:
       SelectedCharacterID: 
       SelectedRepresentationName: 
       SelectedRepresentation: {fileID: 0}
       SelectedRepresentationEmotion: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
     - Language: EN
       Text: '*gasps* Whoooooa. Look at you!'
@@ -295,17 +511,41 @@ MonoBehaviour:
       SelectedCharacterID: 
       SelectedRepresentationName: Sprites
       SelectedRepresentation: {fileID: 11400000, guid: 5b9d585132056d5479e01ea082d4b2be, type: 2}
-      SelectedRepresentationEmotion: Default
+      SelectedRepresentationEmotion: HeartEyes
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
     SecondaryCharacterRepresentation:
-      SelectedCharacterID: 
-      SelectedRepresentationName: 
+      SelectedCharacterID: Wolfstag
+      SelectedRepresentationName: Sprites
       SelectedRepresentation: {fileID: 0}
-      SelectedRepresentationEmotion: 
+      SelectedRepresentationEmotion: Default
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
     TertiaryCharacterRepresentation:
       SelectedCharacterID: 
       SelectedRepresentationName: 
       SelectedRepresentation: {fileID: 0}
       SelectedRepresentationEmotion: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
     - Language: EN
       Text: "Are you lost too, buddy? You need scritches? Huh? Who\u2019s a majestic
@@ -329,16 +569,40 @@ MonoBehaviour:
       SelectedRepresentationName: Sprites
       SelectedRepresentation: {fileID: 11400000, guid: 52e24c290fb50014b8aee74d5f275726, type: 2}
       SelectedRepresentationEmotion: Default
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
     SecondaryCharacterRepresentation:
       SelectedCharacterID: 
       SelectedRepresentationName: 
       SelectedRepresentation: {fileID: 0}
       SelectedRepresentationEmotion: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
     TertiaryCharacterRepresentation:
       SelectedCharacterID: 
       SelectedRepresentationName: 
       SelectedRepresentation: {fileID: 0}
       SelectedRepresentationEmotion: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
     - Language: EN
       Text: '*It tilts its head slightly. Curious.*'
@@ -358,17 +622,41 @@ MonoBehaviour:
       SelectedCharacterID: 
       SelectedRepresentationName: Sprites
       SelectedRepresentation: {fileID: 11400000, guid: cf61be94e9ae46b4da28bb23d0bfa60f, type: 2}
-      SelectedRepresentationEmotion: Default
+      SelectedRepresentationEmotion: Scared
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
     SecondaryCharacterRepresentation:
       SelectedCharacterID: 
       SelectedRepresentationName: 
       SelectedRepresentation: {fileID: 0}
       SelectedRepresentationEmotion: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
     TertiaryCharacterRepresentation:
       SelectedCharacterID: 
       SelectedRepresentationName: 
       SelectedRepresentation: {fileID: 0}
       SelectedRepresentationEmotion: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
     - Language: EN
       Text: "Jared\u2026 stop trying to pet the antler demon!"
@@ -389,16 +677,40 @@ MonoBehaviour:
       SelectedRepresentationName: Sprites
       SelectedRepresentation: {fileID: 11400000, guid: 52e24c290fb50014b8aee74d5f275726, type: 2}
       SelectedRepresentationEmotion: Default
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
     SecondaryCharacterRepresentation:
       SelectedCharacterID: 
       SelectedRepresentationName: 
       SelectedRepresentation: {fileID: 0}
       SelectedRepresentationEmotion: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
     TertiaryCharacterRepresentation:
       SelectedCharacterID: 
       SelectedRepresentationName: 
       SelectedRepresentation: {fileID: 0}
       SelectedRepresentationEmotion: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
     - Language: EN
       Text: "*The shadows melt away. The creature\u2019s full form is revealed\u2014fur
@@ -421,17 +733,41 @@ MonoBehaviour:
       SelectedCharacterID: 
       SelectedRepresentationName: Sprites
       SelectedRepresentation: {fileID: 11400000, guid: 5b9d585132056d5479e01ea082d4b2be, type: 2}
-      SelectedRepresentationEmotion: Default
+      SelectedRepresentationEmotion: HeartEyes
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
     SecondaryCharacterRepresentation:
-      SelectedCharacterID: 
-      SelectedRepresentationName: 
+      SelectedCharacterID: Wolfstag
+      SelectedRepresentationName: Sprites
       SelectedRepresentation: {fileID: 0}
-      SelectedRepresentationEmotion: 
+      SelectedRepresentationEmotion: Default
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
     TertiaryCharacterRepresentation:
       SelectedCharacterID: 
       SelectedRepresentationName: 
       SelectedRepresentation: {fileID: 0}
       SelectedRepresentationEmotion: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
     - Language: EN
       Text: "Oh my god. He\u2019s gorgeous. I want ten of him."
@@ -452,16 +788,40 @@ MonoBehaviour:
       SelectedRepresentationName: Sprites
       SelectedRepresentation: {fileID: 11400000, guid: cf61be94e9ae46b4da28bb23d0bfa60f, type: 2}
       SelectedRepresentationEmotion: Default
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
     SecondaryCharacterRepresentation:
       SelectedCharacterID: 
       SelectedRepresentationName: 
       SelectedRepresentation: {fileID: 0}
       SelectedRepresentationEmotion: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
     TertiaryCharacterRepresentation:
       SelectedCharacterID: 
       SelectedRepresentationName: 
       SelectedRepresentation: {fileID: 0}
       SelectedRepresentationEmotion: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
     - Language: EN
       Text: "...I think he\u2019s leading us somewhere."
@@ -482,16 +842,40 @@ MonoBehaviour:
       SelectedRepresentationName: Sprites
       SelectedRepresentation: {fileID: 11400000, guid: 52e24c290fb50014b8aee74d5f275726, type: 2}
       SelectedRepresentationEmotion: Default
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
     SecondaryCharacterRepresentation:
       SelectedCharacterID: 
       SelectedRepresentationName: 
       SelectedRepresentation: {fileID: 0}
       SelectedRepresentationEmotion: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
     TertiaryCharacterRepresentation:
       SelectedCharacterID: 
       SelectedRepresentationName: 
       SelectedRepresentation: {fileID: 0}
       SelectedRepresentationEmotion: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
     - Language: EN
       Text: '*He glances back, takes a few careful steps, then waits.*'
@@ -512,16 +896,40 @@ MonoBehaviour:
       SelectedRepresentationName: Sprites
       SelectedRepresentation: {fileID: 11400000, guid: 5b9d585132056d5479e01ea082d4b2be, type: 2}
       SelectedRepresentationEmotion: Default
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
     SecondaryCharacterRepresentation:
       SelectedCharacterID: 
       SelectedRepresentationName: 
       SelectedRepresentation: {fileID: 0}
       SelectedRepresentationEmotion: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
     TertiaryCharacterRepresentation:
       SelectedCharacterID: 
       SelectedRepresentationName: 
       SelectedRepresentation: {fileID: 0}
       SelectedRepresentationEmotion: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
     - Language: EN
       Text: "Look at him! He\u2019s so polite. Trail angel confirmed."
@@ -542,16 +950,40 @@ MonoBehaviour:
       SelectedRepresentationName: Sprites
       SelectedRepresentation: {fileID: 11400000, guid: cf61be94e9ae46b4da28bb23d0bfa60f, type: 2}
       SelectedRepresentationEmotion: Default
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
     SecondaryCharacterRepresentation:
       SelectedCharacterID: 
       SelectedRepresentationName: 
       SelectedRepresentation: {fileID: 0}
       SelectedRepresentationEmotion: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
     TertiaryCharacterRepresentation:
       SelectedCharacterID: 
       SelectedRepresentationName: 
       SelectedRepresentation: {fileID: 0}
       SelectedRepresentationEmotion: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
     - Language: EN
       Text: I think he wants us to follow. And... I think we should.
@@ -572,16 +1004,40 @@ MonoBehaviour:
       SelectedRepresentationName: Sprites
       SelectedRepresentation: {fileID: 11400000, guid: 52e24c290fb50014b8aee74d5f275726, type: 2}
       SelectedRepresentationEmotion: Default
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
     SecondaryCharacterRepresentation:
       SelectedCharacterID: 
       SelectedRepresentationName: 
       SelectedRepresentation: {fileID: 0}
       SelectedRepresentationEmotion: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
     TertiaryCharacterRepresentation:
       SelectedCharacterID: 
       SelectedRepresentationName: 
       SelectedRepresentation: {fileID: 0}
       SelectedRepresentationEmotion: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
     - Language: EN
       Text: '*The creature moves ahead again, parting the brush. Bits of a path peek
@@ -605,16 +1061,40 @@ MonoBehaviour:
       SelectedRepresentationName: Sprites
       SelectedRepresentation: {fileID: 11400000, guid: 5b9d585132056d5479e01ea082d4b2be, type: 2}
       SelectedRepresentationEmotion: Default
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
     SecondaryCharacterRepresentation:
       SelectedCharacterID: 
       SelectedRepresentationName: 
       SelectedRepresentation: {fileID: 0}
       SelectedRepresentationEmotion: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
     TertiaryCharacterRepresentation:
       SelectedCharacterID: 
       SelectedRepresentationName: 
       SelectedRepresentation: {fileID: 0}
       SelectedRepresentationEmotion: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
     - Language: EN
       Text: "Wait... this looks familiar. That\u2019s the ridge! That\u2019s the
@@ -638,16 +1118,40 @@ MonoBehaviour:
       SelectedRepresentationName: Sprites
       SelectedRepresentation: {fileID: 11400000, guid: cf61be94e9ae46b4da28bb23d0bfa60f, type: 2}
       SelectedRepresentationEmotion: Default
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
     SecondaryCharacterRepresentation:
       SelectedCharacterID: 
       SelectedRepresentationName: 
       SelectedRepresentation: {fileID: 0}
       SelectedRepresentationEmotion: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
     TertiaryCharacterRepresentation:
       SelectedCharacterID: 
       SelectedRepresentationName: 
       SelectedRepresentation: {fileID: 0}
       SelectedRepresentationEmotion: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
     - Language: EN
       Text: He really *is* guiding us...
@@ -668,16 +1172,40 @@ MonoBehaviour:
       SelectedRepresentationName: Sprites
       SelectedRepresentation: {fileID: 11400000, guid: 52e24c290fb50014b8aee74d5f275726, type: 2}
       SelectedRepresentationEmotion: Default
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
     SecondaryCharacterRepresentation:
       SelectedCharacterID: 
       SelectedRepresentationName: 
       SelectedRepresentation: {fileID: 0}
       SelectedRepresentationEmotion: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
     TertiaryCharacterRepresentation:
       SelectedCharacterID: 
       SelectedRepresentationName: 
       SelectedRepresentation: {fileID: 0}
       SelectedRepresentationEmotion: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
     - Language: EN
       Text: '*He pauses at the clearing''s edge, makes eye contact, then silently
@@ -688,7 +1216,9 @@ MonoBehaviour:
     - Language: ES
       Text: '*Se detiene en el borde del claro, nos mira y desaparece entre la niebla.*'
     clip: {fileID: 0}
-    ActionsBeforeDialogueLine: []
+    ActionsBeforeDialogueLine:
+    - {fileID: 11400000, guid: 2650ad23580b61540b4a53f42fee53d2, type: 2}
+    - {fileID: 11400000, guid: dc2451cb96191d84db05170eea3a7d5f, type: 2}
     ActionsAfterDialogueLine: []
     UserInputMethod: 0
     TimeBeforeNextLine: 0
@@ -700,16 +1230,40 @@ MonoBehaviour:
       SelectedRepresentationName: Sprites
       SelectedRepresentation: {fileID: 11400000, guid: 5b9d585132056d5479e01ea082d4b2be, type: 2}
       SelectedRepresentationEmotion: Default
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
     SecondaryCharacterRepresentation:
       SelectedCharacterID: 
       SelectedRepresentationName: 
       SelectedRepresentation: {fileID: 0}
       SelectedRepresentationEmotion: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
     TertiaryCharacterRepresentation:
       SelectedCharacterID: 
       SelectedRepresentationName: 
       SelectedRepresentation: {fileID: 0}
       SelectedRepresentationEmotion: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
     - Language: EN
       Text: ...Goodbye, magic antler puppy. I hope you find your own trail home.
@@ -731,16 +1285,40 @@ MonoBehaviour:
       SelectedRepresentationName: Sprites
       SelectedRepresentation: {fileID: 11400000, guid: cf61be94e9ae46b4da28bb23d0bfa60f, type: 2}
       SelectedRepresentationEmotion: Default
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
     SecondaryCharacterRepresentation:
       SelectedCharacterID: 
       SelectedRepresentationName: 
       SelectedRepresentation: {fileID: 0}
       SelectedRepresentationEmotion: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
     TertiaryCharacterRepresentation:
       SelectedCharacterID: 
       SelectedRepresentationName: 
       SelectedRepresentation: {fileID: 0}
       SelectedRepresentationEmotion: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
     - Language: EN
       Text: "...Next time, I\u2019m bringing a map and a compass. And maybe pepper

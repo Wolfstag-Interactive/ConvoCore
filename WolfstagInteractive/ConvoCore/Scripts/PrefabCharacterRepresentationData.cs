@@ -147,8 +147,9 @@ namespace WolfstagInteractive.ConvoCore
 
 
 #endif
+    }
 
-        [System.Serializable]
+    [System.Serializable]
         public class EmotionPrefabMapping
         {
             public string EmotionID;
@@ -163,4 +164,3 @@ namespace WolfstagInteractive.ConvoCore
                 }
             }
         }
-    }

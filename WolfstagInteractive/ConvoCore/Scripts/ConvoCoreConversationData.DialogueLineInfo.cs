@@ -15,6 +15,9 @@ namespace WolfstagInteractive.ConvoCore
             public CharacterRepresentationBase SelectedRepresentation;
             [Tooltip("Specify the emotion for this dialogue line by name.")]
             public string SelectedRepresentationEmotion; // Name of the emotion selected via dropdown
+            [Header("Per-Line Display Overrides")]
+            [Tooltip("Display options specific to this dialogue line. These override the default emotion settings.")]
+            public DialogueLineDisplayOptions LineSpecificDisplayOptions;
 
         }
     }

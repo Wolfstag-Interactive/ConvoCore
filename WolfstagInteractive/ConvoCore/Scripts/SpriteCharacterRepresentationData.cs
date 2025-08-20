@@ -10,6 +10,9 @@ namespace WolfstagInteractive.ConvoCore
 {
     [CreateAssetMenu(fileName = "SpriteRepresentation", menuName = "ConvoCore/Sprite Representation")]
     public class SpriteCharacterRepresentationData : CharacterRepresentationBase
+    #if UNITY_EDITOR
+    , IDialogueLineEditorCustomizable
+    #endif
     {
         [Header("Emotion Mappings")]
         [Tooltip("List of emotion mappings that pair an emotion ID with a portrait and full body sprite.")]
@@ -72,7 +75,119 @@ namespace WolfstagInteractive.ConvoCore
             Debug.LogWarning("No emotion mappings available in sprite-based representation.");
             return null;
         }
+
 #if UNITY_EDITOR
+        #region IDialogueLineEditorCustomizable Implementation
+        
+        public Rect DrawDialogueLineOptions(Rect rect, string emotionID, SerializedProperty displayOptionsProperty, float spacing)
+        {
+            // Use a unique key for this specific property to track foldout state
+            string foldoutKey = $"DisplayOptions_{displayOptionsProperty.propertyPath}";
+            
+            // Get or initialize foldout state
+            if (!_displayOptionsFoldouts.TryGetValue(foldoutKey, out bool foldoutState))
+            {
+                _displayOptionsFoldouts[foldoutKey] = false;
+                foldoutState = false;
+            }
+
+            // Draw foldout header
+            bool newFoldoutState = EditorGUI.Foldout(rect, foldoutState, "Sprite Display Options", true);
+            if (newFoldoutState != foldoutState)
+            {
+                _displayOptionsFoldouts[foldoutKey] = newFoldoutState;
+            }
+            rect.y += EditorGUIUtility.singleLineHeight + spacing;
+
+            // Only draw the options if expanded
+            if (newFoldoutState && displayOptionsProperty != null)
+            {
+                // Add indentation
+                float originalX = rect.x;
+                rect.x += 15f;
+                rect.width -= 15f;
+
+                // Portrait settings
+                EditorGUI.LabelField(rect, "Portrait Settings", EditorStyles.miniBoldLabel);
+                rect.y += EditorGUIUtility.singleLineHeight + spacing;
+                
+                var portraitScaleProp = displayOptionsProperty.FindPropertyRelative("PortraitScale");
+                if (portraitScaleProp != null)
+                {
+                    EditorGUI.PropertyField(rect, portraitScaleProp, new GUIContent("Portrait Scale"));
+                    rect.y += EditorGUIUtility.singleLineHeight + spacing;
+                }
+                
+                var flipPortraitXProp = displayOptionsProperty.FindPropertyRelative("FlipPortraitX");
+                if (flipPortraitXProp != null)
+                {
+                    EditorGUI.PropertyField(rect, flipPortraitXProp, new GUIContent("Flip Portrait X"));
+                    rect.y += EditorGUIUtility.singleLineHeight + spacing;
+                }
+                
+                var flipPortraitYProp = displayOptionsProperty.FindPropertyRelative("FlipPortraitY");
+                if (flipPortraitYProp != null)
+                {
+                    EditorGUI.PropertyField(rect, flipPortraitYProp, new GUIContent("Flip Portrait Y"));
+                    rect.y += EditorGUIUtility.singleLineHeight + spacing;
+                }
+                
+                // Full body settings
+                EditorGUI.LabelField(rect, "Full Body Settings", EditorStyles.miniBoldLabel);
+                rect.y += EditorGUIUtility.singleLineHeight + spacing;
+                
+                var fullBodyScaleProp = displayOptionsProperty.FindPropertyRelative("FullBodyScale");
+                if (fullBodyScaleProp != null)
+                {
+                    EditorGUI.PropertyField(rect, fullBodyScaleProp, new GUIContent("Full Body Scale"));
+                    rect.y += EditorGUIUtility.singleLineHeight + spacing;
+                }
+                
+                var flipFullBodyXProp = displayOptionsProperty.FindPropertyRelative("FlipFullBodyX");
+                if (flipFullBodyXProp != null)
+                {
+                    EditorGUI.PropertyField(rect, flipFullBodyXProp, new GUIContent("Flip Full Body X"));
+                    rect.y += EditorGUIUtility.singleLineHeight + spacing;
+                }
+                
+                var flipFullBodyYProp = displayOptionsProperty.FindPropertyRelative("FlipFullBodyY");
+                if (flipFullBodyYProp != null)
+                {
+                    EditorGUI.PropertyField(rect, flipFullBodyYProp, new GUIContent("Flip Full Body Y"));
+                    rect.y += EditorGUIUtility.singleLineHeight + spacing;
+                }
+
+                // Restore original X position
+                rect.x = originalX;
+                rect.width += 15f;
+            }
+            
+            return rect;
+        }
+
+        public float GetDialogueLineOptionsHeight(string emotionID, SerializedProperty displayOptionsProperty)
+        {
+            // Always include the foldout header height
+            float height = EditorGUIUtility.singleLineHeight + 2f;
+            
+            if (displayOptionsProperty != null)
+            {
+                // Use a unique key for this specific property to check foldout state
+                string foldoutKey = $"DisplayOptions_{displayOptionsProperty.propertyPath}";
+                
+                // Check if foldout is expanded
+                if (_displayOptionsFoldouts.TryGetValue(foldoutKey, out bool foldoutState) && foldoutState)
+                {
+                    // Add height for: 2 sub-headers + 6 fields
+                    height += (EditorGUIUtility.singleLineHeight + 2f) * 8f;
+                }
+            }
+            
+            return height;
+        }
+        
+        #endregion
+
         /// <summary>
         /// Calculates the height required to display an inline preview.
         /// </summary>
@@ -111,7 +226,6 @@ namespace WolfstagInteractive.ConvoCore
 
             // Collapsed: Only include the dropdown height
             return dropdownHeight;
-
         }
 
         /// <summary>
@@ -144,7 +258,6 @@ namespace WolfstagInteractive.ConvoCore
                 // Toggle the visibility state
                 _foldoutStates[this] = !_foldoutStates[this];
             }
-
 
             // If the foldout is collapsed, skip rendering further content
             if (!_foldoutStates[this])
@@ -181,8 +294,13 @@ namespace WolfstagInteractive.ConvoCore
                     ScaleMode.ScaleToFit
                 );
             }
-
         }
+
+        /// <summary>
+        /// Cache for foldout states for display options based on property paths.
+        /// Prevents foldout states from resetting across UI refreshes.
+        /// </summary>
+        private static Dictionary<string, bool> _displayOptionsFoldouts = new Dictionary<string, bool>();
 
         /// <summary>
         /// Cache for foldout states based on objects being inspected.
@@ -190,8 +308,8 @@ namespace WolfstagInteractive.ConvoCore
         /// </summary>
         private static Dictionary<object, bool> _foldoutStates = new Dictionary<object, bool>();
 #endif
-
     }
+    
     [System.Serializable]
     public class SpriteEmotionMapping
     {
@@ -201,9 +319,8 @@ namespace WolfstagInteractive.ConvoCore
         public Sprite PortraitSprite;
         [Tooltip("Full body sprite for the emotion.")]
         public Sprite FullBodySprite;
-        [Header("Display Options")]
-        [Tooltip("Display options for how the character is rendered for each line.")]
+        [Header("Default Display Options")]
+        [Tooltip("Default display options for this emotion. Can be overridden per dialogue line.")]
         public DialogueLineDisplayOptions DisplayOptions = new DialogueLineDisplayOptions();
-
     }
 }
