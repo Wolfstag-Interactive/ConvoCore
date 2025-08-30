@@ -9,7 +9,10 @@ namespace WolfstagInteractive.ConvoCore
 {
     [CreateAssetMenu(fileName = "PrefabCharacterRepresentation",
         menuName = "ConvoCore/Prefab Character Representation")]
-    public class PrefabCharacterRepresentationData : CharacterRepresentationBase
+    public class PrefabCharacterRepresentationData : CharacterRepresentationBase 
+#if UNITY_EDITOR
+        , IDialogueLineEditorCustomizable
+#endif
     {
         [Header("Prefab Settings")] public GameObject CharacterPrefab;
 
@@ -143,24 +146,31 @@ namespace WolfstagInteractive.ConvoCore
                 EditorGUI.LabelField(position, "Prefab preview not available.");
             }
         }
-    }
 
-
-#endif
-    }
-
-    [System.Serializable]
-        public class EmotionPrefabMapping
+        public Rect DrawDialogueLineOptions(Rect rect, string emotionID, SerializedProperty displayOptionsProperty, float spacing)
         {
-            public string EmotionID;
-            public AnimatorOverrideController AnimatorOverride;
+            throw new System.NotImplementedException();
+        }
 
-            public void Apply(GameObject instance)
+        public float GetDialogueLineOptionsHeight(string emotionID, SerializedProperty displayOptionsProperty)
+        {
+            throw new System.NotImplementedException();
+        }
+    }
+#endif
+    [System.Serializable]
+    public class EmotionPrefabMapping
+    {
+        public string EmotionID;
+        public AnimatorOverrideController AnimatorOverride;
+
+        public void Apply(GameObject instance)
+        {
+            var animator = instance.GetComponent<Animator>();
+            if (animator != null && AnimatorOverride != null)
             {
-                var animator = instance.GetComponent<Animator>();
-                if (animator != null && AnimatorOverride != null)
-                {
-                    animator.runtimeAnimatorController = AnimatorOverride;
-                }
+                animator.runtimeAnimatorController = AnimatorOverride;
             }
         }
+    }
+}
