@@ -18,4 +18,4 @@ MonoBehaviour:
   CharacterID: Wolfstag
   Representations:
   - CharacterRepresentationName: Sprites
-    CharacterRepresentation: {fileID: 11400000, guid: 52e24c290fb50014b8aee74d5f275726, type: 2}
+    CharacterRepresentationType: {fileID: 11400000, guid: 52e24c290fb50014b8aee74d5f275726, type: 2}

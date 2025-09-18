@@ -79,7 +79,7 @@ MonoBehaviour:
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 1
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -121,6 +121,32 @@ MonoBehaviour:
   FullBodyImageLeft: {fileID: 4407448410953663419}
   FullBodyImageRight: {fileID: 3298351425223639175}
   ContinueButton: {fileID: 1644093088017464568}
+  AllowLineAdvanceOutsideButton: 1
+  AdvanceDialogueAction:
+    m_Name: Advance Dialogue
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 96bfacef-0ba9-4f87-8ab4-3a421d885f3f
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 0f7ef2a6-eae4-4b46-a155-43ebdf98b4f0
+      m_Path: <Mouse>/leftButton
+      m_Interactions: Press
+      m_Processors: 
+      m_Groups: 
+      m_Action: Advance Dialogue
+      m_Flags: 0
+    - m_Name: 
+      m_Id: 475d6fa9-0ad5-48b8-accf-ac573990b99e
+      m_Path: <Keyboard>/space
+      m_Interactions: Press
+      m_Processors: 
+      m_Groups: 
+      m_Action: Advance Dialogue
+      m_Flags: 0
+    m_Flags: 0
 --- !u!1 &1446910199070653478
 GameObject:
   m_ObjectHideFlags: 0
