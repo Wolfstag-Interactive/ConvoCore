@@ -1,5 +1,98 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!49 &-1897268438159788713
+TextAsset:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: EmbeddedYaml
+  m_Script: "Conversation1:\r\n  - CharacterID: \"Ava\"\r\n    LocalizedDialogue:\r\n     
+    EN: \"Jared... we\u2019re definitely off-trail.\"\r\n      FR: \"Jared... on
+    s'est clairement \xE9gar\xE9s.\"\r\n      ES: \"Jared... definitivamente nos
+    perdimos del sendero.\"\r\n\r\n  - CharacterID: \"Jared\"\r\n    LocalizedDialogue:\r\n     
+    EN: \"Technically, we\u2019re *still* in the forest. Nature counts.\"\r\n     
+    FR: \"Techniquement, on est toujours dans la for\xEAt. \xC7a compte, non?\"\r\n     
+    ES: \"T\xE9cnicamente, seguimos en el bosque. Eso cuenta.\"\r\n\r\n  - CharacterID:
+    \"Ava\"\r\n    LocalizedDialogue:\r\n      EN: \"We\u2019ve circled that tree
+    three times now.\"\r\n      FR: \"On a tourn\xE9 autour de cet arbre trois fois.\"\r\n     
+    ES: \"Hemos rodeado ese \xE1rbol tres veces.\"\r\n\r\n  - CharacterID: \"Jared\"\r\n   
+    LocalizedDialogue:\r\n      EN: \"It\u2019s a popular tree. Five stars on TreeAdvisor.\"\r\n     
+    FR: \"C\u2019est un arbre populaire. Cinq \xE9toiles sur TreeAdvisor.\"\r\n     
+    ES: \"Es un \xE1rbol famoso. Cinco estrellas en TreeAdvisor.\"\r\n\r\n  - CharacterID:
+    \"Ava\"\r\n    LocalizedDialogue:\r\n      EN: \"Shh! Did you hear that?\"\r\n     
+    FR: \"Chut! T\u2019as entendu \xE7a ?\"\r\n      ES: \"\xA1Shh! \xBFEscuchaste
+    eso?\"\r\n\r\n  - CharacterID: \"Jared\"\r\n    LocalizedDialogue:\r\n      EN:
+    \"Maybe it\u2019s a bear. Or a ranger with snacks.\"\r\n      FR: \"Peut-\xEAtre
+    un ours. Ou un garde forestier avec des snacks.\"\r\n      ES: \"Quiz\xE1s un
+    oso. O un guardabosques con bocadillos.\"\r\n\r\n  - CharacterID: \"Wolfstag\"\r\n   
+    LocalizedDialogue:\r\n      EN: \"*A towering silhouette appears between the
+    trees. Antlers like twisted branches.*\"\r\n      FR: \"*Une silhouette massive
+    \xE9merge entre les arbres. Des bois torsad\xE9s.*\"\r\n      ES: \"*Una silueta
+    imponente aparece entre los \xE1rboles. Astas retorcidas.*\"\r\n\r\n  - CharacterID:
+    \"Ava\"\r\n    LocalizedDialogue:\r\n      EN: \"What is *that?!*\"\r\n     
+    FR: \"C\u2019est quoi *\xE7a* ?!\"\r\n      ES: \"\xBF\xA1Qu\xE9 es *eso*!?\"\r\n\r\n 
+    - CharacterID: \"Jared\"\r\n    LocalizedDialogue:\r\n      EN: \"*gasps* Whoooooa.
+    Look at you!\"\r\n      FR: \"*hal\xE8tement* Wooooow. Regarde-moi \xE7a!\"\r\n     
+    ES: \"*jadea* \xA1Wooooow! \xA1M\xEDrate!\"\r\n\r\n  - CharacterID: \"Jared\"\r\n   
+    LocalizedDialogue:\r\n      EN: \"Are you lost too, buddy? You need scritches?
+    Huh? Who\u2019s a majestic forest beast? *You* are!\"\r\n      FR: \"Tu t\u2019es
+    perdu aussi, mon grand ? Tu veux des gratouilles ? Qui est une b\xEAte majestueuse
+    ? *C\u2019est toi!*\"\r\n      ES: \"\xBFTambi\xE9n est\xE1s perdido, amigo?
+    \xBFQuieres caricias? \xBFQui\xE9n es una bestia majestuosa? \xA1*T\xFA*!\"\r\n\r\n 
+    - CharacterID: \"Wolfstag\"\r\n    LocalizedDialogue:\r\n      EN: \"*It tilts
+    its head slightly. Curious.*\"\r\n      FR: \"*Il incline l\xE9g\xE8rement la
+    t\xEAte. Curieux.*\"\r\n      ES: \"*Inclina ligeramente la cabeza. Curioso.*\"\r\n\r\n 
+    - CharacterID: \"Ava\"\r\n    LocalizedDialogue:\r\n      EN: \"Jared\u2026 stop
+    trying to pet the antler demon!\"\r\n      FR: \"Jared\u2026 arr\xEAte d\u2019essayer
+    de caresser le d\xE9mon \xE0 bois!\"\r\n      ES: \"\xA1Jared... deja de intentar
+    acariciar al demonio de los cuernos!\"\r\n\r\n  - CharacterID: \"Wolfstag\"\r\n   
+    LocalizedDialogue:\r\n      EN: \"*The shadows melt away. The creature\u2019s
+    full form is revealed\u2014fur glows silver in the moonlight.*\"\r\n      FR:
+    \"*Les ombres se dissipent. La cr\xE9ature se d\xE9voile \u2014 sa fourrure luit
+    \xE0 la lumi\xE8re lunaire.*\"\r\n      ES: \"*Las sombras se desvanecen. Su
+    forma completa aparece \u2014 su pelaje brilla bajo la luna.*\"\r\n\r\n  - CharacterID:
+    \"Jared\"\r\n    LocalizedDialogue:\r\n      EN: \"Oh my god. He\u2019s gorgeous.
+    I want ten of him.\"\r\n      FR: \"Oh mon dieu. Il est splendide. J\u2019en
+    veux dix.\"\r\n      ES: \"Dios m\xEDo. Es hermoso. Quiero diez.\"\r\n\r\n  -
+    CharacterID: \"Ava\"\r\n    LocalizedDialogue:\r\n      EN: \"...I think he\u2019s
+    leading us somewhere.\"\r\n      FR: \"...Je crois qu\u2019il nous guide quelque
+    part.\"\r\n      ES: \"...Creo que nos est\xE1 guiando.\"\r\n\r\n  - CharacterID:
+    \"Wolfstag\"\r\n    LocalizedDialogue:\r\n      EN: \"*He glances back, takes
+    a few careful steps, then waits.*\"\r\n      FR: \"*Il jette un regard en arri\xE8re,
+    avance lentement, puis s\u2019arr\xEAte.*\"\r\n      ES: \"*Mira hacia atr\xE1s,
+    da unos pasos y espera.*\"\r\n\r\n  - CharacterID: \"Jared\"\r\n    LocalizedDialogue:\r\n     
+    EN: \"Look at him! He\u2019s so polite. Trail angel confirmed.\"\r\n      FR:
+    \"Regarde-le ! Trop poli. Ange du sentier confirm\xE9.\"\r\n      ES: \"\xA1M\xEDralo!
+    Tan educado. \xC1ngel del sendero confirmado.\"\r\n\r\n  - CharacterID: \"Ava\"\r\n   
+    LocalizedDialogue:\r\n      EN: \"I think he wants us to follow. And... I think
+    we should.\"\r\n      FR: \"Il veut qu\u2019on le suive. Et... je crois qu\u2019on
+    devrait.\"\r\n      ES: \"Quiere que lo sigamos. Y... creo que debemos hacerlo.\"\r\n\r\n 
+    - CharacterID: \"Wolfstag\"\r\n    LocalizedDialogue:\r\n      EN: \"*The creature
+    moves ahead again, parting the brush. Bits of a path peek through behind him.*\"\r\n     
+    FR: \"*La cr\xE9ature avance \xE0 nouveau, \xE9cartant les buissons. Un sentier
+    appara\xEEt derri\xE8re lui.*\"\r\n      ES: \"*La criatura avanza, apartando
+    los arbustos. Se revela un sendero detr\xE1s de \xE9l.*\"\r\n\r\n  - CharacterID:
+    \"Jared\"\r\n    LocalizedDialogue:\r\n      EN: \"Wait... this looks familiar.
+    That\u2019s the ridge! That\u2019s the way back!\"\r\n      FR: \"Attends...
+    \xE7a me dit quelque chose. C\u2019est la cr\xEAte ! C\u2019est le bon chemin
+    !\"\r\n      ES: \"Espera... esto me suena. \xA1Esa es la cresta! \xA1Ese es
+    el camino de regreso!\"\r\n\r\n  - CharacterID: \"Ava\"\r\n    LocalizedDialogue:\r\n     
+    EN: \"He really *is* guiding us...\"\r\n      FR: \"Il nous guide vraiment...\"\r\n     
+    ES: \"De verdad nos est\xE1 guiando...\"\r\n\r\n  - CharacterID: \"Wolfstag\"\r\n   
+    LocalizedDialogue:\r\n      EN: \"*He pauses at the clearing's edge, makes eye
+    contact, then silently disappears into the mist.*\"\r\n      FR: \"*Il s\u2019arr\xEAte
+    \xE0 la lisi\xE8re de la clairi\xE8re, nous regarde, puis dispara\xEEt dans la
+    brume.*\"\r\n      ES: \"*Se detiene en el borde del claro, nos mira y desaparece
+    entre la niebla.*\"\r\n\r\n  - CharacterID: \"Jared\"\r\n    LocalizedDialogue:\r\n     
+    EN: \"...Goodbye, magic antler puppy. I hope you find your own trail home.\"\r\n     
+    FR: \"...Adieu, chien magique \xE0 bois. J\u2019esp\xE8re que tu retrouveras
+    ton chemin.\"\r\n      ES: \"...Adi\xF3s, cachorro m\xE1gico de astas. Ojal\xE1
+    encuentres tu camino.\"\r\n\r\n  - CharacterID: \"Ava\"\r\n    LocalizedDialogue:\r\n     
+    EN: \"...Next time, I\u2019m bringing a map and a compass. And maybe pepper spray.\"\r\n     
+    FR: \"...La prochaine fois, je prends une carte, une boussole... et du spray
+    au poivre.\"\r\n      ES: \"...La pr\xF3xima vez, llevar\xE9 un mapa, una br\xFAjula...
+    y tal vez gas pimienta.\""
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1334,5 +1427,9 @@ MonoBehaviour:
     ActionsAfterDialogueLine: []
     UserInputMethod: 0
     TimeBeforeNextLine: 0
+  ConversationYaml: {fileID: -1897268438159788713}
+  AllowPersistentOverrides: 1
   FilePath: DialogueScriptSample.yml
+  SourceYaml: {fileID: 102900000, guid: 4612376414d9cc742be9c4b790213e6a, type: 3}
+  SourceYamlAssetPath: Assets/Samples/ConvoCore/1.0.0/Sample Assets/DialogueScriptSample.yml
   ConversationKey: Conversation1
