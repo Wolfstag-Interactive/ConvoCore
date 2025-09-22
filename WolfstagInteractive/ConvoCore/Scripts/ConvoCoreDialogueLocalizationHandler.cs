@@ -1,5 +1,5 @@
 using System;
-using System.Linq;
+using System.Collections.Generic;
 
 namespace WolfstagInteractive.ConvoCore
 {
@@ -10,89 +10,114 @@ namespace WolfstagInteractive.ConvoCore
         /// <summary>
         /// Constructor requires a LanguageManager instance for dependency injection.
         /// </summary>
-        /// <param name="convoCoreLanguageManager">Singleton instance of LanguageManager</param>
         public ConvoCoreDialogueLocalizationHandler(ConvoCoreLanguageManager convoCoreLanguageManager)
         {
             _convoCoreLanguageManager = convoCoreLanguageManager ?? throw new ArgumentNullException(nameof(convoCoreLanguageManager));
         }
 
         /// <summary>
-        /// Gets localized text for a dialogue line, handling fallbacks and logging.
+        /// Gets localized text for a dialogue line, with case-insensitive and base-locale fallback.
+        /// Tries: exact -> base (fr-CA -> fr) -> "en" -> base("en") -> first available.
         /// </summary>
         public LocalizedDialogueResult GetLocalizedDialogue(ConvoCoreConversationData.DialogueLineInfo lineInfo)
         {
-            if (lineInfo.LocalizedDialogues == null || lineInfo.LocalizedDialogues.Count == 0)
+            if (lineInfo?.LocalizedDialogues == null || lineInfo.LocalizedDialogues.Count == 0)
             {
                 return new LocalizedDialogueResult
                 {
                     Success = false,
                     Text = "[Error: Missing Translations]",
-                    ErrorMessage =
-                        $"LocalizedDialogues is null or empty for line {lineInfo.ConversationLineIndex} in '{lineInfo.ConversationID}'"
+                    ErrorMessage = $"LocalizedDialogues is null or empty for line {lineInfo?.ConversationLineIndex} in '{lineInfo?.ConversationID}'"
                 };
             }
 
-            var languageManager = ConvoCoreLanguageManager.Instance;
-            string currentLanguage = languageManager.CurrentLanguage;
+            // Build a case-insensitive map from the list
+            var map = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+            foreach (var ld in lineInfo.LocalizedDialogues)
+            {
+                if (!string.IsNullOrEmpty(ld.Language) && ld.Text != null)
+                    map[ld.Language] = ld.Text; // last-in wins if duplicates
+            }
 
-            // Try to find the translation for the current language.
-            var localizedDialogue = lineInfo.LocalizedDialogues
-                .FirstOrDefault(ld => ld.Language == currentLanguage);
+            string requested = _convoCoreLanguageManager?.CurrentLanguage ?? "en";
+            string fallback = "en";
 
-            if (localizedDialogue.Language != null)
+            // 1) exact
+            if (map.TryGetValue(requested, out var text))
+            {
+                return new LocalizedDialogueResult { Success = true, Text = text, UsedLanguage = requested };
+            }
+
+            // 2) base of requested (fr-CA -> fr)
+            var baseReq = BaseLang(requested);
+            if (!baseReq.Equals(requested, StringComparison.OrdinalIgnoreCase) &&
+                map.TryGetValue(baseReq, out text))
             {
                 return new LocalizedDialogueResult
                 {
                     Success = true,
-                    Text = localizedDialogue.Text,
-                    UsedLanguage = currentLanguage
-                };
-            }
-
-            // Try the fallback language if current language doesn't exist.
-            if (currentLanguage != languageManager.CurrentLanguage)
-            {
-                var fallbackDialogue = lineInfo.LocalizedDialogues
-                    .FirstOrDefault(ld => ld.Language == languageManager.CurrentLanguage);
-
-                if (fallbackDialogue.Language != null)
-                {
-                    return new LocalizedDialogueResult
-                    {
-                        Success = true,
-                        Text = fallbackDialogue.Text,
-                        UsedLanguage = languageManager.CurrentLanguage,
-                        IsFallback = true,
-                        ErrorMessage =
-                            $"Missing {currentLanguage} translation, using {languageManager.CurrentLanguage} fallback"
-                    };
-                }
-            }
-
-            // If no specific language is available, use the first available translation.
-            var defaultDialogue = lineInfo.LocalizedDialogues.FirstOrDefault();
-
-            if (defaultDialogue.Language != null)
-            {
-                return new LocalizedDialogueResult
-                {
-                    Success = true,
-                    Text = defaultDialogue.Text,
-                    UsedLanguage = defaultDialogue.Language,
+                    Text = text,
+                    UsedLanguage = baseReq,
                     IsFallback = true,
-                    ErrorMessage =
-                        $"Missing both {currentLanguage} and {languageManager.CurrentLanguage} translations. Using {defaultDialogue.Language}"
+                    ErrorMessage = $"Missing '{requested}', using '{baseReq}'."
                 };
             }
 
-            // If we reach here, there are no translations available.
+            // 3) fallback ("en")
+            if (map.TryGetValue(fallback, out text))
+            {
+                return new LocalizedDialogueResult
+                {
+                    Success = true,
+                    Text = text,
+                    UsedLanguage = fallback,
+                    IsFallback = true,
+                    ErrorMessage = $"Missing '{requested}', using '{fallback}'."
+                };
+            }
+
+            // 4) base of fallback
+            var baseFb = BaseLang(fallback);
+            if (!baseFb.Equals(fallback, StringComparison.OrdinalIgnoreCase) &&
+                map.TryGetValue(baseFb, out text))
+            {
+                return new LocalizedDialogueResult
+                {
+                    Success = true,
+                    Text = text,
+                    UsedLanguage = baseFb,
+                    IsFallback = true,
+                    ErrorMessage = $"Missing '{requested}', using '{baseFb}'."
+                };
+            }
+
+            // 5) first available
+            foreach (var kv in map)
+            {
+                return new LocalizedDialogueResult
+                {
+                    Success = true,
+                    Text = kv.Value,
+                    UsedLanguage = kv.Key,
+                    IsFallback = true,
+                    ErrorMessage = $"Missing '{requested}', using '{kv.Key}'."
+                };
+            }
+
+            // Shouldn't get here, but be safe
             return new LocalizedDialogueResult
             {
                 Success = false,
                 Text = "[Missing Translation]",
-                ErrorMessage =
-                    $"No translations available for line {lineInfo.ConversationLineIndex} in '{lineInfo.ConversationID}'"
+                ErrorMessage = $"No translations available for line {lineInfo.ConversationLineIndex} in '{lineInfo.ConversationID}'"
             };
+        }
+
+        private static string BaseLang(string code)
+        {
+            if (string.IsNullOrEmpty(code)) return code;
+            var i = code.IndexOfAny(new[] { '-', '_' });
+            return i > 0 ? code.Substring(0, i) : code;
         }
     }
 

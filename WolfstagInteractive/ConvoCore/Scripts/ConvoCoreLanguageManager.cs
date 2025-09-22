@@ -50,17 +50,27 @@ namespace WolfstagInteractive.ConvoCore
     
         public void SetLanguage(string newLanguage)
         {
-            if (_convoCoreLanguageSettings != null &&
-                _convoCoreLanguageSettings.SupportedLanguages.IndexOf(newLanguage) != -1)
+            if (_convoCoreLanguageSettings == null || _convoCoreLanguageSettings.SupportedLanguages == null)
             {
-                CurrentLanguage = newLanguage;
-                Debug.Log($"Language set to: {newLanguage}");
-                OnLanguageChanged?.Invoke(newLanguage);
+                Debug.LogWarning("Language settings are not loaded.");
+                return;
+            }
+
+            // case-insensitive match, but keep the project's canonical casing
+            var match = _convoCoreLanguageSettings.SupportedLanguages
+                .Find(l => string.Equals(l?.Trim(), newLanguage?.Trim(), StringComparison.OrdinalIgnoreCase));
+
+            if (!string.IsNullOrEmpty(match))
+            {
+                CurrentLanguage = match; // keep canonical casing from settings
+                Debug.Log($"Language set to: {CurrentLanguage}");
+                OnLanguageChanged?.Invoke(CurrentLanguage);
             }
             else
             {
                 Debug.LogWarning($"'{newLanguage}' is not a supported language.");
             }
         }
+
     }
 }

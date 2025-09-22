@@ -60,11 +60,11 @@ MonoBehaviour:
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
-    - Language: EN
+    - Language: en
       Text: "Jared... we\u2019re definitely off-trail."
-    - Language: FR
+    - Language: fr
       Text: "Jared... on s'est clairement \xE9gar\xE9s."
-    - Language: ES
+    - Language: es
       Text: Jared... definitivamente nos perdimos del sendero.
     clip: {fileID: 0}
     ActionsBeforeDialogueLine: []
@@ -114,11 +114,11 @@ MonoBehaviour:
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
-    - Language: EN
+    - Language: en
       Text: "Technically, we\u2019re *still* in the forest. Nature counts."
-    - Language: FR
+    - Language: fr
       Text: "Techniquement, on est toujours dans la for\xEAt. \xC7a compte, non?"
-    - Language: ES
+    - Language: es
       Text: "T\xE9cnicamente, seguimos en el bosque. Eso cuenta."
     clip: {fileID: 0}
     ActionsBeforeDialogueLine: []
@@ -168,11 +168,11 @@ MonoBehaviour:
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
-    - Language: EN
+    - Language: en
       Text: "We\u2019ve circled that tree three times now."
-    - Language: FR
+    - Language: fr
       Text: "On a tourn\xE9 autour de cet arbre trois fois."
-    - Language: ES
+    - Language: es
       Text: "Hemos rodeado ese \xE1rbol tres veces."
     clip: {fileID: 0}
     ActionsBeforeDialogueLine: []
@@ -222,11 +222,11 @@ MonoBehaviour:
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
-    - Language: EN
+    - Language: en
       Text: "It\u2019s a popular tree. Five stars on TreeAdvisor."
-    - Language: FR
+    - Language: fr
       Text: "C\u2019est un arbre populaire. Cinq \xE9toiles sur TreeAdvisor."
-    - Language: ES
+    - Language: es
       Text: "Es un \xE1rbol famoso. Cinco estrellas en TreeAdvisor."
     clip: {fileID: 0}
     ActionsBeforeDialogueLine: []
@@ -276,11 +276,11 @@ MonoBehaviour:
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
-    - Language: EN
+    - Language: en
       Text: Shh! Did you hear that?
-    - Language: FR
+    - Language: fr
       Text: "Chut! T\u2019as entendu \xE7a ?"
-    - Language: ES
+    - Language: es
       Text: "\xA1Shh! \xBFEscuchaste eso?"
     clip: {fileID: 0}
     ActionsBeforeDialogueLine: []
@@ -330,11 +330,11 @@ MonoBehaviour:
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
-    - Language: EN
+    - Language: en
       Text: "Maybe it\u2019s a bear. Or a ranger with snacks."
-    - Language: FR
+    - Language: fr
       Text: "Peut-\xEAtre un ours. Ou un garde forestier avec des snacks."
-    - Language: ES
+    - Language: es
       Text: "Quiz\xE1s un oso. O un guardabosques con bocadillos."
     clip: {fileID: 0}
     ActionsBeforeDialogueLine: []
@@ -384,12 +384,12 @@ MonoBehaviour:
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
-    - Language: EN
+    - Language: en
       Text: '*A towering silhouette appears between the trees. Antlers like twisted
         branches.*'
-    - Language: FR
+    - Language: fr
       Text: "*Une silhouette massive \xE9merge entre les arbres. Des bois torsad\xE9s.*"
-    - Language: ES
+    - Language: es
       Text: "*Una silueta imponente aparece entre los \xE1rboles. Astas retorcidas.*"
     clip: {fileID: 0}
     ActionsBeforeDialogueLine: []
@@ -439,11 +439,11 @@ MonoBehaviour:
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
-    - Language: EN
+    - Language: en
       Text: What is *that?!*
-    - Language: FR
+    - Language: fr
       Text: "C\u2019est quoi *\xE7a* ?!"
-    - Language: ES
+    - Language: es
       Text: "\xBF\xA1Qu\xE9 es *eso*!?"
     clip: {fileID: 0}
     ActionsBeforeDialogueLine: []
@@ -493,11 +493,11 @@ MonoBehaviour:
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
-    - Language: EN
+    - Language: en
       Text: '*gasps* Whoooooa. Look at you!'
-    - Language: FR
+    - Language: fr
       Text: "*hal\xE8tement* Wooooow. Regarde-moi \xE7a!"
-    - Language: ES
+    - Language: es
       Text: "*jadea* \xA1Wooooow! \xA1M\xEDrate!"
     clip: {fileID: 0}
     ActionsBeforeDialogueLine: []
@@ -547,13 +547,13 @@ MonoBehaviour:
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
-    - Language: EN
+    - Language: en
       Text: "Are you lost too, buddy? You need scritches? Huh? Who\u2019s a majestic
         forest beast? *You* are!"
-    - Language: FR
+    - Language: fr
       Text: "Tu t\u2019es perdu aussi, mon grand ? Tu veux des gratouilles ? Qui
         est une b\xEAte majestueuse ? *C\u2019est toi!*"
-    - Language: ES
+    - Language: es
       Text: "\xBFTambi\xE9n est\xE1s perdido, amigo? \xBFQuieres caricias? \xBFQui\xE9n
         es una bestia majestuosa? \xA1*T\xFA*!"
     clip: {fileID: 0}
@@ -604,11 +604,11 @@ MonoBehaviour:
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
-    - Language: EN
+    - Language: en
       Text: '*It tilts its head slightly. Curious.*'
-    - Language: FR
+    - Language: fr
       Text: "*Il incline l\xE9g\xE8rement la t\xEAte. Curieux.*"
-    - Language: ES
+    - Language: es
       Text: '*Inclina ligeramente la cabeza. Curioso.*'
     clip: {fileID: 0}
     ActionsBeforeDialogueLine: []
@@ -658,11 +658,11 @@ MonoBehaviour:
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
-    - Language: EN
+    - Language: en
       Text: "Jared\u2026 stop trying to pet the antler demon!"
-    - Language: FR
+    - Language: fr
       Text: "Jared\u2026 arr\xEAte d\u2019essayer de caresser le d\xE9mon \xE0 bois!"
-    - Language: ES
+    - Language: es
       Text: "\xA1Jared... deja de intentar acariciar al demonio de los cuernos!"
     clip: {fileID: 0}
     ActionsBeforeDialogueLine: []
@@ -712,13 +712,13 @@ MonoBehaviour:
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
-    - Language: EN
+    - Language: en
       Text: "*The shadows melt away. The creature\u2019s full form is revealed\u2014fur
         glows silver in the moonlight.*"
-    - Language: FR
+    - Language: fr
       Text: "*Les ombres se dissipent. La cr\xE9ature se d\xE9voile \u2014 sa fourrure
         luit \xE0 la lumi\xE8re lunaire.*"
-    - Language: ES
+    - Language: es
       Text: "*Las sombras se desvanecen. Su forma completa aparece \u2014 su pelaje
         brilla bajo la luna.*"
     clip: {fileID: 0}
@@ -769,11 +769,11 @@ MonoBehaviour:
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
-    - Language: EN
+    - Language: en
       Text: "Oh my god. He\u2019s gorgeous. I want ten of him."
-    - Language: FR
+    - Language: fr
       Text: "Oh mon dieu. Il est splendide. J\u2019en veux dix."
-    - Language: ES
+    - Language: es
       Text: "Dios m\xEDo. Es hermoso. Quiero diez."
     clip: {fileID: 0}
     ActionsBeforeDialogueLine: []
@@ -823,11 +823,11 @@ MonoBehaviour:
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
-    - Language: EN
+    - Language: en
       Text: "...I think he\u2019s leading us somewhere."
-    - Language: FR
+    - Language: fr
       Text: "...Je crois qu\u2019il nous guide quelque part."
-    - Language: ES
+    - Language: es
       Text: "...Creo que nos est\xE1 guiando."
     clip: {fileID: 0}
     ActionsBeforeDialogueLine: []
@@ -877,11 +877,11 @@ MonoBehaviour:
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
-    - Language: EN
+    - Language: en
       Text: '*He glances back, takes a few careful steps, then waits.*'
-    - Language: FR
+    - Language: fr
       Text: "*Il jette un regard en arri\xE8re, avance lentement, puis s\u2019arr\xEAte.*"
-    - Language: ES
+    - Language: es
       Text: "*Mira hacia atr\xE1s, da unos pasos y espera.*"
     clip: {fileID: 0}
     ActionsBeforeDialogueLine: []
@@ -931,11 +931,11 @@ MonoBehaviour:
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
-    - Language: EN
+    - Language: en
       Text: "Look at him! He\u2019s so polite. Trail angel confirmed."
-    - Language: FR
+    - Language: fr
       Text: "Regarde-le ! Trop poli. Ange du sentier confirm\xE9."
-    - Language: ES
+    - Language: es
       Text: "\xA1M\xEDralo! Tan educado. \xC1ngel del sendero confirmado."
     clip: {fileID: 0}
     ActionsBeforeDialogueLine: []
@@ -985,11 +985,11 @@ MonoBehaviour:
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
-    - Language: EN
+    - Language: en
       Text: I think he wants us to follow. And... I think we should.
-    - Language: FR
+    - Language: fr
       Text: "Il veut qu\u2019on le suive. Et... je crois qu\u2019on devrait."
-    - Language: ES
+    - Language: es
       Text: Quiere que lo sigamos. Y... creo que debemos hacerlo.
     clip: {fileID: 0}
     ActionsBeforeDialogueLine: []
@@ -1039,13 +1039,13 @@ MonoBehaviour:
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
-    - Language: EN
+    - Language: en
       Text: '*The creature moves ahead again, parting the brush. Bits of a path peek
         through behind him.*'
-    - Language: FR
+    - Language: fr
       Text: "*La cr\xE9ature avance \xE0 nouveau, \xE9cartant les buissons. Un sentier
         appara\xEEt derri\xE8re lui.*"
-    - Language: ES
+    - Language: es
       Text: "*La criatura avanza, apartando los arbustos. Se revela un sendero detr\xE1s
         de \xE9l.*"
     clip: {fileID: 0}
@@ -1096,13 +1096,13 @@ MonoBehaviour:
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
-    - Language: EN
+    - Language: en
       Text: "Wait... this looks familiar. That\u2019s the ridge! That\u2019s the
         way back!"
-    - Language: FR
+    - Language: fr
       Text: "Attends... \xE7a me dit quelque chose. C\u2019est la cr\xEAte ! C\u2019est
         le bon chemin !"
-    - Language: ES
+    - Language: es
       Text: "Espera... esto me suena. \xA1Esa es la cresta! \xA1Ese es el camino
         de regreso!"
     clip: {fileID: 0}
@@ -1153,11 +1153,11 @@ MonoBehaviour:
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
-    - Language: EN
+    - Language: en
       Text: He really *is* guiding us...
-    - Language: FR
+    - Language: fr
       Text: Il nous guide vraiment...
-    - Language: ES
+    - Language: es
       Text: "De verdad nos est\xE1 guiando..."
     clip: {fileID: 0}
     ActionsBeforeDialogueLine: []
@@ -1207,13 +1207,13 @@ MonoBehaviour:
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
-    - Language: EN
+    - Language: en
       Text: '*He pauses at the clearing''s edge, makes eye contact, then silently
         disappears into the mist.*'
-    - Language: FR
+    - Language: fr
       Text: "*Il s\u2019arr\xEAte \xE0 la lisi\xE8re de la clairi\xE8re, nous regarde,
         puis dispara\xEEt dans la brume.*"
-    - Language: ES
+    - Language: es
       Text: '*Se detiene en el borde del claro, nos mira y desaparece entre la niebla.*'
     clip: {fileID: 0}
     ActionsBeforeDialogueLine:
@@ -1265,12 +1265,12 @@ MonoBehaviour:
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
-    - Language: EN
+    - Language: en
       Text: ...Goodbye, magic antler puppy. I hope you find your own trail home.
-    - Language: FR
+    - Language: fr
       Text: "...Adieu, chien magique \xE0 bois. J\u2019esp\xE8re que tu retrouveras
         ton chemin."
-    - Language: ES
+    - Language: es
       Text: "...Adi\xF3s, cachorro m\xE1gico de astas. Ojal\xE1 encuentres tu camino."
     clip: {fileID: 0}
     ActionsBeforeDialogueLine: []
@@ -1320,13 +1320,13 @@ MonoBehaviour:
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
-    - Language: EN
+    - Language: en
       Text: "...Next time, I\u2019m bringing a map and a compass. And maybe pepper
         spray."
-    - Language: FR
+    - Language: fr
       Text: ...La prochaine fois, je prends une carte, une boussole... et du spray
         au poivre.
-    - Language: ES
+    - Language: es
       Text: "...La pr\xF3xima vez, llevar\xE9 un mapa, una br\xFAjula... y tal vez
         gas pimienta."
     clip: {fileID: 0}
@@ -1334,5 +1334,102 @@ MonoBehaviour:
     ActionsAfterDialogueLine: []
     UserInputMethod: 0
     TimeBeforeNextLine: 0
+  ConversationYaml: {fileID: 7887487489131455650}
+  AllowPersistentOverrides: 0
   FilePath: DialogueScriptSample.yml
+  SourceYaml: {fileID: 102900000, guid: 4612376414d9cc742be9c4b790213e6a, type: 3}
+  SourceYamlAssetPath: Assets/Samples/ConvoCore/1.0.0/Sample Assets/DialogueScriptSample.yml
   ConversationKey: Conversation1
+--- !u!49 &7887487489131455650
+TextAsset:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: EmbeddedYaml
+  m_Script: "Conversation1:\r\n  - CharacterID: \"Ava\"\r\n    LocalizedDialogue:\r\n     
+    EN: \"Jared... we\u2019re definitely off-trail.\"\r\n      FR: \"Jared... on
+    s'est clairement \xE9gar\xE9s.\"\r\n      ES: \"Jared... definitivamente nos
+    perdimos del sendero.\"\r\n\r\n  - CharacterID: \"Jared\"\r\n    LocalizedDialogue:\r\n     
+    EN: \"Technically, we\u2019re *still* in the forest. Nature counts.\"\r\n     
+    FR: \"Techniquement, on est toujours dans la for\xEAt. \xC7a compte, non?\"\r\n     
+    ES: \"T\xE9cnicamente, seguimos en el bosque. Eso cuenta.\"\r\n\r\n  - CharacterID:
+    \"Ava\"\r\n    LocalizedDialogue:\r\n      EN: \"We\u2019ve circled that tree
+    three times now.\"\r\n      FR: \"On a tourn\xE9 autour de cet arbre trois fois.\"\r\n     
+    ES: \"Hemos rodeado ese \xE1rbol tres veces.\"\r\n\r\n  - CharacterID: \"Jared\"\r\n   
+    LocalizedDialogue:\r\n      EN: \"It\u2019s a popular tree. Five stars on TreeAdvisor.\"\r\n     
+    FR: \"C\u2019est un arbre populaire. Cinq \xE9toiles sur TreeAdvisor.\"\r\n     
+    ES: \"Es un \xE1rbol famoso. Cinco estrellas en TreeAdvisor.\"\r\n\r\n  - CharacterID:
+    \"Ava\"\r\n    LocalizedDialogue:\r\n      EN: \"Shh! Did you hear that?\"\r\n     
+    FR: \"Chut! T\u2019as entendu \xE7a ?\"\r\n      ES: \"\xA1Shh! \xBFEscuchaste
+    eso?\"\r\n\r\n  - CharacterID: \"Jared\"\r\n    LocalizedDialogue:\r\n      EN:
+    \"Maybe it\u2019s a bear. Or a ranger with snacks.\"\r\n      FR: \"Peut-\xEAtre
+    un ours. Ou un garde forestier avec des snacks.\"\r\n      ES: \"Quiz\xE1s un
+    oso. O un guardabosques con bocadillos.\"\r\n\r\n  - CharacterID: \"Wolfstag\"\r\n   
+    LocalizedDialogue:\r\n      EN: \"*A towering silhouette appears between the
+    trees. Antlers like twisted branches.*\"\r\n      FR: \"*Une silhouette massive
+    \xE9merge entre les arbres. Des bois torsad\xE9s.*\"\r\n      ES: \"*Una silueta
+    imponente aparece entre los \xE1rboles. Astas retorcidas.*\"\r\n\r\n  - CharacterID:
+    \"Ava\"\r\n    LocalizedDialogue:\r\n      EN: \"What is *that?!*\"\r\n     
+    FR: \"C\u2019est quoi *\xE7a* ?!\"\r\n      ES: \"\xBF\xA1Qu\xE9 es *eso*!?\"\r\n\r\n 
+    - CharacterID: \"Jared\"\r\n    LocalizedDialogue:\r\n      EN: \"*gasps* Whoooooa.
+    Look at you!\"\r\n      FR: \"*hal\xE8tement* Wooooow. Regarde-moi \xE7a!\"\r\n     
+    ES: \"*jadea* \xA1Wooooow! \xA1M\xEDrate!\"\r\n\r\n  - CharacterID: \"Jared\"\r\n   
+    LocalizedDialogue:\r\n      EN: \"Are you lost too, buddy? You need scritches?
+    Huh? Who\u2019s a majestic forest beast? *You* are!\"\r\n      FR: \"Tu t\u2019es
+    perdu aussi, mon grand ? Tu veux des gratouilles ? Qui est une b\xEAte majestueuse
+    ? *C\u2019est toi!*\"\r\n      ES: \"\xBFTambi\xE9n est\xE1s perdido, amigo?
+    \xBFQuieres caricias? \xBFQui\xE9n es una bestia majestuosa? \xA1*T\xFA*!\"\r\n\r\n 
+    - CharacterID: \"Wolfstag\"\r\n    LocalizedDialogue:\r\n      EN: \"*It tilts
+    its head slightly. Curious.*\"\r\n      FR: \"*Il incline l\xE9g\xE8rement la
+    t\xEAte. Curieux.*\"\r\n      ES: \"*Inclina ligeramente la cabeza. Curioso.*\"\r\n\r\n 
+    - CharacterID: \"Ava\"\r\n    LocalizedDialogue:\r\n      EN: \"Jared\u2026 stop
+    trying to pet the antler demon!\"\r\n      FR: \"Jared\u2026 arr\xEAte d\u2019essayer
+    de caresser le d\xE9mon \xE0 bois!\"\r\n      ES: \"\xA1Jared... deja de intentar
+    acariciar al demonio de los cuernos!\"\r\n\r\n  - CharacterID: \"Wolfstag\"\r\n   
+    LocalizedDialogue:\r\n      EN: \"*The shadows melt away. The creature\u2019s
+    full form is revealed\u2014fur glows silver in the moonlight.*\"\r\n      FR:
+    \"*Les ombres se dissipent. La cr\xE9ature se d\xE9voile \u2014 sa fourrure luit
+    \xE0 la lumi\xE8re lunaire.*\"\r\n      ES: \"*Las sombras se desvanecen. Su
+    forma completa aparece \u2014 su pelaje brilla bajo la luna.*\"\r\n\r\n  - CharacterID:
+    \"Jared\"\r\n    LocalizedDialogue:\r\n      EN: \"Oh my god. He\u2019s gorgeous.
+    I want ten of him.\"\r\n      FR: \"Oh mon dieu. Il est splendide. J\u2019en
+    veux dix.\"\r\n      ES: \"Dios m\xEDo. Es hermoso. Quiero diez.\"\r\n\r\n  -
+    CharacterID: \"Ava\"\r\n    LocalizedDialogue:\r\n      EN: \"...I think he\u2019s
+    leading us somewhere.\"\r\n      FR: \"...Je crois qu\u2019il nous guide quelque
+    part.\"\r\n      ES: \"...Creo que nos est\xE1 guiando.\"\r\n\r\n  - CharacterID:
+    \"Wolfstag\"\r\n    LocalizedDialogue:\r\n      EN: \"*He glances back, takes
+    a few careful steps, then waits.*\"\r\n      FR: \"*Il jette un regard en arri\xE8re,
+    avance lentement, puis s\u2019arr\xEAte.*\"\r\n      ES: \"*Mira hacia atr\xE1s,
+    da unos pasos y espera.*\"\r\n\r\n  - CharacterID: \"Jared\"\r\n    LocalizedDialogue:\r\n     
+    EN: \"Look at him! He\u2019s so polite. Trail angel confirmed.\"\r\n      FR:
+    \"Regarde-le ! Trop poli. Ange du sentier confirm\xE9.\"\r\n      ES: \"\xA1M\xEDralo!
+    Tan educado. \xC1ngel del sendero confirmado.\"\r\n\r\n  - CharacterID: \"Ava\"\r\n   
+    LocalizedDialogue:\r\n      EN: \"I think he wants us to follow. And... I think
+    we should.\"\r\n      FR: \"Il veut qu\u2019on le suive. Et... je crois qu\u2019on
+    devrait.\"\r\n      ES: \"Quiere que lo sigamos. Y... creo que debemos hacerlo.\"\r\n\r\n 
+    - CharacterID: \"Wolfstag\"\r\n    LocalizedDialogue:\r\n      EN: \"*The creature
+    moves ahead again, parting the brush. Bits of a path peek through behind him.*\"\r\n     
+    FR: \"*La cr\xE9ature avance \xE0 nouveau, \xE9cartant les buissons. Un sentier
+    appara\xEEt derri\xE8re lui.*\"\r\n      ES: \"*La criatura avanza, apartando
+    los arbustos. Se revela un sendero detr\xE1s de \xE9l.*\"\r\n\r\n  - CharacterID:
+    \"Jared\"\r\n    LocalizedDialogue:\r\n      EN: \"Wait... this looks familiar.
+    That\u2019s the ridge! That\u2019s the way back!\"\r\n      FR: \"Attends...
+    \xE7a me dit quelque chose. C\u2019est la cr\xEAte ! C\u2019est le bon chemin
+    !\"\r\n      ES: \"Espera... esto me suena. \xA1Esa es la cresta! \xA1Ese es
+    el camino de regreso!\"\r\n\r\n  - CharacterID: \"Ava\"\r\n    LocalizedDialogue:\r\n     
+    EN: \"He really *is* guiding us...\"\r\n      FR: \"Il nous guide vraiment...\"\r\n     
+    ES: \"De verdad nos est\xE1 guiando...\"\r\n\r\n  - CharacterID: \"Wolfstag\"\r\n   
+    LocalizedDialogue:\r\n      EN: \"*He pauses at the clearing's edge, makes eye
+    contact, then silently disappears into the mist.*\"\r\n      FR: \"*Il s\u2019arr\xEAte
+    \xE0 la lisi\xE8re de la clairi\xE8re, nous regarde, puis dispara\xEEt dans la
+    brume.*\"\r\n      ES: \"*Se detiene en el borde del claro, nos mira y desaparece
+    entre la niebla.*\"\r\n\r\n  - CharacterID: \"Jared\"\r\n    LocalizedDialogue:\r\n     
+    EN: \"...Goodbye, magic antler puppy. I hope you find your own trail home.\"\r\n     
+    FR: \"...Adieu, chien magique \xE0 bois. J\u2019esp\xE8re que tu retrouveras
+    ton chemin.\"\r\n      ES: \"...Adi\xF3s, cachorro m\xE1gico de astas. Ojal\xE1
+    encuentres tu camino.\"\r\n\r\n  - CharacterID: \"Ava\"\r\n    LocalizedDialogue:\r\n     
+    EN: \"...Next time, I\u2019m bringing a map and a compass. And maybe pepper spray.\"\r\n     
+    FR: \"...La prochaine fois, je prends une carte, une boussole... et du spray
+    au poivre.\"\r\n      ES: \"...La pr\xF3xima vez, llevar\xE9 un mapa, una br\xFAjula...
+    y tal vez gas pimienta.\""
