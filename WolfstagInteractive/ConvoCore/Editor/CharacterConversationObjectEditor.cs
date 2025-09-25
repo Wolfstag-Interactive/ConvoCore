@@ -194,11 +194,14 @@ private static List<string> TryGetLocalesFromEmbedded(ConvoCoreConversationData 
             {
                 EditorGUILayout.LabelField("Linked Path", _sourceYamlAssetPath.stringValue, EditorStyles.miniLabel);
             }
+            // Calculate button width to make all buttons equal
+            float buttonWidth = (EditorGUIUtility.currentViewWidth - 20f) / 2f;
 
             // Buttons row
             EditorGUILayout.BeginHorizontal();
 
-            if (GUILayout.Button(_conversationYaml.objectReferenceValue == null ? "Link & Embed" : "Sync From Source", GUILayout.Height(22)))
+            if (GUILayout.Button(_conversationYaml.objectReferenceValue == null ? "Link & Embed" : "Sync From Source", GUILayout.Height(22),
+                    GUILayout.Width(buttonWidth)))
             {
                 var data = (ConvoCoreConversationData)target;
                 if (_sourceYaml.objectReferenceValue == null)
@@ -221,17 +224,18 @@ private static List<string> TryGetLocalesFromEmbedded(ConvoCoreConversationData 
                     }
                     else
                     {
-                        if (TryEmbedFromPath(data, srcPath))
+                        // Use the new method that returns the embedded TextAsset
+                        var embeddedAsset = TryEmbedFromPath(data, srcPath);
+                        if (embeddedAsset != null)
                         {
                             _sourceYamlAssetPath.stringValue = srcPath;
-
-                            // Refresh inspector so the Embedded field updates from None -> the sub-asset
+                            
+                            // Assign the embedded asset directly to the SerializedProperty
+                            _conversationYaml.objectReferenceValue = embeddedAsset;
+                            
+                            // Apply all changes
                             serializedObject.ApplyModifiedProperties();
-                            serializedObject.Update();
-                            Repaint();
 
-                            EditorUtility.SetDirty(data);
-                            AssetDatabase.SaveAssets();
                             Debug.Log($"ConvoCore: Embedded YAML text from '{srcPath}' into '{AssetDatabase.GetAssetPath(data)}'.");
                         }
                     }
@@ -240,7 +244,7 @@ private static List<string> TryGetLocalesFromEmbedded(ConvoCoreConversationData 
 
             using (new EditorGUI.DisabledScope(_sourceYaml.objectReferenceValue == null))
             {
-                if (GUILayout.Button("Ping Source", GUILayout.Height(22)))
+                if (GUILayout.Button("Ping Source", GUILayout.Height(22),GUILayout.ExpandWidth(true)))
                 {
                     EditorGUIUtility.PingObject(_sourceYaml.objectReferenceValue);
                 }
@@ -248,65 +252,133 @@ private static List<string> TryGetLocalesFromEmbedded(ConvoCoreConversationData 
 
             EditorGUILayout.EndHorizontal();
 
-            // Optional cleanup
-            if (GUILayout.Button("Clear Link (keeps embedded)", GUILayout.Height(18)))
+            // Second row of buttons with uniform width
+            EditorGUILayout.BeginHorizontal();
+
+            // Clear Link button - use ExpandWidth to match first row
+            using (new EditorGUI.DisabledScope(_sourceYaml.objectReferenceValue == null && _conversationYaml.objectReferenceValue == null))
             {
-                _sourceYaml.objectReferenceValue = null;
-                _sourceYamlAssetPath.stringValue = string.Empty;
-                serializedObject.ApplyModifiedProperties();
+                if (GUILayout.Button("Clear Link (keeps embedded)", GUILayout.Height(18), GUILayout.Width(buttonWidth)))
+                {
+                    _sourceYaml.objectReferenceValue = null;
+                    _sourceYamlAssetPath.stringValue = string.Empty;
+                    serializedObject.ApplyModifiedProperties();
+                }
             }
 
+            // Clear Embedded button - use ExpandWidth to match first row
+            using (new EditorGUI.DisabledScope(_conversationYaml.objectReferenceValue == null))
+            {
+                if (GUILayout.Button("Clear Embedded", GUILayout.Height(18), GUILayout.Width(buttonWidth)))
+                {
+                    if (EditorUtility.DisplayDialog("Clear Embedded YAML", 
+                        "Are you sure you want to remove the embedded YAML? This will delete the embedded TextAsset permanently.", 
+                        "Yes, Remove", "Cancel"))
+                    {
+                        var data = (ConvoCoreConversationData)target;
+                        ClearEmbeddedYaml(data);
+                        
+                        // Update the SerializedProperty to reflect the change
+                        _conversationYaml.objectReferenceValue = null;
+                        serializedObject.ApplyModifiedProperties();
+                        
+                        Debug.Log("ConvoCore: Cleared embedded YAML.");
+                    }
+                }
+            }
+
+            EditorGUILayout.EndHorizontal();
             EditorGUILayout.EndVertical();
             EditorGUILayout.Space();
         }
 
-        private static bool TryEmbedFromPath(ConvoCoreConversationData data, string sourcePath)
+
+        private static void ClearEmbeddedYaml(ConvoCoreConversationData data)
         {
-            if (string.IsNullOrEmpty(sourcePath)) return false;
+            // Path of the Conversation asset
+            var convPath = AssetDatabase.GetAssetPath(data);
+            if (string.IsNullOrEmpty(convPath))
+            {
+                Debug.LogError("ConvoCore: Could not resolve asset path for Conversation asset.");
+                return;
+            }
+
+            // Remove the current embedded TextAsset from the field
+            if (data.ConversationYaml != null)
+            {
+                Object.DestroyImmediate(data.ConversationYaml, true);
+                data.ConversationYaml = null;
+            }
+
+            // Also clean up any stray "EmbeddedYaml" sub-assets
+            var reps = AssetDatabase.LoadAllAssetRepresentationsAtPath(convPath);
+            if (reps != null)
+            {
+                foreach (var rep in reps)
+                {
+                    if (rep is TextAsset repTA && repTA.name == "EmbeddedYaml")
+                    {
+                        Object.DestroyImmediate(repTA, true);
+                    }
+                }
+            }
+
+            // Mark dirty and save
+            EditorUtility.SetDirty(data);
+            AssetDatabase.SaveAssets();
+            
+            // Force reimport to ensure changes are visible immediately
+            AssetDatabase.ImportAsset(convPath, ImportAssetOptions.ForceUpdate);
+        }
+
+        private static TextAsset TryEmbedFromPath(ConvoCoreConversationData data, string sourcePath)
+        {
+            if (string.IsNullOrEmpty(sourcePath)) return null;
 
             // Load text either from TextAsset or via File
             string text = null;
             var srcObj = AssetDatabase.LoadAssetAtPath<Object>(sourcePath);
             if (srcObj is TextAsset ta) text = ta.text;
             else                        text = File.ReadAllText(sourcePath);
-            if (string.IsNullOrEmpty(text)) return false;
+            if (string.IsNullOrEmpty(text)) return null;
 
             // Path of the Conversation asset we will embed into
             var convPath = AssetDatabase.GetAssetPath(data);
             if (string.IsNullOrEmpty(convPath))
             {
                 Debug.LogError("ConvoCore: Could not resolve asset path for Conversation asset.");
-                return false;
+                return null;
             }
 
-            // --- Remove ANY previous embedded TextAsset(s) named "EmbeddedYaml" to avoid duplicates ---
+            // --- Clean up any existing embedded assets first ---
+            // Remove whatever the field currently points to
+            if (data.ConversationYaml != null)
+            {
+                Object.DestroyImmediate(data.ConversationYaml, true);
+                data.ConversationYaml = null;
+            }
+
+            // Remove any stray "EmbeddedYaml" sub-assets
             var reps = AssetDatabase.LoadAllAssetRepresentationsAtPath(convPath);
             if (reps != null)
             {
                 foreach (var rep in reps)
                 {
-                    if (rep is TextAsset && rep.name == "EmbeddedYaml")
+                    if (rep is TextAsset repTA && repTA.name == "EmbeddedYaml")
                     {
-                        Object.DestroyImmediate(rep, true);
+                        Object.DestroyImmediate(repTA, true);
                     }
                 }
-                AssetDatabase.SaveAssets();
             }
 
-            // Also remove whatever the field currently points to (just in case)
-            if (data.ConversationYaml != null)
-            {
-                Object.DestroyImmediate(data.ConversationYaml, true);
-                data.ConversationYaml = null;
-                AssetDatabase.SaveAssets();
-            }
+            // Save to ensure cleanup is committed
+            AssetDatabase.SaveAssets();
 
             // --- Create new embedded TextAsset ---
             var embedded = new TextAsset(text) { name = "EmbeddedYaml" };
-            AssetDatabase.AddObjectToAsset(embedded, data); // parent to the Conversation asset
-
-            // Assign field directly and mark dirty
-            data.ConversationYaml = embedded;
+            
+            // Add as sub-asset
+            AssetDatabase.AddObjectToAsset(embedded, data);
 
             // Optional: auto-fill FilePath for persistent/Addressables fallbacks if empty
             if (string.IsNullOrEmpty(data.FilePath))
@@ -315,17 +387,18 @@ private static List<string> TryGetLocalesFromEmbedded(ConvoCoreConversationData 
                 data.FilePath = $"ConvoCore/Dialogue/{baseName}";
             }
 
-            // Save & refresh so the sub-asset and field are visible immediately
+            // Mark dirty and save
             EditorUtility.SetDirty(embedded);
             EditorUtility.SetDirty(data);
             AssetDatabase.SaveAssets();
+            
+            // Force reimport to ensure the sub-asset is properly recognized
             AssetDatabase.ImportAsset(convPath, ImportAssetOptions.ForceUpdate);
-            return true;
+            
+            // Return the embedded asset so we can assign it to the SerializedProperty
+            return embedded;
         }
-
-        /// <summary>
         /// Draws validation tools section with buttons for manual validation
-        /// </summary>
         private void DrawValidationToolsSection()
         {
             GUILayout.Space(10);
