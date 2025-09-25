@@ -229,6 +229,7 @@ namespace WolfstagInteractive.ConvoCore
         {
             DialogueText.text = text;
             DialogueText.gameObject.SetActive(true);
+            SpeakerName.gameObject.SetActive(true);
         }
 
         /// <summary>
