@@ -10,11 +10,10 @@ namespace WolfstagInteractive.ConvoCore
         [Header("Conversation Settings")]
         public ConvoCoreConversationData ConversationData;
         
-        [Header("UI Foundation")]
-        public ConvoCoreUIFoundation _uiFoundation;
+        [Header("Conversation UI")]
+        public ConvoCoreUIFoundation ConversationUI;
         
-        [Header("Runtime State")]
-        public ConversationState CurrentDialogueState = ConversationState.Inactive;
+        public ConversationState CurrentDialogueState { get; private set; } = ConversationState.Inactive;
         
         private int _currentLineIndex = 0;
         private ConvoCoreDialogueLocalizationHandler LocalizationHandler;
@@ -126,7 +125,7 @@ namespace WolfstagInteractive.ConvoCore
                 yield return StartCoroutine(PlayAudioClipWithAction(line.clip));
                 yield return StartCoroutine(
                     PlayDialogueLine(
-                        _uiFoundation,
+                        ConversationUI,
                         line,
                         finalOutputString,
                         primaryProfile.CharacterName,
@@ -147,7 +146,7 @@ namespace WolfstagInteractive.ConvoCore
                 }
                 else
                 {
-                    yield return StartCoroutine(_uiFoundation.WaitForUserInput());
+                    yield return StartCoroutine(ConversationUI.WaitForUserInput());
                 }
 
                 _currentLineIndex++;
@@ -155,9 +154,9 @@ namespace WolfstagInteractive.ConvoCore
 
             // End conversation
             CurrentDialogueState = ConversationState.Completed;
-            if (_uiFoundation != null)
+            if (ConversationUI != null)
             {
-                _uiFoundation.HideDialogue();
+                ConversationUI.HideDialogue();
             }
             Debug.Log("Conversation completed!");
         }
@@ -402,9 +401,9 @@ namespace WolfstagInteractive.ConvoCore
                     string finalOutputString = ReplacePlayerNameInDialogueLine(localizedResult.Text);
                     
                     // Update the UI with both the new localized text and language code
-                    if (_uiFoundation != null)
+                    if (ConversationUI != null)
                     {
-                        _uiFoundation.UpdateForLanguageChange(finalOutputString, selectedLanguage);
+                        ConversationUI.UpdateForLanguageChange(finalOutputString, selectedLanguage);
                     }
                 }
                 else
@@ -415,9 +414,9 @@ namespace WolfstagInteractive.ConvoCore
             else
             {
                 // If no active conversation, just notify about the language change
-                if (_uiFoundation != null)
+                if (ConversationUI != null)
                 {
-                    _uiFoundation.UpdateForLanguageChange(null, selectedLanguage);
+                    ConversationUI.UpdateForLanguageChange(null, selectedLanguage);
                 }
             }
         }
@@ -455,9 +454,9 @@ namespace WolfstagInteractive.ConvoCore
             CurrentDialogueState = ConversationState.Inactive;
             EndedConversation?.Invoke();
             _currentLineIndex = 0;
-            if (_uiFoundation != null)
+            if (ConversationUI != null)
             {
-                _uiFoundation.HideDialogue();
+                ConversationUI.HideDialogue();
             }
             Debug.Log("Conversation stopped.");
         }
