@@ -308,17 +308,36 @@ namespace WolfstagInteractive.ConvoCore
 
         /// <summary>
         /// Determines if the pointer is currently over the specified UI element.
+        /// Works with both Input Manager and Input System.
         /// </summary>
-        /// <param name="uiElement">The UI element to check.</param>
+        /// <param name="uiElement">The UI element to check (any Component with a RectTransform).</param>
         /// <returns>True if the pointer is over the element; false otherwise.</returns>
-        public bool IsPointerOverUIElement(RectTransform uiElement)
+        protected bool IsPointerOverUIElement(Component uiElement)
         {
             if (uiElement == null) return false;
 
             RectTransform rectTransform = uiElement.GetComponent<RectTransform>();
             if (rectTransform != null)
             {
-                Vector2 localMousePosition = rectTransform.InverseTransformPoint(Mouse.current.position.ReadValue());
+                Vector2 mousePosition;
+                
+#if ENABLE_INPUT_SYSTEM
+                // Use Input System if available
+                if (Mouse.current != null)
+                {
+                    mousePosition = Mouse.current.position.ReadValue();
+                }
+                else
+                {
+                    // Fallback to legacy input if Mouse.current is not available
+                    mousePosition = Input.mousePosition;
+                }
+#else
+                // Use legacy Input Manager
+                mousePosition = Input.mousePosition;
+#endif
+
+                Vector2 localMousePosition = rectTransform.InverseTransformPoint(mousePosition);
                 return rectTransform.rect.Contains(localMousePosition);
             }
 
