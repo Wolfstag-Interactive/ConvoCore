@@ -230,6 +230,7 @@ namespace WolfstagInteractive.ConvoCore
             DialogueText.text = text;
             DialogueText.gameObject.SetActive(true);
             SpeakerName.gameObject.SetActive(true);
+            DialoguePanel.gameObject.SetActive(true);
         }
 
         /// <summary>
@@ -240,12 +241,15 @@ namespace WolfstagInteractive.ConvoCore
             DialogueText.gameObject.SetActive(false);
             SpeakerName.gameObject.SetActive(false);
             SpeakerPortraitImage.gameObject.SetActive(false);
-
+            DialoguePanel.gameObject.SetActive(false);
             if (FullBodyImageLeft != null)
             {
                 FullBodyImageLeft.gameObject.SetActive(false);
             }
-
+            if (FullBodyImageRight != null)
+            {
+                FullBodyImageRight.gameObject.SetActive(false);
+            }
             ContinueButton.gameObject.SetActive(false);
         }
 
