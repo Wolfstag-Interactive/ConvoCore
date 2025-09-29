@@ -311,7 +311,7 @@ namespace WolfstagInteractive.ConvoCore
         /// </summary>
         /// <param name="uiElement">The UI element to check.</param>
         /// <returns>True if the pointer is over the element; false otherwise.</returns>
-        private bool IsPointerOverUIElement(Button uiElement)
+        public bool IsPointerOverUIElement(RectTransform uiElement)
         {
             if (uiElement == null) return false;
 
