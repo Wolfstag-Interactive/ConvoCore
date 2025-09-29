@@ -20,9 +20,15 @@ namespace WolfstagInteractive.ConvoCore
             CharacterRepresentationBase emotionMappingData)
         {
         }
-        public virtual void UpdateForLanguageChange(string newLanguage)
+        /// <summary>
+        /// Updates the UI when language changes, primarily to replace the current dialogue text
+        /// </summary>
+        /// <param name="localizedDialogueText">The new localized dialogue text to display</param>
+        /// <param name="newLanguageCode">The new language code that was applied</param>
+        public virtual void UpdateForLanguageChange(string localizedDialogueText, string newLanguageCode)
         {
         }
+
 
         public virtual IEnumerator WaitForUserInput()
         {

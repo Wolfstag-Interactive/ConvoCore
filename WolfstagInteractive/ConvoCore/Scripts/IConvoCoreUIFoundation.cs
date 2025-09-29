@@ -23,10 +23,15 @@ namespace WolfstagInteractive.ConvoCore
             string speakingCharacterName, CharacterRepresentationBase emotionMappingData);
 
         /// <summary>
-        /// Updates the UI for the selected language.
+        /// Updates the UI when language changes, primarily to replace the current dialogue text
         /// </summary>
-        /// <param name="newLanguage">The new language code.</param>
-        public void UpdateForLanguageChange(string newLanguage);
+        /// <param name="localizedDialogueText">The new localized dialogue text to display</param>
+        /// <param name="newLanguageCode">The new language code that was applied</param>
+        public virtual void UpdateForLanguageChange(string localizedDialogueText, string newLanguageCode)
+        {
+        }
+
+
         /// <summary>
         /// Wait until the UI signals that the user has provided input.
         /// The actual waiting is delegated to the UI implementation.

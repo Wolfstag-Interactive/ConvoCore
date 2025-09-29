@@ -234,6 +234,29 @@ namespace WolfstagInteractive.ConvoCore
         }
 
         /// <summary>
+        /// Updates the UI when language changes, primarily to replace the current dialogue text
+        /// </summary>
+        /// <param name="localizedDialogueText">The new localized dialogue text to display</param>
+        /// <param name="newLanguageCode">The new language code that was applied</param>
+        public override void UpdateForLanguageChange(string localizedDialogueText, string newLanguageCode)
+        {
+            // Update the dialogue text with the new localized content
+            if (DialogueText != null)
+            {
+                DialogueText.text = localizedDialogueText;
+                
+                // Force mesh update to ensure proper layout after text change
+                DialogueText.ForceMeshUpdate();
+            }
+            
+            // Force layout refresh if dialogue is currently visible
+            if (DialoguePanel != null && DialoguePanel.activeInHierarchy)
+            {
+                Canvas.ForceUpdateCanvases();
+            }
+        }
+
+        /// <summary>
         /// Hides the dialogue display.
         /// </summary>
         public override void HideDialogue()

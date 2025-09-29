@@ -1,6 +1,5 @@
-
+using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -19,7 +18,10 @@ namespace WolfstagInteractive.ConvoCore
         
         private int _currentLineIndex = 0;
         private ConvoCoreDialogueLocalizationHandler LocalizationHandler;
-        
+        public event Action StartedConversation;
+        public event Action PausedConversation;
+        public event Action EndedConversation;
+
         public enum ConversationState
         {
             Inactive,
@@ -60,6 +62,7 @@ namespace WolfstagInteractive.ConvoCore
 
             CurrentDialogueState = ConversationState.Active;
             _currentLineIndex = 0;
+            StartedConversation?.Invoke();
             StartCoroutine(PlayConversation());
         }
 
@@ -369,13 +372,54 @@ namespace WolfstagInteractive.ConvoCore
             return dialogueText.Replace("{PlayerName}", "Player");
         }
 
+       
         /// <summary>
         /// Updates UI for language change
         /// </summary>
         public void UpdateUIForLanguage(string selectedLanguage)
         {
             Debug.Log($"Language updated to: {selectedLanguage}");
-            // You can implement UI refresh logic here if needed
+            
+            // Update the localization handler if it exists
+            if (LocalizationHandler != null)
+            {
+                LocalizationHandler = new ConvoCoreDialogueLocalizationHandler(ConvoCoreLanguageManager.Instance);
+            }
+            
+            // If we're currently in an active conversation, refresh the current dialogue line
+            if (CurrentDialogueState == ConversationState.Active && 
+                ConversationData != null && 
+                ConversationData.DialogueLines != null && 
+                _currentLineIndex < ConversationData.DialogueLines.Count)
+            {
+                var currentLine = ConversationData.DialogueLines[_currentLineIndex];
+                
+                // Get the localized dialogue for the new language
+                var localizedResult = LocalizationHandler.GetLocalizedDialogue(currentLine);
+                if (localizedResult.Success)
+                {
+                    // Replace player name placeholders
+                    string finalOutputString = ReplacePlayerNameInDialogueLine(localizedResult.Text);
+                    
+                    // Update the UI with both the new localized text and language code
+                    if (_uiFoundation != null)
+                    {
+                        _uiFoundation.UpdateForLanguageChange(finalOutputString, selectedLanguage);
+                    }
+                }
+                else
+                {
+                    Debug.LogWarning($"Failed to get localized dialogue for new language '{selectedLanguage}': {localizedResult.ErrorMessage}");
+                }
+            }
+            else
+            {
+                // If no active conversation, just notify about the language change
+                if (_uiFoundation != null)
+                {
+                    _uiFoundation.UpdateForLanguageChange(null, selectedLanguage);
+                }
+            }
         }
 
         /// <summary>
@@ -387,6 +431,7 @@ namespace WolfstagInteractive.ConvoCore
             {
                 CurrentDialogueState = ConversationState.Paused;
                 Debug.Log("Conversation paused.");
+                PausedConversation?.Invoke();
             }
         }
 
@@ -408,6 +453,7 @@ namespace WolfstagInteractive.ConvoCore
         public void StopConversation()
         {
             CurrentDialogueState = ConversationState.Inactive;
+            EndedConversation?.Invoke();
             _currentLineIndex = 0;
             if (_uiFoundation != null)
             {
