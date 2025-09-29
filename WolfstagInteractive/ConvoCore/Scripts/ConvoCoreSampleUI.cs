@@ -225,7 +225,7 @@ namespace WolfstagInteractive.ConvoCore
         /// <summary>
         /// Displays a piece of dialogue.
         /// </summary>
-        public void DisplayDialogue(string text)
+        public override void DisplayDialogue(string text)
         {
             DialogueText.text = text;
             DialogueText.gameObject.SetActive(true);

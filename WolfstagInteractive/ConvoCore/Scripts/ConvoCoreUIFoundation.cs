@@ -36,5 +36,9 @@ namespace WolfstagInteractive.ConvoCore
         public virtual void HideDialogue()
         {
         }
+        
+        public virtual void DisplayDialogue(string text)
+        {
+        }
     }
 }
