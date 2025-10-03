@@ -19,3 +19,5 @@ MonoBehaviour:
   Representations:
   - CharacterRepresentationName: Sprites
     CharacterRepresentationType: {fileID: 11400000, guid: cf61be94e9ae46b4da28bb23d0bfa60f, type: 2}
+  - CharacterRepresentationName: Prefabs
+    CharacterRepresentationType: {fileID: 11400000, guid: 1b533061774acdf4db3abcdd87fc70d7, type: 2}

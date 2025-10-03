@@ -463,25 +463,24 @@ namespace WolfstagInteractive.ConvoCore
             {
                 foreach (var representationPair in profile.Representations)
                 {
-                    if (representationPair != null && representationPair.CharacterRepresentationType != null)
+                    if (representationPair == null)
                     {
-                        representationPair.CharacterRepresentationType.Initialize();
+                        Debug.LogError($"Representation pair on profile: {profile.name} is null.", profile);
+                        continue;
                     }
-                    else
+
+                    if (representationPair.CharacterRepresentationType == null)
                     {
-                        if (representationPair == null)
-                        {
-                            Debug.LogError($"Representation pair on profile: {profile.name} is null.", profile);
-                        }
-                        else if (representationPair.CharacterRepresentationType == null)
-                        {
-                            Debug.LogError($"Representation pair on profile: {profile.name} " +
-                                           $"has no CharacterRepresentationType set.", profile);
-                        }
-                        else
-                        {
-                            Debug.LogError($"Representation pair is null or has no CharacterRepresentationType set.");
-                        }
+                        Debug.LogError(
+                            $"Representation pair on profile: {profile.name} has no CharacterRepresentationType set.",
+                            profile);
+                        continue;
+                    }
+
+                    if (representationPair.CharacterRepresentationType is IConvoCoreRepresentationInitializable
+                        initializable)
+                    {
+                        initializable.Initialize();
                     }
                 }
             }

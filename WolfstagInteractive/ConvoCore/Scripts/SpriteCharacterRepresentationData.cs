@@ -1,326 +1,163 @@
 using System.Collections.Generic;
 using System.Linq;
-
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace WolfstagInteractive.ConvoCore
 {
     [CreateAssetMenu(fileName = "SpriteRepresentation", menuName = "ConvoCore/Sprite Representation")]
     public class SpriteCharacterRepresentationData : CharacterRepresentationBase
-    #if UNITY_EDITOR
-    , IDialogueLineEditorCustomizable
-    #endif
+#if UNITY_EDITOR
+        , IDialogueLineEditorCustomizable
+#endif
     {
-        [Header("Emotion Mappings")]
-        [Tooltip("List of emotion mappings that pair an emotion ID with a portrait and full body sprite.")]
-        public List<SpriteEmotionMapping> EmotionMappings = new List<SpriteEmotionMapping>();
-       
-        // Override to provide the list of emotion IDs
-        public override List<string> GetEmotionIDs()
+        [Header("Emotions (GUID-only)")] public List<SpriteEmotionMapping> EmotionMappings = new();
+
+        public IReadOnlyList<(string id, string name)> GetEmotionCatalog() =>
+            EmotionMappings.Select(m => (EmotionId: m.EmotionID, m.DisplayName)).ToList();
+
+        public bool TryResolveById(string id, out SpriteEmotionMapping mapping)
         {
-            // Collect and return IDs from the emotion mappings
-            return EmotionMappings.Select(mapping => mapping.EmotionID).ToList();
+            mapping = EmotionMappings.FirstOrDefault(m => m.EmotionID == id);
+            return mapping != null;
         }
 
-        public override void Initialize()
-        {
-        }
+        public override List<string> GetEmotionIDs() => EmotionMappings.Select(m => m.DisplayName).ToList();
 
-        public override void SetEmotion(string emotionID)
+        public override object ProcessEmotion(string emotionId)
         {
-        }
-
-        public override void Show()
-        {
-        }
-
-        public override void Hide()
-        {
-        }
-
-        public override void Dispose()
-        {
-        }
-
-        public override object ProcessEmotion(string emotionID)
-        {
-            if (string.IsNullOrEmpty(emotionID))
+            if (string.IsNullOrEmpty(emotionId))
             {
-                Debug.LogWarning(
-                    "No emotion ID provided for sprite-based representation. Defaulting to first available mapping.");
+                return EmotionMappings.Count > 0 ? EmotionMappings[0] : null;
             }
 
-            // Attempt to find the emotion mapping
-            var mapping = EmotionMappings.FirstOrDefault(emotion => emotion.EmotionID == emotionID);
+            if (TryResolveById(emotionId, out var byGuid))
+                return byGuid;
 
-            if (mapping != null)
-            {
-                Debug.Log($"Mapping found for emotion ID '{emotionID}': {mapping.EmotionID}");
-                return mapping; // Return the found mapping directly
-            }
-
-            // Fallback to the first available mapping
-            if (EmotionMappings.Count > 0)
-            {
-                var defaultMapping = EmotionMappings[0];
-                Debug.LogWarning(
-                    $"Emotion ID '{emotionID}' not found. Using first available emotion '{defaultMapping.EmotionID}'.");
-                return defaultMapping;
-            }
-
-            // If no mappings exist, return null
-            Debug.LogWarning("No emotion mappings available in sprite-based representation.");
-            return null;
+            Debug.LogWarning($"Sprite emotion '{emotionId}' not found; using first mapping as fallback.");
+            return EmotionMappings.Count > 0 ? EmotionMappings[0] : null;
         }
 
 #if UNITY_EDITOR
-        #region IDialogueLineEditorCustomizable Implementation
-        
-        public Rect DrawDialogueLineOptions(Rect rect, string emotionID, SerializedProperty displayOptionsProperty, float spacing)
-        {
-            // Use a unique key for this specific property to track foldout state
-            string foldoutKey = $"DisplayOptions_{displayOptionsProperty.propertyPath}";
-            
-            // Get or initialize foldout state
-            if (!_displayOptionsFoldouts.TryGetValue(foldoutKey, out bool foldoutState))
-            {
-                _displayOptionsFoldouts[foldoutKey] = false;
-                foldoutState = false;
-            }
+        public Rect DrawDialogueLineOptions(Rect rect, string emotionID, SerializedProperty displayOptionsProperty,
+            float spacing) => rect;
 
-            // Draw foldout header
-            bool newFoldoutState = EditorGUI.Foldout(rect, foldoutState, "Sprite Display Options", true);
-            if (newFoldoutState != foldoutState)
-            {
-                _displayOptionsFoldouts[foldoutKey] = newFoldoutState;
-            }
-            rect.y += EditorGUIUtility.singleLineHeight + spacing;
+        public float GetDialogueLineOptionsHeight(string emotionID, SerializedProperty displayOptionsProperty) => 0f;
 
-            // Only draw the options if expanded
-            if (newFoldoutState && displayOptionsProperty != null)
-            {
-                // Add indentation
-                float originalX = rect.x;
-                rect.x += 15f;
-                rect.width -= 15f;
+        public override float GetPreviewHeight() => 84f;
 
-                // Portrait settings
-                EditorGUI.LabelField(rect, "Portrait Settings", EditorStyles.miniBoldLabel);
-                rect.y += EditorGUIUtility.singleLineHeight + spacing;
-                
-                var portraitScaleProp = displayOptionsProperty.FindPropertyRelative("PortraitScale");
-                if (portraitScaleProp != null)
-                {
-                    EditorGUI.PropertyField(rect, portraitScaleProp, new GUIContent("Portrait Scale"));
-                    rect.y += EditorGUIUtility.singleLineHeight + spacing;
-                }
-                
-                var flipPortraitXProp = displayOptionsProperty.FindPropertyRelative("FlipPortraitX");
-                if (flipPortraitXProp != null)
-                {
-                    EditorGUI.PropertyField(rect, flipPortraitXProp, new GUIContent("Flip Portrait X"));
-                    rect.y += EditorGUIUtility.singleLineHeight + spacing;
-                }
-                
-                var flipPortraitYProp = displayOptionsProperty.FindPropertyRelative("FlipPortraitY");
-                if (flipPortraitYProp != null)
-                {
-                    EditorGUI.PropertyField(rect, flipPortraitYProp, new GUIContent("Flip Portrait Y"));
-                    rect.y += EditorGUIUtility.singleLineHeight + spacing;
-                }
-                
-                // Full body settings
-                EditorGUI.LabelField(rect, "Full Body Settings", EditorStyles.miniBoldLabel);
-                rect.y += EditorGUIUtility.singleLineHeight + spacing;
-                
-                var fullBodyScaleProp = displayOptionsProperty.FindPropertyRelative("FullBodyScale");
-                if (fullBodyScaleProp != null)
-                {
-                    EditorGUI.PropertyField(rect, fullBodyScaleProp, new GUIContent("Full Body Scale"));
-                    rect.y += EditorGUIUtility.singleLineHeight + spacing;
-                }
-                
-                var flipFullBodyXProp = displayOptionsProperty.FindPropertyRelative("FlipFullBodyX");
-                if (flipFullBodyXProp != null)
-                {
-                    EditorGUI.PropertyField(rect, flipFullBodyXProp, new GUIContent("Flip Full Body X"));
-                    rect.y += EditorGUIUtility.singleLineHeight + spacing;
-                }
-                
-                var flipFullBodyYProp = displayOptionsProperty.FindPropertyRelative("FlipFullBodyY");
-                if (flipFullBodyYProp != null)
-                {
-                    EditorGUI.PropertyField(rect, flipFullBodyYProp, new GUIContent("Flip Full Body Y"));
-                    rect.y += EditorGUIUtility.singleLineHeight + spacing;
-                }
-
-                // Restore original X position
-                rect.x = originalX;
-                rect.width += 15f;
-            }
-            
-            return rect;
-        }
-
-        public float GetDialogueLineOptionsHeight(string emotionID, SerializedProperty displayOptionsProperty)
-        {
-            // Always include the foldout header height
-            float height = EditorGUIUtility.singleLineHeight + 2f;
-            
-            if (displayOptionsProperty != null)
-            {
-                // Use a unique key for this specific property to check foldout state
-                string foldoutKey = $"DisplayOptions_{displayOptionsProperty.propertyPath}";
-                
-                // Check if foldout is expanded
-                if (_displayOptionsFoldouts.TryGetValue(foldoutKey, out bool foldoutState) && foldoutState)
-                {
-                    // Add height for: 2 sub-headers + 6 fields
-                    height += (EditorGUIUtility.singleLineHeight + 2f) * 8f;
-                }
-            }
-            
-            return height;
-        }
-        
-        #endregion
-
-        /// <summary>
-        /// Calculates the height required to display an inline preview.
-        /// </summary>
-        public override float GetPreviewHeight()
-        {
-            const float dropdownHeight = 18f; // Height of the foldout dropdown
-            const float spriteHeight = 64f;   // Height of each sprite preview
-            const float spacing = 5f;         // Spacing between elements
-
-            // If no emotion mappings exist, return only the dropdown height
-            if (EmotionMappings.Count == 0)
-            {
-                return dropdownHeight;
-            }
-
-            // Calculate height based on foldout state
-            if (_foldoutStates.TryGetValue(this, out bool foldoutState) && foldoutState)
-            {
-                // Expanded: Include dropdown, both sprites, and spacing
-                var mapping = EmotionMappings[0];
-                float totalHeight = dropdownHeight; // Add dropdown height first
-
-                if (mapping.PortraitSprite != null)
-                {
-                    totalHeight += spriteHeight + spacing;
-                }
-
-                if (mapping.FullBodySprite != null)
-                {
-                    totalHeight += spriteHeight + spacing;
-                }
-
-                // Subtract extra spacing after the last element
-                return totalHeight - spacing;
-            }
-
-            // Collapsed: Only include the dropdown height
-            return dropdownHeight;
-        }
-
-        /// <summary>
-        /// Draws an inline editor preview of the representation.
-        /// </summary>
         public override void DrawInlineEditorPreview(object mappingData, Rect position)
         {
-            // Cast the generic mapping data to EmotionMapping
-            var emotionMapping = mappingData as SpriteEmotionMapping;
-            if (emotionMapping == null)
+            // FIX: parenthesize the ternary before using ??
+            var mapping = (mappingData as SpriteEmotionMapping) ??
+                          (EmotionMappings.Count > 0 ? EmotionMappings[0] : null);
+            if (mapping == null)
             {
-                EditorGUI.LabelField(position, "Invalid or null mapping for preview.");
+                EditorGUI.LabelField(position, "No sprite mapping to preview.");
                 return;
             }
 
-            // Constants for sizes and spacing
-            float buttonHeight = EditorGUIUtility.singleLineHeight;
-            const float spriteWidth = 64f;    // Width of each sprite preview
-            const float spriteHeight = 64f;   // Height of each sprite preview
-            const float spacing = 5f;         // Spacing between sprites
-            // Ensure foldout state is tracked with a stable object reference
-            if (!_foldoutStates.TryGetValue(this, out bool foldoutState))
-            {
-                _foldoutStates[this] = false; 
-            }
-            // Draw the toggle button
-            Rect buttonRect = new Rect(position.x, position.y, position.width, buttonHeight);
-            if (GUI.Button(buttonRect, _foldoutStates[this] ? "Hide Sprites" : "Show Sprites"))
-            {
-                // Toggle the visibility state
-                _foldoutStates[this] = !_foldoutStates[this];
-            }
+            Texture2D portraitTex = mapping.PortraitSprite != null ? mapping.PortraitSprite.texture : null;
+            Texture2D fullBodyTex = mapping.FullBodySprite != null ? mapping.FullBodySprite.texture : null;
 
-            // If the foldout is collapsed, skip rendering further content
-            if (!_foldoutStates[this])
+            // FIX: explicit null checks—can't treat Texture2D as bool
+            int count = (portraitTex != null ? 1 : 0) + (fullBodyTex != null ? 1 : 0);
+            if (count == 0)
             {
+                EditorGUI.LabelField(position, "(No sprites)");
                 return;
             }
 
-            // Adjust the Y position after the foldout dropdown
-            float currentY = position.y + buttonHeight + spacing;
+            const float pad = 4f;
+            var inner = new Rect(position.x + pad, position.y + pad,
+                position.width - pad * 2f, position.height - pad * 2f);
 
-            // Draw the portrait sprite (if available)
-            if (emotionMapping.PortraitSprite != null)
+            if (count == 1)
             {
-                Rect portraitRect = new Rect(position.x, currentY, spriteWidth, spriteHeight);
-                EditorGUI.DrawPreviewTexture(
-                    portraitRect,
-                    emotionMapping.PortraitSprite.texture,
-                    null,
-                    ScaleMode.ScaleToFit
-                );
-
-                // Move current Y position down by the sprite's height and spacing
-                currentY += spriteHeight + spacing;
+                var tex = portraitTex != null ? portraitTex : fullBodyTex;
+                GUI.DrawTexture(FitRectPreserveAspect(inner, tex.width, tex.height), tex, ScaleMode.ScaleToFit, true);
             }
-
-            // Draw the full body sprite (if available)
-            if (emotionMapping.FullBodySprite != null)
+            else
             {
-                Rect fullBodyRect = new Rect(position.x, currentY, spriteWidth, spriteHeight);
-                EditorGUI.DrawPreviewTexture(
-                    fullBodyRect,
-                    emotionMapping.FullBodySprite.texture,
-                    null,
-                    ScaleMode.ScaleToFit
-                );
+                float slotW = (inner.width - pad) * 0.5f;
+                var left = new Rect(inner.x, inner.y, slotW, inner.height);
+                var right = new Rect(inner.x + slotW + pad, inner.y, slotW, inner.height);
+
+                if (portraitTex != null)
+                    GUI.DrawTexture(FitRectPreserveAspect(left, portraitTex.width, portraitTex.height), portraitTex,
+                        ScaleMode.ScaleToFit, true);
+                if (fullBodyTex != null)
+                    GUI.DrawTexture(FitRectPreserveAspect(right, fullBodyTex.width, fullBodyTex.height), fullBodyTex,
+                        ScaleMode.ScaleToFit, true);
             }
         }
 
-        /// <summary>
-        /// Cache for foldout states for display options based on property paths.
-        /// Prevents foldout states from resetting across UI refreshes.
-        /// </summary>
-        private static Dictionary<string, bool> _displayOptionsFoldouts = new Dictionary<string, bool>();
+        private static Rect FitRectPreserveAspect(Rect container, float texW, float texH)
+        {
+            if (texW <= 0f || texH <= 0f) return container;
 
-        /// <summary>
-        /// Cache for foldout states based on objects being inspected.
-        /// Prevents foldout states from resetting across UI refreshes.
-        /// </summary>
-        private static Dictionary<object, bool> _foldoutStates = new Dictionary<object, bool>();
+            float ar = texW / texH;
+            float targetW = container.width;
+            float targetH = targetW / ar;
+
+            if (targetH > container.height)
+            {
+                targetH = container.height;
+                targetW = targetH * ar;
+            }
+
+            float x = container.x + (container.width - targetW) * 0.5f;
+            float y = container.y + (container.height - targetH) * 0.5f;
+            return new Rect(x, y, targetW, targetH);
+        }
+
+        private void OnValidate()
+        {
+            var used = new HashSet<string>();
+            foreach (var m in EmotionMappings)
+            {
+                if (m == null) continue;
+                m.EnsureValidId(used);
+                m.EnsureValidBasics();
+            }
+        }
+
 #endif
     }
-    
+
     [System.Serializable]
     public class SpriteEmotionMapping
     {
-        [Tooltip("The unique identifier for the emotion (e.g., 'happy', 'sad').")]
-        public string EmotionID;
+        [SerializeField, Tooltip("Stable unique ID (GUID). Non-editable.")]
+        private string emotionID = System.Guid.NewGuid().ToString("N");
+
+        public string EmotionID => emotionID;
+
+        [Tooltip("Human-readable name shown in dropdowns and inspector list headers.")]
+        public string DisplayName = "Neutral";
+
         [Tooltip("Portrait sprite for the emotion.")]
         public Sprite PortraitSprite;
+
         [Tooltip("Full body sprite for the emotion.")]
         public Sprite FullBodySprite;
+
         [Header("Default Display Options")]
-        [Tooltip("Default display options for this emotion. Can be overridden per dialogue line.")]
         public DialogueLineDisplayOptions DisplayOptions = new DialogueLineDisplayOptions();
+
+        public void EnsureValidId(HashSet<string> used)
+        {
+            if (string.IsNullOrWhiteSpace(emotionID) || !used.Add(emotionID))
+                emotionID = System.Guid.NewGuid().ToString("N");
+        }
+
+        public void EnsureValidBasics()
+        {
+            if (string.IsNullOrWhiteSpace(DisplayName))
+                DisplayName = "Unnamed";
+        }
     }
 }

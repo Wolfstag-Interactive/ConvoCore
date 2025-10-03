@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -10,9 +11,12 @@ namespace WolfstagInteractive.ConvoCore
     public class ConvoCoreUIFoundation : MonoBehaviour, IUIFoundation
     {
         protected ConvoCore ConvoCoreInstance;
+        protected ConvoCorePrefabRepresentationSpawner PrefabRepresentationSpawner;
         public virtual void InitializeUI(ConvoCore convoCoreInstance)
         {
             ConvoCoreInstance = convoCoreInstance;
+            PrefabRepresentationSpawner = !TryGetComponent(out ConvoCorePrefabRepresentationSpawner spawner) ? 
+                gameObject.AddComponent<ConvoCorePrefabRepresentationSpawner>() : spawner;
         }
 
         public virtual void UpdateDialogueUI(ConvoCoreConversationData.DialogueLineInfo dialogueLineInfo, 

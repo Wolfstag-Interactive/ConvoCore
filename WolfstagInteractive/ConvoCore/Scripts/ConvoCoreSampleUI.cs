@@ -10,221 +10,158 @@ namespace WolfstagInteractive.ConvoCore
 {
     public class ConvoCoreSampleUI : ConvoCoreUIFoundation
     {
-        [Header("Dialogue UI Elements")] [SerializeField]
-        private TextMeshProUGUI DialogueText;
-
+        [Header("Dialogue UI Elements")]
+        [SerializeField] private TextMeshProUGUI DialogueText;
         [SerializeField] private TextMeshProUGUI SpeakerName;
         [SerializeField] private GameObject DialoguePanel;
         [SerializeField] private Image SpeakerPortraitImage;
         [SerializeField] private Image FullBodyImageLeft;
         [SerializeField] private Image FullBodyImageRight;
+        [SerializeField] private Image FullBodyImageCenter;
         [SerializeField] private Button ContinueButton;
+
+        [Header("Settings")]
+        [SerializeField] private bool AllowLineAdvanceOutsideButton = false;
+
+        [Header("Input Settings")]
+        [SerializeField] private InputAction AdvanceDialogueAction;
+
         private bool _continuePressed = false;
         private bool isWaitingForInput = false;
-        [Header("Settings")] [SerializeField] private bool AllowLineAdvanceOutsideButton = false;
-
-        [Header("Input Settings")] [SerializeField]
-        private InputAction AdvanceDialogueAction;
 
         private void Awake()
         {
-            if (DialoguePanel != null)
-            {
-                HideDialogue();
-            }
-
-            if (ContinueButton != null)
-            {
-                ContinueButton.onClick.AddListener(OnContinueButtonPressed);
-            }
-
-            if (AdvanceDialogueAction != null)
-            {
-                AdvanceDialogueAction.Enable();
-            }
-
+            HideDialogue();
+            ContinueButton?.onClick.AddListener(OnContinueButtonPressed);
+            AdvanceDialogueAction?.Enable();
             DontDestroyOnLoad(gameObject);
         }
 
         private void OnEnable()
         {
-            // Enable and bind AdvanceDialogueAction
-            if (AdvanceDialogueAction != null)
-            {
-                AdvanceDialogueAction.Enable();
-                AdvanceDialogueAction.performed += OnAdvanceDialoguePerformed;
-            }
-            else
-            {
-                Debug.LogError("AdvanceDialogueAction is not assigned!");
-            }
+            AdvanceDialogueAction?.Enable();
+            AdvanceDialogueAction.performed += OnAdvanceDialoguePerformed;
         }
 
         private void OnDisable()
         {
-            if (AdvanceDialogueAction != null)
-            {
-                AdvanceDialogueAction.Disable();
-                AdvanceDialogueAction.performed -= OnAdvanceDialoguePerformed;
-            }
+            AdvanceDialogueAction?.Disable();
+            AdvanceDialogueAction.performed -= OnAdvanceDialoguePerformed;
         }
 
         /// <summary>
-        /// Listener for the AdvanceDialogueAction input event (keyboard or click).
+        /// 
         /// </summary>
-        /// <param name="context">Input action callback context.</param>
-        private void OnAdvanceDialoguePerformed(InputAction.CallbackContext context)
-        {
-            if (isWaitingForInput && (AllowLineAdvanceOutsideButton || !IsPointerOverUIElement(ContinueButton)))
-            {
-                OnContinueButtonPressed();
-            }
-        }
-
-        /// <summary>
-        /// Updates the dialogue UI based on the provided dialogue line information.
-        /// </summary>
-        /// <param name="dialogueLineInfo">Dialogue line metadata.</param>
-        /// <param name="localizedText">The localized dialogue text to display.</param>
-        /// <param name="speakingCharacterName">The name of the speaking character.</param>
-        /// <param name="emotionMappingData">The emotion mapping object output by ProcessEmotion().</param>
-        /// <summary>
-        /// Updates the dialogue UI based on the provided dialogue line information.
-        /// </summary>
-        /// <param name="dialogueLineInfo">Dialogue line metadata.</param>
-        /// <param name="localizedText">The localized dialogue text to display.</param>
-        /// <param name="speakingCharacterName">The name of the speaking character.</param>
-        /// <param name="emotionMappingData">The emotion mapping object output by ProcessEmotion().</param>
-        public override void UpdateDialogueUI(ConvoCoreConversationData.DialogueLineInfo dialogueLineInfo,
-            string localizedText, string speakingCharacterName, CharacterRepresentationBase emotionMappingData)
+        /// <param name="lineInfo"></param>
+        /// <param name="localizedText"></param>
+        /// <param name="speakerName"></param>
+        /// <param name="primaryRepresentation"></param>
+        public override void UpdateDialogueUI(ConvoCoreConversationData.DialogueLineInfo lineInfo, string localizedText, string speakerName, CharacterRepresentationBase primaryRepresentation)
         {
             DisplayDialogue(localizedText);
-            SpeakerName.text = speakingCharacterName;
+            SpeakerName.text = speakerName;
 
-            // Clear visuals by default
-            if (SpeakerPortraitImage != null) SpeakerPortraitImage.sprite = null;
-            if (FullBodyImageLeft != null) FullBodyImageLeft.sprite = null;
-            if (FullBodyImageRight != null) FullBodyImageRight.sprite = null;
+            // Hide all sprite elements
+            HideAllSpriteImages();
 
-            // Hide all images initially
-            if (SpeakerPortraitImage != null) SpeakerPortraitImage.gameObject.SetActive(false);
-            if (FullBodyImageLeft != null) FullBodyImageLeft.gameObject.SetActive(false);
-            if (FullBodyImageRight != null) FullBodyImageRight.gameObject.SetActive(false);
+            // Render character representations (sprites or prefabs)
+            RenderRepresentation(lineInfo.PrimaryCharacterRepresentation, DisplaySlot.Center);
+            RenderRepresentation(lineInfo.SecondaryCharacterRepresentation, DisplaySlot.Left);
+            RenderRepresentation(lineInfo.TertiaryCharacterRepresentation, DisplaySlot.Right);
 
-            // Get conversation data to resolve character profiles
-            var conversationData = FindObjectOfType<ConvoCore>()?.ConversationData;
-            if (conversationData == null)
-            {
-                Debug.LogError("Could not find ConversationData to resolve character representations");
-                return;
-            }
-
-            // Render primary character representation (speaker)
-            RenderCharacterRepresentation(
-                conversationData,
-                dialogueLineInfo.PrimaryCharacterRepresentation,
-                SpeakerPortraitImage,
-                FullBodyImageLeft);
-
-            // Render secondary character representation
-            RenderCharacterRepresentation(
-                conversationData,
-                dialogueLineInfo.SecondaryCharacterRepresentation,
-                null, // No portrait for secondary
-                FullBodyImageRight);
-
-            // Render tertiary character representation (this might overlap with secondary - handle as needed)
-            RenderCharacterRepresentation(
-                conversationData,
-                dialogueLineInfo.TertiaryCharacterRepresentation,
-                null, // No portrait for tertiary
-                FullBodyImageRight); // You might want a separate image for tertiary
-
-            // Show continue button
-            ContinueButton.gameObject.SetActive(true);
+            ContinueButton?.gameObject.SetActive(true);
         }
 
-        void RenderCharacterRepresentation(
-            ConvoCoreConversationData conversationData,
-            ConvoCoreConversationData.CharacterRepresentationData representationData,
-            Image portraitImage,
-            Image fullBodyImage)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="data"></param>
+        /// <param name="slot"></param>
+        private void RenderRepresentation(ConvoCoreConversationData.CharacterRepresentationData data, DisplaySlot slot)
         {
-            CharacterRepresentationBase representation =
-                GetCharacterRepresentationFromData(conversationData, representationData);
+            var convoCore = FindObjectOfType<ConvoCore>();
+            var conversationData = convoCore?.ConversationData;
+            if (conversationData == null) return;
 
-            if (representation != null)
+            var representation = GetCharacterRepresentationFromData(conversationData, data);
+            if (representation == null) return;
+
+            var emotionID = data.SelectedEmotionId;
+            var processed = representation.ProcessEmotion(emotionID);
+
+            // Handle prefab-based representation
+            if (representation is PrefabCharacterRepresentationData prefabRep)
             {
-                string emotionID = representationData.SelectedRepresentationEmotion;
-                object emotionMappingObject = representation.ProcessEmotion(emotionID);
+                PrefabRepresentationSpawner?.SpawnCharacter(
+                    prefabRep,
+                    emotionID,
+                    data.LineSpecificDisplayOptions,
+                    slot);
+            }
+            // Handle sprite-based representation
+            else if (processed is SpriteEmotionMapping spriteMapping)
+            {
+                var displayOptions = data.LineSpecificDisplayOptions ?? spriteMapping.DisplayOptions;
 
-                if (emotionMappingObject is SpriteEmotionMapping spriteMapping)
+                Image portraitImage = SpeakerPortraitImage;
+                Image fullBodyImage = GetFullBodyImage(slot);
+
+                if (portraitImage && spriteMapping.PortraitSprite)
                 {
-                    // Use per-line display options if available, otherwise fall back to emotion defaults
-                    DialogueLineDisplayOptions options =
-                        representationData.LineSpecificDisplayOptions ?? spriteMapping.DisplayOptions;
+                    portraitImage.sprite = spriteMapping.PortraitSprite;
+                    portraitImage.rectTransform.localScale = new Vector3(
+                        displayOptions.FlipPortraitX ? -displayOptions.PortraitScale.x : displayOptions.PortraitScale.x,
+                        displayOptions.FlipPortraitY ? -displayOptions.PortraitScale.y : displayOptions.PortraitScale.y,
+                        displayOptions.PortraitScale.z);
+                    portraitImage.gameObject.SetActive(true);
+                    TryFadeIn(portraitImage);
+                }
 
-                    // Render portrait sprite
-                    if (spriteMapping.PortraitSprite != null && portraitImage != null)
-                    {
-                        portraitImage.sprite = spriteMapping.PortraitSprite;
-                        portraitImage.gameObject.SetActive(true);
-
-                        portraitImage.rectTransform.localScale = new Vector3(
-                            options.FlipPortraitX ? -options.PortraitScale.x : options.PortraitScale.x,
-                            options.FlipPortraitY ? -options.PortraitScale.y : options.PortraitScale.y,
-                            options.PortraitScale.z
-                        );
-                    }
-
-                    // Render full-body sprite
-                    if (spriteMapping.FullBodySprite != null && fullBodyImage != null)
-                    {
-                        fullBodyImage.sprite = spriteMapping.FullBodySprite;
-                        fullBodyImage.gameObject.SetActive(true);
-
-                        fullBodyImage.rectTransform.localScale = new Vector3(
-                            options.FlipFullBodyX ? -options.FullBodyScale.x : options.FullBodyScale.x,
-                            options.FlipFullBodyY ? -options.FullBodyScale.y : options.FullBodyScale.y,
-                            options.FullBodyScale.z
-                        );
-                    }
+                if (fullBodyImage && spriteMapping.FullBodySprite)
+                {
+                    fullBodyImage.sprite = spriteMapping.FullBodySprite;
+                    fullBodyImage.rectTransform.localScale = new Vector3(
+                        displayOptions.FlipFullBodyX ? -displayOptions.FullBodyScale.x : displayOptions.FullBodyScale.x,
+                        displayOptions.FlipFullBodyY ? -displayOptions.FullBodyScale.y : displayOptions.FullBodyScale.y,
+                        displayOptions.FullBodyScale.z);
+                    fullBodyImage.gameObject.SetActive(true);
+                    TryFadeIn(fullBodyImage);
                 }
             }
         }
 
-
-        /// <summary>
-        /// Helper method to resolve character representation from representation data
-        /// </summary>
-        private CharacterRepresentationBase GetCharacterRepresentationFromData(
-            ConvoCoreConversationData conversationData,
-            ConvoCoreConversationData.CharacterRepresentationData representationData)
+        private void TryFadeIn(Graphic graphic)
         {
-            // Check if this is using the new secondary/tertiary system (has SelectedCharacterID)
-            if (!string.IsNullOrEmpty(representationData.SelectedCharacterID))
-            {
-                // Find the profile by the selected character ID
-                var selectedProfile = conversationData.ConversationParticipantProfiles
-                    .FirstOrDefault(p => p != null && p.CharacterID == representationData.SelectedCharacterID);
-
-                if (selectedProfile != null && !string.IsNullOrEmpty(representationData.SelectedRepresentationName))
-                {
-                    return selectedProfile.GetRepresentation(representationData.SelectedRepresentationName);
-                }
-            }
-            else
-            {
-                // Use the old system - SelectedRepresentation directly
-                return representationData.SelectedRepresentation;
-            }
-
-            return null;
+            var fade = graphic.GetComponent<IConvoCoreFadeIn>();
+            fade?.FadeIn();
         }
 
-        /// <summary>
-        /// Displays a piece of dialogue.
-        /// </summary>
+        private Image GetFullBodyImage(DisplaySlot slot) => slot switch
+        {
+            DisplaySlot.Left => FullBodyImageLeft,
+            DisplaySlot.Center => FullBodyImageCenter,
+            DisplaySlot.Right => FullBodyImageRight,
+            _ => null
+        };
+
+        private void HideAllSpriteImages()
+        {
+            SpeakerPortraitImage?.gameObject.SetActive(false);
+            FullBodyImageLeft?.gameObject.SetActive(false);
+            FullBodyImageCenter?.gameObject.SetActive(false);
+            FullBodyImageRight?.gameObject.SetActive(false);
+        }
+
+        private CharacterRepresentationBase GetCharacterRepresentationFromData(ConvoCoreConversationData convoData, ConvoCoreConversationData.CharacterRepresentationData data)
+        {
+            if (!string.IsNullOrEmpty(data.SelectedCharacterID))
+            {
+                var profile = convoData.ConversationParticipantProfiles.FirstOrDefault(p => p.CharacterID == data.SelectedCharacterID);
+                return profile?.GetRepresentation(data.SelectedRepresentationName);
+            }
+            return data.SelectedRepresentation;
+        }
+
         public override void DisplayDialogue(string text)
         {
             DialogueText.text = text;
@@ -233,128 +170,74 @@ namespace WolfstagInteractive.ConvoCore
             DialoguePanel.gameObject.SetActive(true);
         }
 
-        /// <summary>
-        /// Updates the UI when language changes, primarily to replace the current dialogue text
-        /// </summary>
-        /// <param name="localizedDialogueText">The new localized dialogue text to display</param>
-        /// <param name="newLanguageCode">The new language code that was applied</param>
-        public override void UpdateForLanguageChange(string localizedDialogueText, string newLanguageCode)
-        {
-            // Update the dialogue text with the new localized content
-            if (DialogueText != null)
-            {
-                DialogueText.text = localizedDialogueText;
-                
-                // Force mesh update to ensure proper layout after text change
-                DialogueText.ForceMeshUpdate();
-            }
-            
-            // Force layout refresh if dialogue is currently visible
-            if (DialoguePanel != null && DialoguePanel.activeInHierarchy)
-            {
-                Canvas.ForceUpdateCanvases();
-            }
-        }
-
-        /// <summary>
-        /// Hides the dialogue display.
-        /// </summary>
         public override void HideDialogue()
         {
             DialogueText.gameObject.SetActive(false);
             SpeakerName.gameObject.SetActive(false);
-            SpeakerPortraitImage.gameObject.SetActive(false);
             DialoguePanel.gameObject.SetActive(false);
-            if (FullBodyImageLeft != null)
-            {
-                FullBodyImageLeft.gameObject.SetActive(false);
-            }
-            if (FullBodyImageRight != null)
-            {
-                FullBodyImageRight.gameObject.SetActive(false);
-            }
+            HideAllSpriteImages();
             ContinueButton.gameObject.SetActive(false);
         }
 
-        /// <summary>
-        /// Waits for user input (via a button press) to proceed with dialogue
-        /// </summary>
-        /// <returns>Coroutine to wait for user input</returns>
         public override IEnumerator WaitForUserInput()
         {
             isWaitingForInput = true;
             ContinueButton.gameObject.SetActive(true);
 
-            // Wait for user input (via key press or click)
             while (isWaitingForInput)
             {
                 yield return null;
             }
 
-            ContinueButton.gameObject.SetActive(false); // Hide the button when input is received
+            ContinueButton.gameObject.SetActive(false);
         }
 
-
-
-        /// <summary>
-        /// Called when the "Continue" button is pressed by the user.
-        /// </summary>
         public void OnContinueButtonPressed()
         {
-            if (!isWaitingForInput) return; // Ensure this is only executed while waiting for input
-
+            if (!isWaitingForInput) return;
             isWaitingForInput = false;
         }
 
-        /// <summary>
-        /// Determines if the pointer is currently over the specified UI element.
-        /// Works with both Input Manager and Input System.
-        /// </summary>
-        /// <param name="uiElement">The UI element to check (any Component with a RectTransform).</param>
-        /// <returns>True if the pointer is over the element; false otherwise.</returns>
+        private void OnAdvanceDialoguePerformed(InputAction.CallbackContext context)
+        {
+            if (isWaitingForInput && (AllowLineAdvanceOutsideButton || !IsPointerOverUIElement(ContinueButton)))
+            {
+                OnContinueButtonPressed();
+            }
+        }
+
         protected bool IsPointerOverUIElement(Component uiElement)
         {
             if (uiElement == null) return false;
+
 
             RectTransform rectTransform = uiElement.GetComponent<RectTransform>();
             if (rectTransform != null)
             {
                 Vector2 mousePosition;
-                
 #if ENABLE_INPUT_SYSTEM
-                // Use Input System if available
                 if (Mouse.current != null)
                 {
                     mousePosition = Mouse.current.position.ReadValue();
                 }
                 else
                 {
-                    // Fallback to legacy input if Mouse.current is not available
                     mousePosition = Input.mousePosition;
                 }
 #else
-                // Use legacy Input Manager
-                mousePosition = Input.mousePosition;
+mousePosition = Input.mousePosition;
 #endif
-
                 Vector2 localMousePosition = rectTransform.InverseTransformPoint(mousePosition);
                 return rectTransform.rect.Contains(localMousePosition);
             }
 
-            return false; // Pointer is not over the UI element
-        }
 
+            return false;
+        }
 
         private void OnDestroy()
         {
-#if ENABLE_INPUT_SYSTEM
-            if (AdvanceDialogueAction != null)
-            {
-                AdvanceDialogueAction.Disable();
-            }
-#endif
+            AdvanceDialogueAction?.Disable();
         }
-
     }
-
 }

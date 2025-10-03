@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32c649907e2db674684d795adc21be6b, type: 3}
   m_Name: PrefabCharacterRepresentation
   m_EditorClassIdentifier: 
-  CharacterPrefab: {fileID: 279964220987834641, guid: 6d159673e38ff7742913ba71b8b3c32a, type: 3}
+  CharacterPrefab: {fileID: 4572384141807948543, guid: f5d3b86b185a9ad4d92faf90620a54e6, type: 3}
   EmotionMappings:
-  - EmotionID: sad
-    AnimatorOverride: {fileID: 0}
-  - EmotionID: sad
-    AnimatorOverride: {fileID: 0}
+  - _emotionId: 0cd4a347f9d04853810517ced215e945
+    DisplayName: cube
+  - _emotionId: c1cef678f22c4b8a8eae023999ad0612
+    DisplayName: sphere

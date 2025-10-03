@@ -13,7 +13,6 @@ namespace WolfstagInteractive.ConvoCore.Editor
         private SerializedProperty _conversationKey;
         private SerializedProperty _filePath;
 
-        // NEW: serialized props for linking/embedded fields
         private SerializedProperty _conversationYaml;
         private SerializedProperty _sourceYaml;
         private SerializedProperty _sourceYamlAssetPath;

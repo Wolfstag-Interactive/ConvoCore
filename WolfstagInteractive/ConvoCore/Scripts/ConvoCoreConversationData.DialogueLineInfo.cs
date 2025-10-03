@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-
 namespace WolfstagInteractive.ConvoCore
 {
     public partial class ConvoCoreConversationData
@@ -13,8 +12,12 @@ namespace WolfstagInteractive.ConvoCore
             public string SelectedCharacterID; 
             public string SelectedRepresentationName;
             public CharacterRepresentationBase SelectedRepresentation;
-            [Tooltip("Specify the emotion for this dialogue line by name.")]
-            public string SelectedRepresentationEmotion; // Name of the emotion selected via dropdown
+
+            [Header("Emotion (GUID)")]
+            // This drawer shows DisplayName but stores GUID from the representation asset.
+            [EmotionIDSelector(nameof(SelectedRepresentation))]
+            public string SelectedEmotionId;
+           
             [Header("Per-Line Display Overrides")]
             [Tooltip("Display options specific to this dialogue line. These override the default emotion settings.")]
             public DialogueLineDisplayOptions LineSpecificDisplayOptions;

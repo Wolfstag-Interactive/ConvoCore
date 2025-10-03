@@ -28,8 +28,22 @@ namespace WolfstagInteractive.ConvoCore
 
         public enum CharacterPosition
         {
-            Left,
+            Left,Center,
             Right
         }
+        
+        public DisplaySide FullBodySide =>
+            DisplayPosition == CharacterPosition.Right ? DisplaySide.Right : DisplaySide.Left;
+        
+    }
+
+    /// <summary>
+    /// Shared enum for prefab and UI side positioning
+    /// </summary>
+    public enum DisplaySide
+    {
+        Left,
+        Right,
+        Center
     }
 }
