@@ -58,7 +58,6 @@ namespace WolfstagInteractive.ConvoCore
 
         public override void DrawInlineEditorPreview(object mappingData, Rect position)
         {
-            // FIX: parenthesize the ternary before using ??
             var mapping = (mappingData as SpriteEmotionMapping) ??
                           (EmotionMappings.Count > 0 ? EmotionMappings[0] : null);
             if (mapping == null)
