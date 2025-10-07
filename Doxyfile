@@ -11,3 +11,5 @@ GENERATE_SEARCHENGINE  = YES
 HAVE_DOT               = YES
 DOT_IMAGE_FORMAT       = svg
 HTML_OUTPUT            = html
+HTML_FOOTER   = Docs/html/custom_footer.html
+HTML_EXTRA_STYLESHEET = Docs/html/custom.css
