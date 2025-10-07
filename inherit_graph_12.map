@@ -9,13 +9,13 @@
 <area shape="poly" id="edge5_Node000009_Node000007" title=" " alt="" coords="238,99,325,99,325,105,238,105"/>
 <area shape="rect" id="Node000008" href="$classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSampleUI.html" title=" " alt="" coords="639,85,833,125"/>
 <area shape="poly" id="edge6_Node000007_Node000008" title=" " alt="" coords="552,100,638,101,638,106,552,106"/>
-<area shape="rect" id="Node000003" title=" " alt="" coords="65,147,189,172"/>
-<area shape="poly" id="edge9_Node000003_Node000001" title=" " alt="" coords="202,150,225,142,246,132,262,117,270,101,278,84,294,68,325,52,328,56,298,72,282,87,275,103,266,120,250,136,227,147,203,155"/>
-<area shape="poly" id="edge11_Node000003_Node000007" title=" " alt="" coords="201,143,324,119,325,125,202,148"/>
-<area shape="rect" id="Node000004" href="$classConvoCorePrefabPool.html" title=" " alt="" coords="350,147,513,172"/>
-<area shape="poly" id="edge7_Node000003_Node000004" title=" " alt="" coords="202,157,350,157,350,162,202,162"/>
-<area shape="rect" id="Node000005" href="$classWolfstagInteractive_1_1ConvoCore_1_1ConvoCore.html" title=" " alt="" coords="334,197,529,237"/>
-<area shape="poly" id="edge8_Node000003_Node000005" title=" " alt="" coords="203,171,334,196,333,201,202,176"/>
-<area shape="rect" id="Node000006" href="$classWolfstagInteractive_1_1ConvoCore_1_1ConvoCorePrefabRepresentationSpawner.html" title=" " alt="" coords="297,261,565,316"/>
-<area shape="poly" id="edge10_Node000003_Node000006" title=" " alt="" coords="162,177,224,211,297,246,331,259,329,264,295,251,221,216,159,182"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="65,153,189,179"/>
+<area shape="poly" id="edge8_Node000003_Node000001" title=" " alt="" coords="201,152,225,144,246,132,262,117,270,101,278,84,294,68,325,52,328,56,298,72,282,87,274,103,266,120,250,136,227,148,203,157"/>
+<area shape="poly" id="edge11_Node000003_Node000007" title=" " alt="" coords="201,148,335,119,336,125,202,153"/>
+<area shape="rect" id="Node000004" href="$classWolfstagInteractive_1_1ConvoCore_1_1ConvoCore.html" title=" " alt="" coords="334,146,529,186"/>
+<area shape="poly" id="edge7_Node000003_Node000004" title=" " alt="" coords="202,163,334,163,334,169,202,169"/>
+<area shape="rect" id="Node000005" href="$classWolfstagInteractive_1_1ConvoCore_1_1ConvoCorePrefabPool.html" title=" " alt="" coords="333,210,530,250"/>
+<area shape="poly" id="edge9_Node000003_Node000005" title=" " alt="" coords="202,179,336,207,335,213,201,184"/>
+<area shape="rect" id="Node000006" href="$classWolfstagInteractive_1_1ConvoCore_1_1ConvoCorePrefabRepresentationSpawner.html" title=" " alt="" coords="297,275,565,329"/>
+<area shape="poly" id="edge10_Node000003_Node000006" title=" " alt="" coords="160,184,222,222,297,260,330,272,328,277,295,264,219,226,157,188"/>
 </map>

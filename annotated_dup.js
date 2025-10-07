@@ -19,10 +19,13 @@ var annotated_dup =
         [ "ConvoCoreLanguageManager", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreLanguageManager.html", null ],
         [ "ConvoCoreLanguageSettings", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreLanguageSettings.html", null ],
         [ "ConvoCoreLanguageSettingsLoader", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreLanguageSettingsLoader.html", null ],
+        [ "ConvoCorePrefabPool", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCorePrefabPool.html", null ],
         [ "ConvoCorePrefabRepresentationSpawner", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCorePrefabRepresentationSpawner.html", null ],
         [ "ConvoCoreSampleUI", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSampleUI.html", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSampleUI" ],
+        [ "ConvoCoreSettings", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSettings.html", null ],
         [ "ConvoCoreUIFoundation", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreUIFoundation.html", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreUIFoundation" ],
         [ "ConvoCoreYamlUtilities", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreYamlUtilities.html", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreYamlUtilities" ],
+        [ "ConvoCoreYamlWatcher", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreYamlWatcher.html", null ],
         [ "DialogueLineDisplayOptions", "classWolfstagInteractive_1_1ConvoCore_1_1DialogueLineDisplayOptions.html", null ],
         [ "DialogueYamlConfig", "classWolfstagInteractive_1_1ConvoCore_1_1DialogueYamlConfig.html", null ],
         [ "EmotionIDSelectorAttribute", "classWolfstagInteractive_1_1ConvoCore_1_1EmotionIDSelectorAttribute.html", null ],
@@ -44,8 +47,5 @@ var annotated_dup =
         [ "SpriteCharacterRepresentationData", "classWolfstagInteractive_1_1ConvoCore_1_1SpriteCharacterRepresentationData.html", null ],
         [ "SpriteEmotionMapping", "classWolfstagInteractive_1_1ConvoCore_1_1SpriteEmotionMapping.html", null ]
       ] ]
-    ] ],
-    [ "ConvoCorePrefabPool", "classConvoCorePrefabPool.html", null ],
-    [ "ConvoCoreSettings", "classConvoCoreSettings.html", null ],
-    [ "ConvoCoreYamlWatcher", "classConvoCoreYamlWatcher.html", null ]
+    ] ]
 ];

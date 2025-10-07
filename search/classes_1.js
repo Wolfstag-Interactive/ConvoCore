@@ -17,11 +17,11 @@ var searchData=
   ['convocorelanguagemanager_14',['ConvoCoreLanguageManager',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreLanguageManager.html',1,'WolfstagInteractive::ConvoCore']]],
   ['convocorelanguagesettings_15',['ConvoCoreLanguageSettings',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreLanguageSettings.html',1,'WolfstagInteractive::ConvoCore']]],
   ['convocorelanguagesettingsloader_16',['ConvoCoreLanguageSettingsLoader',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreLanguageSettingsLoader.html',1,'WolfstagInteractive::ConvoCore']]],
-  ['convocoreprefabpool_17',['ConvoCorePrefabPool',['../classConvoCorePrefabPool.html',1,'']]],
+  ['convocoreprefabpool_17',['ConvoCorePrefabPool',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCorePrefabPool.html',1,'WolfstagInteractive::ConvoCore']]],
   ['convocoreprefabrepresentationspawner_18',['ConvoCorePrefabRepresentationSpawner',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCorePrefabRepresentationSpawner.html',1,'WolfstagInteractive::ConvoCore']]],
   ['convocoresampleui_19',['ConvoCoreSampleUI',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSampleUI.html',1,'WolfstagInteractive::ConvoCore']]],
-  ['convocoresettings_20',['ConvoCoreSettings',['../classConvoCoreSettings.html',1,'']]],
+  ['convocoresettings_20',['ConvoCoreSettings',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSettings.html',1,'WolfstagInteractive::ConvoCore']]],
   ['convocoreuifoundation_21',['ConvoCoreUIFoundation',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreUIFoundation.html',1,'WolfstagInteractive::ConvoCore']]],
   ['convocoreyamlutilities_22',['ConvoCoreYamlUtilities',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreYamlUtilities.html',1,'WolfstagInteractive::ConvoCore']]],
-  ['convocoreyamlwatcher_23',['ConvoCoreYamlWatcher',['../classConvoCoreYamlWatcher.html',1,'']]]
+  ['convocoreyamlwatcher_23',['ConvoCoreYamlWatcher',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreYamlWatcher.html',1,'WolfstagInteractive::ConvoCore']]]
 ];
