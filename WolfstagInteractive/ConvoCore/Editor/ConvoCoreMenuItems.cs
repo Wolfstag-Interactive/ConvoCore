@@ -7,7 +7,7 @@ namespace WolfstagInteractive.ConvoCore.Editor
     [UnityEngine.HelpURL("https://docs.wolfstaginteractive.com/classWolfstagInteractive_1_1ConvoCore_1_1Editor_1_1ConvoCoreMenuItems.html")]
     public static class ConvoCoreMenuItems
     {
-        [MenuItem("Tools/WolfstagInteractive/ConvoCore/Open Settings", false, 1)]
+        [MenuItem("Tools/Wolfstag Interactive/ConvoCore/Open Settings", false, 1)]
         public static void OpenSettings()
         {
             ConvoCoreSettings settings = FindOrCreateSettings();
@@ -19,7 +19,7 @@ namespace WolfstagInteractive.ConvoCore.Editor
             }
         }
 
-        [MenuItem("Tools/WolfstagInteractive/ConvoCore/Create Settings (if missing)", false, 2)]
+        [MenuItem("Tools/Wolfstag Interactive/ConvoCore/Create Settings (if missing)", false, 2)]
         public static void CreateSettingsIfMissing()
         {
             var existing = FindSettings();
