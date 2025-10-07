@@ -240,14 +240,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e7cc0e91f1627f42b77a77b8e556a47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  visualRoot: {fileID: 193694088}
+  visualRoot: {fileID: 8071874996141000269}
   leftPositionOffset: {x: -3, y: 0, z: 0}
   rightPositionOffset: {x: 3, y: 0, z: 0}
   centerPositionOffset: {x: 0, y: 0, z: 0}
   supportFlipX: 1
   supportFlipY: 0
-  emotionVisuals:
-  - emotionId: cube
-    visualObject: {fileID: 193694084}
-  - emotionId: sphere
-    visualObject: {fileID: 259909386}

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
@@ -5,14 +6,15 @@ using UnityEngine;
 
 namespace WolfstagInteractive.ConvoCore.Editor
 {
-    [UnityEngine.HelpURL("https://docs.wolfstaginteractive.com/classWolfstagInteractive_1_1ConvoCore_1_1Editor_1_1DialogueLinesPropertyDrawer.html")]
+    [HelpURL("https://docs.wolfstaginteractive.com/classWolfstagInteractive_1_1ConvoCore_1_1Editor_1_1DialogueLinesPropertyDrawer.html")]
 [CustomPropertyDrawer(typeof(ConvoCoreConversationData.DialogueLineInfo))]
     public class DialogueLinesPropertyDrawer : PropertyDrawer
     {
         // Foldout states per line
-        private static readonly Dictionary<string, bool> _characterRepresentationFoldouts = new();
+        private static readonly Dictionary<string, bool> CharacterRepresentationFoldouts = new();
+        private static readonly Dictionary<string, bool> DialogueLineFoldouts = new();
 
-        public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
+public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
             EditorGUI.BeginProperty(position, label, property);
             EditorGUI.BeginChangeCheck();
@@ -21,12 +23,42 @@ namespace WolfstagInteractive.ConvoCore.Editor
             float spacing = 2f;
             Rect currentRect = new Rect(position.x, position.y, position.width, lineHeight);
 
-            currentRect = DrawBasicInfo(currentRect, property, spacing);
-            currentRect = DrawInputMethod(currentRect, property, spacing);
-            currentRect = DrawAudioClip(currentRect, property, spacing);
-            currentRect = DrawLocalizedDialogues(currentRect, property, spacing);
-            currentRect = DrawActionsList(currentRect, property, spacing);
-            currentRect = DrawCharacterRepresentation(currentRect, property, spacing);
+            // Main foldout with preview text
+            string foldoutKey = $"{property.serializedObject.targetObject.GetInstanceID()}_{property.propertyPath}_Line";
+            if (!DialogueLineFoldouts.ContainsKey(foldoutKey))
+                DialogueLineFoldouts[foldoutKey] = true;
+
+            bool isExpanded = DialogueLineFoldouts[foldoutKey];
+            
+            // Get preview text for collapsed state
+            string previewText = GetPreviewText(property);
+            
+            var boldFoldout = new GUIStyle(EditorStyles.foldout) { fontStyle = FontStyle.Bold };
+            bool newExpanded = EditorGUI.Foldout(currentRect, isExpanded, 
+                isExpanded ? "Dialogue Line" : $"Dialogue Line: {previewText}", 
+                true, boldFoldout);
+            
+            if (newExpanded != isExpanded)
+            {
+                DialogueLineFoldouts[foldoutKey] = newExpanded;
+                EditorUtility.SetDirty(property.serializedObject.targetObject);
+            }
+            
+            currentRect.y += lineHeight + spacing;
+
+            if (newExpanded)
+            {
+                EditorGUI.indentLevel++;
+                
+                currentRect = DrawBasicInfo(currentRect, property, spacing);
+                currentRect = DrawInputMethod(currentRect, property, spacing);
+                currentRect = DrawAudioClip(currentRect, property, spacing);
+                currentRect = DrawLocalizedDialogues(currentRect, property, spacing);
+                currentRect = DrawActionsList(currentRect, property, spacing);
+                currentRect = DrawCharacterRepresentation(currentRect, property, spacing);
+                
+                EditorGUI.indentLevel--;
+            }
 
             if (EditorGUI.EndChangeCheck())
             {
@@ -41,16 +73,56 @@ namespace WolfstagInteractive.ConvoCore.Editor
 
             EditorGUI.EndProperty();
         }
-
+        private string GetPreviewText(SerializedProperty property)
+        {
+            var localizedDialoguesProp = property.FindPropertyRelative("LocalizedDialogues");
+            if (localizedDialoguesProp != null && localizedDialoguesProp.isArray && localizedDialoguesProp.arraySize > 0)
+            {
+                string lang = ConvoCoreLanguageManager.Instance?.CurrentLanguage ?? "EN";
+                
+                for (int i = 0; i < localizedDialoguesProp.arraySize; i++)
+                {
+                    var el = localizedDialoguesProp.GetArrayElementAtIndex(i);
+                    var langProp = el.FindPropertyRelative("Language");
+                    var textProp = el.FindPropertyRelative("Text");
+                    
+                    if (langProp != null && textProp != null && 
+                        string.Equals(langProp.stringValue, lang, StringComparison.OrdinalIgnoreCase))
+                    {
+                        string text = textProp.stringValue ?? "";
+                        // Truncate if too long
+                        return text.Length > 60 ? text.Substring(0, 60) + "..." : text;
+                    }
+                }
+                
+                // Fallback to first available
+                var firstEl = localizedDialoguesProp.GetArrayElementAtIndex(0);
+                var firstText = firstEl.FindPropertyRelative("Text");
+                if (firstText != null)
+                {
+                    string text = firstText.stringValue ?? "";
+                    return text.Length > 60 ? text.Substring(0, 60) + "..." : text;
+                }
+            }
+            
+            return "(No dialogue text)";
+        }
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
         {
-            float total = 0f;
-            total += GetBasicInfoHeight(property);
-            total += GetInputMethodHeight(property);
-            total += GetAudioClipHeight(property);
-            total += GetLocalizedDialoguesHeight(property);
-            total += GetActionsListHeight(property);
-            total += GetCharacterRepresentationSectionHeight(property);
+            float spacing = 2f;
+            float total = EditorGUIUtility.singleLineHeight + spacing; // Main foldout
+            
+            string foldoutKey = $"{property.serializedObject.targetObject.GetInstanceID()}_{property.propertyPath}_Line";
+            if (DialogueLineFoldouts.TryGetValue(foldoutKey, out bool isExpanded) && isExpanded)
+            {
+                total += GetBasicInfoHeight();
+                total += GetInputMethodHeight(property);
+                total += GetAudioClipHeight(property);
+                total += GetLocalizedDialoguesHeight(property);
+                total += GetActionsListHeight(property);
+                total += GetCharacterRepresentationSectionHeight(property);
+            }
+            
             return total;
         }
         private static float GetPreviewBlockHeight(IEditorPreviewableRepresentation previewable)
@@ -114,26 +186,69 @@ namespace WolfstagInteractive.ConvoCore.Editor
         private Rect DrawLocalizedDialogues(Rect rect, SerializedProperty property, float spacing)
         {
             var localizedDialoguesProp = property.FindPropertyRelative("LocalizedDialogues");
-            if (localizedDialoguesProp != null && localizedDialoguesProp.isArray)
+            
+            if (localizedDialoguesProp == null || !localizedDialoguesProp.isArray)
             {
-                string lang = ConvoCoreLanguageManager.Instance.CurrentLanguage;
-                SerializedProperty match = null;
+                EditorGUI.LabelField(rect, "Localized Dialogues not available.");
+                rect.y += EditorGUIUtility.singleLineHeight + spacing;
+                return rect;
+            }
 
-                for (int i = 0; i < localizedDialoguesProp.arraySize; i++)
+            string lang = ConvoCoreLanguageManager.Instance?.CurrentLanguage ?? "EN";
+            SerializedProperty match = null;
+
+            // Try case-insensitive match first
+            for (int i = 0; i < localizedDialoguesProp.arraySize; i++)
+            {
+                var el = localizedDialoguesProp.GetArrayElementAtIndex(i);
+                var langProp = el.FindPropertyRelative("Language");
+                if (langProp != null && 
+                    string.Equals(langProp.stringValue, lang, StringComparison.OrdinalIgnoreCase))
                 {
-                    var el = localizedDialoguesProp.GetArrayElementAtIndex(i);
-                    var langProp = el.FindPropertyRelative("Language");
-                    if (langProp != null && langProp.stringValue == lang) { match = el; break; }
+                    match = el;
+                    break;
                 }
+            }
 
-                if (match != null)
+            if (match != null)
+            {
+                var textProp = match.FindPropertyRelative("Text");
+                if (textProp != null)
                 {
-                    var textProp = match.FindPropertyRelative("Text");
                     EditorGUI.LabelField(rect, $"Localized Dialogue ({lang}):");
                     rect.y += EditorGUIUtility.singleLineHeight + spacing;
-                    EditorGUI.LabelField(new Rect(rect.x, rect.y, rect.width, EditorGUIUtility.singleLineHeight),
-                                         new GUIContent(textProp.stringValue));
+                    
+                    // Use a word-wrapped label style for better readability
+                    var textStyle = new GUIStyle(EditorStyles.label) { wordWrap = true };
+                    float textHeight = textStyle.CalcHeight(new GUIContent(textProp.stringValue), rect.width);
+                    EditorGUI.LabelField(new Rect(rect.x, rect.y, rect.width, textHeight),
+                        textProp.stringValue, textStyle);
+                    rect.y += textHeight + spacing;
+                }
+                else
+                {
+                    EditorGUI.LabelField(rect, $"Localized Dialogue ({lang}): (Text field not found)");
                     rect.y += EditorGUIUtility.singleLineHeight + spacing;
+                }
+            }
+            else if (localizedDialoguesProp.arraySize > 0)
+            {
+                // Fallback to first available
+                var firstEl = localizedDialoguesProp.GetArrayElementAtIndex(0);
+                var firstLangProp = firstEl.FindPropertyRelative("Language");
+                var firstTextProp = firstEl.FindPropertyRelative("Text");
+                
+                if (firstLangProp != null && firstTextProp != null)
+                {
+                    string fallbackLang = firstLangProp.stringValue ?? "Unknown";
+                    EditorGUI.LabelField(rect, $"Localized Dialogue (Fallback: {fallbackLang}):");
+                    rect.y += EditorGUIUtility.singleLineHeight + spacing;
+                    
+                    var textStyle = new GUIStyle(EditorStyles.label) { wordWrap = true };
+                    float textHeight = textStyle.CalcHeight(new GUIContent(firstTextProp.stringValue), rect.width);
+                    EditorGUI.LabelField(new Rect(rect.x, rect.y, rect.width, textHeight),
+                        firstTextProp.stringValue, textStyle);
+                    rect.y += textHeight + spacing;
                 }
                 else
                 {
@@ -143,12 +258,12 @@ namespace WolfstagInteractive.ConvoCore.Editor
             }
             else
             {
-                EditorGUI.LabelField(rect, "Localized Dialogues not available.");
+                EditorGUI.LabelField(rect, $"No dialogue available for language: {lang}");
                 rect.y += EditorGUIUtility.singleLineHeight + spacing;
             }
+            
             return rect;
         }
-
         private Rect DrawActionsList(Rect rect, SerializedProperty property, float spacing)
         {
             var beforeProp = property.FindPropertyRelative("ActionsBeforeDialogueLine");
@@ -166,16 +281,16 @@ namespace WolfstagInteractive.ConvoCore.Editor
         private Rect DrawCharacterRepresentation(Rect rect, SerializedProperty property, float spacing)
         {
             string foldoutKey = $"{property.serializedObject.targetObject.GetInstanceID()}_{property.propertyPath}_CharacterRep";
-            if (!_characterRepresentationFoldouts.ContainsKey(foldoutKey))
-                _characterRepresentationFoldouts[foldoutKey] = true;
+            if (!CharacterRepresentationFoldouts.ContainsKey(foldoutKey))
+                CharacterRepresentationFoldouts[foldoutKey] = true;
 
-            bool isExpanded = _characterRepresentationFoldouts[foldoutKey];
+            bool isExpanded = CharacterRepresentationFoldouts[foldoutKey];
 
             var boldFoldout = new GUIStyle(EditorStyles.foldout) { fontStyle = FontStyle.Bold };
             bool newExpanded = EditorGUI.Foldout(rect, isExpanded, "Character Representations", true, boldFoldout);
             if (newExpanded != isExpanded)
             {
-                _characterRepresentationFoldouts[foldoutKey] = newExpanded;
+                CharacterRepresentationFoldouts[foldoutKey] = newExpanded;
                 EditorUtility.SetDirty(property.serializedObject.targetObject);
             }
             rect.y += EditorGUIUtility.singleLineHeight + spacing;
@@ -512,7 +627,7 @@ namespace WolfstagInteractive.ConvoCore.Editor
 
         // ----- Heights -----
 
-        private float GetBasicInfoHeight(SerializedProperty property) =>
+        private float GetBasicInfoHeight() =>
             3 * (EditorGUIUtility.singleLineHeight + 2f);
 
         private float GetInputMethodHeight(SerializedProperty property)
@@ -533,10 +648,60 @@ namespace WolfstagInteractive.ConvoCore.Editor
 
         private float GetLocalizedDialoguesHeight(SerializedProperty property)
         {
-            var loc = property.FindPropertyRelative("LocalizedDialogues");
-            if (loc != null && loc.isArray)
-                return loc.arraySize * (EditorGUIUtility.singleLineHeight + 2f);
-            return EditorGUIUtility.singleLineHeight + 2f;
+            var localizedDialoguesProp = property.FindPropertyRelative("LocalizedDialogues");
+            
+            if (localizedDialoguesProp == null || !localizedDialoguesProp.isArray || localizedDialoguesProp.arraySize == 0)
+            {
+                return EditorGUIUtility.singleLineHeight + 2f;
+            }
+
+            float height = EditorGUIUtility.singleLineHeight + 2f; // Label line
+            
+            string lang = ConvoCoreLanguageManager.Instance?.CurrentLanguage ?? "EN";
+            SerializedProperty match = null;
+
+            // Try case-insensitive match
+            for (int i = 0; i < localizedDialoguesProp.arraySize; i++)
+            {
+                var el = localizedDialoguesProp.GetArrayElementAtIndex(i);
+                var langProp = el.FindPropertyRelative("Language");
+                if (langProp != null && 
+                    string.Equals(langProp.stringValue, lang, StringComparison.OrdinalIgnoreCase))
+                {
+                    match = el;
+                    break;
+                }
+            }
+
+            // Fallback to first if no match
+            if (match == null && localizedDialoguesProp.arraySize > 0)
+            {
+                match = localizedDialoguesProp.GetArrayElementAtIndex(0);
+            }
+
+            if (match != null)
+            {
+                var textProp = match.FindPropertyRelative("Text");
+                if (textProp != null && !string.IsNullOrEmpty(textProp.stringValue))
+                {
+                    // Calculate wrapped text height
+                    var textStyle = new GUIStyle(EditorStyles.label) { wordWrap = true };
+                    // Approximate width (accounting for indent and margins)
+                    float approximateWidth = EditorGUIUtility.currentViewWidth - 80f;
+                    float textHeight = textStyle.CalcHeight(new GUIContent(textProp.stringValue), approximateWidth);
+                    height += textHeight + 2f;
+                }
+                else
+                {
+                    height += EditorGUIUtility.singleLineHeight + 2f;
+                }
+            }
+            else
+            {
+                height += EditorGUIUtility.singleLineHeight + 2f;
+            }
+            
+            return height;
         }
 
         private float GetActionsListHeight(SerializedProperty property)
@@ -558,7 +723,7 @@ namespace WolfstagInteractive.ConvoCore.Editor
             h += EditorGUIUtility.singleLineHeight + spacing; // foldout
 
             string key = $"{property.serializedObject.targetObject.GetInstanceID()}_{property.propertyPath}_CharacterRep";
-            if (_characterRepresentationFoldouts.TryGetValue(key, out bool open) && open)
+            if (CharacterRepresentationFoldouts.TryGetValue(key, out bool open) && open)
             {
                 h += 1 + spacing * 3; // separator
 

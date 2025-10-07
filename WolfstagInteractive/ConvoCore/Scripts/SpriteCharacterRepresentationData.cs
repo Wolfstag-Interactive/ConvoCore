@@ -4,11 +4,10 @@ using System.Linq;
 using UnityEditor;
 #endif
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace WolfstagInteractive.ConvoCore
 {
-    [UnityEngine.HelpURL("https://docs.wolfstaginteractive.com/classWolfstagInteractive_1_1ConvoCore_1_1SpriteCharacterRepresentationData.html")]
+    [HelpURL("https://docs.wolfstaginteractive.com/classWolfstagInteractive_1_1ConvoCore_1_1SpriteCharacterRepresentationData.html")]
 [CreateAssetMenu(fileName = "SpriteRepresentation", menuName = "ConvoCore/Sprite Representation")]
     public class SpriteCharacterRepresentationData : CharacterRepresentationBase
 #if UNITY_EDITOR
@@ -20,7 +19,7 @@ namespace WolfstagInteractive.ConvoCore
         public IReadOnlyList<(string id, string name)> GetEmotionCatalog() =>
             EmotionMappings.Select(m => (EmotionId: m.EmotionID, m.DisplayName)).ToList();
 
-        public bool TryResolveById(string id, out SpriteEmotionMapping mapping)
+        private bool TryResolveById(string id, out SpriteEmotionMapping mapping)
         {
             mapping = EmotionMappings.FirstOrDefault(m => m.EmotionID == id);
             return mapping != null;
@@ -86,7 +85,10 @@ namespace WolfstagInteractive.ConvoCore
             if (count == 1)
             {
                 var tex = portraitTex != null ? portraitTex : fullBodyTex;
-                GUI.DrawTexture(FitRectPreserveAspect(inner, tex.width, tex.height), tex, ScaleMode.ScaleToFit, true);
+                if (tex)
+                {
+                    GUI.DrawTexture(FitRectPreserveAspect(inner, tex.width, tex.height), tex, ScaleMode.ScaleToFit, true);
+                }
             }
             else
             {

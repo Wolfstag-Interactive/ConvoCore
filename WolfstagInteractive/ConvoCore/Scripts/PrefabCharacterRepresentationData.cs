@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace WolfstagInteractive.ConvoCore
 {
-    [UnityEngine.HelpURL("https://docs.wolfstaginteractive.com/classWolfstagInteractive_1_1ConvoCore_1_1PrefabCharacterRepresentationData.html")]
+    [HelpURL("https://docs.wolfstaginteractive.com/classWolfstagInteractive_1_1ConvoCore_1_1PrefabCharacterRepresentationData.html")]
 [CreateAssetMenu(fileName = "PrefabCharacterRepresentation",
         menuName = "ConvoCore/Prefab Character Representation")]
     public class PrefabCharacterRepresentationData : CharacterRepresentationBase
@@ -39,7 +39,7 @@ namespace WolfstagInteractive.ConvoCore
             
         }
 
-        // Prefab flow doesn’t use this directly; spawner binds + applies by GUID
+        // Prefab flow does not use this directly; spawner binds and applies by GUID
         public override object ProcessEmotion(string emotionId) => emotionId;
 
 #if UNITY_EDITOR
@@ -58,7 +58,7 @@ namespace WolfstagInteractive.ConvoCore
 
             if (!tex)
             {
-                // queue a repaint so when the preview is ready we draw it
+                // queue a repaint so when the preview is ready, we draw it
                 if (Event.current.type == EventType.Repaint)
                     UnityEditorInternal.InternalEditorUtility.RepaintAllViews();
                 UnityEditor.EditorGUI.LabelField(position, "Generating preview…");

@@ -5,7 +5,7 @@ namespace WolfstagInteractive.ConvoCore
 {
     
     /// <summary>
-    /// Interface for character representations that want to provide custom editor UI for per-line display options
+    /// Interface for character representations that want to provide a custom editor UI for per-line display options
     /// </summary>
     public interface IDialogueLineEditorCustomizable
     {
@@ -27,7 +27,7 @@ namespace WolfstagInteractive.ConvoCore
         /// <returns>Height in pixels</returns>
         float GetDialogueLineOptionsHeight(string emotionID, UnityEditor.SerializedProperty displayOptionsProperty);
     }
-    [UnityEngine.HelpURL("https://docs.wolfstaginteractive.com/interface_wolfstaginteractive_1_1convocore_idialoguelineeditorcustomizable.html")]
+    [HelpURL("https://docs.wolfstaginteractive.com/interface_wolfstaginteractive_1_1convocore_idialoguelineeditorcustomizable.html")]
 
     public abstract class CharacterRepresentationBase : ScriptableObject,
         IEditorPreviewableRepresentation
