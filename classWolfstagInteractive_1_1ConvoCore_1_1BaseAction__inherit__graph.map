@@ -1,7 +1,7 @@
 <map id="WolfstagInteractive.ConvoCore.BaseAction" name="WolfstagInteractive.ConvoCore.BaseAction">
 <area shape="rect" id="Node000001" title=" " alt="" coords="183,196,377,236"/>
-<area shape="rect" id="Node000003" href="$classConvoCore_1_1ConvoCoreAction__ActionGroup.html" title=" " alt="" coords="463,5,672,45"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="299,183,350,117,385,83,424,55,461,39,464,44,427,60,388,87,354,121,303,186"/>
+<area shape="rect" id="Node000003" href="$classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreAction__ActionGroup.html" title=" " alt="" coords="440,5,695,45"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="299,183,350,117,385,83,424,55,449,43,452,48,427,60,388,87,354,121,303,186"/>
 <area shape="rect" id="Node000004" href="$classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreAction__EnableDisableGameObject.html" title=" " alt="" coords="433,70,701,125"/>
 <area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="323,186,371,159,424,134,455,122,457,127,426,138,373,164,325,191"/>
 <area shape="rect" id="Node000005" href="$classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreAction__FadeInOutSpriteRenderer.html" title=" " alt="" coords="447,149,687,203"/>

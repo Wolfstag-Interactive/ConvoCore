@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['actiongroup_0',['ActionGroup',['../classConvoCore_1_1ConvoCoreAction__ActionGroup.html#a25ee49b3f75f5df96cd07e2ba89421c7',1,'ConvoCore::ConvoCoreAction_ActionGroup']]]
+  ['actiongroup_0',['ActionGroup',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreAction__ActionGroup.html#a6555c213fe3518b78f3633126cd6e8c8',1,'WolfstagInteractive::ConvoCore::ConvoCoreAction_ActionGroup']]]
 ];

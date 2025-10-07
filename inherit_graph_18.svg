@@ -210,10 +210,10 @@
 <!-- Node7 -->
 <g id="Node000007" class="node">
 <title>Node7</title>
-<g id="a_Node000007"><a xlink:href="classConvoCore_1_1ConvoCoreAction__ActionGroup.html" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="655.5,-347 498.5,-347 498.5,-317 655.5,-317 655.5,-347"/>
-<text text-anchor="start" x="506.5" y="-335" font-family="Helvetica,sans-Serif" font-size="10.00">ConvoCore.ConvoCoreAction</text>
-<text text-anchor="middle" x="577" y="-324" font-family="Helvetica,sans-Serif" font-size="10.00">_ActionGroup</text>
+<g id="a_Node000007"><a xlink:href="classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreAction__ActionGroup.html" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="#666666" points="672.5,-347 481.5,-347 481.5,-317 672.5,-317 672.5,-347"/>
+<text text-anchor="start" x="489.5" y="-335" font-family="Helvetica,sans-Serif" font-size="10.00">WolfstagInteractive.Convo</text>
+<text text-anchor="middle" x="577" y="-324" font-family="Helvetica,sans-Serif" font-size="10.00">Core.ConvoCoreAction_ActionGroup</text>
 </a>
 </g>
 </g>
@@ -221,7 +221,7 @@
 <g id="edge18_Node000006_Node000007" class="edge">
 <title>Node6&#45;&gt;Node7</title>
 <g id="a_edge18_Node000006_Node000007"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M420.48,-236.53C424.54,-238.74 428.41,-241.21 432,-244 457.77,-264.02 441.79,-288.55 468,-308 477.02,-314.7 487.56,-319.59 498.45,-323.15"/>
+<path fill="none" stroke="#63b8ff" d="M420.48,-236.53C424.54,-238.74 428.41,-241.21 432,-244 457.77,-264.02 441.79,-288.55 468,-308 472.63,-311.43 477.65,-314.39 482.92,-316.94"/>
 <polygon fill="#63b8ff" stroke="#63b8ff" points="421.87,-233.32 411.34,-232.14 418.84,-239.63 421.87,-233.32"/>
 </a>
 </g>

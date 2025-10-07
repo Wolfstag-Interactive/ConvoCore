@@ -3,7 +3,7 @@ var searchData=
   ['characterrepresentationbase_0',['CharacterRepresentationBase',['../classWolfstagInteractive_1_1ConvoCore_1_1CharacterRepresentationBase.html',1,'WolfstagInteractive::ConvoCore']]],
   ['characterrepresentationdata_1',['CharacterRepresentationData',['../structWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData_1_1CharacterRepresentationData.html',1,'WolfstagInteractive::ConvoCore::ConvoCoreConversationData']]],
   ['convocore_2',['ConvoCore',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCore.html',1,'WolfstagInteractive::ConvoCore']]],
-  ['convocoreaction_5factiongroup_3',['ConvoCoreAction_ActionGroup',['../classConvoCore_1_1ConvoCoreAction__ActionGroup.html',1,'ConvoCore']]],
+  ['convocoreaction_5factiongroup_3',['ConvoCoreAction_ActionGroup',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreAction__ActionGroup.html',1,'WolfstagInteractive::ConvoCore']]],
   ['convocoreaction_5fenabledisablegameobject_4',['ConvoCoreAction_EnableDisableGameObject',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreAction__EnableDisableGameObject.html',1,'WolfstagInteractive::ConvoCore']]],
   ['convocoreaction_5ffadeinoutspriterenderer_5',['ConvoCoreAction_FadeInOutSpriteRenderer',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreAction__FadeInOutSpriteRenderer.html',1,'WolfstagInteractive::ConvoCore']]],
   ['convocoreaction_5finstantiateprefab_6',['ConvoCoreAction_InstantiatePrefab',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreAction__InstantiatePrefab.html',1,'WolfstagInteractive::ConvoCore']]],

@@ -52,7 +52,7 @@ var hierarchy =
     [ "ScriptableObject", null, [
       [ "ConvoCoreSettings", "classConvoCoreSettings.html", null ],
       [ "WolfstagInteractive.ConvoCore.BaseAction", "classWolfstagInteractive_1_1ConvoCore_1_1BaseAction.html", [
-        [ "ConvoCore.ConvoCoreAction_ActionGroup", "classConvoCore_1_1ConvoCoreAction__ActionGroup.html", null ],
+        [ "WolfstagInteractive.ConvoCore.ConvoCoreAction_ActionGroup", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreAction__ActionGroup.html", null ],
         [ "WolfstagInteractive.ConvoCore.ConvoCoreAction_EnableDisableGameObject", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreAction__EnableDisableGameObject.html", null ],
         [ "WolfstagInteractive.ConvoCore.ConvoCoreAction_FadeInOutSpriteRenderer", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreAction__FadeInOutSpriteRenderer.html", null ],
         [ "WolfstagInteractive.ConvoCore.ConvoCoreAction_InstantiatePrefab", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreAction__InstantiatePrefab.html", null ],

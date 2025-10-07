@@ -21,10 +21,10 @@
 <!-- Node3 -->
 <g id="Node000003" class="node">
 <title>Node3</title>
-<g id="a_Node000003"><a xlink:href="classConvoCore_1_1ConvoCoreAction__ActionGroup.html" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="#bfbfbf" points="500,-304 343,-304 343,-274 500,-274 500,-304"/>
-<text text-anchor="start" x="351" y="-292" font-family="Helvetica,sans-Serif" font-size="10.00">ConvoCore.ConvoCoreAction</text>
-<text text-anchor="middle" x="421.5" y="-281" font-family="Helvetica,sans-Serif" font-size="10.00">_ActionGroup</text>
+<g id="a_Node000003"><a xlink:href="classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreAction__ActionGroup.html" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="#bfbfbf" points="517,-304 326,-304 326,-274 517,-274 517,-304"/>
+<text text-anchor="start" x="334" y="-292" font-family="Helvetica,sans-Serif" font-size="10.00">WolfstagInteractive.Convo</text>
+<text text-anchor="middle" x="421.5" y="-281" font-family="Helvetica,sans-Serif" font-size="10.00">Core.ConvoCoreAction_ActionGroup</text>
 </a>
 </g>
 </g>
@@ -32,7 +32,7 @@
 <g id="edge2_Node000001_Node000003" class="edge">
 <title>Node1&#45;&gt;Node3</title>
 <g id="a_edge2_Node000001_Node000003"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M221.87,-169.69C240.3,-197.02 274.31,-241.23 315,-265 323.6,-270.02 333.15,-273.99 342.91,-277.13"/>
+<path fill="none" stroke="#63b8ff" d="M221.87,-169.69C240.3,-197.02 274.31,-241.23 315,-265 320.92,-268.46 327.3,-271.42 333.88,-273.95"/>
 <polygon fill="#63b8ff" stroke="#63b8ff" points="224.65,-167.55 216.23,-161.13 218.8,-171.4 224.65,-167.55"/>
 </a>
 </g>

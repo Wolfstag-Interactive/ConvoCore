@@ -20,8 +20,8 @@
 <area shape="poly" id="edge27_Node000004_Node000015" title=" " alt="" coords="176,387,245,432,332,478,365,489,363,494,330,482,242,437,173,391"/>
 <area shape="rect" id="Node000016" href="$classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreLanguageSettings.html" title=" " alt="" coords="335,556,577,596"/>
 <area shape="poly" id="edge28_Node000004_Node000016" title=" " alt="" coords="165,390,233,465,280,507,332,542,358,553,356,558,329,546,277,511,229,469,161,393"/>
-<area shape="rect" id="Node000007" href="$classConvoCore_1_1ConvoCoreAction__ActionGroup.html" title=" " alt="" coords="670,133,879,173"/>
-<area shape="poly" id="edge18_Node000006_Node000007" title=" " alt="" coords="565,278,580,269,596,248,603,227,610,205,628,183,669,163,671,168,631,187,614,207,608,228,601,251,583,273,567,283"/>
+<area shape="rect" id="Node000007" href="$classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreAction__ActionGroup.html" title=" " alt="" coords="647,133,902,173"/>
+<area shape="poly" id="edge18_Node000006_Node000007" title=" " alt="" coords="565,278,580,269,596,248,603,227,610,205,628,183,648,171,651,176,631,187,614,207,608,228,601,251,583,273,567,283"/>
 <area shape="rect" id="Node000008" href="$classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreAction__EnableDisableGameObject.html" title=" " alt="" coords="641,198,909,253"/>
 <area shape="poly" id="edge19_Node000006_Node000008" title=" " alt="" coords="550,278,662,250,664,255,552,283"/>
 <area shape="rect" id="Node000009" href="$classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreAction__FadeInOutSpriteRenderer.html" title=" " alt="" coords="655,277,895,331"/>

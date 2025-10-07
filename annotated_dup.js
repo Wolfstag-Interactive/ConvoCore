@@ -1,13 +1,11 @@
 var annotated_dup =
 [
-    [ "ConvoCore", "namespaceConvoCore.html", [
-      [ "ConvoCoreAction_ActionGroup", "classConvoCore_1_1ConvoCoreAction__ActionGroup.html", "classConvoCore_1_1ConvoCoreAction__ActionGroup" ]
-    ] ],
     [ "WolfstagInteractive", "namespaceWolfstagInteractive.html", [
       [ "ConvoCore", "namespaceWolfstagInteractive_1_1ConvoCore.html", [
         [ "BaseAction", "classWolfstagInteractive_1_1ConvoCore_1_1BaseAction.html", null ],
         [ "CharacterRepresentationBase", "classWolfstagInteractive_1_1ConvoCore_1_1CharacterRepresentationBase.html", "classWolfstagInteractive_1_1ConvoCore_1_1CharacterRepresentationBase" ],
         [ "ConvoCore", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCore.html", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCore" ],
+        [ "ConvoCoreAction_ActionGroup", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreAction__ActionGroup.html", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreAction__ActionGroup" ],
         [ "ConvoCoreAction_EnableDisableGameObject", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreAction__EnableDisableGameObject.html", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreAction__EnableDisableGameObject" ],
         [ "ConvoCoreAction_FadeInOutSpriteRenderer", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreAction__FadeInOutSpriteRenderer.html", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreAction__FadeInOutSpriteRenderer" ],
         [ "ConvoCoreAction_InstantiatePrefab", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreAction__InstantiatePrefab.html", null ],
