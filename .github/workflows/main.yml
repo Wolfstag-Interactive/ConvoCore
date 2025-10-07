@@ -1,0 +1,40 @@
+name: Build and Deploy Doxygen Docs
+
+# 🕓 Run automatically when you push to main, or manually from the Actions tab
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# 🧠 GitHub Actions needs permission to create the gh-pages branch
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1 – Checkout the private repository
+      - name: Checkout private repo
+        uses: actions/checkout@v4
+
+      # Step 2 – Install Doxygen + Graphviz for diagrams
+      - name: Install Doxygen and Graphviz
+        run: sudo apt-get install -y doxygen graphviz
+
+      # Step 3 – Generate documentation from the Doxyfile at the repo root
+      - name: Generate Documentation
+        run: doxygen Doxyfile
+
+      # Step 4 – (Optional) Add your custom domain name
+      - name: Create CNAME
+        run: echo "docs.wolfstaginteractive.com" > Docs/html/CNAME
+
+      # Step 5 – Publish the HTML output to gh-pages branch
+      - name: Deploy to gh-pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./Docs/html
+          publish_branch: gh-pages
