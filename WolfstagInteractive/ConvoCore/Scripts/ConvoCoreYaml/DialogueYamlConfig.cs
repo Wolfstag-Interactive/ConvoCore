@@ -3,6 +3,7 @@ using YamlDotNet.Serialization;
 
 namespace WolfstagInteractive.ConvoCore
 {
+[UnityEngine.HelpURL("https://docs.wolfstaginteractive.com/classWolfstagInteractive_1_1ConvoCore_1_1DialogueYamlConfig.html")]
     public class DialogueYamlConfig 
     {
         [YamlMember(Alias = "CharacterID")]

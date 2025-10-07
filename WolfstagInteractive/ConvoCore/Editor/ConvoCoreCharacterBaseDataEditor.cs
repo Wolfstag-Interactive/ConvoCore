@@ -4,7 +4,8 @@ using System.Collections.Generic;
 
 namespace WolfstagInteractive.ConvoCore.Editor
 {
-    [CustomEditor(typeof(ConvoCoreCharacterProfileBaseData))]
+    [UnityEngine.HelpURL("https://docs.wolfstaginteractive.com/classWolfstagInteractive_1_1ConvoCore_1_1Editor_1_1ConvoCoreCharacterProfileBaseDataEditor.html")]
+[CustomEditor(typeof(ConvoCoreCharacterProfileBaseData))]
     public class ConvoCoreCharacterProfileBaseDataEditor : UnityEditor.Editor
     {
         SerializedProperty isPlayerProp;

@@ -4,7 +4,8 @@ using UnityEngine;
 
 namespace WolfstagInteractive.ConvoCore
 {
-    [CreateAssetMenu(fileName = "FadeInOutSpriteRendererAction", menuName = "ConvoCore/Actions/Fade In Or Out SpriteRenderer")]
+    [UnityEngine.HelpURL("https://docs.wolfstaginteractive.com/classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreAction_FadeInOutSpriteRenderer.html")]
+[CreateAssetMenu(fileName = "FadeInOutSpriteRendererAction", menuName = "ConvoCore/Actions/Fade In Or Out SpriteRenderer")]
     [System.Serializable]
     public class ConvoCoreAction_FadeInOutSpriteRenderer : BaseAction
     {

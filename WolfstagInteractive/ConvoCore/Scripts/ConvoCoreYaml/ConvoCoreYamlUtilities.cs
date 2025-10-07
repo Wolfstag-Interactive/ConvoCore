@@ -6,6 +6,7 @@ using YamlDotNet.Serialization;
 
 namespace WolfstagInteractive.ConvoCore
 {
+[UnityEngine.HelpURL("https://docs.wolfstaginteractive.com/classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreYamlUtilities.html")]
     public class ConvoCoreYamlUtilities
     {
         private readonly ConvoCoreConversationData _convoCoreConversationData;

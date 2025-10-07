@@ -5,7 +5,8 @@ using UnityEngine;
 
 namespace WolfstagInteractive.ConvoCore.Editor
 {
-    [CustomEditor(typeof(SpriteCharacterRepresentationData))]
+    [UnityEngine.HelpURL("https://docs.wolfstaginteractive.com/classWolfstagInteractive_1_1ConvoCore_1_1Editor_1_1SpriteCharacterRepresentationDataEditor.html")]
+[CustomEditor(typeof(SpriteCharacterRepresentationData))]
     public class SpriteCharacterRepresentationDataEditor : UnityEditor.Editor
     {
         private ReorderableList _list;

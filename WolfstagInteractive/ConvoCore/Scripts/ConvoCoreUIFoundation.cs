@@ -8,6 +8,7 @@ namespace WolfstagInteractive.ConvoCore
     /// Used as a basis of any UI that can be assigned in the inspector that includes all the base functions needed
     /// to interoperate with the dialogue state machine
     /// </summary>
+[UnityEngine.HelpURL("https://docs.wolfstaginteractive.com/classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreUIFoundation.html")]
     public class ConvoCoreUIFoundation : MonoBehaviour, IUIFoundation
     {
         protected ConvoCore ConvoCoreInstance;

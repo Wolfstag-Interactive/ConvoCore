@@ -3,7 +3,8 @@ using UnityEngine;
 
 namespace WolfstagInteractive.ConvoCore.Editor
 {
-    [CustomEditor(typeof(ConvoCore))]
+    [UnityEngine.HelpURL("https://docs.wolfstaginteractive.com/classWolfstagInteractive_1_1ConvoCore_1_1Editor_1_1ConvoCoreEditor.html")]
+[CustomEditor(typeof(ConvoCore))]
     public class ConvoCoreEditor : UnityEditor.Editor
     {
         private ConvoCoreLanguageManager _convoCoreLanguageManager;

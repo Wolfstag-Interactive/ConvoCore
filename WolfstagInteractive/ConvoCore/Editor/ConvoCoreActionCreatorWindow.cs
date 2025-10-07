@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace WolfstagInteractive.ConvoCore.Editor
 {
+[UnityEngine.HelpURL("https://docs.wolfstaginteractive.com/classWolfstagInteractive_1_1ConvoCore_1_1Editor_1_1ConvoCoreActionCreatorWindow.html")]
     public class ConvoCoreActionCreatorWindow : EditorWindow
     {
         private string actionName = "NewAction";

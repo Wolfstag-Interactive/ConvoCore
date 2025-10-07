@@ -8,6 +8,7 @@ using UnityEngine.Serialization;
 
 namespace WolfstagInteractive.ConvoCore
 {
+[UnityEngine.HelpURL("https://docs.wolfstaginteractive.com/classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSampleUI.html")]
     public class ConvoCoreSampleUI : ConvoCoreUIFoundation
     {
         [Header("Dialogue UI Elements")]

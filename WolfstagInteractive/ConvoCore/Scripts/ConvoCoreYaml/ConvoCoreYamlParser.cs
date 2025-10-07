@@ -9,6 +9,7 @@ namespace WolfstagInteractive.ConvoCore
     /// - Parses your schema: Dictionary&lt;string, List&lt;DialogueYamlConfig&gt;&gt;.
     /// - Normalizes locale keys so lookups are case-insensitive (EN/en/en-US).
     /// </summary>
+[UnityEngine.HelpURL("https://docs.wolfstaginteractive.com/classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreYamlParser.html")]
     public static class ConvoCoreYamlParser
     {
         // Build the YamlDotNet deserializer once

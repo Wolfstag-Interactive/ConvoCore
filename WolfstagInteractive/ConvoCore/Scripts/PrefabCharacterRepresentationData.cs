@@ -4,7 +4,8 @@ using UnityEngine;
 
 namespace WolfstagInteractive.ConvoCore
 {
-    [CreateAssetMenu(fileName = "PrefabCharacterRepresentation",
+    [UnityEngine.HelpURL("https://docs.wolfstaginteractive.com/classWolfstagInteractive_1_1ConvoCore_1_1PrefabCharacterRepresentationData.html")]
+[CreateAssetMenu(fileName = "PrefabCharacterRepresentation",
         menuName = "ConvoCore/Prefab Character Representation")]
     public class PrefabCharacterRepresentationData : CharacterRepresentationBase
 #if UNITY_EDITOR

@@ -5,7 +5,8 @@ using WolfstagInteractive.ConvoCore;
 
 namespace WolfstagInteractive.ConvoCore
 {
-    [CreateAssetMenu(menuName = "ConvoCore/Actions/Action Group")][ System.Serializable]
+    [UnityEngine.HelpURL("https://docs.wolfstaginteractive.com/classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreAction_ActionGroup.html")]
+[CreateAssetMenu(menuName = "ConvoCore/Actions/Action Group")][ System.Serializable]
     
     public class ConvoCoreAction_ActionGroup : BaseAction
     {

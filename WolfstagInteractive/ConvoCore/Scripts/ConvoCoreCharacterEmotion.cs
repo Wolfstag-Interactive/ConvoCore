@@ -4,7 +4,8 @@ using UnityEngine;
 
 namespace WolfstagInteractive.ConvoCore
 {
-    [CreateAssetMenu(fileName = "NewCharacterEmotion", menuName = "ConvoCore/Character/Emotion")]
+    [UnityEngine.HelpURL("https://docs.wolfstaginteractive.com/classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreCharacterEmotion.html")]
+[CreateAssetMenu(fileName = "NewCharacterEmotion", menuName = "ConvoCore/Character/Emotion")]
     public class ConvoCoreCharacterEmotion : ScriptableObject
     {
         public string emotionName;

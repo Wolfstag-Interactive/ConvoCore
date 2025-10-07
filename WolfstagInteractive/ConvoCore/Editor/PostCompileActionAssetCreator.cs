@@ -5,7 +5,8 @@ using UnityEngine;
 
 namespace WolfstagInteractive.ConvoCore.Editor
 {
-    [InitializeOnLoad]
+    [UnityEngine.HelpURL("https://docs.wolfstaginteractive.com/classWolfstagInteractive_1_1ConvoCore_1_1Editor_1_1PostCompileActionAssetCreator.html")]
+[InitializeOnLoad]
     public static class PostCompileActionAssetCreator 
     {
         static PostCompileActionAssetCreator()

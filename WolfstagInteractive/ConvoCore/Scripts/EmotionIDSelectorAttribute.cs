@@ -7,7 +7,8 @@ namespace WolfstagInteractive.ConvoCore
     /// SerializedProperty that references a CharacterRepresentationBase asset.
     /// Stores the GUID, shows DisplayName.
     /// </summary>
-    [System.AttributeUsage(System.AttributeTargets.Field, AllowMultiple = false)]
+    [UnityEngine.HelpURL("https://docs.wolfstaginteractive.com/classWolfstagInteractive_1_1ConvoCore_1_1EmotionIDSelectorAttribute.html")]
+[System.AttributeUsage(System.AttributeTargets.Field, AllowMultiple = false)]
     public class EmotionIDSelectorAttribute : PropertyAttribute
     {
         public string RepresentationPropertyName { get; }

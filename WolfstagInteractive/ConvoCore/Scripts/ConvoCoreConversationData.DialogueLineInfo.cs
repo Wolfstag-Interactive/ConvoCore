@@ -21,7 +21,6 @@ namespace WolfstagInteractive.ConvoCore
             [Header("Per-Line Display Overrides")]
             [Tooltip("Display options specific to this dialogue line. These override the default emotion settings.")]
             public DialogueLineDisplayOptions LineSpecificDisplayOptions;
-
         }
     }
 

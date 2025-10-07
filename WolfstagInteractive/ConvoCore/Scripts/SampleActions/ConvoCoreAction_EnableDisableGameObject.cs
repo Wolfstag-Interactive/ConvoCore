@@ -3,7 +3,8 @@ using UnityEngine;
 
 namespace WolfstagInteractive.ConvoCore
 {
-    [CreateAssetMenu(fileName = "EnableDisableGameObjectAction", menuName = "ConvoCore/Actions/Enable Or Disable GameObject")]
+    [UnityEngine.HelpURL("https://docs.wolfstaginteractive.com/classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreAction_EnableDisableGameObject.html")]
+[CreateAssetMenu(fileName = "EnableDisableGameObjectAction", menuName = "ConvoCore/Actions/Enable Or Disable GameObject")]
     [System.Serializable]
     public class ConvoCoreAction_EnableDisableGameObject : BaseAction
     {

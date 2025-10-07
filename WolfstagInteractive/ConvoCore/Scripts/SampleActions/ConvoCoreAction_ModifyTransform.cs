@@ -3,7 +3,8 @@ using System.Collections;
 
 namespace WolfstagInteractive.ConvoCore
 {
-    [CreateAssetMenu(menuName = "ConvoCore/Actions/ModifyTransform")] [System.Serializable]
+    [UnityEngine.HelpURL("https://docs.wolfstaginteractive.com/classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreAction_ModifyTransform.html")]
+[CreateAssetMenu(menuName = "ConvoCore/Actions/ModifyTransform")] [System.Serializable]
     public class ConvoCoreAction_ModifyTransform : BaseAction
     {
         public string TransformName;

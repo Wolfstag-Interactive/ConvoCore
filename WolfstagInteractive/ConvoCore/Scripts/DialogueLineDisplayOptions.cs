@@ -2,7 +2,8 @@ using UnityEngine;
 
 namespace WolfstagInteractive.ConvoCore
 {
-    [System.Serializable]
+    [UnityEngine.HelpURL("https://docs.wolfstaginteractive.com/classWolfstagInteractive_1_1ConvoCore_1_1DialogueLineDisplayOptions.html")]
+[System.Serializable]
     public class DialogueLineDisplayOptions
     {
         [Tooltip("Flip the display of the portrait sprite horizontally.")]

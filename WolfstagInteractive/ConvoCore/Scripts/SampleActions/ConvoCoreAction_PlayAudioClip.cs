@@ -3,7 +3,8 @@ using System.Collections;
 
 namespace WolfstagInteractive.ConvoCore
 {
-    [CreateAssetMenu(menuName = "ConvoCore/Actions/PlayAudioClip")] [System.Serializable]
+    [UnityEngine.HelpURL("https://docs.wolfstaginteractive.com/classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreAction_PlayAudioClip.html")]
+[CreateAssetMenu(menuName = "ConvoCore/Actions/PlayAudioClip")] [System.Serializable]
     public class ConvoCoreAction_PlayAudioClip : BaseAction
     {
         public AudioClip AudioClip;

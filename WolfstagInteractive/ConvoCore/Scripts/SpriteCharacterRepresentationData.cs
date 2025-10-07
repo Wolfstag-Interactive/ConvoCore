@@ -8,7 +8,8 @@ using UnityEngine.Serialization;
 
 namespace WolfstagInteractive.ConvoCore
 {
-    [CreateAssetMenu(fileName = "SpriteRepresentation", menuName = "ConvoCore/Sprite Representation")]
+    [UnityEngine.HelpURL("https://docs.wolfstaginteractive.com/classWolfstagInteractive_1_1ConvoCore_1_1SpriteCharacterRepresentationData.html")]
+[CreateAssetMenu(fileName = "SpriteRepresentation", menuName = "ConvoCore/Sprite Representation")]
     public class SpriteCharacterRepresentationData : CharacterRepresentationBase
 #if UNITY_EDITOR
         , IDialogueLineEditorCustomizable

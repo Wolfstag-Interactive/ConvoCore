@@ -3,8 +3,9 @@ using UnityEditor;
 using UnityEditorInternal;
 using UnityEngine;
 
-namespace WolfstagInteractive.ConvoCore.Editor
+namespace WolfstagInteractive.ConvoCoreEditor
 {
+[UnityEngine.HelpURL("https://docs.wolfstaginteractive.com/classWolfstagInteractive_1_1ConvoCoreEditor_1_1RepresentationMappingListEditor.html")]
     public static class RepresentationMappingListEditor
     {
         public static ReorderableList Build(

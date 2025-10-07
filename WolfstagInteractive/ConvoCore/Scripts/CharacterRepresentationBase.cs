@@ -27,6 +27,7 @@ namespace WolfstagInteractive.ConvoCore
         /// <returns>Height in pixels</returns>
         float GetDialogueLineOptionsHeight(string emotionID, UnityEditor.SerializedProperty displayOptionsProperty);
     }
+    [UnityEngine.HelpURL("https://docs.wolfstaginteractive.com/interface_wolfstaginteractive_1_1convocore_idialoguelineeditorcustomizable.html")]
 
     public abstract class CharacterRepresentationBase : ScriptableObject,
         IEditorPreviewableRepresentation

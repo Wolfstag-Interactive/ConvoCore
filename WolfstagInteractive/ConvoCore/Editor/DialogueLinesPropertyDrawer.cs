@@ -5,7 +5,8 @@ using UnityEngine;
 
 namespace WolfstagInteractive.ConvoCore.Editor
 {
-    [CustomPropertyDrawer(typeof(ConvoCoreConversationData.DialogueLineInfo))]
+    [UnityEngine.HelpURL("https://docs.wolfstaginteractive.com/classWolfstagInteractive_1_1ConvoCore_1_1Editor_1_1DialogueLinesPropertyDrawer.html")]
+[CustomPropertyDrawer(typeof(ConvoCoreConversationData.DialogueLineInfo))]
     public class DialogueLinesPropertyDrawer : PropertyDrawer
     {
         // Foldout states per line

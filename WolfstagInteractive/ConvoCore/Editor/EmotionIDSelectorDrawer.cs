@@ -5,7 +5,8 @@ using UnityEngine;
 
 namespace WolfstagInteractive.ConvoCore.Editor
 {
-    [CustomPropertyDrawer(typeof(EmotionIDSelectorAttribute))]
+    [UnityEngine.HelpURL("https://docs.wolfstaginteractive.com/classWolfstagInteractive_1_1ConvoCore_1_1Editor_1_1EmotionIdSelectorDrawer.html")]
+[CustomPropertyDrawer(typeof(EmotionIDSelectorAttribute))]
     public class EmotionIdSelectorDrawer : PropertyDrawer
     {
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
