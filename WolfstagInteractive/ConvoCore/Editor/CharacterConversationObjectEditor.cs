@@ -17,7 +17,39 @@ namespace WolfstagInteractive.ConvoCore.Editor
         private SerializedProperty _conversationYaml;
         private SerializedProperty _sourceYaml;
         private SerializedProperty _sourceYamlAssetPath;
+        private string[] _cachedSupportedLanguages;
+        private string[] _cachedDisplayLanguages;
+        private List<string> _cachedYamlLocales;
+        private double _lastYamlCheckTime;
+        private const double YAML_CHECK_INTERVAL = 1.0;
+        private void OnEnable()
+        {
+            CacheLanguageSettings();
+        }
+        private void CacheLanguageSettings()
+        {
+            var loader = new ConvoCoreLanguageSettingsLoader();
+            var settings = loader.LoadLanguageSettings();
 
+            var supported = settings?.SupportedLanguages;
+            if (supported == null || supported.Count == 0)
+                supported = new List<string> { "en" };
+
+            // Clean & deduplicate without LINQ
+            var seen = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+            var cleaned = new List<string>();
+            foreach (var s in supported)
+            {
+                if (string.IsNullOrWhiteSpace(s)) continue;
+                var trimmed = s.Trim();
+                if (seen.Add(trimmed))
+                    cleaned.Add(trimmed);
+            }
+            _cachedSupportedLanguages = cleaned.ToArray();
+            _cachedDisplayLanguages = new string[_cachedSupportedLanguages.Length];
+            for (int i = 0; i < _cachedSupportedLanguages.Length; i++)
+                _cachedDisplayLanguages[i] = _cachedSupportedLanguages[i].ToUpperInvariant();
+        }
         public override void OnInspectorGUI()
         {
             // Update the serialized object
@@ -77,57 +109,68 @@ namespace WolfstagInteractive.ConvoCore.Editor
             // Apply any modified properties
             serializedObject.ApplyModifiedProperties();
         }
-// --- NEW: Language Preview (Editor-only) ---
-private void DrawLanguagePreviewSection()
-{
-    EditorGUILayout.Space();
-    EditorGUILayout.BeginVertical("box");
-    EditorGUILayout.LabelField("Language (Preview)", EditorStyles.boldLabel);
-
-    // Load settings via your loader (Resources/LanguageSettings)
-    var loader   = new WolfstagInteractive.ConvoCore.ConvoCoreLanguageSettingsLoader();
-    var settings = loader.LoadLanguageSettings();
-
-    var supported = (settings?.SupportedLanguages ?? new List<string> { "en" })
-        .Where(s => !string.IsNullOrWhiteSpace(s))
-        .Select(s => s.Trim())
-        .Distinct(StringComparer.OrdinalIgnoreCase)
-        .ToList();
-
-    if (supported.Count == 0) supported.Add("en");
-
-    // Display names: uppercase for readability, but keep originals to pass through
-    var display = supported.Select(s => s.ToUpperInvariant()).ToArray();
-
-    var lm = WolfstagInteractive.ConvoCore.ConvoCoreLanguageManager.Instance;
-    var current = lm.CurrentLanguage ?? "en";
-    var idx = supported.FindIndex(s => string.Equals(s, current, StringComparison.OrdinalIgnoreCase));
-    if (idx < 0) idx = 0;
-
-    var newIdx = EditorGUILayout.Popup("Preview Language", idx, display);
-    if (newIdx != idx)
-    {
-        lm.SetLanguage(supported[newIdx]); // pass original, manager handles casing
-        Repaint();
-    }
-
-    // Optional: show which locales exist in the embedded YAML (to avoid surprises)
-    var data = (WolfstagInteractive.ConvoCore.ConvoCoreConversationData)target;
-    var yamlLocales = TryGetLocalesFromEmbedded(data);
-    if (yamlLocales != null && yamlLocales.Count > 0)
-    {
-        EditorGUILayout.LabelField("Locales in YAML:", string.Join(", ", yamlLocales));
-        if (!yamlLocales.Any(k => string.Equals(k, supported[newIdx], StringComparison.OrdinalIgnoreCase)))
+        
+        private void DrawLanguagePreviewSection()
         {
-            EditorGUILayout.HelpBox(
-                "Selected language not found in YAML; runtime will fall back (e.g., to 'en').",
-                MessageType.Info);
-        }
-    }
+            EditorGUILayout.Space();
+            EditorGUILayout.BeginVertical("box");
+            EditorGUILayout.LabelField("Language (Preview)", EditorStyles.boldLabel);
 
-    EditorGUILayout.EndVertical();
-    EditorGUILayout.Space();
-}
+            if (_cachedSupportedLanguages == null || _cachedSupportedLanguages.Length == 0)
+                CacheLanguageSettings();
+
+            var lm = ConvoCoreLanguageManager.Instance;
+            var current = lm.CurrentLanguage ?? "en";
+
+            int idx = 0;
+            for (int i = 0; i < _cachedSupportedLanguages.Length; i++)
+            {
+                if (string.Equals(_cachedSupportedLanguages[i], current, StringComparison.OrdinalIgnoreCase))
+                {
+                    idx = i;
+                    break;
+                }
+            }
+
+            var newIdx = EditorGUILayout.Popup("Preview Language", idx, _cachedDisplayLanguages);
+            if (newIdx != idx)
+            {
+                lm.SetLanguage(_cachedSupportedLanguages[newIdx]);
+                Repaint();
+            }
+
+            // Refresh YAML locales only occasionally or if the asset changed
+            var data = (ConvoCoreConversationData)target;
+            if (_cachedYamlLocales == null ||
+                EditorApplication.timeSinceStartup - _lastYamlCheckTime > YAML_CHECK_INTERVAL)
+            {
+                _cachedYamlLocales = TryGetLocalesFromEmbedded(data);
+                _lastYamlCheckTime = EditorApplication.timeSinceStartup;
+            }
+
+            if (_cachedYamlLocales != null && _cachedYamlLocales.Count > 0)
+            {
+                EditorGUILayout.LabelField("Locales in YAML:", string.Join(", ", _cachedYamlLocales));
+                if (!LocaleExists(_cachedYamlLocales, _cachedSupportedLanguages[newIdx]))
+                {
+                    EditorGUILayout.HelpBox(
+                        "Selected language not found in YAML; runtime will fall back (e.g., to 'en').",
+                        MessageType.Info);
+                }
+            }
+
+            EditorGUILayout.EndVertical();
+            EditorGUILayout.Space();
+        }
+
+        private static bool LocaleExists(List<string> list, string lang)
+        {
+            for (int i = 0; i < list.Count; i++)
+                if (string.Equals(list[i], lang, StringComparison.OrdinalIgnoreCase))
+                    return true;
+            return false;
+        }
+    
 
 // Parse the embedded YAML to list locale keys present (case-insensitive, de-duplicated)
 private static List<string> TryGetLocalesFromEmbedded(ConvoCoreConversationData data)
