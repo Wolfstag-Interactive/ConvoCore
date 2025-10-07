@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using WolfstagInteractive.ConvoCore;
 
-namespace ConvoCore
+namespace WolfstagInteractive.ConvoCore
 {
     [CreateAssetMenu(menuName = "ConvoCore/Actions/Action Group")][ System.Serializable]
     
