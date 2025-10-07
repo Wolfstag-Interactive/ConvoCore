@@ -1,0 +1,7 @@
+<map id="WolfstagInteractive.ConvoCore.ConvoCoreAction_ModifyTransform" name="WolfstagInteractive.ConvoCore.ConvoCoreAction_ModifyTransform">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,152,289,192"/>
+<area shape="rect" id="Node000002" href="$classWolfstagInteractive_1_1ConvoCore_1_1BaseAction.html" title=" " alt="" coords="100,79,195,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="150,118,150,152,145,152,145,118"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="83,5,212,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="150,44,150,79,145,79,145,44"/>
+</map>

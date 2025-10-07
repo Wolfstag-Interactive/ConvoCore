@@ -1,0 +1,13 @@
+<map id="WolfstagInteractive.ConvoCore.ConvoCoreConversationData.DialogueLineInfo" name="WolfstagInteractive.ConvoCore.ConvoCoreConversationData.DialogueLineInfo">
+<area shape="rect" id="Node000001" title=" " alt="" coords="1304,56,1552,111"/>
+<area shape="rect" id="Node000002" href="$structWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData_1_1CharacterRepresentationData.html" title=" " alt="" coords="777,56,1025,111"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1039,81,1304,81,1304,86,1039,86"/>
+<area shape="rect" id="Node000003" href="$classWolfstagInteractive_1_1ConvoCore_1_1CharacterRepresentationBase.html" title=" " alt="" coords="297,22,548,62"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="562,51,777,70,777,75,562,57"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="62,5,191,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="205,22,297,29,297,34,205,27"/>
+<area shape="rect" id="Node000005" href="$interfaceWolfstagInteractive_1_1ConvoCore_1_1IEditorPreviewableRepresentation.html" title=" " alt="" coords="5,55,248,80"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="261,53,297,50,297,55,262,58"/>
+<area shape="rect" id="Node000006" href="$classWolfstagInteractive_1_1ConvoCore_1_1DialogueLineDisplayOptions.html" title=" " alt="" coords="303,86,543,126"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="556,101,753,93,777,91,777,96,753,98,557,106"/>
+</map>

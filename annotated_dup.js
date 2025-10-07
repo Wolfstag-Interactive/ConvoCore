@@ -1,0 +1,53 @@
+var annotated_dup =
+[
+    [ "ConvoCore", "namespaceConvoCore.html", [
+      [ "ConvoCoreAction_ActionGroup", "classConvoCore_1_1ConvoCoreAction__ActionGroup.html", "classConvoCore_1_1ConvoCoreAction__ActionGroup" ]
+    ] ],
+    [ "WolfstagInteractive", "namespaceWolfstagInteractive.html", [
+      [ "ConvoCore", "namespaceWolfstagInteractive_1_1ConvoCore.html", [
+        [ "BaseAction", "classWolfstagInteractive_1_1ConvoCore_1_1BaseAction.html", null ],
+        [ "CharacterRepresentationBase", "classWolfstagInteractive_1_1ConvoCore_1_1CharacterRepresentationBase.html", "classWolfstagInteractive_1_1ConvoCore_1_1CharacterRepresentationBase" ],
+        [ "ConvoCore", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCore.html", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCore" ],
+        [ "ConvoCoreAction_EnableDisableGameObject", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreAction__EnableDisableGameObject.html", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreAction__EnableDisableGameObject" ],
+        [ "ConvoCoreAction_FadeInOutSpriteRenderer", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreAction__FadeInOutSpriteRenderer.html", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreAction__FadeInOutSpriteRenderer" ],
+        [ "ConvoCoreAction_InstantiatePrefab", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreAction__InstantiatePrefab.html", null ],
+        [ "ConvoCoreAction_ModifyTransform", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreAction__ModifyTransform.html", null ],
+        [ "ConvoCoreAction_PlayAudioClip", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreAction__PlayAudioClip.html", null ],
+        [ "ConvoCoreCharacterDisplayBase", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreCharacterDisplayBase.html", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreCharacterDisplayBase" ],
+        [ "ConvoCoreCharacterEmotion", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreCharacterEmotion.html", null ],
+        [ "ConvoCoreCharacterProfileBaseData", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreCharacterProfileBaseData.html", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreCharacterProfileBaseData" ],
+        [ "ConvoCoreConversationData", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData.html", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData" ],
+        [ "ConvoCoreDialogueLocalizationHandler", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreDialogueLocalizationHandler.html", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreDialogueLocalizationHandler" ],
+        [ "ConvoCoreLanguageManager", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreLanguageManager.html", null ],
+        [ "ConvoCoreLanguageSettings", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreLanguageSettings.html", null ],
+        [ "ConvoCoreLanguageSettingsLoader", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreLanguageSettingsLoader.html", null ],
+        [ "ConvoCorePrefabRepresentationSpawner", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCorePrefabRepresentationSpawner.html", null ],
+        [ "ConvoCoreSampleUI", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSampleUI.html", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSampleUI" ],
+        [ "ConvoCoreUIFoundation", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreUIFoundation.html", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreUIFoundation" ],
+        [ "ConvoCoreYamlUtilities", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreYamlUtilities.html", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreYamlUtilities" ],
+        [ "DialogueLineDisplayOptions", "classWolfstagInteractive_1_1ConvoCore_1_1DialogueLineDisplayOptions.html", null ],
+        [ "DialogueYamlConfig", "classWolfstagInteractive_1_1ConvoCore_1_1DialogueYamlConfig.html", null ],
+        [ "EmotionIDSelectorAttribute", "classWolfstagInteractive_1_1ConvoCore_1_1EmotionIDSelectorAttribute.html", null ],
+        [ "EmotionPrefabMapping", "classWolfstagInteractive_1_1ConvoCore_1_1EmotionPrefabMapping.html", null ],
+        [ "GameObjectReference", "classWolfstagInteractive_1_1ConvoCore_1_1GameObjectReference.html", "classWolfstagInteractive_1_1ConvoCore_1_1GameObjectReference" ],
+        [ "IConvoCoreCharacterDisplay", "interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoCoreCharacterDisplay.html", "interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoCoreCharacterDisplay" ],
+        [ "IConvoCoreFadeIn", "interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoCoreFadeIn.html", "interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoCoreFadeIn" ],
+        [ "IConvoCoreFadeOut", "interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoCoreFadeOut.html", "interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoCoreFadeOut" ],
+        [ "IConvoCoreLanguageSettingsLoader", "interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoCoreLanguageSettingsLoader.html", null ],
+        [ "IConvoCoreRepresentationInitializable", "interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoCoreRepresentationInitializable.html", null ],
+        [ "IDialogueLineEditorCustomizable", "interfaceWolfstagInteractive_1_1ConvoCore_1_1IDialogueLineEditorCustomizable.html", "interfaceWolfstagInteractive_1_1ConvoCore_1_1IDialogueLineEditorCustomizable" ],
+        [ "IEditorPreviewableRepresentation", "interfaceWolfstagInteractive_1_1ConvoCore_1_1IEditorPreviewableRepresentation.html", "interfaceWolfstagInteractive_1_1ConvoCore_1_1IEditorPreviewableRepresentation" ],
+        [ "IUIFoundation", "interfaceWolfstagInteractive_1_1ConvoCore_1_1IUIFoundation.html", "interfaceWolfstagInteractive_1_1ConvoCore_1_1IUIFoundation" ],
+        [ "LocalizedDialogueResult", "classWolfstagInteractive_1_1ConvoCore_1_1LocalizedDialogueResult.html", null ],
+        [ "PrefabCharacterRepresentationData", "classWolfstagInteractive_1_1ConvoCore_1_1PrefabCharacterRepresentationData.html", null ],
+        [ "RepresentationEmotionOverride", "classWolfstagInteractive_1_1ConvoCore_1_1RepresentationEmotionOverride.html", null ],
+        [ "RepresentationPair", "classWolfstagInteractive_1_1ConvoCore_1_1RepresentationPair.html", null ],
+        [ "SimplePrefabRepresentationDisplay", "classWolfstagInteractive_1_1ConvoCore_1_1SimplePrefabRepresentationDisplay.html", "classWolfstagInteractive_1_1ConvoCore_1_1SimplePrefabRepresentationDisplay" ],
+        [ "SpriteCharacterRepresentationData", "classWolfstagInteractive_1_1ConvoCore_1_1SpriteCharacterRepresentationData.html", null ],
+        [ "SpriteEmotionMapping", "classWolfstagInteractive_1_1ConvoCore_1_1SpriteEmotionMapping.html", null ]
+      ] ]
+    ] ],
+    [ "ConvoCorePrefabPool", "classConvoCorePrefabPool.html", null ],
+    [ "ConvoCoreSettings", "classConvoCoreSettings.html", null ],
+    [ "ConvoCoreYamlWatcher", "classConvoCoreYamlWatcher.html", null ]
+];
