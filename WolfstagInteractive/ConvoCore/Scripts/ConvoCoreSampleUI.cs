@@ -4,7 +4,6 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
-using UnityEngine.Serialization;
 
 namespace WolfstagInteractive.ConvoCore
 {
@@ -23,10 +22,14 @@ namespace WolfstagInteractive.ConvoCore
 
         [Header("Settings")]
         [SerializeField] private bool AllowLineAdvanceOutsideButton = false;
-
+        [SerializeField] private bool EnableTypewriterEffect = true;
+        [SerializeField] private float TypewriterSpeed = 0.05f; // Time in seconds per character
+        [SerializeField] private bool CanSkipTypewriter = true;
         [Header("Input Settings")]
         [SerializeField] private InputAction AdvanceDialogueAction;
-
+        private Coroutine typewriterCoroutine;
+        private bool isTyping = false;
+        private string fullText = "";
         private bool _continuePressed = false;
         private bool isWaitingForInput = false;
 
@@ -169,6 +172,24 @@ namespace WolfstagInteractive.ConvoCore
             DialogueText.gameObject.SetActive(true);
             SpeakerName.gameObject.SetActive(true);
             DialoguePanel.gameObject.SetActive(true);
+            // Stop any existing typewriter effect
+            if (typewriterCoroutine != null)
+            {
+                StopCoroutine(typewriterCoroutine);
+                typewriterCoroutine = null;
+            }
+            
+            if (EnableTypewriterEffect)
+            {
+                DialogueText.text = "";
+                isTyping = true;
+                typewriterCoroutine = StartCoroutine(TypewriterEffect(text));
+            }
+            else
+            {
+                DialogueText.text = text;
+                isTyping = false;
+            }
         }
 
         public override void HideDialogue()
@@ -196,17 +217,58 @@ namespace WolfstagInteractive.ConvoCore
         public void OnContinueButtonPressed()
         {
             if (!isWaitingForInput) return;
+            // If typewriter is active and can be skipped, complete the text immediately
+            if (isTyping && CanSkipTypewriter)
+            {
+                CompleteTypewriter();
+                return;
+            }
             isWaitingForInput = false;
         }
 
         private void OnAdvanceDialoguePerformed(InputAction.CallbackContext context)
         {
+            // If we're currently typing and can't skip, don't do anything
+            if (isTyping && !CanSkipTypewriter)
+            {
+                return;
+            }
+            
             if (isWaitingForInput && (AllowLineAdvanceOutsideButton || !IsPointerOverUIElement(ContinueButton)))
             {
                 OnContinueButtonPressed();
             }
+            // Allow skipping typewriter effect only if CanSkipTypewriter is true
+            else if (isTyping && CanSkipTypewriter)
+            {
+                CompleteTypewriter();
+            }
         }
-
+        private IEnumerator TypewriterEffect(string text)
+        {
+            DialogueText.text = "";
+            
+            for (int i = 0; i < text.Length; i++)
+            {
+                DialogueText.text = text.Substring(0, i + 1);
+                yield return new WaitForSeconds(TypewriterSpeed);
+            }
+            
+            isTyping = false;
+            typewriterCoroutine = null;
+        }
+        
+        private void CompleteTypewriter()
+        {
+            if (typewriterCoroutine != null)
+            {
+                StopCoroutine(typewriterCoroutine);
+                typewriterCoroutine = null;
+            }
+            
+            DialogueText.text = fullText;
+            isTyping = false;
+        }
         protected bool IsPointerOverUIElement(Component uiElement)
         {
             if (uiElement == null) return false;
