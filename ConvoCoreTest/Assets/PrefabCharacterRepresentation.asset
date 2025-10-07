@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CharacterPrefab: {fileID: 4572384141807948543, guid: f5d3b86b185a9ad4d92faf90620a54e6, type: 3}
   EmotionMappings:
-  - _emotionId: 0cd4a347f9d04853810517ced215e945
+  - emotionID: 1f3758fff31b4844a3731dbad85e9036
     DisplayName: cube
-  - _emotionId: c1cef678f22c4b8a8eae023999ad0612
+  - emotionID: 8670cfb1668342bf8b22a046bdec725f
     DisplayName: sphere

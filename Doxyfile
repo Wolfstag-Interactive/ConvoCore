@@ -1,0 +1,13 @@
+PROJECT_NAME           = "ConvoCore"
+OUTPUT_DIRECTORY       = Docs
+INPUT                  = ./WolfstagInteractive/ConvoCore/Scripts
+FILE_PATTERNS          = *.cs
+RECURSIVE              = YES
+EXCLUDE_PATTERNS       = */Editor/*
+GENERATE_HTML          = YES
+GENERATE_LATEX         = NO
+GENERATE_TREEVIEW      = YES
+GENERATE_SEARCHENGINE  = YES
+HAVE_DOT               = YES
+DOT_IMAGE_FORMAT       = svg
+HTML_OUTPUT            = html
