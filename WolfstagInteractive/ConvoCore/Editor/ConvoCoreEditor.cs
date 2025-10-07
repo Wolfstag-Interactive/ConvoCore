@@ -3,16 +3,17 @@ using UnityEngine;
 
 namespace WolfstagInteractive.ConvoCore.Editor
 {
-    [UnityEngine.HelpURL("https://docs.wolfstaginteractive.com/classWolfstagInteractive_1_1ConvoCore_1_1Editor_1_1ConvoCoreEditor.html")]
-[CustomEditor(typeof(ConvoCore))]
+    [HelpURL("https://docs.wolfstaginteractive.com/classWolfstagInteractive_1_1ConvoCore_1_1Editor_1_1ConvoCoreEditor.html")]
+    [CustomEditor(typeof(ConvoCore))]
     public class ConvoCoreEditor : UnityEditor.Editor
     {
         private ConvoCoreLanguageManager _convoCoreLanguageManager;
         private int _selectedLanguageIndex = 0;
+        private bool _indexInitialized = false;
 
         public override void OnInspectorGUI()
         {
-            // Get the target object (DialogueStateMachine)
+            // Get the target object
             ConvoCore convoCore = (ConvoCore)target;
 
             // Access the LanguageManager Singleton instance
@@ -22,18 +23,27 @@ namespace WolfstagInteractive.ConvoCore.Editor
             if (_convoCoreLanguageManager == null || _convoCoreLanguageManager.GetSupportedLanguages() == null)
             {
                 EditorGUILayout.HelpBox(
-                    "LanguageSettings is not found. Please check Assets/Resources for the LanguageSettings " +
-                    "and ensure it exists at the root of the folder and that it contains at least one language code " +
-                    "or create one below.",
+                    "ConvoCoreSettings not found or not configured properly. Please create and configure it using the menu.",
                     MessageType.Error);
                 EditorGUILayout.Space();
-                if (GUILayout.Button("Create LanguageSettings Object"))
+
+                if (GUILayout.Button("Open Settings (or Create if Missing)"))
                 {
-                   ConvoCoreEditorUtilities.CreateLanguageSettingsAsset();
+                    ConvoCoreMenuItems.OpenSettings();
                 }
-                return; // Prevent further rendering if the LanguageManager is invalid
+
+                return;
             }
+
             DrawDefaultInspector();
+
+            EditorGUILayout.Space();
+            EditorGUILayout.LabelField("Language Control", EditorStyles.boldLabel);
+
+            // Info box about global language settings
+            EditorGUILayout.HelpBox(
+                "Language is controlled globally in ConvoCoreSettings. Changes here affect all conversations.",
+                MessageType.Info);
 
             // Display the current language
             EditorGUILayout.LabelField("Current Language:", _convoCoreLanguageManager.CurrentLanguage);
@@ -42,57 +52,75 @@ namespace WolfstagInteractive.ConvoCore.Editor
             var supportedLanguages = _convoCoreLanguageManager.GetSupportedLanguages();
             if (supportedLanguages != null && supportedLanguages.Count > 0)
             {
-                // Synchronize the dropdown selection with the current language
-                if (_selectedLanguageIndex < 0 || _selectedLanguageIndex >= supportedLanguages.Count)
+                // Initialize the dropdown index only once or when language changes externally
+                if (!_indexInitialized || !IsValidIndex(supportedLanguages))
                 {
-                    // Default to the current language if the index is invalid
-                    _selectedLanguageIndex = supportedLanguages.IndexOf(_convoCoreLanguageManager.CurrentLanguage);
+                    _selectedLanguageIndex = Mathf.Max(0, supportedLanguages.IndexOf(_convoCoreLanguageManager.CurrentLanguage));
+                    _indexInitialized = true;
                 }
 
                 // Render the dropdown and track changes
+                EditorGUI.BeginChangeCheck();
                 int newSelectedIndex = EditorGUILayout.Popup("Select a Language:", _selectedLanguageIndex,
                     supportedLanguages.ToArray());
-                if (newSelectedIndex != _selectedLanguageIndex)
+                
+                if (EditorGUI.EndChangeCheck())
                 {
-                    Debug.Log(
-                        $"Dropdown selection changed to index: {newSelectedIndex}. Language: {supportedLanguages[newSelectedIndex]}");
-                    _selectedLanguageIndex = newSelectedIndex; // Update index
+                    _selectedLanguageIndex = newSelectedIndex;
                 }
 
                 // Add a button to apply the selected language
+                EditorGUI.BeginDisabledGroup(supportedLanguages[_selectedLanguageIndex] == _convoCoreLanguageManager.CurrentLanguage);
                 if (GUILayout.Button("Apply Language"))
                 {
                     var selectedLanguage = supportedLanguages[_selectedLanguageIndex];
-                    if (_convoCoreLanguageManager.CurrentLanguage != selectedLanguage)
-                    {
-                        // Update the language in the LanguageManager
-                        _convoCoreLanguageManager.SetLanguage(selectedLanguage);
-                        Debug.Log($"Language applied via button: {selectedLanguage}");
+                    _convoCoreLanguageManager.SetLanguage(selectedLanguage);
+                    Debug.Log($"Language applied globally: {selectedLanguage}");
+                    convoCore.UpdateUIForLanguage(selectedLanguage);
+                }
+                EditorGUI.EndDisabledGroup();
 
-                        // Notify the DialogueStateMachine to update its UI for the new language
-                        convoCore.UpdateUIForLanguage(selectedLanguage);
-                    }
-                    else
-                    {
-                        Debug.Log("Selected language is already active.");
-                    }
+                // Button to open settings
+                if (GUILayout.Button("Open ConvoCoreSettings"))
+                {
+                    ConvoCoreMenuItems.OpenSettings();
                 }
             }
             else
             {
-                EditorGUILayout.HelpBox("No supported languages found! Please check the LanguageSettings asset.",
+                EditorGUILayout.HelpBox("No supported languages found! Please configure ConvoCoreSettings.",
                     MessageType.Warning);
+
+                if (GUILayout.Button("Open Settings"))
+                {
+                    ConvoCoreMenuItems.OpenSettings();
+                }
             }
+
+            EditorGUILayout.Space();
+            EditorGUILayout.LabelField("Conversation Control", EditorStyles.boldLabel);
 
             // Add a button to start the conversation
             if (GUILayout.Button("Start Conversation"))
             {
-                // Call StartConversation on the DialogueStateMachine
                 convoCore.StartConversation();
             }
+
             EditorGUILayout.Space();
             EditorGUILayout.LabelField("Current Conversation State:", convoCore.CurrentDialogueState.ToString());
+        }
 
+        private bool IsValidIndex(System.Collections.Generic.List<string> supportedLanguages)
+        {
+            return _selectedLanguageIndex >= 0 && 
+                   _selectedLanguageIndex < supportedLanguages.Count && 
+                   supportedLanguages[_selectedLanguageIndex] != null;
+        }
+
+        private void OnEnable()
+        {
+            // Reset initialization when editor is enabled
+            _indexInitialized = false;
         }
     }
 }

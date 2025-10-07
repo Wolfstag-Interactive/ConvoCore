@@ -117,7 +117,7 @@ MonoBehaviour:
       SelectedCharacterID: 
       SelectedRepresentationName: Sprites
       SelectedRepresentation: {fileID: 11400000, guid: cf61be94e9ae46b4da28bb23d0bfa60f, type: 2}
-      SelectedEmotionId: 
+      SelectedEmotionId: a19f9207cc80443fa35d60373ea599dc
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
         FlipPortraitY: 0
@@ -1377,7 +1377,7 @@ MonoBehaviour:
       SelectedCharacterID: 
       SelectedRepresentationName: Sprites
       SelectedRepresentation: {fileID: 11400000, guid: cf61be94e9ae46b4da28bb23d0bfa60f, type: 2}
-      SelectedEmotionId: 
+      SelectedEmotionId: 3c438f392699403f96fb8a139d2dfde2
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
         FlipPortraitY: 0
@@ -1431,5 +1431,5 @@ MonoBehaviour:
   AllowPersistentOverrides: 1
   FilePath: DialogueScriptSample.yml
   SourceYaml: {fileID: 102900000, guid: 4612376414d9cc742be9c4b790213e6a, type: 3}
-  SourceYamlAssetPath: Assets/Samples/ConvoCore/1.0.0/Sample Assets/DialogueScriptSample.yml
+  SourceYamlAssetPath: Assets/Samples/ConvoCore/1.0.0/SampleAssets/DialogueScriptSample.yml
   ConversationKey: Conversation1

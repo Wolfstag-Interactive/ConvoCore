@@ -45,7 +45,7 @@ public class ConvoCoreHelpURLInjector : AssetModificationProcessor
     }
 
    // ---------------- RETROACTIVE SCAN ----------------
-[MenuItem("ConvoCore/Scan & Add HelpURLs")]
+[MenuItem("ConvoCoreDevHelpers/Scan & Add HelpURLs")]
 public static void ScanAllConvoCoreScripts()
 {
     // Detect the package folder dynamically
@@ -87,7 +87,7 @@ public static void ScanAllConvoCoreScripts()
     Debug.Log($"[ConvoCoreHelpURLInjector] Scan complete:\n" +
               $"  Added: {added}\n  Already: {already}\n  Skipped: {skipped}");
 }
-[MenuItem("ConvoCore/Update Existing HelpURLs")]
+[MenuItem("ConvoCoreDevHelpers/Update Existing HelpURLs")]
 public static void UpdateExistingHelpUrls()
 {
     // Locate your package folder dynamically
