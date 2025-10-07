@@ -11,11 +11,21 @@ namespace WolfstagInteractive.ConvoCore.Editor
     {
         private ReorderableList _list;
 
+        
         public override void OnInspectorGUI()
         {
             serializedObject.Update();
 
             EnsureGuidsIfMissing(serializedObject);
+            
+            // Check for duplicate names and show warning at the top
+            var duplicateNames = GetDuplicateDisplayNames(serializedObject.FindProperty("EmotionMappings"));
+            if (duplicateNames.Count > 0)
+            {
+                EditorGUILayout.HelpBox(
+                    $"Warning: Duplicate emotion names detected: {string.Join(", ", duplicateNames)}. Each emotion should have a unique Display Name.",
+                    MessageType.Warning);
+            }
 
             _list.DoLayoutList();
 
@@ -44,6 +54,34 @@ namespace WolfstagInteractive.ConvoCore.Editor
             }
 
             if (changed) so.ApplyModifiedProperties();
+        }
+        private static System.Collections.Generic.HashSet<string> GetDuplicateDisplayNames(SerializedProperty listProp)
+        {
+            var duplicates = new System.Collections.Generic.HashSet<string>();
+            if (listProp == null || !listProp.isArray) return duplicates;
+
+            var seen = new System.Collections.Generic.Dictionary<string, int>();
+            
+            for (int i = 0; i < listProp.arraySize; i++)
+            {
+                var el = listProp.GetArrayElementAtIndex(i);
+                var nameProp = el.FindPropertyRelative("DisplayName") ?? el.FindPropertyRelative("Name");
+                if (nameProp == null) continue;
+
+                string name = nameProp.stringValue;
+                if (string.IsNullOrWhiteSpace(name)) continue;
+
+                if (seen.ContainsKey(name))
+                {
+                    duplicates.Add(name);
+                }
+                else
+                {
+                    seen[name] = i;
+                }
+            }
+
+            return duplicates;
         }
 
         private void BuildList()
@@ -81,16 +119,56 @@ namespace WolfstagInteractive.ConvoCore.Editor
 
                 const float pad = 6f;
                 rect = new Rect(rect.x + pad, rect.y + pad, rect.width - pad * 2f, rect.height - pad * 2f);
-
+                // Check if this name is a duplicate
+                bool isDuplicate = false;
+                string currentName = nameProp.stringValue;
+                if (!string.IsNullOrWhiteSpace(currentName))
+                {
+                    int duplicateCount = 0;
+                    for (int i = 0; i < listProp.arraySize; i++)
+                    {
+                        if (i == index) continue;
+                        var otherEl = listProp.GetArrayElementAtIndex(i);
+                        var otherName = otherEl.FindPropertyRelative("DisplayName") ?? otherEl.FindPropertyRelative("Name");
+                        if (otherName != null && otherName.stringValue == currentName)
+                        {
+                            duplicateCount++;
+                        }
+                    }
+                    isDuplicate = duplicateCount > 0;
+                }
                 // Header row: Display Name (editable) + GUID (readonly, copyable)
                 var headerRect = new Rect(rect.x, rect.y, rect.width, EditorGUIUtility.singleLineHeight);
-                float nameWidth = headerRect.width * 0.60f;
-                var nameRect = new Rect(headerRect.x, headerRect.y, nameWidth, headerRect.height);
+                // Reserve space for warning icon if duplicate
+                float warningIconWidth = isDuplicate ? 20f : 0f;
+                float nameWidth = (headerRect.width - warningIconWidth) * 0.60f;
+                
+                // Draw warning icon first if duplicate
+                if (isDuplicate)
+                {
+                    var warningRect = new Rect(headerRect.x, headerRect.y, warningIconWidth, headerRect.height);
+                    var warningContent = new GUIContent(EditorGUIUtility.IconContent("console.warnicon.sml"));
+                    warningContent.tooltip = "Duplicate name detected! Each emotion should have a unique Display Name.";
+                    EditorGUI.LabelField(warningRect, warningContent);
+                }
+                
+                
+                var nameRect = new Rect(headerRect.x+ warningIconWidth, headerRect.y, nameWidth, headerRect.height);
                 var guidLabelRect = new Rect(nameRect.xMax + 8f, headerRect.y, 44f, headerRect.height);
                 var guidRect = new Rect(guidLabelRect.xMax + 4f, headerRect.y,
                     headerRect.xMax - (guidLabelRect.xMax + 4f), headerRect.height);
-
-                nameProp.stringValue = EditorGUI.TextField(nameRect, "Display Name", nameProp.stringValue);
+                // Highlight the name field if duplicate
+                if (isDuplicate)
+                {
+                    var oldColor = GUI.backgroundColor;
+                    GUI.backgroundColor = new Color(1f, 0.8f, 0.6f); // orange tint
+                    nameProp.stringValue = EditorGUI.TextField(nameRect, "Display Name", nameProp.stringValue);
+                    GUI.backgroundColor = oldColor;
+                }
+                else
+                {
+                    nameProp.stringValue = EditorGUI.TextField(nameRect, "Display Name", nameProp.stringValue);
+                }
 
                 EditorGUI.LabelField(guidLabelRect, "GUID");
                 using (new EditorGUI.DisabledScope(true))
