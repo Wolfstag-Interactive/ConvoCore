@@ -43,6 +43,13 @@ namespace WolfstagInteractive.ConvoCore
         
         // Abstract or virtual method to get the emotion IDs for the representation
         public abstract List<string> GetEmotionIDs();
+        /// <summary>
+        /// Retrieves the emotion mapping object by its GUID.
+        /// Used by the editor to display the correct emotion in previews.
+        /// </summary>
+        /// <param name="emotionGuid">The GUID of the emotion to retrieve.</param>
+        /// <returns>The emotion mapping object, or null if not found.</returns>
+        public abstract object GetEmotionMappingByGuid(string emotionGuid);
         
         public abstract void DrawInlineEditorPreview(object emotionMapping, Rect position);
 

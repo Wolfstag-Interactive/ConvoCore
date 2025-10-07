@@ -30,6 +30,14 @@ namespace WolfstagInteractive.ConvoCore
 
         // Legacy/UI convenience no longer used – return names only if some old drawer calls it
         public override List<string> GetEmotionIDs() => EmotionMappings.Select(m => m.DisplayName).ToList();
+        public override object GetEmotionMappingByGuid(string emotionGuid)
+        {
+            if (string.IsNullOrEmpty(emotionGuid))
+                return null;
+            
+            return EmotionMappings.FirstOrDefault(m => m.EmotionID == emotionGuid);
+            
+        }
 
         // Prefab flow doesn’t use this directly; spawner binds + applies by GUID
         public override object ProcessEmotion(string emotionId) => emotionId;

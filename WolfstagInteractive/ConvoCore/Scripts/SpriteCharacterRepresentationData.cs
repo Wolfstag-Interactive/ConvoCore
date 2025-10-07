@@ -27,6 +27,13 @@ namespace WolfstagInteractive.ConvoCore
         }
 
         public override List<string> GetEmotionIDs() => EmotionMappings.Select(m => m.DisplayName).ToList();
+        public override object GetEmotionMappingByGuid(string emotionGuid)
+        {
+            if (string.IsNullOrEmpty(emotionGuid))
+                return null;
+            
+            return EmotionMappings.FirstOrDefault(m => m.EmotionID == emotionGuid);
+        }
 
         public override object ProcessEmotion(string emotionId)
         {

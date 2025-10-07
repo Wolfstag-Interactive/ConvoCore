@@ -377,7 +377,7 @@ namespace WolfstagInteractive.ConvoCore.Editor
                 previewable = prB;
 
             if (previewable != null)
-                rect = DrawInlinePreviewBlock(rect, previewable, spacing);
+                rect = DrawInlinePreviewBlock(rect, previewable, selectedEmotionGuidProp?.stringValue ?? "", spacing);
         }
     }
     else
@@ -452,11 +452,11 @@ namespace WolfstagInteractive.ConvoCore.Editor
             // Inline preview (Primary)
             if (selectedRepProp?.objectReferenceValue is IEditorPreviewableRepresentation previewablePrimary)
             {
-                rect = DrawInlinePreviewBlock(rect, previewablePrimary, spacing);
+                rect = DrawInlinePreviewBlock(rect, previewablePrimary,selectedEmotionGuidProp?.stringValue ?? "", spacing);
             }
             else if (selectedRepresentation is IEditorPreviewableRepresentation previewableByType)
             {
-                rect = DrawInlinePreviewBlock(rect, previewableByType, spacing);
+                rect = DrawInlinePreviewBlock(rect, previewableByType,selectedEmotionGuidProp?.stringValue ?? "", spacing);
             }
         }
     }
@@ -593,7 +593,7 @@ namespace WolfstagInteractive.ConvoCore.Editor
 
             return h;
         }
-        private static Rect DrawInlinePreviewBlock(Rect rect, IEditorPreviewableRepresentation previewable, float spacing)
+        private static Rect DrawInlinePreviewBlock(Rect rect, IEditorPreviewableRepresentation previewable,string emotionGuid, float spacing)
         {
             float h = GetPreviewBlockHeight(previewable);
             if (h <= 0f) return rect;
@@ -606,8 +606,15 @@ namespace WolfstagInteractive.ConvoCore.Editor
             // subtle background
             EditorGUI.DrawRect(outer, new Color(0f, 0f, 0f, 0.06f));
 
-            // Let representation draw
-            previewable.DrawInlineEditorPreview(null, inner);
+            // Resolve emotion mapping from the representation
+            object emotionMapping = null;
+            if (!string.IsNullOrEmpty(emotionGuid) && previewable is CharacterRepresentationBase repBase)
+            {
+                emotionMapping = repBase.GetEmotionMappingByGuid(emotionGuid);
+            }
+
+            // Let representation draw with the resolved emotion mapping
+            previewable.DrawInlineEditorPreview(emotionMapping, inner);
 
             rect.y += h + spacing;
             return rect;
