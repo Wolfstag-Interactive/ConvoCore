@@ -114,6 +114,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a7bd7d349ac2902e8b245d7f6523cbdbb" id="r_a7bd7d349ac2902e8b245d7f6523cbdbb"><td class="memItemLeft" align="right" valign="top"><a id="a7bd7d349ac2902e8b245d7f6523cbdbb" name="a7bd7d349ac2902e8b245d7f6523cbdbb"></a>
 List&lt; string &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>GetEmotionIDs</b> ()</td></tr>
 <tr class="separator:a7bd7d349ac2902e8b245d7f6523cbdbb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abef717a1035749413824b89b5480f2e7" id="r_abef717a1035749413824b89b5480f2e7"><td class="memItemLeft" align="right" valign="top">object&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1CharacterRepresentationBase.html#abef717a1035749413824b89b5480f2e7">GetEmotionMappingByGuid</a> (string emotionGuid)</td></tr>
+<tr class="memdesc:abef717a1035749413824b89b5480f2e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the emotion mapping object by its GUID. Used by the editor to display the correct emotion in previews.  <br /></td></tr>
+<tr class="separator:abef717a1035749413824b89b5480f2e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa6f7365c0cf21b80d4c02416aa436604" id="r_aa6f7365c0cf21b80d4c02416aa436604"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1CharacterRepresentationBase.html#aa6f7365c0cf21b80d4c02416aa436604">DrawInlineEditorPreview</a> (object emotionMapping, Rect position)</td></tr>
 <tr class="memdesc:aa6f7365c0cf21b80d4c02416aa436604"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draws a custom representation-specific section in the inspector.  <br /></td></tr>
 <tr class="separator:aa6f7365c0cf21b80d4c02416aa436604"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -166,6 +169,41 @@ List&lt; string &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>GetEm
 </dl>
 
 <p>Implements <a class="el" href="interfaceWolfstagInteractive_1_1ConvoCore_1_1IEditorPreviewableRepresentation.html#ac45c1b610d2cbdb9667580bef58bec4b">WolfstagInteractive.ConvoCore.IEditorPreviewableRepresentation</a>.</p>
+
+</div>
+</div>
+<a id="abef717a1035749413824b89b5480f2e7" name="abef717a1035749413824b89b5480f2e7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abef717a1035749413824b89b5480f2e7">&#9670;&#160;</a></span>GetEmotionMappingByGuid()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">object WolfstagInteractive.ConvoCore.CharacterRepresentationBase.GetEmotionMappingByGuid </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>emotionGuid</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">abstract</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Retrieves the emotion mapping object by its GUID. Used by the editor to display the correct emotion in previews. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">emotionGuid</td><td>The GUID of the emotion to retrieve.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The emotion mapping object, or null if not found.</dd></dl>
 
 </div>
 </div>
