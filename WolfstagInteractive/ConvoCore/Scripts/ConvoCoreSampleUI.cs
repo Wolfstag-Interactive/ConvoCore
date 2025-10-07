@@ -2,12 +2,12 @@ using System.Collections;
 using System.Linq;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 namespace WolfstagInteractive.ConvoCore
 {
-[UnityEngine.HelpURL("https://docs.wolfstaginteractive.com/classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSampleUI.html")]
+[HelpURL("https://docs.wolfstaginteractive.com/classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSampleUI.html")]
     public class ConvoCoreSampleUI : ConvoCoreUIFoundation
     {
         [Header("Dialogue UI Elements")]
@@ -21,17 +21,17 @@ namespace WolfstagInteractive.ConvoCore
         [SerializeField] private Button ContinueButton;
 
         [Header("Settings")]
-        [SerializeField] private bool AllowLineAdvanceOutsideButton = false;
+        [SerializeField] private bool AllowLineAdvanceOutsideButton;
         [SerializeField] private bool EnableTypewriterEffect = true;
         [SerializeField] private float TypewriterSpeed = 0.05f; // Time in seconds per character
         [SerializeField] private bool CanSkipTypewriter = true;
         [Header("Input Settings")]
         [SerializeField] private InputAction AdvanceDialogueAction;
-        private Coroutine typewriterCoroutine;
-        private bool isTyping = false;
+        private Coroutine _typewriterCoroutine;
+        private bool _isTyping;
         private string fullText = "";
         private bool _continuePressed = false;
-        private bool isWaitingForInput = false;
+        private bool _isWaitingForInput;
 
         private void Awake()
         {
@@ -44,13 +44,13 @@ namespace WolfstagInteractive.ConvoCore
         private void OnEnable()
         {
             AdvanceDialogueAction?.Enable();
-            AdvanceDialogueAction.performed += OnAdvanceDialoguePerformed;
+            if (AdvanceDialogueAction != null) AdvanceDialogueAction.performed += OnAdvanceDialoguePerformed;
         }
 
         private void OnDisable()
         {
             AdvanceDialogueAction?.Disable();
-            AdvanceDialogueAction.performed -= OnAdvanceDialoguePerformed;
+            if (AdvanceDialogueAction != null) AdvanceDialogueAction.performed -= OnAdvanceDialoguePerformed;
         }
 
         /// <summary>
@@ -173,22 +173,22 @@ namespace WolfstagInteractive.ConvoCore
             SpeakerName.gameObject.SetActive(true);
             DialoguePanel.gameObject.SetActive(true);
             // Stop any existing typewriter effect
-            if (typewriterCoroutine != null)
+            if (_typewriterCoroutine != null)
             {
-                StopCoroutine(typewriterCoroutine);
-                typewriterCoroutine = null;
+                StopCoroutine(_typewriterCoroutine);
+                _typewriterCoroutine = null;
             }
             
             if (EnableTypewriterEffect)
             {
                 DialogueText.text = "";
-                isTyping = true;
-                typewriterCoroutine = StartCoroutine(TypewriterEffect(text));
+                _isTyping = true;
+                _typewriterCoroutine = StartCoroutine(TypewriterEffect(text));
             }
             else
             {
                 DialogueText.text = text;
-                isTyping = false;
+                _isTyping = false;
             }
         }
 
@@ -203,10 +203,10 @@ namespace WolfstagInteractive.ConvoCore
 
         public override IEnumerator WaitForUserInput()
         {
-            isWaitingForInput = true;
+            _isWaitingForInput = true;
             ContinueButton.gameObject.SetActive(true);
 
-            while (isWaitingForInput)
+            while (_isWaitingForInput)
             {
                 yield return null;
             }
@@ -216,30 +216,30 @@ namespace WolfstagInteractive.ConvoCore
 
         public void OnContinueButtonPressed()
         {
-            if (!isWaitingForInput) return;
-            // If typewriter is active and can be skipped, complete the text immediately
-            if (isTyping && CanSkipTypewriter)
+            if (!_isWaitingForInput) return;
+            // If the typewriter is active and can be skipped, complete the text immediately
+            if (_isTyping && CanSkipTypewriter)
             {
                 CompleteTypewriter();
                 return;
             }
-            isWaitingForInput = false;
+            _isWaitingForInput = false;
         }
 
         private void OnAdvanceDialoguePerformed(InputAction.CallbackContext context)
         {
             // If we're currently typing and can't skip, don't do anything
-            if (isTyping && !CanSkipTypewriter)
+            if (_isTyping && !CanSkipTypewriter)
             {
                 return;
             }
             
-            if (isWaitingForInput && (AllowLineAdvanceOutsideButton || !IsPointerOverUIElement(ContinueButton)))
+            if (_isWaitingForInput && (AllowLineAdvanceOutsideButton || !IsPointerOverUIElement(ContinueButton)))
             {
                 OnContinueButtonPressed();
             }
             // Allow skipping typewriter effect only if CanSkipTypewriter is true
-            else if (isTyping && CanSkipTypewriter)
+            else if (_isTyping && CanSkipTypewriter)
             {
                 CompleteTypewriter();
             }
@@ -254,20 +254,20 @@ namespace WolfstagInteractive.ConvoCore
                 yield return new WaitForSeconds(TypewriterSpeed);
             }
             
-            isTyping = false;
-            typewriterCoroutine = null;
+            _isTyping = false;
+            _typewriterCoroutine = null;
         }
         
         private void CompleteTypewriter()
         {
-            if (typewriterCoroutine != null)
+            if (_typewriterCoroutine != null)
             {
-                StopCoroutine(typewriterCoroutine);
-                typewriterCoroutine = null;
+                StopCoroutine(_typewriterCoroutine);
+                _typewriterCoroutine = null;
             }
             
             DialogueText.text = fullText;
-            isTyping = false;
+            _isTyping = false;
         }
         protected bool IsPointerOverUIElement(Component uiElement)
         {

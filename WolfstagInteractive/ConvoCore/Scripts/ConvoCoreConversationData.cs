@@ -434,7 +434,12 @@ private bool ValidatePrimaryCharacterRepresentation(DialogueLineInfo line, int l
             try
             {
                 _dialogueDataByKey = ConvoCoreYamlParser.Parse(yamlData);
-                Debug.Log($"Successfully loaded YAML data. Found {_dialogueDataByKey.Count} conversation sections.");
+                if (ConvoCoreYamlLoader.Settings?.VerboseLogs == true)
+                {
+                    Debug.Log(
+                        $"Successfully loaded YAML data. Found {_dialogueDataByKey.Count} conversation sections.");
+                }
+
                 for (int i = 0; i < DialogueLines.Count; i++)
                 {
                     var currentLine = DialogueLines[i];
@@ -463,13 +468,18 @@ private bool ValidatePrimaryCharacterRepresentation(DialogueLineInfo line, int l
                             var dialogueLine = DialogueLines[i];
                             dialogueLine.LocalizedDialogues = localizedDialogueList;
                             DialogueLines[i] = dialogueLine;
-
-                            Debug.Log($"Updated line {i} with {localizedDialogueList.Count} translations");
+                            if (ConvoCoreYamlLoader.Settings?.VerboseLogs == true)
+                            {
+                                Debug.Log($"Updated line {i} with {localizedDialogueList.Count} translations");
+                            }
                         }
                         else
                         {
-                            Debug.LogWarning(
-                                $"No matching config found at index {currentLine.ConversationLineIndex} for conversation {currentLine.ConversationID}");
+                            if (ConvoCoreYamlLoader.Settings?.VerboseLogs == true)
+                            {
+                                Debug.LogWarning(
+                                    $"No matching config found at index {currentLine.ConversationLineIndex} for conversation {currentLine.ConversationID}");
+                            }
                         }
                     }
                     else

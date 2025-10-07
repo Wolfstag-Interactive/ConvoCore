@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace WolfstagInteractive.ConvoCore
 {
-[UnityEngine.HelpURL("https://docs.wolfstaginteractive.com/classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreYamlWatcher.html")]
+[HelpURL("https://docs.wolfstaginteractive.com/classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreYamlWatcher.html")]
     public class ConvoCoreYamlWatcher : AssetPostprocessor
     {
         static void OnPostprocessAllAssets(string[] imported, string[] deleted, string[] moved, string[] movedFrom)
@@ -34,7 +34,7 @@ namespace WolfstagInteractive.ConvoCore
             {
                 var assetPath = AssetDatabase.GUIDToAssetPath(guid);
                 var data = AssetDatabase
-                    .LoadAssetAtPath<WolfstagInteractive.ConvoCore.ConvoCoreConversationData>(assetPath);
+                    .LoadAssetAtPath<ConvoCoreConversationData>(assetPath);
                 if (data == null) continue;
 
                 // Read the stored source link (hidden field)
@@ -70,7 +70,7 @@ namespace WolfstagInteractive.ConvoCore
                         }
                     }
 
-                    // Use updated path for subsequent checks
+                    // Use the updated path for subsequent checks
                     linkedPath = newPath;
                 }
 
@@ -89,8 +89,8 @@ namespace WolfstagInteractive.ConvoCore
             }
         }
 
-        // Helper: embed text as sub-asset only if it actually changed (prevents churn)
-        private static bool TryEmbedFromPath(WolfstagInteractive.ConvoCore.ConvoCoreConversationData data,
+        // Helper: embed text as a sub-asset only if it actually changed (prevents churn)
+        private static bool TryEmbedFromPath(ConvoCoreConversationData data,
             string sourcePath)
         {
             if (string.IsNullOrEmpty(sourcePath)) return false;
@@ -170,7 +170,7 @@ namespace WolfstagInteractive.ConvoCore
             AssetDatabase.AddObjectToAsset(embedded, data);
             data.ConversationYaml = embedded;
 
-            // Optional: auto-fill FilePath for persistent/Addressables fallbacks if empty
+            // Optional: autofill FilePath for persistent/Addressables fallbacks if empty
             if (string.IsNullOrEmpty(data.FilePath))
             {
                 var baseName = Path.GetFileNameWithoutExtension(sourcePath);
