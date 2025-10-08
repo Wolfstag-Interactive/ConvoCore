@@ -11,8 +11,11 @@ namespace WolfstagInteractive.ConvoCore.Editor
         private const string PAGE_SIZE_KEY_SUFFIX = "_PageSize";
 
         private static readonly Dictionary<string, bool> FoldoutStates = new();
+        private static readonly GUIStyle FoldoutStyle = new(EditorStyles.foldout);
+        private static readonly GUIStyle BoxStyle = new(EditorStyles.helpBox);
+        private static readonly GUIStyle MiniLabel = new(EditorStyles.miniLabel);
+
         private static readonly List<SerializedProperty> TempVisibleProps = new();
-        private static readonly GUIContent TempLabel = new();
 
         public static void DrawPagedList(SerializedProperty listProp, int defaultPageSize = 20)
         {
@@ -35,13 +38,45 @@ namespace WolfstagInteractive.ConvoCore.Editor
                 listProp.isExpanded,
                 $"{ObjectNames.NicifyVariableName(listProp.displayName)} ({total})",
                 true);
+
             if (!listProp.isExpanded)
                 return;
 
             EditorGUI.indentLevel++;
+            DrawToolbar(ref currentPage, ref pageSize, total, totalPages, uniqueKey);
 
-            // ---------- Toolbar ----------
+            // Compute visible range
+            int start = Mathf.Clamp(currentPage * pageSize, 0, Mathf.Max(0, total - 1));
+            int end = Mathf.Min(start + pageSize, total);
+
+            // Cache only visible range
+            TempVisibleProps.Clear();
+            for (int i = start; i < end; i++)
+                TempVisibleProps.Add(listProp.GetArrayElementAtIndex(i));
+
+            EditorGUILayout.BeginVertical(BoxStyle);
+
+            foreach (var element in TempVisibleProps)
+                DrawElement(element);
+
+            EditorGUILayout.EndVertical();
+
+            // Footer
             EditorGUILayout.BeginHorizontal(EditorStyles.toolbar);
+            GUILayout.FlexibleSpace();
+            GUILayout.Label($"Page {currentPage + 1}/{totalPages}  •  Total: {total}", MiniLabel);
+            GUILayout.FlexibleSpace();
+            EditorGUILayout.EndHorizontal();
+
+            SessionState.SetInt(uniqueKey, currentPage);
+            EditorGUI.indentLevel--;
+        }
+
+        // ─────────────────────────────────────────────────────────────────────────────
+        private static void DrawToolbar(ref int currentPage, ref int pageSize, int total, int totalPages, string uniqueKey)
+        {
+            EditorGUILayout.BeginHorizontal(EditorStyles.toolbar);
+
             if (GUILayout.Button("First", EditorStyles.toolbarButton, GUILayout.Width(45))) currentPage = 0;
             if (GUILayout.Button("◀", EditorStyles.toolbarButton, GUILayout.Width(25))) currentPage = Mathf.Max(currentPage - 1, 0);
             GUILayout.Label($"{currentPage + 1}/{totalPages}", GUILayout.Width(60));
@@ -51,80 +86,51 @@ namespace WolfstagInteractive.ConvoCore.Editor
             GUILayout.Space(10);
             int start = Mathf.Clamp(currentPage * pageSize, 0, Mathf.Max(0, total - 1));
             int end = Mathf.Min(start + pageSize, total);
-            GUILayout.Label($"Showing {start + 1}–{end} of {total}", EditorStyles.miniLabel);
+            GUILayout.Label($"Showing {start + 1}–{end} of {total}", MiniLabel);
             GUILayout.FlexibleSpace();
 
             GUILayout.Label("Items per page", EditorStyles.miniLabel, GUILayout.Width(90));
-            Rect sizeRect = GUILayoutUtility.GetRect(45, EditorGUIUtility.singleLineHeight);
-            int newPageSize = EditorGUI.DelayedIntField(sizeRect, pageSize);
-            EditorGUIUtility.AddCursorRect(sizeRect, MouseCursor.SlideArrow);
-            if (Event.current.type == EventType.MouseDrag && sizeRect.Contains(Event.current.mousePosition))
-            {
-                newPageSize = Mathf.Clamp(pageSize + Mathf.RoundToInt(Event.current.delta.x), 1, 200);
-                Event.current.Use();
-            }
-
+            int newPageSize = EditorGUILayout.DelayedIntField(pageSize, GUILayout.Width(45));
             if (newPageSize != pageSize && newPageSize > 0)
             {
                 pageSize = newPageSize;
                 EditorPrefs.SetInt(uniqueKey + PAGE_SIZE_KEY_SUFFIX, pageSize);
-                totalPages = Mathf.Max(1, Mathf.CeilToInt(total / (float)pageSize));
-                currentPage = Mathf.Clamp(currentPage, 0, totalPages - 1);
             }
-            EditorGUILayout.EndHorizontal();
 
-            SessionState.SetInt(uniqueKey, currentPage);
+            EditorGUILayout.EndHorizontal();
             GUILayout.Space(3);
-
-            // ---------- Cache visible range ----------
-            TempVisibleProps.Clear();
-            for (int i = start; i < end; i++)
-            {
-                if (i >= listProp.arraySize) break;
-                TempVisibleProps.Add(listProp.GetArrayElementAtIndex(i));
-            }
-
-            // ---------- Body ----------
-            EditorGUILayout.BeginVertical(EditorStyles.helpBox);
-            foreach (var element in TempVisibleProps)
-            {
-                string id = element.propertyPath;
-                if (!FoldoutStates.ContainsKey(id))
-                    FoldoutStates[id] = false;
-
-                // Get preview text from LocalizedDialogues
-                string preview = TryGetPreviewText(element);
-
-                EditorGUILayout.BeginVertical(GUI.skin.box);
-                EditorGUILayout.BeginHorizontal();
-                FoldoutStates[id] = EditorGUILayout.Foldout(FoldoutStates[id], $"Dialogue Line {GetIndex(element)}", true);
-                GUILayout.FlexibleSpace();
-                GUILayout.Label(preview, EditorStyles.miniLabel, GUILayout.ExpandWidth(false));
-                EditorGUILayout.EndHorizontal();
-
-                if (FoldoutStates[id])
-                {
-                    // Only draw full property when expanded
-                    EditorGUILayout.PropertyField(element, GUIContent.none, true);
-                }
-
-                EditorGUILayout.EndVertical();
-                GUILayout.Space(2);
-            }
-            EditorGUILayout.EndVertical();
-
-            // ---------- Footer ----------
-            GUILayout.Space(2);
-            EditorGUILayout.BeginHorizontal(EditorStyles.toolbar);
-            GUILayout.FlexibleSpace();
-            GUILayout.Label($"Page {currentPage + 1} of {totalPages}  •  Total: {total} lines", EditorStyles.miniLabel);
-            GUILayout.FlexibleSpace();
-            EditorGUILayout.EndHorizontal();
-
-            EditorGUI.indentLevel--;
         }
 
-        // Helper: extract preview text for collapsed lines
+        // ─────────────────────────────────────────────────────────────────────────────
+        private static void DrawElement(SerializedProperty element)
+        {
+            string id = element.propertyPath;
+            if (!FoldoutStates.ContainsKey(id))
+                FoldoutStates[id] = false;
+
+            string preview = TryGetPreviewText(element);
+            string index = GetIndex(element);
+
+            // Compact header
+            EditorGUILayout.BeginVertical(GUI.skin.box);
+            EditorGUILayout.BeginHorizontal();
+            FoldoutStates[id] = EditorGUILayout.Foldout(FoldoutStates[id], $"Line {index}", true);
+            GUILayout.FlexibleSpace();
+            GUILayout.Label(preview, MiniLabel, GUILayout.ExpandWidth(false));
+            EditorGUILayout.EndHorizontal();
+
+            if (FoldoutStates[id])
+            {
+                EditorGUI.indentLevel++;
+                EditorGUILayout.PropertyField(element, GUIContent.none, true);
+                EditorGUI.indentLevel--;
+            }
+
+            EditorGUILayout.EndVertical();
+            GUILayout.Space(2);
+        }
+
+        // ─────────────────────────────────────────────────────────────────────────────
         private static string TryGetPreviewText(SerializedProperty prop)
         {
             var locProp = prop.FindPropertyRelative("LocalizedDialogues");
@@ -140,18 +146,17 @@ namespace WolfstagInteractive.ConvoCore.Editor
                 if (langProp != null && textProp != null &&
                     string.Equals(langProp.stringValue, lang, System.StringComparison.OrdinalIgnoreCase))
                 {
-                    var text = textProp.stringValue ?? "";
-                    if (text.Length > 60) text = text.Substring(0, 60) + "...";
-                    return text;
+                    return TrimPreview(textProp.stringValue);
                 }
             }
-            // fallback to first
-            var first = locProp.GetArrayElementAtIndex(0);
-            var firstText = first.FindPropertyRelative("Text");
-            if (firstText == null) return "(no text)";
-            var preview = firstText.stringValue;
-            if (preview.Length > 60) preview = preview.Substring(0, 60) + "...";
-            return preview;
+            var fallback = locProp.GetArrayElementAtIndex(0)?.FindPropertyRelative("Text")?.stringValue ?? "(no text)";
+            return TrimPreview(fallback);
+        }
+
+        private static string TrimPreview(string s)
+        {
+            if (string.IsNullOrEmpty(s)) return "(no text)";
+            return s.Length > 60 ? s.Substring(0, 60) + "..." : s;
         }
 
         private static string GetIndex(SerializedProperty prop)
@@ -159,7 +164,7 @@ namespace WolfstagInteractive.ConvoCore.Editor
             string path = prop.propertyPath;
             int start = path.LastIndexOf('[') + 1;
             int end = path.LastIndexOf(']');
-            return start >= 0 && end > start ? path[start..end] : "?";
+            return (start >= 0 && end > start) ? path[start..end] : "?";
         }
     }
 }
