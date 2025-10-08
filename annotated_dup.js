@@ -2,6 +2,9 @@ var annotated_dup =
 [
     [ "WolfstagInteractive", "namespaceWolfstagInteractive.html", [
       [ "ConvoCore", "namespaceWolfstagInteractive_1_1ConvoCore.html", [
+        [ "Editor", "namespaceWolfstagInteractive_1_1ConvoCore_1_1Editor.html", [
+          [ "ConvoCoreYamlWatcher", "classWolfstagInteractive_1_1ConvoCore_1_1Editor_1_1ConvoCoreYamlWatcher.html", null ]
+        ] ],
         [ "BaseAction", "classWolfstagInteractive_1_1ConvoCore_1_1BaseAction.html", null ],
         [ "CharacterRepresentationBase", "classWolfstagInteractive_1_1ConvoCore_1_1CharacterRepresentationBase.html", "classWolfstagInteractive_1_1ConvoCore_1_1CharacterRepresentationBase" ],
         [ "ConvoCore", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCore.html", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCore" ],
@@ -25,7 +28,6 @@ var annotated_dup =
         [ "ConvoCoreSettings", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSettings.html", null ],
         [ "ConvoCoreUIFoundation", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreUIFoundation.html", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreUIFoundation" ],
         [ "ConvoCoreYamlUtilities", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreYamlUtilities.html", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreYamlUtilities" ],
-        [ "ConvoCoreYamlWatcher", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreYamlWatcher.html", null ],
         [ "DialogueLineDisplayOptions", "classWolfstagInteractive_1_1ConvoCore_1_1DialogueLineDisplayOptions.html", null ],
         [ "DialogueYamlConfig", "classWolfstagInteractive_1_1ConvoCore_1_1DialogueYamlConfig.html", null ],
         [ "EmotionIDSelectorAttribute", "classWolfstagInteractive_1_1ConvoCore_1_1EmotionIDSelectorAttribute.html", null ],
@@ -40,6 +42,7 @@ var annotated_dup =
         [ "IEditorPreviewableRepresentation", "interfaceWolfstagInteractive_1_1ConvoCore_1_1IEditorPreviewableRepresentation.html", "interfaceWolfstagInteractive_1_1ConvoCore_1_1IEditorPreviewableRepresentation" ],
         [ "IUIFoundation", "interfaceWolfstagInteractive_1_1ConvoCore_1_1IUIFoundation.html", "interfaceWolfstagInteractive_1_1ConvoCore_1_1IUIFoundation" ],
         [ "LocalizedDialogueResult", "classWolfstagInteractive_1_1ConvoCore_1_1LocalizedDialogueResult.html", null ],
+        [ "PagedListAttribute", "classWolfstagInteractive_1_1ConvoCore_1_1PagedListAttribute.html", null ],
         [ "PrefabCharacterRepresentationData", "classWolfstagInteractive_1_1ConvoCore_1_1PrefabCharacterRepresentationData.html", null ],
         [ "RepresentationEmotionOverride", "classWolfstagInteractive_1_1ConvoCore_1_1RepresentationEmotionOverride.html", null ],
         [ "RepresentationPair", "classWolfstagInteractive_1_1ConvoCore_1_1RepresentationPair.html", null ],

@@ -1,7 +1,7 @@
 var hierarchy =
 [
     [ "AssetPostprocessor", null, [
-      [ "WolfstagInteractive.ConvoCore.ConvoCoreYamlWatcher", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreYamlWatcher.html", null ]
+      [ "WolfstagInteractive.ConvoCore.Editor.ConvoCoreYamlWatcher", "classWolfstagInteractive_1_1ConvoCore_1_1Editor_1_1ConvoCoreYamlWatcher.html", null ]
     ] ],
     [ "WolfstagInteractive.ConvoCore.ConvoCoreConversationData.CharacterRepresentationData", "structWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData_1_1CharacterRepresentationData.html", null ],
     [ "WolfstagInteractive.ConvoCore.ConvoCoreDialogueLocalizationHandler", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreDialogueLocalizationHandler.html", null ],
@@ -45,7 +45,8 @@ var hierarchy =
       [ "WolfstagInteractive.ConvoCore.ConvoCoreUIFoundation", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreUIFoundation.html", null ]
     ] ],
     [ "PropertyAttribute", null, [
-      [ "WolfstagInteractive.ConvoCore.EmotionIDSelectorAttribute", "classWolfstagInteractive_1_1ConvoCore_1_1EmotionIDSelectorAttribute.html", null ]
+      [ "WolfstagInteractive.ConvoCore.EmotionIDSelectorAttribute", "classWolfstagInteractive_1_1ConvoCore_1_1EmotionIDSelectorAttribute.html", null ],
+      [ "WolfstagInteractive.ConvoCore.PagedListAttribute", "classWolfstagInteractive_1_1ConvoCore_1_1PagedListAttribute.html", null ]
     ] ],
     [ "WolfstagInteractive.ConvoCore.RepresentationEmotionOverride", "classWolfstagInteractive_1_1ConvoCore_1_1RepresentationEmotionOverride.html", null ],
     [ "WolfstagInteractive.ConvoCore.RepresentationPair", "classWolfstagInteractive_1_1ConvoCore_1_1RepresentationPair.html", null ],

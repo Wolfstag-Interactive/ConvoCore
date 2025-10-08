@@ -23,5 +23,5 @@ var searchData=
   ['convocoresettings_20',['ConvoCoreSettings',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSettings.html',1,'WolfstagInteractive::ConvoCore']]],
   ['convocoreuifoundation_21',['ConvoCoreUIFoundation',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreUIFoundation.html',1,'WolfstagInteractive::ConvoCore']]],
   ['convocoreyamlutilities_22',['ConvoCoreYamlUtilities',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreYamlUtilities.html',1,'WolfstagInteractive::ConvoCore']]],
-  ['convocoreyamlwatcher_23',['ConvoCoreYamlWatcher',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreYamlWatcher.html',1,'WolfstagInteractive::ConvoCore']]]
+  ['convocoreyamlwatcher_23',['ConvoCoreYamlWatcher',['../classWolfstagInteractive_1_1ConvoCore_1_1Editor_1_1ConvoCoreYamlWatcher.html',1,'WolfstagInteractive::ConvoCore::Editor']]]
 ];

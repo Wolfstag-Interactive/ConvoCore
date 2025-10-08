@@ -1,5 +1,7 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="Node000000" title=" " alt="" coords="5,13,140,38"/>
+<area shape="rect" id="Node000000" title=" " alt="" coords="5,45,140,70"/>
 <area shape="rect" id="Node000001" href="$classWolfstagInteractive_1_1ConvoCore_1_1EmotionIDSelectorAttribute.html" title="Marks a string field to be rendered as a popup of emotion IDs coming from a sibling SerializedPropert..." alt="" coords="188,5,423,45"/>
-<area shape="poly" id="edge2_Node000000_Node000001" title=" " alt="" coords="154,23,188,23,188,28,154,28"/>
+<area shape="poly" id="edge2_Node000000_Node000001" title=" " alt="" coords="154,44,187,39,188,44,154,49"/>
+<area shape="rect" id="Node000002" href="$classWolfstagInteractive_1_1ConvoCore_1_1PagedListAttribute.html" title=" " alt="" coords="208,69,403,109"/>
+<area shape="poly" id="edge3_Node000000_Node000002" title=" " alt="" coords="154,66,208,73,207,79,154,71"/>
 </map>
