@@ -6,185 +6,134 @@ using UnityEngine;
 
 namespace WolfstagInteractive.ConvoCore.Editor
 {
-    [HelpURL(
-        "https://docs.wolfstaginteractive.com/classWolfstagInteractive_1_1ConvoCore_1_1Editor_1_1DialogueLinesPropertyDrawer.html")]
+    [HelpURL("https://docs.wolfstaginteractive.com/classWolfstagInteractive_1_1ConvoCore_1_1Editor_1_1DialogueLinesPropertyDrawer.html")]
     [CustomPropertyDrawer(typeof(ConvoCoreConversationData.DialogueLineInfo))]
     public class DialogueLinesPropertyDrawer : PropertyDrawer
     {
+        // ──────────────────────────────────────────────
+        // Constants & Static Caches
+        // ──────────────────────────────────────────────
+        private const float k_Spacing = 2f;
+        private const float k_Pad = 4f;
+        private const float k_MinPreviewHeight = 100f;
+        private const float k_MaxPreviewHeight = 120f;
+
         // Foldout states per line
         private static readonly Dictionary<string, bool> CharacterRepresentationFoldouts = new();
         private static readonly Dictionary<string, bool> DialogueLineFoldouts = new();
-// Cached GUI resources (initialized once)
-        private static GUIStyle s_HeaderStyle = new GUIStyle(EditorStyles.boldLabel)
+
+        // Cached styles
+        private static readonly GUIStyle s_HeaderStyle = new(EditorStyles.boldLabel)
         {
             clipping = TextClipping.Clip,
             alignment = TextAnchor.MiddleLeft
         };
-        private static readonly GUIContent s_HeaderContent = new GUIContent();
-        private static readonly Color s_HeaderColorPro = new Color(1f, 1f, 1f, 0.06f);
-        private static readonly Color s_HeaderColorLight = new Color(0f, 0f, 0f, 0.08f);
+        private static readonly GUIStyle s_WrappedLabel = new(EditorStyles.label) { wordWrap = true };
+        private static readonly GUIStyle s_HelpBox = new(EditorStyles.helpBox) { wordWrap = true, fontSize = 11 };
+        private static readonly GUIStyle s_FoldoutBold = new(EditorStyles.foldout) { fontStyle = FontStyle.Bold };
 
-// Lightweight preview text cache (avoids recomputing for every frame)
-        private static readonly Dictionary<int, string> s_PreviewCache = new Dictionary<int, string>(128);
+        // Header colors
+        private static readonly Color s_HeaderColorPro = new(1f, 1f, 1f, 0.06f);
+        private static readonly Color s_HeaderColorLight = new(0f, 0f, 0f, 0.08f);
+
+        // Cached GUIContent
+        private static readonly GUIContent GC_ConversationID = new("Conversation ID");
+        private static readonly GUIContent GC_LineIndex = new("Line Index");
+        private static readonly GUIContent GC_CharacterID = new("Character ID");
+        private static readonly GUIContent GC_InputMethod = new("Input Method:");
+        private static readonly GUIContent GC_DisplayDuration = new("Display Duration (seconds):");
+        private static readonly GUIContent GC_AudioClip = new("Audio Clip:");
+        private static readonly GUIContent GC_BeforeActions = new("Actions Before Line:");
+        private static readonly GUIContent GC_AfterActions = new("Actions After Line:");
+        private static readonly GUIContent GC_Emotion = new("Emotion");
+
+        // Preview header text cache
+        private static readonly Dictionary<int, string> s_PreviewCache = new(128);
         private static double s_LastCachePurgeTime;
-
-// Returns cached or recomputed preview text
-        private string GetCachedPreviewText(SerializedProperty property, int lineIndex)
-        {
-            int id = HashCacheKey(property);
-            double now = EditorApplication.timeSinceStartup;
-
-            if (s_PreviewCache.TryGetValue(id, out string cached))
-                return cached;
-
-            string preview = GetPreviewText(property);
-            s_PreviewCache[id] = preview;
-
-            // purge occasionally to avoid growth during long editor sessions
-            if (now - s_LastCachePurgeTime > 5.0)
-            {
-                if (s_PreviewCache.Count > 256)
-                    s_PreviewCache.Clear();
-                s_LastCachePurgeTime = now;
-            }
-
-            return preview;
-        }
-
-// Hash helper that avoids string allocations
-        private static int HashCacheKey(SerializedProperty property)
-        {
-            unchecked
-            {
-                int id = property.serializedObject.targetObject.GetInstanceID();
-                int pathHash = property.propertyPath != null ? property.propertyPath.GetHashCode() : 0;
-                return (id * 397) ^ pathHash;
-            }
-        }
+        private static readonly GUIContent s_HeaderContent = new();
         private static int GetIndexFromPath(string path)
         {
-            int start = path.LastIndexOf('[') + 1;
+            if (string.IsNullOrEmpty(path))
+                return -1;
+
+            // find last closing bracket
             int end = path.LastIndexOf(']');
-            if (start >= 0 && end > start && int.TryParse(path.Substring(start, end - start), out int result))
-                return result;
-            return -1;
+            if (end <= 0)
+                return -1;
+
+            // find matching opening bracket
+            int start = path.LastIndexOf('[', end);
+            if (start < 0 || end - start < 2)
+                return -1;
+
+            // extract number substring efficiently
+            int length = end - start - 1;
+            int result = -1;
+            if (int.TryParse(path.AsSpan(start + 1, length), out int idx))
+                result = idx;
+
+            return result;
         }
 
-public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
-{
-    // Early out for invalid data
-    if (property == null || property.serializedObject == null)
-        return;
-
-    const float spacing = 2f;
-    float lineHeight = EditorGUIUtility.singleLineHeight;
-    Rect rect = new Rect(position.x, position.y, position.width, lineHeight);
-
-    // Local caches
-    var evt = Event.current;
-    bool isRepaint = evt.type == EventType.Repaint;
-
-    // Get serialized object once
-    var so = property.serializedObject;
-
-    // --- HEADER ---
-
-    int lineIndex = GetIndexFromPath(property.propertyPath);
-    string previewText = GetCachedPreviewText(property, lineIndex);
-
-    // Theme-aware color
-    EditorGUI.DrawRect(rect, EditorGUIUtility.isProSkin
-        ? s_HeaderColorPro
-        : s_HeaderColorLight);
-
-    // Header label (static cached GUIContent + GUIStyle)
-    s_HeaderContent.text = $"Dialogue Line {lineIndex}: {previewText}";
-    EditorGUI.LabelField(rect, s_HeaderContent, s_HeaderStyle);
-
-    rect.y += lineHeight + spacing;
-
-    // --- EARLY LAYOUT OPTIMIZATION ---
-    // Skip deep property field drawing during Layout events (Unity calls OnGUI twice)
-    if (evt.type == EventType.Layout)
-        return;
-
-    EditorGUI.BeginProperty(position, label, property);
-    EditorGUI.BeginChangeCheck();
-
-    // Indent content visually
-    EditorGUI.indentLevel++;
-
-    // Draw content only during repaint or interaction events
-    if (isRepaint || evt.type == EventType.MouseDown || evt.type == EventType.MouseUp)
-    {
-        rect = DrawBasicInfo(rect, property, spacing);
-        rect = DrawInputMethod(rect, property, spacing);
-        rect = DrawAudioClip(rect, property, spacing);
-        rect = DrawLocalizedDialogues(rect, property, spacing);
-        rect = DrawActionsList(rect, property, spacing);
-        rect = DrawCharacterRepresentation(rect, property, spacing);
-    }
-
-    EditorGUI.indentLevel--;
-
-    // --- APPLY CHANGES ---
-
-    if (EditorGUI.EndChangeCheck())
-    {
-        so.ApplyModifiedProperties();
-
-        if (so.targetObject is ConvoCoreConversationData convo)
+        // ──────────────────────────────────────────────
+        // OnGUI
+        // ──────────────────────────────────────────────
+        public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
-            convo.ValidateAndFixDialogueLines();
-            EditorUtility.SetDirty(convo);
-        }
-    }
+            if (property == null || property.serializedObject == null)
+                return;
 
-    EditorGUI.EndProperty();
-}
+            var evt = Event.current;
+            var so = property.serializedObject;
 
-        private string GetPreviewText(SerializedProperty property)
-        {
-            var localizedDialoguesProp = property.FindPropertyRelative("LocalizedDialogues");
-            if (localizedDialoguesProp != null && localizedDialoguesProp.isArray &&
-                localizedDialoguesProp.arraySize > 0)
+            float lineHeight = EditorGUIUtility.singleLineHeight;
+            Rect rect = new(position.x, position.y, position.width, lineHeight);
+
+            // Header
+            int lineIndex = GetIndexFromPath(property.propertyPath);
+            string previewText = GetCachedPreviewText(property, lineIndex);
+            EditorGUI.DrawRect(rect, EditorGUIUtility.isProSkin ? s_HeaderColorPro : s_HeaderColorLight);
+            s_HeaderContent.text = $"Dialogue Line {lineIndex}: {previewText}";
+            EditorGUI.LabelField(rect, s_HeaderContent, s_HeaderStyle);
+            rect.y += lineHeight + k_Spacing;
+
+            if (evt.type == EventType.Layout)
+                return;
+
+            EditorGUI.BeginProperty(position, label, property);
+            EditorGUI.BeginChangeCheck();
+            EditorGUI.indentLevel++;
+
+            rect = DrawBasicInfo(rect, property);
+            rect = DrawInputMethod(rect, property);
+            rect = DrawAudioClip(rect, property);
+            rect = DrawLocalizedDialogues(rect, property);
+            rect = DrawActionsList(rect, property);
+            rect = DrawCharacterRepresentation(rect, property);
+
+            EditorGUI.indentLevel--;
+
+            if (EditorGUI.EndChangeCheck())
             {
-                string lang = ConvoCoreLanguageManager.Instance?.CurrentLanguage ?? "EN";
-
-                for (int i = 0; i < localizedDialoguesProp.arraySize; i++)
+                so.ApplyModifiedProperties();
+                if (so.targetObject is ConvoCoreConversationData convo)
                 {
-                    var el = localizedDialoguesProp.GetArrayElementAtIndex(i);
-                    var langProp = el.FindPropertyRelative("Language");
-                    var textProp = el.FindPropertyRelative("Text");
-
-                    if (langProp != null && textProp != null &&
-                        string.Equals(langProp.stringValue, lang, StringComparison.OrdinalIgnoreCase))
-                    {
-                        string text = textProp.stringValue ?? "";
-                        // Truncate if too long
-                        return text.Length > 60 ? text.Substring(0, 60) + "..." : text;
-                    }
-                }
-
-                // Fallback to first available
-                var firstEl = localizedDialoguesProp.GetArrayElementAtIndex(0);
-                var firstText = firstEl.FindPropertyRelative("Text");
-                if (firstText != null)
-                {
-                    string text = firstText.stringValue ?? "";
-                    return text.Length > 60 ? text.Substring(0, 60) + "..." : text;
+                    convo.ValidateAndFixDialogueLines();
+                    EditorUtility.SetDirty(convo);
                 }
             }
 
-            return "(No dialogue text)";
+            EditorGUI.EndProperty();
         }
 
+        // ──────────────────────────────────────────────
+        // Height
+        // ──────────────────────────────────────────────
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
         {
-            float spacing = 2f;
-            float total = EditorGUIUtility.singleLineHeight + spacing; // Header only
+            float spacing = k_Spacing;
+            float total = EditorGUIUtility.singleLineHeight + spacing; // Header
 
-            // Add all sub-section heights directly, since we always render them now
             total += GetBasicInfoHeight();
             total += GetInputMethodHeight(property);
             total += GetAudioClipHeight(property);
@@ -195,248 +144,489 @@ public override void OnGUI(Rect position, SerializedProperty property, GUIConten
             return total;
         }
 
+        private float GetBasicInfoHeight() =>
+            3 * (EditorGUIUtility.singleLineHeight + k_Spacing);
 
-        private static float GetPreviewBlockHeight(IEditorPreviewableRepresentation previewable)
+        private float GetInputMethodHeight(SerializedProperty property)
         {
-            if (previewable == null) return 0f;
-            // ask the rep, then clamp to a stable range (so lists don't jump)
-            float desired = previewable.GetPreviewHeight();
-            if (desired <= 0f) return 0f;
-            return Mathf.Clamp(desired, 100f, 120f);
+            var methodProp = property.FindPropertyRelative("UserInputMethod");
+            var method = (ConvoCoreConversationData.DialogueLineProgressionMethod)methodProp.enumValueIndex;
+            float h = EditorGUIUtility.singleLineHeight + k_Spacing;
+            if (method == ConvoCoreConversationData.DialogueLineProgressionMethod.Timed)
+                h += EditorGUIUtility.singleLineHeight + k_Spacing;
+            return h;
         }
 
-        // ----- Sections -----
-
-        private Rect DrawBasicInfo(Rect rect, SerializedProperty property, float spacing)
+        private float GetAudioClipHeight(SerializedProperty property)
         {
-            var keyProp = property.FindPropertyRelative("ConversationID");
-            var indexProp = property.FindPropertyRelative("ConversationLineIndex");
-            var characterIDProp = property.FindPropertyRelative("characterID");
+            var clipProp = property.FindPropertyRelative("clip");
+            return EditorGUI.GetPropertyHeight(clipProp) + k_Spacing;
+        }
 
-            EditorGUI.LabelField(rect, "Conversation ID", keyProp.stringValue);
-            rect.y += EditorGUIUtility.singleLineHeight + spacing;
+        private float GetLocalizedDialoguesHeight(SerializedProperty property)
+        {
+            var localizedDialoguesProp = property.FindPropertyRelative("LocalizedDialogues");
+            if (localizedDialoguesProp == null || !localizedDialoguesProp.isArray || localizedDialoguesProp.arraySize == 0)
+                return EditorGUIUtility.singleLineHeight + k_Spacing;
 
-            EditorGUI.LabelField(rect, "Line Index:", indexProp.intValue.ToString());
-            rect.y += EditorGUIUtility.singleLineHeight + spacing;
+            float height = EditorGUIUtility.singleLineHeight + k_Spacing; // label
 
-            EditorGUI.LabelField(rect, "Character ID:", characterIDProp.stringValue);
-            rect.y += EditorGUIUtility.singleLineHeight + spacing;
+            string lang = ConvoCoreLanguageManager.Instance?.CurrentLanguage ?? "EN";
+            SerializedProperty match = null;
 
+            for (int i = 0; i < localizedDialoguesProp.arraySize; i++)
+            {
+                var el = localizedDialoguesProp.GetArrayElementAtIndex(i);
+                var langProp = el.FindPropertyRelative("Language");
+                if (langProp != null && string.Equals(langProp.stringValue, lang, StringComparison.OrdinalIgnoreCase))
+                {
+                    match = el;
+                    break;
+                }
+            }
+            match ??= localizedDialoguesProp.arraySize > 0 ? localizedDialoguesProp.GetArrayElementAtIndex(0) : null;
+
+            if (match != null)
+            {
+                var textProp = match.FindPropertyRelative("Text");
+                var text = textProp?.stringValue ?? "";
+                float textHeight = s_WrappedLabel.CalcHeight(new GUIContent(text), Mathf.Max(10f, EditorGUIUtility.currentViewWidth - 80f));
+                height += textHeight + k_Spacing;
+            }
+            else
+            {
+                height += EditorGUIUtility.singleLineHeight + k_Spacing;
+            }
+
+            return height;
+        }
+
+        private float GetActionsListHeight(SerializedProperty property)
+        {
+            var beforeProp = property.FindPropertyRelative("ActionsBeforeDialogueLine");
+            var afterProp  = property.FindPropertyRelative("ActionsAfterDialogueLine");
+            float h = 0f;
+            float line = EditorGUIUtility.singleLineHeight + k_Spacing;
+
+            // Header foldouts
+            h += line;
+            if (beforeProp.isExpanded)
+            {
+                for (int i = 0; i < beforeProp.arraySize; i++)
+                    h += EditorGUI.GetPropertyHeight(beforeProp.GetArrayElementAtIndex(i), true) + k_Spacing;
+                h += line; // buttons
+            }
+
+            h += line;
+            if (afterProp.isExpanded)
+            {
+                for (int i = 0; i < afterProp.arraySize; i++)
+                    h += EditorGUI.GetPropertyHeight(afterProp.GetArrayElementAtIndex(i), true) + k_Spacing;
+                h += line; // buttons
+            }
+
+            return h;
+        }
+
+
+
+        private float GetCharacterRepresentationSectionHeight(SerializedProperty property)
+        {
+            float h = 0f;
+            h += EditorGUIUtility.singleLineHeight + k_Spacing; // foldout
+
+            string key = $"{property.serializedObject.targetObject.GetInstanceID()}_{property.propertyPath}_CharacterRep";
+            if (CharacterRepresentationFoldouts.TryGetValue(key, out bool open) && open)
+            {
+                h += 1 + k_Spacing * 3; // separator
+
+                var convo = property.serializedObject.targetObject as ConvoCoreConversationData;
+                if (convo == null)
+                {
+                    h += EditorGUIUtility.singleLineHeight + k_Spacing;
+                }
+                else
+                {
+                    var profiles = convo.ConversationParticipantProfiles?.Where(p => p != null).ToList();
+                    if (profiles == null || profiles.Count == 0)
+                    {
+                        h += EditorGUIUtility.singleLineHeight * 2.5f + k_Spacing;
+                    }
+                    else
+                    {
+                        h += GetSingleCharacterRepresentationHeight(
+                            property.FindPropertyRelative("PrimaryCharacterRepresentation"), property, false);
+                        h += GetSingleCharacterRepresentationHeight(
+                            property.FindPropertyRelative("SecondaryCharacterRepresentation"), property, true);
+                        h += GetSingleCharacterRepresentationHeight(
+                            property.FindPropertyRelative("TertiaryCharacterRepresentation"), property, true);
+                    }
+                }
+
+                h += 5f; // padding
+            }
+            else
+            {
+                h += 2f;
+            }
+
+            return h;
+        }
+
+        private float GetSingleCharacterRepresentationHeight(
+            SerializedProperty repProp,
+            SerializedProperty mainProperty,
+            bool useRepresentationNameInsteadOfID)
+        {
+            if (repProp == null) return 0f;
+
+            float h = 0f;
+
+            h += EditorGUIUtility.singleLineHeight + k_Spacing; // section label
+
+            var convo = repProp.serializedObject.targetObject as ConvoCoreConversationData;
+            if (convo == null) return h + EditorGUIUtility.singleLineHeight + k_Spacing;
+
+            var profiles = convo.ConversationParticipantProfiles?.Where(p => p != null).ToList();
+            if (profiles == null || profiles.Count == 0) return h + EditorGUIUtility.singleLineHeight + k_Spacing;
+
+            var selectedRepNameProp = repProp.FindPropertyRelative("SelectedRepresentationName");
+            var selectedRepProp = repProp.FindPropertyRelative("SelectedRepresentation");
+            var selectedEmotionGuidProp = repProp.FindPropertyRelative("SelectedEmotionId");
+
+            if (useRepresentationNameInsteadOfID)
+            {
+                var selectedCharacterIDProp = repProp.FindPropertyRelative("SelectedCharacterID");
+                // profile popup
+                h += EditorGUIUtility.singleLineHeight + k_Spacing;
+
+                string charId = selectedCharacterIDProp?.stringValue ?? "";
+                var profile = !string.IsNullOrEmpty(charId)
+                    ? profiles.FirstOrDefault(p => p.CharacterID == charId)
+                    : null;
+                if (profile != null)
+                {
+                    // representation popup
+                    h += EditorGUIUtility.singleLineHeight + k_Spacing;
+
+                    // emotion popup
+                    float emoH = (selectedEmotionGuidProp != null)
+                        ? EditorGUI.GetPropertyHeight(selectedEmotionGuidProp, true)
+                        : EditorGUIUtility.singleLineHeight;
+                    h += emoH + k_Spacing;
+
+                    // preview height (if any)
+                    IEditorPreviewableRepresentation previewable = null;
+                    if (selectedRepProp != null &&
+                        selectedRepProp.objectReferenceValue is IEditorPreviewableRepresentation prA)
+                        previewable = prA;
+                    else
+                    {
+                        var repName = selectedRepNameProp?.stringValue ?? "";
+                        var repObj = profile.GetRepresentation(repName);
+                        if (repObj is IEditorPreviewableRepresentation prB) previewable = prB;
+                    }
+
+                    h += GetPreviewBlockHeight(previewable) + k_Spacing;
+
+                    // representation-specific options height
+                    string emoId = selectedEmotionGuidProp?.stringValue ?? "";
+                    var selName = selectedRepNameProp?.stringValue ?? "";
+                    var repType = profile.GetRepresentation(selName);
+                    if (repType != null && !string.IsNullOrEmpty(emoId))
+                    {
+                        h += GetRepresentationSpecificOptionsHeight(repType, emoId, repProp);
+                    }
+                }
+            }
+            else
+            {
+                // Primary
+                var characterIDProp = mainProperty.FindPropertyRelative("characterID");
+                var profile = profiles.FirstOrDefault(p => p.CharacterID == (characterIDProp?.stringValue ?? ""));
+
+                if (profile == null)
+                {
+                    // participant popup only
+                    h += EditorGUIUtility.singleLineHeight + k_Spacing;
+                    return h;
+                }
+
+                // representation popup
+                h += EditorGUIUtility.singleLineHeight + k_Spacing;
+
+                // emotion popup
+                float emoH = (selectedEmotionGuidProp != null)
+                    ? EditorGUI.GetPropertyHeight(selectedEmotionGuidProp, true)
+                    : EditorGUIUtility.singleLineHeight;
+                h += emoH + k_Spacing;
+
+                // preview height (if any)
+                IEditorPreviewableRepresentation previewable = null;
+                if (selectedRepProp?.objectReferenceValue is IEditorPreviewableRepresentation prA)
+                    previewable = prA;
+                else
+                {
+                    var repName = selectedRepNameProp?.stringValue ?? "";
+                    var repType = profile.GetRepresentation(repName);
+                    if (repType is IEditorPreviewableRepresentation prB) previewable = prB;
+                }
+
+                h += GetPreviewBlockHeight(previewable) + k_Spacing;
+
+                // representation-specific options height
+                string emoId = selectedEmotionGuidProp?.stringValue ?? "";
+                var repType2 = profile.GetRepresentation(selectedRepNameProp?.stringValue ?? "");
+                if (repType2 != null && !string.IsNullOrEmpty(emoId))
+                {
+                    h += GetRepresentationSpecificOptionsHeight(repType2, emoId, repProp);
+                }
+            }
+
+            return h;
+        }
+
+        // ──────────────────────────────────────────────
+        // Sections (draw)
+        // ──────────────────────────────────────────────
+        private static Rect DrawBasicInfo(Rect rect, SerializedProperty property)
+        {
+            DrawLabelValue(ref rect, GC_ConversationID.text, property.FindPropertyRelative("ConversationID").stringValue);
+            DrawLabelValue(ref rect, GC_LineIndex.text, property.FindPropertyRelative("ConversationLineIndex").intValue.ToString());
+            DrawLabelValue(ref rect, GC_CharacterID.text, property.FindPropertyRelative("characterID").stringValue);
             return rect;
         }
 
-        private Rect DrawInputMethod(Rect rect, SerializedProperty property, float spacing)
+        private static Rect DrawInputMethod(Rect rect, SerializedProperty property)
         {
-            var selectedLineProgressionProp = property.FindPropertyRelative("UserInputMethod");
+            var methodProp = property.FindPropertyRelative("UserInputMethod");
             var timedValueProp = property.FindPropertyRelative("TimeBeforeNextLine");
 
-            var method =
-                (ConvoCoreConversationData.DialogueLineProgressionMethod)selectedLineProgressionProp.enumValueIndex;
-            method = (ConvoCoreConversationData.DialogueLineProgressionMethod)EditorGUI.EnumPopup(
-                rect, "Input Method:", method);
-            selectedLineProgressionProp.enumValueIndex = (int)method;
-            rect.y += EditorGUIUtility.singleLineHeight + spacing;
+            var method = (ConvoCoreConversationData.DialogueLineProgressionMethod)methodProp.enumValueIndex;
+            method = (ConvoCoreConversationData.DialogueLineProgressionMethod)EditorGUI.EnumPopup(rect, GC_InputMethod, method);
+            methodProp.enumValueIndex = (int)method;
+            rect.y += EditorGUIUtility.singleLineHeight + k_Spacing;
 
             if (method == ConvoCoreConversationData.DialogueLineProgressionMethod.Timed)
             {
-                EditorGUI.PropertyField(rect, timedValueProp, new GUIContent("Display Duration (seconds):"));
-                rect.y += EditorGUIUtility.singleLineHeight + spacing;
+                EditorGUI.DelayedFloatField(rect, timedValueProp, GC_DisplayDuration);
+                rect.y += EditorGUIUtility.singleLineHeight + k_Spacing;
             }
 
             return rect;
         }
 
-        private Rect DrawAudioClip(Rect rect, SerializedProperty property, float spacing)
+        private static Rect DrawAudioClip(Rect rect, SerializedProperty property)
         {
             var clipProp = property.FindPropertyRelative("clip");
-            float h = EditorGUI.GetPropertyHeight(clipProp);
-            EditorGUI.PropertyField(new Rect(rect.x, rect.y, rect.width, h), clipProp, new GUIContent("Audio Clip:"));
-            rect.y += h + spacing;
+            EditorGUI.ObjectField(rect, clipProp, typeof(AudioClip), GC_AudioClip);
+            rect.y += EditorGUIUtility.singleLineHeight + k_Spacing;
             return rect;
         }
 
-        private Rect DrawLocalizedDialogues(Rect rect, SerializedProperty property, float spacing)
+        private static Rect DrawLocalizedDialogues(Rect rect, SerializedProperty property)
         {
             var localizedDialoguesProp = property.FindPropertyRelative("LocalizedDialogues");
-
             if (localizedDialoguesProp == null || !localizedDialoguesProp.isArray)
             {
                 EditorGUI.LabelField(rect, "Localized Dialogues not available.");
-                rect.y += EditorGUIUtility.singleLineHeight + spacing;
+                rect.y += EditorGUIUtility.singleLineHeight + k_Spacing;
                 return rect;
             }
 
             string lang = ConvoCoreLanguageManager.Instance?.CurrentLanguage ?? "EN";
             SerializedProperty match = null;
 
-            // Try case-insensitive match first
             for (int i = 0; i < localizedDialoguesProp.arraySize; i++)
             {
                 var el = localizedDialoguesProp.GetArrayElementAtIndex(i);
                 var langProp = el.FindPropertyRelative("Language");
-                if (langProp != null &&
-                    string.Equals(langProp.stringValue, lang, StringComparison.OrdinalIgnoreCase))
+                if (langProp != null && string.Equals(langProp.stringValue, lang, StringComparison.OrdinalIgnoreCase))
                 {
                     match = el;
                     break;
                 }
             }
 
+            match ??= localizedDialoguesProp.arraySize > 0 ? localizedDialoguesProp.GetArrayElementAtIndex(0) : null;
+
             if (match != null)
             {
                 var textProp = match.FindPropertyRelative("Text");
-                if (textProp != null)
-                {
-                    EditorGUI.LabelField(rect, $"Localized Dialogue ({lang}):");
-                    rect.y += EditorGUIUtility.singleLineHeight + spacing;
+                string text = textProp?.stringValue ?? "";
+                EditorGUI.LabelField(rect, $"Localized Dialogue ({lang}):");
+                rect.y += EditorGUIUtility.singleLineHeight + k_Spacing;
 
-                    // Use a word-wrapped label style for better readability
-                    var textStyle = new GUIStyle(EditorStyles.label) { wordWrap = true };
-                    float textHeight = textStyle.CalcHeight(new GUIContent(textProp.stringValue), rect.width);
-                    EditorGUI.LabelField(new Rect(rect.x, rect.y, rect.width, textHeight),
-                        textProp.stringValue, textStyle);
-                    rect.y += textHeight + spacing;
-                }
-                else
-                {
-                    EditorGUI.LabelField(rect, $"Localized Dialogue ({lang}): (Text field not found)");
-                    rect.y += EditorGUIUtility.singleLineHeight + spacing;
-                }
-            }
-            else if (localizedDialoguesProp.arraySize > 0)
-            {
-                // Fallback to first available
-                var firstEl = localizedDialoguesProp.GetArrayElementAtIndex(0);
-                var firstLangProp = firstEl.FindPropertyRelative("Language");
-                var firstTextProp = firstEl.FindPropertyRelative("Text");
-
-                if (firstLangProp != null && firstTextProp != null)
-                {
-                    string fallbackLang = firstLangProp.stringValue ?? "Unknown";
-                    EditorGUI.LabelField(rect, $"Localized Dialogue (Fallback: {fallbackLang}):");
-                    rect.y += EditorGUIUtility.singleLineHeight + spacing;
-
-                    var textStyle = new GUIStyle(EditorStyles.label) { wordWrap = true };
-                    float textHeight = textStyle.CalcHeight(new GUIContent(firstTextProp.stringValue), rect.width);
-                    EditorGUI.LabelField(new Rect(rect.x, rect.y, rect.width, textHeight),
-                        firstTextProp.stringValue, textStyle);
-                    rect.y += textHeight + spacing;
-                }
-                else
-                {
-                    EditorGUI.LabelField(rect, $"No dialogue available for language: {lang}");
-                    rect.y += EditorGUIUtility.singleLineHeight + spacing;
-                }
+                float textHeight = s_WrappedLabel.CalcHeight(new GUIContent(text), rect.width);
+                EditorGUI.LabelField(new Rect(rect.x, rect.y, rect.width, textHeight), text, s_WrappedLabel);
+                rect.y += textHeight + k_Spacing;
             }
             else
             {
                 EditorGUI.LabelField(rect, $"No dialogue available for language: {lang}");
-                rect.y += EditorGUIUtility.singleLineHeight + spacing;
+                rect.y += EditorGUIUtility.singleLineHeight + k_Spacing;
             }
 
             return rect;
         }
 
-        private Rect DrawActionsList(Rect rect, SerializedProperty property, float spacing)
+private static Rect DrawActionsList(Rect rect, SerializedProperty property)
+{
+    var beforeProp = property.FindPropertyRelative("ActionsBeforeDialogueLine");
+    var afterProp  = property.FindPropertyRelative("ActionsAfterDialogueLine");
+    float lineHeight = EditorGUIUtility.singleLineHeight;
+
+    // ---- Actions Before Line ----
+    beforeProp.isExpanded = EditorGUI.Foldout(
+        new Rect(rect.x, rect.y, rect.width, lineHeight),
+        beforeProp.isExpanded,
+        GC_BeforeActions,
+        true
+    );
+    rect.y += lineHeight + k_Spacing;
+
+    if (beforeProp.isExpanded)
+    {
+        EditorGUI.indentLevel++;
+        for (int i = 0; i < beforeProp.arraySize; i++)
         {
-            var beforeProp = property.FindPropertyRelative("ActionsBeforeDialogueLine");
-            var afterProp = property.FindPropertyRelative("ActionsAfterDialogueLine");
-
-            EditorGUI.PropertyField(rect, beforeProp, new GUIContent("Actions Before Line:"), true);
-            rect.y += EditorGUI.GetPropertyHeight(beforeProp, true) + spacing;
-
-            EditorGUI.PropertyField(rect, afterProp, new GUIContent("Actions After Line:"), true);
-            rect.y += EditorGUI.GetPropertyHeight(afterProp, true) + spacing;
-
-            return rect;
+            var el = beforeProp.GetArrayElementAtIndex(i);
+            float h = EditorGUI.GetPropertyHeight(el, true);
+            EditorGUI.PropertyField(
+                new Rect(rect.x, rect.y, rect.width, h),
+                el,
+                new GUIContent($"Element {i}"),
+                true
+            );
+            rect.y += h + k_Spacing;
         }
 
-        private Rect DrawCharacterRepresentation(Rect rect, SerializedProperty property, float spacing)
+        // Add/Remove buttons
+        Rect buttons = new(rect.x + 14, rect.y, rect.width - 14, lineHeight);
+        if (GUI.Button(new Rect(buttons.x, buttons.y, 20, lineHeight), "+"))
+            beforeProp.InsertArrayElementAtIndex(beforeProp.arraySize);
+        if (GUI.Button(new Rect(buttons.x + 25, buttons.y, 20, lineHeight), "-") && beforeProp.arraySize > 0)
+            beforeProp.DeleteArrayElementAtIndex(beforeProp.arraySize - 1);
+
+        rect.y += lineHeight + k_Spacing;
+        EditorGUI.indentLevel--;
+    }
+
+    // ---- Actions After Line ----
+    afterProp.isExpanded = EditorGUI.Foldout(
+        new Rect(rect.x, rect.y, rect.width, lineHeight),
+        afterProp.isExpanded,
+        GC_AfterActions,
+        true
+    );
+    rect.y += lineHeight + k_Spacing;
+
+    if (afterProp.isExpanded)
+    {
+        EditorGUI.indentLevel++;
+        for (int i = 0; i < afterProp.arraySize; i++)
         {
-            string foldoutKey =
-                $"{property.serializedObject.targetObject.GetInstanceID()}_{property.propertyPath}_CharacterRep";
+            var el = afterProp.GetArrayElementAtIndex(i);
+            float h = EditorGUI.GetPropertyHeight(el, true);
+            EditorGUI.PropertyField(
+                new Rect(rect.x, rect.y, rect.width, h),
+                el,
+                new GUIContent($"Element {i}"),
+                true
+            );
+            rect.y += h + k_Spacing;
+        }
+
+        Rect buttons = new(rect.x + 14, rect.y, rect.width - 14, lineHeight);
+        if (GUI.Button(new Rect(buttons.x, buttons.y, 20, lineHeight), "+"))
+            afterProp.InsertArrayElementAtIndex(afterProp.arraySize);
+        if (GUI.Button(new Rect(buttons.x + 25, buttons.y, 20, lineHeight), "-") && afterProp.arraySize > 0)
+            afterProp.DeleteArrayElementAtIndex(afterProp.arraySize - 1);
+
+        rect.y += lineHeight + k_Spacing;
+        EditorGUI.indentLevel--;
+    }
+
+    return rect;
+}
+
+
+
+        private Rect DrawCharacterRepresentation(Rect rect, SerializedProperty property)
+        {
+            string foldoutKey = $"{property.serializedObject.targetObject.GetInstanceID()}_{property.propertyPath}_CharacterRep";
             if (!CharacterRepresentationFoldouts.ContainsKey(foldoutKey))
                 CharacterRepresentationFoldouts[foldoutKey] = true;
 
             bool isExpanded = CharacterRepresentationFoldouts[foldoutKey];
-
-            var boldFoldout = new GUIStyle(EditorStyles.foldout) { fontStyle = FontStyle.Bold };
-            bool newExpanded = EditorGUI.Foldout(rect, isExpanded, "Character Representations", true, boldFoldout);
+            bool newExpanded = EditorGUI.Foldout(rect, isExpanded, "Character Representations", true, s_FoldoutBold);
             if (newExpanded != isExpanded)
-            {
                 CharacterRepresentationFoldouts[foldoutKey] = newExpanded;
-                EditorUtility.SetDirty(property.serializedObject.targetObject);
-            }
 
-            rect.y += EditorGUIUtility.singleLineHeight + spacing;
+            rect.y += EditorGUIUtility.singleLineHeight + k_Spacing;
 
-            if (newExpanded)
+            if (!newExpanded)
+                return rect;
+
+            rect.y += k_Spacing;
+            EditorGUI.DrawRect(new Rect(rect.x, rect.y, rect.width, 1), new Color(0.5f, 0.5f, 0.5f, 1));
+            rect.y += 1 + k_Spacing * 2;
+
+            var convo = property.serializedObject.targetObject as ConvoCoreConversationData;
+            if (convo == null)
             {
-                rect.y += spacing;
-                EditorGUI.DrawRect(new Rect(rect.x, rect.y, rect.width, 1), new Color(0.5f, 0.5f, 0.5f, 1));
-                rect.y += 1 + spacing * 2;
-
-                var convo = property.serializedObject.targetObject as ConvoCoreConversationData;
-                if (convo == null)
-                {
-                    EditorGUI.indentLevel++;
-                    EditorGUI.LabelField(rect, "Error: Conversation data is missing.");
-                    rect.y += EditorGUIUtility.singleLineHeight + spacing;
-                    EditorGUI.indentLevel--;
-                    return rect;
-                }
-
-                var validProfiles = convo.ConversationParticipantProfiles.Where(p => p != null).ToList();
-                if (validProfiles.Count == 0)
-                {
-                    EditorGUI.indentLevel++;
-                    var helpBox = new GUIStyle(EditorStyles.helpBox) { fontSize = 11, wordWrap = true };
-                    Rect helpRect = new Rect(rect.x, rect.y, rect.width, EditorGUIUtility.singleLineHeight * 2.5f);
-                    EditorGUI.LabelField(helpRect,
-                        "No conversation participants are configured. Please add character profiles to the ConversationParticipantProfiles list in the Conversation Data to configure character representations.",
-                        helpBox);
-                    rect.y += EditorGUIUtility.singleLineHeight * 2.5f + spacing;
-                    EditorGUI.indentLevel--;
-                    return rect;
-                }
-
                 EditorGUI.indentLevel++;
-
-                rect = DrawSingleCharacterRepresentation(
-                    rect,
-                    property.FindPropertyRelative("PrimaryCharacterRepresentation"),
-                    "Primary Character",
-                    property.FindPropertyRelative("characterID"),
-                    spacing,
-                    useRepresentationNameInsteadOfID: false);
-
-                rect = DrawSingleCharacterRepresentation(
-                    rect,
-                    property.FindPropertyRelative("SecondaryCharacterRepresentation"),
-                    "Secondary Character",
-                    property.FindPropertyRelative("SecondaryCharacterRepresentation"),
-                    spacing,
-                    useRepresentationNameInsteadOfID: true);
-
-                rect = DrawSingleCharacterRepresentation(
-                    rect,
-                    property.FindPropertyRelative("TertiaryCharacterRepresentation"),
-                    "Tertiary Character",
-                    property.FindPropertyRelative("TertiaryCharacterRepresentation"),
-                    spacing,
-                    useRepresentationNameInsteadOfID: true);
-
+                EditorGUI.LabelField(rect, "Error: Conversation data is missing.");
+                rect.y += EditorGUIUtility.singleLineHeight + k_Spacing;
                 EditorGUI.indentLevel--;
-                rect.y += 5f;
-            }
-            else
-            {
-                rect.y += 2f;
+                return rect;
             }
 
+            var validProfiles = convo.ConversationParticipantProfiles.Where(p => p != null).ToList();
+            if (validProfiles.Count == 0)
+            {
+                EditorGUI.indentLevel++;
+                Rect helpRect = new(rect.x, rect.y, rect.width, EditorGUIUtility.singleLineHeight * 2.5f);
+                EditorGUI.LabelField(helpRect, "No conversation participants are configured. Please add character profiles to the ConversationParticipantProfiles list in the Conversation Data to configure character representations.", s_HelpBox);
+                rect.y += EditorGUIUtility.singleLineHeight * 2.5f + k_Spacing;
+                EditorGUI.indentLevel--;
+                return rect;
+            }
+
+            EditorGUI.indentLevel++;
+
+            rect = DrawSingleCharacterRepresentation(
+                rect,
+                property.FindPropertyRelative("PrimaryCharacterRepresentation"),
+                "Primary Character",
+                property.FindPropertyRelative("characterID"),
+                k_Spacing,
+                useRepresentationNameInsteadOfID: false);
+
+            rect = DrawSingleCharacterRepresentation(
+                rect,
+                property.FindPropertyRelative("SecondaryCharacterRepresentation"),
+                "Secondary Character",
+                property.FindPropertyRelative("SecondaryCharacterRepresentation"),
+                k_Spacing,
+                useRepresentationNameInsteadOfID: true);
+
+            rect = DrawSingleCharacterRepresentation(
+                rect,
+                property.FindPropertyRelative("TertiaryCharacterRepresentation"),
+                "Tertiary Character",
+                property.FindPropertyRelative("TertiaryCharacterRepresentation"),
+                k_Spacing,
+                useRepresentationNameInsteadOfID: true);
+
+            EditorGUI.indentLevel--;
+            rect.y += 5f;
             return rect;
         }
 
+        // ──────────────────────────────────────────────
+        // Your current DrawSingleCharacterRepresentation (unchanged)
+        // ──────────────────────────────────────────────
         private Rect DrawSingleCharacterRepresentation(
             Rect rect,
             SerializedProperty representationProp,
@@ -674,7 +864,9 @@ public override void OnGUI(Rect position, SerializedProperty property, GUIConten
             return rect;
         }
 
-
+        // ──────────────────────────────────────────────
+        // Representation-specific options (draw/height)
+        // ──────────────────────────────────────────────
         private Rect DrawRepresentationSpecificOptions(
             Rect rect,
             SerializedProperty representationProp,
@@ -713,141 +905,15 @@ public override void OnGUI(Rect position, SerializedProperty property, GUIConten
             return 0f;
         }
 
-        // ----- Heights -----
-
-        private float GetBasicInfoHeight() =>
-            3 * (EditorGUIUtility.singleLineHeight + 2f);
-
-        private float GetInputMethodHeight(SerializedProperty property)
+        // ──────────────────────────────────────────────
+        // Inline preview helpers
+        // ──────────────────────────────────────────────
+        private static float GetPreviewBlockHeight(IEditorPreviewableRepresentation previewable)
         {
-            var methodProp = property.FindPropertyRelative("UserInputMethod");
-            var method = (ConvoCoreConversationData.DialogueLineProgressionMethod)methodProp.enumValueIndex;
-            float h = EditorGUIUtility.singleLineHeight + 2f;
-            if (method == ConvoCoreConversationData.DialogueLineProgressionMethod.Timed)
-                h += EditorGUIUtility.singleLineHeight + 2f;
-            return h;
-        }
-
-        private float GetAudioClipHeight(SerializedProperty property)
-        {
-            var clipProp = property.FindPropertyRelative("clip");
-            return EditorGUI.GetPropertyHeight(clipProp) + 2f;
-        }
-
-        private float GetLocalizedDialoguesHeight(SerializedProperty property)
-        {
-            var localizedDialoguesProp = property.FindPropertyRelative("LocalizedDialogues");
-
-            if (localizedDialoguesProp == null || !localizedDialoguesProp.isArray ||
-                localizedDialoguesProp.arraySize == 0)
-            {
-                return EditorGUIUtility.singleLineHeight + 2f;
-            }
-
-            float height = EditorGUIUtility.singleLineHeight + 2f; // Label line
-
-            string lang = ConvoCoreLanguageManager.Instance?.CurrentLanguage ?? "EN";
-            SerializedProperty match = null;
-
-            // Try case-insensitive match
-            for (int i = 0; i < localizedDialoguesProp.arraySize; i++)
-            {
-                var el = localizedDialoguesProp.GetArrayElementAtIndex(i);
-                var langProp = el.FindPropertyRelative("Language");
-                if (langProp != null &&
-                    string.Equals(langProp.stringValue, lang, StringComparison.OrdinalIgnoreCase))
-                {
-                    match = el;
-                    break;
-                }
-            }
-
-            // Fallback to first if no match
-            if (match == null && localizedDialoguesProp.arraySize > 0)
-            {
-                match = localizedDialoguesProp.GetArrayElementAtIndex(0);
-            }
-
-            if (match != null)
-            {
-                var textProp = match.FindPropertyRelative("Text");
-                if (textProp != null && !string.IsNullOrEmpty(textProp.stringValue))
-                {
-                    // Calculate wrapped text height
-                    var textStyle = new GUIStyle(EditorStyles.label) { wordWrap = true };
-                    // Approximate width (accounting for indent and margins)
-                    float approximateWidth = EditorGUIUtility.currentViewWidth - 80f;
-                    float textHeight = textStyle.CalcHeight(new GUIContent(textProp.stringValue), approximateWidth);
-                    height += textHeight + 2f;
-                }
-                else
-                {
-                    height += EditorGUIUtility.singleLineHeight + 2f;
-                }
-            }
-            else
-            {
-                height += EditorGUIUtility.singleLineHeight + 2f;
-            }
-
-            return height;
-        }
-
-        private float GetActionsListHeight(SerializedProperty property)
-        {
-            var beforeProp = property.FindPropertyRelative("ActionsBeforeDialogueLine");
-            var afterProp = property.FindPropertyRelative("ActionsAfterDialogueLine");
-
-            float h = 0f;
-            h += EditorGUI.GetPropertyHeight(beforeProp, true);
-            h += EditorGUI.GetPropertyHeight(afterProp, true);
-            return h + 2f;
-        }
-
-        private float GetCharacterRepresentationSectionHeight(SerializedProperty property)
-        {
-            float h = 0f;
-            float spacing = 2f;
-
-            h += EditorGUIUtility.singleLineHeight + spacing; // foldout
-
-            string key =
-                $"{property.serializedObject.targetObject.GetInstanceID()}_{property.propertyPath}_CharacterRep";
-            if (CharacterRepresentationFoldouts.TryGetValue(key, out bool open) && open)
-            {
-                h += 1 + spacing * 3; // separator
-
-                var convo = property.serializedObject.targetObject as ConvoCoreConversationData;
-                if (convo == null)
-                {
-                    h += EditorGUIUtility.singleLineHeight + spacing;
-                }
-                else
-                {
-                    var profiles = convo.ConversationParticipantProfiles?.Where(p => p != null).ToList();
-                    if (profiles == null || profiles.Count == 0)
-                    {
-                        h += EditorGUIUtility.singleLineHeight * 2.5f + spacing;
-                    }
-                    else
-                    {
-                        h += GetSingleCharacterRepresentationHeight(
-                            property.FindPropertyRelative("PrimaryCharacterRepresentation"), property, false);
-                        h += GetSingleCharacterRepresentationHeight(
-                            property.FindPropertyRelative("SecondaryCharacterRepresentation"), property, true);
-                        h += GetSingleCharacterRepresentationHeight(
-                            property.FindPropertyRelative("TertiaryCharacterRepresentation"), property, true);
-                    }
-                }
-
-                h += 5f; // padding
-            }
-            else
-            {
-                h += 2f;
-            }
-
-            return h;
+            if (previewable == null) return 0f;
+            float desired = previewable.GetPreviewHeight();
+            if (desired <= 0f) return 0f;
+            return Mathf.Clamp(desired, k_MinPreviewHeight, k_MaxPreviewHeight);
         }
 
         private static Rect DrawInlinePreviewBlock(Rect rect, IEditorPreviewableRepresentation previewable,
@@ -857,141 +923,87 @@ public override void OnGUI(Rect position, SerializedProperty property, GUIConten
             if (h <= 0f) return rect;
 
             var indented = EditorGUI.IndentedRect(new Rect(rect.x, rect.y, rect.width, h));
-            const float pad = 4f;
             var outer = new Rect(indented.x, indented.y, indented.width, h);
-            var inner = new Rect(outer.x + pad, outer.y + pad, outer.width - pad * 2f, outer.height - pad * 2f);
+            var inner = new Rect(outer.x + k_Pad, outer.y + k_Pad, outer.width - k_Pad * 2f, outer.height - k_Pad * 2f);
 
-            // subtle background
             EditorGUI.DrawRect(outer, new Color(0f, 0f, 0f, 0.06f));
 
-            // Resolve emotion mapping from the representation
             object emotionMapping = null;
             if (!string.IsNullOrEmpty(emotionGuid) && previewable is CharacterRepresentationBase repBase)
-            {
                 emotionMapping = repBase.GetEmotionMappingByGuid(emotionGuid);
-            }
 
-            // Let representation draw with the resolved emotion mapping
             previewable.DrawInlineEditorPreview(emotionMapping, inner);
 
             rect.y += h + spacing;
             return rect;
         }
 
-
-        private float GetSingleCharacterRepresentationHeight(
-            SerializedProperty repProp,
-            SerializedProperty mainProperty,
-            bool useRepresentationNameInsteadOfID)
+        // ──────────────────────────────────────────────
+        // Preview text cache
+        // ──────────────────────────────────────────────
+        private string GetCachedPreviewText(SerializedProperty property, int lineIndex)
         {
-            if (repProp == null) return 0f;
+            int id = HashCacheKey(property);
+            double now = EditorApplication.timeSinceStartup;
 
-            float h = 0f;
-            float spacing = 2f;
+            if (s_PreviewCache.TryGetValue(id, out string cached))
+                return cached;
 
-            h += EditorGUIUtility.singleLineHeight + spacing; // section label
+            string preview = GetPreviewText(property);
+            s_PreviewCache[id] = preview;
 
-            var convo = repProp.serializedObject.targetObject as ConvoCoreConversationData;
-            if (convo == null) return h + EditorGUIUtility.singleLineHeight + spacing;
-
-            var profiles = convo.ConversationParticipantProfiles?.Where(p => p != null).ToList();
-            if (profiles == null || profiles.Count == 0) return h + EditorGUIUtility.singleLineHeight + spacing;
-
-            var selectedRepNameProp = repProp.FindPropertyRelative("SelectedRepresentationName");
-            var selectedRepProp = repProp.FindPropertyRelative("SelectedRepresentation");
-            var selectedEmotionGuidProp = repProp.FindPropertyRelative("SelectedEmotionId");
-
-            if (useRepresentationNameInsteadOfID)
+            if (now - s_LastCachePurgeTime > 5.0)
             {
-                var selectedCharacterIDProp = repProp.FindPropertyRelative("SelectedCharacterID");
-                // profile popup
-                h += EditorGUIUtility.singleLineHeight + spacing;
-
-                string charId = selectedCharacterIDProp?.stringValue ?? "";
-                var profile = !string.IsNullOrEmpty(charId)
-                    ? profiles.FirstOrDefault(p => p.CharacterID == charId)
-                    : null;
-                if (profile != null)
-                {
-                    // representation popup
-                    h += EditorGUIUtility.singleLineHeight + spacing;
-
-                    // emotion popup (GUID) – use the drawer's actual height
-                    float emoH = (selectedEmotionGuidProp != null)
-                        ? EditorGUI.GetPropertyHeight(selectedEmotionGuidProp, true)
-                        : EditorGUIUtility.singleLineHeight;
-                    h += emoH + spacing;
-
-                    // preview height (if any)
-                    IEditorPreviewableRepresentation previewable = null;
-                    if (selectedRepProp != null &&
-                        selectedRepProp.objectReferenceValue is IEditorPreviewableRepresentation prA)
-                        previewable = prA;
-                    else
-                    {
-                        var repName = selectedRepNameProp?.stringValue ?? "";
-                        var repObj = profile.GetRepresentation(repName);
-                        if (repObj is IEditorPreviewableRepresentation prB) previewable = prB;
-                    }
-
-                    h += GetPreviewBlockHeight(previewable) + spacing;
-
-                    // representation-specific options height
-                    string emoId = selectedEmotionGuidProp?.stringValue ?? "";
-                    var selName = selectedRepNameProp?.stringValue ?? "";
-                    var repType = profile.GetRepresentation(selName);
-                    if (repType != null && !string.IsNullOrEmpty(emoId))
-                    {
-                        h += GetRepresentationSpecificOptionsHeight(repType, emoId, repProp);
-                    }
-                }
+                if (s_PreviewCache.Count > 256)
+                    s_PreviewCache.Clear();
+                s_LastCachePurgeTime = now;
             }
-            else
-            {
-                // Primary
-                var characterIDProp = mainProperty.FindPropertyRelative("characterID");
-                var profile = profiles.FirstOrDefault(p => p.CharacterID == (characterIDProp?.stringValue ?? ""));
-
-                if (profile == null)
-                {
-                    // participant popup only
-                    h += EditorGUIUtility.singleLineHeight + spacing;
-                    return h;
-                }
-
-                // representation popup
-                h += EditorGUIUtility.singleLineHeight + spacing;
-
-                // emotion popup (GUID) – use the drawer's actual height
-                float emoH = (selectedEmotionGuidProp != null)
-                    ? EditorGUI.GetPropertyHeight(selectedEmotionGuidProp, true)
-                    : EditorGUIUtility.singleLineHeight;
-                h += emoH + spacing;
-
-                // preview height (if any)
-                IEditorPreviewableRepresentation previewable = null;
-                if (selectedRepProp?.objectReferenceValue is IEditorPreviewableRepresentation prA)
-                    previewable = prA;
-                else
-                {
-                    var repName = selectedRepNameProp?.stringValue ?? "";
-                    var repType = profile.GetRepresentation(repName);
-                    if (repType is IEditorPreviewableRepresentation prB) previewable = prB;
-                }
-
-                h += GetPreviewBlockHeight(previewable) + spacing;
-
-                // representation-specific options height
-                string emoId = selectedEmotionGuidProp?.stringValue ?? "";
-                var repType2 = profile.GetRepresentation(selectedRepNameProp?.stringValue ?? "");
-                if (repType2 != null && !string.IsNullOrEmpty(emoId))
-                {
-                    h += GetRepresentationSpecificOptionsHeight(repType2, emoId, repProp);
-                }
-            }
-
-            return h;
+            return preview;
         }
 
+        private string GetPreviewText(SerializedProperty property)
+        {
+            var localizedDialoguesProp = property.FindPropertyRelative("LocalizedDialogues");
+            if (localizedDialoguesProp == null || !localizedDialoguesProp.isArray || localizedDialoguesProp.arraySize == 0)
+                return "(No dialogue text)";
+
+            string lang = ConvoCoreLanguageManager.Instance?.CurrentLanguage ?? "EN";
+            for (int i = 0; i < localizedDialoguesProp.arraySize; i++)
+            {
+                var el = localizedDialoguesProp.GetArrayElementAtIndex(i);
+                var langProp = el.FindPropertyRelative("Language");
+                var textProp = el.FindPropertyRelative("Text");
+                if (langProp != null && textProp != null &&
+                    string.Equals(langProp.stringValue, lang, StringComparison.OrdinalIgnoreCase))
+                {
+                    string text = textProp.stringValue ?? "";
+                    return text.Length > 60 ? text[..60] + "..." : text;
+                }
+            }
+
+            var firstText = localizedDialoguesProp.GetArrayElementAtIndex(0)?.FindPropertyRelative("Text");
+            string fallback = firstText?.stringValue ?? "";
+            return fallback.Length > 60 ? fallback[..60] + "..." : fallback;
+        }
+
+        private static int HashCacheKey(SerializedProperty property)
+        {
+            unchecked
+            {
+                int id = property.serializedObject.targetObject.GetInstanceID();
+                int pathHash = property.propertyPath != null ? property.propertyPath.GetHashCode() : 0;
+                return (id * 397) ^ pathHash;
+            }
+        }
+        
+
+        // ──────────────────────────────────────────────
+        // Small label helper
+        // ──────────────────────────────────────────────
+        private static void DrawLabelValue(ref Rect rect, string label, string value)
+        {
+            EditorGUI.LabelField(rect, label, value);
+            rect.y += EditorGUIUtility.singleLineHeight + k_Spacing;
+        }
     }
 }
