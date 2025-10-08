@@ -11,6 +11,8 @@ namespace WolfstagInteractive.ConvoCore.Editor
         private const string PAGE_SIZE_KEY_SUFFIX = "_PageSize";
 
         private static readonly Dictionary<string, bool> FoldoutStates = new();
+        private static readonly Dictionary<string, (float height, int hash)> HeightCache = new();
+
         private static readonly GUIStyle FoldoutStyle = new(EditorStyles.foldout);
         private static readonly GUIStyle BoxStyle = new(EditorStyles.helpBox);
         private static readonly GUIStyle MiniLabel = new(EditorStyles.miniLabel);
@@ -102,6 +104,30 @@ namespace WolfstagInteractive.ConvoCore.Editor
         }
 
         // ─────────────────────────────────────────────────────────────────────────────
+       
+
+        private static float GetCachedHeight(SerializedProperty prop)
+        {
+            if (prop == null)
+                return EditorGUIUtility.singleLineHeight;
+
+            string key = prop.propertyPath;
+
+            // Compute a simple hash of structure (child count + expansion state)
+            int hash = prop.hasVisibleChildren
+                ? prop.Copy().CountRemaining() ^ (prop.isExpanded ? 1 : 0)
+                : (prop.isExpanded ? 17 : 13);
+
+            if (HeightCache.TryGetValue(key, out var entry))
+            {
+                if (entry.hash == hash)
+                    return entry.height; // still valid
+            }
+
+            float computed = EditorGUI.GetPropertyHeight(prop, true);
+            HeightCache[key] = (computed, hash);
+            return computed;
+        }
         private static void DrawElement(SerializedProperty element)
         {
             string id = element.propertyPath;
@@ -111,7 +137,6 @@ namespace WolfstagInteractive.ConvoCore.Editor
             string preview = TryGetPreviewText(element);
             string index = GetIndex(element);
 
-            // Compact header
             EditorGUILayout.BeginVertical(GUI.skin.box);
             EditorGUILayout.BeginHorizontal();
             FoldoutStates[id] = EditorGUILayout.Foldout(FoldoutStates[id], $"Line {index}", true);
@@ -122,13 +147,24 @@ namespace WolfstagInteractive.ConvoCore.Editor
             if (FoldoutStates[id])
             {
                 EditorGUI.indentLevel++;
+
+                // Instead of fixed-height rect, just let Unity layout it dynamically.
+                // Cache only for future layout passes — don’t constrain height now.
+                float newHeight = EditorGUI.GetPropertyHeight(element, true);
+                if (!HeightCache.TryGetValue(id, out var entry) || Mathf.Abs(entry.height - newHeight) > 1f)
+                    HeightCache[id] = (newHeight, entry.hash);
+
+                // Draw the actual property with full layout awareness
                 EditorGUILayout.PropertyField(element, GUIContent.none, true);
+
                 EditorGUI.indentLevel--;
             }
 
             EditorGUILayout.EndVertical();
             GUILayout.Space(2);
         }
+
+
 
         // ─────────────────────────────────────────────────────────────────────────────
         private static string TryGetPreviewText(SerializedProperty prop)
