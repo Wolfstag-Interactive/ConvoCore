@@ -369,6 +369,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ConversationToolDialogueUI
       objectReference: {fileID: 0}
+    - target: {fileID: 1961101549865962711, guid: 37defd90b8cf4c644b832efe22df606d, type: 3}
+      propertyPath: CanSkipTypewriter
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2692523063024359977, guid: 37defd90b8cf4c644b832efe22df606d, type: 3}
       propertyPath: m_Pivot.x
       value: 0

@@ -14,67 +14,134 @@ namespace WolfstagInteractive.ConvoCore.Editor
         // Foldout states per line
         private static readonly Dictionary<string, bool> CharacterRepresentationFoldouts = new();
         private static readonly Dictionary<string, bool> DialogueLineFoldouts = new();
-
-        public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
+// Cached GUI resources (initialized once)
+        private static GUIStyle s_HeaderStyle = new GUIStyle(EditorStyles.boldLabel)
         {
-            EditorGUI.BeginProperty(position, label, property);
-            EditorGUI.BeginChangeCheck();
+            clipping = TextClipping.Clip,
+            alignment = TextAnchor.MiddleLeft
+        };
+        private static readonly GUIContent s_HeaderContent = new GUIContent();
+        private static readonly Color s_HeaderColorPro = new Color(1f, 1f, 1f, 0.06f);
+        private static readonly Color s_HeaderColorLight = new Color(0f, 0f, 0f, 0.08f);
 
-            float lineHeight = EditorGUIUtility.singleLineHeight;
-            float spacing = 2f;
-            Rect currentRect = new Rect(position.x, position.y, position.width, lineHeight);
+// Lightweight preview text cache (avoids recomputing for every frame)
+        private static readonly Dictionary<int, string> s_PreviewCache = new Dictionary<int, string>(128);
+        private static double s_LastCachePurgeTime;
 
-            // Main foldout with preview text
-            string foldoutKey =
-                $"{property.serializedObject.targetObject.GetInstanceID()}_{property.propertyPath}_Line";
-            if (!DialogueLineFoldouts.ContainsKey(foldoutKey))
-                DialogueLineFoldouts[foldoutKey] = true;
+// Returns cached or recomputed preview text
+        private string GetCachedPreviewText(SerializedProperty property, int lineIndex)
+        {
+            int id = HashCacheKey(property);
+            double now = EditorApplication.timeSinceStartup;
 
-            bool isExpanded = DialogueLineFoldouts[foldoutKey];
+            if (s_PreviewCache.TryGetValue(id, out string cached))
+                return cached;
 
-            // Get preview text for collapsed state
-            string previewText = GetPreviewText(property);
+            string preview = GetPreviewText(property);
+            s_PreviewCache[id] = preview;
 
-            var boldFoldout = new GUIStyle(EditorStyles.foldout) { fontStyle = FontStyle.Bold };
-            bool newExpanded = EditorGUI.Foldout(currentRect, isExpanded,
-                isExpanded ? "Dialogue Line" : $"Dialogue Line: {previewText}",
-                true, boldFoldout);
-
-            if (newExpanded != isExpanded)
+            // purge occasionally to avoid growth during long editor sessions
+            if (now - s_LastCachePurgeTime > 5.0)
             {
-                DialogueLineFoldouts[foldoutKey] = newExpanded;
-                EditorUtility.SetDirty(property.serializedObject.targetObject);
+                if (s_PreviewCache.Count > 256)
+                    s_PreviewCache.Clear();
+                s_LastCachePurgeTime = now;
             }
 
-            currentRect.y += lineHeight + spacing;
-
-            if (newExpanded)
-            {
-                EditorGUI.indentLevel++;
-
-                currentRect = DrawBasicInfo(currentRect, property, spacing);
-                currentRect = DrawInputMethod(currentRect, property, spacing);
-                currentRect = DrawAudioClip(currentRect, property, spacing);
-                currentRect = DrawLocalizedDialogues(currentRect, property, spacing);
-                currentRect = DrawActionsList(currentRect, property, spacing);
-                currentRect = DrawCharacterRepresentation(currentRect, property, spacing);
-
-                EditorGUI.indentLevel--;
-            }
-
-            if (EditorGUI.EndChangeCheck())
-            {
-                property.serializedObject.ApplyModifiedProperties();
-
-                if (property.serializedObject.targetObject is ConvoCoreConversationData conversationData)
-                {
-                    conversationData.ValidateAndFixDialogueLines();
-                    EditorUtility.SetDirty(conversationData);
-                }
-            }
-
-            EditorGUI.EndProperty();
+            return preview;
         }
+
+// Hash helper that avoids string allocations
+        private static int HashCacheKey(SerializedProperty property)
+        {
+            unchecked
+            {
+                int id = property.serializedObject.targetObject.GetInstanceID();
+                int pathHash = property.propertyPath != null ? property.propertyPath.GetHashCode() : 0;
+                return (id * 397) ^ pathHash;
+            }
+        }
+        private static int GetIndexFromPath(string path)
+        {
+            int start = path.LastIndexOf('[') + 1;
+            int end = path.LastIndexOf(']');
+            if (start >= 0 && end > start && int.TryParse(path.Substring(start, end - start), out int result))
+                return result;
+            return -1;
+        }
+
+public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
+{
+    // Early out for invalid data
+    if (property == null || property.serializedObject == null)
+        return;
+
+    const float spacing = 2f;
+    float lineHeight = EditorGUIUtility.singleLineHeight;
+    Rect rect = new Rect(position.x, position.y, position.width, lineHeight);
+
+    // Local caches
+    var evt = Event.current;
+    bool isRepaint = evt.type == EventType.Repaint;
+
+    // Get serialized object once
+    var so = property.serializedObject;
+
+    // --- HEADER ---
+
+    int lineIndex = GetIndexFromPath(property.propertyPath);
+    string previewText = GetCachedPreviewText(property, lineIndex);
+
+    // Theme-aware color
+    EditorGUI.DrawRect(rect, EditorGUIUtility.isProSkin
+        ? s_HeaderColorPro
+        : s_HeaderColorLight);
+
+    // Header label (static cached GUIContent + GUIStyle)
+    s_HeaderContent.text = $"Dialogue Line {lineIndex}: {previewText}";
+    EditorGUI.LabelField(rect, s_HeaderContent, s_HeaderStyle);
+
+    rect.y += lineHeight + spacing;
+
+    // --- EARLY LAYOUT OPTIMIZATION ---
+    // Skip deep property field drawing during Layout events (Unity calls OnGUI twice)
+    if (evt.type == EventType.Layout)
+        return;
+
+    EditorGUI.BeginProperty(position, label, property);
+    EditorGUI.BeginChangeCheck();
+
+    // Indent content visually
+    EditorGUI.indentLevel++;
+
+    // Draw content only during repaint or interaction events
+    if (isRepaint || evt.type == EventType.MouseDown || evt.type == EventType.MouseUp)
+    {
+        rect = DrawBasicInfo(rect, property, spacing);
+        rect = DrawInputMethod(rect, property, spacing);
+        rect = DrawAudioClip(rect, property, spacing);
+        rect = DrawLocalizedDialogues(rect, property, spacing);
+        rect = DrawActionsList(rect, property, spacing);
+        rect = DrawCharacterRepresentation(rect, property, spacing);
+    }
+
+    EditorGUI.indentLevel--;
+
+    // --- APPLY CHANGES ---
+
+    if (EditorGUI.EndChangeCheck())
+    {
+        so.ApplyModifiedProperties();
+
+        if (so.targetObject is ConvoCoreConversationData convo)
+        {
+            convo.ValidateAndFixDialogueLines();
+            EditorUtility.SetDirty(convo);
+        }
+    }
+
+    EditorGUI.EndProperty();
+}
 
         private string GetPreviewText(SerializedProperty property)
         {
@@ -115,22 +182,19 @@ namespace WolfstagInteractive.ConvoCore.Editor
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
         {
             float spacing = 2f;
-            float total = EditorGUIUtility.singleLineHeight + spacing; // Main foldout
+            float total = EditorGUIUtility.singleLineHeight + spacing; // Header only
 
-            string foldoutKey =
-                $"{property.serializedObject.targetObject.GetInstanceID()}_{property.propertyPath}_Line";
-            if (DialogueLineFoldouts.TryGetValue(foldoutKey, out bool isExpanded) && isExpanded)
-            {
-                total += GetBasicInfoHeight();
-                total += GetInputMethodHeight(property);
-                total += GetAudioClipHeight(property);
-                total += GetLocalizedDialoguesHeight(property);
-                total += GetActionsListHeight(property);
-                total += GetCharacterRepresentationSectionHeight(property);
-            }
+            // Add all sub-section heights directly, since we always render them now
+            total += GetBasicInfoHeight();
+            total += GetInputMethodHeight(property);
+            total += GetAudioClipHeight(property);
+            total += GetLocalizedDialoguesHeight(property);
+            total += GetActionsListHeight(property);
+            total += GetCharacterRepresentationSectionHeight(property);
 
             return total;
         }
+
 
         private static float GetPreviewBlockHeight(IEditorPreviewableRepresentation previewable)
         {

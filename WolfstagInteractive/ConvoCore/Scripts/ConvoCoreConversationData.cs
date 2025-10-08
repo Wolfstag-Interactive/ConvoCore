@@ -3,7 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 using System.Linq;
-
+#if UNITY_EDITOR
+using WolfstagInteractive.ConvoCore.Editor;
+#endif
 namespace WolfstagInteractive.ConvoCore
 {
     [UnityEngine.HelpURL("https://docs.wolfstaginteractive.com/classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData.html")]
@@ -13,7 +15,7 @@ namespace WolfstagInteractive.ConvoCore
     {
         public List<ConvoCoreCharacterProfileBaseData> ConversationParticipantProfiles =
             new List<ConvoCoreCharacterProfileBaseData>();
-
+        
         public List<DialogueLineInfo> DialogueLines; // Metadata for all dialogues in the YAML
 
         [Header("YAML Source (pick one or more)")]

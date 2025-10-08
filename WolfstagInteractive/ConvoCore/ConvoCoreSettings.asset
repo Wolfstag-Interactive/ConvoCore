@@ -14,6 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SourceOrder: 00000000010000000200000003000000
   resourcesRoot: ConvoCore/Dialogue
+  SupportedLanguages:
+  - EN
+  - FR
+  - ES
+  CurrentLanguage: EN
   AddressablesEnabled: 0
   AddressablesKeyTemplate: '{filePath}.yml'
   VerboseLogs: 0

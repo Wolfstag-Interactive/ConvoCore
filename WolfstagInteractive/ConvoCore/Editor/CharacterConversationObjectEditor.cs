@@ -79,8 +79,15 @@ namespace WolfstagInteractive.ConvoCore.Editor
                     property.name == "SourceYamlAssetPath")
                     continue;
 
-                // Default property field rendering
-                EditorGUILayout.PropertyField(property, true);
+                if (property.name == "DialogueLines" || property.name == "dialogueLines")
+                {
+                    // Custom paged drawing for dialogue lines
+                    PagedListUtility.DrawPagedList(property, 20);
+                }
+                else
+                {
+                    EditorGUILayout.PropertyField(property, true);
+                }
             }
             while (property.NextVisible(false));
 

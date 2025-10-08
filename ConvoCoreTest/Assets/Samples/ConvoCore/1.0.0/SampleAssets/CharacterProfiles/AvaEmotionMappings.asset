@@ -26,7 +26,7 @@ MonoBehaviour:
       PortraitScale: {x: 1, y: 1, z: 1}
       FullBodyScale: {x: 1, y: 1, z: 1}
   - emotionID: 3c438f392699403f96fb8a139d2dfde2
-    DisplayName: Neutral
+    DisplayName: Scared
     PortraitSprite: {fileID: 21300000, guid: 0350d35369e90e145ada2b8508c49b25, type: 3}
     FullBodySprite: {fileID: 21300000, guid: c23cf1f29a24c5d4dae63a0e54b1366f, type: 3}
     DisplayOptions:
