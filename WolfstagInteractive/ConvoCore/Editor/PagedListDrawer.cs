@@ -2,9 +2,9 @@
 using UnityEditor;
 using UnityEngine;
 
-#if ODIN_INSPECTOR
+/*#if ODIN_INSPECTOR
 using Sirenix.OdinInspector;
-#endif
+#endif*/
 
 namespace WolfstagInteractive.ConvoCore.Editor
 {
@@ -36,7 +36,7 @@ namespace WolfstagInteractive.ConvoCore.Editor
         {
             return EditorPrefs.GetInt(key + PAGE_SIZE_KEY_SUFFIX, defaultSize);
         }
-#if ODIN_INSPECTOR
+/*#if ODIN_INSPECTOR
     // Odin variant: auto-bridges to Odin’s paging system
     [System.AttributeUsage(System.AttributeTargets.Field)]
     public sealed class PagedListOdinDrawer : ListDrawerSettingsAttribute
@@ -47,7 +47,7 @@ namespace WolfstagInteractive.ConvoCore.Editor
             NumberOfItemsPerPage = Mathf.Max(1, itemsPerPage);
         }
     }
-#else
+#else*/
         private void SavePageSize(string key, int size)
         {
             EditorPrefs.SetInt(key + PAGE_SIZE_KEY_SUFFIX, size);
@@ -105,4 +105,4 @@ namespace WolfstagInteractive.ConvoCore.Editor
         }
     }
 }
-#endif
+//#endif
