@@ -22,3 +22,7 @@ MonoBehaviour:
   AddressablesEnabled: 0
   AddressablesKeyTemplate: '{filePath}.yml'
   VerboseLogs: 0
+  historyRendererProfiles:
+  - {fileID: 11400000, guid: 94a4ff3a2894ac644a3c5310a1ea77b5, type: 2}
+  - {fileID: 11400000, guid: 52ff87450e8436342bb338bf54984e89, type: 2}
+  - {fileID: 11400000, guid: be9b2e0e2f79a8d459ffcd9dd1b9af79, type: 2}

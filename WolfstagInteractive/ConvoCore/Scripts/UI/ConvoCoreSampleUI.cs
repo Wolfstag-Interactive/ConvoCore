@@ -2,12 +2,17 @@ using System.Collections;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.UI;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
+using Button = UnityEngine.UI.Button;
+using Image = UnityEngine.UI.Image;
 
 namespace WolfstagInteractive.ConvoCore
 {
-[HelpURL("https://docs.wolfstaginteractive.com/classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSampleUI.html")]
+    [HelpURL("https://docs.wolfstaginteractive.com/classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSampleUI.html")]
     public class ConvoCoreSampleUI : ConvoCoreUIFoundation
     {
         [Header("Dialogue UI Elements")]
@@ -20,6 +25,13 @@ namespace WolfstagInteractive.ConvoCore
         [SerializeField] private Image FullBodyImageCenter;
         [SerializeField] private Button ContinueButton;
 
+        [Header("Dialogue History UI Elements")] 
+        [SerializeField] private RectTransform DialogueHistoryPanelRoot;
+        [SerializeField] private ScrollRect DialogueHistoryScrollRect;
+        [SerializeField] private RectTransform DialogueHistoryScrollRectContent;
+        [SerializeField] private TMP_Text DialogueHistoryText;
+        [SerializeField] private Button ToggleDialogueHistoryButton;
+        
         [Header("Settings")]
         [SerializeField] private bool AllowLineAdvanceOutsideButton;
         [SerializeField] private bool EnableTypewriterEffect = true;
@@ -33,12 +45,22 @@ namespace WolfstagInteractive.ConvoCore
         private bool _continuePressed = false;
         private bool _isWaitingForInput;
 
-        private void Awake()
+        public override void InitializeUI(ConvoCore convoCoreInstance)
         {
+            base.InitializeUI(convoCoreInstance);
+            var historyOutput = new TMPDialogueHistoryOutput(DialogueHistoryText, DialogueHistoryScrollRect);
+            var ctx = new DialogueHistoryRendererContext
+            {
+                OutputHandler = historyOutput,
+                DefaultSpeakerColor = Color.white,
+                MaxEntries = ConvoCoreDialogueHistoryUI.maxEntries
+            };
             HideDialogue();
             ContinueButton?.onClick.AddListener(OnContinueButtonPressed);
+            ToggleDialogueHistoryButton?.onClick.AddListener(ToggleDialogueHistoryUI);
             AdvanceDialogueAction?.Enable();
             DontDestroyOnLoad(gameObject);
+            ConvoCoreDialogueHistoryUI.InitializeRenderer(ctx);
         }
 
         private void OnEnable()
@@ -54,16 +76,20 @@ namespace WolfstagInteractive.ConvoCore
         }
 
         /// <summary>
-        /// 
+        /// Updates the dialogue UI by displaying text, speaker information, and character representations for the current dialogue line.
         /// </summary>
-        /// <param name="lineInfo"></param>
-        /// <param name="localizedText"></param>
-        /// <param name="speakerName"></param>
-        /// <param name="primaryRepresentation"></param>
-        public override void UpdateDialogueUI(ConvoCoreConversationData.DialogueLineInfo lineInfo, string localizedText, string speakerName, CharacterRepresentationBase primaryRepresentation)
+        /// <param name="lineInfo">Data about the current dialogue line, including character representation details.</param>
+        /// <param name="localizedText">The localized text for the current dialogue line.</param>
+        /// <param name="speakerName">The name of the character currently speaking.</param>
+        /// <param name="primaryRepresentation">The primary visual representation of the speaking character.</param>
+        /// <param name="primaryProfile">The profile data of the speaking character, including display settings such as name color.</param>
+        public override void UpdateDialogueUI(ConvoCoreConversationData.DialogueLineInfo lineInfo, string localizedText,
+            string speakerName, CharacterRepresentationBase primaryRepresentation,
+            ConvoCoreCharacterProfileBaseData primaryProfile)
         {
             DisplayDialogue(localizedText);
             SpeakerName.text = speakerName;
+            ConvoCoreDialogueHistoryUI.AddLine(speakerName,localizedText,primaryProfile.CharacterNameColor);
 
             // Hide all sprite elements
             HideAllSpriteImages();
@@ -77,10 +103,10 @@ namespace WolfstagInteractive.ConvoCore
         }
 
         /// <summary>
-        /// 
+        /// Renders a character's representation (e.g., sprite-based or prefab-based) in a specified display slot.
         /// </summary>
-        /// <param name="data"></param>
-        /// <param name="slot"></param>
+        /// <param name="data">The character representation data containing details about the character and its display options.</param>
+        /// <param name="slot">The display slot where the character representation should be rendered (left, right, or center).</param>
         private void RenderRepresentation(ConvoCoreConversationData.CharacterRepresentationData data, DisplaySlot slot)
         {
             var convoCore = FindObjectOfType<ConvoCore>();
@@ -172,6 +198,8 @@ namespace WolfstagInteractive.ConvoCore
             DialogueText.gameObject.SetActive(true);
             SpeakerName.gameObject.SetActive(true);
             DialoguePanel.gameObject.SetActive(true);
+            
+            
             // Stop any existing typewriter effect
             if (_typewriterCoroutine != null)
             {
@@ -199,6 +227,7 @@ namespace WolfstagInteractive.ConvoCore
             DialoguePanel.gameObject.SetActive(false);
             HideAllSpriteImages();
             ContinueButton.gameObject.SetActive(false);
+            ToggleDialogueHistoryUI();
         }
 
         public override IEnumerator WaitForUserInput()
@@ -228,17 +257,37 @@ namespace WolfstagInteractive.ConvoCore
 
         private void OnAdvanceDialoguePerformed(InputAction.CallbackContext context)
         {
-            // If we're currently typing and can't skip, don't do anything
-            if (_isTyping && !CanSkipTypewriter)
+            // --- 1️⃣ Properly detect if the click is over UI ---
+            // Only ignore if you're actually allowing click-to-advance
+            if (AllowLineAdvanceOutsideButton)
             {
-                return;
+                if (EventSystem.current != null)
+                {
+                    // For new Input System UI, check using the pointerId
+                    var inputModule = EventSystem.current.currentInputModule as InputSystemUIInputModule;
+                    if (inputModule != null)
+                    {
+                        // Mouse pointer id is -1 by default in InputSystemUIInputModule
+                        if (EventSystem.current.IsPointerOverGameObject(-1))
+                            return; // Ignore UI clicks (so they go to buttons)
+                    }
+                    else
+                    {
+                        // Fallback for old input module
+                        if (EventSystem.current.IsPointerOverGameObject())
+                            return;
+                    }
+                }
             }
-            
+
+            // --- 2️⃣ Now handle normal advancing logic ---
+            if (_isTyping && !CanSkipTypewriter)
+                return;
+
             if (_isWaitingForInput && (AllowLineAdvanceOutsideButton || !IsPointerOverUIElement(ContinueButton)))
             {
                 OnContinueButtonPressed();
             }
-            // Allow skipping typewriter effect only if CanSkipTypewriter is true
             else if (_isTyping && CanSkipTypewriter)
             {
                 CompleteTypewriter();
@@ -268,6 +317,12 @@ namespace WolfstagInteractive.ConvoCore
             
             DialogueText.text = fullText;
             _isTyping = false;
+        }
+
+        private void ToggleDialogueHistoryUI()
+        {
+            
+            DialogueHistoryPanelRoot.gameObject.SetActive(!DialogueHistoryPanelRoot.gameObject.activeSelf);
         }
         protected bool IsPointerOverUIElement(Component uiElement)
         {

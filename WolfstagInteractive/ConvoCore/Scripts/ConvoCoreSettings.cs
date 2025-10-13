@@ -32,7 +32,7 @@ namespace WolfstagInteractive.ConvoCore
         [Header("Addressables (optional)")] public bool AddressablesEnabled = false; // flip on when project uses it
         public string AddressablesKeyTemplate = "{filePath}.yml"; // maps FilePath -> key
 
-        [Header("Debug")] public bool VerboseLogs = false;
+        public bool VerboseLogs = false;
         /// <summary>
         /// Validates that CurrentLanguage is in the SupportedLanguages list
         /// </summary>
@@ -50,6 +50,54 @@ namespace WolfstagInteractive.ConvoCore
             {
                 CurrentLanguage = SupportedLanguages[0];
             }
+            CleanRendererProfiles();
+        }
+        // ------------------------------
+        // Dialogue History Renderers
+        // ------------------------------
+        [Tooltip("List of available renderer profiles for dialogue history UI.")]
+        [SerializeField] private List<ConvoCoreHistoryRendererProfile> historyRendererProfiles = new();
+
+        public IReadOnlyList<ConvoCoreHistoryRendererProfile> HistoryRendererProfiles => historyRendererProfiles;
+
+        /// <summary>
+        /// Returns the default renderer profile (first marked default or first in list).
+        /// </summary>
+        public ConvoCoreHistoryRendererProfile GetDefaultRenderer()
+        {
+            foreach (var p in historyRendererProfiles)
+                if (p != null && p.IsDefault)
+                    return p;
+
+            return historyRendererProfiles.Count > 0 ? historyRendererProfiles[0] : null;
+        }
+
+        /// <summary>
+        /// Returns a renderer profile by its display name.
+        /// </summary>
+        public ConvoCoreHistoryRendererProfile GetRendererProfile(string rendererName)
+        {
+            foreach (var p in historyRendererProfiles)
+                if (p != null && p.RendererName == rendererName)
+                    return p;
+            return null;
+        }
+
+        /// <summary>
+        /// Adds a new profile if it doesn't already exist in the list.
+        /// </summary>
+        public void AddRendererProfile(ConvoCoreHistoryRendererProfile profile)
+        {
+            if (profile != null && !historyRendererProfiles.Contains(profile))
+                historyRendererProfiles.Add(profile);
+        }
+
+        /// <summary>
+        /// Removes null or missing profile references.
+        /// </summary>
+        public void CleanRendererProfiles()
+        {
+            historyRendererProfiles.RemoveAll(p => p == null);
         }
     }
 }

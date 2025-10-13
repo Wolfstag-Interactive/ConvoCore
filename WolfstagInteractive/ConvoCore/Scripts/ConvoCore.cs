@@ -40,6 +40,7 @@ namespace WolfstagInteractive.ConvoCore
             if (ConversationData != null)
             {
                 ConversationData.InitializeDialogueData();
+                ConversationUI.InitializeUI(this);
             }
         }
 
@@ -130,7 +131,7 @@ namespace WolfstagInteractive.ConvoCore
                         line,
                         finalOutputString,
                         primaryProfile.CharacterName,
-                        primaryRepresentation // Primary character should always have a representation
+                        primaryRepresentation,primaryProfile // Primary character should always have a representation
                     )
                 );
 
@@ -333,10 +334,13 @@ namespace WolfstagInteractive.ConvoCore
         /// <summary>
         /// Plays a dialogue line with the UI foundation
         /// </summary>
-        private IEnumerator PlayDialogueLine(ConvoCoreUIFoundation uiFoundation, ConvoCoreConversationData.DialogueLineInfo dialogueLineInfo, string localizedText, string speakingCharacterName, CharacterRepresentationBase characterRepresentation)
+        private IEnumerator PlayDialogueLine(ConvoCoreUIFoundation uiFoundation,
+            ConvoCoreConversationData.DialogueLineInfo dialogueLineInfo, string localizedText,
+            string speakingCharacterName, CharacterRepresentationBase characterRepresentation,
+            ConvoCoreCharacterProfileBaseData primaryProfile)
         {
             // Update the UI with dialogue information
-            uiFoundation.UpdateDialogueUI(dialogueLineInfo, localizedText, speakingCharacterName, characterRepresentation);
+            uiFoundation.UpdateDialogueUI(dialogueLineInfo, localizedText, speakingCharacterName, characterRepresentation,primaryProfile);
             
             yield return null; // Wait one frame for UI to update
         }
