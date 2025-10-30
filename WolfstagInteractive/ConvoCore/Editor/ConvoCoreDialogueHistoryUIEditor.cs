@@ -145,7 +145,18 @@ namespace WolfstagInteractive.ConvoCore.Editor
                 EditorGUILayout.LabelField("Renderer Profile Editor", EditorStyles.boldLabel);
                 EditorGUILayout.Space(4);
 
-                _profileEditor.OnInspectorGUI();
+                // Render all fields except name first
+                var so = new SerializedObject(profile);
+                so.Update();
+                var nameProp = so.FindProperty("rendererName");
+                DrawPropertiesExcluding(so, "m_Script", "rendererName");
+                // Draw name as non-editable
+                using (new EditorGUI.DisabledScope(true))
+                {
+                    if (nameProp != null)
+                        EditorGUILayout.PropertyField(nameProp, new GUIContent("Renderer Name"));
+                }
+                so.ApplyModifiedProperties();
 
                 EditorGUILayout.EndVertical();
             }

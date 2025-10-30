@@ -36,10 +36,7 @@ namespace WolfstagInteractive.ConvoCore
                 Debug.LogWarning("[ConvoCore] Missing settings reference.");
                 return;
             }
-
-            _activeProfile = convoCoreSettings.GetRendererProfile(selectedProfileName)
-                             ?? convoCoreSettings.GetDefaultRenderer();
-
+            _activeProfile = convoCoreSettings.GetRendererProfile(selectedProfileName);
             if (_activeProfile == null)
             {
                 Debug.LogWarning("[ConvoCore] No renderer profile found.");

@@ -16,6 +16,8 @@ MonoBehaviour:
   CharacterName: Jared
   PlayerPlaceholder: 
   CharacterID: Jared
+  CharacterNameColor: {r: 1, g: 1, b: 1, a: 1}
+  CharacterDescription: The happy-go-lucky boyfriend of Ava
   Representations:
   - CharacterRepresentationName: Sprites
     CharacterRepresentationType: {fileID: 11400000, guid: 5b9d585132056d5479e01ea082d4b2be, type: 2}

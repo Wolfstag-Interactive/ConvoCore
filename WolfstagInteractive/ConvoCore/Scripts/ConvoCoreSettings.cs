@@ -60,25 +60,6 @@ namespace WolfstagInteractive.ConvoCore
         public IReadOnlyList<ConvoCoreHistoryRendererProfile> HistoryRendererProfiles => historyRendererProfiles;
 
         /// <summary>
-        /// Returns the default renderer profile (first marked default or first in list).
-        /// </summary>
-        public ConvoCoreHistoryRendererProfile GetDefaultRenderer()
-        {
-            foreach (var p in historyRendererProfiles)
-            {   if (p != null)
-                {
-                    return p;
-                }
-                else
-                {
-                    Debug.LogError("No history renderer profiles found, make sure there is at least one available renderer profile in the settings.");
-                }
-            }
-            
-            return historyRendererProfiles.Count > 0 ? historyRendererProfiles[0] : null;
-        }
-
-        /// <summary>
         /// Returns a renderer profile by its display name.
         /// </summary>
         public ConvoCoreHistoryRendererProfile GetRendererProfile(string rendererName)
