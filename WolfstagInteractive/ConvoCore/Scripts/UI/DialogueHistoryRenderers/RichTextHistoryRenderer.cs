@@ -50,9 +50,9 @@ namespace WolfstagInteractive.ConvoCore
 
         private void AppendFormatted(DialogueHistoryEntry entry)
         {
-            var color = entry.Color == Color.clear
+            var color = entry.SpeakerTextColor == Color.clear
                 ? "#FFFFFF"
-                : ColorUtility.ToHtmlStringRGBA(entry.Color);
+                : ColorUtility.ToHtmlStringRGBA(entry.SpeakerTextColor);
 
             if (!color.StartsWith("#"))
                 color = "#" + color;

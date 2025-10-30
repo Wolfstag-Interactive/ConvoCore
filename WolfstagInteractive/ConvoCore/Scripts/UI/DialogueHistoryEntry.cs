@@ -7,6 +7,6 @@ namespace WolfstagInteractive.ConvoCore
     {
         public string Speaker;
         public string Text;
-        public Color Color;
+        public Color SpeakerTextColor;
     }
 }

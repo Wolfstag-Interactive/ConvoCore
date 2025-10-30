@@ -53,8 +53,6 @@ namespace WolfstagInteractive.ConvoCore
                 // Inject defaults if caller didn’t specify them
                 if (context.MaxEntries <= 0)
                     context.MaxEntries = maxEntries;
-                if (context.DefaultSpeakerColor == default)
-                    context.DefaultSpeakerColor = _activeProfile.DefaultSpeakerColor;
 
                 _renderer.Initialize(context);
                 _isInitialized = true;
@@ -68,7 +66,7 @@ namespace WolfstagInteractive.ConvoCore
         /// <summary>
         /// Adds a new line to the dialogue history and forwards it to the renderer.
         /// </summary>
-        public void AddLine(string speaker, string text, Color? speakerColor = null)
+        public void AddLine(string speaker, string text, Color speakerColor)
         {
             if (!_isInitialized)
             {
@@ -76,8 +74,7 @@ namespace WolfstagInteractive.ConvoCore
                 return;
             }
 
-            var color = speakerColor ?? _activeProfile.DefaultSpeakerColor;
-            var entry = new DialogueHistoryEntry { Speaker = speaker, Text = text, Color = color };
+            var entry = new DialogueHistoryEntry { Speaker = speaker, Text = text,SpeakerTextColor = speakerColor};
 
             _entries.Add(entry);
             if (_entries.Count > maxEntries)
