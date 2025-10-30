@@ -90,13 +90,7 @@ namespace WolfstagInteractive.ConvoCore.Editor
                 }
             }
             while (property.NextVisible(false));
-
-            // Draw 'FilePath' field with the browse button
-            DrawFilePathField();
-
-            // Draw 'ConversationKey' field with the import button
-            DrawConversationKeyField();
-
+            
             // If any changes were made, validate the data
             if (EditorGUI.EndChangeCheck())
             {
@@ -112,11 +106,72 @@ namespace WolfstagInteractive.ConvoCore.Editor
 
             // YAML Linking (hidden intermediary workflow)
             DrawYamlLinkingSection();
+            // Draw 'FilePath' field with the browse button
+            DrawFilePathField();
 
+            DrawAddDeleteSection();
             // Apply any modified properties
             serializedObject.ApplyModifiedProperties();
         }
-        
+
+        private void DrawAddDeleteSection()
+        {
+            EditorGUILayout.BeginVertical("box");
+            EditorGUILayout.LabelField("Line Data Controls", EditorStyles.boldLabel);
+            DrawConversationKeyField();
+            Separator();
+            DrawDeletePopupButton();
+            EditorGUILayout.EndVertical();
+        }
+        private static void Separator(float thickness = 2f, float margin = 6f, float alpha = 0.2f)
+        {
+            GUILayout.Space(margin);
+            var rect = EditorGUILayout.GetControlRect(false, thickness);
+            rect.height = thickness;
+            EditorGUI.DrawRect(rect, new Color(0f, 0f, 0f, alpha));
+            GUILayout.Space(margin);
+        }
+        private void DrawDeletePopupButton()
+        {
+            var prevColor = GUI.backgroundColor;
+            GUI.backgroundColor = Color.red;
+            if (GUILayout.Button("Delete ALL Dialogue Lines…", GUILayout.Height(28)))
+            {
+                bool confirm = EditorUtility.DisplayDialog(
+                    "Delete All Dialogue Lines",
+                    "This will permanently remove ALL dialogue lines from this conversation.\n\nAre you sure?",
+                    "Delete ALL Lines",
+                    "Cancel"
+                );
+                if (confirm)
+                {
+                    var conversationData = (ConvoCoreConversationData)target;
+                    try
+                    {
+                        // Clear commonly used field names for lines
+                        var so = serializedObject;
+                        var linesProp = so.FindProperty("DialogueLines") ?? so.FindProperty("dialogueLines");
+                        if (linesProp != null && linesProp.isArray)
+                        {
+                            linesProp.ClearArray();
+                            so.ApplyModifiedProperties();
+                        }
+
+                        // Best-effort cleanup/validation afterward
+                        conversationData.ValidateAndFixDialogueLines();
+                        EditorUtility.SetDirty(conversationData);
+                        AssetDatabase.SaveAssets();
+                        Debug.Log($"All dialogue lines deleted for '{conversationData.name}'.");
+                    }
+                    catch (System.Exception ex)
+                    {
+                        Debug.LogError($"Failed to delete dialogue lines: {ex.Message}");
+                    }
+                }
+            }
+            GUI.backgroundColor = prevColor;
+        }
+
         private void DrawLanguagePreviewSection()
         {
             EditorGUILayout.Space();
@@ -179,42 +234,42 @@ namespace WolfstagInteractive.ConvoCore.Editor
         }
     
 
-// Parse the embedded YAML to list locale keys present (case-insensitive, de-duplicated)
-private static List<string> TryGetLocalesFromEmbedded(ConvoCoreConversationData data)
-{
-    try
-    {
-        if (data == null || data.ConversationYaml == null) return null;
-        var yamlText = data.ConversationYaml.text;
-        if (string.IsNullOrEmpty(yamlText)) return null;
-
-        // Uses your runtime parser (already normalizes keys to case-insensitive dictionary)
-        var dict = ConvoCoreYamlParser.Parse(yamlText);
-        var set = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
-
-        foreach (var kv in dict)
+        // Parse the embedded YAML to list locale keys present (case-insensitive, de-duplicated)
+        private static List<string> TryGetLocalesFromEmbedded(ConvoCoreConversationData data)
         {
-            var list = kv.Value;
-            if (list == null) continue;
-
-            foreach (var cfg in list)
+            try
             {
-                if (cfg?.LocalizedDialogue == null) continue;
-                foreach (var lang in cfg.LocalizedDialogue.Keys)
+                if (data == null || data.ConversationYaml == null) return null;
+                var yamlText = data.ConversationYaml.text;
+                if (string.IsNullOrEmpty(yamlText)) return null;
+
+                // Uses your runtime parser (already normalizes keys to case-insensitive dictionary)
+                var dict = ConvoCoreYamlParser.Parse(yamlText);
+                var set = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+
+                foreach (var kv in dict)
                 {
-                    if (!string.IsNullOrWhiteSpace(lang))
-                        set.Add(lang.Trim());
+                    var list = kv.Value;
+                    if (list == null) continue;
+
+                    foreach (var cfg in list)
+                    {
+                        if (cfg?.LocalizedDialogue == null) continue;
+                        foreach (var lang in cfg.LocalizedDialogue.Keys)
+                        {
+                            if (!string.IsNullOrWhiteSpace(lang))
+                                set.Add(lang.Trim());
+                        }
+                    }
                 }
+
+                return set.OrderBy(s => s, StringComparer.OrdinalIgnoreCase).ToList();
+            }
+            catch
+            {
+                return null; // keep inspector resilient
             }
         }
-
-        return set.OrderBy(s => s, StringComparer.OrdinalIgnoreCase).ToList();
-    }
-    catch
-    {
-        return null; // keep inspector resilient
-    }
-}
 
         private void DrawYamlLinkingSection()
         {
@@ -451,7 +506,7 @@ private static List<string> TryGetLocalesFromEmbedded(ConvoCoreConversationData 
         /// Draws validation tools section with buttons for manual validation
         private void DrawValidationToolsSection()
         {
-            GUILayout.Space(10);
+            EditorGUILayout.BeginVertical("box");
             EditorGUILayout.LabelField("Validation Tools", EditorStyles.boldLabel);
     
             EditorGUILayout.HelpBox(
@@ -508,7 +563,7 @@ private static List<string> TryGetLocalesFromEmbedded(ConvoCoreConversationData 
             }
 
             EditorGUILayout.EndHorizontal();
-
+            EditorGUILayout.EndVertical();
             GUILayout.Space(5);
         }
 
@@ -517,6 +572,7 @@ private static List<string> TryGetLocalesFromEmbedded(ConvoCoreConversationData 
         /// </summary>
         private void DrawFilePathField()
         {
+            EditorGUILayout.BeginVertical("box");
             // Section header
             EditorGUILayout.LabelField("YML Dialogue Data File Path", EditorStyles.boldLabel);
 
@@ -549,6 +605,8 @@ private static List<string> TryGetLocalesFromEmbedded(ConvoCoreConversationData 
                     }
                 }
             }
+            EditorGUILayout.EndVertical();
+
         }
 
         /// <summary>
@@ -557,7 +615,7 @@ private static List<string> TryGetLocalesFromEmbedded(ConvoCoreConversationData 
         private void DrawConversationKeyField()
         {
             // Section header
-            EditorGUILayout.LabelField("Conversation Key", EditorStyles.boldLabel);
+            EditorGUILayout.LabelField("Conversation Key", EditorStyles.miniBoldLabel);
 
             // Description
             EditorGUILayout.HelpBox(
