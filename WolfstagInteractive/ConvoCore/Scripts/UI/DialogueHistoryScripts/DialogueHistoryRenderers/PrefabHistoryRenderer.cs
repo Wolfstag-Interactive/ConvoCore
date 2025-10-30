@@ -15,12 +15,17 @@ namespace WolfstagInteractive.ConvoCore
         private readonly List<DialogueHistoryEntry> _entries = new();
         private int _maxEntries = 100;
 
-        public void Initialize(object context = null)
+        public void Initialize(object context)
         {
             if (context is DialogueHistoryRendererContext ctx)
             {
                 _output = (IDialogueHistoryOutputPrefab)ctx.OutputHandler;
                 _maxEntries = ctx.MaxEntries > 0 ? ctx.MaxEntries : 100;
+            }
+            else
+            {
+                Debug.LogError("Invalid context type");
+                return;
             }
             _output?.Clear();
         }

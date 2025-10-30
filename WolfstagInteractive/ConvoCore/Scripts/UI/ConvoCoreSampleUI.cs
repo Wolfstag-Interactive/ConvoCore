@@ -6,7 +6,6 @@ using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.UI;
 using UnityEngine.UI;
-using UnityEngine.UIElements;
 using Button = UnityEngine.UI.Button;
 using Image = UnityEngine.UI.Image;
 
@@ -334,7 +333,7 @@ namespace WolfstagInteractive.ConvoCore
             if (rectTransform != null)
             {
                 Vector2 mousePosition;
-#if ENABLE_INPUT_SYSTEM
+                #if ENABLE_INPUT_SYSTEM
                 if (Mouse.current != null)
                 {
                     mousePosition = Mouse.current.position.ReadValue();
@@ -343,9 +342,9 @@ namespace WolfstagInteractive.ConvoCore
                 {
                     mousePosition = Input.mousePosition;
                 }
-#else
-mousePosition = Input.mousePosition;
-#endif
+                #else
+                mousePosition = Input.mousePosition;
+                #endif
                 Vector2 localMousePosition = rectTransform.InverseTransformPoint(mousePosition);
                 return rectTransform.rect.Contains(localMousePosition);
             }

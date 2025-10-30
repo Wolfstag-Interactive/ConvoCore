@@ -16,7 +16,7 @@ MonoBehaviour:
   CharacterName: Wolfstag
   PlayerPlaceholder: 
   CharacterID: Wolfstag
-  CharacterNameColor: {r: 1, g: 1, b: 1, a: 1}
+  CharacterNameColor: {r: 0.5570202, g: 0, b: 1, a: 1}
   CharacterDescription: A mysterious guardian of the forest
   Representations:
   - CharacterRepresentationName: Sprites

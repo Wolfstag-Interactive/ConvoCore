@@ -12,7 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53576b221133c4c4ea3388a18d0e367c, type: 3}
   m_Name: PrefabRendererProfile
   m_EditorClassIdentifier: 
-  displayName: Prefab
   rendererName: Prefab
-  defaultSpeakerColor: {r: 1, g: 1, b: 1, a: 1}
-  isDefault: 0

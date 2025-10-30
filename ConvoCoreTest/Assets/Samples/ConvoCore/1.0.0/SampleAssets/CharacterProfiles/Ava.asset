@@ -16,7 +16,7 @@ MonoBehaviour:
   CharacterName: Ava
   PlayerPlaceholder: 
   CharacterID: Ava
-  CharacterNameColor: {r: 1, g: 1, b: 1, a: 1}
+  CharacterNameColor: {r: 1, g: 0.9345745, b: 0, a: 1}
   CharacterDescription: The timid and easily startled one in the relationship
   Representations:
   - CharacterRepresentationName: Sprites
