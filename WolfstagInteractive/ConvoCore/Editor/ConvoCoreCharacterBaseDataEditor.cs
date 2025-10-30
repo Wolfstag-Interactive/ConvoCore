@@ -12,6 +12,7 @@ namespace WolfstagInteractive.ConvoCore.Editor
         SerializedProperty characterNameProp;
         SerializedProperty playerPlaceholderProp;
         SerializedProperty characterEmotionsProp;
+        SerializedProperty characterDescriptionProp;
 
         private void OnEnable()
         {
@@ -19,6 +20,7 @@ namespace WolfstagInteractive.ConvoCore.Editor
             isPlayerProp = serializedObject.FindProperty("IsPlayerCharacter");
             characterNameProp = serializedObject.FindProperty("CharacterName");
             playerPlaceholderProp = serializedObject.FindProperty("PlayerPlaceholder");
+            characterDescriptionProp = serializedObject.FindProperty("CharacterDescription");
         }
 
         public override void OnInspectorGUI()
@@ -37,16 +39,29 @@ namespace WolfstagInteractive.ConvoCore.Editor
                 EditorGUILayout.PropertyField(playerPlaceholderProp, new GUIContent("Player Placeholder Phrase"));
             }
             EditorGUILayout.PropertyField(characterNameProp);
-            
+            DrawCharacterDescription();
             // Check for duplicate emotion names
             CheckAndDisplayDuplicateEmotionNames();
 
             // Draw the rest of the properties excluding script and the ones already shown
             EditorGUILayout.Space();
-            DrawPropertiesExcluding(serializedObject, "m_Script", "IsPlayerCharacter", "CharacterName", "PlayerPlaceholder");
+            DrawPropertiesExcluding(serializedObject, "m_Script", "IsPlayerCharacter", "CharacterName", "PlayerPlaceholder", "CharacterDescription");
 
             // Apply changes to the serialized object
             serializedObject.ApplyModifiedProperties();
+        }
+
+        private void DrawCharacterDescription()
+        {
+            // Draw CharacterDescription as editable multiline text with tooltip
+            var content = new GUIContent("Character Description", "An optional field used to store character information such as a character description or biography.");
+            var r = EditorGUILayout.GetControlRect(true, Mathf.Max(60, EditorGUIUtility.singleLineHeight));
+            r = EditorGUI.IndentedRect(r);
+            var labelWidth = EditorGUIUtility.labelWidth;
+            var labelRect = new Rect(r.x, r.y, labelWidth, EditorGUIUtility.singleLineHeight);
+            var fieldRect = new Rect(r.x + labelWidth, r.y, r.width - labelWidth, r.height);
+            EditorGUI.PrefixLabel(labelRect, content); // shows tooltip on hover
+            characterDescriptionProp.stringValue = EditorGUI.TextArea(fieldRect, characterDescriptionProp.stringValue);
         }
 
         private void CheckAndDisplayDuplicateEmotionNames()

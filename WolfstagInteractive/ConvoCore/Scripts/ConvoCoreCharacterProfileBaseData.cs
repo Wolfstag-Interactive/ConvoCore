@@ -14,6 +14,7 @@ namespace WolfstagInteractive.ConvoCore
         public string PlayerPlaceholder;
         public string CharacterID;
         public Color CharacterNameColor;
+        public string CharacterDescription;
 
         [Tooltip("Each element maps a unique representation identifier (e.g., 'happy', 'angry') to a representation asset.")]
         public List<RepresentationPair> Representations = new List<RepresentationPair>();
