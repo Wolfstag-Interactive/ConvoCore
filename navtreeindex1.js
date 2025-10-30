@@ -1,7 +1,5 @@
 var NAVTREEINDEX1 =
 {
-"namespacemembers_enum.html":[0,1,1],
-"namespaces.html":[0,0],
 "pages.html":[],
 "structWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData_1_1CharacterRepresentationData.html":[0,0,0,0,13,0],
 "structWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData_1_1CharacterRepresentationData.html":[1,0,0,0,13,0],
