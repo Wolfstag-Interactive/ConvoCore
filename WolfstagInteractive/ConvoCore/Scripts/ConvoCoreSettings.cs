@@ -31,7 +31,6 @@ namespace WolfstagInteractive.ConvoCore
         public string CurrentLanguage = "EN";
         [Header("Addressables (optional)")] public bool AddressablesEnabled = false; // flip on when project uses it
         public string AddressablesKeyTemplate = "{filePath}.yml"; // maps FilePath -> key
-
         public bool VerboseLogs = false;
         /// <summary>
         /// Validates that CurrentLanguage is in the SupportedLanguages list

@@ -89,6 +89,7 @@ namespace WolfstagInteractive.ConvoCore
         {
             DisplayDialogue(localizedText);
             SpeakerName.text = speakerName;
+            SpeakerName.color = primaryProfile.CharacterNameColor;
             ConvoCoreDialogueHistoryUI.AddLine(speakerName,localizedText,primaryProfile.CharacterNameColor);
 
             // Hide all sprite elements
