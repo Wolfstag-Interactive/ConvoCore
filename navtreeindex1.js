@@ -1,10 +1,20 @@
 var NAVTREEINDEX1 =
 {
+"namespaceWolfstagInteractive.html":[0,0,0],
+"namespaceWolfstagInteractive_1_1ConvoCore.html":[0,0,0,0],
+"namespaceWolfstagInteractive_1_1ConvoCore.html#a641e3e9ced2cb6f0f0e0ccc6e90318ca":[0,0,0,0,62],
+"namespaceWolfstagInteractive_1_1ConvoCore.html#a641e3e9ced2cb6f0f0e0ccc6e90318caa4f1f6016fc9f3f2353c0cc7c67b292bd":[0,0,0,0,62,2],
+"namespaceWolfstagInteractive_1_1ConvoCore.html#a641e3e9ced2cb6f0f0e0ccc6e90318caa92b09c7c48c520c3c55e497875da437c":[0,0,0,0,62,1],
+"namespaceWolfstagInteractive_1_1ConvoCore.html#a641e3e9ced2cb6f0f0e0ccc6e90318caa945d5e233cf7d6240f6b783b36a374ff":[0,0,0,0,62,0],
+"namespaceWolfstagInteractive_1_1ConvoCore_1_1Editor.html":[0,0,0,0,0],
+"namespacemembers.html":[0,1,0],
+"namespacemembers_enum.html":[0,1,1],
+"namespaces.html":[0,0],
 "pages.html":[],
-"structWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData_1_1CharacterRepresentationData.html":[0,0,0,0,13,0],
-"structWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData_1_1CharacterRepresentationData.html":[1,0,0,0,13,0],
-"structWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData_1_1LocalizedDialogue.html":[0,0,0,0,13,2],
-"structWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData_1_1LocalizedDialogue.html":[1,0,0,0,13,2],
-"structWolfstagInteractive_1_1ConvoCore_1_1DialogueHistoryRendererContext.html":[0,0,0,0,27],
-"structWolfstagInteractive_1_1ConvoCore_1_1DialogueHistoryRendererContext.html":[1,0,0,0,27]
+"structWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData_1_1CharacterRepresentationData.html":[0,0,0,0,15,0],
+"structWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData_1_1CharacterRepresentationData.html":[1,0,0,0,15,0],
+"structWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData_1_1LocalizedDialogue.html":[0,0,0,0,15,2],
+"structWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData_1_1LocalizedDialogue.html":[1,0,0,0,15,2],
+"structWolfstagInteractive_1_1ConvoCore_1_1DialogueHistoryRendererContext.html":[0,0,0,0,29],
+"structWolfstagInteractive_1_1ConvoCore_1_1DialogueHistoryRendererContext.html":[1,0,0,0,29]
 };

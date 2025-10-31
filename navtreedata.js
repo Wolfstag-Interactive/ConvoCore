@@ -49,7 +49,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"pages.html"
+"namespaceWolfstagInteractive.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
