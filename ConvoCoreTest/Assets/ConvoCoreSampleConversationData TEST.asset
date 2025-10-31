@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!49 &-1171465428984462689
+--- !u!49 &-7234822386653529355
 TextAsset:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -110,7 +110,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 871b502169fa7f74e9d3d3a7b87b6503, type: 2}
   - {fileID: 11400000, guid: 086dcde826a3fcb4b903e747228d482b, type: 2}
   DialogueLines: []
-  ConversationYaml: {fileID: -1171465428984462689}
+  ConversationYaml: {fileID: 0}
   AllowPersistentOverrides: 1
   FilePath: DialogueScriptSample.yml
   SourceYaml: {fileID: 102900000, guid: 4612376414d9cc742be9c4b790213e6a, type: 3}

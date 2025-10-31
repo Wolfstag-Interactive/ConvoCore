@@ -103,7 +103,7 @@ namespace WolfstagInteractive.ConvoCore.Editor
             // Add a button to start the conversation
             if (GUILayout.Button("Start Conversation"))
             {
-                convoCore.StartConversation();
+                convoCore.PlayConversation();
             }
 
             EditorGUILayout.Space();

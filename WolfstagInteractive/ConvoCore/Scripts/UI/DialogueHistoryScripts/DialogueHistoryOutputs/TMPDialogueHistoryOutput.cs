@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 namespace WolfstagInteractive.ConvoCore
 {
-    [UnityEngine.HelpURL("https://docs.wolfstaginteractive.com/classWolfstagInteractive_1_1ConvoCore_1_1TMPDialogueHistoryOutput.html")]
+    [HelpURL("https://docs.wolfstaginteractive.com/classWolfstagInteractive_1_1ConvoCore_1_1TMPDialogueHistoryOutput.html")]
     public class TMPDialogueHistoryOutput : IDialogueHistoryOutput
     {
         private readonly TMP_Text _text;

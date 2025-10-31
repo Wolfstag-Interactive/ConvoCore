@@ -109,8 +109,7 @@ namespace WolfstagInteractive.ConvoCore
         /// <param name="slot">The display slot where the character representation should be rendered (left, right, or center).</param>
         private void RenderRepresentation(ConvoCoreConversationData.CharacterRepresentationData data, DisplaySlot slot)
         {
-            var convoCore = FindObjectOfType<ConvoCore>();
-            var conversationData = convoCore?.ConversationData;
+            ConvoCoreConversationData conversationData = ConvoCoreInstance?.GetCurrentConversationData();
             if (conversationData == null) return;
 
             var representation = GetCharacterRepresentationFromData(conversationData, data);

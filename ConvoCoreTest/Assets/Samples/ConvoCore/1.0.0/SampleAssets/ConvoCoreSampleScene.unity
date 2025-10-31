@@ -400,8 +400,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f83cb113c2798d49b512e1fdd5e0dcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ConversationData: {fileID: 11400000, guid: 939c62473d966244bab0eb28ef86023a, type: 2}
+  Input:
+    rid: 5888606765772963840
   ConversationUI: {fileID: 8703669978597215545}
+  references:
+    version: 2
+    RefIds:
+    - rid: 5888606765772963840
+      type: {class: SingleConversationInput, ns: WolfstagInteractive.ConvoCore, asm: ConvoCore}
+      data:
+        Conversation: {fileID: 11400000, guid: 939c62473d966244bab0eb28ef86023a, type: 2}
 --- !u!4 &639238755
 Transform:
   m_ObjectHideFlags: 0
@@ -904,13 +912,37 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 124178385466690470, guid: 37defd90b8cf4c644b832efe22df606d, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 124178385466690470, guid: 37defd90b8cf4c644b832efe22df606d, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 124178385466690470, guid: 37defd90b8cf4c644b832efe22df606d, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 124178385466690470, guid: 37defd90b8cf4c644b832efe22df606d, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 444105413700069326, guid: 37defd90b8cf4c644b832efe22df606d, type: 3}
       propertyPath: m_Name
       value: ConvoCoreSampleUI
       objectReference: {fileID: 0}
     - target: {fileID: 2475525088512401250, guid: 37defd90b8cf4c644b832efe22df606d, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 191.5
+      value: 191.49998
+      objectReference: {fileID: 0}
+    - target: {fileID: 2674301797292854259, guid: 37defd90b8cf4c644b832efe22df606d, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2674301797292854259, guid: 37defd90b8cf4c644b832efe22df606d, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2692523063024359977, guid: 37defd90b8cf4c644b832efe22df606d, type: 3}
       propertyPath: m_Pivot.x
@@ -1031,6 +1063,14 @@ PrefabInstance:
     - target: {fileID: 6751505844025749556, guid: 37defd90b8cf4c644b832efe22df606d, type: 3}
       propertyPath: selectedProfileName
       value: Plain
+      objectReference: {fileID: 0}
+    - target: {fileID: 6846698865680571438, guid: 37defd90b8cf4c644b832efe22df606d, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6846698865680571438, guid: 37defd90b8cf4c644b832efe22df606d, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 37defd90b8cf4c644b832efe22df606d, type: 3}

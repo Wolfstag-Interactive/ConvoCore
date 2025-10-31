@@ -6,11 +6,14 @@ using UnityEngine;
 namespace WolfstagInteractive.ConvoCore
 {
 [UnityEngine.HelpURL("https://docs.wolfstaginteractive.com/classWolfstagInteractive_1_1ConvoCore_1_1ConvoCore.html")]
-    public class ConvoCore : MonoBehaviour
+    public class ConvoCore : MonoBehaviour,IConvoCoreRunner
     {
+
+         private ConvoCoreConversationData ConversationData;
+        public ConvoCoreConversationData GetCurrentConversationData() => ConversationData;
         [Header("Conversation Settings")]
-        public ConvoCoreConversationData ConversationData;
-        
+        [SerializeReference] public IConvoInput Input = new SingleConversationInput();
+
         [Header("Conversation UI")]
         public ConvoCoreUIFoundation ConversationUI;
         
@@ -21,6 +24,7 @@ namespace WolfstagInteractive.ConvoCore
         public event Action StartedConversation;
         public event Action PausedConversation;
         public event Action EndedConversation;
+        public event Action CompletedConversation;
 
         public enum ConversationState
         {
@@ -35,42 +39,10 @@ namespace WolfstagInteractive.ConvoCore
             LocalizationHandler = new ConvoCoreDialogueLocalizationHandler(ConvoCoreLanguageManager.Instance);
         }
 
-        private void Start()
-        {
-            if (ConversationData != null)
-            {
-                ConversationData.InitializeDialogueData();
-                ConversationUI.InitializeUI(this);
-            }
-        }
-
-        /// <summary>
-        /// Starts the conversation from the beginning
-        /// </summary>
-        public void StartConversation()
-        {
-            if (ConversationData == null)
-            {
-                Debug.LogError("ConversationData is not assigned!");
-                return;
-            }
-
-            if (ConversationData.DialogueLines == null || ConversationData.DialogueLines.Count == 0)
-            {
-                Debug.LogError("No dialogue lines found in ConversationData!");
-                return;
-            }
-
-            CurrentDialogueState = ConversationState.Active;
-            _currentLineIndex = 0;
-            StartedConversation?.Invoke();
-            StartCoroutine(PlayConversation());
-        }
-
         /// <summary>
         /// Main coroutine that handles the conversation flow
         /// </summary>
-        private IEnumerator PlayConversation()
+        private IEnumerator ExecuteDialogueSequence()
         {
             while (_currentLineIndex < ConversationData.DialogueLines.Count && CurrentDialogueState == ConversationState.Active)
             {
@@ -156,6 +128,7 @@ namespace WolfstagInteractive.ConvoCore
 
             // End conversation
             CurrentDialogueState = ConversationState.Completed;
+            CompletedConversation?.Invoke();
             if (ConversationUI != null)
             {
                 ConversationUI.HideDialogue();
@@ -330,7 +303,6 @@ namespace WolfstagInteractive.ConvoCore
             
             return null;
         }
-
         /// <summary>
         /// Plays a dialogue line with the UI foundation
         /// </summary>
@@ -344,7 +316,6 @@ namespace WolfstagInteractive.ConvoCore
             
             yield return null; // Wait one frame for UI to update
         }
-
         /// <summary>
         /// Plays an audio clip if provided
         /// </summary>
@@ -358,7 +329,6 @@ namespace WolfstagInteractive.ConvoCore
             }
             yield return null;
         }
-
         /// <summary>
         /// Replaces player name placeholders in dialogue text
         /// </summary>
@@ -375,8 +345,6 @@ namespace WolfstagInteractive.ConvoCore
             
             return dialogueText.Replace("{PlayerName}", "Player");
         }
-
-       
         /// <summary>
         /// Updates UI for language change
         /// </summary>
@@ -465,5 +433,62 @@ namespace WolfstagInteractive.ConvoCore
             }
             Debug.Log("Conversation stopped.");
         }
+
+        public void PlayConversation(ConvoCoreConversationData conversation)
+        {
+            if (conversation == null)
+            {
+                Debug.LogError("[ConvoCore] Play called with null conversation.");
+                return;
+            }
+            ConversationData = conversation;
+            ConversationData.InitializeDialogueData();
+            if (ConversationUI != null)
+            {
+                ConversationUI.InitializeUI(this);
+            }
+            if (ConversationData == null)
+            {
+                Debug.LogError("ConversationData is not assigned!");
+                return;
+            }
+            if (ConversationData.DialogueLines == null || ConversationData.DialogueLines.Count == 0)
+            {
+                Debug.LogError("No dialogue lines found in ConversationData!");
+                return;
+            }
+
+            CurrentDialogueState = ConversationState.Active;
+            _currentLineIndex = 0;
+            StartedConversation?.Invoke();
+            StartCoroutine(ExecuteDialogueSequence());
+        }
+        
+        public void PlayConversation()
+        {
+            if (Input == null)
+            {
+                Debug.LogWarning("[ConvoCore] Input is null.");
+                return;
+            }
+
+            // If Input is a SingleConversationInput with a valid conversation, route to the typed overload
+            if (Input is SingleConversationInput sci && sci.Conversation != null)
+            {
+                PlayConversation(sci.Conversation);
+                return;
+            }
+
+            // Otherwise let the input drive (e.g., ContainerInput starts its own sequencing coroutine)
+            Input.Play(this, this);
+        }
+
+    }
+
+    public interface IConvoCoreRunner
+    {
+        void PlayConversation(ConvoCoreConversationData conversation);
+        public event Action CompletedConversation;
+
     }
 }

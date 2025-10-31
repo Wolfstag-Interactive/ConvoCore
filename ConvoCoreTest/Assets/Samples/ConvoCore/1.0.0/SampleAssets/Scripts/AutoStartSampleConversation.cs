@@ -5,6 +5,6 @@ public class AutoStartSampleConversation : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GetComponent<WolfstagInteractive.ConvoCore.ConvoCore>().StartConversation();
+        GetComponent<WolfstagInteractive.ConvoCore.ConvoCore>().PlayConversation();
     }
 }
