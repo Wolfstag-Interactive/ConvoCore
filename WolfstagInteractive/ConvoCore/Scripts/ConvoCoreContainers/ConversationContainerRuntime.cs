@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using System.Collections;
+using System.Linq;
 
 namespace WolfstagInteractive.ConvoCore
 {
@@ -11,9 +12,8 @@ namespace WolfstagInteractive.ConvoCore
         IConvoCoreRunner runner,
         string startAliasOrName = null,
         bool? loopOverride = null,
-        System.Func<ConversationContainer.Entry> hubSelector = null)
+        Func<ConversationContainer.Entry> hubSelector = null)
     {
-        // For now, just call Linear. You can swap to multi-mode later.
         return PlayLinear(c, runner, startAliasOrName, loopOverride);
     }
 
@@ -21,7 +21,26 @@ namespace WolfstagInteractive.ConvoCore
         ConversationContainer c, IConvoCoreRunner runner,
         string startAliasOrName = null, bool? loopOverride = null)
     {
-        if (c == null || c.Conversations == null || c.Conversations.Count == 0) yield break;
+        if (c == null || c.Conversations == null || c.Conversations.Count == 0)
+        {
+            Debug.LogWarning("Conversation container is null, or container contains no conversation entries, exiting.");
+            yield break;
+        }
+        if (c.Conversations != null)
+        {
+            int beforeCount = c.Conversations.Count;
+            c.Conversations.RemoveAll(e => e == null || e.ConversationData == null);
+
+
+            if (beforeCount != c.Conversations.Count)
+            {
+                Debug.LogWarning($"[ConvoCore] Removed {beforeCount - c.Conversations.Count} null entries from container '{c.name}'." +
+                                 $"This is done to prevent errors during runtime. Ensure that the container does not contain null entries during edit time.");
+            }
+        }
+
+        if (c.Conversations == null || c.Conversations.Count == 0)
+            yield break;
 
         bool loop = loopOverride ?? c.Loop;
         int start = ResolveIndex(c, string.IsNullOrEmpty(startAliasOrName) ? c.DefaultStart : startAliasOrName);

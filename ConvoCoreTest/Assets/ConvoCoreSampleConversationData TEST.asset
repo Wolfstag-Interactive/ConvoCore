@@ -109,8 +109,1323 @@ MonoBehaviour:
   - {fileID: 11400000, guid: cca04ff07be1b1a478acbfc412045f2e, type: 2}
   - {fileID: 11400000, guid: 871b502169fa7f74e9d3d3a7b87b6503, type: 2}
   - {fileID: 11400000, guid: 086dcde826a3fcb4b903e747228d482b, type: 2}
-  DialogueLines: []
-  ConversationYaml: {fileID: 0}
+  DialogueLines:
+  - ConversationID: Conversation1
+    ConversationLineIndex: 0
+    characterID: Ava
+    PrimaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: Sprites
+      SelectedRepresentation: {fileID: 11400000, guid: cf61be94e9ae46b4da28bb23d0bfa60f, type: 2}
+      SelectedEmotionId: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    SecondaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedEmotionId: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    TertiaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedEmotionId: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    LocalizedDialogues:
+    - Language: en
+      Text: "Jared... we\u2019re definitely off-trail."
+    - Language: fr
+      Text: "Jared... on s'est clairement \xE9gar\xE9s."
+    - Language: es
+      Text: Jared... definitivamente nos perdimos del sendero.
+    clip: {fileID: 0}
+    ActionsBeforeDialogueLine: []
+    ActionsAfterDialogueLine: []
+    UserInputMethod: 0
+    TimeBeforeNextLine: 0
+  - ConversationID: Conversation1
+    ConversationLineIndex: 1
+    characterID: Jared
+    PrimaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: Sprites
+      SelectedRepresentation: {fileID: 11400000, guid: 5b9d585132056d5479e01ea082d4b2be, type: 2}
+      SelectedEmotionId: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    SecondaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedEmotionId: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    TertiaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedEmotionId: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    LocalizedDialogues:
+    - Language: en
+      Text: "Technically, we\u2019re *still* in the forest. Nature counts."
+    - Language: fr
+      Text: "Techniquement, on est toujours dans la for\xEAt. \xC7a compte, non?"
+    - Language: es
+      Text: "T\xE9cnicamente, seguimos en el bosque. Eso cuenta."
+    clip: {fileID: 0}
+    ActionsBeforeDialogueLine: []
+    ActionsAfterDialogueLine: []
+    UserInputMethod: 0
+    TimeBeforeNextLine: 0
+  - ConversationID: Conversation1
+    ConversationLineIndex: 2
+    characterID: Ava
+    PrimaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: Sprites
+      SelectedRepresentation: {fileID: 11400000, guid: cf61be94e9ae46b4da28bb23d0bfa60f, type: 2}
+      SelectedEmotionId: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    SecondaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedEmotionId: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    TertiaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedEmotionId: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    LocalizedDialogues:
+    - Language: en
+      Text: "We\u2019ve circled that tree three times now."
+    - Language: fr
+      Text: "On a tourn\xE9 autour de cet arbre trois fois."
+    - Language: es
+      Text: "Hemos rodeado ese \xE1rbol tres veces."
+    clip: {fileID: 0}
+    ActionsBeforeDialogueLine: []
+    ActionsAfterDialogueLine: []
+    UserInputMethod: 0
+    TimeBeforeNextLine: 0
+  - ConversationID: Conversation1
+    ConversationLineIndex: 3
+    characterID: Jared
+    PrimaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: Sprites
+      SelectedRepresentation: {fileID: 11400000, guid: 5b9d585132056d5479e01ea082d4b2be, type: 2}
+      SelectedEmotionId: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    SecondaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedEmotionId: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    TertiaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedEmotionId: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    LocalizedDialogues:
+    - Language: en
+      Text: "It\u2019s a popular tree. Five stars on TreeAdvisor."
+    - Language: fr
+      Text: "C\u2019est un arbre populaire. Cinq \xE9toiles sur TreeAdvisor."
+    - Language: es
+      Text: "Es un \xE1rbol famoso. Cinco estrellas en TreeAdvisor."
+    clip: {fileID: 0}
+    ActionsBeforeDialogueLine: []
+    ActionsAfterDialogueLine: []
+    UserInputMethod: 0
+    TimeBeforeNextLine: 0
+  - ConversationID: Conversation1
+    ConversationLineIndex: 4
+    characterID: Ava
+    PrimaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: Sprites
+      SelectedRepresentation: {fileID: 11400000, guid: cf61be94e9ae46b4da28bb23d0bfa60f, type: 2}
+      SelectedEmotionId: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    SecondaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedEmotionId: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    TertiaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedEmotionId: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    LocalizedDialogues:
+    - Language: en
+      Text: Shh! Did you hear that?
+    - Language: fr
+      Text: "Chut! T\u2019as entendu \xE7a ?"
+    - Language: es
+      Text: "\xA1Shh! \xBFEscuchaste eso?"
+    clip: {fileID: 0}
+    ActionsBeforeDialogueLine: []
+    ActionsAfterDialogueLine: []
+    UserInputMethod: 0
+    TimeBeforeNextLine: 0
+  - ConversationID: Conversation1
+    ConversationLineIndex: 5
+    characterID: Jared
+    PrimaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: Sprites
+      SelectedRepresentation: {fileID: 11400000, guid: 5b9d585132056d5479e01ea082d4b2be, type: 2}
+      SelectedEmotionId: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    SecondaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedEmotionId: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    TertiaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedEmotionId: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    LocalizedDialogues:
+    - Language: en
+      Text: "Maybe it\u2019s a bear. Or a ranger with snacks."
+    - Language: fr
+      Text: "Peut-\xEAtre un ours. Ou un garde forestier avec des snacks."
+    - Language: es
+      Text: "Quiz\xE1s un oso. O un guardabosques con bocadillos."
+    clip: {fileID: 0}
+    ActionsBeforeDialogueLine: []
+    ActionsAfterDialogueLine: []
+    UserInputMethod: 0
+    TimeBeforeNextLine: 0
+  - ConversationID: Conversation1
+    ConversationLineIndex: 6
+    characterID: Wolfstag
+    PrimaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: Sprites
+      SelectedRepresentation: {fileID: 11400000, guid: 52e24c290fb50014b8aee74d5f275726, type: 2}
+      SelectedEmotionId: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    SecondaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedEmotionId: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    TertiaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedEmotionId: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    LocalizedDialogues:
+    - Language: en
+      Text: '*A towering silhouette appears between the trees. Antlers like twisted
+        branches.*'
+    - Language: fr
+      Text: "*Une silhouette massive \xE9merge entre les arbres. Des bois torsad\xE9s.*"
+    - Language: es
+      Text: "*Una silueta imponente aparece entre los \xE1rboles. Astas retorcidas.*"
+    clip: {fileID: 0}
+    ActionsBeforeDialogueLine: []
+    ActionsAfterDialogueLine: []
+    UserInputMethod: 0
+    TimeBeforeNextLine: 0
+  - ConversationID: Conversation1
+    ConversationLineIndex: 7
+    characterID: Ava
+    PrimaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: Sprites
+      SelectedRepresentation: {fileID: 11400000, guid: cf61be94e9ae46b4da28bb23d0bfa60f, type: 2}
+      SelectedEmotionId: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    SecondaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedEmotionId: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    TertiaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedEmotionId: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    LocalizedDialogues:
+    - Language: en
+      Text: What is *that?!*
+    - Language: fr
+      Text: "C\u2019est quoi *\xE7a* ?!"
+    - Language: es
+      Text: "\xBF\xA1Qu\xE9 es *eso*!?"
+    clip: {fileID: 0}
+    ActionsBeforeDialogueLine: []
+    ActionsAfterDialogueLine: []
+    UserInputMethod: 0
+    TimeBeforeNextLine: 0
+  - ConversationID: Conversation1
+    ConversationLineIndex: 8
+    characterID: Jared
+    PrimaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: Sprites
+      SelectedRepresentation: {fileID: 11400000, guid: 5b9d585132056d5479e01ea082d4b2be, type: 2}
+      SelectedEmotionId: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    SecondaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedEmotionId: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    TertiaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedEmotionId: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    LocalizedDialogues:
+    - Language: en
+      Text: '*gasps* Whoooooa. Look at you!'
+    - Language: fr
+      Text: "*hal\xE8tement* Wooooow. Regarde-moi \xE7a!"
+    - Language: es
+      Text: "*jadea* \xA1Wooooow! \xA1M\xEDrate!"
+    clip: {fileID: 0}
+    ActionsBeforeDialogueLine: []
+    ActionsAfterDialogueLine: []
+    UserInputMethod: 0
+    TimeBeforeNextLine: 0
+  - ConversationID: Conversation1
+    ConversationLineIndex: 9
+    characterID: Jared
+    PrimaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: Sprites
+      SelectedRepresentation: {fileID: 11400000, guid: 5b9d585132056d5479e01ea082d4b2be, type: 2}
+      SelectedEmotionId: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    SecondaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedEmotionId: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    TertiaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedEmotionId: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    LocalizedDialogues:
+    - Language: en
+      Text: "Are you lost too, buddy? You need scritches? Huh? Who\u2019s a majestic
+        forest beast? *You* are!"
+    - Language: fr
+      Text: "Tu t\u2019es perdu aussi, mon grand ? Tu veux des gratouilles ? Qui
+        est une b\xEAte majestueuse ? *C\u2019est toi!*"
+    - Language: es
+      Text: "\xBFTambi\xE9n est\xE1s perdido, amigo? \xBFQuieres caricias? \xBFQui\xE9n
+        es una bestia majestuosa? \xA1*T\xFA*!"
+    clip: {fileID: 0}
+    ActionsBeforeDialogueLine: []
+    ActionsAfterDialogueLine: []
+    UserInputMethod: 0
+    TimeBeforeNextLine: 0
+  - ConversationID: Conversation1
+    ConversationLineIndex: 10
+    characterID: Wolfstag
+    PrimaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: Sprites
+      SelectedRepresentation: {fileID: 11400000, guid: 52e24c290fb50014b8aee74d5f275726, type: 2}
+      SelectedEmotionId: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    SecondaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedEmotionId: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    TertiaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedEmotionId: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    LocalizedDialogues:
+    - Language: en
+      Text: '*It tilts its head slightly. Curious.*'
+    - Language: fr
+      Text: "*Il incline l\xE9g\xE8rement la t\xEAte. Curieux.*"
+    - Language: es
+      Text: '*Inclina ligeramente la cabeza. Curioso.*'
+    clip: {fileID: 0}
+    ActionsBeforeDialogueLine: []
+    ActionsAfterDialogueLine: []
+    UserInputMethod: 0
+    TimeBeforeNextLine: 0
+  - ConversationID: Conversation1
+    ConversationLineIndex: 11
+    characterID: Ava
+    PrimaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: Sprites
+      SelectedRepresentation: {fileID: 11400000, guid: cf61be94e9ae46b4da28bb23d0bfa60f, type: 2}
+      SelectedEmotionId: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    SecondaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedEmotionId: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    TertiaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedEmotionId: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    LocalizedDialogues:
+    - Language: en
+      Text: "Jared\u2026 stop trying to pet the antler demon!"
+    - Language: fr
+      Text: "Jared\u2026 arr\xEAte d\u2019essayer de caresser le d\xE9mon \xE0 bois!"
+    - Language: es
+      Text: "\xA1Jared... deja de intentar acariciar al demonio de los cuernos!"
+    clip: {fileID: 0}
+    ActionsBeforeDialogueLine: []
+    ActionsAfterDialogueLine: []
+    UserInputMethod: 0
+    TimeBeforeNextLine: 0
+  - ConversationID: Conversation1
+    ConversationLineIndex: 12
+    characterID: Wolfstag
+    PrimaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: Sprites
+      SelectedRepresentation: {fileID: 11400000, guid: 52e24c290fb50014b8aee74d5f275726, type: 2}
+      SelectedEmotionId: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    SecondaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedEmotionId: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    TertiaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedEmotionId: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    LocalizedDialogues:
+    - Language: en
+      Text: "*The shadows melt away. The creature\u2019s full form is revealed\u2014fur
+        glows silver in the moonlight.*"
+    - Language: fr
+      Text: "*Les ombres se dissipent. La cr\xE9ature se d\xE9voile \u2014 sa fourrure
+        luit \xE0 la lumi\xE8re lunaire.*"
+    - Language: es
+      Text: "*Las sombras se desvanecen. Su forma completa aparece \u2014 su pelaje
+        brilla bajo la luna.*"
+    clip: {fileID: 0}
+    ActionsBeforeDialogueLine: []
+    ActionsAfterDialogueLine: []
+    UserInputMethod: 0
+    TimeBeforeNextLine: 0
+  - ConversationID: Conversation1
+    ConversationLineIndex: 13
+    characterID: Jared
+    PrimaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: Sprites
+      SelectedRepresentation: {fileID: 11400000, guid: 5b9d585132056d5479e01ea082d4b2be, type: 2}
+      SelectedEmotionId: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    SecondaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedEmotionId: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    TertiaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedEmotionId: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    LocalizedDialogues:
+    - Language: en
+      Text: "Oh my god. He\u2019s gorgeous. I want ten of him."
+    - Language: fr
+      Text: "Oh mon dieu. Il est splendide. J\u2019en veux dix."
+    - Language: es
+      Text: "Dios m\xEDo. Es hermoso. Quiero diez."
+    clip: {fileID: 0}
+    ActionsBeforeDialogueLine: []
+    ActionsAfterDialogueLine: []
+    UserInputMethod: 0
+    TimeBeforeNextLine: 0
+  - ConversationID: Conversation1
+    ConversationLineIndex: 14
+    characterID: Ava
+    PrimaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: Sprites
+      SelectedRepresentation: {fileID: 11400000, guid: cf61be94e9ae46b4da28bb23d0bfa60f, type: 2}
+      SelectedEmotionId: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    SecondaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedEmotionId: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    TertiaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedEmotionId: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    LocalizedDialogues:
+    - Language: en
+      Text: "...I think he\u2019s leading us somewhere."
+    - Language: fr
+      Text: "...Je crois qu\u2019il nous guide quelque part."
+    - Language: es
+      Text: "...Creo que nos est\xE1 guiando."
+    clip: {fileID: 0}
+    ActionsBeforeDialogueLine: []
+    ActionsAfterDialogueLine: []
+    UserInputMethod: 0
+    TimeBeforeNextLine: 0
+  - ConversationID: Conversation1
+    ConversationLineIndex: 15
+    characterID: Wolfstag
+    PrimaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: Sprites
+      SelectedRepresentation: {fileID: 11400000, guid: 52e24c290fb50014b8aee74d5f275726, type: 2}
+      SelectedEmotionId: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    SecondaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedEmotionId: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    TertiaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedEmotionId: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    LocalizedDialogues:
+    - Language: en
+      Text: '*He glances back, takes a few careful steps, then waits.*'
+    - Language: fr
+      Text: "*Il jette un regard en arri\xE8re, avance lentement, puis s\u2019arr\xEAte.*"
+    - Language: es
+      Text: "*Mira hacia atr\xE1s, da unos pasos y espera.*"
+    clip: {fileID: 0}
+    ActionsBeforeDialogueLine: []
+    ActionsAfterDialogueLine: []
+    UserInputMethod: 0
+    TimeBeforeNextLine: 0
+  - ConversationID: Conversation1
+    ConversationLineIndex: 16
+    characterID: Jared
+    PrimaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: Sprites
+      SelectedRepresentation: {fileID: 11400000, guid: 5b9d585132056d5479e01ea082d4b2be, type: 2}
+      SelectedEmotionId: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    SecondaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedEmotionId: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    TertiaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedEmotionId: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    LocalizedDialogues:
+    - Language: en
+      Text: "Look at him! He\u2019s so polite. Trail angel confirmed."
+    - Language: fr
+      Text: "Regarde-le ! Trop poli. Ange du sentier confirm\xE9."
+    - Language: es
+      Text: "\xA1M\xEDralo! Tan educado. \xC1ngel del sendero confirmado."
+    clip: {fileID: 0}
+    ActionsBeforeDialogueLine: []
+    ActionsAfterDialogueLine: []
+    UserInputMethod: 0
+    TimeBeforeNextLine: 0
+  - ConversationID: Conversation1
+    ConversationLineIndex: 17
+    characterID: Ava
+    PrimaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: Sprites
+      SelectedRepresentation: {fileID: 11400000, guid: cf61be94e9ae46b4da28bb23d0bfa60f, type: 2}
+      SelectedEmotionId: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    SecondaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedEmotionId: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    TertiaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedEmotionId: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    LocalizedDialogues:
+    - Language: en
+      Text: I think he wants us to follow. And... I think we should.
+    - Language: fr
+      Text: "Il veut qu\u2019on le suive. Et... je crois qu\u2019on devrait."
+    - Language: es
+      Text: Quiere que lo sigamos. Y... creo que debemos hacerlo.
+    clip: {fileID: 0}
+    ActionsBeforeDialogueLine: []
+    ActionsAfterDialogueLine: []
+    UserInputMethod: 0
+    TimeBeforeNextLine: 0
+  - ConversationID: Conversation1
+    ConversationLineIndex: 18
+    characterID: Wolfstag
+    PrimaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: Sprites
+      SelectedRepresentation: {fileID: 11400000, guid: 52e24c290fb50014b8aee74d5f275726, type: 2}
+      SelectedEmotionId: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    SecondaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedEmotionId: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    TertiaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedEmotionId: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    LocalizedDialogues:
+    - Language: en
+      Text: '*The creature moves ahead again, parting the brush. Bits of a path peek
+        through behind him.*'
+    - Language: fr
+      Text: "*La cr\xE9ature avance \xE0 nouveau, \xE9cartant les buissons. Un sentier
+        appara\xEEt derri\xE8re lui.*"
+    - Language: es
+      Text: "*La criatura avanza, apartando los arbustos. Se revela un sendero detr\xE1s
+        de \xE9l.*"
+    clip: {fileID: 0}
+    ActionsBeforeDialogueLine: []
+    ActionsAfterDialogueLine: []
+    UserInputMethod: 0
+    TimeBeforeNextLine: 0
+  - ConversationID: Conversation1
+    ConversationLineIndex: 19
+    characterID: Jared
+    PrimaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: Sprites
+      SelectedRepresentation: {fileID: 11400000, guid: 5b9d585132056d5479e01ea082d4b2be, type: 2}
+      SelectedEmotionId: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    SecondaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedEmotionId: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    TertiaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedEmotionId: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    LocalizedDialogues:
+    - Language: en
+      Text: "Wait... this looks familiar. That\u2019s the ridge! That\u2019s the
+        way back!"
+    - Language: fr
+      Text: "Attends... \xE7a me dit quelque chose. C\u2019est la cr\xEAte ! C\u2019est
+        le bon chemin !"
+    - Language: es
+      Text: "Espera... esto me suena. \xA1Esa es la cresta! \xA1Ese es el camino
+        de regreso!"
+    clip: {fileID: 0}
+    ActionsBeforeDialogueLine: []
+    ActionsAfterDialogueLine: []
+    UserInputMethod: 0
+    TimeBeforeNextLine: 0
+  - ConversationID: Conversation1
+    ConversationLineIndex: 20
+    characterID: Ava
+    PrimaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: Sprites
+      SelectedRepresentation: {fileID: 11400000, guid: cf61be94e9ae46b4da28bb23d0bfa60f, type: 2}
+      SelectedEmotionId: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    SecondaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedEmotionId: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    TertiaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedEmotionId: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    LocalizedDialogues:
+    - Language: en
+      Text: He really *is* guiding us...
+    - Language: fr
+      Text: Il nous guide vraiment...
+    - Language: es
+      Text: "De verdad nos est\xE1 guiando..."
+    clip: {fileID: 0}
+    ActionsBeforeDialogueLine: []
+    ActionsAfterDialogueLine: []
+    UserInputMethod: 0
+    TimeBeforeNextLine: 0
+  - ConversationID: Conversation1
+    ConversationLineIndex: 21
+    characterID: Wolfstag
+    PrimaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: Sprites
+      SelectedRepresentation: {fileID: 11400000, guid: 52e24c290fb50014b8aee74d5f275726, type: 2}
+      SelectedEmotionId: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    SecondaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedEmotionId: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    TertiaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedEmotionId: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    LocalizedDialogues:
+    - Language: en
+      Text: '*He pauses at the clearing''s edge, makes eye contact, then silently
+        disappears into the mist.*'
+    - Language: fr
+      Text: "*Il s\u2019arr\xEAte \xE0 la lisi\xE8re de la clairi\xE8re, nous regarde,
+        puis dispara\xEEt dans la brume.*"
+    - Language: es
+      Text: '*Se detiene en el borde del claro, nos mira y desaparece entre la niebla.*'
+    clip: {fileID: 0}
+    ActionsBeforeDialogueLine: []
+    ActionsAfterDialogueLine: []
+    UserInputMethod: 0
+    TimeBeforeNextLine: 0
+  - ConversationID: Conversation1
+    ConversationLineIndex: 22
+    characterID: Jared
+    PrimaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: Sprites
+      SelectedRepresentation: {fileID: 11400000, guid: 5b9d585132056d5479e01ea082d4b2be, type: 2}
+      SelectedEmotionId: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    SecondaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedEmotionId: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    TertiaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedEmotionId: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    LocalizedDialogues:
+    - Language: en
+      Text: ...Goodbye, magic antler puppy. I hope you find your own trail home.
+    - Language: fr
+      Text: "...Adieu, chien magique \xE0 bois. J\u2019esp\xE8re que tu retrouveras
+        ton chemin."
+    - Language: es
+      Text: "...Adi\xF3s, cachorro m\xE1gico de astas. Ojal\xE1 encuentres tu camino."
+    clip: {fileID: 0}
+    ActionsBeforeDialogueLine: []
+    ActionsAfterDialogueLine: []
+    UserInputMethod: 0
+    TimeBeforeNextLine: 0
+  - ConversationID: Conversation1
+    ConversationLineIndex: 23
+    characterID: Ava
+    PrimaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: Sprites
+      SelectedRepresentation: {fileID: 11400000, guid: cf61be94e9ae46b4da28bb23d0bfa60f, type: 2}
+      SelectedEmotionId: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    SecondaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedEmotionId: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    TertiaryCharacterRepresentation:
+      SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedEmotionId: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    LocalizedDialogues:
+    - Language: en
+      Text: "...Next time, I\u2019m bringing a map and a compass. And maybe pepper
+        spray."
+    - Language: fr
+      Text: ...La prochaine fois, je prends une carte, une boussole... et du spray
+        au poivre.
+    - Language: es
+      Text: "...La pr\xF3xima vez, llevar\xE9 un mapa, una br\xFAjula... y tal vez
+        gas pimienta."
+    clip: {fileID: 0}
+    ActionsBeforeDialogueLine: []
+    ActionsAfterDialogueLine: []
+    UserInputMethod: 0
+    TimeBeforeNextLine: 0
+  ConversationYaml: {fileID: -7234822386653529355}
   AllowPersistentOverrides: 1
   FilePath: DialogueScriptSample.yml
   SourceYaml: {fileID: 102900000, guid: 4612376414d9cc742be9c4b790213e6a, type: 3}

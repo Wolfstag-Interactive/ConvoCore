@@ -18,5 +18,5 @@ MonoBehaviour:
     Enabled: 1
     DelayAfterEndSeconds: 0
     Tags: []
-  Loop: 0
+  Loop: 1
   DefaultStart: 

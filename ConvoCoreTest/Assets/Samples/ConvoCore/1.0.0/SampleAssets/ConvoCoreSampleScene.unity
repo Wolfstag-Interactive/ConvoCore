@@ -401,15 +401,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Input:
-    rid: 5888606765772963840
+    rid: 5888606765772963843
   ConversationUI: {fileID: 8703669978597215545}
   references:
     version: 2
     RefIds:
-    - rid: 5888606765772963840
-      type: {class: SingleConversationInput, ns: WolfstagInteractive.ConvoCore, asm: ConvoCore}
+    - rid: 5888606765772963843
+      type: {class: ContainerInput, ns: WolfstagInteractive.ConvoCore, asm: ConvoCore}
       data:
-        Conversation: {fileID: 11400000, guid: 939c62473d966244bab0eb28ef86023a, type: 2}
+        Container: {fileID: 11400000, guid: c15e437cbe731e040b035d6f06005974, type: 2}
+        StartAlias: 
 --- !u!4 &639238755
 Transform:
   m_ObjectHideFlags: 0

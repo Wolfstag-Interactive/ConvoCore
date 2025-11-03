@@ -172,58 +172,89 @@ namespace WolfstagInteractive.ConvoCore.Editor
             GUI.backgroundColor = prevColor;
         }
 
-        private void DrawLanguagePreviewSection()
+private void DrawLanguagePreviewSection()
+{
+    EditorGUILayout.Space();
+    EditorGUILayout.BeginVertical("box");
+    EditorGUILayout.LabelField("Language (Preview)", EditorStyles.boldLabel);
+
+    // 1) Source of truth – from Settings
+    var supported = LocaleSettingsCache.Get();
+    if (supported.Length == 0)
+    {
+        EditorGUILayout.HelpBox("No supported locales configured in ConvoCore Settings.", MessageType.Warning);
+        EditorGUILayout.EndVertical();
+        EditorGUILayout.Space();
+        return;
+    }
+
+    // Populate display names once (or reuse your _cachedDisplayLanguages)
+    if (_cachedSupportedLanguages == null || _cachedSupportedLanguages.Length != supported.Length)
+    {
+        _cachedSupportedLanguages = supported;
+        _cachedDisplayLanguages = supported; // or map to nice names
+    }
+
+    // 2) LanguageManager current
+    var lm = ConvoCoreLanguageManager.Instance;
+    var current = lm.CurrentLanguage ?? "en";
+
+    int idx = 0;
+    for (int i = 0; i < _cachedSupportedLanguages.Length; i++)
+        if (string.Equals(_cachedSupportedLanguages[i], current, StringComparison.OrdinalIgnoreCase)) { idx = i; break; }
+
+    var newIdx = EditorGUILayout.Popup("Preview Language", idx, _cachedDisplayLanguages);
+    if (newIdx != idx)
+    {
+        lm.SetLanguage(_cachedSupportedLanguages[newIdx]);
+        Repaint();
+    }
+
+    // 3) YAML validation (lightweight due to memoization)
+    var data = (ConvoCoreConversationData)target;
+
+    // Only recompute when repainting layout (optional micro-opt)
+    if (Event.current.type == EventType.Layout ||
+        _cachedYamlLocales == null ||
+        EditorApplication.timeSinceStartup - _lastYamlCheckTime > YAML_CHECK_INTERVAL)
+    {
+        _cachedYamlLocales = LocaleCache.GetLocales(data); // cached per TextAsset content
+        _lastYamlCheckTime = EditorApplication.timeSinceStartup;
+    }
+
+    if (_cachedYamlLocales != null && _cachedYamlLocales.Count > 0)
+    {
+        // Diff: what's missing from YAML vs settings?
+        var missing = _cachedSupportedLanguages
+            .Where(s => !_cachedYamlLocales.Contains(s, StringComparer.OrdinalIgnoreCase))
+            .ToArray();
+
+        var extras = _cachedYamlLocales
+            .Where(s => !_cachedSupportedLanguages.Contains(s, StringComparer.OrdinalIgnoreCase))
+            .OrderBy(s => s, StringComparer.OrdinalIgnoreCase)
+            .ToArray();
+
+        using (new EditorGUI.DisabledScope(true))
+            EditorGUILayout.TextField("Locales in YAML", string.Join(", ", _cachedYamlLocales));
+
+        if (missing.Length > 0)
+            EditorGUILayout.HelpBox($"Missing in YAML: {string.Join(", ", missing)}", MessageType.Info);
+
+        if (extras.Length > 0)
+            EditorGUILayout.HelpBox($"YAML has extra locales not in Settings: {string.Join(", ", extras)}", MessageType.None);
+
+        // Helpful hint if currently selected not present
+        if (!LocaleExists(_cachedYamlLocales, _cachedSupportedLanguages[newIdx]))
         {
-            EditorGUILayout.Space();
-            EditorGUILayout.BeginVertical("box");
-            EditorGUILayout.LabelField("Language (Preview)", EditorStyles.boldLabel);
-
-            if (_cachedSupportedLanguages == null || _cachedSupportedLanguages.Length == 0)
-                CacheLanguageSettings();
-
-            var lm = ConvoCoreLanguageManager.Instance;
-            var current = lm.CurrentLanguage ?? "en";
-
-            int idx = 0;
-            for (int i = 0; i < _cachedSupportedLanguages.Length; i++)
-            {
-                if (string.Equals(_cachedSupportedLanguages[i], current, StringComparison.OrdinalIgnoreCase))
-                {
-                    idx = i;
-                    break;
-                }
-            }
-
-            var newIdx = EditorGUILayout.Popup("Preview Language", idx, _cachedDisplayLanguages);
-            if (newIdx != idx)
-            {
-                lm.SetLanguage(_cachedSupportedLanguages[newIdx]);
-                Repaint();
-            }
-
-            // Refresh YAML locales only occasionally or if the asset changed
-            var data = (ConvoCoreConversationData)target;
-            if (_cachedYamlLocales == null ||
-                EditorApplication.timeSinceStartup - _lastYamlCheckTime > YAML_CHECK_INTERVAL)
-            {
-                _cachedYamlLocales = TryGetLocalesFromEmbedded(data);
-                _lastYamlCheckTime = EditorApplication.timeSinceStartup;
-            }
-
-            if (_cachedYamlLocales != null && _cachedYamlLocales.Count > 0)
-            {
-                EditorGUILayout.LabelField("Locales in YAML:", string.Join(", ", _cachedYamlLocales));
-                if (!LocaleExists(_cachedYamlLocales, _cachedSupportedLanguages[newIdx]))
-                {
-                    EditorGUILayout.HelpBox(
-                        "Selected language not found in YAML; runtime will fall back (e.g., to 'en').",
-                        MessageType.Info);
-                }
-            }
-
-            EditorGUILayout.EndVertical();
-            EditorGUILayout.Space();
+            EditorGUILayout.HelpBox(
+                "Selected preview language not found in YAML; runtime may fall back (e.g., to 'en').",
+                MessageType.Info);
         }
+    }
+
+    EditorGUILayout.EndVertical();
+    EditorGUILayout.Space();
+}
 
         private static bool LocaleExists(List<string> list, string lang)
         {
@@ -232,7 +263,55 @@ namespace WolfstagInteractive.ConvoCore.Editor
                     return true;
             return false;
         }
-    
+        // Assumes you have a settings singleton with string[] Locales (or SupportedLocales)
+        static class LocaleSettingsCache
+        {
+            private static string[] _cached;
+            private static uint _hash;
+
+            public static string[] Get()
+            {
+                var settings = ConvoCoreSettings.Instance; // adjust to your accessor
+                if (settings == null || settings.SupportedLanguages == null) return Array.Empty<string>();
+
+                // Hash the array contents to detect changes
+                uint h = 2166136261;
+                var arr = settings.SupportedLanguages;
+                for (int i = 0; i < arr.Capacity; i++)
+                {
+                    var s = arr[i] ?? "";
+                    unchecked
+                    {
+                        for (int c = 0; c < s.Length; c++)
+                        {
+                            h ^= s[c];
+                            h *= 16777619;
+                        }
+                        h ^= (uint)';'; h *= 16777619;
+                    }
+                }
+
+                if (_cached != null && _hash == h) return _cached;
+
+                // Normalize once (trim + distinct + sort)
+                var list = new List<string>(arr.Capacity);
+                for (int i = 0; i < arr.Capacity; i++)
+                {
+                    var s = arr[i];
+                    if (!string.IsNullOrWhiteSpace(s)) list.Add(s.Trim());
+                }
+
+                _cached = list
+                    .Distinct(StringComparer.OrdinalIgnoreCase)
+                    .OrderBy(x => x, StringComparer.OrdinalIgnoreCase)
+                    .ToArray();
+                _hash = h;
+                return _cached;
+            }
+
+            // Call if you edit settings in-place and want an immediate refresh
+            public static void Invalidate() { _cached = null; _hash = 0; }
+        }
 
         // Parse the embedded YAML to list locale keys present (case-insensitive, de-duplicated)
         private static List<string> TryGetLocalesFromEmbedded(ConvoCoreConversationData data)
@@ -648,4 +727,125 @@ namespace WolfstagInteractive.ConvoCore.Editor
             }
         }
     }
+    // Add this helper in your editor file (outside the inspector class is fine).
+static class LocaleCache
+{
+    // One cache entry per TextAsset
+    private sealed class Entry
+    {
+        public uint Hash;
+        public List<string> Locales = new List<string>();
+    }
+
+    // InstanceID -> Entry
+    private static readonly Dictionary<int, Entry> _cache = new Dictionary<int, Entry>();
+
+    // Fast non-alloc hash for strings (FNV-1a 32-bit)
+    private static uint Fnva32(string s)
+    {
+        unchecked
+        {
+            const uint fnvOffset = 2166136261;
+            const uint fnvPrime  = 16777619;
+            uint hash = fnvOffset;
+            for (int i = 0; i < s.Length; i++)
+            {
+                hash ^= s[i];
+                hash *= fnvPrime;
+            }
+            return hash;
+        }
+    }
+
+    /// <summary>
+    /// Returns cached locales for this TextAsset, recomputing only if the YAML text changed.
+    /// </summary>
+    public static List<string> GetLocales(ConvoCoreConversationData data)
+    {
+        if (data == null) return null;
+        var ta = data.ConversationYaml;
+        if (ta == null) return null;
+
+        int id = ta.GetInstanceID();
+        string yamlText = ta.text; // ok on main thread
+        if (string.IsNullOrEmpty(yamlText)) return null;
+
+        uint h = Fnva32(yamlText);
+
+        if (_cache.TryGetValue(id, out var entry) && entry.Hash == h)
+        {
+            // Content unchanged -> return cached list
+            return entry.Locales;
+        }
+
+        // Content changed or first time -> (re)parse and cache
+        var locales = ComputeLocales(yamlText);
+        if (entry == null)
+        {
+            entry = new Entry();
+            _cache[id] = entry;
+        }
+
+        entry.Hash = h;
+        entry.Locales.Clear();
+        if (locales != null && locales.Count > 0)
+            entry.Locales.AddRange(locales);
+
+        return entry.Locales;
+    }
+
+    // Your existing logic, but driven from a string and with minimal allocs
+    private static List<string> ComputeLocales(string yamlText)
+    {
+        try
+        {
+            // Uses your runtime parser (assumed to normalize keys case-insensitively)
+            var dict = ConvoCoreYamlParser.Parse(yamlText);
+            if (dict == null) return null;
+
+            var set = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+
+            foreach (var kv in dict)
+            {
+                var list = kv.Value;
+                if (list == null) continue;
+
+                for (int i = 0; i < list.Count; i++)
+                {
+                    var cfg = list[i];
+                    var loc = cfg?.LocalizedDialogue;
+                    if (loc == null) continue;
+
+                    foreach (var lang in loc.Keys)
+                    {
+                        if (!string.IsNullOrWhiteSpace(lang))
+                            set.Add(lang.Trim());
+                    }
+                }
+            }
+
+            if (set.Count == 0) return new List<string>(0);
+
+            // Sort once, return pooled list
+            var arr = set.ToArray();
+            Array.Sort(arr, StringComparer.OrdinalIgnoreCase);
+            return new List<string>(arr);
+        }
+        catch
+        {
+            return null;
+        }
+    }
+
+    /// <summary>
+    /// Optional: clear cache for a specific asset when it’s deleted or changed externally.
+    /// You can call this from an AssetPostprocessor if desired.
+    /// </summary>
+    public static void Invalidate(TextAsset ta)
+    {
+        if (ta != null)
+            _cache.Remove(ta.GetInstanceID());
+    }
+}
+
 }

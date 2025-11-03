@@ -20,5 +20,6 @@ namespace WolfstagInteractive.ConvoCore
         public bool Loop = false;
         public string DefaultStart;
     }
+    
 
 }

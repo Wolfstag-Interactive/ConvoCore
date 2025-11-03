@@ -32,6 +32,68 @@ namespace WolfstagInteractive.ConvoCore
         [Header("Addressables (optional)")] public bool AddressablesEnabled = false; // flip on when project uses it
         public string AddressablesKeyTemplate = "{filePath}.yml"; // maps FilePath -> key
         public bool VerboseLogs = false;
+        private static ConvoCoreSettings _instance;
+
+        public static ConvoCoreSettings Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    _instance = LoadInstance();
+                }
+                return _instance;
+            }
+        }
+#if UNITY_EDITOR
+        // Optional editor-only check
+        [UnityEditor.InitializeOnLoadMethod]
+        private static void EditorInitialize()
+        {
+            _instance = LoadInstance();
+        }
+#endif
+        private static ConvoCoreSettings LoadInstance()
+        {
+            // 1. Try already loaded asset
+            if (_instance != null)
+                return _instance;
+
+            // 2. Try from Resources folder (recommended for builds)
+            var loaded = Resources.Load<ConvoCoreSettings>("ConvoCoreSettings");
+            if (loaded != null)
+            {
+                _instance = loaded;
+                return _instance;
+            }
+
+#if UNITY_EDITOR
+            // 3. Try find it anywhere in the project (Editor only)
+            string[] guids = UnityEditor.AssetDatabase.FindAssets("t:ConvoCoreSettings");
+            if (guids.Length > 0)
+            {
+                string path = UnityEditor.AssetDatabase.GUIDToAssetPath(guids[0]);
+                loaded = UnityEditor.AssetDatabase.LoadAssetAtPath<ConvoCoreSettings>(path);
+                if (loaded != null)
+                {
+                    _instance = loaded;
+                    return _instance;
+                }
+            }
+
+            // 4. Create one automatically if none exists
+            _instance = CreateInstance<ConvoCoreSettings>();
+            string assetPath = "Assets/Resources/ConvoCoreSettings.asset";
+            UnityEditor.AssetDatabase.CreateAsset(_instance, assetPath);
+            UnityEditor.AssetDatabase.SaveAssets();
+            UnityEditor.AssetDatabase.Refresh();
+            Debug.LogWarning($"Created default ConvoCoreSettings at {assetPath}");
+            return _instance;
+#else
+        Debug.LogError("ConvoCoreSettings not found in Resources! Please create one in the Editor.");
+        return ScriptableObject.CreateInstance<ConvoCoreSettings>();
+#endif
+        }
         /// <summary>
         /// Validates that CurrentLanguage is in the SupportedLanguages list
         /// </summary>

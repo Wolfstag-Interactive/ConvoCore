@@ -32,7 +32,10 @@ namespace WolfstagInteractive.ConvoCore
 
         public void Play(MonoBehaviour host, IConvoCoreRunner runner)
         {
-            if (Container == null) { Debug.LogWarning("[ConvoCore] No container assigned."); return; }
+            if (Container == null)
+            {
+                Debug.LogWarning("[ConvoCore] No container assigned."); return;
+            }
             host.StartCoroutine(
                 ConversationContainerRuntime.Play(Container, runner, StartAlias, LoopOverride, hubSelector: null));
         }

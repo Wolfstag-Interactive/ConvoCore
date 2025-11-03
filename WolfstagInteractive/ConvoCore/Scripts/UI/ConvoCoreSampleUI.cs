@@ -43,7 +43,10 @@ namespace WolfstagInteractive.ConvoCore
         private string fullText = "";
         private bool _continuePressed = false;
         private bool _isWaitingForInput;
+        private bool _historyVisible;
+        private CanvasGroup _historyGroup;
 
+        private bool _togglingGuard;
         public override void InitializeUI(ConvoCore convoCoreInstance)
         {
             base.InitializeUI(convoCoreInstance);
@@ -226,7 +229,7 @@ namespace WolfstagInteractive.ConvoCore
             DialoguePanel.gameObject.SetActive(false);
             HideAllSpriteImages();
             ContinueButton.gameObject.SetActive(false);
-            ToggleDialogueHistoryUI();
+            ToggleDialogueHistoryUI(false, focus: false);
         }
 
         public override IEnumerator WaitForUserInput()
@@ -305,7 +308,6 @@ namespace WolfstagInteractive.ConvoCore
             _isTyping = false;
             _typewriterCoroutine = null;
         }
-        
         private void CompleteTypewriter()
         {
             if (_typewriterCoroutine != null)
@@ -317,12 +319,84 @@ namespace WolfstagInteractive.ConvoCore
             DialogueText.text = fullText;
             _isTyping = false;
         }
+         // Call this from your button: ToggleDialogueHistoryButton?.onClick.AddListener(() => ToggleDialogueHistoryUI());
+    public void ToggleDialogueHistoryUI() => ToggleDialogueHistoryUI(null);
 
-        private void ToggleDialogueHistoryUI()
+    // Explicitly show/hide by passing true/false; pass null to toggle.
+    public void ToggleDialogueHistoryUI(bool? setVisible, bool focus = true)
+    {
+        if (_togglingGuard) return;
+
+        // Basic safety
+        if (DialogueHistoryPanelRoot == null)
         {
-            
-            DialogueHistoryPanelRoot.gameObject.SetActive(!DialogueHistoryPanelRoot.gameObject.activeSelf);
+            Debug.LogWarning("[ConvoCore UI] DialogueHistoryPanelRoot not assigned.");
+            return;
         }
+
+        bool target = setVisible ?? !_historyVisible;
+        if (target == _historyVisible) return; // no-op if already in desired state
+
+        _togglingGuard = true;
+        _historyVisible = target;
+
+        // If you have a CanvasGroup, prefer alpha/interactable/raycast control (smoother)
+        if (_historyGroup != null)
+        {
+            _historyGroup.alpha = target ? 1f : 0f;
+            _historyGroup.interactable = target;
+            _historyGroup.blocksRaycasts = target;
+
+            // Keep GameObject active to preserve layout if you like, or toggle it as well:
+            DialogueHistoryPanelRoot.gameObject.SetActive(true); // keep active so layout stays; alpha=0 hides it visually
+            if (!target)
+            {
+                // If you truly want it disabled, uncomment:
+                // DialogueHistoryPanelRoot.SetActive(false);
+            }
+        }
+        else
+        {
+            // Fallback to SetActive when no CanvasGroup is present
+            DialogueHistoryPanelRoot.gameObject.SetActive(target);
+        }
+
+        // Optional: when history is open, guard against “advance” clicks bleeding through
+        if (ContinueButton != null)
+            ContinueButton.interactable = !target;
+
+        // Snap scroll to bottom when opening (latest line visible)
+        if (target && DialogueHistoryScrollRect != null)
+        {
+            // Force a late layout update then snap
+            Canvas.ForceUpdateCanvases();
+            DialogueHistoryScrollRect.normalizedPosition = new Vector2(0f, 0f); // bottom for vertical scrolls
+        }
+
+        /*// Set UI focus for gamepad/keyboard users
+        if (focus)
+        {
+            if (target)
+            {
+                var toSelect = (Selectable)HistoryDefaultSelectable ?? ToggleDialogueHistoryButton;
+                if (toSelect != null)
+                {
+                    EventSystem.current?.SetSelectedGameObject(toSelect.gameObject);
+                }
+            }
+            else
+            {
+                // Return focus to the toggle or continue button when closing
+                var back = (Selectable)ToggleDialogueHistoryButton ?? ContinueButton;
+                if (back != null)
+                {
+                    EventSystem.current?.SetSelectedGameObject(back.gameObject);
+                }
+            }
+        }*/
+
+        _togglingGuard = false;
+    }
         protected bool IsPointerOverUIElement(Component uiElement)
         {
             if (uiElement == null) return false;
