@@ -2,7 +2,8 @@ using UnityEngine;
 
 namespace WolfstagInteractive.ConvoCore
 {
-    [System.Serializable]
+    [UnityEngine.HelpURL("https://docs.wolfstaginteractive.com/classWolfstagInteractive_1_1ConvoCore_1_1DialogueHistoryEntry.html")]
+[System.Serializable]
     public class DialogueHistoryEntry
     {
         public string Speaker;

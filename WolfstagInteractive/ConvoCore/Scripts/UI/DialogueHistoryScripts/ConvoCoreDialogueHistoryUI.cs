@@ -3,7 +3,8 @@ using UnityEngine;
 
 namespace WolfstagInteractive.ConvoCore
 {
-    [AddComponentMenu("ConvoCore/UI/ConvoCore Dialogue History UI")]
+    [UnityEngine.HelpURL("https://docs.wolfstaginteractive.com/classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreDialogueHistoryUI.html")]
+[AddComponentMenu("ConvoCore/UI/ConvoCore Dialogue History UI")]
     public class ConvoCoreDialogueHistoryUI : MonoBehaviour
     {
         [Header("Renderer Configuration")]

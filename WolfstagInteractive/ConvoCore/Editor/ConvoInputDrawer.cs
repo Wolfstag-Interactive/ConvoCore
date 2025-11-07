@@ -4,7 +4,8 @@ using UnityEngine;
 
 namespace WolfstagInteractive.ConvoCore.Editor
 {
-    [CustomPropertyDrawer(typeof(IConvoInput), true)]
+    [UnityEngine.HelpURL("https://docs.wolfstaginteractive.com/classWolfstagInteractive_1_1ConvoCore_1_1Editor_1_1ConvoInputPropertyDrawer.html")]
+[CustomPropertyDrawer(typeof(IConvoInput), true)]
     public class ConvoInputPropertyDrawer : PropertyDrawer
     {
         private static readonly System.Type[] s_Types =

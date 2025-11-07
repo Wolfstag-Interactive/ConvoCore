@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 namespace WolfstagInteractive.ConvoCore
 {
+[UnityEngine.HelpURL("https://docs.wolfstaginteractive.com/classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData.html")]
     public partial class ConvoCoreConversationData
     {
         [Serializable]

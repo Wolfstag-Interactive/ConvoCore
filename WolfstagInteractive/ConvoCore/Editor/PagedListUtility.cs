@@ -5,6 +5,7 @@ using System.Collections.Generic;
 
 namespace WolfstagInteractive.ConvoCore.Editor
 {
+[UnityEngine.HelpURL("https://docs.wolfstaginteractive.com/classWolfstagInteractive_1_1ConvoCore_1_1Editor_1_1PagedListUtility.html")]
     public static class PagedListUtility
     {
         private const string PREF_KEY_PREFIX = "PagedListUtility_";

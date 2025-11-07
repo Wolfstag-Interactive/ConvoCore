@@ -6,7 +6,8 @@ namespace WolfstagInteractive.ConvoCore
     /// Context container passed to renderers on initialization.
     /// Allows renderer implementations to extract whatever they need.
     /// </summary>
-    [System.Serializable]
+    [UnityEngine.HelpURL("https://docs.wolfstaginteractive.com/structWolfstagInteractive_1_1ConvoCore_1_1DialogueHistoryRendererContext.html")]
+[System.Serializable]
     public struct DialogueHistoryRendererContext
     {
         public IDialogueHistoryOutput OutputHandler;

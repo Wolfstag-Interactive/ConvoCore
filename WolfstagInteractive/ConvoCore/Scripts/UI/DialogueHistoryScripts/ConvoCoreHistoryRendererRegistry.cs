@@ -8,6 +8,7 @@ namespace WolfstagInteractive.ConvoCore
     /// Discovers all IConvoCoreHistoryRenderer implementations.
     /// Usually used only in the editor to auto-generate profiles.
     /// </summary>
+[UnityEngine.HelpURL("https://docs.wolfstaginteractive.com/classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreHistoryRendererRegistry.html")]
     public static class ConvoCoreHistoryRendererRegistry
     {
         private static readonly List<Type> _rendererTypes = new();

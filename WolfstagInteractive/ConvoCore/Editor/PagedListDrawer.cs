@@ -8,7 +8,8 @@ using Sirenix.OdinInspector;
 
 namespace WolfstagInteractive.ConvoCore.Editor
 {
-    [CustomPropertyDrawer(typeof(PagedListAttribute))]
+    [UnityEngine.HelpURL("https://docs.wolfstaginteractive.com/classWolfstagInteractive_1_1ConvoCore_1_1Editor_1_1GenericPagedListDrawer.html")]
+[CustomPropertyDrawer(typeof(PagedListAttribute))]
     public sealed class GenericPagedListDrawer : PropertyDrawer
     {
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
