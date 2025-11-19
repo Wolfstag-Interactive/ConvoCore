@@ -7,7 +7,7 @@ namespace WolfstagInteractive.ConvoCore
     [UnityEngine.HelpURL("https://docs.wolfstaginteractive.com/classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreAction_FadeInOutSpriteRenderer.html")]
 [CreateAssetMenu(fileName = "FadeInOutSpriteRendererAction", menuName = "ConvoCore/Actions/Fade In Or Out SpriteRenderer")]
     [System.Serializable]
-    public class ConvoCoreAction_FadeInOutSpriteRenderer : BaseAction
+    public class ConvoCoreDialogueLineActionFadeInOutSpriteRenderer : BaseDialogueLineAction
     {
         [Header("Target Settings")]
         [Tooltip("Reference to the GameObject containing the SpriteRenderer to fade")]

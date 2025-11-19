@@ -26,6 +26,39 @@ namespace WolfstagInteractive.ConvoCore
         }
 
         public override List<string> GetExpressionIDs() => ExpressionMappings.Select(m => m.DisplayName).ToList();
+
+        public override void ApplyExpression(string expressionId, ConvoCore runtime, ConvoCoreConversationData conversation, int lineIndex,
+            IConvoCoreCharacterDisplay display)
+        {
+            if (!TryResolveById(expressionId, out var mapping))
+            {
+                Debug.LogWarning($"[PrefabCharacterRepresentationData] Expression '{expressionId}' not found on '{name}'.");
+                return;
+            }
+
+            var actions = mapping.ExpressionActions;
+            if (actions == null || actions.Count == 0)
+                return;
+
+            var ctx = new ExpressionActionContext
+            {
+                Runtime      = runtime,
+                Conversation = conversation,
+                LineIndex    = lineIndex,
+                Representation = this,
+                Display      = display,
+                ExpressionId = mapping.ExpressionID
+            };
+
+            for (int i = 0; i < actions.Count; i++)
+            {
+                var action = actions[i];
+                if (action != null)
+                    action.ExecuteAction(ctx);
+            }
+            
+        }
+
         public override object GetExpressionMappingByGuid(string expressionGuid)
         {
             if (string.IsNullOrEmpty(expressionGuid))
@@ -153,7 +186,8 @@ namespace WolfstagInteractive.ConvoCore
 
         [Tooltip("Full body sprite for the expression.")]
         public Sprite FullBodySprite;
-
+        [Tooltip("Actions that run when this expression is applied on this representation")]
+        public List<BaseExpressionAction> ExpressionActions = new();
         [Header("Default Display Options")]
         public DialogueLineDisplayOptions DisplayOptions = new DialogueLineDisplayOptions();
 

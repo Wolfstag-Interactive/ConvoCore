@@ -105,12 +105,12 @@ namespace WolfstagInteractive.ConvoCore
 
                     // Preserve previously authored actions if they exist; otherwise keep empty lists
                     ActionsBeforeDialogueLine = existing?.ActionsBeforeDialogueLine != null
-                        ? new List<BaseAction>(existing.ActionsBeforeDialogueLine)
-                        : new List<BaseAction>(),
+                        ? new List<BaseDialogueLineAction>(existing.ActionsBeforeDialogueLine)
+                        : new List<BaseDialogueLineAction>(),
 
                     ActionsAfterDialogueLine = existing?.ActionsAfterDialogueLine != null
-                        ? new List<BaseAction>(existing.ActionsAfterDialogueLine)
-                        : new List<BaseAction>(),
+                        ? new List<BaseDialogueLineAction>(existing.ActionsAfterDialogueLine)
+                        : new List<BaseDialogueLineAction>(),
 
                     // Preserve any previously assigned clip
                     clip = existing?.clip

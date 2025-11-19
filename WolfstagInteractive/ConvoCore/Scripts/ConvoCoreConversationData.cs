@@ -531,7 +531,7 @@ private bool ValidatePrimaryCharacterRepresentation(DialogueLineInfo line, int l
 
         public IEnumerator ActionsBeforeDialogueLine(ConvoCore core, DialogueLineInfo lineInfo)
         {
-            foreach (BaseAction action in lineInfo.ActionsBeforeDialogueLine)
+            foreach (BaseDialogueLineAction action in lineInfo.ActionsBeforeDialogueLine)
             {
                 if (action != null)
                 {
@@ -553,7 +553,7 @@ private bool ValidatePrimaryCharacterRepresentation(DialogueLineInfo line, int l
 
         public IEnumerator DoActionsAfterDialogueLine(ConvoCore core, DialogueLineInfo lineInfo)
         {
-            foreach (BaseAction action in lineInfo.ActionsAfterDialogueLine)
+            foreach (BaseDialogueLineAction action in lineInfo.ActionsAfterDialogueLine)
             {
                 if (action != null)
                 {

@@ -98,10 +98,20 @@ namespace WolfstagInteractive.ConvoCore
             HideAllSpriteImages();
 
             // Render character representations (sprites or prefabs)
-            RenderRepresentation(lineInfo.PrimaryCharacterRepresentation, DisplaySlot.Center);
+            var primaryDisplay = RenderRepresentation(lineInfo.PrimaryCharacterRepresentation, DisplaySlot.Center);
             RenderRepresentation(lineInfo.SecondaryCharacterRepresentation, DisplaySlot.Left);
             RenderRepresentation(lineInfo.TertiaryCharacterRepresentation, DisplaySlot.Right);
+            
+            var expressionId = lineInfo.PrimaryCharacterRepresentation.SelectedExpressionId;
+            var convoData = ConvoCoreInstance.GetCurrentConversationData();
 
+            primaryRepresentation.ApplyExpression(
+                expressionId,
+                ConvoCoreInstance,
+                convoData,
+                lineInfo.ConversationLineIndex,
+                primaryDisplay);
+            
             ContinueButton?.gameObject.SetActive(true);
         }
 
@@ -110,57 +120,67 @@ namespace WolfstagInteractive.ConvoCore
         /// </summary>
         /// <param name="data">The character representation data containing details about the character and its display options.</param>
         /// <param name="slot">The display slot where the character representation should be rendered (left, right, or center).</param>
-        private void RenderRepresentation(ConvoCoreConversationData.CharacterRepresentationData data, DisplaySlot slot)
+private IConvoCoreCharacterDisplay RenderRepresentation(
+    ConvoCoreConversationData.CharacterRepresentationData data,
+    DisplaySlot slot)
+{
+    ConvoCoreConversationData conversationData = ConvoCoreInstance?.GetCurrentConversationData();
+    if (conversationData == null) return null;
+
+    var representation = GetCharacterRepresentationFromData(conversationData, data);
+    if (representation == null) return null;
+
+    var expressionID = data.SelectedExpressionId;
+    var processed = representation.ProcessExpression(expressionID);
+
+    // Prefab based representation
+    if (representation is PrefabCharacterRepresentationData prefabRep)
+    {
+        // You need PrefabRepresentationSpawner.SpawnCharacter to hand back a display
+        var display = PrefabRepresentationSpawner?.SpawnCharacter(
+            prefabRep,
+            expressionID,
+            data.LineSpecificDisplayOptions,
+            slot);
+
+        return display; // IConvoCoreCharacterDisplay
+    }
+    // Sprite based representation
+    else if (processed is SpriteExpressionMapping spriteMapping)
+    {
+        var displayOptions = data.LineSpecificDisplayOptions ?? spriteMapping.DisplayOptions;
+
+        Image portraitImage = SpeakerPortraitImage;
+        Image fullBodyImage = GetFullBodyImage(slot);
+
+        if (portraitImage && spriteMapping.PortraitSprite)
         {
-            ConvoCoreConversationData conversationData = ConvoCoreInstance?.GetCurrentConversationData();
-            if (conversationData == null) return;
-
-            var representation = GetCharacterRepresentationFromData(conversationData, data);
-            if (representation == null) return;
-
-            var expressionID = data.SelectedExpressionId;
-            var processed = representation.ProcessExpression(expressionID);
-
-            // Handle prefab-based representation
-            if (representation is PrefabCharacterRepresentationData prefabRep)
-            {
-                PrefabRepresentationSpawner?.SpawnCharacter(
-                    prefabRep,
-                    expressionID,
-                    data.LineSpecificDisplayOptions,
-                    slot);
-            }
-            // Handle sprite-based representation
-            else if (processed is SpriteExpressionMapping spriteMapping)
-            {
-                var displayOptions = data.LineSpecificDisplayOptions ?? spriteMapping.DisplayOptions;
-
-                Image portraitImage = SpeakerPortraitImage;
-                Image fullBodyImage = GetFullBodyImage(slot);
-
-                if (portraitImage && spriteMapping.PortraitSprite)
-                {
-                    portraitImage.sprite = spriteMapping.PortraitSprite;
-                    portraitImage.rectTransform.localScale = new Vector3(
-                        displayOptions.FlipPortraitX ? -displayOptions.PortraitScale.x : displayOptions.PortraitScale.x,
-                        displayOptions.FlipPortraitY ? -displayOptions.PortraitScale.y : displayOptions.PortraitScale.y,
-                        displayOptions.PortraitScale.z);
-                    portraitImage.gameObject.SetActive(true);
-                    TryFadeIn(portraitImage);
-                }
-
-                if (fullBodyImage && spriteMapping.FullBodySprite)
-                {
-                    fullBodyImage.sprite = spriteMapping.FullBodySprite;
-                    fullBodyImage.rectTransform.localScale = new Vector3(
-                        displayOptions.FlipFullBodyX ? -displayOptions.FullBodyScale.x : displayOptions.FullBodyScale.x,
-                        displayOptions.FlipFullBodyY ? -displayOptions.FullBodyScale.y : displayOptions.FullBodyScale.y,
-                        displayOptions.FullBodyScale.z);
-                    fullBodyImage.gameObject.SetActive(true);
-                    TryFadeIn(fullBodyImage);
-                }
-            }
+            portraitImage.sprite = spriteMapping.PortraitSprite;
+            portraitImage.rectTransform.localScale = new Vector3(
+                displayOptions.FlipPortraitX ? -displayOptions.PortraitScale.x : displayOptions.PortraitScale.x,
+                displayOptions.FlipPortraitY ? -displayOptions.PortraitScale.y : displayOptions.PortraitScale.y,
+                displayOptions.PortraitScale.z);
+            portraitImage.gameObject.SetActive(true);
+            TryFadeIn(portraitImage);
         }
+
+        if (fullBodyImage && spriteMapping.FullBodySprite)
+        {
+            fullBodyImage.sprite = spriteMapping.FullBodySprite;
+            fullBodyImage.rectTransform.localScale = new Vector3(
+                displayOptions.FlipFullBodyX ? -displayOptions.FullBodyScale.x : displayOptions.FullBodyScale.x,
+                displayOptions.FlipFullBodyY ? -displayOptions.FullBodyScale.y : displayOptions.FullBodyScale.y,
+                displayOptions.FullBodyScale.z);
+            fullBodyImage.gameObject.SetActive(true);
+            TryFadeIn(fullBodyImage);
+        }
+
+        // For now sprite representation returns null display
+        return null;
+    }
+
+    return null;
+}
 
         private void TryFadeIn(Graphic graphic)
         {

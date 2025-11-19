@@ -5,7 +5,7 @@ namespace WolfstagInteractive.ConvoCore
 {
     [UnityEngine.HelpURL("https://docs.wolfstaginteractive.com/classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreAction_PlayAudioClip.html")]
 [CreateAssetMenu(menuName = "ConvoCore/Actions/PlayAudioClip")] [System.Serializable]
-    public class ConvoCoreAction_PlayAudioClip : BaseAction
+    public class ConvoCoreDialogueLineActionPlayAudioClip : BaseDialogueLineAction
     {
         public AudioClip AudioClip;
         public Vector3 Position;

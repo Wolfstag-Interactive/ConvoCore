@@ -8,12 +8,12 @@ namespace WolfstagInteractive.ConvoCore
     [UnityEngine.HelpURL("https://docs.wolfstaginteractive.com/classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreAction_ActionGroup.html")]
 [CreateAssetMenu(menuName = "ConvoCore/Actions/Action Group")][ System.Serializable]
     
-    public class ConvoCoreAction_ActionGroup : BaseAction
+    public class ConvoCoreDialogueLineActionDialogueLineActionGroup : BaseDialogueLineAction
     {
         /// <summary>
         /// Add commonly executed actions together for easy reuse, executes each action in the list one after the other.
         /// </summary>
-        public List<BaseAction> ActionGroup = new List<BaseAction>();
+        public List<BaseDialogueLineAction> ActionGroup = new List<BaseDialogueLineAction>();
         
         public override IEnumerator DoAction()
         {

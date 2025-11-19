@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace WolfstagInteractive.ConvoCore.Editor
 {
-[HelpURL("https://docs.wolfstaginteractive.com/classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreYamlWatcher.html")]
+[HelpURL("https://docs.wolfstaginteractive.com/classWolfstagInteractive_1_1ConvoCore_1_1Editor_1_1ConvoCoreYamlWatcher.html")]
     public class ConvoCoreYamlWatcher : AssetPostprocessor
     {
         static void OnPostprocessAllAssets(string[] imported, string[] deleted, string[] moved, string[] movedFrom)

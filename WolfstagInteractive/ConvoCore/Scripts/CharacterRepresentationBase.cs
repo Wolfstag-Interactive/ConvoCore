@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace WolfstagInteractive.ConvoCore
 {
-    [HelpURL("https://docs.wolfstaginteractive.com/interface_wolfstaginteractive_1_1convocore_idialoguelineeditorcustomizable.html")]
+    [HelpURL("https://docs.wolfstaginteractive.com/classWolfstagInteractive_1_1ConvoCore_1_1CharacterRepresentationBase.html")]
 
     public abstract class CharacterRepresentationBase : ScriptableObject,
         IEditorPreviewableRepresentation
@@ -19,6 +19,16 @@ namespace WolfstagInteractive.ConvoCore
         
         // Abstract or virtual method to get the expression IDs for the representation
         public abstract List<string> GetExpressionIDs();
+        /// <summary>
+        /// Apply an expression for this representation.
+        /// Implementations are expected to run any attached BaseExpressionAction.
+        /// </summary>
+        public abstract void ApplyExpression(
+            string expressionId,
+            ConvoCore runtime,
+            ConvoCoreConversationData conversation,
+            int lineIndex,
+            IConvoCoreCharacterDisplay display);
         /// <summary>
         /// Retrieves the expression mapping object by its GUID.
         /// Used by the editor to display the correct expression in previews.

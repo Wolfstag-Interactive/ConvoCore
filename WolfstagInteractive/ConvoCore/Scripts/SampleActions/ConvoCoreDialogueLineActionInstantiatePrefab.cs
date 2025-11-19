@@ -5,7 +5,7 @@ namespace WolfstagInteractive.ConvoCore
 {
     [UnityEngine.HelpURL("https://docs.wolfstaginteractive.com/classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreAction_InstantiatePrefab.html")]
 [CreateAssetMenu(menuName = "ConvoCore/Actions/InstantiatePrefab")][ System.Serializable]
-    public class ConvoCoreAction_InstantiatePrefab : BaseAction
+    public class ConvoCoreDialogueLineActionInstantiatePrefab : BaseDialogueLineAction
     {
         public GameObject Prefab;
         public Vector3 Position;

@@ -6,7 +6,7 @@ namespace WolfstagInteractive.ConvoCore
     [UnityEngine.HelpURL("https://docs.wolfstaginteractive.com/classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreAction_EnableDisableGameObject.html")]
 [CreateAssetMenu(fileName = "EnableDisableGameObjectAction", menuName = "ConvoCore/Actions/Enable Or Disable GameObject")]
     [System.Serializable]
-    public class ConvoCoreAction_EnableDisableGameObject : BaseAction
+    public class ConvoCoreDialogueLineActionEnableDisableGameObject : BaseDialogueLineAction
     {
         [Header("GameObject Settings")]
         [Tooltip("Reference to the GameObject to enable or disable")]

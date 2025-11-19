@@ -13,7 +13,7 @@ namespace WolfstagInteractive.ConvoCore
         private readonly Dictionary<DisplaySlot, GameObject> _activeInstances = new();
         private readonly Dictionary<GameObject, GameObject> _instanceToPrefab = new();
 
-        public GameObject SpawnCharacter(
+        public IConvoCoreCharacterDisplay SpawnCharacter(
             PrefabCharacterRepresentationData representation,
             string expressionID,
             DialogueLineDisplayOptions displayOptions,
@@ -61,7 +61,7 @@ namespace WolfstagInteractive.ConvoCore
 
             _activeInstances[slot] = instance;
             _instanceToPrefab[instance] = representation.CharacterPrefab;
-            return instance;
+            return display;
         }
         
 

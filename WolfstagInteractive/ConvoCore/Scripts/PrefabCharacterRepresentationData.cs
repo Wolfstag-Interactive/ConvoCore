@@ -30,6 +30,39 @@ namespace WolfstagInteractive.ConvoCore
 
         // Legacy/UI convenience no longer used – return names only if some old drawer calls it
         public override List<string> GetExpressionIDs() => ExpressionMappings.Select(m => m.DisplayName).ToList();
+
+        public override void ApplyExpression(string expressionId, ConvoCore runtime, ConvoCoreConversationData conversation, int lineIndex,
+            IConvoCoreCharacterDisplay display)
+        {
+            if (!TryResolveById(expressionId, out var mapping))
+            {
+                Debug.LogWarning($"[PrefabCharacterRepresentationData] Expression '{expressionId}' not found on '{name}'.");
+                return;
+            }
+
+            var actions = mapping.ExpressionActions;
+            if (actions == null || actions.Count == 0)
+                return;
+
+            var ctx = new ExpressionActionContext
+            {
+                Runtime      = runtime,
+                Conversation = conversation,
+                LineIndex    = lineIndex,
+                Representation = this,
+                Display      = display,
+                ExpressionId = mapping.ExpressionID
+            };
+
+            for (int i = 0; i < actions.Count; i++)
+            {
+                var action = actions[i];
+                if (action != null)
+                    action.ExecuteAction(ctx);
+            }
+            
+        }
+
         public override object GetExpressionMappingByGuid(string expressionGuid)
         {
             if (string.IsNullOrEmpty(expressionGuid))
@@ -107,7 +140,7 @@ namespace WolfstagInteractive.ConvoCore
     }
 
     [System.Serializable]
-    public class ExpressionPrefabMapping
+    public sealed class ExpressionPrefabMapping
     {
         [SerializeField, Tooltip("Stable unique ID (GUID). Non-editable.")]
         private string expressionID = System.Guid.NewGuid().ToString("N");
@@ -115,6 +148,8 @@ namespace WolfstagInteractive.ConvoCore
 
         [Tooltip("Human-readable name shown in dropdowns and inspector list headers.")]
         public string DisplayName = "Neutral";
+        [Tooltip("Actions that run when this expression is applied on this representation")]
+        public List<BaseExpressionAction> ExpressionActions = new();
         public void EnsureValidId(HashSet<string> used)
         {
             if (string.IsNullOrWhiteSpace(expressionID) || !used.Add(expressionID))

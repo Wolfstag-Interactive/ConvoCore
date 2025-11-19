@@ -64,8 +64,8 @@ namespace WolfstagInteractive.ConvoCore
 
             public List<LocalizedDialogue> LocalizedDialogues; // Localized dialogues per language
             public AudioClip clip; // Audio associated with the line
-            public List<BaseAction> ActionsBeforeDialogueLine; // Actions before the dialogue line
-            public List<BaseAction> ActionsAfterDialogueLine; // Actions after the dialogue line
+            public List<BaseDialogueLineAction> ActionsBeforeDialogueLine; // Actions before the dialogue line
+            public List<BaseDialogueLineAction> ActionsAfterDialogueLine; // Actions after the dialogue line
 
             public DialogueLineProgressionMethod
                 UserInputMethod; // Whether to wait for user input before continuing to the next line
@@ -83,8 +83,8 @@ namespace WolfstagInteractive.ConvoCore
                 TertiaryCharacterRepresentation = new CharacterRepresentationData();
                 LocalizedDialogues = new List<LocalizedDialogue>();
                 clip = null;
-                ActionsBeforeDialogueLine = new List<BaseAction>();
-                ActionsAfterDialogueLine = new List<BaseAction>();
+                ActionsBeforeDialogueLine = new List<BaseDialogueLineAction>();
+                ActionsAfterDialogueLine = new List<BaseDialogueLineAction>();
                 UserInputMethod = DialogueLineProgressionMethod.UserInput;
                 TimeBeforeNextLine = 0f;
             }

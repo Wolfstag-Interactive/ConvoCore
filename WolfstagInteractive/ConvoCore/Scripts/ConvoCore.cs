@@ -313,7 +313,6 @@ namespace WolfstagInteractive.ConvoCore
         {
             // Update the UI with dialogue information
             uiFoundation.UpdateDialogueUI(dialogueLineInfo, localizedText, speakingCharacterName, characterRepresentation,primaryProfile);
-            
             yield return null; // Wait one frame for UI to update
         }
         /// <summary>

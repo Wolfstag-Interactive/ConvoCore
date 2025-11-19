@@ -68,103 +68,146 @@ namespace WolfstagInteractive.ConvoCore.Editor
 
             return duplicates;
         }
-        private void BuildList()
+private void BuildList()
+{
+    var listProp = serializedObject.FindProperty("ExpressionMappings");
+    if (listProp == null) return;
+
+    _list = new ReorderableList(serializedObject, listProp, true, true, true, true);
+
+    _list.drawHeaderCallback = rect =>
+    {
+        EditorGUI.LabelField(rect, "Expression Mappings");
+    };
+
+    _list.elementHeightCallback = index =>
+    {
+        const float pad = 6f;
+        const float preview = 68f;
+        float header = EditorGUIUtility.singleLineHeight;
+
+        // Base height: padding + header + spacing + preview + padding
+        float height = pad + header + 6f + preview + pad;
+
+        // Add dynamic height for the ExpressionActions list
+        if (listProp != null && listProp.isArray && index >= 0 && index < listProp.arraySize)
         {
-            var listProp = serializedObject.FindProperty("ExpressionMappings");
-            if (listProp == null) return;
-
-            _list = new ReorderableList(serializedObject, listProp, true, true, true, true);
-
-            _list.drawHeaderCallback = rect =>
+            var el = listProp.GetArrayElementAtIndex(index);
+            var actionsProp = el.FindPropertyRelative("ExpressionActions");
+            if (actionsProp != null)
             {
-                EditorGUI.LabelField(rect, "Expression Mappings");
-            };
-
-            _list.elementHeightCallback = index =>
-            {
-                // header line + preview + padding
-                const float pad = 6f;
-                float header = EditorGUIUtility.singleLineHeight + 4f;
-                const float preview = 68f; // stable, avoids jumping lists
-                return header + preview + pad * 2f;
-            };
-
-            _list.drawElementCallback = (rect, index, active, focused) =>
-            {
-                var el = listProp.GetArrayElementAtIndex(index);
-
-                var nameProp = el.FindPropertyRelative("DisplayName") ??
-                               el.FindPropertyRelative("Name");
-
-                var guidProp = el.FindPropertyRelative("expressionID");
-                
-                // Check if this name is a duplicate
-                bool isDuplicate = false;
-                string currentName = nameProp.stringValue;
-                if (!string.IsNullOrWhiteSpace(currentName))
-                {
-                    int duplicateCount = 0;
-                    for (int i = 0; i < listProp.arraySize; i++)
-                    {
-                        if (i == index) continue;
-                        var otherEl = listProp.GetArrayElementAtIndex(i);
-                        var otherName = otherEl.FindPropertyRelative("DisplayName") ?? otherEl.FindPropertyRelative("Name");
-                        if (otherName != null && otherName.stringValue == currentName)
-                        {
-                            duplicateCount++;
-                        }
-                    }
-                    isDuplicate = duplicateCount > 0;
-                }
-                // header row: wider name + copyable, disabled GUID
-                const float pad = 6f;
-                rect = new Rect(rect.x + pad, rect.y + pad, rect.width - pad * 2f, rect.height - pad * 2f);
-
-                var headerRect = new Rect(rect.x, rect.y, rect.width, EditorGUIUtility.singleLineHeight);
-                // Reserve space for warning icon if duplicate
-                float warningIconWidth = isDuplicate ? 20f : 0f;
-                float nameWidth = (headerRect.width - warningIconWidth) * 0.55f;
-                
-                // Draw warning icon first if duplicate
-                if (isDuplicate)
-                {
-                    var warningRect = new Rect(headerRect.x, headerRect.y, warningIconWidth, headerRect.height);
-                    var warningContent = new GUIContent(EditorGUIUtility.IconContent("console.warnicon.sml"));
-                    warningContent.tooltip = "Duplicate name detected! Each expression should have a unique Display Name.";
-                    EditorGUI.LabelField(warningRect, warningContent);
-                }
-                
-                var nameRect = new Rect(headerRect.x+warningIconWidth, headerRect.y, nameWidth, headerRect.height);
-                var guidLabelRect = new Rect(nameRect.xMax + 8f, headerRect.y, 70f, headerRect.height);
-                var guidRect = new Rect(guidLabelRect.xMax + 4f, headerRect.y,
-                                        headerRect.xMax - (guidLabelRect.xMax + 4f), headerRect.height);
-
-                EditorGUI.BeginProperty(nameRect, GUIContent.none, nameProp);
-                // Highlight the name field if duplicate
-                if (isDuplicate)
-                {
-                    var oldColor = GUI.backgroundColor;
-                    GUI.backgroundColor = new Color(1f, 0.8f, 0.6f); // orange tint
-                    nameProp.stringValue = EditorGUI.TextField(nameRect, nameProp.displayName, nameProp.stringValue);
-                    GUI.backgroundColor = oldColor;
-                }
-                else
-                {
-                    nameProp.stringValue = EditorGUI.TextField(nameRect, nameProp.displayName, nameProp.stringValue);
-                }                EditorGUI.EndProperty();
-
-                EditorGUI.LabelField(guidLabelRect, "GUID");
-                using (new EditorGUI.DisabledScope(true))
-                {
-                    // selectable label so designers can copy the ID
-                    EditorGUI.SelectableLabel(guidRect, guidProp != null ? guidProp.stringValue : "(missing)");
-                }
-
-                // preview row
-                var previewRect = new Rect(rect.x, headerRect.yMax + 6f, rect.width, rect.height - headerRect.height - 6f);
-                DrawPrefabPreview(previewRect, serializedObject.FindProperty("CharacterPrefab"));
-            };
+                // Add a bit of spacing before actions + the property height
+                height += 4f + EditorGUI.GetPropertyHeight(actionsProp, true);
+            }
         }
+
+        return height;
+    };
+
+    _list.drawElementCallback = (rect, index, active, focused) =>
+    {
+        var el = listProp.GetArrayElementAtIndex(index);
+
+        var nameProp = el.FindPropertyRelative("DisplayName") ??
+                       el.FindPropertyRelative("Name");
+
+        var guidProp = el.FindPropertyRelative("expressionID");
+        var actionsProp = el.FindPropertyRelative("ExpressionActions");
+
+        // Duplicate name detection
+        bool isDuplicate = false;
+        string currentName = nameProp.stringValue;
+        if (!string.IsNullOrWhiteSpace(currentName))
+        {
+            int duplicateCount = 0;
+            for (int i = 0; i < listProp.arraySize; i++)
+            {
+                if (i == index) continue;
+                var otherEl = listProp.GetArrayElementAtIndex(i);
+                var otherName = otherEl.FindPropertyRelative("DisplayName") ??
+                                otherEl.FindPropertyRelative("Name");
+                if (otherName != null && otherName.stringValue == currentName)
+                {
+                    duplicateCount++;
+                }
+            }
+            isDuplicate = duplicateCount > 0;
+        }
+
+        const float pad = 6f;
+        rect = new Rect(rect.x + pad, rect.y + pad,
+                        rect.width - pad * 2f, rect.height - pad * 2f);
+
+        // Header row
+        var headerRect = new Rect(rect.x, rect.y,
+                                  rect.width, EditorGUIUtility.singleLineHeight);
+
+        float warningIconWidth = isDuplicate ? 20f : 0f;
+        float nameWidth = (headerRect.width - warningIconWidth) * 0.55f;
+
+        // Warning icon for duplicates
+        if (isDuplicate)
+        {
+            var warningRect = new Rect(headerRect.x, headerRect.y,
+                                       warningIconWidth, headerRect.height);
+            var warningContent = new GUIContent(EditorGUIUtility.IconContent("console.warnicon.sml"))
+            {
+                tooltip = "Duplicate name detected! Each expression should have a unique Display Name."
+            };
+            EditorGUI.LabelField(warningRect, warningContent);
+        }
+
+        var nameRect = new Rect(headerRect.x + warningIconWidth, headerRect.y,
+                                nameWidth, headerRect.height);
+        var guidLabelRect = new Rect(nameRect.xMax + 8f, headerRect.y,
+                                     70f, headerRect.height);
+        var guidRect = new Rect(guidLabelRect.xMax + 4f, headerRect.y,
+                                headerRect.xMax - (guidLabelRect.xMax + 4f), headerRect.height);
+
+        // DisplayName field (highlight if duplicate)
+        EditorGUI.BeginProperty(nameRect, GUIContent.none, nameProp);
+        if (isDuplicate)
+        {
+            var oldColor = GUI.backgroundColor;
+            GUI.backgroundColor = new Color(1f, 0.8f, 0.6f);
+            nameProp.stringValue = EditorGUI.TextField(nameRect, nameProp.displayName, nameProp.stringValue);
+            GUI.backgroundColor = oldColor;
+        }
+        else
+        {
+            nameProp.stringValue = EditorGUI.TextField(nameRect, nameProp.displayName, nameProp.stringValue);
+        }
+        EditorGUI.EndProperty();
+
+        // GUID label
+        EditorGUI.LabelField(guidLabelRect, "GUID");
+        using (new EditorGUI.DisabledScope(true))
+        {
+            EditorGUI.SelectableLabel(guidRect,
+                guidProp != null ? guidProp.stringValue : "(missing)");
+        }
+
+        // Prefab preview row
+        var previewRect = new Rect(
+            rect.x,
+            headerRect.yMax + 6f,
+            rect.width,
+            68f);
+
+        DrawPrefabPreview(previewRect, serializedObject.FindProperty("CharacterPrefab"));
+
+        // Actions list row (under the preview)
+        if (actionsProp != null)
+        {
+            float actionsY = previewRect.yMax + 4f;
+            float actionsHeight = EditorGUI.GetPropertyHeight(actionsProp, true);
+            var actionsRect = new Rect(rect.x, actionsY, rect.width, actionsHeight);
+
+            EditorGUI.PropertyField(actionsRect, actionsProp,
+                new GUIContent("Expression Actions"), true);
+        }
+    };
+}
 
         private static void EnsureGuids(SerializedProperty listProp)
         {
