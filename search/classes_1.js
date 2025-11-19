@@ -12,7 +12,7 @@ var searchData=
   ['convocoreaction_5fmodifytransform_9',['ConvoCoreAction_ModifyTransform',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreAction__ModifyTransform.html',1,'WolfstagInteractive::ConvoCore']]],
   ['convocoreaction_5fplayaudioclip_10',['ConvoCoreAction_PlayAudioClip',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreAction__PlayAudioClip.html',1,'WolfstagInteractive::ConvoCore']]],
   ['convocorecharacterdisplaybase_11',['ConvoCoreCharacterDisplayBase',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreCharacterDisplayBase.html',1,'WolfstagInteractive::ConvoCore']]],
-  ['convocorecharacteremotion_12',['ConvoCoreCharacterEmotion',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreCharacterEmotion.html',1,'WolfstagInteractive::ConvoCore']]],
+  ['convocorecharacterexpression_12',['ConvoCoreCharacterExpression',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreCharacterExpression.html',1,'WolfstagInteractive::ConvoCore']]],
   ['convocorecharacterprofilebasedata_13',['ConvoCoreCharacterProfileBaseData',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreCharacterProfileBaseData.html',1,'WolfstagInteractive::ConvoCore']]],
   ['convocoreconversationdata_14',['ConvoCoreConversationData',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData.html',1,'WolfstagInteractive::ConvoCore']]],
   ['convocoredialoguehistoryui_15',['ConvoCoreDialogueHistoryUI',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreDialogueHistoryUI.html',1,'WolfstagInteractive::ConvoCore']]],

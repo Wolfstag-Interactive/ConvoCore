@@ -106,9 +106,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a2e3c37bcbbea84f7b7d75c50e342066d" id="r_a2e3c37bcbbea84f7b7d75c50e342066d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceWolfstagInteractive_1_1ConvoCore_1_1IUIFoundation.html#a2e3c37bcbbea84f7b7d75c50e342066d">InitializeUI</a> (<a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1ConvoCore.html">ConvoCore</a> convoCoreInstance)</td></tr>
 <tr class="memdesc:a2e3c37bcbbea84f7b7d75c50e342066d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the UI builder and sets up required bindings.  <br /></td></tr>
 <tr class="separator:a2e3c37bcbbea84f7b7d75c50e342066d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8e47824850951119cfcd10941ff511cc" id="r_a8e47824850951119cfcd10941ff511cc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceWolfstagInteractive_1_1ConvoCore_1_1IUIFoundation.html#a8e47824850951119cfcd10941ff511cc">UpdateDialogueUI</a> (<a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData_1_1DialogueLineInfo.html">ConvoCoreConversationData.DialogueLineInfo</a> dialogueLineInfo, string localizedText, string speakingCharacterName, <a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1CharacterRepresentationBase.html">CharacterRepresentationBase</a> emotionMappingData, <a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreCharacterProfileBaseData.html">ConvoCoreCharacterProfileBaseData</a> primaryProfile)</td></tr>
-<tr class="memdesc:a8e47824850951119cfcd10941ff511cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the displayed UI elements based on the ConvoCore instances current state.  <br /></td></tr>
-<tr class="separator:a8e47824850951119cfcd10941ff511cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afc21f3e590881c86993106590ca58810" id="r_afc21f3e590881c86993106590ca58810"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceWolfstagInteractive_1_1ConvoCore_1_1IUIFoundation.html#afc21f3e590881c86993106590ca58810">UpdateDialogueUI</a> (<a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData_1_1DialogueLineInfo.html">ConvoCoreConversationData.DialogueLineInfo</a> dialogueLineInfo, string localizedText, string speakingCharacterName, <a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1CharacterRepresentationBase.html">CharacterRepresentationBase</a> expressionMappingData, <a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreCharacterProfileBaseData.html">ConvoCoreCharacterProfileBaseData</a> primaryProfile)</td></tr>
+<tr class="memdesc:afc21f3e590881c86993106590ca58810"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the displayed UI elements based on the ConvoCore instances current state.  <br /></td></tr>
+<tr class="separator:afc21f3e590881c86993106590ca58810"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abf8381752b98430738d8ae33b95c2f93" id="r_abf8381752b98430738d8ae33b95c2f93"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceWolfstagInteractive_1_1ConvoCore_1_1IUIFoundation.html#abf8381752b98430738d8ae33b95c2f93">UpdateForLanguageChange</a> (string localizedDialogueText, string newLanguageCode)</td></tr>
 <tr class="memdesc:abf8381752b98430738d8ae33b95c2f93"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the UI when language changes, primarily to replace the current dialogue text.  <br /></td></tr>
 <tr class="separator:abf8381752b98430738d8ae33b95c2f93"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -169,8 +169,8 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a8e47824850951119cfcd10941ff511cc" name="a8e47824850951119cfcd10941ff511cc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8e47824850951119cfcd10941ff511cc">&#9670;&#160;</a></span>UpdateDialogueUI()</h2>
+<a id="afc21f3e590881c86993106590ca58810" name="afc21f3e590881c86993106590ca58810"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afc21f3e590881c86993106590ca58810">&#9670;&#160;</a></span>UpdateDialogueUI()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -197,7 +197,7 @@ Public Member Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype"><a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1CharacterRepresentationBase.html">CharacterRepresentationBase</a>&#160;</td>
-          <td class="paramname"><em>emotionMappingData</em>, </td>
+          <td class="paramname"><em>expressionMappingData</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -219,13 +219,13 @@ Public Member Functions</h2></td></tr>
     <tr><td class="paramname">dialogueLineInfo</td><td>Details of the current dialogue line.</td></tr>
     <tr><td class="paramname">localizedText</td><td>The current localized text to be displayed</td></tr>
     <tr><td class="paramname">speakingCharacterName</td><td>The name of the speaking character</td></tr>
-    <tr><td class="paramname">emotionMappingData</td><td>The speaking characters portrait</td></tr>
+    <tr><td class="paramname">expressionMappingData</td><td>The speaking characters portrait</td></tr>
     <tr><td class="paramname">primaryProfile</td><td>The primary profile data</td></tr>
   </table>
   </dd>
 </dl>
 
-<p>Implemented in <a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreUIFoundation.html#afa615f317fe7c71c33b3e2646c85e03c">WolfstagInteractive.ConvoCore.ConvoCoreUIFoundation</a>, and <a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSampleUI.html#ab41999d6e8f7608a2dc85b8da43fcd3e">WolfstagInteractive.ConvoCore.ConvoCoreSampleUI</a>.</p>
+<p>Implemented in <a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreUIFoundation.html#ab41db2fa70934e61ce34d20a20edcf31">WolfstagInteractive.ConvoCore.ConvoCoreUIFoundation</a>, and <a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSampleUI.html#ab41999d6e8f7608a2dc85b8da43fcd3e">WolfstagInteractive.ConvoCore.ConvoCoreSampleUI</a>.</p>
 
 </div>
 </div>

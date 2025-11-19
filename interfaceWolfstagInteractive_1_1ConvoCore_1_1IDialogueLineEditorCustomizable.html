@@ -101,18 +101,18 @@ $(document).ready(function(){initNavTree('interfaceWolfstagInteractive_1_1ConvoC
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a149ec9a2df3f1f58ce2c5b826d9b0b85" id="r_a149ec9a2df3f1f58ce2c5b826d9b0b85"><td class="memItemLeft" align="right" valign="top">Rect&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceWolfstagInteractive_1_1ConvoCore_1_1IDialogueLineEditorCustomizable.html#a149ec9a2df3f1f58ce2c5b826d9b0b85">DrawDialogueLineOptions</a> (Rect rect, string emotionID, UnityEditor.SerializedProperty displayOptionsProperty, float spacing)</td></tr>
-<tr class="memdesc:a149ec9a2df3f1f58ce2c5b826d9b0b85"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draws custom editor fields for per-line display options.  <br /></td></tr>
-<tr class="separator:a149ec9a2df3f1f58ce2c5b826d9b0b85"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4b9ba6f7babde80fd7c95f17bd2816bc" id="r_a4b9ba6f7babde80fd7c95f17bd2816bc"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceWolfstagInteractive_1_1ConvoCore_1_1IDialogueLineEditorCustomizable.html#a4b9ba6f7babde80fd7c95f17bd2816bc">GetDialogueLineOptionsHeight</a> (string emotionID, UnityEditor.SerializedProperty displayOptionsProperty)</td></tr>
-<tr class="memdesc:a4b9ba6f7babde80fd7c95f17bd2816bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the height needed for the custom dialogue line options.  <br /></td></tr>
-<tr class="separator:a4b9ba6f7babde80fd7c95f17bd2816bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee8611842f2a74a3750b1541d8ba28db" id="r_aee8611842f2a74a3750b1541d8ba28db"><td class="memItemLeft" align="right" valign="top">Rect&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceWolfstagInteractive_1_1ConvoCore_1_1IDialogueLineEditorCustomizable.html#aee8611842f2a74a3750b1541d8ba28db">DrawDialogueLineOptions</a> (Rect rect, string expressionID, UnityEditor.SerializedProperty displayOptionsProperty, float spacing)</td></tr>
+<tr class="memdesc:aee8611842f2a74a3750b1541d8ba28db"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draws custom editor fields for per-line display options.  <br /></td></tr>
+<tr class="separator:aee8611842f2a74a3750b1541d8ba28db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0eefc11ac9b873d49f2e1258c5bee9c5" id="r_a0eefc11ac9b873d49f2e1258c5bee9c5"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceWolfstagInteractive_1_1ConvoCore_1_1IDialogueLineEditorCustomizable.html#a0eefc11ac9b873d49f2e1258c5bee9c5">GetDialogueLineOptionsHeight</a> (string expressionID, UnityEditor.SerializedProperty displayOptionsProperty)</td></tr>
+<tr class="memdesc:a0eefc11ac9b873d49f2e1258c5bee9c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the height needed for the custom dialogue line options.  <br /></td></tr>
+<tr class="separator:a0eefc11ac9b873d49f2e1258c5bee9c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Interface for character representations that want to provide a custom editor UI for per-line display options. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="a149ec9a2df3f1f58ce2c5b826d9b0b85" name="a149ec9a2df3f1f58ce2c5b826d9b0b85"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a149ec9a2df3f1f58ce2c5b826d9b0b85">&#9670;&#160;</a></span>DrawDialogueLineOptions()</h2>
+<a id="aee8611842f2a74a3750b1541d8ba28db" name="aee8611842f2a74a3750b1541d8ba28db"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aee8611842f2a74a3750b1541d8ba28db">&#9670;&#160;</a></span>DrawDialogueLineOptions()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -127,7 +127,7 @@ Public Member Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">string&#160;</td>
-          <td class="paramname"><em>emotionID</em>, </td>
+          <td class="paramname"><em>expressionID</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -153,7 +153,7 @@ Public Member Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">rect</td><td>The rect to draw in</td></tr>
-    <tr><td class="paramname">emotionID</td><td>The selected emotion ID</td></tr>
+    <tr><td class="paramname">expressionID</td><td>The selected expression ID</td></tr>
     <tr><td class="paramname">displayOptionsProperty</td><td>SerializedProperty for the LineSpecificDisplayOptions</td></tr>
     <tr><td class="paramname">spacing</td><td>Spacing between elements</td></tr>
   </table>
@@ -163,8 +163,8 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a4b9ba6f7babde80fd7c95f17bd2816bc" name="a4b9ba6f7babde80fd7c95f17bd2816bc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4b9ba6f7babde80fd7c95f17bd2816bc">&#9670;&#160;</a></span>GetDialogueLineOptionsHeight()</h2>
+<a id="a0eefc11ac9b873d49f2e1258c5bee9c5" name="a0eefc11ac9b873d49f2e1258c5bee9c5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0eefc11ac9b873d49f2e1258c5bee9c5">&#9670;&#160;</a></span>GetDialogueLineOptionsHeight()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -173,7 +173,7 @@ Public Member Functions</h2></td></tr>
           <td class="memname">float WolfstagInteractive.ConvoCore.IDialogueLineEditorCustomizable.GetDialogueLineOptionsHeight </td>
           <td>(</td>
           <td class="paramtype">string&#160;</td>
-          <td class="paramname"><em>emotionID</em>, </td>
+          <td class="paramname"><em>expressionID</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -192,7 +192,7 @@ Public Member Functions</h2></td></tr>
 <p>Gets the height needed for the custom dialogue line options. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">emotionID</td><td>The selected emotion ID</td></tr>
+    <tr><td class="paramname">expressionID</td><td>The selected expression ID</td></tr>
     <tr><td class="paramname">displayOptionsProperty</td><td>SerializedProperty for the LineSpecificDisplayOptions</td></tr>
   </table>
   </dd>

@@ -12,8 +12,8 @@ var hierarchy =
     [ "WolfstagInteractive.ConvoCore.DialogueLineDisplayOptions", "classWolfstagInteractive_1_1ConvoCore_1_1DialogueLineDisplayOptions.html", null ],
     [ "WolfstagInteractive.ConvoCore.ConvoCoreConversationData.DialogueLineInfo", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData_1_1DialogueLineInfo.html", null ],
     [ "WolfstagInteractive.ConvoCore.DialogueYamlConfig", "classWolfstagInteractive_1_1ConvoCore_1_1DialogueYamlConfig.html", null ],
-    [ "WolfstagInteractive.ConvoCore.EmotionPrefabMapping", "classWolfstagInteractive_1_1ConvoCore_1_1EmotionPrefabMapping.html", null ],
     [ "WolfstagInteractive.ConvoCore.ConversationContainer.Entry", "classWolfstagInteractive_1_1ConvoCore_1_1ConversationContainer_1_1Entry.html", null ],
+    [ "WolfstagInteractive.ConvoCore.ExpressionPrefabMapping", "classWolfstagInteractive_1_1ConvoCore_1_1ExpressionPrefabMapping.html", null ],
     [ "WolfstagInteractive.ConvoCore.GameObjectReference", "classWolfstagInteractive_1_1ConvoCore_1_1GameObjectReference.html", null ],
     [ "WolfstagInteractive.ConvoCore.IConvoCoreCharacterDisplay", "interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoCoreCharacterDisplay.html", [
       [ "WolfstagInteractive.ConvoCore.ConvoCoreCharacterDisplayBase", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreCharacterDisplayBase.html", [
@@ -67,10 +67,10 @@ var hierarchy =
       [ "WolfstagInteractive.ConvoCore.ConvoCoreUIFoundation", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreUIFoundation.html", null ]
     ] ],
     [ "PropertyAttribute", null, [
-      [ "WolfstagInteractive.ConvoCore.EmotionIDSelectorAttribute", "classWolfstagInteractive_1_1ConvoCore_1_1EmotionIDSelectorAttribute.html", null ],
+      [ "WolfstagInteractive.ConvoCore.ExpressionIDSelectorAttribute", "classWolfstagInteractive_1_1ConvoCore_1_1ExpressionIDSelectorAttribute.html", null ],
       [ "WolfstagInteractive.ConvoCore.PagedListAttribute", "classWolfstagInteractive_1_1ConvoCore_1_1PagedListAttribute.html", null ]
     ] ],
-    [ "WolfstagInteractive.ConvoCore.RepresentationEmotionOverride", "classWolfstagInteractive_1_1ConvoCore_1_1RepresentationEmotionOverride.html", null ],
+    [ "WolfstagInteractive.ConvoCore.RepresentationExpressionOverride", "classWolfstagInteractive_1_1ConvoCore_1_1RepresentationExpressionOverride.html", null ],
     [ "WolfstagInteractive.ConvoCore.RepresentationPair", "classWolfstagInteractive_1_1ConvoCore_1_1RepresentationPair.html", null ],
     [ "ScriptableObject", null, [
       [ "WolfstagInteractive.ConvoCore.BaseAction", "classWolfstagInteractive_1_1ConvoCore_1_1BaseAction.html", [
@@ -83,12 +83,12 @@ var hierarchy =
       ] ],
       [ "WolfstagInteractive.ConvoCore.CharacterRepresentationBase", "classWolfstagInteractive_1_1ConvoCore_1_1CharacterRepresentationBase.html", null ],
       [ "WolfstagInteractive.ConvoCore.ConversationContainer", "classWolfstagInteractive_1_1ConvoCore_1_1ConversationContainer.html", null ],
-      [ "WolfstagInteractive.ConvoCore.ConvoCoreCharacterEmotion", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreCharacterEmotion.html", null ],
+      [ "WolfstagInteractive.ConvoCore.ConvoCoreCharacterExpression", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreCharacterExpression.html", null ],
       [ "WolfstagInteractive.ConvoCore.ConvoCoreCharacterProfileBaseData", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreCharacterProfileBaseData.html", null ],
       [ "WolfstagInteractive.ConvoCore.ConvoCoreConversationData", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData.html", null ],
       [ "WolfstagInteractive.ConvoCore.ConvoCoreHistoryRendererProfile", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreHistoryRendererProfile.html", null ],
       [ "WolfstagInteractive.ConvoCore.ConvoCoreLanguageSettings", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreLanguageSettings.html", null ],
       [ "WolfstagInteractive.ConvoCore.ConvoCoreSettings", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSettings.html", null ]
     ] ],
-    [ "WolfstagInteractive.ConvoCore.SpriteEmotionMapping", "classWolfstagInteractive_1_1ConvoCore_1_1SpriteEmotionMapping.html", null ]
+    [ "WolfstagInteractive.ConvoCore.SpriteExpressionMapping", "classWolfstagInteractive_1_1ConvoCore_1_1SpriteExpressionMapping.html", null ]
 ];

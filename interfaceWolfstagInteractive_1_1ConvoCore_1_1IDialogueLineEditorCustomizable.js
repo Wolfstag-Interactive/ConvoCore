@@ -1,5 +1,5 @@
 var interfaceWolfstagInteractive_1_1ConvoCore_1_1IDialogueLineEditorCustomizable =
 [
-    [ "DrawDialogueLineOptions", "interfaceWolfstagInteractive_1_1ConvoCore_1_1IDialogueLineEditorCustomizable.html#a149ec9a2df3f1f58ce2c5b826d9b0b85", null ],
-    [ "GetDialogueLineOptionsHeight", "interfaceWolfstagInteractive_1_1ConvoCore_1_1IDialogueLineEditorCustomizable.html#a4b9ba6f7babde80fd7c95f17bd2816bc", null ]
+    [ "DrawDialogueLineOptions", "interfaceWolfstagInteractive_1_1ConvoCore_1_1IDialogueLineEditorCustomizable.html#aee8611842f2a74a3750b1541d8ba28db", null ],
+    [ "GetDialogueLineOptionsHeight", "interfaceWolfstagInteractive_1_1ConvoCore_1_1IDialogueLineEditorCustomizable.html#a0eefc11ac9b873d49f2e1258c5bee9c5", null ]
 ];
