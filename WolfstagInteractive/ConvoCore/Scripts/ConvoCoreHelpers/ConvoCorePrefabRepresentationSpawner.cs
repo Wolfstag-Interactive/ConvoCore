@@ -51,8 +51,8 @@ namespace WolfstagInteractive.ConvoCore
             }
             else
             {
-                display.BindRepresentation(representation);       // 🔑 inject asset catalog
-                display.ApplyEmotion(emotionID);                  // 🔑 apply by GUID
+                display.BindRepresentation(representation);  
+                display.ApplyEmotion(emotionID);
                 display.ApplyDisplayOptions(displayOptions);
             }
 
