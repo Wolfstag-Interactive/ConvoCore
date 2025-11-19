@@ -1,5 +1,9 @@
 var NAVTREEINDEX1 =
 {
+"interfaceWolfstagInteractive_1_1ConvoCore_1_1IUIFoundation.html#abf8381752b98430738d8ae33b95c2f93":[1,0,0,0,47,3],
+"interfaceWolfstagInteractive_1_1ConvoCore_1_1IUIFoundation.html#abf8381752b98430738d8ae33b95c2f93":[0,0,0,0,47,3],
+"interfaceWolfstagInteractive_1_1ConvoCore_1_1IUIFoundation.html#afc21f3e590881c86993106590ca58810":[1,0,0,0,47,2],
+"interfaceWolfstagInteractive_1_1ConvoCore_1_1IUIFoundation.html#afc21f3e590881c86993106590ca58810":[0,0,0,0,47,2],
 "namespaceWolfstagInteractive.html":[0,0,0],
 "namespaceWolfstagInteractive_1_1ConvoCore.html":[0,0,0,0],
 "namespaceWolfstagInteractive_1_1ConvoCore.html#a641e3e9ced2cb6f0f0e0ccc6e90318ca":[0,0,0,0,62],
@@ -11,10 +15,11 @@ var NAVTREEINDEX1 =
 "namespacemembers_enum.html":[0,1,1],
 "namespaces.html":[0,0],
 "pages.html":[],
-"structWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData_1_1CharacterRepresentationData.html":[0,0,0,0,15,0],
-"structWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData_1_1CharacterRepresentationData.html":[1,0,0,0,15,0],
-"structWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData_1_1LocalizedDialogue.html":[0,0,0,0,15,2],
-"structWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData_1_1LocalizedDialogue.html":[1,0,0,0,15,2],
+"structExpressionActionContext.html":[1,0,2],
+"structWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData_1_1CharacterRepresentationData.html":[0,0,0,0,9,0],
+"structWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData_1_1CharacterRepresentationData.html":[1,0,0,0,9,0],
+"structWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData_1_1LocalizedDialogue.html":[0,0,0,0,9,2],
+"structWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData_1_1LocalizedDialogue.html":[1,0,0,0,9,2],
 "structWolfstagInteractive_1_1ConvoCore_1_1DialogueHistoryRendererContext.html":[0,0,0,0,29],
 "structWolfstagInteractive_1_1ConvoCore_1_1DialogueHistoryRendererContext.html":[1,0,0,0,29]
 };

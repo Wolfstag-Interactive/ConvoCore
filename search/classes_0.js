@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['baseaction_0',['BaseAction',['../classWolfstagInteractive_1_1ConvoCore_1_1BaseAction.html',1,'WolfstagInteractive::ConvoCore']]]
+  ['basedialoguelineaction_0',['BaseDialogueLineAction',['../classWolfstagInteractive_1_1ConvoCore_1_1BaseDialogueLineAction.html',1,'WolfstagInteractive::ConvoCore']]],
+  ['baseexpressionaction_1',['BaseExpressionAction',['../classBaseExpressionAction.html',1,'']]]
 ];

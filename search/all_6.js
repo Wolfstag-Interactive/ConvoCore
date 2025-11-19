@@ -2,7 +2,7 @@ var searchData=
 [
   ['gameobject_0',['GameObject',['../classWolfstagInteractive_1_1ConvoCore_1_1GameObjectReference.html#a7c62f50caeaae41c63349e0d871216e1',1,'WolfstagInteractive::ConvoCore::GameObjectReference']]],
   ['gameobjectreference_1',['GameObjectReference',['../classWolfstagInteractive_1_1ConvoCore_1_1GameObjectReference.html',1,'WolfstagInteractive::ConvoCore']]],
-  ['getactionpreview_2',['GetActionPreview',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreAction__FadeInOutSpriteRenderer.html#a5b4e331e6e6982afd844c445239f71f5',1,'WolfstagInteractive::ConvoCore::ConvoCoreAction_FadeInOutSpriteRenderer']]],
+  ['getactionpreview_2',['GetActionPreview',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreDialogueLineActionFadeInOutSpriteRenderer.html#aed35156febb8d458ca6a84fef8287b3d',1,'WolfstagInteractive::ConvoCore::ConvoCoreDialogueLineActionFadeInOutSpriteRenderer']]],
   ['getdialoguelineoptionsheight_3',['GetDialogueLineOptionsHeight',['../interfaceWolfstagInteractive_1_1ConvoCore_1_1IDialogueLineEditorCustomizable.html#a0eefc11ac9b873d49f2e1258c5bee9c5',1,'WolfstagInteractive::ConvoCore::IDialogueLineEditorCustomizable']]],
   ['getexpressionmappingbyguid_4',['GetExpressionMappingByGuid',['../classWolfstagInteractive_1_1ConvoCore_1_1CharacterRepresentationBase.html#a5b1d4b5133a233ff689828880ba24555',1,'WolfstagInteractive::ConvoCore::CharacterRepresentationBase']]],
   ['getlocalizeddialogue_5',['GetLocalizedDialogue',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreDialogueLocalizationHandler.html#a2469f5d634b9125b01d69d693c6e848b',1,'WolfstagInteractive::ConvoCore::ConvoCoreDialogueLocalizationHandler']]],

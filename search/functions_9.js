@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['stopconversation_0',['StopConversation',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCore.html#a170de86d1f885324fe33fdcb7dfaa939',1,'WolfstagInteractive::ConvoCore::ConvoCore']]],
-  ['syncallrepresentationobjectreferences_1',['SyncAllRepresentationObjectReferences',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData.html#ac921557fe6c968bbc601e2c38e8bd3b0',1,'WolfstagInteractive::ConvoCore::ConvoCoreConversationData']]]
+  ['refreshreference_0',['RefreshReference',['../classWolfstagInteractive_1_1ConvoCore_1_1GameObjectReference.html#a54502d9fa5ce3e5403b53c13c3ff00d4',1,'WolfstagInteractive::ConvoCore::GameObjectReference']]],
+  ['resumeconversation_1',['ResumeConversation',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCore.html#aa7a95c9b8fc2b3652a9c1526c447dd03',1,'WolfstagInteractive::ConvoCore::ConvoCore']]]
 ];

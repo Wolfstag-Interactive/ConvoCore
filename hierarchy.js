@@ -13,6 +13,7 @@ var hierarchy =
     [ "WolfstagInteractive.ConvoCore.ConvoCoreConversationData.DialogueLineInfo", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData_1_1DialogueLineInfo.html", null ],
     [ "WolfstagInteractive.ConvoCore.DialogueYamlConfig", "classWolfstagInteractive_1_1ConvoCore_1_1DialogueYamlConfig.html", null ],
     [ "WolfstagInteractive.ConvoCore.ConversationContainer.Entry", "classWolfstagInteractive_1_1ConvoCore_1_1ConversationContainer_1_1Entry.html", null ],
+    [ "ExpressionActionContext", "structExpressionActionContext.html", null ],
     [ "WolfstagInteractive.ConvoCore.ExpressionPrefabMapping", "classWolfstagInteractive_1_1ConvoCore_1_1ExpressionPrefabMapping.html", null ],
     [ "WolfstagInteractive.ConvoCore.GameObjectReference", "classWolfstagInteractive_1_1ConvoCore_1_1GameObjectReference.html", null ],
     [ "WolfstagInteractive.ConvoCore.IConvoCoreCharacterDisplay", "interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoCoreCharacterDisplay.html", [
@@ -73,13 +74,14 @@ var hierarchy =
     [ "WolfstagInteractive.ConvoCore.RepresentationExpressionOverride", "classWolfstagInteractive_1_1ConvoCore_1_1RepresentationExpressionOverride.html", null ],
     [ "WolfstagInteractive.ConvoCore.RepresentationPair", "classWolfstagInteractive_1_1ConvoCore_1_1RepresentationPair.html", null ],
     [ "ScriptableObject", null, [
-      [ "WolfstagInteractive.ConvoCore.BaseAction", "classWolfstagInteractive_1_1ConvoCore_1_1BaseAction.html", [
-        [ "WolfstagInteractive.ConvoCore.ConvoCoreAction_ActionGroup", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreAction__ActionGroup.html", null ],
-        [ "WolfstagInteractive.ConvoCore.ConvoCoreAction_EnableDisableGameObject", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreAction__EnableDisableGameObject.html", null ],
-        [ "WolfstagInteractive.ConvoCore.ConvoCoreAction_FadeInOutSpriteRenderer", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreAction__FadeInOutSpriteRenderer.html", null ],
-        [ "WolfstagInteractive.ConvoCore.ConvoCoreAction_InstantiatePrefab", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreAction__InstantiatePrefab.html", null ],
-        [ "WolfstagInteractive.ConvoCore.ConvoCoreAction_ModifyTransform", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreAction__ModifyTransform.html", null ],
-        [ "WolfstagInteractive.ConvoCore.ConvoCoreAction_PlayAudioClip", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreAction__PlayAudioClip.html", null ]
+      [ "BaseExpressionAction", "classBaseExpressionAction.html", null ],
+      [ "WolfstagInteractive.ConvoCore.BaseDialogueLineAction", "classWolfstagInteractive_1_1ConvoCore_1_1BaseDialogueLineAction.html", [
+        [ "WolfstagInteractive.ConvoCore.ConvoCoreDialogueLineActionDialogueLineActionGroup", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreDialogueLineActionDialogueLineActionGroup.html", null ],
+        [ "WolfstagInteractive.ConvoCore.ConvoCoreDialogueLineActionEnableDisableGameObject", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreDialogueLineActionEnableDisableGameObject.html", null ],
+        [ "WolfstagInteractive.ConvoCore.ConvoCoreDialogueLineActionFadeInOutSpriteRenderer", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreDialogueLineActionFadeInOutSpriteRenderer.html", null ],
+        [ "WolfstagInteractive.ConvoCore.ConvoCoreDialogueLineActionInstantiatePrefab", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreDialogueLineActionInstantiatePrefab.html", null ],
+        [ "WolfstagInteractive.ConvoCore.ConvoCoreDialogueLineActionModifyTransform", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreDialogueLineActionModifyTransform.html", null ],
+        [ "WolfstagInteractive.ConvoCore.ConvoCoreDialogueLineActionPlayAudioClip", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreDialogueLineActionPlayAudioClip.html", null ]
       ] ],
       [ "WolfstagInteractive.ConvoCore.CharacterRepresentationBase", "classWolfstagInteractive_1_1ConvoCore_1_1CharacterRepresentationBase.html", null ],
       [ "WolfstagInteractive.ConvoCore.ConversationContainer", "classWolfstagInteractive_1_1ConvoCore_1_1ConversationContainer.html", null ],
