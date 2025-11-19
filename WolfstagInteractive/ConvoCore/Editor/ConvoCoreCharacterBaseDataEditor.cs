@@ -11,7 +11,7 @@ namespace WolfstagInteractive.ConvoCore.Editor
         SerializedProperty isPlayerProp;
         SerializedProperty characterNameProp;
         SerializedProperty playerPlaceholderProp;
-        SerializedProperty characterEmotionsProp;
+        SerializedProperty characterExpressionsProp;
         SerializedProperty characterDescriptionProp;
 
         private void OnEnable()
@@ -40,8 +40,8 @@ namespace WolfstagInteractive.ConvoCore.Editor
             }
             EditorGUILayout.PropertyField(characterNameProp);
             DrawCharacterDescription();
-            // Check for duplicate emotion names
-            CheckAndDisplayDuplicateEmotionNames();
+            // Check for duplicate expression names
+            CheckAndDisplayDuplicateExpressionNames();
 
             // Draw the rest of the properties excluding script and the ones already shown
             EditorGUILayout.Space();
@@ -64,40 +64,40 @@ namespace WolfstagInteractive.ConvoCore.Editor
             characterDescriptionProp.stringValue = EditorGUI.TextArea(fieldRect, characterDescriptionProp.stringValue);
         }
 
-        private void CheckAndDisplayDuplicateEmotionNames()
+        private void CheckAndDisplayDuplicateExpressionNames()
         {
-            // Dictionary to count occurrences of each emotion name
+            // Dictionary to count occurrences of each expression name
             Dictionary<string, int> nameCounts = new Dictionary<string, int>();
 
             // Make sure the property is valid and is an array
-            if (characterEmotionsProp != null && characterEmotionsProp.isArray)
+            if (characterExpressionsProp != null && characterExpressionsProp.isArray)
             {
-                for (int i = 0; i < characterEmotionsProp.arraySize; i++)
+                for (int i = 0; i < characterExpressionsProp.arraySize; i++)
                 {
                     // Get the element reference (a ScriptableObject asset)
-                    var emotionReferenceProperty = characterEmotionsProp.GetArrayElementAtIndex(i);
-                    var emotionAsset = emotionReferenceProperty.objectReferenceValue as ConvoCoreCharacterEmotion;
-                    if (emotionAsset != null && !string.IsNullOrEmpty(emotionAsset.emotionName))
+                    var expressionReferenceProperty = characterExpressionsProp.GetArrayElementAtIndex(i);
+                    var expressionAsset = expressionReferenceProperty.objectReferenceValue as ConvoCoreCharacterExpression;
+                    if (expressionAsset != null && !string.IsNullOrEmpty(expressionAsset.expressionName))
                     {
                         // Count duplicate names
-                        if (nameCounts.ContainsKey(emotionAsset.emotionName))
+                        if (nameCounts.ContainsKey(expressionAsset.expressionName))
                         {
-                            nameCounts[emotionAsset.emotionName]++;
+                            nameCounts[expressionAsset.expressionName]++;
                         }
                         else
                         {
-                            nameCounts.Add(emotionAsset.emotionName, 1);
+                            nameCounts.Add(expressionAsset.expressionName, 1);
                         }
                     }
                 }
 
-                // Display a HelpBox for any duplicate emotion names found
+                // Display a HelpBox for any duplicate expression names found
                 foreach (var pair in nameCounts)
                 {
                     if (pair.Value > 1)
                     {
                         EditorGUILayout.HelpBox(
-                            $"Duplicate emotion name found: '{pair.Key}' is used {pair.Value} times. Ensure each emotion has a unique name to prevent conflicts.",
+                            $"Duplicate expression name found: '{pair.Key}' is used {pair.Value} times. Ensure each expression has a unique name to prevent conflicts.",
                             MessageType.Warning);
                     }
                 }

@@ -13,7 +13,7 @@ namespace WolfstagInteractive.ConvoCore
             _catalog = representationAsset;
         }
 
-        public override void ApplyEmotion(string emotionId)
+        public override void ApplyExpression(string expressionId)
         {
             if (_catalog == null)
             {
@@ -21,9 +21,9 @@ namespace WolfstagInteractive.ConvoCore
                 return;
             }
 
-            if (!_catalog.TryResolveById(emotionId, out var mapping))
+            if (!_catalog.TryResolveById(expressionId, out var mapping))
             {
-                Debug.LogWarning($"[SimplePrefabDisplay] EmotionId '{emotionId}' not found in '{_catalog.name}'.");
+                Debug.LogWarning($"[SimplePrefabDisplay] ExpressionId '{expressionId}' not found in '{_catalog.name}'.");
                 return;
             }
 

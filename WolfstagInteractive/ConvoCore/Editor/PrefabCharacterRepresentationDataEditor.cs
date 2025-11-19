@@ -21,14 +21,14 @@ namespace WolfstagInteractive.ConvoCore.Editor
             if (_list == null) BuildList(); // safety in case domain reload order changes
 
             // Ensure each element has a GUID before drawing
-            EnsureGuids(serializedObject.FindProperty("EmotionMappings"));
+            EnsureGuids(serializedObject.FindProperty("ExpressionMappings"));
             
             // Check for duplicate names and show warning at the top
-            var duplicateNames = GetDuplicateDisplayNames(serializedObject.FindProperty("EmotionMappings"));
+            var duplicateNames = GetDuplicateDisplayNames(serializedObject.FindProperty("ExpressionMappings"));
             if (duplicateNames.Count > 0)
             {
                 EditorGUILayout.HelpBox(
-                    $"Warning: Duplicate emotion names detected: {string.Join(", ", duplicateNames)}. Each emotion should have a unique Display Name.",
+                    $"Warning: Duplicate expression names detected: {string.Join(", ", duplicateNames)}. Each expression should have a unique Display Name.",
                     MessageType.Warning);
             }
 
@@ -70,14 +70,14 @@ namespace WolfstagInteractive.ConvoCore.Editor
         }
         private void BuildList()
         {
-            var listProp = serializedObject.FindProperty("EmotionMappings");
+            var listProp = serializedObject.FindProperty("ExpressionMappings");
             if (listProp == null) return;
 
             _list = new ReorderableList(serializedObject, listProp, true, true, true, true);
 
             _list.drawHeaderCallback = rect =>
             {
-                EditorGUI.LabelField(rect, "Emotion Mappings");
+                EditorGUI.LabelField(rect, "Expression Mappings");
             };
 
             _list.elementHeightCallback = index =>
@@ -96,7 +96,7 @@ namespace WolfstagInteractive.ConvoCore.Editor
                 var nameProp = el.FindPropertyRelative("DisplayName") ??
                                el.FindPropertyRelative("Name");
 
-                var guidProp = el.FindPropertyRelative("emotionID");
+                var guidProp = el.FindPropertyRelative("expressionID");
                 
                 // Check if this name is a duplicate
                 bool isDuplicate = false;
@@ -130,7 +130,7 @@ namespace WolfstagInteractive.ConvoCore.Editor
                 {
                     var warningRect = new Rect(headerRect.x, headerRect.y, warningIconWidth, headerRect.height);
                     var warningContent = new GUIContent(EditorGUIUtility.IconContent("console.warnicon.sml"));
-                    warningContent.tooltip = "Duplicate name detected! Each emotion should have a unique Display Name.";
+                    warningContent.tooltip = "Duplicate name detected! Each expression should have a unique Display Name.";
                     EditorGUI.LabelField(warningRect, warningContent);
                 }
                 
@@ -173,7 +173,7 @@ namespace WolfstagInteractive.ConvoCore.Editor
             for (int i = 0; i < listProp.arraySize; i++)
             {
                 var el = listProp.GetArrayElementAtIndex(i);
-                var guidProp = el.FindPropertyRelative("emotionID");
+                var guidProp = el.FindPropertyRelative("expressionID");
 
                 if (guidProp != null && string.IsNullOrEmpty(guidProp.stringValue))
                 {

@@ -13,13 +13,13 @@ namespace WolfstagInteractive.ConvoCore
             public string SelectedRepresentationName;
             public CharacterRepresentationBase SelectedRepresentation;
 
-            [Header("Emotion (GUID)")]
+            [Header("Expression (GUID)")]
             // This drawer shows DisplayName but stores GUID from the representation asset.
-            [EmotionIDSelector(nameof(SelectedRepresentation))]
-            public string SelectedEmotionId;
+            [ExpressionIDSelector(nameof(SelectedRepresentation))]
+            public string SelectedExpressionId;
            
             [Header("Per-Line Display Overrides")]
-            [Tooltip("Display options specific to this dialogue line. These override the default emotion settings.")]
+            [Tooltip("Display options specific to this dialogue line. These override the default expression settings.")]
             public DialogueLineDisplayOptions LineSpecificDisplayOptions;
         }
     }

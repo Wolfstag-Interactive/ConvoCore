@@ -18,10 +18,10 @@ namespace WolfstagInteractive.ConvoCore
         /// <param name="dialogueLineInfo">Details of the current dialogue line.</param>
         /// <param name="localizedText">The current localized text to be displayed</param>
         /// <param name="speakingCharacterName">The name of the speaking character</param>
-        /// <param name="emotionMappingData">The speaking characters portrait</param>
+        /// <param name="expressionMappingData">The speaking characters portrait</param>
         /// <param name="primaryProfile">The primary profile data</param>
         public void UpdateDialogueUI(ConvoCoreConversationData.DialogueLineInfo dialogueLineInfo, string localizedText,
-            string speakingCharacterName, CharacterRepresentationBase emotionMappingData, ConvoCoreCharacterProfileBaseData primaryProfile);
+            string speakingCharacterName, CharacterRepresentationBase expressionMappingData, ConvoCoreCharacterProfileBaseData primaryProfile);
 
         /// <summary>
         /// Updates the UI when language changes, primarily to replace the current dialogue text

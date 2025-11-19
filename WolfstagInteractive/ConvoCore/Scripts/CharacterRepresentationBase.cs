@@ -10,24 +10,24 @@ namespace WolfstagInteractive.ConvoCore
     {
 
         /// <summary>
-        /// Processes the given emotion and returns UI-relevant data (e.g., a sprite or GameObject).
+        /// Processes the given expression and returns UI-relevant data (e.g., a sprite or GameObject).
         /// Allows each character representation to define its own output.
         /// </summary>
-        /// <param name="emotionID">The emotion to process.</param>
+        /// <param name="expressionID">The expression to process.</param>
         /// <returns>Object related to the current representation, e.g., Sprite, GameObject, etc.</returns>
-        public abstract object ProcessEmotion(string emotionID);
+        public abstract object ProcessExpression(string expressionID);
         
-        // Abstract or virtual method to get the emotion IDs for the representation
-        public abstract List<string> GetEmotionIDs();
+        // Abstract or virtual method to get the expression IDs for the representation
+        public abstract List<string> GetExpressionIDs();
         /// <summary>
-        /// Retrieves the emotion mapping object by its GUID.
-        /// Used by the editor to display the correct emotion in previews.
+        /// Retrieves the expression mapping object by its GUID.
+        /// Used by the editor to display the correct expression in previews.
         /// </summary>
-        /// <param name="emotionGuid">The GUID of the emotion to retrieve.</param>
-        /// <returns>The emotion mapping object, or null if not found.</returns>
-        public abstract object GetEmotionMappingByGuid(string emotionGuid);
+        /// <param name="expressionGuid">The GUID of the expression to retrieve.</param>
+        /// <returns>The expression mapping object, or null if not found.</returns>
+        public abstract object GetExpressionMappingByGuid(string expressionGuid);
         
-        public abstract void DrawInlineEditorPreview(object emotionMapping, Rect position);
+        public abstract void DrawInlineEditorPreview(object expressionMapping, Rect position);
 
         public abstract float GetPreviewHeight();
     }

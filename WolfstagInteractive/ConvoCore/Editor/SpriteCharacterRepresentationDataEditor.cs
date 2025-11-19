@@ -19,11 +19,11 @@ namespace WolfstagInteractive.ConvoCore.Editor
             EnsureGuidsIfMissing(serializedObject);
             
             // Check for duplicate names and show warning at the top
-            var duplicateNames = GetDuplicateDisplayNames(serializedObject.FindProperty("EmotionMappings"));
+            var duplicateNames = GetDuplicateDisplayNames(serializedObject.FindProperty("ExpressionMappings"));
             if (duplicateNames.Count > 0)
             {
                 EditorGUILayout.HelpBox(
-                    $"Warning: Duplicate emotion names detected: {string.Join(", ", duplicateNames)}. Each emotion should have a unique Display Name.",
+                    $"Warning: Duplicate expression names detected: {string.Join(", ", duplicateNames)}. Each expression should have a unique Display Name.",
                     MessageType.Warning);
             }
 
@@ -37,14 +37,14 @@ namespace WolfstagInteractive.ConvoCore.Editor
 
         private static void EnsureGuidsIfMissing(SerializedObject so)
         {
-            var listProp = so.FindProperty("EmotionMappings");
+            var listProp = so.FindProperty("ExpressionMappings");
             if (listProp == null || !listProp.isArray) return;
 
             bool changed = false;
             for (int i = 0; i < listProp.arraySize; i++)
             {
                 var el = listProp.GetArrayElementAtIndex(i);
-                var guidProp = el.FindPropertyRelative("emotionID");
+                var guidProp = el.FindPropertyRelative("expressionID");
 
                 if (guidProp != null && string.IsNullOrEmpty(guidProp.stringValue))
                 {
@@ -86,12 +86,12 @@ namespace WolfstagInteractive.ConvoCore.Editor
 
         private void BuildList()
         {
-            var listProp = serializedObject.FindProperty("EmotionMappings");
+            var listProp = serializedObject.FindProperty("ExpressionMappings");
             if (listProp == null) return;
 
             _list = new ReorderableList(serializedObject, listProp, true, true, true, true);
 
-            _list.drawHeaderCallback = r => EditorGUI.LabelField(r, "Emotion Mappings");
+            _list.drawHeaderCallback = r => EditorGUI.LabelField(r, "Expression Mappings");
 
             _list.elementHeightCallback = i =>
             {
@@ -112,7 +112,7 @@ namespace WolfstagInteractive.ConvoCore.Editor
                 var el = listProp.GetArrayElementAtIndex(index);
 
                 var nameProp = el.FindPropertyRelative("DisplayName") ?? el.FindPropertyRelative("Name");
-                var guidProp = el.FindPropertyRelative("emotionID");
+                var guidProp = el.FindPropertyRelative("expressionID");
                 var portProp = el.FindPropertyRelative("PortraitSprite");
                 var fullProp = el.FindPropertyRelative("FullBodySprite");
                 var optsProp = el.FindPropertyRelative("DisplayOptions");
@@ -148,7 +148,7 @@ namespace WolfstagInteractive.ConvoCore.Editor
                 {
                     var warningRect = new Rect(headerRect.x, headerRect.y, warningIconWidth, headerRect.height);
                     var warningContent = new GUIContent(EditorGUIUtility.IconContent("console.warnicon.sml"));
-                    warningContent.tooltip = "Duplicate name detected! Each emotion should have a unique Display Name.";
+                    warningContent.tooltip = "Duplicate name detected! Each expression should have a unique Display Name.";
                     EditorGUI.LabelField(warningRect, warningContent);
                 }
                 

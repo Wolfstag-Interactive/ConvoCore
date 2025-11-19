@@ -59,6 +59,6 @@ namespace WolfstagInteractive.ConvoCore
         public abstract void BindRepresentation(PrefabCharacterRepresentationData representationAsset);
       
 
-        public abstract void ApplyEmotion(string emotionId);
+        public abstract void ApplyExpression(string expressionId);
     }
 }

@@ -118,20 +118,20 @@ namespace WolfstagInteractive.ConvoCore
             var representation = GetCharacterRepresentationFromData(conversationData, data);
             if (representation == null) return;
 
-            var emotionID = data.SelectedEmotionId;
-            var processed = representation.ProcessEmotion(emotionID);
+            var expressionID = data.SelectedExpressionId;
+            var processed = representation.ProcessExpression(expressionID);
 
             // Handle prefab-based representation
             if (representation is PrefabCharacterRepresentationData prefabRep)
             {
                 PrefabRepresentationSpawner?.SpawnCharacter(
                     prefabRep,
-                    emotionID,
+                    expressionID,
                     data.LineSpecificDisplayOptions,
                     slot);
             }
             // Handle sprite-based representation
-            else if (processed is SpriteEmotionMapping spriteMapping)
+            else if (processed is SpriteExpressionMapping spriteMapping)
             {
                 var displayOptions = data.LineSpecificDisplayOptions ?? spriteMapping.DisplayOptions;
 

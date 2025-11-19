@@ -24,7 +24,7 @@ namespace WolfstagInteractive.ConvoCore
 
         public virtual void UpdateDialogueUI(ConvoCoreConversationData.DialogueLineInfo dialogueLineInfo,
             string localizedText, string speakingCharacterName,
-            CharacterRepresentationBase emotionMappingData, ConvoCoreCharacterProfileBaseData primaryProfile)
+            CharacterRepresentationBase expressionMappingData, ConvoCoreCharacterProfileBaseData primaryProfile)
         {
         }
         /// <summary>

@@ -7,9 +7,9 @@ namespace WolfstagInteractive.ConvoCore
         /// <summary>
         /// Draws a custom representation-specific section in the inspector.
         /// </summary>
-        /// <param name="emotionMapping">The emotion mapping being inspected.</param>
+        /// <param name="expressionMapping">The expression mapping being inspected.</param>
         /// <param name="position">The rect bounds for drawing.</param>
-        void DrawInlineEditorPreview(object emotionMapping, Rect position);
+        void DrawInlineEditorPreview(object expressionMapping, Rect position);
 
         /// <summary>
         /// Provides the height required for rendering the inline preview in the editor.

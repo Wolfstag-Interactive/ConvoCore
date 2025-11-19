@@ -39,10 +39,10 @@ namespace WolfstagInteractive.ConvoCoreEditor
                 rect.y += EditorGUIUtility.singleLineHeight + 2;
 
                 // Read-only GUID
-                var guidProp = element.FindPropertyRelative("_emotionId");
+                var guidProp = element.FindPropertyRelative("_expressionId");
                 using (new EditorGUI.DisabledScope(true))
                 {
-                    EditorGUI.PropertyField(rect, guidProp, new GUIContent("Emotion GUID"));
+                    EditorGUI.PropertyField(rect, guidProp, new GUIContent("Expression GUID"));
                 }
 
                 rect.y += EditorGUIUtility.singleLineHeight + 2;

@@ -15,7 +15,7 @@ namespace WolfstagInteractive.ConvoCore
 
         public GameObject SpawnCharacter(
             PrefabCharacterRepresentationData representation,
-            string emotionID,
+            string expressionID,
             DialogueLineDisplayOptions displayOptions,
             DisplaySlot slot)
         {
@@ -52,7 +52,7 @@ namespace WolfstagInteractive.ConvoCore
             else
             {
                 display.BindRepresentation(representation);  
-                display.ApplyEmotion(emotionID);
+                display.ApplyExpression(expressionID);
                 display.ApplyDisplayOptions(displayOptions);
             }
 

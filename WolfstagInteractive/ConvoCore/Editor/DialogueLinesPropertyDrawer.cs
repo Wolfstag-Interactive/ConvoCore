@@ -47,7 +47,7 @@ namespace WolfstagInteractive.ConvoCore.Editor
         private static readonly GUIContent GC_AudioClip = new("Audio Clip:");
         private static readonly GUIContent GC_BeforeActions = new("Actions Before Line:");
         private static readonly GUIContent GC_AfterActions = new("Actions After Line:");
-        private static readonly GUIContent GC_Emotion = new("Emotion");
+        private static readonly GUIContent GC_Expression = new("Expression");
 
         // Preview header text cache
         private static readonly Dictionary<int, string> s_PreviewCache = new(128);
@@ -299,7 +299,7 @@ namespace WolfstagInteractive.ConvoCore.Editor
 
             var selectedRepNameProp = repProp.FindPropertyRelative("SelectedRepresentationName");
             var selectedRepProp = repProp.FindPropertyRelative("SelectedRepresentation");
-            var selectedEmotionGuidProp = repProp.FindPropertyRelative("SelectedEmotionId");
+            var selectedExpressionGuidProp = repProp.FindPropertyRelative("SelectedExpressionId");
 
             if (useRepresentationNameInsteadOfID)
             {
@@ -316,9 +316,9 @@ namespace WolfstagInteractive.ConvoCore.Editor
                     // representation popup
                     h += EditorGUIUtility.singleLineHeight + k_Spacing;
 
-                    // emotion popup
-                    float emoH = (selectedEmotionGuidProp != null)
-                        ? EditorGUI.GetPropertyHeight(selectedEmotionGuidProp, true)
+                    // expression popup
+                    float emoH = (selectedExpressionGuidProp != null)
+                        ? EditorGUI.GetPropertyHeight(selectedExpressionGuidProp, true)
                         : EditorGUIUtility.singleLineHeight;
                     h += emoH + k_Spacing;
 
@@ -337,7 +337,7 @@ namespace WolfstagInteractive.ConvoCore.Editor
                     h += GetPreviewBlockHeight(previewable) + k_Spacing;
 
                     // representation-specific options height
-                    string emoId = selectedEmotionGuidProp?.stringValue ?? "";
+                    string emoId = selectedExpressionGuidProp?.stringValue ?? "";
                     var selName = selectedRepNameProp?.stringValue ?? "";
                     var repType = profile.GetRepresentation(selName);
                     if (repType != null && !string.IsNullOrEmpty(emoId))
@@ -362,9 +362,9 @@ namespace WolfstagInteractive.ConvoCore.Editor
                 // representation popup
                 h += EditorGUIUtility.singleLineHeight + k_Spacing;
 
-                // emotion popup
-                float emoH = (selectedEmotionGuidProp != null)
-                    ? EditorGUI.GetPropertyHeight(selectedEmotionGuidProp, true)
+                // expression popup
+                float emoH = (selectedExpressionGuidProp != null)
+                    ? EditorGUI.GetPropertyHeight(selectedExpressionGuidProp, true)
                     : EditorGUIUtility.singleLineHeight;
                 h += emoH + k_Spacing;
 
@@ -382,7 +382,7 @@ namespace WolfstagInteractive.ConvoCore.Editor
                 h += GetPreviewBlockHeight(previewable) + k_Spacing;
 
                 // representation-specific options height
-                string emoId = selectedEmotionGuidProp?.stringValue ?? "";
+                string emoId = selectedExpressionGuidProp?.stringValue ?? "";
                 var repType2 = profile.GetRepresentation(selectedRepNameProp?.stringValue ?? "");
                 if (repType2 != null && !string.IsNullOrEmpty(emoId))
                 {
@@ -676,7 +676,7 @@ namespace WolfstagInteractive.ConvoCore.Editor
     var selectedCharacterIDProp = representationProp.FindPropertyRelative("SelectedCharacterID");
     var selectedRepNameProp = representationProp.FindPropertyRelative("SelectedRepresentationName");
     var selectedRepProp = representationProp.FindPropertyRelative("SelectedRepresentation");
-    var selectedEmotionGuidProp = representationProp.FindPropertyRelative("SelectedEmotionId");
+    var selectedExpressionGuidProp = representationProp.FindPropertyRelative("SelectedExpressionId");
 
     EditorGUI.LabelField(rect, $"{label}:");
     rect.y += EditorGUIUtility.singleLineHeight + spacing;
@@ -725,7 +725,7 @@ namespace WolfstagInteractive.ConvoCore.Editor
             {
                 selectedCharacterIDProp.stringValue = "";
                 selectedRepNameProp.stringValue = "";
-                selectedEmotionGuidProp.stringValue = "";
+                selectedExpressionGuidProp.stringValue = "";
                 if (selectedRepProp != null) selectedRepProp.objectReferenceValue = null;
                 so.ApplyModifiedProperties();
                 return rect;
@@ -737,7 +737,7 @@ namespace WolfstagInteractive.ConvoCore.Editor
 
                 var firstRep = selProfile.Representations?.FirstOrDefault(r => r != null);
                 selectedRepNameProp.stringValue = firstRep?.CharacterRepresentationName ?? "";
-                selectedEmotionGuidProp.stringValue = "";
+                selectedExpressionGuidProp.stringValue = "";
                 if (selectedRepProp != null)
                     selectedRepProp.objectReferenceValue = firstRep?.CharacterRepresentationType;
                 so.ApplyModifiedProperties();
@@ -765,7 +765,7 @@ namespace WolfstagInteractive.ConvoCore.Editor
             if (newRepName != repName)
             {
                 selectedRepNameProp.stringValue = newRepName;
-                selectedEmotionGuidProp.stringValue = "";
+                selectedExpressionGuidProp.stringValue = "";
                 if (selectedRepProp != null)
                     selectedRepProp.objectReferenceValue = currentProfile.GetRepresentation(newRepName);
                 so.ApplyModifiedProperties();
@@ -773,12 +773,12 @@ namespace WolfstagInteractive.ConvoCore.Editor
 
             selectedRepresentation = currentProfile.GetRepresentation(newRepName);
 
-            // emotion
-            if (selectedEmotionGuidProp != null)
+            // expression
+            if (selectedExpressionGuidProp != null)
             {
-                float emoH = EditorGUI.GetPropertyHeight(selectedEmotionGuidProp, true);
+                float emoH = EditorGUI.GetPropertyHeight(selectedExpressionGuidProp, true);
                 EditorGUI.PropertyField(new Rect(rect.x, rect.y, rect.width, emoH),
-                    selectedEmotionGuidProp, GC_Emotion, true);
+                    selectedExpressionGuidProp, GC_Expression, true);
                 rect.y += emoH + spacing;
             }
 
@@ -790,7 +790,7 @@ namespace WolfstagInteractive.ConvoCore.Editor
                 previewable = prB;
 
             if (previewable != null)
-                rect = DrawInlinePreviewBlock(rect, previewable, selectedEmotionGuidProp?.stringValue ?? "", spacing);
+                rect = DrawInlinePreviewBlock(rect, previewable, selectedExpressionGuidProp?.stringValue ?? "", spacing);
         }
     }
     else
@@ -831,17 +831,17 @@ namespace WolfstagInteractive.ConvoCore.Editor
                 selectedRepNameProp.stringValue = newRepName;
                 if (selectedRepProp != null)
                     selectedRepProp.objectReferenceValue = profile.GetRepresentation(newRepName);
-                selectedEmotionGuidProp.stringValue = "";
+                selectedExpressionGuidProp.stringValue = "";
                 so.ApplyModifiedProperties();
             }
 
             selectedRepresentation = profile.GetRepresentation(newRepName);
 
-            if (selectedEmotionGuidProp != null)
+            if (selectedExpressionGuidProp != null)
             {
-                float emoH = EditorGUI.GetPropertyHeight(selectedEmotionGuidProp, true);
+                float emoH = EditorGUI.GetPropertyHeight(selectedExpressionGuidProp, true);
                 EditorGUI.PropertyField(new Rect(rect.x, rect.y, rect.width, emoH),
-                    selectedEmotionGuidProp, GC_Emotion, true);
+                    selectedExpressionGuidProp, GC_Expression, true);
                 rect.y += emoH + spacing;
             }
 
@@ -852,15 +852,15 @@ namespace WolfstagInteractive.ConvoCore.Editor
                 previewable = prB;
 
             if (previewable != null)
-                rect = DrawInlinePreviewBlock(rect, previewable, selectedEmotionGuidProp?.stringValue ?? "", spacing);
+                rect = DrawInlinePreviewBlock(rect, previewable, selectedExpressionGuidProp?.stringValue ?? "", spacing);
         }
     }
 
-    if (selectedRepresentation != null && selectedEmotionGuidProp != null &&
-        !string.IsNullOrEmpty(selectedEmotionGuidProp.stringValue))
+    if (selectedRepresentation != null && selectedExpressionGuidProp != null &&
+        !string.IsNullOrEmpty(selectedExpressionGuidProp.stringValue))
     {
         rect = DrawRepresentationSpecificOptions(rect, representationProp, selectedRepresentation,
-            selectedEmotionGuidProp.stringValue, spacing);
+            selectedExpressionGuidProp.stringValue, spacing);
     }
 
     return rect;
@@ -873,7 +873,7 @@ namespace WolfstagInteractive.ConvoCore.Editor
             Rect rect,
             SerializedProperty representationProp,
             CharacterRepresentationBase representation,
-            string emotionGuid,
+            string expressionGuid,
             float spacing)
         {
 #if UNITY_EDITOR
@@ -882,7 +882,7 @@ namespace WolfstagInteractive.ConvoCore.Editor
                 var displayOptionsProp = representationProp.FindPropertyRelative("LineSpecificDisplayOptions");
                 if (displayOptionsProp != null)
                 {
-                    rect = customizable.DrawDialogueLineOptions(rect, emotionGuid, displayOptionsProp, spacing);
+                    rect = customizable.DrawDialogueLineOptions(rect, expressionGuid, displayOptionsProp, spacing);
                 }
             }
 #endif
@@ -891,7 +891,7 @@ namespace WolfstagInteractive.ConvoCore.Editor
 
         private float GetRepresentationSpecificOptionsHeight(
             CharacterRepresentationBase representation,
-            string emotionGuid,
+            string expressionGuid,
             SerializedProperty representationProp)
         {
 #if UNITY_EDITOR
@@ -900,7 +900,7 @@ namespace WolfstagInteractive.ConvoCore.Editor
                 var displayOptionsProp = representationProp.FindPropertyRelative("LineSpecificDisplayOptions");
                 if (displayOptionsProp != null)
                 {
-                    return customizable.GetDialogueLineOptionsHeight(emotionGuid, displayOptionsProp);
+                    return customizable.GetDialogueLineOptionsHeight(expressionGuid, displayOptionsProp);
                 }
             }
 #endif
@@ -919,7 +919,7 @@ namespace WolfstagInteractive.ConvoCore.Editor
         }
 
         private static Rect DrawInlinePreviewBlock(Rect rect, IEditorPreviewableRepresentation previewable,
-            string emotionGuid, float spacing)
+            string expressionGuid, float spacing)
         {
             float h = GetPreviewBlockHeight(previewable);
             if (h <= 0f) return rect;
@@ -930,11 +930,11 @@ namespace WolfstagInteractive.ConvoCore.Editor
 
             EditorGUI.DrawRect(outer, new Color(0f, 0f, 0f, 0.06f));
 
-            object emotionMapping = null;
-            if (!string.IsNullOrEmpty(emotionGuid) && previewable is CharacterRepresentationBase repBase)
-                emotionMapping = repBase.GetEmotionMappingByGuid(emotionGuid);
+            object expressionMapping = null;
+            if (!string.IsNullOrEmpty(expressionGuid) && previewable is CharacterRepresentationBase repBase)
+                expressionMapping = repBase.GetExpressionMappingByGuid(expressionGuid);
 
-            previewable.DrawInlineEditorPreview(emotionMapping, inner);
+            previewable.DrawInlineEditorPreview(expressionMapping, inner);
 
             rect.y += h + spacing;
             return rect;

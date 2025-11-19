@@ -5,13 +5,13 @@ using UnityEngine;
 
 namespace WolfstagInteractive.ConvoCore.Editor
 {
-    [UnityEngine.HelpURL("https://docs.wolfstaginteractive.com/classWolfstagInteractive_1_1ConvoCore_1_1Editor_1_1EmotionIdSelectorDrawer.html")]
-[CustomPropertyDrawer(typeof(EmotionIDSelectorAttribute))]
-    public class EmotionIdSelectorDrawer : PropertyDrawer
+    [UnityEngine.HelpURL("https://docs.wolfstaginteractive.com/classWolfstagInteractive_1_1ConvoCore_1_1Editor_1_1ExpressionIdSelectorDrawer.html")]
+[CustomPropertyDrawer(typeof(ExpressionIDSelectorAttribute))]
+    public class ExpressionIdSelectorDrawer : PropertyDrawer
     {
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
-            var attr = (EmotionIDSelectorAttribute)attribute;
+            var attr = (ExpressionIDSelectorAttribute)attribute;
 
             // Find the representation property relative to this field
             var repPropPath = property.propertyPath.Replace(property.name, attr.RepresentationPropertyName);
@@ -20,7 +20,7 @@ namespace WolfstagInteractive.ConvoCore.Editor
             var rep = repProp?.objectReferenceValue as CharacterRepresentationBase;
             if (rep == null)
             {
-                EditorGUI.HelpBox(position, "Assign a Representation to select an Emotion.", MessageType.Info);
+                EditorGUI.HelpBox(position, "Assign a Representation to select an Expression.", MessageType.Info);
                 return;
             }
 
@@ -29,13 +29,13 @@ namespace WolfstagInteractive.ConvoCore.Editor
 
             if (rep is PrefabCharacterRepresentationData prefabRep)
             {
-                var catalog = prefabRep.GetEmotionCatalog();
+                var catalog = prefabRep.GetExpressionCatalog();
                 names = catalog.Select(c => c.name).ToArray();
                 ids   = catalog.Select(c => c.id).ToArray();
             }
             else if (rep is SpriteCharacterRepresentationData spriteRep)
             {
-                var catalog = spriteRep.GetEmotionCatalog();
+                var catalog = spriteRep.GetExpressionCatalog();
                 names = catalog.Select(c => c.name).ToArray();
                 ids   = catalog.Select(c => c.id).ToArray();
             }
@@ -47,7 +47,7 @@ namespace WolfstagInteractive.ConvoCore.Editor
 
             if (ids.Length == 0)
             {
-                EditorGUI.Popup(position, label.text, -1, new[] { "(No Emotions)" });
+                EditorGUI.Popup(position, label.text, -1, new[] { "(No Expressions)" });
                 return;
             }
 

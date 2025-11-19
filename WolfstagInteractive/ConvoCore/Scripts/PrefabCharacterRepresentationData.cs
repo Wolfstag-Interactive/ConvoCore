@@ -15,32 +15,32 @@ namespace WolfstagInteractive.ConvoCore
         [Header("Prefab Settings")]
         public GameObject CharacterPrefab;
 
-        [Header("Emotions (GUID-only)")]
-        public List<EmotionPrefabMapping> EmotionMappings = new();
+        [Header("Expressions (GUID-only)")]
+        public List<ExpressionPrefabMapping> ExpressionMappings = new();
 
         // GUID catalog for editor selectors
-        public IReadOnlyList<(string id, string name)> GetEmotionCatalog() =>
-            EmotionMappings.Select(m => (EmotionId: m.EmotionID, m.DisplayName)).ToList();
+        public IReadOnlyList<(string id, string name)> GetExpressionCatalog() =>
+            ExpressionMappings.Select(m => (ExpressionId: m.ExpressionID, m.DisplayName)).ToList();
 
-        public bool TryResolveById(string id, out EmotionPrefabMapping mapping)
+        public bool TryResolveById(string id, out ExpressionPrefabMapping mapping)
         {
-            mapping = EmotionMappings.FirstOrDefault(m => m.EmotionID == id);
+            mapping = ExpressionMappings.FirstOrDefault(m => m.ExpressionID == id);
             return mapping != null;
         }
 
         // Legacy/UI convenience no longer used – return names only if some old drawer calls it
-        public override List<string> GetEmotionIDs() => EmotionMappings.Select(m => m.DisplayName).ToList();
-        public override object GetEmotionMappingByGuid(string emotionGuid)
+        public override List<string> GetExpressionIDs() => ExpressionMappings.Select(m => m.DisplayName).ToList();
+        public override object GetExpressionMappingByGuid(string expressionGuid)
         {
-            if (string.IsNullOrEmpty(emotionGuid))
+            if (string.IsNullOrEmpty(expressionGuid))
                 return null;
             
-            return EmotionMappings.FirstOrDefault(m => m.EmotionID == emotionGuid);
+            return ExpressionMappings.FirstOrDefault(m => m.ExpressionID == expressionGuid);
             
         }
 
         // Prefab flow does not use this directly; spawner binds and applies by GUID
-        public override object ProcessEmotion(string emotionId) => emotionId;
+        public override object ProcessExpression(string expressionId) => expressionId;
 
 #if UNITY_EDITOR
         public override float GetPreviewHeight() => CharacterPrefab ? 80f : 0f;
@@ -89,15 +89,15 @@ namespace WolfstagInteractive.ConvoCore
             return new Rect(x, y, targetW, targetH);
         }
 
-        public Rect DrawDialogueLineOptions(Rect rect, string emotionID, UnityEditor.SerializedProperty displayOptionsProperty, float spacing) => rect;
-        public float GetDialogueLineOptionsHeight(string emotionID, UnityEditor.SerializedProperty displayOptionsProperty) => 0f;
+        public Rect DrawDialogueLineOptions(Rect rect, string expressionID, UnityEditor.SerializedProperty displayOptionsProperty, float spacing) => rect;
+        public float GetDialogueLineOptionsHeight(string expressionID, UnityEditor.SerializedProperty displayOptionsProperty) => 0f;
         
 #endif
 
         private void OnValidate()
         {
             var used = new HashSet<string>();
-            foreach (var m in EmotionMappings)
+            foreach (var m in ExpressionMappings)
             {
                 if (m == null) continue;
                 m.EnsureValidId(used);
@@ -107,18 +107,18 @@ namespace WolfstagInteractive.ConvoCore
     }
 
     [System.Serializable]
-    public class EmotionPrefabMapping
+    public class ExpressionPrefabMapping
     {
         [SerializeField, Tooltip("Stable unique ID (GUID). Non-editable.")]
-        private string emotionID = System.Guid.NewGuid().ToString("N");
-        public string EmotionID => emotionID;
+        private string expressionID = System.Guid.NewGuid().ToString("N");
+        public string ExpressionID => expressionID;
 
         [Tooltip("Human-readable name shown in dropdowns and inspector list headers.")]
         public string DisplayName = "Neutral";
         public void EnsureValidId(HashSet<string> used)
         {
-            if (string.IsNullOrWhiteSpace(emotionID) || !used.Add(emotionID))
-                emotionID = System.Guid.NewGuid().ToString("N");
+            if (string.IsNullOrWhiteSpace(expressionID) || !used.Add(expressionID))
+                expressionID = System.Guid.NewGuid().ToString("N");
         }
 
         public void EnsureValidBasics()

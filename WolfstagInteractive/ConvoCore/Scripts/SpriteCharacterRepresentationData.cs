@@ -14,52 +14,52 @@ namespace WolfstagInteractive.ConvoCore
         , IDialogueLineEditorCustomizable
 #endif
     {
-        [Header("Emotions (GUID-only)")] public List<SpriteEmotionMapping> EmotionMappings = new();
+        [Header("Expressions (GUID-only)")] public List<SpriteExpressionMapping> ExpressionMappings = new();
 
-        public IReadOnlyList<(string id, string name)> GetEmotionCatalog() =>
-            EmotionMappings.Select(m => (EmotionId: m.EmotionID, m.DisplayName)).ToList();
+        public IReadOnlyList<(string id, string name)> GetExpressionCatalog() =>
+            ExpressionMappings.Select(m => (ExpressionId: m.ExpressionID, m.DisplayName)).ToList();
 
-        private bool TryResolveById(string id, out SpriteEmotionMapping mapping)
+        private bool TryResolveById(string id, out SpriteExpressionMapping mapping)
         {
-            mapping = EmotionMappings.FirstOrDefault(m => m.EmotionID == id);
+            mapping = ExpressionMappings.FirstOrDefault(m => m.ExpressionID == id);
             return mapping != null;
         }
 
-        public override List<string> GetEmotionIDs() => EmotionMappings.Select(m => m.DisplayName).ToList();
-        public override object GetEmotionMappingByGuid(string emotionGuid)
+        public override List<string> GetExpressionIDs() => ExpressionMappings.Select(m => m.DisplayName).ToList();
+        public override object GetExpressionMappingByGuid(string expressionGuid)
         {
-            if (string.IsNullOrEmpty(emotionGuid))
+            if (string.IsNullOrEmpty(expressionGuid))
                 return null;
             
-            return EmotionMappings.FirstOrDefault(m => m.EmotionID == emotionGuid);
+            return ExpressionMappings.FirstOrDefault(m => m.ExpressionID == expressionGuid);
         }
 
-        public override object ProcessEmotion(string emotionId)
+        public override object ProcessExpression(string expressionId)
         {
-            if (string.IsNullOrEmpty(emotionId))
+            if (string.IsNullOrEmpty(expressionId))
             {
-                return EmotionMappings.Count > 0 ? EmotionMappings[0] : null;
+                return ExpressionMappings.Count > 0 ? ExpressionMappings[0] : null;
             }
 
-            if (TryResolveById(emotionId, out var byGuid))
+            if (TryResolveById(expressionId, out var byGuid))
                 return byGuid;
 
-            Debug.LogWarning($"Sprite emotion '{emotionId}' not found; using first mapping as fallback.");
-            return EmotionMappings.Count > 0 ? EmotionMappings[0] : null;
+            Debug.LogWarning($"Sprite expression '{expressionId}' not found; using first mapping as fallback.");
+            return ExpressionMappings.Count > 0 ? ExpressionMappings[0] : null;
         }
 
 #if UNITY_EDITOR
-        public Rect DrawDialogueLineOptions(Rect rect, string emotionID, SerializedProperty displayOptionsProperty,
+        public Rect DrawDialogueLineOptions(Rect rect, string expressionID, SerializedProperty displayOptionsProperty,
             float spacing) => rect;
 
-        public float GetDialogueLineOptionsHeight(string emotionID, SerializedProperty displayOptionsProperty) => 0f;
+        public float GetDialogueLineOptionsHeight(string expressionID, SerializedProperty displayOptionsProperty) => 0f;
 
         public override float GetPreviewHeight() => 84f;
 
         public override void DrawInlineEditorPreview(object mappingData, Rect position)
         {
-            var mapping = (mappingData as SpriteEmotionMapping) ??
-                          (EmotionMappings.Count > 0 ? EmotionMappings[0] : null);
+            var mapping = (mappingData as SpriteExpressionMapping) ??
+                          (ExpressionMappings.Count > 0 ? ExpressionMappings[0] : null);
             if (mapping == null)
             {
                 EditorGUI.LabelField(position, "No sprite mapping to preview.");
@@ -126,7 +126,7 @@ namespace WolfstagInteractive.ConvoCore
         private void OnValidate()
         {
             var used = new HashSet<string>();
-            foreach (var m in EmotionMappings)
+            foreach (var m in ExpressionMappings)
             {
                 if (m == null) continue;
                 m.EnsureValidId(used);
@@ -138,20 +138,20 @@ namespace WolfstagInteractive.ConvoCore
     }
 
     [System.Serializable]
-    public class SpriteEmotionMapping
+    public class SpriteExpressionMapping
     {
         [SerializeField, Tooltip("Stable unique ID (GUID). Non-editable.")]
-        private string emotionID = System.Guid.NewGuid().ToString("N");
+        private string expressionID = System.Guid.NewGuid().ToString("N");
 
-        public string EmotionID => emotionID;
+        public string ExpressionID => expressionID;
 
         [Tooltip("Human-readable name shown in dropdowns and inspector list headers.")]
         public string DisplayName = "Neutral";
 
-        [Tooltip("Portrait sprite for the emotion.")]
+        [Tooltip("Portrait sprite for the expression.")]
         public Sprite PortraitSprite;
 
-        [Tooltip("Full body sprite for the emotion.")]
+        [Tooltip("Full body sprite for the expression.")]
         public Sprite FullBodySprite;
 
         [Header("Default Display Options")]
@@ -159,8 +159,8 @@ namespace WolfstagInteractive.ConvoCore
 
         public void EnsureValidId(HashSet<string> used)
         {
-            if (string.IsNullOrWhiteSpace(emotionID) || !used.Add(emotionID))
-                emotionID = System.Guid.NewGuid().ToString("N");
+            if (string.IsNullOrWhiteSpace(expressionID) || !used.Add(expressionID))
+                expressionID = System.Guid.NewGuid().ToString("N");
         }
 
         public void EnsureValidBasics()
