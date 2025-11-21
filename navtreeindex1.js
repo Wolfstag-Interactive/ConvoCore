@@ -1,9 +1,9 @@
 var NAVTREEINDEX1 =
 {
-"interfaceWolfstagInteractive_1_1ConvoCore_1_1IUIFoundation.html#abf8381752b98430738d8ae33b95c2f93":[1,0,0,0,47,3],
-"interfaceWolfstagInteractive_1_1ConvoCore_1_1IUIFoundation.html#abf8381752b98430738d8ae33b95c2f93":[0,0,0,0,47,3],
-"interfaceWolfstagInteractive_1_1ConvoCore_1_1IUIFoundation.html#afc21f3e590881c86993106590ca58810":[1,0,0,0,47,2],
-"interfaceWolfstagInteractive_1_1ConvoCore_1_1IUIFoundation.html#afc21f3e590881c86993106590ca58810":[0,0,0,0,47,2],
+"interfaceWolfstagInteractive_1_1ConvoCore_1_1IUIFoundation.html#abf8381752b98430738d8ae33b95c2f93":[1,0,0,0,46,3],
+"interfaceWolfstagInteractive_1_1ConvoCore_1_1IUIFoundation.html#abf8381752b98430738d8ae33b95c2f93":[0,0,0,0,46,3],
+"interfaceWolfstagInteractive_1_1ConvoCore_1_1IUIFoundation.html#afc21f3e590881c86993106590ca58810":[1,0,0,0,46,2],
+"interfaceWolfstagInteractive_1_1ConvoCore_1_1IUIFoundation.html#afc21f3e590881c86993106590ca58810":[0,0,0,0,46,2],
 "namespaceWolfstagInteractive.html":[0,0,0],
 "namespaceWolfstagInteractive_1_1ConvoCore.html":[0,0,0,0],
 "namespaceWolfstagInteractive_1_1ConvoCore.html#a641e3e9ced2cb6f0f0e0ccc6e90318ca":[0,0,0,0,62],
