@@ -9,6 +9,7 @@ namespace WolfstagInteractive.ConvoCore
 {
     [HelpURL("https://docs.wolfstaginteractive.com/classWolfstagInteractive_1_1ConvoCore_1_1SpriteCharacterRepresentationData.html")]
 [CreateAssetMenu(fileName = "SpriteRepresentation", menuName = "ConvoCore/Sprite Representation")]
+    //This class dictates how a sprite should be represented by telling ConvoCore how to get and apply expressions and expression actions 
     public class SpriteCharacterRepresentationData : CharacterRepresentationBase
 #if UNITY_EDITOR
         , IDialogueLineEditorCustomizable
@@ -32,7 +33,7 @@ namespace WolfstagInteractive.ConvoCore
         {
             if (!TryResolveById(expressionId, out var mapping))
             {
-                Debug.LogWarning($"[PrefabCharacterRepresentationData] Expression '{expressionId}' not found on '{name}'.");
+                Debug.LogWarning($"[SpriteCharacterRepresentationData] Expression '{expressionId}' not found on '{name}'.");
                 return;
             }
 
@@ -46,7 +47,7 @@ namespace WolfstagInteractive.ConvoCore
                 Conversation = conversation,
                 LineIndex    = lineIndex,
                 Representation = this,
-                Display      = display,
+                Display      = display, 
                 ExpressionId = mapping.ExpressionID
             };
 
@@ -171,7 +172,8 @@ namespace WolfstagInteractive.ConvoCore
     }
 
     [System.Serializable]
-    public class SpriteExpressionMapping
+    // This class defines what a sprite expression is
+    public sealed class SpriteExpressionMapping
     {
         [SerializeField, Tooltip("Stable unique ID (GUID). Non-editable.")]
         private string expressionID = System.Guid.NewGuid().ToString("N");
@@ -186,11 +188,11 @@ namespace WolfstagInteractive.ConvoCore
 
         [Tooltip("Full body sprite for the expression.")]
         public Sprite FullBodySprite;
-        [Tooltip("Actions that run when this expression is applied on this representation")]
-        public List<BaseExpressionAction> ExpressionActions = new();
+      
         [Header("Default Display Options")]
         public DialogueLineDisplayOptions DisplayOptions = new DialogueLineDisplayOptions();
-
+        [Tooltip("Actions that run when this expression is applied on this representation")]
+        public List<BaseExpressionAction> ExpressionActions = new();
         public void EnsureValidId(HashSet<string> used)
         {
             if (string.IsNullOrWhiteSpace(expressionID) || !used.Add(expressionID))

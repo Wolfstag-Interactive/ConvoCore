@@ -14,8 +14,9 @@ namespace WolfstagInteractive.ConvoCore
     [HelpURL("https://docs.wolfstaginteractive.com/classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSampleUI.html")]
     public class ConvoCoreSampleUI : ConvoCoreUIFoundation
     {
-        [Header("Dialogue UI Elements")]
-        [SerializeField] private TextMeshProUGUI DialogueText;
+        [Header("Dialogue UI Elements")] [SerializeField]
+        private TextMeshProUGUI DialogueText;
+
         [SerializeField] private TextMeshProUGUI SpeakerName;
         [SerializeField] private GameObject DialoguePanel;
         [SerializeField] private Image SpeakerPortraitImage;
@@ -24,20 +25,22 @@ namespace WolfstagInteractive.ConvoCore
         [SerializeField] private Image FullBodyImageCenter;
         [SerializeField] private Button ContinueButton;
 
-        [Header("Dialogue History UI Elements")] 
-        [SerializeField] private RectTransform DialogueHistoryPanelRoot;
+        [Header("Dialogue History UI Elements")] [SerializeField]
+        private RectTransform DialogueHistoryPanelRoot;
+
         [SerializeField] private ScrollRect DialogueHistoryScrollRect;
         [SerializeField] private RectTransform DialogueHistoryScrollRectContent;
         [SerializeField] private TMP_Text DialogueHistoryText;
         [SerializeField] private Button ToggleDialogueHistoryButton;
-        
-        [Header("Settings")]
-        [SerializeField] private bool AllowLineAdvanceOutsideButton;
+
+        [Header("Settings")] [SerializeField] private bool AllowLineAdvanceOutsideButton;
         [SerializeField] private bool EnableTypewriterEffect = true;
         [SerializeField] private float TypewriterSpeed = 0.05f; // Time in seconds per character
         [SerializeField] private bool CanSkipTypewriter = true;
-        [Header("Input Settings")]
-        [SerializeField] private InputAction AdvanceDialogueAction;
+
+        [Header("Input Settings")] [SerializeField]
+        private InputAction AdvanceDialogueAction;
+
         private Coroutine _typewriterCoroutine;
         private bool _isTyping;
         private string fullText = "";
@@ -47,6 +50,7 @@ namespace WolfstagInteractive.ConvoCore
         private CanvasGroup _historyGroup;
 
         private bool _togglingGuard;
+
         public override void InitializeUI(ConvoCore convoCoreInstance)
         {
             base.InitializeUI(convoCoreInstance);
@@ -92,7 +96,7 @@ namespace WolfstagInteractive.ConvoCore
             DisplayDialogue(localizedText);
             SpeakerName.text = speakerName;
             SpeakerName.color = primaryProfile.CharacterNameColor;
-            ConvoCoreDialogueHistoryUI.AddLine(speakerName,localizedText,primaryProfile.CharacterNameColor);
+            ConvoCoreDialogueHistoryUI.AddLine(speakerName, localizedText, primaryProfile.CharacterNameColor);
 
             // Hide all sprite elements
             HideAllSpriteImages();
@@ -101,7 +105,7 @@ namespace WolfstagInteractive.ConvoCore
             var primaryDisplay = RenderRepresentation(lineInfo.PrimaryCharacterRepresentation, DisplaySlot.Center);
             RenderRepresentation(lineInfo.SecondaryCharacterRepresentation, DisplaySlot.Left);
             RenderRepresentation(lineInfo.TertiaryCharacterRepresentation, DisplaySlot.Right);
-            
+
             var expressionId = lineInfo.PrimaryCharacterRepresentation.SelectedExpressionId;
             var convoData = ConvoCoreInstance.GetCurrentConversationData();
 
@@ -111,7 +115,7 @@ namespace WolfstagInteractive.ConvoCore
                 convoData,
                 lineInfo.ConversationLineIndex,
                 primaryDisplay);
-            
+
             ContinueButton?.gameObject.SetActive(true);
         }
 
@@ -120,67 +124,66 @@ namespace WolfstagInteractive.ConvoCore
         /// </summary>
         /// <param name="data">The character representation data containing details about the character and its display options.</param>
         /// <param name="slot">The display slot where the character representation should be rendered (left, right, or center).</param>
-private IConvoCoreCharacterDisplay RenderRepresentation(
-    ConvoCoreConversationData.CharacterRepresentationData data,
-    DisplaySlot slot)
-{
-    ConvoCoreConversationData conversationData = ConvoCoreInstance?.GetCurrentConversationData();
-    if (conversationData == null) return null;
-
-    var representation = GetCharacterRepresentationFromData(conversationData, data);
-    if (representation == null) return null;
-
-    var expressionID = data.SelectedExpressionId;
-    var processed = representation.ProcessExpression(expressionID);
-
-    // Prefab based representation
-    if (representation is PrefabCharacterRepresentationData prefabRep)
-    {
-        // You need PrefabRepresentationSpawner.SpawnCharacter to hand back a display
-        var display = PrefabRepresentationSpawner?.SpawnCharacter(
-            prefabRep,
-            expressionID,
-            data.LineSpecificDisplayOptions,
-            slot);
-
-        return display; // IConvoCoreCharacterDisplay
-    }
-    // Sprite based representation
-    else if (processed is SpriteExpressionMapping spriteMapping)
-    {
-        var displayOptions = data.LineSpecificDisplayOptions ?? spriteMapping.DisplayOptions;
-
-        Image portraitImage = SpeakerPortraitImage;
-        Image fullBodyImage = GetFullBodyImage(slot);
-
-        if (portraitImage && spriteMapping.PortraitSprite)
+        private IConvoCoreCharacterDisplay RenderRepresentation(
+            ConvoCoreConversationData.CharacterRepresentationData data,
+            DisplaySlot slot)
         {
-            portraitImage.sprite = spriteMapping.PortraitSprite;
-            portraitImage.rectTransform.localScale = new Vector3(
-                displayOptions.FlipPortraitX ? -displayOptions.PortraitScale.x : displayOptions.PortraitScale.x,
-                displayOptions.FlipPortraitY ? -displayOptions.PortraitScale.y : displayOptions.PortraitScale.y,
-                displayOptions.PortraitScale.z);
-            portraitImage.gameObject.SetActive(true);
-            TryFadeIn(portraitImage);
+            ConvoCoreConversationData conversationData = ConvoCoreInstance?.GetCurrentConversationData();
+            if (conversationData == null) return null;
+
+            var representation = GetCharacterRepresentationFromData(conversationData, data);
+            if (representation == null) return null;
+
+            var expressionID = data.SelectedExpressionId;
+            var processed = representation.ProcessExpression(expressionID);
+
+            // Prefab based representation
+            if (representation is PrefabCharacterRepresentationData prefabRep)
+            {
+                var display = PrefabRepresentationSpawner?.SpawnCharacter(
+                    prefabRep,
+                    expressionID,
+                    data.LineSpecificDisplayOptions,
+                    slot);
+
+                return display; // IConvoCoreCharacterDisplay
+            }
+            // Sprite based representation
+            else if (processed is SpriteExpressionMapping spriteMapping)
+            {
+                var displayOptions = data.LineSpecificDisplayOptions ?? spriteMapping.DisplayOptions;
+
+                Image portraitImage = SpeakerPortraitImage;
+                Image fullBodyImage = GetFullBodyImage(slot);
+
+                if (portraitImage && spriteMapping.PortraitSprite)
+                {
+                    portraitImage.sprite = spriteMapping.PortraitSprite;
+                    portraitImage.rectTransform.localScale = new Vector3(
+                        displayOptions.FlipPortraitX ? -displayOptions.PortraitScale.x : displayOptions.PortraitScale.x,
+                        displayOptions.FlipPortraitY ? -displayOptions.PortraitScale.y : displayOptions.PortraitScale.y,
+                        displayOptions.PortraitScale.z);
+                    portraitImage.gameObject.SetActive(true);
+                    TryFadeIn(portraitImage);
+                }
+
+                if (fullBodyImage && spriteMapping.FullBodySprite)
+                {
+                    fullBodyImage.sprite = spriteMapping.FullBodySprite;
+                    fullBodyImage.rectTransform.localScale = new Vector3(
+                        displayOptions.FlipFullBodyX ? -displayOptions.FullBodyScale.x : displayOptions.FullBodyScale.x,
+                        displayOptions.FlipFullBodyY ? -displayOptions.FullBodyScale.y : displayOptions.FullBodyScale.y,
+                        displayOptions.FullBodyScale.z);
+                    fullBodyImage.gameObject.SetActive(true);
+                    TryFadeIn(fullBodyImage);
+                }
+
+                // For now sprite representation returns null display
+                return null;
+            }
+
+            return null;
         }
-
-        if (fullBodyImage && spriteMapping.FullBodySprite)
-        {
-            fullBodyImage.sprite = spriteMapping.FullBodySprite;
-            fullBodyImage.rectTransform.localScale = new Vector3(
-                displayOptions.FlipFullBodyX ? -displayOptions.FullBodyScale.x : displayOptions.FullBodyScale.x,
-                displayOptions.FlipFullBodyY ? -displayOptions.FullBodyScale.y : displayOptions.FullBodyScale.y,
-                displayOptions.FullBodyScale.z);
-            fullBodyImage.gameObject.SetActive(true);
-            TryFadeIn(fullBodyImage);
-        }
-
-        // For now sprite representation returns null display
-        return null;
-    }
-
-    return null;
-}
 
         private void TryFadeIn(Graphic graphic)
         {
@@ -204,13 +207,17 @@ private IConvoCoreCharacterDisplay RenderRepresentation(
             FullBodyImageRight?.gameObject.SetActive(false);
         }
 
-        private CharacterRepresentationBase GetCharacterRepresentationFromData(ConvoCoreConversationData convoData, ConvoCoreConversationData.CharacterRepresentationData data)
+        private CharacterRepresentationBase GetCharacterRepresentationFromData(ConvoCoreConversationData convoData,
+            ConvoCoreConversationData.CharacterRepresentationData data)
         {
             if (!string.IsNullOrEmpty(data.SelectedCharacterID))
             {
-                var profile = convoData.ConversationParticipantProfiles.FirstOrDefault(p => p.CharacterID == data.SelectedCharacterID);
+                var profile =
+                    convoData.ConversationParticipantProfiles.FirstOrDefault(p =>
+                        p.CharacterID == data.SelectedCharacterID);
                 return profile?.GetRepresentation(data.SelectedRepresentationName);
             }
+
             return data.SelectedRepresentation;
         }
 
@@ -220,15 +227,15 @@ private IConvoCoreCharacterDisplay RenderRepresentation(
             DialogueText.gameObject.SetActive(true);
             SpeakerName.gameObject.SetActive(true);
             DialoguePanel.gameObject.SetActive(true);
-            
-            
+
+
             // Stop any existing typewriter effect
             if (_typewriterCoroutine != null)
             {
                 StopCoroutine(_typewriterCoroutine);
                 _typewriterCoroutine = null;
             }
-            
+
             if (EnableTypewriterEffect)
             {
                 DialogueText.text = "";
@@ -274,13 +281,12 @@ private IConvoCoreCharacterDisplay RenderRepresentation(
                 CompleteTypewriter();
                 return;
             }
+
             _isWaitingForInput = false;
         }
 
         private void OnAdvanceDialoguePerformed(InputAction.CallbackContext context)
         {
-            // --- 1️⃣ Properly detect if the click is over UI ---
-            // Only ignore if you're actually allowing click-to-advance
             if (AllowLineAdvanceOutsideButton)
             {
                 if (EventSystem.current != null)
@@ -302,10 +308,10 @@ private IConvoCoreCharacterDisplay RenderRepresentation(
                 }
             }
 
-            // --- 2️⃣ Now handle normal advancing logic ---
             if (_isTyping && !CanSkipTypewriter)
+            {
                 return;
-
+            }
             if (_isWaitingForInput && (AllowLineAdvanceOutsideButton || !IsPointerOverUIElement(ContinueButton)))
             {
                 OnContinueButtonPressed();
@@ -315,19 +321,21 @@ private IConvoCoreCharacterDisplay RenderRepresentation(
                 CompleteTypewriter();
             }
         }
+
         private IEnumerator TypewriterEffect(string text)
         {
             DialogueText.text = "";
-            
+
             for (int i = 0; i < text.Length; i++)
             {
                 DialogueText.text = text.Substring(0, i + 1);
                 yield return new WaitForSeconds(TypewriterSpeed);
             }
-            
+
             _isTyping = false;
             _typewriterCoroutine = null;
         }
+
         private void CompleteTypewriter()
         {
             if (_typewriterCoroutine != null)
@@ -335,88 +343,91 @@ private IConvoCoreCharacterDisplay RenderRepresentation(
                 StopCoroutine(_typewriterCoroutine);
                 _typewriterCoroutine = null;
             }
-            
+
             DialogueText.text = fullText;
             _isTyping = false;
         }
-         // Call this from your button: ToggleDialogueHistoryButton?.onClick.AddListener(() => ToggleDialogueHistoryUI());
-    public void ToggleDialogueHistoryUI() => ToggleDialogueHistoryUI(null);
 
-    // Explicitly show/hide by passing true/false; pass null to toggle.
-    public void ToggleDialogueHistoryUI(bool? setVisible, bool focus = true)
-    {
-        if (_togglingGuard) return;
+        // Call this from your button: ToggleDialogueHistoryButton?.onClick.AddListener(() => ToggleDialogueHistoryUI());
+        public void ToggleDialogueHistoryUI() => ToggleDialogueHistoryUI(null);
 
-        // Basic safety
-        if (DialogueHistoryPanelRoot == null)
+        // Explicitly show/hide by passing true/false; pass null to toggle.
+        public void ToggleDialogueHistoryUI(bool? setVisible, bool focus = true)
         {
-            Debug.LogWarning("[ConvoCore UI] DialogueHistoryPanelRoot not assigned.");
-            return;
-        }
+            if (_togglingGuard) return;
 
-        bool target = setVisible ?? !_historyVisible;
-        if (target == _historyVisible) return; // no-op if already in desired state
-
-        _togglingGuard = true;
-        _historyVisible = target;
-
-        // If you have a CanvasGroup, prefer alpha/interactable/raycast control (smoother)
-        if (_historyGroup != null)
-        {
-            _historyGroup.alpha = target ? 1f : 0f;
-            _historyGroup.interactable = target;
-            _historyGroup.blocksRaycasts = target;
-
-            // Keep GameObject active to preserve layout if you like, or toggle it as well:
-            DialogueHistoryPanelRoot.gameObject.SetActive(true); // keep active so layout stays; alpha=0 hides it visually
-            if (!target)
+            // Basic safety
+            if (DialogueHistoryPanelRoot == null)
             {
-                // If you truly want it disabled, uncomment:
-                // DialogueHistoryPanelRoot.SetActive(false);
+                Debug.LogWarning("[ConvoCore UI] DialogueHistoryPanelRoot not assigned.");
+                return;
             }
-        }
-        else
-        {
-            // Fallback to SetActive when no CanvasGroup is present
-            DialogueHistoryPanelRoot.gameObject.SetActive(target);
-        }
 
-        // Optional: when history is open, guard against “advance” clicks bleeding through
-        if (ContinueButton != null)
-            ContinueButton.interactable = !target;
+            bool target = setVisible ?? !_historyVisible;
+            if (target == _historyVisible) return; // no-op if already in desired state
 
-        // Snap scroll to bottom when opening (latest line visible)
-        if (target && DialogueHistoryScrollRect != null)
-        {
-            // Force a late layout update then snap
-            Canvas.ForceUpdateCanvases();
-            DialogueHistoryScrollRect.normalizedPosition = new Vector2(0f, 0f); // bottom for vertical scrolls
-        }
+            _togglingGuard = true;
+            _historyVisible = target;
 
-        /*// Set UI focus for gamepad/keyboard users
-        if (focus)
-        {
-            if (target)
+            // If you have a CanvasGroup, prefer alpha/interactable/raycast control (smoother)
+            if (_historyGroup != null)
             {
-                var toSelect = (Selectable)HistoryDefaultSelectable ?? ToggleDialogueHistoryButton;
-                if (toSelect != null)
+                _historyGroup.alpha = target ? 1f : 0f;
+                _historyGroup.interactable = target;
+                _historyGroup.blocksRaycasts = target;
+
+                // Keep GameObject active to preserve layout if you like, or toggle it as well:
+                DialogueHistoryPanelRoot.gameObject
+                    .SetActive(true); // keep active so layout stays; alpha=0 hides it visually
+                if (!target)
                 {
-                    EventSystem.current?.SetSelectedGameObject(toSelect.gameObject);
+                    // If you truly want it disabled, uncomment:
+                    // DialogueHistoryPanelRoot.SetActive(false);
                 }
             }
             else
             {
-                // Return focus to the toggle or continue button when closing
-                var back = (Selectable)ToggleDialogueHistoryButton ?? ContinueButton;
-                if (back != null)
-                {
-                    EventSystem.current?.SetSelectedGameObject(back.gameObject);
-                }
+                // Fallback to SetActive when no CanvasGroup is present
+                DialogueHistoryPanelRoot.gameObject.SetActive(target);
             }
-        }*/
 
-        _togglingGuard = false;
-    }
+            // Optional: when history is open, guard against “advance” clicks bleeding through
+            if (ContinueButton != null)
+                ContinueButton.interactable = !target;
+
+            // Snap scroll to bottom when opening (latest line visible)
+            if (target && DialogueHistoryScrollRect != null)
+            {
+                // Force a late layout update then snap
+                Canvas.ForceUpdateCanvases();
+                DialogueHistoryScrollRect.normalizedPosition = new Vector2(0f, 0f); // bottom for vertical scrolls
+            }
+
+            /*// Set UI focus for gamepad/keyboard users
+            if (focus)
+            {
+                if (target)
+                {
+                    var toSelect = (Selectable)HistoryDefaultSelectable ?? ToggleDialogueHistoryButton;
+                    if (toSelect != null)
+                    {
+                        EventSystem.current?.SetSelectedGameObject(toSelect.gameObject);
+                    }
+                }
+                else
+                {
+                    // Return focus to the toggle or continue button when closing
+                    var back = (Selectable)ToggleDialogueHistoryButton ?? ContinueButton;
+                    if (back != null)
+                    {
+                        EventSystem.current?.SetSelectedGameObject(back.gameObject);
+                    }
+                }
+            }*/
+
+            _togglingGuard = false;
+        }
+
         protected bool IsPointerOverUIElement(Component uiElement)
         {
             if (uiElement == null) return false;
@@ -426,7 +437,7 @@ private IConvoCoreCharacterDisplay RenderRepresentation(
             if (rectTransform != null)
             {
                 Vector2 mousePosition;
-                #if ENABLE_INPUT_SYSTEM
+#if ENABLE_INPUT_SYSTEM
                 if (Mouse.current != null)
                 {
                     mousePosition = Mouse.current.position.ReadValue();
@@ -435,9 +446,9 @@ private IConvoCoreCharacterDisplay RenderRepresentation(
                 {
                     mousePosition = Input.mousePosition;
                 }
-                #else
+#else
                 mousePosition = Input.mousePosition;
-                #endif
+#endif
                 Vector2 localMousePosition = rectTransform.InverseTransformPoint(mousePosition);
                 return rectTransform.rect.Contains(localMousePosition);
             }

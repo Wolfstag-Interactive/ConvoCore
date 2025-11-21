@@ -7,6 +7,7 @@ namespace WolfstagInteractive.ConvoCore
     [HelpURL("https://docs.wolfstaginteractive.com/classWolfstagInteractive_1_1ConvoCore_1_1PrefabCharacterRepresentationData.html")]
 [CreateAssetMenu(fileName = "PrefabCharacterRepresentation",
         menuName = "ConvoCore/Prefab Character Representation")]
+    //This class dictates how a prefab should be represented by telling ConvoCore how to get and apply expressions and expression actions 
     public class PrefabCharacterRepresentationData : CharacterRepresentationBase
 #if UNITY_EDITOR
         , IDialogueLineEditorCustomizable
@@ -16,13 +17,13 @@ namespace WolfstagInteractive.ConvoCore
         public GameObject CharacterPrefab;
 
         [Header("Expressions (GUID-only)")]
-        public List<ExpressionPrefabMapping> ExpressionMappings = new();
+        public List<PrefabExpressionMapping> ExpressionMappings = new();
 
         // GUID catalog for editor selectors
         public IReadOnlyList<(string id, string name)> GetExpressionCatalog() =>
             ExpressionMappings.Select(m => (ExpressionId: m.ExpressionID, m.DisplayName)).ToList();
 
-        public bool TryResolveById(string id, out ExpressionPrefabMapping mapping)
+        public bool TryResolveById(string id, out PrefabExpressionMapping mapping)
         {
             mapping = ExpressionMappings.FirstOrDefault(m => m.ExpressionID == id);
             return mapping != null;
@@ -140,7 +141,8 @@ namespace WolfstagInteractive.ConvoCore
     }
 
     [System.Serializable]
-    public sealed class ExpressionPrefabMapping
+    // This class defines what a prefab expression is
+    public sealed class PrefabExpressionMapping
     {
         [SerializeField, Tooltip("Stable unique ID (GUID). Non-editable.")]
         private string expressionID = System.Guid.NewGuid().ToString("N");

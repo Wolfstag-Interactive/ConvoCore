@@ -6,12 +6,11 @@ using UnityEngine;
 namespace WolfstagInteractive.ConvoCore.Editor
 {
     [UnityEngine.HelpURL("https://docs.wolfstaginteractive.com/classWolfstagInteractive_1_1ConvoCore_1_1Editor_1_1SpriteCharacterRepresentationDataEditor.html")]
-[CustomEditor(typeof(SpriteCharacterRepresentationData))]
+    [CustomEditor(typeof(SpriteCharacterRepresentationData))]
     public class SpriteCharacterRepresentationDataEditor : UnityEditor.Editor
     {
         private ReorderableList _list;
 
-        
         public override void OnInspectorGUI()
         {
             serializedObject.Update();
@@ -26,6 +25,9 @@ namespace WolfstagInteractive.ConvoCore.Editor
                     $"Warning: Duplicate expression names detected: {string.Join(", ", duplicateNames)}. Each expression should have a unique Display Name.",
                     MessageType.Warning);
             }
+
+            if (_list == null)
+                BuildList();
 
             _list.DoLayoutList();
 
@@ -55,6 +57,7 @@ namespace WolfstagInteractive.ConvoCore.Editor
 
             if (changed) so.ApplyModifiedProperties();
         }
+
         private static System.Collections.Generic.HashSet<string> GetDuplicateDisplayNames(SerializedProperty listProp)
         {
             var duplicates = new System.Collections.Generic.HashSet<string>();
@@ -104,22 +107,35 @@ namespace WolfstagInteractive.ConvoCore.Editor
                 var optsProp = el.FindPropertyRelative("DisplayOptions");
                 float optsH = optsProp != null ? EditorGUI.GetPropertyHeight(optsProp, true) : 0f;
 
-                return headerH + (objFieldH + previewH) + 4f + optsH + pad * 2f + 6f;
+                // NEW: account for ExpressionActions height
+                var actionsProp = el.FindPropertyRelative("ExpressionActions");
+                float actionsH = actionsProp != null ? EditorGUI.GetPropertyHeight(actionsProp, true) : 0f;
+
+                // header + (object field + preview) + spacing + display options + spacing + actions + padding
+                return headerH
+                       + (objFieldH + previewH)
+                       + 4f
+                       + optsH
+                       + (actionsH > 0f ? 4f + actionsH : 0f)
+                       + pad * 2f
+                       + 6f;
             };
 
             _list.drawElementCallback = (rect, index, active, focused) =>
             {
                 var el = listProp.GetArrayElementAtIndex(index);
 
-                var nameProp = el.FindPropertyRelative("DisplayName") ?? el.FindPropertyRelative("Name");
-                var guidProp = el.FindPropertyRelative("expressionID");
-                var portProp = el.FindPropertyRelative("PortraitSprite");
-                var fullProp = el.FindPropertyRelative("FullBodySprite");
-                var optsProp = el.FindPropertyRelative("DisplayOptions");
+                var nameProp  = el.FindPropertyRelative("DisplayName") ?? el.FindPropertyRelative("Name");
+                var guidProp  = el.FindPropertyRelative("expressionID");
+                var portProp  = el.FindPropertyRelative("PortraitSprite");
+                var fullProp  = el.FindPropertyRelative("FullBodySprite");
+                var optsProp  = el.FindPropertyRelative("DisplayOptions");
+                var actionsProp = el.FindPropertyRelative("ExpressionActions"); // NEW
 
                 const float pad = 6f;
                 rect = new Rect(rect.x + pad, rect.y + pad, rect.width - pad * 2f, rect.height - pad * 2f);
-                // Check if this name is a duplicate
+
+                // Duplicate detection
                 bool isDuplicate = false;
                 string currentName = nameProp.stringValue;
                 if (!string.IsNullOrWhiteSpace(currentName))
@@ -137,31 +153,32 @@ namespace WolfstagInteractive.ConvoCore.Editor
                     }
                     isDuplicate = duplicateCount > 0;
                 }
-                // Header row: Display Name (editable) + GUID (readonly, copyable)
+
+                // Header row
                 var headerRect = new Rect(rect.x, rect.y, rect.width, EditorGUIUtility.singleLineHeight);
-                // Reserve space for warning icon if duplicate
+
                 float warningIconWidth = isDuplicate ? 20f : 0f;
                 float nameWidth = (headerRect.width - warningIconWidth) * 0.60f;
-                
-                // Draw warning icon first if duplicate
+
                 if (isDuplicate)
                 {
                     var warningRect = new Rect(headerRect.x, headerRect.y, warningIconWidth, headerRect.height);
-                    var warningContent = new GUIContent(EditorGUIUtility.IconContent("console.warnicon.sml"));
-                    warningContent.tooltip = "Duplicate name detected! Each expression should have a unique Display Name.";
+                    var warningContent = new GUIContent(EditorGUIUtility.IconContent("console.warnicon.sml"))
+                    {
+                        tooltip = "Duplicate name detected! Each expression should have a unique Display Name."
+                    };
                     EditorGUI.LabelField(warningRect, warningContent);
                 }
-                
-                
-                var nameRect = new Rect(headerRect.x+ warningIconWidth, headerRect.y, nameWidth, headerRect.height);
+
+                var nameRect = new Rect(headerRect.x + warningIconWidth, headerRect.y, nameWidth, headerRect.height);
                 var guidLabelRect = new Rect(nameRect.xMax + 8f, headerRect.y, 44f, headerRect.height);
                 var guidRect = new Rect(guidLabelRect.xMax + 4f, headerRect.y,
                     headerRect.xMax - (guidLabelRect.xMax + 4f), headerRect.height);
-                // Highlight the name field if duplicate
+
                 if (isDuplicate)
                 {
                     var oldColor = GUI.backgroundColor;
-                    GUI.backgroundColor = new Color(1f, 0.8f, 0.6f); // orange tint
+                    GUI.backgroundColor = new Color(1f, 0.8f, 0.6f);
                     nameProp.stringValue = EditorGUI.TextField(nameRect, "Display Name", nameProp.stringValue);
                     GUI.backgroundColor = oldColor;
                 }
@@ -185,23 +202,31 @@ namespace WolfstagInteractive.ConvoCore.Editor
                 var portRect = new Rect(rect.x, topY, colWidth, totalColH);
                 var fullRect = new Rect(rect.x + colWidth + colGap, topY, colWidth, totalColH);
 
-                // Make object fields wider (smaller label width while drawing these two)
                 float oldLW = EditorGUIUtility.labelWidth;
-                EditorGUIUtility.labelWidth = 80f; // wider field, shorter label
+                EditorGUIUtility.labelWidth = 80f;
                 DrawSpriteFieldWithPreview(portRect, portProp, "Portrait");
                 DrawSpriteFieldWithPreview(fullRect, fullProp, "Full Body");
                 EditorGUIUtility.labelWidth = oldLW;
 
-                // Display Options: draw WITH children so the foldout expands properly
+                // Display Options
+                float currentY = topY + totalColH + 4f;
                 if (optsProp != null)
                 {
                     float optsH = EditorGUI.GetPropertyHeight(optsProp, true);
-                    var optsRect = new Rect(rect.x, topY + totalColH + 4f, rect.width, optsH);
+                    var optsRect = new Rect(rect.x, currentY, rect.width, optsH);
                     EditorGUI.PropertyField(optsRect, optsProp, new GUIContent("Default Display Options"), true);
+                    currentY += optsH + 4f;
+                }
+
+                // NEW: Expression Actions list
+                if (actionsProp != null)
+                {
+                    float actionsH = EditorGUI.GetPropertyHeight(actionsProp, true);
+                    var actionsRect = new Rect(rect.x, currentY, rect.width, actionsH);
+                    EditorGUI.PropertyField(actionsRect, actionsProp, new GUIContent("Expression Actions"), true);
                 }
             };
         }
-
 
         private static void DrawSpriteFieldWithPreview(Rect rect, SerializedProperty spriteProp, string label)
         {
@@ -213,7 +238,6 @@ namespace WolfstagInteractive.ConvoCore.Editor
 
             var sprite = spriteProp != null ? spriteProp.objectReferenceValue as Sprite : null;
 
-            // Subtle background so empty previews are still visually aligned
             EditorGUI.DrawRect(previewRect, new Color(0f, 0f, 0f, 0.04f));
 
             if (sprite == null || sprite.texture == null) return;

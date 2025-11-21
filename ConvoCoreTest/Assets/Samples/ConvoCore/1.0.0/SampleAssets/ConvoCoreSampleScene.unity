@@ -401,16 +401,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Input:
-    rid: 5888606765772963843
+    rid: 3803522332909633540
   ConversationUI: {fileID: 8703669978597215545}
   references:
     version: 2
     RefIds:
-    - rid: 5888606765772963843
-      type: {class: ContainerInput, ns: WolfstagInteractive.ConvoCore, asm: ConvoCore}
+    - rid: 3803522332909633540
+      type: {class: SingleConversationInput, ns: WolfstagInteractive.ConvoCore, asm: ConvoCore}
       data:
-        Container: {fileID: 11400000, guid: c15e437cbe731e040b035d6f06005974, type: 2}
-        StartAlias: 
+        Conversation: {fileID: 11400000, guid: 939c62473d966244bab0eb28ef86023a, type: 2}
 --- !u!4 &639238755
 Transform:
   m_ObjectHideFlags: 0
@@ -935,7 +934,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2475525088512401250, guid: 37defd90b8cf4c644b832efe22df606d, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 191.49998
+      value: 191.5
       objectReference: {fileID: 0}
     - target: {fileID: 2674301797292854259, guid: 37defd90b8cf4c644b832efe22df606d, type: 3}
       propertyPath: m_AnchorMax.x
