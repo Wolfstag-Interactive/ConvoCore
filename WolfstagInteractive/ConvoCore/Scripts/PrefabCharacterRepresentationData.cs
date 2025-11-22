@@ -16,7 +16,6 @@ namespace WolfstagInteractive.ConvoCore
         [Header("Prefab Settings")]
         public GameObject CharacterPrefab;
 
-        [Header("Expressions (GUID-only)")]
         public List<PrefabExpressionMapping> ExpressionMappings = new();
 
         // GUID catalog for editor selectors
@@ -28,10 +27,6 @@ namespace WolfstagInteractive.ConvoCore
             mapping = ExpressionMappings.FirstOrDefault(m => m.ExpressionID == id);
             return mapping != null;
         }
-
-        // Legacy/UI convenience no longer used – return names only if some old drawer calls it
-        public override List<string> GetExpressionIDs() => ExpressionMappings.Select(m => m.DisplayName).ToList();
-
         public override void ApplyExpression(string expressionId, ConvoCore runtime, ConvoCoreConversationData conversation, int lineIndex,
             IConvoCoreCharacterDisplay display)
         {

@@ -15,7 +15,7 @@ namespace WolfstagInteractive.ConvoCore
         , IDialogueLineEditorCustomizable
 #endif
     {
-        [Header("Expressions (GUID-only)")] public List<SpriteExpressionMapping> ExpressionMappings = new();
+        public List<SpriteExpressionMapping> ExpressionMappings = new();
 
         public IReadOnlyList<(string id, string name)> GetExpressionCatalog() =>
             ExpressionMappings.Select(m => (ExpressionId: m.ExpressionID, m.DisplayName)).ToList();
@@ -25,9 +25,6 @@ namespace WolfstagInteractive.ConvoCore
             mapping = ExpressionMappings.FirstOrDefault(m => m.ExpressionID == id);
             return mapping != null;
         }
-
-        public override List<string> GetExpressionIDs() => ExpressionMappings.Select(m => m.DisplayName).ToList();
-
         public override void ApplyExpression(string expressionId, ConvoCore runtime, ConvoCoreConversationData conversation, int lineIndex,
             IConvoCoreCharacterDisplay display)
         {

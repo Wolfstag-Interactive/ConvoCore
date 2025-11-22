@@ -16,9 +16,6 @@ namespace WolfstagInteractive.ConvoCore
         /// <param name="expressionID">The expression to process.</param>
         /// <returns>Object related to the current representation, e.g., Sprite, GameObject, etc.</returns>
         public abstract object ProcessExpression(string expressionID);
-        
-        // Abstract or virtual method to get the expression IDs for the representation
-        public abstract List<string> GetExpressionIDs();
         /// <summary>
         /// Apply an expression for this representation.
         /// Implementations are expected to run any attached BaseExpressionAction.

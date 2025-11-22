@@ -13,7 +13,6 @@ namespace WolfstagInteractive.ConvoCore
             public string SelectedRepresentationName;
             public CharacterRepresentationBase SelectedRepresentation;
 
-            [Header("Expression (GUID)")]
             // This drawer shows DisplayName but stores GUID from the representation asset.
             [ExpressionIDSelector(nameof(SelectedRepresentation))]
             public string SelectedExpressionId;

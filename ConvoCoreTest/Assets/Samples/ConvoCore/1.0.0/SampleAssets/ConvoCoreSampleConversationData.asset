@@ -117,7 +117,7 @@ MonoBehaviour:
       SelectedCharacterID: 
       SelectedRepresentationName: Sprites
       SelectedRepresentation: {fileID: 11400000, guid: cf61be94e9ae46b4da28bb23d0bfa60f, type: 2}
-      SelectedExpressionId: 
+      SelectedExpressionId: 8d0977f727bc4b5cbeabe8d221b234ee
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
         FlipPortraitY: 0

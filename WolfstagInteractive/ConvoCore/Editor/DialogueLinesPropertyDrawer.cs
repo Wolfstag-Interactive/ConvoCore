@@ -18,6 +18,7 @@ namespace WolfstagInteractive.ConvoCore.Editor
         private const float k_Pad = 4f;
         private const float k_MinPreviewHeight = 100f;
         private const float k_MaxPreviewHeight = 120f;
+        private const float k_TooltipMaxWidth = 260f;
 
         // Foldout states per line
         private static readonly Dictionary<string, bool> CharacterRepresentationFoldouts = new();
@@ -59,17 +60,14 @@ namespace WolfstagInteractive.ConvoCore.Editor
             if (string.IsNullOrEmpty(path))
                 return -1;
 
-            // find last closing bracket
             int end = path.LastIndexOf(']');
             if (end <= 0)
                 return -1;
 
-            // find matching opening bracket
             int start = path.LastIndexOf('[', end);
             if (start < 0 || end - start < 2)
                 return -1;
 
-            // extract number substring efficiently
             int length = end - start - 1;
             int result = -1;
             if (int.TryParse(path.AsSpan(start + 1, length), out int idx))
@@ -94,7 +92,7 @@ namespace WolfstagInteractive.ConvoCore.Editor
 
             // Header
             int lineIndex = GetIndexFromPath(property.propertyPath);
-            string previewText = GetCachedPreviewText(property, lineIndex);
+            string previewText = GetCachedPreviewText(property);
             EditorGUI.DrawRect(rect, EditorGUIUtility.isProSkin ? s_HeaderColorPro : s_HeaderColorLight);
             s_HeaderContent.text = $"Dialogue Line {lineIndex}: {previewText}";
             EditorGUI.LabelField(rect, s_HeaderContent, s_HeaderStyle);
@@ -234,8 +232,6 @@ namespace WolfstagInteractive.ConvoCore.Editor
             return h;
         }
 
-
-
         private float GetCharacterRepresentationSectionHeight(SerializedProperty property)
         {
             float h = 0f;
@@ -281,117 +277,97 @@ namespace WolfstagInteractive.ConvoCore.Editor
         }
 
         private float GetSingleCharacterRepresentationHeight(
-            SerializedProperty repProp,
-            SerializedProperty mainProperty,
-            bool useRepresentationNameInsteadOfID)
+    SerializedProperty repProp,
+    SerializedProperty mainProperty,
+    bool useRepresentationNameInsteadOfID)
+{
+    if (repProp == null)
+        return 0f;
+
+    float h = 0f;
+    float line = EditorGUIUtility.singleLineHeight + k_Spacing;
+
+    // Section label: "Primary Character", "Secondary Character", etc
+    h += line;
+
+    var convo = repProp.serializedObject.targetObject as ConvoCoreConversationData;
+    if (convo == null)
+        return h + line;
+
+    var profiles = convo.ConversationParticipantProfiles?.Where(p => p != null).ToList();
+    if (profiles == null || profiles.Count == 0)
+        return h + line;
+
+    var selectedRepNameProp       = repProp.FindPropertyRelative("SelectedRepresentationName");
+    var selectedExpressionGuidProp = repProp.FindPropertyRelative("SelectedExpressionId");
+
+    if (useRepresentationNameInsteadOfID)
+    {
+        // Secondary / tertiary characters: character chosen inside this block
+        var selectedCharacterIDProp = repProp.FindPropertyRelative("SelectedCharacterID");
+        h += line; // profile popup
+
+        string charId = selectedCharacterIDProp?.stringValue ?? string.Empty;
+        var profile = !string.IsNullOrEmpty(charId)
+            ? profiles.FirstOrDefault(p => p.CharacterID == charId)
+            : null;
+
+        if (profile != null)
         {
-            if (repProp == null) return 0f;
+            // Representation popup
+            h += line;
 
-            float h = 0f;
+            // Expression field
+            float emoH = selectedExpressionGuidProp != null
+                ? EditorGUI.GetPropertyHeight(selectedExpressionGuidProp, true)
+                : line;
+            h += emoH + k_Spacing;
 
-            h += EditorGUIUtility.singleLineHeight + k_Spacing; // section label
-
-            var convo = repProp.serializedObject.targetObject as ConvoCoreConversationData;
-            if (convo == null) return h + EditorGUIUtility.singleLineHeight + k_Spacing;
-
-            var profiles = convo.ConversationParticipantProfiles?.Where(p => p != null).ToList();
-            if (profiles == null || profiles.Count == 0) return h + EditorGUIUtility.singleLineHeight + k_Spacing;
-
-            var selectedRepNameProp = repProp.FindPropertyRelative("SelectedRepresentationName");
-            var selectedRepProp = repProp.FindPropertyRelative("SelectedRepresentation");
-            var selectedExpressionGuidProp = repProp.FindPropertyRelative("SelectedExpressionId");
-
-            if (useRepresentationNameInsteadOfID)
+            // Representation-specific options
+            string emoId = selectedExpressionGuidProp?.stringValue ?? string.Empty;
+            var repType = profile.GetRepresentation(selectedRepNameProp?.stringValue ?? string.Empty);
+            if (repType != null && !string.IsNullOrEmpty(emoId))
             {
-                var selectedCharacterIDProp = repProp.FindPropertyRelative("SelectedCharacterID");
-                // profile popup
-                h += EditorGUIUtility.singleLineHeight + k_Spacing;
-
-                string charId = selectedCharacterIDProp?.stringValue ?? "";
-                var profile = !string.IsNullOrEmpty(charId)
-                    ? profiles.FirstOrDefault(p => p.CharacterID == charId)
-                    : null;
-                if (profile != null)
-                {
-                    // representation popup
-                    h += EditorGUIUtility.singleLineHeight + k_Spacing;
-
-                    // expression popup
-                    float emoH = (selectedExpressionGuidProp != null)
-                        ? EditorGUI.GetPropertyHeight(selectedExpressionGuidProp, true)
-                        : EditorGUIUtility.singleLineHeight;
-                    h += emoH + k_Spacing;
-
-                    // preview height (if any)
-                    IEditorPreviewableRepresentation previewable = null;
-                    if (selectedRepProp != null &&
-                        selectedRepProp.objectReferenceValue is IEditorPreviewableRepresentation prA)
-                        previewable = prA;
-                    else
-                    {
-                        var repName = selectedRepNameProp?.stringValue ?? "";
-                        var repObj = profile.GetRepresentation(repName);
-                        if (repObj is IEditorPreviewableRepresentation prB) previewable = prB;
-                    }
-
-                    h += GetPreviewBlockHeight(previewable) + k_Spacing;
-
-                    // representation-specific options height
-                    string emoId = selectedExpressionGuidProp?.stringValue ?? "";
-                    var selName = selectedRepNameProp?.stringValue ?? "";
-                    var repType = profile.GetRepresentation(selName);
-                    if (repType != null && !string.IsNullOrEmpty(emoId))
-                    {
-                        h += GetRepresentationSpecificOptionsHeight(repType, emoId, repProp);
-                    }
-                }
+                h += GetRepresentationSpecificOptionsHeight(repType, emoId, repProp);
             }
-            else
-            {
-                // Primary
-                var characterIDProp = mainProperty.FindPropertyRelative("characterID");
-                var profile = profiles.FirstOrDefault(p => p.CharacterID == (characterIDProp?.stringValue ?? ""));
+        }
+    }
+    else
+    {
+        // Primary character: character ID comes from the main line
+        var characterIDProp = mainProperty.FindPropertyRelative("characterID");
+        string charId = characterIDProp?.stringValue ?? string.Empty;
+        var profile = profiles.FirstOrDefault(p => p.CharacterID == charId);
 
-                if (profile == null)
-                {
-                    // participant popup only
-                    h += EditorGUIUtility.singleLineHeight + k_Spacing;
-                    return h;
-                }
-
-                // representation popup
-                h += EditorGUIUtility.singleLineHeight + k_Spacing;
-
-                // expression popup
-                float emoH = (selectedExpressionGuidProp != null)
-                    ? EditorGUI.GetPropertyHeight(selectedExpressionGuidProp, true)
-                    : EditorGUIUtility.singleLineHeight;
-                h += emoH + k_Spacing;
-
-                // preview height (if any)
-                IEditorPreviewableRepresentation previewable = null;
-                if (selectedRepProp?.objectReferenceValue is IEditorPreviewableRepresentation prA)
-                    previewable = prA;
-                else
-                {
-                    var repName = selectedRepNameProp?.stringValue ?? "";
-                    var repType = profile.GetRepresentation(repName);
-                    if (repType is IEditorPreviewableRepresentation prB) previewable = prB;
-                }
-
-                h += GetPreviewBlockHeight(previewable) + k_Spacing;
-
-                // representation-specific options height
-                string emoId = selectedExpressionGuidProp?.stringValue ?? "";
-                var repType2 = profile.GetRepresentation(selectedRepNameProp?.stringValue ?? "");
-                if (repType2 != null && !string.IsNullOrEmpty(emoId))
-                {
-                    h += GetRepresentationSpecificOptionsHeight(repType2, emoId, repProp);
-                }
-            }
-
+        if (profile == null)
+        {
+            // Participant dropdown only
+            h += line;
             return h;
         }
+
+        // Representation popup
+        h += line;
+
+        // Expression field
+        float emoH = selectedExpressionGuidProp != null
+            ? EditorGUI.GetPropertyHeight(selectedExpressionGuidProp, true)
+            : line;
+        h += emoH + k_Spacing;
+
+        // Representation-specific options
+        string emoId = selectedExpressionGuidProp?.stringValue ?? string.Empty;
+        var repType = profile.GetRepresentation(selectedRepNameProp?.stringValue ?? string.Empty);
+        if (repType != null && !string.IsNullOrEmpty(emoId))
+        {
+            h += GetRepresentationSpecificOptionsHeight(repType, emoId, repProp);
+        }
+    }
+
+    return h;
+}
+
+
 
         // ──────────────────────────────────────────────
         // Sections (draw)
@@ -511,7 +487,6 @@ namespace WolfstagInteractive.ConvoCore.Editor
                     rect.y += h + k_Spacing;
                 }
 
-                // Add/Remove buttons
                 Rect buttons = new(rect.x + 14, rect.y, rect.width - 14, lineHeight);
                 if (GUI.Button(new Rect(buttons.x, buttons.y, 20, lineHeight), "+"))
                     beforeProp.InsertArrayElementAtIndex(beforeProp.arraySize);
@@ -574,7 +549,6 @@ namespace WolfstagInteractive.ConvoCore.Editor
 
             rect.y += EditorGUIUtility.singleLineHeight + k_Spacing;
 
-            // skip heavy UI when collapsed
             if (!newExpanded)
                 return rect;
 
@@ -638,10 +612,9 @@ namespace WolfstagInteractive.ConvoCore.Editor
             rect.y += 5f;
             return rect;
         }
-    
+
         private static readonly Dictionary<int, GUIContent[]> _profilePopupCache = new();
 
-// helper cache builder
         private static GUIContent[] GetCachedProfileNames(ConvoCoreConversationData convo, List<ConvoCoreCharacterProfileBaseData> profiles)
         {
             int id = convo.GetInstanceID();
@@ -659,212 +632,217 @@ namespace WolfstagInteractive.ConvoCore.Editor
             _profilePopupCache[id] = arr;
             return arr;
         }
-    // ──────────────────────────────────────────────
-        // Your current DrawSingleCharacterRepresentation (unchanged)
-        // ──────────────────────────────────────────────
+
+        /// <summary>
+        /// Character representation drawing (with hover preview)
+        /// </summary>
+        /// <returns></returns>
+        
         private Rect DrawSingleCharacterRepresentation(
-    Rect rect,
-    SerializedProperty representationProp,
-    string label,
-    SerializedProperty identifierProp,
-    float spacing,
-    bool useRepresentationNameInsteadOfID,
-    ConvoCoreConversationData convo)
-{
-    var so = representationProp.serializedObject;
-
-    var selectedCharacterIDProp = representationProp.FindPropertyRelative("SelectedCharacterID");
-    var selectedRepNameProp = representationProp.FindPropertyRelative("SelectedRepresentationName");
-    var selectedRepProp = representationProp.FindPropertyRelative("SelectedRepresentation");
-    var selectedExpressionGuidProp = representationProp.FindPropertyRelative("SelectedExpressionId");
-
-    EditorGUI.LabelField(rect, $"{label}:");
-    rect.y += EditorGUIUtility.singleLineHeight + spacing;
-
-    if (convo == null)
-    {
-        EditorGUI.LabelField(rect, "Error: Conversation data is missing.");
-        rect.y += EditorGUIUtility.singleLineHeight + spacing;
-        return rect;
-    }
-
-    var validProfiles = convo.ConversationParticipantProfiles.Where(p => p != null).ToList();
-    if (validProfiles.Count == 0)
-    {
-        EditorGUI.LabelField(rect, "No participants available.");
-        rect.y += EditorGUIUtility.singleLineHeight + spacing;
-        return rect;
-    }
-
-    CharacterRepresentationBase selectedRepresentation = null;
-
-    if (useRepresentationNameInsteadOfID)
-    {
-        // secondary / tertiary
-        string currentCharacterID = selectedCharacterIDProp.stringValue;
-        var currentProfile = !string.IsNullOrEmpty(currentCharacterID)
-            ? validProfiles.FirstOrDefault(p => p.CharacterID == currentCharacterID)
-            : null;
-
-        // cached popup entries
-        var popupNames = GetCachedProfileNames(convo, validProfiles);
-        int currentIndex = 0;
-        if (currentProfile != null)
+            Rect rect,
+            SerializedProperty representationProp,
+            string label,
+            SerializedProperty identifierProp,
+            float spacing,
+            bool useRepresentationNameInsteadOfID,
+            ConvoCoreConversationData convo)
         {
-            for (int i = 1; i < popupNames.Length; i++)
-                if (popupNames[i].text == currentProfile.CharacterName)
-                { currentIndex = i; break; }
-        }
+            var so = representationProp.serializedObject;
 
-        int newIndex = EditorGUI.Popup(rect, new GUIContent($"{label} Profile:"), currentIndex, popupNames);
-        rect.y += EditorGUIUtility.singleLineHeight + spacing;
+            var selectedCharacterIDProp = representationProp.FindPropertyRelative("SelectedCharacterID");
+            var selectedRepNameProp = representationProp.FindPropertyRelative("SelectedRepresentationName");
+            var selectedRepProp = representationProp.FindPropertyRelative("SelectedRepresentation");
+            var selectedExpressionGuidProp = representationProp.FindPropertyRelative("SelectedExpressionId");
 
-        if (newIndex != currentIndex)
-        {
-            if (newIndex == 0)
+            EditorGUI.LabelField(rect, $"{label}:",EditorStyles.boldLabel);
+            rect.y += EditorGUIUtility.singleLineHeight + spacing;
+
+            if (convo == null)
             {
-                selectedCharacterIDProp.stringValue = "";
-                selectedRepNameProp.stringValue = "";
-                selectedExpressionGuidProp.stringValue = "";
-                if (selectedRepProp != null) selectedRepProp.objectReferenceValue = null;
-                so.ApplyModifiedProperties();
+                EditorGUI.LabelField(rect, "Error: Conversation data is missing.");
+                rect.y += EditorGUIUtility.singleLineHeight + spacing;
                 return rect;
+            }
+
+            var validProfiles = convo.ConversationParticipantProfiles.Where(p => p != null).ToList();
+            if (validProfiles.Count == 0)
+            {
+                EditorGUI.LabelField(rect, "No participants available.");
+                rect.y += EditorGUIUtility.singleLineHeight + spacing;
+                return rect;
+            }
+
+            CharacterRepresentationBase selectedRepresentation = null;
+            Rect expressionRect = Rect.zero;
+            IEditorPreviewableRepresentation previewable = null;
+
+            if (useRepresentationNameInsteadOfID)
+            {
+                // secondary / tertiary
+                string currentCharacterID = selectedCharacterIDProp.stringValue;
+                var currentProfile = !string.IsNullOrEmpty(currentCharacterID)
+                    ? validProfiles.FirstOrDefault(p => p.CharacterID == currentCharacterID)
+                    : null;
+
+                var popupNames = GetCachedProfileNames(convo, validProfiles);
+                int currentIndex = 0;
+                if (currentProfile != null)
+                {
+                    for (int i = 1; i < popupNames.Length; i++)
+                        if (popupNames[i].text == currentProfile.CharacterName)
+                        { currentIndex = i; break; }
+                }
+
+                int newIndex = EditorGUI.Popup(rect, new GUIContent($"{label} Profile:"), currentIndex, popupNames);
+                rect.y += EditorGUIUtility.singleLineHeight + spacing;
+
+                if (newIndex != currentIndex)
+                {
+                    if (newIndex == 0)
+                    {
+                        selectedCharacterIDProp.stringValue = "";
+                        selectedRepNameProp.stringValue = "";
+                        selectedExpressionGuidProp.stringValue = "";
+                        if (selectedRepProp != null) selectedRepProp.objectReferenceValue = null;
+                        so.ApplyModifiedProperties();
+                        return rect;
+                    }
+                    else
+                    {
+                        var selProfile = validProfiles[newIndex - 1];
+                        selectedCharacterIDProp.stringValue = selProfile.CharacterID;
+
+                        var firstRep = selProfile.Representations?.FirstOrDefault(r => r != null);
+                        selectedRepNameProp.stringValue = firstRep?.CharacterRepresentationName ?? "";
+                        selectedExpressionGuidProp.stringValue = "";
+                        if (selectedRepProp != null)
+                            selectedRepProp.objectReferenceValue = firstRep?.CharacterRepresentationType;
+                        so.ApplyModifiedProperties();
+                        currentProfile = selProfile;
+                    }
+                }
+
+                if (currentProfile == null)
+                    return rect;
+
+                var repNames = currentProfile.Representations
+                    .Where(r => r != null && !string.IsNullOrEmpty(r.CharacterRepresentationName))
+                    .Select(r => r.CharacterRepresentationName)
+                    .ToList();
+
+                if (repNames.Count > 0)
+                {
+                    string repName = selectedRepNameProp.stringValue;
+                    int repIdx = Mathf.Max(0, repNames.IndexOf(repName));
+                    repIdx = EditorGUI.Popup(rect, "Representation:", repIdx, repNames.ToArray());
+                    string newRepName = repNames[repIdx];
+                    rect.y += EditorGUIUtility.singleLineHeight + spacing;
+
+                    if (newRepName != repName)
+                    {
+                        selectedRepNameProp.stringValue = newRepName;
+                        selectedExpressionGuidProp.stringValue = "";
+                        if (selectedRepProp != null)
+                            selectedRepProp.objectReferenceValue = currentProfile.GetRepresentation(newRepName);
+                        so.ApplyModifiedProperties();
+                    }
+
+                    selectedRepresentation = currentProfile.GetRepresentation(newRepName);
+
+                    if (selectedExpressionGuidProp != null)
+                    {
+                        float emoH = EditorGUI.GetPropertyHeight(selectedExpressionGuidProp, true);
+                        expressionRect = new Rect(rect.x, rect.y, rect.width, emoH);
+                        EditorGUI.PropertyField(expressionRect,
+                            selectedExpressionGuidProp, GC_Expression, true);
+                        rect.y += emoH + spacing;
+                    }
+
+                    if (selectedRepProp?.objectReferenceValue is IEditorPreviewableRepresentation prA)
+                        previewable = prA;
+                    else if (selectedRepresentation is IEditorPreviewableRepresentation prB)
+                        previewable = prB;
+                }
             }
             else
             {
-                var selProfile = validProfiles[newIndex - 1];
-                selectedCharacterIDProp.stringValue = selProfile.CharacterID;
+                // primary
+                string characterID = identifierProp.stringValue;
+                var profile = validProfiles.FirstOrDefault(p => p.CharacterID == characterID);
+                if (profile == null)
+                {
+                    var names = validProfiles.Where(p => !string.IsNullOrEmpty(p.CharacterName))
+                        .Select(p => p.CharacterName).ToArray();
+                    int idx = EditorGUI.Popup(rect, $"{label} Participant:", 0, names);
+                    rect.y += EditorGUIUtility.singleLineHeight + spacing;
+                    if (names.Length > 0)
+                    {
+                        var chosen = validProfiles[idx];
+                        identifierProp.stringValue = chosen.CharacterID;
+                        so.ApplyModifiedProperties();
+                    }
+                    return rect;
+                }
 
-                var firstRep = selProfile.Representations?.FirstOrDefault(r => r != null);
-                selectedRepNameProp.stringValue = firstRep?.CharacterRepresentationName ?? "";
-                selectedExpressionGuidProp.stringValue = "";
-                if (selectedRepProp != null)
-                    selectedRepProp.objectReferenceValue = firstRep?.CharacterRepresentationType;
-                so.ApplyModifiedProperties();
-                currentProfile = selProfile;
+                var repNames = profile.Representations
+                    .Where(r => r != null && !string.IsNullOrEmpty(r.CharacterRepresentationName))
+                    .Select(r => r.CharacterRepresentationName)
+                    .ToList();
+
+                if (repNames.Count > 0)
+                {
+                    string repName = selectedRepNameProp.stringValue;
+                    int repIdx = Mathf.Max(0, repNames.IndexOf(repName));
+                    repIdx = EditorGUI.Popup(rect, "Representation:", repIdx, repNames.ToArray());
+                    string newRepName = repNames[repIdx];
+                    rect.y += EditorGUIUtility.singleLineHeight + spacing;
+
+                    if (newRepName != repName)
+                    {
+                        selectedRepNameProp.stringValue = newRepName;
+                        if (selectedRepProp != null)
+                            selectedRepProp.objectReferenceValue = profile.GetRepresentation(newRepName);
+                        selectedExpressionGuidProp.stringValue = "";
+                        so.ApplyModifiedProperties();
+                    }
+
+                    selectedRepresentation = profile.GetRepresentation(newRepName);
+
+                    if (selectedExpressionGuidProp != null)
+                    {
+                        float emoH = EditorGUI.GetPropertyHeight(selectedExpressionGuidProp, true);
+                        expressionRect = new Rect(rect.x, rect.y, rect.width, emoH);
+                        EditorGUI.PropertyField(expressionRect,
+                            selectedExpressionGuidProp, GC_Expression, true);
+                        rect.y += emoH + spacing;
+                    }
+
+                    if (selectedRepProp?.objectReferenceValue is IEditorPreviewableRepresentation prA)
+                        previewable = prA;
+                    else if (selectedRepresentation is IEditorPreviewableRepresentation prB)
+                        previewable = prB;
+                }
             }
-        }
 
-        if (currentProfile == null)
-            return rect;
-
-        // representation popup
-        var repNames = currentProfile.Representations
-            .Where(r => r != null && !string.IsNullOrEmpty(r.CharacterRepresentationName))
-            .Select(r => r.CharacterRepresentationName)
-            .ToList();
-
-        if (repNames.Count > 0)
-        {
-            string repName = selectedRepNameProp.stringValue;
-            int repIdx = Mathf.Max(0, repNames.IndexOf(repName));
-            repIdx = EditorGUI.Popup(rect, "Representation:", repIdx, repNames.ToArray());
-            string newRepName = repNames[repIdx];
-            rect.y += EditorGUIUtility.singleLineHeight + spacing;
-
-            if (newRepName != repName)
+            if (selectedRepresentation != null && selectedExpressionGuidProp != null &&
+                !string.IsNullOrEmpty(selectedExpressionGuidProp.stringValue))
             {
-                selectedRepNameProp.stringValue = newRepName;
-                selectedExpressionGuidProp.stringValue = "";
-                if (selectedRepProp != null)
-                    selectedRepProp.objectReferenceValue = currentProfile.GetRepresentation(newRepName);
-                so.ApplyModifiedProperties();
+                rect = DrawRepresentationSpecificOptions(rect, representationProp, selectedRepresentation,
+                    selectedExpressionGuidProp.stringValue, spacing);
             }
 
-            selectedRepresentation = currentProfile.GetRepresentation(newRepName);
-
-            // expression
-            if (selectedExpressionGuidProp != null)
+            // Hover preview tooltip (non-interactable)
+            if (previewable != null && expressionRect != Rect.zero)
             {
-                float emoH = EditorGUI.GetPropertyHeight(selectedExpressionGuidProp, true);
-                EditorGUI.PropertyField(new Rect(rect.x, rect.y, rect.width, emoH),
-                    selectedExpressionGuidProp, GC_Expression, true);
-                rect.y += emoH + spacing;
+                var evt = Event.current;
+                if (expressionRect.Contains(evt.mousePosition))
+                {
+                    DrawHoverPreviewTooltip(expressionRect, previewable, selectedExpressionGuidProp?.stringValue ?? "");
+                }
             }
 
-            // inline preview
-            IEditorPreviewableRepresentation previewable = null;
-            if (selectedRepProp?.objectReferenceValue is IEditorPreviewableRepresentation prA)
-                previewable = prA;
-            else if (selectedRepresentation is IEditorPreviewableRepresentation prB)
-                previewable = prB;
-
-            if (previewable != null)
-                rect = DrawInlinePreviewBlock(rect, previewable, selectedExpressionGuidProp?.stringValue ?? "", spacing);
-        }
-    }
-    else
-    {
-        // primary
-        string characterID = identifierProp.stringValue;
-        var profile = validProfiles.FirstOrDefault(p => p.CharacterID == characterID);
-        if (profile == null)
-        {
-            var names = validProfiles.Where(p => !string.IsNullOrEmpty(p.CharacterName))
-                .Select(p => p.CharacterName).ToArray();
-            int idx = EditorGUI.Popup(rect, $"{label} Participant:", 0, names);
-            rect.y += EditorGUIUtility.singleLineHeight + spacing;
-            if (names.Length > 0)
-            {
-                var chosen = validProfiles[idx];
-                identifierProp.stringValue = chosen.CharacterID;
-                so.ApplyModifiedProperties();
-            }
             return rect;
         }
-
-        var repNames = profile.Representations
-            .Where(r => r != null && !string.IsNullOrEmpty(r.CharacterRepresentationName))
-            .Select(r => r.CharacterRepresentationName)
-            .ToList();
-
-        if (repNames.Count > 0)
-        {
-            string repName = selectedRepNameProp.stringValue;
-            int repIdx = Mathf.Max(0, repNames.IndexOf(repName));
-            repIdx = EditorGUI.Popup(rect, "Representation:", repIdx, repNames.ToArray());
-            string newRepName = repNames[repIdx];
-            rect.y += EditorGUIUtility.singleLineHeight + spacing;
-
-            if (newRepName != repName)
-            {
-                selectedRepNameProp.stringValue = newRepName;
-                if (selectedRepProp != null)
-                    selectedRepProp.objectReferenceValue = profile.GetRepresentation(newRepName);
-                selectedExpressionGuidProp.stringValue = "";
-                so.ApplyModifiedProperties();
-            }
-
-            selectedRepresentation = profile.GetRepresentation(newRepName);
-
-            if (selectedExpressionGuidProp != null)
-            {
-                float emoH = EditorGUI.GetPropertyHeight(selectedExpressionGuidProp, true);
-                EditorGUI.PropertyField(new Rect(rect.x, rect.y, rect.width, emoH),
-                    selectedExpressionGuidProp, GC_Expression, true);
-                rect.y += emoH + spacing;
-            }
-
-            IEditorPreviewableRepresentation previewable = null;
-            if (selectedRepProp?.objectReferenceValue is IEditorPreviewableRepresentation prA)
-                previewable = prA;
-            else if (selectedRepresentation is IEditorPreviewableRepresentation prB)
-                previewable = prB;
-
-            if (previewable != null)
-                rect = DrawInlinePreviewBlock(rect, previewable, selectedExpressionGuidProp?.stringValue ?? "", spacing);
-        }
-    }
-
-    if (selectedRepresentation != null && selectedExpressionGuidProp != null &&
-        !string.IsNullOrEmpty(selectedExpressionGuidProp.stringValue))
-    {
-        rect = DrawRepresentationSpecificOptions(rect, representationProp, selectedRepresentation,
-            selectedExpressionGuidProp.stringValue, spacing);
-    }
-
-    return rect;
-}
 
         // ──────────────────────────────────────────────
         // Representation-specific options (draw/height)
@@ -908,7 +886,7 @@ namespace WolfstagInteractive.ConvoCore.Editor
         }
 
         // ──────────────────────────────────────────────
-        // Inline preview helpers
+        // Hover preview helpers (reusing preview logic)
         // ──────────────────────────────────────────────
         private static float GetPreviewBlockHeight(IEditorPreviewableRepresentation previewable)
         {
@@ -918,32 +896,76 @@ namespace WolfstagInteractive.ConvoCore.Editor
             return Mathf.Clamp(desired, k_MinPreviewHeight, k_MaxPreviewHeight);
         }
 
-        private static Rect DrawInlinePreviewBlock(Rect rect, IEditorPreviewableRepresentation previewable,
-            string expressionGuid, float spacing)
+        private static readonly Color s_TooltipBgPro   = new Color(0.13f, 0.13f, 0.13f, 1f);
+        private static readonly Color s_TooltipBgLight = new Color(0.90f, 0.90f, 0.90f, 1f);
+        private static readonly Color s_TooltipInnerBgPro   = new Color(0.18f, 0.18f, 0.18f, 1f);
+        private static readonly Color s_TooltipInnerBgLight = new Color(0.95f, 0.95f, 0.95f, 1f);
+
+        private static void DrawHoverPreviewTooltip(
+            Rect anchorRect,
+            IEditorPreviewableRepresentation previewable,
+            string expressionGuid)
         {
-            float h = GetPreviewBlockHeight(previewable);
-            if (h <= 0f) return rect;
+            var evt = Event.current;
+            if (evt.type != EventType.Repaint)
+                return;
 
-            var indented = EditorGUI.IndentedRect(new Rect(rect.x, rect.y, rect.width, h));
-            var outer = new Rect(indented.x, indented.y, indented.width, h);
-            var inner = new Rect(outer.x + k_Pad, outer.y + k_Pad, outer.width - k_Pad * 2f, outer.height - k_Pad * 2f);
+            float previewHeight = GetPreviewBlockHeight(previewable);
+            if (previewHeight <= 0f)
+                return;
 
-            EditorGUI.DrawRect(outer, new Color(0f, 0f, 0f, 0.06f));
+            float inspectorWidth = EditorGUIUtility.currentViewWidth;
+            float width = Mathf.Min(k_TooltipMaxWidth, inspectorWidth - 16f);
+            float height = previewHeight + k_Pad * 2f;
+
+            // Anchor above mouse if possible, otherwise fall back to above control
+            Vector2 anchorPos = evt.mousePosition;
+            if (!anchorRect.Contains(anchorPos))
+            {
+                anchorPos = new Vector2(
+                    anchorRect.xMin + anchorRect.width * 0.5f,
+                    anchorRect.yMin);
+            }
+
+            const float verticalOffset = 20f;
+
+            float x = anchorPos.x - width * 0.5f;
+            float y = anchorPos.y - height - verticalOffset;
+
+            if (x < 4f) x = 4f;
+            if (x + width > inspectorWidth - 4f)
+                x = inspectorWidth - width - 4f;
+
+            if (y < 4f)
+                y = anchorPos.y + anchorRect.height + verticalOffset;
+
+            Rect outer = new Rect(x, y, width, height);
+            Rect inner = new Rect(
+                outer.x + k_Pad,
+                outer.y + k_Pad,
+                outer.width - k_Pad * 2f,
+                outer.height - k_Pad * 2f);
+
+            int id = GUIUtility.GetControlID("ConvoCoreEmotionHover".GetHashCode(), FocusType.Passive);
+
+            // Opaque outer background
+            Color outerBg = EditorGUIUtility.isProSkin ? s_TooltipBgPro : s_TooltipBgLight;
+            EditorGUI.DrawRect(outer, outerBg);
+
+            EditorStyles.helpBox.Draw(outer, GUIContent.none, id);
+
+            // Opaque inner background so transparent parts of the sprite see this, not the inspector
+            Color innerBg = EditorGUIUtility.isProSkin ? s_TooltipInnerBgPro : s_TooltipInnerBgLight;
+            EditorGUI.DrawRect(inner, innerBg);
 
             object expressionMapping = null;
             if (!string.IsNullOrEmpty(expressionGuid) && previewable is CharacterRepresentationBase repBase)
                 expressionMapping = repBase.GetExpressionMappingByGuid(expressionGuid);
 
+            // Draw preview inside the inner rect
             previewable.DrawInlineEditorPreview(expressionMapping, inner);
-
-            rect.y += h + spacing;
-            return rect;
         }
-
-        // ──────────────────────────────────────────────
-        // Preview text cache
-        // ──────────────────────────────────────────────
-        private string GetCachedPreviewText(SerializedProperty property, int lineIndex)
+        private string GetCachedPreviewText(SerializedProperty property)
         {
             int id = HashCacheKey(property);
             double now = EditorApplication.timeSinceStartup;
@@ -997,7 +1019,6 @@ namespace WolfstagInteractive.ConvoCore.Editor
                 return (id * 397) ^ pathHash;
             }
         }
-        
 
         // ──────────────────────────────────────────────
         // Small label helper

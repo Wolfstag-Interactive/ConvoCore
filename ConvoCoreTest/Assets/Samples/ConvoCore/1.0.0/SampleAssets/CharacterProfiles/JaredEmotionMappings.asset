@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4f87662d85a74a4987127e6d5773630, type: 3}
   m_Name: JaredEmotionMappings
   m_EditorClassIdentifier: 
-  EmotionMappings:
-  - emotionID: 6b0e593f806d4246a6e28565170ce1df
-    DisplayName: Neutral
+  ExpressionMappings:
+  - expressionID: dbe56f1ed1e943ac8fce5bec8b2f4f69
+    DisplayName: Default
     PortraitSprite: {fileID: 21300000, guid: e569f51e3e275404cae0a379a95da902, type: 3}
     FullBodySprite: {fileID: 21300000, guid: 2fa25cd6b98124c4abbb1212b77c0d34, type: 3}
     DisplayOptions:
@@ -22,10 +22,11 @@ MonoBehaviour:
       FlipPortraitY: 0
       FlipFullBodyX: 0
       FlipFullBodyY: 0
-      DisplayPosition: 1
-      PortraitScale: {x: 1, y: 1, z: 1}
-      FullBodyScale: {x: 1, y: 1, z: 1}
-  - emotionID: 1cbffdfa97e24c42a3be3c989ae74d13
+      DisplayPosition: 0
+      PortraitScale: {x: 0, y: 0, z: 0}
+      FullBodyScale: {x: 0, y: 0, z: 0}
+    ExpressionActions: []
+  - expressionID: 5420ee53b56f4373890342ce8a3fa963
     DisplayName: HeartEyes
     PortraitSprite: {fileID: 21300000, guid: e2c175607127be344b864298b05bbbce, type: 3}
     FullBodySprite: {fileID: 21300000, guid: 8f83a54b998f436488bb8c1123dc5f76, type: 3}
@@ -34,6 +35,7 @@ MonoBehaviour:
       FlipPortraitY: 0
       FlipFullBodyX: 0
       FlipFullBodyY: 0
-      DisplayPosition: 1
-      PortraitScale: {x: 1, y: 1, z: 1}
-      FullBodyScale: {x: 1, y: 1, z: 1}
+      DisplayPosition: 0
+      PortraitScale: {x: 0, y: 0, z: 0}
+      FullBodyScale: {x: 0, y: 0, z: 0}
+    ExpressionActions: []
