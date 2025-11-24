@@ -5,7 +5,7 @@ var annotated_dup =
         [ "Editor", "namespaceWolfstagInteractive_1_1ConvoCore_1_1Editor.html", [
           [ "ConvoCoreYamlWatcher", "classWolfstagInteractive_1_1ConvoCore_1_1Editor_1_1ConvoCoreYamlWatcher.html", null ]
         ] ],
-        [ "BaseDialogueLineAction", "classWolfstagInteractive_1_1ConvoCore_1_1BaseDialogueLineAction.html", null ],
+        [ "BaseDialogueLineAction", "classWolfstagInteractive_1_1ConvoCore_1_1BaseDialogueLineAction.html", "classWolfstagInteractive_1_1ConvoCore_1_1BaseDialogueLineAction" ],
         [ "CharacterRepresentationBase", "classWolfstagInteractive_1_1ConvoCore_1_1CharacterRepresentationBase.html", "classWolfstagInteractive_1_1ConvoCore_1_1CharacterRepresentationBase" ],
         [ "ContainerInput", "classWolfstagInteractive_1_1ConvoCore_1_1ContainerInput.html", null ],
         [ "ConversationContainer", "classWolfstagInteractive_1_1ConvoCore_1_1ConversationContainer.html", "classWolfstagInteractive_1_1ConvoCore_1_1ConversationContainer" ],
@@ -18,9 +18,9 @@ var annotated_dup =
         [ "ConvoCoreDialogueLineActionDialogueLineActionGroup", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreDialogueLineActionDialogueLineActionGroup.html", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreDialogueLineActionDialogueLineActionGroup" ],
         [ "ConvoCoreDialogueLineActionEnableDisableGameObject", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreDialogueLineActionEnableDisableGameObject.html", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreDialogueLineActionEnableDisableGameObject" ],
         [ "ConvoCoreDialogueLineActionFadeInOutSpriteRenderer", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreDialogueLineActionFadeInOutSpriteRenderer.html", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreDialogueLineActionFadeInOutSpriteRenderer" ],
-        [ "ConvoCoreDialogueLineActionInstantiatePrefab", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreDialogueLineActionInstantiatePrefab.html", null ],
-        [ "ConvoCoreDialogueLineActionModifyTransform", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreDialogueLineActionModifyTransform.html", null ],
-        [ "ConvoCoreDialogueLineActionPlayAudioClip", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreDialogueLineActionPlayAudioClip.html", null ],
+        [ "ConvoCoreDialogueLineActionInstantiatePrefab", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreDialogueLineActionInstantiatePrefab.html", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreDialogueLineActionInstantiatePrefab" ],
+        [ "ConvoCoreDialogueLineActionModifyTransform", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreDialogueLineActionModifyTransform.html", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreDialogueLineActionModifyTransform" ],
+        [ "ConvoCoreDialogueLineActionPlayAudioClip", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreDialogueLineActionPlayAudioClip.html", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreDialogueLineActionPlayAudioClip" ],
         [ "ConvoCoreDialogueLocalizationHandler", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreDialogueLocalizationHandler.html", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreDialogueLocalizationHandler" ],
         [ "ConvoCoreHistoryRendererProfile", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreHistoryRendererProfile.html", null ],
         [ "ConvoCoreLanguageManager", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreLanguageManager.html", null ],
