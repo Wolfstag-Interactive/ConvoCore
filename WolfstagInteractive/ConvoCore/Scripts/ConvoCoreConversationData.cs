@@ -529,7 +529,6 @@ namespace WolfstagInteractive.ConvoCore
             return ConversationParticipantProfiles.FirstOrDefault(profile => profile.IsPlayerCharacter);
         }
 
-        // in ConvoCoreConversationData
         public IEnumerator ActionsBeforeDialogueLine(ConvoCore core, DialogueLineInfo lineInfo, List<BaseDialogueLineAction> capture)
         {
             foreach (var action in lineInfo.ActionsBeforeDialogueLine)
@@ -540,6 +539,10 @@ namespace WolfstagInteractive.ConvoCore
                     continue;
                 }
 
+                if (core.ShouldExecuteAction(action, lineInfo.ConversationLineIndex))
+                {
+                    continue;
+                }
                 var instance = Instantiate(action);
                 capture?.Add(instance);
                 yield return core.StartCoroutine(instance.ExecuteLineAction());
@@ -558,7 +561,10 @@ namespace WolfstagInteractive.ConvoCore
                     Debug.LogError("Line " + lineInfo.ConversationLineIndex + " has null action");
                     continue;
                 }
-
+                if (core.ShouldExecuteAction(action, lineInfo.ConversationLineIndex))
+                {
+                    continue;
+                }
                 var instance = Instantiate(action);
                 capture?.Add(instance);
                 yield return core.StartCoroutine(instance.ExecuteLineAction());

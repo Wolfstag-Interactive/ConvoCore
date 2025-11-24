@@ -20,6 +20,8 @@ namespace WolfstagInteractive.ConvoCore
     [System.Serializable]
     public class BaseDialogueLineAction : ScriptableObject
     {
+        [Tooltip("If true, this action will only execute once per conversation for a given line, even if the player reverses and replays that line.")]
+        public bool RunOnlyOncePerConversation = false;
         /// <summary>
         /// Override this function in your custom line actions to perform custom logic that should occur when a dialogue line is presented to the user
         /// </summary>

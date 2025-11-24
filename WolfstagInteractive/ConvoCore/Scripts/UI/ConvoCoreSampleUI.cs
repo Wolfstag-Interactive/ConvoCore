@@ -506,6 +506,7 @@ namespace WolfstagInteractive.ConvoCore
         {
             AdvanceDialogueAction?.Disable();
             PreviousDialogueAction?.Disable();
+            _committedLineIndices.Clear();
         }
     }
 }

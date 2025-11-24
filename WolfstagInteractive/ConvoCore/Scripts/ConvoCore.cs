@@ -26,6 +26,8 @@ namespace WolfstagInteractive.ConvoCore
         public event Action PausedConversation;
         public event Action EndedConversation;
         public event Action CompletedConversation;
+        private readonly Dictionary<BaseDialogueLineAction, HashSet<int>> _executedActionsPerLine =
+            new Dictionary<BaseDialogueLineAction, HashSet<int>>();
         private bool _reverseRequested;
         private bool _advanceRequested;
         public enum ConversationState
@@ -35,6 +37,16 @@ namespace WolfstagInteractive.ConvoCore
             Paused,
             Completed
         }
+
+        /// <summary>
+        /// Represents a frame of dialogue within a conversation sequence.
+        /// </summary>
+        /// <remarks>
+        /// The LineFrame class is utilized to track the current state and actions
+        /// associated with a specific line during dialogue execution. It is used internally
+        /// within the ConvoCore class to manage the transition of dialogue lines and their
+        /// corresponding actions in the event that actions must be reversed
+        /// </remarks>
         private sealed class LineFrame
         {
             public int LineIndex;
@@ -166,6 +178,28 @@ namespace WolfstagInteractive.ConvoCore
             }
             Debug.Log("Conversation completed!");
         }
+        // internal so ConvoCoreConversationData can call it
+        internal bool ShouldExecuteAction(BaseDialogueLineAction action, int lineIndex)
+        {
+            if (action == null)
+                return false;
+
+            if (!action.RunOnlyOncePerConversation)
+                return true;
+
+            if (!_executedActionsPerLine.TryGetValue(action, out var lines))
+            {
+                lines = new HashSet<int>();
+                _executedActionsPerLine[action] = lines;
+            }
+
+            if (lines.Contains(lineIndex))
+                return false;
+
+            lines.Add(lineIndex);
+            return true;
+        }
+
         private IEnumerator ReverseOneLineRoutine()
         {
             // undo the line we are currently sitting on
@@ -248,11 +282,7 @@ namespace WolfstagInteractive.ConvoCore
             // Use the standard resolution method for other cases
             return GetCharacterRepresentationFromData(primaryProfile, representationData, true);
         }
-        public void ReverseOneLine()
-        {
-            if (!CanReverseOneLine) return;
-            StartCoroutine(ReverseOneLineRoutine());
-        }
+      
         /// <summary>
         /// Helper method to get character representation from representation data
         /// </summary>
@@ -500,7 +530,14 @@ namespace WolfstagInteractive.ConvoCore
                 Debug.Log("Conversation resumed.");
             }
         }
-
+        /// <summary>
+        /// Reverses the conversation and goes back a single line
+        /// </summary>
+        public void ReverseOneLine()
+        {
+            if (!CanReverseOneLine) return;
+            StartCoroutine(ReverseOneLineRoutine());
+        }
         /// <summary>
         /// Stops the current conversation
         /// </summary>
@@ -525,6 +562,11 @@ namespace WolfstagInteractive.ConvoCore
             }
             ConversationData = conversation;
             ConversationData.InitializeDialogueData();
+            // reset per conversation state
+            _executedActionsPerLine.Clear();
+            _history.Clear();
+            _currentLineIndex = 0;
+            
             if (ConversationUI != null)
             {
                BindUIEvents();
