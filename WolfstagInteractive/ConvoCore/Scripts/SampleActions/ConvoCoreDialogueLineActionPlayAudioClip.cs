@@ -12,7 +12,7 @@ namespace WolfstagInteractive.ConvoCore
         [Range(0,1)]
         public float Volume = 1f;
 
-        public override IEnumerator DoAction()
+        public override IEnumerator ExecuteLineAction()
         {
             AudioSource.PlayClipAtPoint(AudioClip, Position,Volume);
             yield return new WaitForSeconds(AudioClip.length);

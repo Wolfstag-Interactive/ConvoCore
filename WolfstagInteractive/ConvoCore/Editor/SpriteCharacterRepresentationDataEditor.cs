@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace WolfstagInteractive.ConvoCore.Editor
 {
-    [UnityEngine.HelpURL("https://docs.wolfstaginteractive.com/classWolfstagInteractive_1_1ConvoCore_1_1Editor_1_1SpriteCharacterRepresentationDataEditor.html")]
+    [HelpURL("https://docs.wolfstaginteractive.com/classWolfstagInteractive_1_1ConvoCore_1_1Editor_1_1SpriteCharacterRepresentationDataEditor.html")]
     [CustomEditor(typeof(SpriteCharacterRepresentationData))]
     public class SpriteCharacterRepresentationDataEditor : UnityEditor.Editor
     {
@@ -27,8 +27,9 @@ namespace WolfstagInteractive.ConvoCore.Editor
             }
 
             if (_list == null)
+            {
                 BuildList();
-
+            }
             _list.DoLayoutList();
 
             serializedObject.ApplyModifiedProperties();
@@ -217,8 +218,6 @@ namespace WolfstagInteractive.ConvoCore.Editor
                     EditorGUI.PropertyField(optsRect, optsProp, new GUIContent("Default Display Options"), true);
                     currentY += optsH + 4f;
                 }
-
-                // NEW: Expression Actions list
                 if (actionsProp != null)
                 {
                     float actionsH = EditorGUI.GetPropertyHeight(actionsProp, true);

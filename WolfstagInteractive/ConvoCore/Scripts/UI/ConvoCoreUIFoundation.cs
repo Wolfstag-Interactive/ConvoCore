@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -13,6 +14,12 @@ namespace WolfstagInteractive.ConvoCore
         protected ConvoCore ConvoCoreInstance;
         protected ConvoCorePrefabRepresentationSpawner PrefabRepresentationSpawner;
         protected ConvoCoreDialogueHistoryUI ConvoCoreDialogueHistoryUI;
+        public event Action RequestAdvance;
+        public event Action RequestReverse;
+
+        protected void RaiseAdvance() => RequestAdvance?.Invoke();
+        protected void RaiseReverse() => RequestReverse?.Invoke();
+
         public virtual void InitializeUI(ConvoCore convoCoreInstance)
         {
             ConvoCoreInstance = convoCoreInstance;

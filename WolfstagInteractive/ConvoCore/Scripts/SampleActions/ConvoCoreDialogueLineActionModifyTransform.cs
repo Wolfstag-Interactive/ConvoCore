@@ -11,7 +11,7 @@ namespace WolfstagInteractive.ConvoCore
         public Vector3 NewPosition;
         public Vector3 NewRotation;
         public Vector3 NewScale;
-        public override IEnumerator DoAction()
+        public override IEnumerator ExecuteLineAction()
         {
             Transform transform = GameObject.Find(TransformName).transform;
             if (transform == null)

@@ -130,7 +130,7 @@ namespace WolfstagInteractive.ConvoCore.Editor
                 }
             }
 
-            // 2) Stop re-embedding when nothing changed (prevents churn)
+            // 2) Stop re-embedding when nothing changed to prevent churn
             if (currentText != null && currentText == srcText)
             {
                 // No change, skip re-embed

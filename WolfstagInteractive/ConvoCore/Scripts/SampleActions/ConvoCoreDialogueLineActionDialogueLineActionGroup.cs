@@ -15,11 +15,11 @@ namespace WolfstagInteractive.ConvoCore
         /// </summary>
         public List<BaseDialogueLineAction> ActionGroup = new List<BaseDialogueLineAction>();
         
-        public override IEnumerator DoAction()
+        public override IEnumerator ExecuteLineAction()
         {
             foreach (var t in ActionGroup)
             {
-                yield return t.DoAction();
+                yield return t.ExecuteLineAction();
             }
         }
     }

@@ -20,7 +20,7 @@ namespace WolfstagInteractive.ConvoCore
         [Tooltip("If true, the action will continue even if the GameObject is not found")]
         public bool ContinueOnError = false;
 
-        public override IEnumerator DoAction()
+        public override IEnumerator ExecuteLineAction()
         {
             GameObject targetObj = TargetGameObject.GameObject;
             

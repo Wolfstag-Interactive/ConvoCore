@@ -129,7 +129,7 @@ MonoBehaviour:
     SecondaryCharacterRepresentation:
       SelectedCharacterID: Jared
       SelectedRepresentationName: Sprites
-      SelectedRepresentation: {fileID: 0}
+      SelectedRepresentation: {fileID: 11400000, guid: 5b9d585132056d5479e01ea082d4b2be, type: 2}
       SelectedExpressionId: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
@@ -140,9 +140,9 @@ MonoBehaviour:
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     TertiaryCharacterRepresentation:
-      SelectedCharacterID: 
-      SelectedRepresentationName: 
-      SelectedRepresentation: {fileID: 0}
+      SelectedCharacterID: Jared
+      SelectedRepresentationName: Sprites
+      SelectedRepresentation: {fileID: 11400000, guid: 5b9d585132056d5479e01ea082d4b2be, type: 2}
       SelectedExpressionId: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
@@ -223,8 +223,8 @@ MonoBehaviour:
     characterID: Ava
     PrimaryCharacterRepresentation:
       SelectedCharacterID: 
-      SelectedRepresentationName: Prefabs
-      SelectedRepresentation: {fileID: 11400000, guid: 1b533061774acdf4db3abcdd87fc70d7, type: 2}
+      SelectedRepresentationName: Sprites
+      SelectedRepresentation: {fileID: 11400000, guid: cf61be94e9ae46b4da28bb23d0bfa60f, type: 2}
       SelectedExpressionId: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0

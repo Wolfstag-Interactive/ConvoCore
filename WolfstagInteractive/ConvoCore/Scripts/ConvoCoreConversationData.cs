@@ -106,7 +106,7 @@ namespace WolfstagInteractive.ConvoCore
         /// <summary>
         /// Validates primary character representation (must have a valid representation)
         /// </summary>
-private bool ValidatePrimaryCharacterRepresentation(DialogueLineInfo line, int lineIndex)
+        private bool ValidatePrimaryCharacterRepresentation(DialogueLineInfo line, int lineIndex)
         {
             bool verboseLogs = ConvoCoreYamlLoader.Settings?.VerboseLogs ?? false;
 
@@ -529,49 +529,44 @@ private bool ValidatePrimaryCharacterRepresentation(DialogueLineInfo line, int l
             return ConversationParticipantProfiles.FirstOrDefault(profile => profile.IsPlayerCharacter);
         }
 
-        public IEnumerator ActionsBeforeDialogueLine(ConvoCore core, DialogueLineInfo lineInfo)
+        // in ConvoCoreConversationData
+        public IEnumerator ActionsBeforeDialogueLine(ConvoCore core, DialogueLineInfo lineInfo, List<BaseDialogueLineAction> capture)
         {
-            foreach (BaseDialogueLineAction action in lineInfo.ActionsBeforeDialogueLine)
+            foreach (var action in lineInfo.ActionsBeforeDialogueLine)
             {
-                if (action != null)
-                {
-                    Debug.Log("Doing " + action.name);
-                    //create copy of action object while retaining the originals values
-                    var actionInstance = Instantiate(action);
-                    //feed the copy to coroutine runner to do the action
-                    yield return core.StartCoroutine(actionInstance.DoAction());
-                    Debug.Log("Action fired: " + action.name);
-                    //dispose of the action after doing it
-                    DestroyImmediate(actionInstance);
-                }
-                else
+                if (action == null)
                 {
                     Debug.LogError("Line " + lineInfo.ConversationLineIndex + " has null action");
+                    continue;
                 }
+
+                var instance = Instantiate(action);
+                capture?.Add(instance);
+                yield return core.StartCoroutine(instance.ExecuteLineAction());
+
+                // only destroy if we are not capturing for reverse
+                if (capture == null) DestroyImmediate(instance);
             }
         }
 
-        public IEnumerator DoActionsAfterDialogueLine(ConvoCore core, DialogueLineInfo lineInfo)
+        public IEnumerator DoActionsAfterDialogueLine(ConvoCore core, DialogueLineInfo lineInfo, List<BaseDialogueLineAction> capture)
         {
-            foreach (BaseDialogueLineAction action in lineInfo.ActionsAfterDialogueLine)
+            foreach (var action in lineInfo.ActionsAfterDialogueLine)
             {
-                if (action != null)
-                {
-                    Debug.Log("Doing " + action.name);
-                    //create copy of action object while retaining the originals values
-                    var actionInstance = Instantiate(action);
-                    //feed the copy to coroutine runner to do the action
-                    yield return core.StartCoroutine(actionInstance.DoAction());
-                    Debug.Log("Action fired: " + action.name);
-                    //dispose of the action after doing it
-                    DestroyImmediate(actionInstance);
-                }
-                else
+                if (action == null)
                 {
                     Debug.LogError("Line " + lineInfo.ConversationLineIndex + " has null action");
+                    continue;
                 }
+
+                var instance = Instantiate(action);
+                capture?.Add(instance);
+                yield return core.StartCoroutine(instance.ExecuteLineAction());
+
+                if (capture == null) DestroyImmediate(instance);
             }
         }
+
     }
 
 }

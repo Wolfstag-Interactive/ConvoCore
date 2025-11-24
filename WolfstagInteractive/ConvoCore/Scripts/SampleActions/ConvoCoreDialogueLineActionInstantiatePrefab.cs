@@ -11,10 +11,10 @@ namespace WolfstagInteractive.ConvoCore
         public Vector3 Position;
         public Vector3 Rotation;
 
-        public override IEnumerator DoAction()
+        public override IEnumerator ExecuteLineAction()
         {
             Instantiate(Prefab, Position, Quaternion.Euler(Rotation));
-            return base.DoAction();
+            return base.ExecuteLineAction();
         }
     }
 }

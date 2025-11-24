@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace WolfstagInteractive.ConvoCore
@@ -8,7 +7,6 @@ namespace WolfstagInteractive.ConvoCore
     public abstract class CharacterRepresentationBase : ScriptableObject,
         IEditorPreviewableRepresentation
     {
-
         /// <summary>
         /// Processes the given expression and returns UI-relevant data (e.g., a sprite or GameObject).
         /// Allows each character representation to define its own output.

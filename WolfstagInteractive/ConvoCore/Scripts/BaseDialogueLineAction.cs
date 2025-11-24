@@ -16,15 +16,28 @@ using System.Collections;
 
 namespace WolfstagInteractive.ConvoCore
 {
-    [UnityEngine.HelpURL("https://docs.wolfstaginteractive.com/classWolfstagInteractive_1_1ConvoCore_1_1BaseAction.html")]
-[System.Serializable]
+    [HelpURL("https://docs.wolfstaginteractive.com/classWolfstagInteractive_1_1ConvoCore_1_1BaseAction.html")]
+    [System.Serializable]
     public class BaseDialogueLineAction : ScriptableObject
     {
-        public virtual IEnumerator DoAction()
+        /// <summary>
+        /// Override this function in your custom line actions to perform custom logic that should occur when a dialogue line is presented to the user
+        /// </summary>
+        /// <returns></returns>
+        public virtual IEnumerator ExecuteLineAction()
         {
             //logic called before base.DoAction will execute before the timer
             yield return new WaitForSecondsRealtime(0); //wait for the time listed in wait timer
             //logic called after base.DoAction will execute after the timer
+        }
+        /// <summary>
+        /// Override this function in your custom line action to perform custom logic that should occur when the user goes back to a previous line.
+        /// Use this function to reverse custom logic from execute line action
+        /// </summary>
+        /// <returns></returns>
+        public virtual IEnumerator ExecuteOnReversedLineAction()
+        {
+            yield return new WaitForSecondsRealtime(0);
         }
     }
 }

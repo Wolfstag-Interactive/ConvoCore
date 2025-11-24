@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
@@ -24,9 +25,15 @@ namespace WolfstagInteractive.ConvoCore
         [SerializeField] private Image FullBodyImageRight;
         [SerializeField] private Image FullBodyImageCenter;
         [SerializeField] private Button ContinueButton;
+        [SerializeField] private Button PreviousLineButton;
 
         [Header("Dialogue History UI Elements")] [SerializeField]
         private RectTransform DialogueHistoryPanelRoot;
+        private string _lastSpeakerName;
+        private Color _lastSpeakerColor;
+        private string _lastLineText;
+        private int _lastLineIndex = -1;
+        private readonly HashSet<int> _committedLineIndices = new();
 
         [SerializeField] private ScrollRect DialogueHistoryScrollRect;
         [SerializeField] private RectTransform DialogueHistoryScrollRectContent;
@@ -40,6 +47,7 @@ namespace WolfstagInteractive.ConvoCore
 
         [Header("Input Settings")] [SerializeField]
         private InputAction AdvanceDialogueAction;
+        [SerializeField] private InputAction PreviousDialogueAction;
 
         private Coroutine _typewriterCoroutine;
         private bool _isTyping;
@@ -63,8 +71,10 @@ namespace WolfstagInteractive.ConvoCore
             };
             HideDialogue();
             ContinueButton?.onClick.AddListener(OnContinueButtonPressed);
+            PreviousLineButton?.onClick.AddListener(OnPreviousLineButtonPressed);
             ToggleDialogueHistoryButton?.onClick.AddListener(ToggleDialogueHistoryUI);
             AdvanceDialogueAction?.Enable();
+            PreviousDialogueAction?.Enable();
             DontDestroyOnLoad(gameObject);
             ConvoCoreDialogueHistoryUI.InitializeRenderer(ctx);
         }
@@ -72,13 +82,54 @@ namespace WolfstagInteractive.ConvoCore
         private void OnEnable()
         {
             AdvanceDialogueAction?.Enable();
+            PreviousDialogueAction?.Enable();
             if (AdvanceDialogueAction != null) AdvanceDialogueAction.performed += OnAdvanceDialoguePerformed;
+            if (PreviousDialogueAction != null) PreviousDialogueAction.performed += OnPreviousDialoguePerformed;
+
         }
 
         private void OnDisable()
         {
             AdvanceDialogueAction?.Disable();
+            PreviousDialogueAction?.Disable();
             if (AdvanceDialogueAction != null) AdvanceDialogueAction.performed -= OnAdvanceDialoguePerformed;
+            if (PreviousDialogueAction != null) PreviousDialogueAction.performed -= OnPreviousDialoguePerformed;
+        }
+        private void OnPreviousLineButtonPressed()
+        {
+            if (_isTyping && CanSkipTypewriter)
+            {
+                CompleteTypewriter();
+                return;
+            }
+            _isWaitingForInput = false;
+            RaiseReverse();
+            
+        }
+        private void OnPreviousDialoguePerformed(InputAction.CallbackContext context)
+        {
+            if (EventSystem.current != null)
+            {
+                var inputModule = EventSystem.current.currentInputModule as InputSystemUIInputModule;
+                if (inputModule != null)
+                {
+                    if (EventSystem.current.IsPointerOverGameObject(-1)) return;
+                }
+                else
+                {
+                    if (EventSystem.current.IsPointerOverGameObject()) return;
+                }
+            }
+
+            if (_isTyping && !CanSkipTypewriter) return;
+
+            OnPreviousLineButtonPressed();
+        }
+
+        private void RefreshNavButtons()
+        {
+            bool canReverse = ConvoCoreInstance != null && ConvoCoreInstance.CanReverseOneLine && !_historyVisible;
+            if (PreviousLineButton != null) PreviousLineButton.interactable = canReverse;
         }
 
         /// <summary>
@@ -96,8 +147,11 @@ namespace WolfstagInteractive.ConvoCore
             DisplayDialogue(localizedText);
             SpeakerName.text = speakerName;
             SpeakerName.color = primaryProfile.CharacterNameColor;
-            ConvoCoreDialogueHistoryUI.AddLine(speakerName, localizedText, primaryProfile.CharacterNameColor);
-
+            // cache for history commit on Continue
+            _lastSpeakerName = speakerName;
+            _lastSpeakerColor = primaryProfile.CharacterNameColor;
+            _lastLineText = localizedText;
+            _lastLineIndex = lineInfo.ConversationLineIndex;
             // Hide all sprite elements
             HideAllSpriteImages();
 
@@ -117,6 +171,7 @@ namespace WolfstagInteractive.ConvoCore
                 primaryDisplay);
 
             ContinueButton?.gameObject.SetActive(true);
+            RefreshNavButtons();
         }
 
         /// <summary>
@@ -223,11 +278,12 @@ namespace WolfstagInteractive.ConvoCore
 
         public override void DisplayDialogue(string text)
         {
+            fullText = text; // cache full text for typewriter skip and history
+
             DialogueText.text = text;
             DialogueText.gameObject.SetActive(true);
             SpeakerName.gameObject.SetActive(true);
             DialoguePanel.gameObject.SetActive(true);
-
 
             // Stop any existing typewriter effect
             if (_typewriterCoroutine != null)
@@ -249,6 +305,7 @@ namespace WolfstagInteractive.ConvoCore
             }
         }
 
+
         public override void HideDialogue()
         {
             DialogueText.gameObject.SetActive(false);
@@ -257,6 +314,7 @@ namespace WolfstagInteractive.ConvoCore
             HideAllSpriteImages();
             ContinueButton.gameObject.SetActive(false);
             ToggleDialogueHistoryUI(false, focus: false);
+            RefreshNavButtons();
         }
 
         public override IEnumerator WaitForUserInput()
@@ -268,21 +326,29 @@ namespace WolfstagInteractive.ConvoCore
             {
                 yield return null;
             }
-
             ContinueButton.gameObject.SetActive(false);
         }
 
         public void OnContinueButtonPressed()
         {
             if (!_isWaitingForInput) return;
-            // If the typewriter is active and can be skipped, complete the text immediately
+
             if (_isTyping && CanSkipTypewriter)
             {
                 CompleteTypewriter();
                 return;
             }
-
+            // Commit this line to history only once per ConversationLineIndex
+            if (_lastLineIndex >= 0 && !_committedLineIndices.Contains(_lastLineIndex))
+            {
+                if (!string.IsNullOrEmpty(_lastSpeakerName) && !string.IsNullOrEmpty(_lastLineText))
+                {
+                    ConvoCoreDialogueHistoryUI.AddLine(_lastSpeakerName, _lastLineText, _lastSpeakerColor);
+                    _committedLineIndices.Add(_lastLineIndex);
+                }
+            }
             _isWaitingForInput = false;
+            RaiseAdvance();
         }
 
         private void OnAdvanceDialoguePerformed(InputAction.CallbackContext context)
@@ -403,29 +469,8 @@ namespace WolfstagInteractive.ConvoCore
                 DialogueHistoryScrollRect.normalizedPosition = new Vector2(0f, 0f); // bottom for vertical scrolls
             }
 
-            /*// Set UI focus for gamepad/keyboard users
-            if (focus)
-            {
-                if (target)
-                {
-                    var toSelect = (Selectable)HistoryDefaultSelectable ?? ToggleDialogueHistoryButton;
-                    if (toSelect != null)
-                    {
-                        EventSystem.current?.SetSelectedGameObject(toSelect.gameObject);
-                    }
-                }
-                else
-                {
-                    // Return focus to the toggle or continue button when closing
-                    var back = (Selectable)ToggleDialogueHistoryButton ?? ContinueButton;
-                    if (back != null)
-                    {
-                        EventSystem.current?.SetSelectedGameObject(back.gameObject);
-                    }
-                }
-            }*/
-
             _togglingGuard = false;
+            RefreshNavButtons();
         }
 
         protected bool IsPointerOverUIElement(Component uiElement)
@@ -460,6 +505,7 @@ namespace WolfstagInteractive.ConvoCore
         private void OnDestroy()
         {
             AdvanceDialogueAction?.Disable();
+            PreviousDialogueAction?.Disable();
         }
     }
 }

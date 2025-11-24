@@ -38,7 +38,6 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -933,6 +932,10 @@ PrefabInstance:
       value: ConvoCoreSampleUI
       objectReference: {fileID: 0}
     - target: {fileID: 2475525088512401250, guid: 37defd90b8cf4c644b832efe22df606d, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2475525088512401250, guid: 37defd90b8cf4c644b832efe22df606d, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 191.5
       objectReference: {fileID: 0}
@@ -1036,6 +1039,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3388152572731170396, guid: 37defd90b8cf4c644b832efe22df606d, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4438968453605833816, guid: 37defd90b8cf4c644b832efe22df606d, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -1059,10 +1066,6 @@ PrefabInstance:
     - target: {fileID: 4496239645125178625, guid: 37defd90b8cf4c644b832efe22df606d, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6751505844025749556, guid: 37defd90b8cf4c644b832efe22df606d, type: 3}
-      propertyPath: selectedProfileName
-      value: Plain
       objectReference: {fileID: 0}
     - target: {fileID: 6846698865680571438, guid: 37defd90b8cf4c644b832efe22df606d, type: 3}
       propertyPath: m_AnchorMax.y

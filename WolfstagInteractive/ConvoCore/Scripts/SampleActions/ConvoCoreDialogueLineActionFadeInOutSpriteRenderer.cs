@@ -53,7 +53,7 @@ namespace WolfstagInteractive.ConvoCore
             Custom
         }
 
-        public override IEnumerator DoAction()
+        public override IEnumerator ExecuteLineAction()
         {
             GameObject targetObj = TargetGameObject.GameObject;
             

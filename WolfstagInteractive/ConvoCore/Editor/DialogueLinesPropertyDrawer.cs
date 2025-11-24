@@ -75,10 +75,7 @@ namespace WolfstagInteractive.ConvoCore.Editor
 
             return result;
         }
-
-        // ──────────────────────────────────────────────
-        // OnGUI
-        // ──────────────────────────────────────────────
+        
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
             if (property == null || property.serializedObject == null)
@@ -126,10 +123,7 @@ namespace WolfstagInteractive.ConvoCore.Editor
 
             EditorGUI.EndProperty();
         }
-
-        // ──────────────────────────────────────────────
-        // Height
-        // ──────────────────────────────────────────────
+        
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
         {
             float spacing = k_Spacing;
@@ -276,96 +270,96 @@ namespace WolfstagInteractive.ConvoCore.Editor
             return h;
         }
 
-        private float GetSingleCharacterRepresentationHeight(
-    SerializedProperty repProp,
-    SerializedProperty mainProperty,
-    bool useRepresentationNameInsteadOfID)
-{
-    if (repProp == null)
-        return 0f;
-
-    float h = 0f;
-    float line = EditorGUIUtility.singleLineHeight + k_Spacing;
-
-    // Section label: "Primary Character", "Secondary Character", etc
-    h += line;
-
-    var convo = repProp.serializedObject.targetObject as ConvoCoreConversationData;
-    if (convo == null)
-        return h + line;
-
-    var profiles = convo.ConversationParticipantProfiles?.Where(p => p != null).ToList();
-    if (profiles == null || profiles.Count == 0)
-        return h + line;
-
-    var selectedRepNameProp       = repProp.FindPropertyRelative("SelectedRepresentationName");
-    var selectedExpressionGuidProp = repProp.FindPropertyRelative("SelectedExpressionId");
-
-    if (useRepresentationNameInsteadOfID)
-    {
-        // Secondary / tertiary characters: character chosen inside this block
-        var selectedCharacterIDProp = repProp.FindPropertyRelative("SelectedCharacterID");
-        h += line; // profile popup
-
-        string charId = selectedCharacterIDProp?.stringValue ?? string.Empty;
-        var profile = !string.IsNullOrEmpty(charId)
-            ? profiles.FirstOrDefault(p => p.CharacterID == charId)
-            : null;
-
-        if (profile != null)
+            private float GetSingleCharacterRepresentationHeight(
+        SerializedProperty repProp,
+        SerializedProperty mainProperty,
+        bool useRepresentationNameInsteadOfID)
         {
-            // Representation popup
+            if (repProp == null)
+                return 0f;
+
+            float h = 0f;
+            float line = EditorGUIUtility.singleLineHeight + k_Spacing;
+
+            // Section label: "Primary Character", "Secondary Character", etc
             h += line;
 
-            // Expression field
-            float emoH = selectedExpressionGuidProp != null
-                ? EditorGUI.GetPropertyHeight(selectedExpressionGuidProp, true)
-                : line;
-            h += emoH + k_Spacing;
+            var convo = repProp.serializedObject.targetObject as ConvoCoreConversationData;
+            if (convo == null)
+                return h + line;
 
-            // Representation-specific options
-            string emoId = selectedExpressionGuidProp?.stringValue ?? string.Empty;
-            var repType = profile.GetRepresentation(selectedRepNameProp?.stringValue ?? string.Empty);
-            if (repType != null && !string.IsNullOrEmpty(emoId))
+            var profiles = convo.ConversationParticipantProfiles?.Where(p => p != null).ToList();
+            if (profiles == null || profiles.Count == 0)
+                return h + line;
+
+            var selectedRepNameProp       = repProp.FindPropertyRelative("SelectedRepresentationName");
+            var selectedExpressionGuidProp = repProp.FindPropertyRelative("SelectedExpressionId");
+
+            if (useRepresentationNameInsteadOfID)
             {
-                h += GetRepresentationSpecificOptionsHeight(repType, emoId, repProp);
-            }
-        }
-    }
-    else
-    {
-        // Primary character: character ID comes from the main line
-        var characterIDProp = mainProperty.FindPropertyRelative("characterID");
-        string charId = characterIDProp?.stringValue ?? string.Empty;
-        var profile = profiles.FirstOrDefault(p => p.CharacterID == charId);
+                // Secondary / tertiary characters: character chosen inside this block
+                var selectedCharacterIDProp = repProp.FindPropertyRelative("SelectedCharacterID");
+                h += line; // profile popup
 
-        if (profile == null)
-        {
-            // Participant dropdown only
-            h += line;
+                string charId = selectedCharacterIDProp?.stringValue ?? string.Empty;
+                var profile = !string.IsNullOrEmpty(charId)
+                    ? profiles.FirstOrDefault(p => p.CharacterID == charId)
+                    : null;
+
+                if (profile != null)
+                {
+                    // Representation popup
+                    h += line;
+
+                    // Expression field
+                    float emoH = selectedExpressionGuidProp != null
+                        ? EditorGUI.GetPropertyHeight(selectedExpressionGuidProp, true)
+                        : line;
+                    h += emoH + k_Spacing;
+
+                    // Representation-specific options
+                    string emoId = selectedExpressionGuidProp?.stringValue ?? string.Empty;
+                    var repType = profile.GetRepresentation(selectedRepNameProp?.stringValue ?? string.Empty);
+                    if (repType != null && !string.IsNullOrEmpty(emoId))
+                    {
+                        h += GetRepresentationSpecificOptionsHeight(repType, emoId, repProp);
+                    }
+                }
+            }
+            else
+            {
+                // Primary character: character ID comes from the main line
+                var characterIDProp = mainProperty.FindPropertyRelative("characterID");
+                string charId = characterIDProp?.stringValue ?? string.Empty;
+                var profile = profiles.FirstOrDefault(p => p.CharacterID == charId);
+
+                if (profile == null)
+                {
+                    // Participant dropdown only
+                    h += line;
+                    return h;
+                }
+
+                // Representation popup
+                h += line;
+
+                // Expression field
+                float emoH = selectedExpressionGuidProp != null
+                    ? EditorGUI.GetPropertyHeight(selectedExpressionGuidProp, true)
+                    : line;
+                h += emoH + k_Spacing;
+
+                // Representation-specific options
+                string emoId = selectedExpressionGuidProp?.stringValue ?? string.Empty;
+                var repType = profile.GetRepresentation(selectedRepNameProp?.stringValue ?? string.Empty);
+                if (repType != null && !string.IsNullOrEmpty(emoId))
+                {
+                    h += GetRepresentationSpecificOptionsHeight(repType, emoId, repProp);
+                }
+            }
+
             return h;
         }
-
-        // Representation popup
-        h += line;
-
-        // Expression field
-        float emoH = selectedExpressionGuidProp != null
-            ? EditorGUI.GetPropertyHeight(selectedExpressionGuidProp, true)
-            : line;
-        h += emoH + k_Spacing;
-
-        // Representation-specific options
-        string emoId = selectedExpressionGuidProp?.stringValue ?? string.Empty;
-        var repType = profile.GetRepresentation(selectedRepNameProp?.stringValue ?? string.Empty);
-        if (repType != null && !string.IsNullOrEmpty(emoId))
-        {
-            h += GetRepresentationSpecificOptionsHeight(repType, emoId, repProp);
-        }
-    }
-
-    return h;
-}
 
 
 
@@ -524,10 +518,13 @@ namespace WolfstagInteractive.ConvoCore.Editor
 
                 Rect buttons = new(rect.x + 14, rect.y, rect.width - 14, lineHeight);
                 if (GUI.Button(new Rect(buttons.x, buttons.y, 20, lineHeight), "+"))
+                {
                     afterProp.InsertArrayElementAtIndex(afterProp.arraySize);
+                }                
                 if (GUI.Button(new Rect(buttons.x + 25, buttons.y, 20, lineHeight), "-") && afterProp.arraySize > 0)
+                {
                     afterProp.DeleteArrayElementAtIndex(afterProp.arraySize - 1);
-
+                }
                 rect.y += lineHeight + k_Spacing;
                 EditorGUI.indentLevel--;
             }
@@ -637,7 +634,6 @@ namespace WolfstagInteractive.ConvoCore.Editor
         /// Character representation drawing (with hover preview)
         /// </summary>
         /// <returns></returns>
-        
         private Rect DrawSingleCharacterRepresentation(
             Rect rect,
             SerializedProperty representationProp,
@@ -844,9 +840,15 @@ namespace WolfstagInteractive.ConvoCore.Editor
             return rect;
         }
 
-        // ──────────────────────────────────────────────
-        // Representation-specific options (draw/height)
-        // ──────────────────────────────────────────────
+        /// <summary>
+        /// Representation specific draw options
+        /// </summary>
+        /// <param name="rect"></param>
+        /// <param name="representationProp"></param>
+        /// <param name="representation"></param>
+        /// <param name="expressionGuid"></param>
+        /// <param name="spacing"></param>
+        /// <returns></returns>
         private Rect DrawRepresentationSpecificOptions(
             Rect rect,
             SerializedProperty representationProp,

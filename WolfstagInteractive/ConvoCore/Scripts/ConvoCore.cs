@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -25,7 +26,8 @@ namespace WolfstagInteractive.ConvoCore
         public event Action PausedConversation;
         public event Action EndedConversation;
         public event Action CompletedConversation;
-
+        private bool _reverseRequested;
+        private bool _advanceRequested;
         public enum ConversationState
         {
             Inactive,
@@ -33,7 +35,17 @@ namespace WolfstagInteractive.ConvoCore
             Paused,
             Completed
         }
+        private sealed class LineFrame
+        {
+            public int LineIndex;
+            public List<BaseDialogueLineAction> Before = new();
+            public List<BaseDialogueLineAction> After = new();
+        }
+        public bool CanReverseOneLine =>
+            CurrentDialogueState == ConversationState.Active && _currentLineIndex > 0 && _currentLineIndex <= ConversationData.DialogueLines.Count - 1;
 
+        
+        private readonly List<LineFrame> _history = new();
         private void Awake()
         {
             LocalizationHandler = new ConvoCoreDialogueLocalizationHandler(ConvoCoreLanguageManager.Instance);
@@ -86,10 +98,12 @@ namespace WolfstagInteractive.ConvoCore
                     Debug.LogWarning(localizedResult.ErrorMessage);
                 }
 
-                // Actions before the dialogue line
+                var frame = new LineFrame { LineIndex = _currentLineIndex };
+
+                // before line actions
                 if (line.ActionsBeforeDialogueLine != null && line.ActionsBeforeDialogueLine.Count > 0)
                 {
-                    yield return StartCoroutine(ConversationData.ActionsBeforeDialogueLine(this, line));
+                    yield return StartCoroutine(ConversationData.ActionsBeforeDialogueLine(this, line, frame.Before));
                 }
 
                 // Check and get the player placeholder name and replace with the player's name in the line
@@ -110,8 +124,13 @@ namespace WolfstagInteractive.ConvoCore
                 // Actions after the dialogue line
                 if (line.ActionsAfterDialogueLine != null && line.ActionsAfterDialogueLine.Count > 0)
                 {
-                    yield return StartCoroutine(ConversationData.DoActionsAfterDialogueLine(this, line));
+                    yield return StartCoroutine(ConversationData.DoActionsAfterDialogueLine(this, line, frame.After));
                 }
+                // push frame after the line has been fully shown
+                if (_history.Count == frame.LineIndex)
+                    _history.Add(frame);
+                else if (_history.Count > frame.LineIndex)
+                    _history[frame.LineIndex] = frame;
 
                 // Handle line progression method
                 if (line.UserInputMethod == ConvoCoreConversationData.DialogueLineProgressionMethod.Timed)
@@ -120,10 +139,22 @@ namespace WolfstagInteractive.ConvoCore
                 }
                 else
                 {
-                    yield return StartCoroutine(ConversationUI.WaitForUserInput());
-                }
+                    _advanceRequested = false;
+                    _reverseRequested = false;
 
-                _currentLineIndex++;
+                    yield return StartCoroutine(ConversationUI.WaitForUserInput());
+
+                    if (_reverseRequested)
+                    {
+                        // undo current line and move back one
+                        yield return StartCoroutine(ReverseOneLineRoutine());
+                        // do not increment index here
+                        continue; // restart loop, current index now points at previous line
+                    }
+
+                    // any other input is treated as forward
+                    _currentLineIndex++;
+                }
             }
 
             // End conversation
@@ -135,7 +166,55 @@ namespace WolfstagInteractive.ConvoCore
             }
             Debug.Log("Conversation completed!");
         }
+        private IEnumerator ReverseOneLineRoutine()
+        {
+            // undo the line we are currently sitting on
+            int current = _currentLineIndex;
+            if (current >= 0 && current < _history.Count)
+            {
+                var frame = _history[current];
 
+                // reverse after actions in reverse order
+                for (int i = frame.After.Count - 1; i >= 0; i--)
+                {
+                    var a = frame.After[i];
+                    if (a != null) yield return StartCoroutine(a.ExecuteOnReversedLineAction());
+                    if (a != null) DestroyImmediate(a);
+                }
+
+                // reverse before actions in reverse order
+                for (int i = frame.Before.Count - 1; i >= 0; i--)
+                {
+                    var a = frame.Before[i];
+                    if (a != null) yield return StartCoroutine(a.ExecuteOnReversedLineAction());
+                    if (a != null) DestroyImmediate(a);
+                }
+
+                // drop this frame
+                _history[current] = null;
+            }
+
+            // move cursor back one
+            _currentLineIndex = Mathf.Max(0, _currentLineIndex - 1);
+
+            // re-display the previous line's UI text and portraits without re-running actions
+            var prevLine = ConversationData.DialogueLines[_currentLineIndex];
+
+            var primaryProfile = ConversationData.ResolveCharacterProfile(
+                ConversationData.ConversationParticipantProfiles,
+                prevLine.characterID);
+
+            var primaryRepresentation = GetPrimaryCharacterRepresentation(primaryProfile, prevLine.PrimaryCharacterRepresentation);
+
+            var localized = LocalizationHandler.GetLocalizedDialogue(prevLine);
+            string finalOutput = ReplacePlayerNameInDialogueLine(localized.Text);
+
+            yield return StartCoroutine(
+                PlayDialogueLine(ConversationUI, prevLine, finalOutput,
+                    primaryProfile.CharacterName, primaryRepresentation, primaryProfile));
+
+            // do not block on WaitForUserInput here. let your UI decide how back navigation returns to idle.
+        }
         /// <summary>
         /// Helper method to get primary character representation (special handling for speakers)
         /// </summary>
@@ -169,7 +248,11 @@ namespace WolfstagInteractive.ConvoCore
             // Use the standard resolution method for other cases
             return GetCharacterRepresentationFromData(primaryProfile, representationData, true);
         }
-
+        public void ReverseOneLine()
+        {
+            if (!CanReverseOneLine) return;
+            StartCoroutine(ReverseOneLineRoutine());
+        }
         /// <summary>
         /// Helper method to get character representation from representation data
         /// </summary>
@@ -444,7 +527,7 @@ namespace WolfstagInteractive.ConvoCore
             ConversationData.InitializeDialogueData();
             if (ConversationUI != null)
             {
-                ConversationUI.InitializeUI(this);
+               BindUIEvents();
             }
             if (ConversationData == null)
             {
@@ -461,6 +544,13 @@ namespace WolfstagInteractive.ConvoCore
             _currentLineIndex = 0;
             StartedConversation?.Invoke();
             StartCoroutine(ExecuteDialogueSequence());
+        }
+
+        private void BindUIEvents()
+        {
+            ConversationUI.InitializeUI(this);
+            ConversationUI.RequestAdvance += () => _advanceRequested = true;
+            ConversationUI.RequestReverse += () => _reverseRequested = true;
         }
         
         public void PlayConversation()
