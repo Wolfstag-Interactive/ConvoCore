@@ -1,5 +1,8 @@
 <map id="WolfstagInteractive.ConvoCore.ConvoCoreConversationData" name="WolfstagInteractive.ConvoCore.ConvoCoreConversationData">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,79,249,119"/>
-<area shape="rect" id="Node000002" title=" " alt="" coords="63,5,192,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="130,44,130,79,125,79,125,44"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,183,249,223"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="57,5,187,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="125,44,129,183,124,183,120,45"/>
+<area shape="rect" id="Node000003" href="$classWolfstagInteractive_1_1ConvoCore_1_1ConversationBranchContainer.html" title=" " alt="" coords="143,80,394,120"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="156,35,235,78,233,82,154,40"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="232,130,155,185,152,180,229,126"/>
 </map>
