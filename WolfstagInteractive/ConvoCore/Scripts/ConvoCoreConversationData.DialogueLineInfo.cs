@@ -42,7 +42,28 @@ namespace WolfstagInteractive.ConvoCore
             public string Text;
         }
     }
+    public partial class ConvoCoreConversationData
+    {
+        [Serializable]
+        public enum LineContinuationMode
+        {
+            Continue,
+            EndConversation,
+            ContainerBranch
+        }
 
+        [Serializable]
+        public struct LineContinuation
+        {
+            public LineContinuationMode Mode;
+
+            // Only used when Mode == Branch
+            public string BranchKey;
+
+            // Optional: return behavior
+            public bool PushReturnPoint;
+        }
+    }
     public partial class ConvoCoreConversationData
     {
         [Serializable]
@@ -60,6 +81,9 @@ namespace WolfstagInteractive.ConvoCore
 
             [Tooltip("Optional representation for a tertiary character.")]
             public CharacterRepresentationData TertiaryCharacterRepresentation = new CharacterRepresentationData();
+            [Tooltip("Ordered list of visible character representations for this line. Index 0 is the speaker.")]
+            public List<CharacterRepresentationData> CharacterRepresentations = new();
+
 
             public List<LocalizedDialogue> LocalizedDialogues; // Localized dialogues per language
             public AudioClip clip; // Audio associated with the line
@@ -70,7 +94,9 @@ namespace WolfstagInteractive.ConvoCore
                 UserInputMethod; // Whether to wait for user input before continuing to the next line
 
             public float TimeBeforeNextLine; // Time in seconds to wait before continuing to the next line
-
+            
+            public LineContinuation LineContinuationSettings;
+            
             // Add a constructor to ensure initialization
             public DialogueLineInfo(string conversationID)
             {
@@ -86,6 +112,35 @@ namespace WolfstagInteractive.ConvoCore
                 ActionsAfterDialogueLine = new List<BaseDialogueLineAction>();
                 UserInputMethod = DialogueLineProgressionMethod.UserInput;
                 TimeBeforeNextLine = 0f;
+                LineContinuationSettings = new LineContinuation
+                {
+                    Mode = LineContinuationMode.Continue,
+                    BranchKey = null,
+                    PushReturnPoint = false
+                };
+            }
+            public void EnsureCharacterRepresentationListInitialized()
+            {
+                CharacterRepresentations ??= new List<CharacterRepresentationData>();
+
+                if (CharacterRepresentations.Count > 0)
+                    return;
+
+                CharacterRepresentations.Add(PrimaryCharacterRepresentation);
+
+                if (HasAnySelection(SecondaryCharacterRepresentation))
+                    CharacterRepresentations.Add(SecondaryCharacterRepresentation);
+
+                if (HasAnySelection(TertiaryCharacterRepresentation))
+                    CharacterRepresentations.Add(TertiaryCharacterRepresentation);
+            }
+
+            private static bool HasAnySelection(CharacterRepresentationData data)
+            {
+                return !string.IsNullOrEmpty(data.SelectedCharacterID)
+                       || !string.IsNullOrEmpty(data.SelectedRepresentationName)
+                       || data.SelectedRepresentation != null
+                       || !string.IsNullOrEmpty(data.SelectedExpressionId);
             }
         }
     }

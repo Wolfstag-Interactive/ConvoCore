@@ -17,6 +17,7 @@ namespace WolfstagInteractive.ConvoCore
             new List<ConvoCoreCharacterProfileBaseData>();
         
         public List<DialogueLineInfo> DialogueLines; // Metadata for all dialogues in the YAML
+        public ConversationBranchContainer BranchContainer;
 
         [Header("YAML Source (pick one or more)")]
         public TextAsset ConversationYaml; // sample-friendly direct reference

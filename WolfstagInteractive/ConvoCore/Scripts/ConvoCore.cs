@@ -37,7 +37,10 @@ namespace WolfstagInteractive.ConvoCore
             Paused,
             Completed
         }
+        private readonly Stack<(ConvoCoreConversationData convo, int index)> _returnStack =
+            new Stack<(ConvoCoreConversationData, int)>();
 
+        private IConversationContext _context = DefaultConversationContext.Instance;
         /// <summary>
         /// Represents a frame of dialogue within a conversation sequence.
         /// </summary>
@@ -165,7 +168,12 @@ namespace WolfstagInteractive.ConvoCore
                     }
 
                     // any other input is treated as forward
-                    _currentLineIndex++;
+                }
+                // At this point the line is fully completed. Apply continuation rules.
+                if (!HandleLineContinuation(line))
+                {
+                    // Conversation ended or could not continue
+                    break;
                 }
             }
 
@@ -178,6 +186,97 @@ namespace WolfstagInteractive.ConvoCore
             }
             Debug.Log("Conversation completed!");
         }
+        private bool HandleLineContinuation(ConvoCoreConversationData.DialogueLineInfo line)
+        {
+            var cont = line.LineContinuationSettings;
+
+            switch (cont.Mode)
+            {
+                case ConvoCoreConversationData.LineContinuationMode.Continue:
+                    _currentLineIndex++;
+                    return _currentLineIndex < ConversationData.DialogueLines.Count;
+
+                case ConvoCoreConversationData.LineContinuationMode.EndConversation:
+                    // Let the main coroutine exit its loop
+                    CurrentDialogueState = ConversationState.Completed;
+                    return false;
+
+                case ConvoCoreConversationData.LineContinuationMode.ContainerBranch:
+                    return HandleContainerBranch(cont);
+
+                default:
+                    // Fallback to continue
+                    _currentLineIndex++;
+                    return _currentLineIndex < ConversationData.DialogueLines.Count;
+            }
+        }
+        private bool HandleContainerBranch(ConvoCoreConversationData.LineContinuation cont)
+        {
+            if (ConversationData == null)
+                return false;
+
+            var branchContainer = ConversationData.BranchContainer;
+            if (branchContainer == null || string.IsNullOrWhiteSpace(cont.BranchKey))
+            {
+                // No branch container configured: treat this as end
+                CurrentDialogueState = ConversationState.Completed;
+                return false;
+            }
+
+            if (cont.PushReturnPoint)
+            {
+                // Return to the line after this one
+                _returnStack.Push((ConversationData, _currentLineIndex + 1));
+            }
+
+            if (!branchContainer.TryResolve(cont.BranchKey, _context, out var result))
+            {
+                // Branch key not found: end or return
+                return TryReturnOrEnd();
+            }
+
+            if (result.EndsConversation || result.Conversation == null)
+            {
+                return TryReturnOrEnd();
+            }
+
+            // Switch to new conversation and index
+            SwitchConversation(result.Conversation, result.LineIndex);
+            return true;
+        }
+
+        private bool TryReturnOrEnd()
+        {
+            if (_returnStack.Count > 0)
+            {
+                var rp = _returnStack.Pop();
+                SwitchConversation(rp.convo, rp.index);
+                return true;
+            }
+
+            CurrentDialogueState = ConversationState.Completed;
+            return false;
+        }
+
+        private void SwitchConversation(ConvoCoreConversationData newConversation, int startIndex)
+        {
+            if (newConversation == null)
+            {
+                CurrentDialogueState = ConversationState.Completed;
+                return;
+            }
+
+            ConversationData = newConversation;
+            ConversationData.InitializeDialogueData();
+
+            _executedActionsPerLine.Clear();
+            _history.Clear();
+
+            var lines = ConversationData.DialogueLines;
+            _currentLineIndex = Mathf.Clamp(startIndex, 0, lines.Count - 1);
+        }
+
+
         // internal so ConvoCoreConversationData can call it
         internal bool ShouldExecuteAction(BaseDialogueLineAction action, int lineIndex)
         {

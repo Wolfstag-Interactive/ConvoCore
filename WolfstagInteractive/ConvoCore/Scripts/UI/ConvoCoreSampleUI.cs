@@ -58,6 +58,13 @@ namespace WolfstagInteractive.ConvoCore
         private CanvasGroup _historyGroup;
 
         private bool _togglingGuard;
+        private DisplaySlot GetSlotForIndex(int index)
+        {
+            if (index == 0) return DisplaySlot.Left;
+            if (index == 1) return DisplaySlot.Right;
+            if (index == 2) return DisplaySlot.Center;
+            return DisplaySlot.Center;
+        }
 
         public override void InitializeUI(ConvoCore convoCoreInstance)
         {
@@ -152,23 +159,19 @@ namespace WolfstagInteractive.ConvoCore
             _lastSpeakerColor = primaryProfile.CharacterNameColor;
             _lastLineText = localizedText;
             _lastLineIndex = lineInfo.ConversationLineIndex;
+            
+            lineInfo.EnsureCharacterRepresentationListInitialized();
+
+            int uiCap = Mathf.Max(1, MaxVisibleCharacterSlots);
+            int physicalCap = 3; // this sample UI has exactly 3 slots
+            int showCount = Mathf.Min(uiCap, physicalCap, lineInfo.CharacterRepresentations.Count);
+            
             // Hide all sprite elements
             HideAllSpriteImages();
-
-            // Render character representations (sprites or prefabs)
-            var primaryDisplay = RenderRepresentation(lineInfo.PrimaryCharacterRepresentation, DisplaySlot.Center);
-            RenderRepresentation(lineInfo.SecondaryCharacterRepresentation, DisplaySlot.Left);
-            RenderRepresentation(lineInfo.TertiaryCharacterRepresentation, DisplaySlot.Right);
-
-            var expressionId = lineInfo.PrimaryCharacterRepresentation.SelectedExpressionId;
-            var convoData = ConvoCoreInstance.GetCurrentConversationData();
-
-            primaryRepresentation.ApplyExpression(
-                expressionId,
-                ConvoCoreInstance,
-                convoData,
-                lineInfo.ConversationLineIndex,
-                primaryDisplay);
+            for (int i = 0; i < showCount; i++)
+            {
+                RenderRepresentation(lineInfo.CharacterRepresentations[i], GetSlotForIndex(i));
+            }
 
             ContinueButton?.gameObject.SetActive(true);
             RefreshNavButtons();

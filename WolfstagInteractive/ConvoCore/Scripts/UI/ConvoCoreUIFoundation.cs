@@ -14,6 +14,12 @@ namespace WolfstagInteractive.ConvoCore
         protected ConvoCore ConvoCoreInstance;
         protected ConvoCorePrefabRepresentationSpawner PrefabRepresentationSpawner;
         protected ConvoCoreDialogueHistoryUI ConvoCoreDialogueHistoryUI;
+        [SerializeField, Min(1)]
+        private int maxVisibleCharacterSlots = 3;
+
+        // Includes the speaker. 3 means speaker plus 2 companions.
+        public virtual int MaxVisibleCharacterSlots => maxVisibleCharacterSlots;
+
         public event Action RequestAdvance;
         public event Action RequestReverse;
 

@@ -164,6 +164,10 @@ MonoBehaviour:
     ActionsAfterDialogueLine: []
     UserInputMethod: 0
     TimeBeforeNextLine: 0
+    LineContinuationSettings:
+      Mode: 0
+      BranchKey: 
+      PushReturnPoint: 0
   - ConversationID: Conversation1
     ConversationLineIndex: 1
     characterID: Jared
@@ -218,6 +222,10 @@ MonoBehaviour:
     ActionsAfterDialogueLine: []
     UserInputMethod: 0
     TimeBeforeNextLine: 0
+    LineContinuationSettings:
+      Mode: 0
+      BranchKey: 
+      PushReturnPoint: 0
   - ConversationID: Conversation1
     ConversationLineIndex: 2
     characterID: Ava
@@ -272,6 +280,10 @@ MonoBehaviour:
     ActionsAfterDialogueLine: []
     UserInputMethod: 0
     TimeBeforeNextLine: 0
+    LineContinuationSettings:
+      Mode: 0
+      BranchKey: 
+      PushReturnPoint: 0
   - ConversationID: Conversation1
     ConversationLineIndex: 3
     characterID: Jared
@@ -326,6 +338,10 @@ MonoBehaviour:
     ActionsAfterDialogueLine: []
     UserInputMethod: 0
     TimeBeforeNextLine: 0
+    LineContinuationSettings:
+      Mode: 0
+      BranchKey: 
+      PushReturnPoint: 0
   - ConversationID: Conversation1
     ConversationLineIndex: 4
     characterID: Ava
@@ -380,6 +396,10 @@ MonoBehaviour:
     ActionsAfterDialogueLine: []
     UserInputMethod: 0
     TimeBeforeNextLine: 0
+    LineContinuationSettings:
+      Mode: 0
+      BranchKey: 
+      PushReturnPoint: 0
   - ConversationID: Conversation1
     ConversationLineIndex: 5
     characterID: Jared
@@ -434,6 +454,10 @@ MonoBehaviour:
     ActionsAfterDialogueLine: []
     UserInputMethod: 0
     TimeBeforeNextLine: 0
+    LineContinuationSettings:
+      Mode: 0
+      BranchKey: 
+      PushReturnPoint: 0
   - ConversationID: Conversation1
     ConversationLineIndex: 6
     characterID: Wolfstag
@@ -489,6 +513,10 @@ MonoBehaviour:
     ActionsAfterDialogueLine: []
     UserInputMethod: 0
     TimeBeforeNextLine: 0
+    LineContinuationSettings:
+      Mode: 0
+      BranchKey: 
+      PushReturnPoint: 0
   - ConversationID: Conversation1
     ConversationLineIndex: 7
     characterID: Ava
@@ -543,6 +571,10 @@ MonoBehaviour:
     ActionsAfterDialogueLine: []
     UserInputMethod: 0
     TimeBeforeNextLine: 0
+    LineContinuationSettings:
+      Mode: 0
+      BranchKey: 
+      PushReturnPoint: 0
   - ConversationID: Conversation1
     ConversationLineIndex: 8
     characterID: Jared
@@ -597,6 +629,10 @@ MonoBehaviour:
     ActionsAfterDialogueLine: []
     UserInputMethod: 0
     TimeBeforeNextLine: 0
+    LineContinuationSettings:
+      Mode: 0
+      BranchKey: 
+      PushReturnPoint: 0
   - ConversationID: Conversation1
     ConversationLineIndex: 9
     characterID: Jared
@@ -654,6 +690,10 @@ MonoBehaviour:
     ActionsAfterDialogueLine: []
     UserInputMethod: 0
     TimeBeforeNextLine: 0
+    LineContinuationSettings:
+      Mode: 0
+      BranchKey: 
+      PushReturnPoint: 0
   - ConversationID: Conversation1
     ConversationLineIndex: 10
     characterID: Wolfstag
@@ -708,6 +748,10 @@ MonoBehaviour:
     ActionsAfterDialogueLine: []
     UserInputMethod: 0
     TimeBeforeNextLine: 0
+    LineContinuationSettings:
+      Mode: 0
+      BranchKey: 
+      PushReturnPoint: 0
   - ConversationID: Conversation1
     ConversationLineIndex: 11
     characterID: Ava
@@ -762,6 +806,10 @@ MonoBehaviour:
     ActionsAfterDialogueLine: []
     UserInputMethod: 0
     TimeBeforeNextLine: 0
+    LineContinuationSettings:
+      Mode: 0
+      BranchKey: 
+      PushReturnPoint: 0
   - ConversationID: Conversation1
     ConversationLineIndex: 12
     characterID: Wolfstag
@@ -819,6 +867,10 @@ MonoBehaviour:
     ActionsAfterDialogueLine: []
     UserInputMethod: 0
     TimeBeforeNextLine: 0
+    LineContinuationSettings:
+      Mode: 0
+      BranchKey: 
+      PushReturnPoint: 0
   - ConversationID: Conversation1
     ConversationLineIndex: 13
     characterID: Jared
@@ -873,6 +925,10 @@ MonoBehaviour:
     ActionsAfterDialogueLine: []
     UserInputMethod: 0
     TimeBeforeNextLine: 0
+    LineContinuationSettings:
+      Mode: 0
+      BranchKey: 
+      PushReturnPoint: 0
   - ConversationID: Conversation1
     ConversationLineIndex: 14
     characterID: Ava
@@ -927,6 +983,10 @@ MonoBehaviour:
     ActionsAfterDialogueLine: []
     UserInputMethod: 0
     TimeBeforeNextLine: 0
+    LineContinuationSettings:
+      Mode: 0
+      BranchKey: 
+      PushReturnPoint: 0
   - ConversationID: Conversation1
     ConversationLineIndex: 15
     characterID: Wolfstag
@@ -981,6 +1041,10 @@ MonoBehaviour:
     ActionsAfterDialogueLine: []
     UserInputMethod: 0
     TimeBeforeNextLine: 0
+    LineContinuationSettings:
+      Mode: 0
+      BranchKey: 
+      PushReturnPoint: 0
   - ConversationID: Conversation1
     ConversationLineIndex: 16
     characterID: Jared
@@ -1035,6 +1099,10 @@ MonoBehaviour:
     ActionsAfterDialogueLine: []
     UserInputMethod: 0
     TimeBeforeNextLine: 0
+    LineContinuationSettings:
+      Mode: 0
+      BranchKey: 
+      PushReturnPoint: 0
   - ConversationID: Conversation1
     ConversationLineIndex: 17
     characterID: Ava
@@ -1089,6 +1157,10 @@ MonoBehaviour:
     ActionsAfterDialogueLine: []
     UserInputMethod: 0
     TimeBeforeNextLine: 0
+    LineContinuationSettings:
+      Mode: 0
+      BranchKey: 
+      PushReturnPoint: 0
   - ConversationID: Conversation1
     ConversationLineIndex: 18
     characterID: Wolfstag
@@ -1146,6 +1218,10 @@ MonoBehaviour:
     ActionsAfterDialogueLine: []
     UserInputMethod: 0
     TimeBeforeNextLine: 0
+    LineContinuationSettings:
+      Mode: 0
+      BranchKey: 
+      PushReturnPoint: 0
   - ConversationID: Conversation1
     ConversationLineIndex: 19
     characterID: Jared
@@ -1203,6 +1279,10 @@ MonoBehaviour:
     ActionsAfterDialogueLine: []
     UserInputMethod: 0
     TimeBeforeNextLine: 0
+    LineContinuationSettings:
+      Mode: 0
+      BranchKey: 
+      PushReturnPoint: 0
   - ConversationID: Conversation1
     ConversationLineIndex: 20
     characterID: Ava
@@ -1257,6 +1337,10 @@ MonoBehaviour:
     ActionsAfterDialogueLine: []
     UserInputMethod: 0
     TimeBeforeNextLine: 0
+    LineContinuationSettings:
+      Mode: 0
+      BranchKey: 
+      PushReturnPoint: 0
   - ConversationID: Conversation1
     ConversationLineIndex: 21
     characterID: Wolfstag
@@ -1315,6 +1399,10 @@ MonoBehaviour:
     ActionsAfterDialogueLine: []
     UserInputMethod: 0
     TimeBeforeNextLine: 0
+    LineContinuationSettings:
+      Mode: 0
+      BranchKey: 
+      PushReturnPoint: 0
   - ConversationID: Conversation1
     ConversationLineIndex: 22
     characterID: Jared
@@ -1370,6 +1458,10 @@ MonoBehaviour:
     ActionsAfterDialogueLine: []
     UserInputMethod: 0
     TimeBeforeNextLine: 0
+    LineContinuationSettings:
+      Mode: 0
+      BranchKey: 
+      PushReturnPoint: 0
   - ConversationID: Conversation1
     ConversationLineIndex: 23
     characterID: Ava
@@ -1427,6 +1519,11 @@ MonoBehaviour:
     ActionsAfterDialogueLine: []
     UserInputMethod: 0
     TimeBeforeNextLine: 0
+    LineContinuationSettings:
+      Mode: 0
+      BranchKey: 
+      PushReturnPoint: 0
+  BranchContainer: {fileID: 0}
   ConversationYaml: {fileID: -1897268438159788713}
   AllowPersistentOverrides: 1
   FilePath: DialogueScriptSample.yml

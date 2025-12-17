@@ -49,11 +49,18 @@ namespace WolfstagInteractive.ConvoCore.Editor
         private static readonly GUIContent GC_BeforeActions = new("Actions Before Line:");
         private static readonly GUIContent GC_AfterActions = new("Actions After Line:");
         private static readonly GUIContent GC_Expression = new("Expression");
+        
+        private static readonly GUIContent GC_ContinuationHeader = new("Line Continuation");
+        private static readonly GUIContent GC_ContinuationMode   = new("Continuation Mode:");
+        private static readonly GUIContent GC_BranchKey         = new("Branch Key:");
+        private static readonly GUIContent GC_PushReturnPoint   = new("Push Return Point:");
+
 
         // Preview header text cache
         private static readonly Dictionary<int, string> s_PreviewCache = new(128);
         private static double s_LastCachePurgeTime;
         private static readonly GUIContent s_HeaderContent = new();
+        private static readonly Dictionary<string, bool> EditOverflowToggles = new();
 
         private static int GetIndexFromPath(string path)
         {
@@ -108,7 +115,7 @@ namespace WolfstagInteractive.ConvoCore.Editor
             rect = DrawLocalizedDialogues(rect, property);
             rect = DrawActionsList(rect, property);
             rect = DrawCharacterRepresentation(rect, property);
-
+            rect = DrawLineContinuation(rect, property);
             EditorGUI.indentLevel--;
 
             if (EditorGUI.EndChangeCheck())
@@ -123,6 +130,56 @@ namespace WolfstagInteractive.ConvoCore.Editor
 
             EditorGUI.EndProperty();
         }
+        private static Rect DrawLineContinuation(Rect rect, SerializedProperty property)
+        {
+            var contProp = property.FindPropertyRelative("LineContinuationSettings");
+            if (contProp == null)
+                return rect;
+
+            var modeProp         = contProp.FindPropertyRelative("Mode");
+            var branchKeyProp    = contProp.FindPropertyRelative("BranchKey");
+            var pushReturnProp   = contProp.FindPropertyRelative("PushReturnPoint");
+
+            float lineHeight = EditorGUIUtility.singleLineHeight;
+
+            // Header
+            EditorGUI.LabelField(rect, GC_ContinuationHeader, EditorStyles.boldLabel);
+            rect.y += lineHeight + k_Spacing;
+
+            if (modeProp == null)
+                return rect;
+
+            // Mode dropdown
+            var mode = (ConvoCoreConversationData.LineContinuationMode)modeProp.enumValueIndex;
+            mode = (ConvoCoreConversationData.LineContinuationMode)EditorGUI.EnumPopup(
+                rect,
+                GC_ContinuationMode,
+                mode
+            );
+            modeProp.enumValueIndex = (int)mode;
+            rect.y += lineHeight + k_Spacing;
+
+            // Extra fields if branching
+            if (mode == ConvoCoreConversationData.LineContinuationMode.ContainerBranch)
+            {
+                if (branchKeyProp != null)
+                {
+                    // For now this is a free text field.
+                    // Later you can upgrade it to a popup fed from ConversationData.BranchContainer.
+                    EditorGUI.PropertyField(rect, branchKeyProp, GC_BranchKey);
+                    rect.y += lineHeight + k_Spacing;
+                }
+
+                if (pushReturnProp != null)
+                {
+                    EditorGUI.PropertyField(rect, pushReturnProp, GC_PushReturnPoint);
+                    rect.y += lineHeight + k_Spacing;
+                }
+            }
+
+            return rect;
+        }
+
         
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
         {
@@ -135,8 +192,39 @@ namespace WolfstagInteractive.ConvoCore.Editor
             total += GetLocalizedDialoguesHeight(property);
             total += GetActionsListHeight(property);
             total += GetCharacterRepresentationSectionHeight(property);
-
+            total += GetLineContinuationHeight(property);
             return total;
+        }
+        private float GetLineContinuationHeight(SerializedProperty property)
+        {
+            var contProp = property.FindPropertyRelative("LineContinuationSettings");
+            if (contProp == null)
+                return 0f;
+
+            float h = 0f;
+            float line = EditorGUIUtility.singleLineHeight + k_Spacing;
+
+            // Header
+            h += line;
+
+            var modeProp = contProp.FindPropertyRelative("Mode");
+            if (modeProp == null)
+                return h;
+
+            var mode = (ConvoCoreConversationData.LineContinuationMode)modeProp.enumValueIndex;
+
+            // Mode dropdown
+            h += line;
+
+            // Extra fields for branch mode
+            if (mode == ConvoCoreConversationData.LineContinuationMode.ContainerBranch)
+            {
+                // BranchKey + PushReturnPoint
+                h += line; // Branch Key
+                h += line; // Push Return Point
+            }
+
+            return h;
         }
 
         private float GetBasicInfoHeight() =>
@@ -226,49 +314,86 @@ namespace WolfstagInteractive.ConvoCore.Editor
             return h;
         }
 
-        private float GetCharacterRepresentationSectionHeight(SerializedProperty property)
+private float GetCharacterRepresentationSectionHeight(SerializedProperty property)
+{
+    float h = 0f;
+    h += EditorGUIUtility.singleLineHeight + k_Spacing; // foldout
+
+    string key =
+        $"{property.serializedObject.targetObject.GetInstanceID()}_{property.propertyPath}_CharacterRep";
+    if (CharacterRepresentationFoldouts.TryGetValue(key, out bool open) && open)
+    {
+        h += 1 + k_Spacing * 3; // separator
+
+        var convo = property.serializedObject.targetObject as ConvoCoreConversationData;
+        if (convo == null)
         {
-            float h = 0f;
-            h += EditorGUIUtility.singleLineHeight + k_Spacing; // foldout
-
-            string key =
-                $"{property.serializedObject.targetObject.GetInstanceID()}_{property.propertyPath}_CharacterRep";
-            if (CharacterRepresentationFoldouts.TryGetValue(key, out bool open) && open)
+            h += EditorGUIUtility.singleLineHeight + k_Spacing;
+        }
+        else
+        {
+            var profiles = convo.ConversationParticipantProfiles?.Where(p => p != null).ToList();
+            if (profiles == null || profiles.Count == 0)
             {
-                h += 1 + k_Spacing * 3; // separator
-
-                var convo = property.serializedObject.targetObject as ConvoCoreConversationData;
-                if (convo == null)
+                h += EditorGUIUtility.singleLineHeight * 2.5f + k_Spacing;
+            }
+            else
+            {
+                var listProp = property.FindPropertyRelative("CharacterRepresentations");
+                if (listProp == null || !listProp.isArray)
                 {
                     h += EditorGUIUtility.singleLineHeight + k_Spacing;
                 }
                 else
                 {
-                    var profiles = convo.ConversationParticipantProfiles?.Where(p => p != null).ToList();
-                    if (profiles == null || profiles.Count == 0)
+                    int cap = Mathf.Max(1, GetMaxSlotsForEditor());
+                    bool hasOverflow = listProp.arraySize > cap;
+
+                    if (hasOverflow)
                     {
-                        h += EditorGUIUtility.singleLineHeight * 2.5f + k_Spacing;
+                        string msg =
+                            $"UI can display {cap} character slot(s), but this line defines {listProp.arraySize}. " +
+                            "Only the first slots supported by this UI will be shown at runtime.";
+
+                        float width = Mathf.Max(10f, EditorGUIUtility.currentViewWidth - 80f);
+                        float helpH = EditorStyles.helpBox.CalcHeight(new GUIContent(msg), width);
+
+                        h += helpH + k_Spacing;
+                        h += EditorGUIUtility.singleLineHeight + k_Spacing; // toggle
                     }
-                    else
+
+                    h += EditorGUIUtility.singleLineHeight + k_Spacing; // Visible Character Count field
+
+                    int count = Mathf.Max(1, listProp.arraySize);
+                    for (int i = 0; i < count; i++)
                     {
-                        h += GetSingleCharacterRepresentationHeight(
-                            property.FindPropertyRelative("PrimaryCharacterRepresentation"), property, false);
-                        h += GetSingleCharacterRepresentationHeight(
-                            property.FindPropertyRelative("SecondaryCharacterRepresentation"), property, true);
-                        h += GetSingleCharacterRepresentationHeight(
-                            property.FindPropertyRelative("TertiaryCharacterRepresentation"), property, true);
+                        var repElement = listProp.GetArrayElementAtIndex(i);
+
+                        if (i == 0)
+                        {
+                            h += GetSingleCharacterRepresentationHeight(repElement, property, false);
+                        }
+                        else
+                        {
+                            h += GetSingleCharacterRepresentationHeight(repElement, property, true);
+                            h += EditorGUIUtility.singleLineHeight + k_Spacing; // remove button row
+                        }
+
+                        h += 5f; // padding
                     }
                 }
-
-                h += 5f; // padding
             }
-            else
-            {
-                h += 2f;
-            }
-
-            return h;
         }
+
+        h += 5f; // padding
+    }
+    else
+    {
+        h += 2f;
+    }
+
+    return h;
+}
 
             private float GetSingleCharacterRepresentationHeight(
         SerializedProperty repProp,
@@ -532,84 +657,242 @@ namespace WolfstagInteractive.ConvoCore.Editor
             return rect;
         }
 
-        private Rect DrawCharacterRepresentation(Rect rect, SerializedProperty property)
+
+private Rect DrawCharacterRepresentation(Rect rect, SerializedProperty property)
+{
+    string foldoutKey =
+        $"{property.serializedObject.targetObject.GetInstanceID()}_{property.propertyPath}_CharacterRep";
+    if (!CharacterRepresentationFoldouts.ContainsKey(foldoutKey))
+        CharacterRepresentationFoldouts[foldoutKey] = true;
+
+    bool isExpanded = CharacterRepresentationFoldouts[foldoutKey];
+    bool newExpanded = EditorGUI.Foldout(rect, isExpanded, "Character Representations", true, s_FoldoutBold);
+    if (newExpanded != isExpanded)
+        CharacterRepresentationFoldouts[foldoutKey] = newExpanded;
+
+    rect.y += EditorGUIUtility.singleLineHeight + k_Spacing;
+
+    if (!newExpanded)
+        return rect;
+
+    rect.y += k_Spacing;
+    EditorGUI.DrawRect(new Rect(rect.x, rect.y, rect.width, 1), new Color(0.5f, 0.5f, 0.5f, 1));
+    rect.y += 1 + k_Spacing * 2;
+
+    var convo = property.serializedObject.targetObject as ConvoCoreConversationData;
+    if (convo == null)
+    {
+        EditorGUI.indentLevel++;
+        EditorGUI.LabelField(rect, "Error: Conversation data is missing.");
+        rect.y += EditorGUIUtility.singleLineHeight + k_Spacing;
+        EditorGUI.indentLevel--;
+        return rect;
+    }
+
+    var validProfiles = convo.ConversationParticipantProfiles.Where(p => p != null).ToList();
+    if (validProfiles.Count == 0)
+    {
+        EditorGUI.indentLevel++;
+        Rect helpRect = new(rect.x, rect.y, rect.width, EditorGUIUtility.singleLineHeight * 2.5f);
+        EditorGUI.LabelField(helpRect,
+            "No conversation participants are configured. Please add character profiles to the ConversationParticipantProfiles list.",
+            s_HelpBox);
+        rect.y += EditorGUIUtility.singleLineHeight * 2.5f + k_Spacing;
+        EditorGUI.indentLevel--;
+        return rect;
+    }
+
+    EditorGUI.indentLevel++;
+
+    var speakerIdProp = property.FindPropertyRelative("characterID");
+    var listProp = property.FindPropertyRelative("CharacterRepresentations");
+
+    if (listProp == null || !listProp.isArray)
+    {
+        EditorGUI.LabelField(rect, "Error: CharacterRepresentations list is missing on DialogueLineInfo.");
+        rect.y += EditorGUIUtility.singleLineHeight + k_Spacing;
+        EditorGUI.indentLevel--;
+        return rect;
+    }
+
+    if (listProp.arraySize < 1)
+    {
+        listProp.arraySize = 1;
+        property.serializedObject.ApplyModifiedProperties();
+    }
+
+    bool shouldMigrate = true;
+    if (listProp.arraySize > 0)
+    {
+        var e0 = listProp.GetArrayElementAtIndex(0);
+        shouldMigrate = !HasAnyRepSelection(e0);
+    }
+
+    if (shouldMigrate)
+    {
+        var primaryLegacy = property.FindPropertyRelative("PrimaryCharacterRepresentation");
+        var secondaryLegacy = property.FindPropertyRelative("SecondaryCharacterRepresentation");
+        var tertiaryLegacy = property.FindPropertyRelative("TertiaryCharacterRepresentation");
+
+        if (primaryLegacy != null)
+            CopyRepData(primaryLegacy, listProp.GetArrayElementAtIndex(0));
+
+        while (listProp.arraySize > 1)
+            listProp.DeleteArrayElementAtIndex(listProp.arraySize - 1);
+
+        if (secondaryLegacy != null && HasAnyRepSelection(secondaryLegacy))
         {
-            string foldoutKey =
-                $"{property.serializedObject.targetObject.GetInstanceID()}_{property.propertyPath}_CharacterRep";
-            if (!CharacterRepresentationFoldouts.ContainsKey(foldoutKey))
-                CharacterRepresentationFoldouts[foldoutKey] = true;
-
-            bool isExpanded = CharacterRepresentationFoldouts[foldoutKey];
-            bool newExpanded = EditorGUI.Foldout(rect, isExpanded, "Character Representations", true, s_FoldoutBold);
-            if (newExpanded != isExpanded)
-                CharacterRepresentationFoldouts[foldoutKey] = newExpanded;
-
-            rect.y += EditorGUIUtility.singleLineHeight + k_Spacing;
-
-            if (!newExpanded)
-                return rect;
-
-            rect.y += k_Spacing;
-            EditorGUI.DrawRect(new Rect(rect.x, rect.y, rect.width, 1), new Color(0.5f, 0.5f, 0.5f, 1));
-            rect.y += 1 + k_Spacing * 2;
-
-            var convo = property.serializedObject.targetObject as ConvoCoreConversationData;
-            if (convo == null)
-            {
-                EditorGUI.indentLevel++;
-                EditorGUI.LabelField(rect, "Error: Conversation data is missing.");
-                rect.y += EditorGUIUtility.singleLineHeight + k_Spacing;
-                EditorGUI.indentLevel--;
-                return rect;
-            }
-
-            var validProfiles = convo.ConversationParticipantProfiles.Where(p => p != null).ToList();
-            if (validProfiles.Count == 0)
-            {
-                EditorGUI.indentLevel++;
-                Rect helpRect = new(rect.x, rect.y, rect.width, EditorGUIUtility.singleLineHeight * 2.5f);
-                EditorGUI.LabelField(helpRect,
-                    "No conversation participants are configured. Please add character profiles to the ConversationParticipantProfiles list.",
-                    s_HelpBox);
-                rect.y += EditorGUIUtility.singleLineHeight * 2.5f + k_Spacing;
-                EditorGUI.indentLevel--;
-                return rect;
-            }
-
-            EditorGUI.indentLevel++;
-
-            rect = DrawSingleCharacterRepresentation(
-                rect,
-                property.FindPropertyRelative("PrimaryCharacterRepresentation"),
-                "Primary Character",
-                property.FindPropertyRelative("characterID"),
-                k_Spacing,
-                useRepresentationNameInsteadOfID: false,
-                convo);
-
-            rect = DrawSingleCharacterRepresentation(
-                rect,
-                property.FindPropertyRelative("SecondaryCharacterRepresentation"),
-                "Secondary Character",
-                property.FindPropertyRelative("SecondaryCharacterRepresentation"),
-                k_Spacing,
-                useRepresentationNameInsteadOfID: true,
-                convo);
-
-            rect = DrawSingleCharacterRepresentation(
-                rect,
-                property.FindPropertyRelative("TertiaryCharacterRepresentation"),
-                "Tertiary Character",
-                property.FindPropertyRelative("TertiaryCharacterRepresentation"),
-                k_Spacing,
-                useRepresentationNameInsteadOfID: true,
-                convo);
-
-            EditorGUI.indentLevel--;
-            rect.y += 5f;
-            return rect;
+            int i = listProp.arraySize;
+            listProp.arraySize++;
+            CopyRepData(secondaryLegacy, listProp.GetArrayElementAtIndex(i));
         }
 
+        if (tertiaryLegacy != null && HasAnyRepSelection(tertiaryLegacy))
+        {
+            int i = listProp.arraySize;
+            listProp.arraySize++;
+            CopyRepData(tertiaryLegacy, listProp.GetArrayElementAtIndex(i));
+        }
+
+        property.serializedObject.ApplyModifiedProperties();
+    }
+
+    int cap = Mathf.Max(1, GetMaxSlotsForEditor());
+    bool hasOverflow = listProp.arraySize > cap;
+
+    string overflowKey = $"{property.serializedObject.targetObject.GetInstanceID()}_{property.propertyPath}_EditOverflow";
+    if (!EditOverflowToggles.ContainsKey(overflowKey))
+        EditOverflowToggles[overflowKey] = false;
+
+    if (hasOverflow)
+    {
+        string msg =
+            $"UI can display {cap} character slot(s), but this line defines {listProp.arraySize}. " +
+            "Only the first slots supported by this UI will be shown at runtime.";
+
+        float helpH = EditorStyles.helpBox.CalcHeight(new GUIContent(msg), rect.width);
+        EditorGUI.HelpBox(new Rect(rect.x, rect.y, rect.width, helpH), msg, MessageType.Warning);
+        rect.y += helpH + k_Spacing;
+
+        EditOverflowToggles[overflowKey] = EditorGUI.ToggleLeft(
+            new Rect(rect.x, rect.y, rect.width, EditorGUIUtility.singleLineHeight),
+            "Edit overflow entries anyway",
+            EditOverflowToggles[overflowKey]);
+
+        rect.y += EditorGUIUtility.singleLineHeight + k_Spacing;
+    }
+
+    bool editOverflow = EditOverflowToggles[overflowKey];
+
+    int newSize = Mathf.Max(1, EditorGUI.IntField(
+        new Rect(rect.x, rect.y, rect.width, EditorGUIUtility.singleLineHeight),
+        "Visible Character Count",
+        listProp.arraySize));
+    rect.y += EditorGUIUtility.singleLineHeight + k_Spacing;
+
+    if (newSize != listProp.arraySize)
+    {
+        listProp.arraySize = newSize;
+        property.serializedObject.ApplyModifiedProperties();
+    }
+
+    for (int i = 0; i < listProp.arraySize; i++)
+    {
+        var repElement = listProp.GetArrayElementAtIndex(i);
+        bool isOverflow = i >= cap;
+
+        string label;
+        if (i == 0) label = "Speaker";
+        else label = $"Visible Character {i + 1}";
+        if (isOverflow) label += " (Overflow)";
+
+        using (new EditorGUI.DisabledScope(isOverflow && !editOverflow))
+        {
+            if (i == 0)
+            {
+                rect = DrawSingleCharacterRepresentation(
+                    rect,
+                    repElement,
+                    label,
+                    speakerIdProp,
+                    k_Spacing,
+                    useRepresentationNameInsteadOfID: false,
+                    convo);
+            }
+            else
+            {
+                rect = DrawSingleCharacterRepresentation(
+                    rect,
+                    repElement,
+                    label,
+                    repElement,
+                    k_Spacing,
+                    useRepresentationNameInsteadOfID: true,
+                    convo);
+            }
+        }
+
+        if (i > 0)
+        {
+            var removeRect = new Rect(rect.x, rect.y, 120f, EditorGUIUtility.singleLineHeight);
+            if (GUI.Button(removeRect, "Remove"))
+            {
+                listProp.DeleteArrayElementAtIndex(i);
+                property.serializedObject.ApplyModifiedProperties();
+                break;
+            }
+            rect.y += EditorGUIUtility.singleLineHeight + k_Spacing;
+        }
+
+        rect.y += 5f;
+    }
+
+    EditorGUI.indentLevel--;
+    rect.y += 5f;
+    return rect;
+}
+        // Helper used by DrawCharacterRepresentation
+        private static int GetMaxSlotsForEditor()
+        {
+            int v = ConvoCoreEditorPresentationContext.MaxVisibleCharacterSlotsOverride ?? 3;
+            return Mathf.Clamp(v, 1, 32);
+        }
+        
+        private static bool HasAnyRepSelection(SerializedProperty repProp)
+        {
+            if (repProp == null) return false;
+
+            var charId = repProp.FindPropertyRelative("SelectedCharacterID")?.stringValue;
+            var repName = repProp.FindPropertyRelative("SelectedRepresentationName")?.stringValue;
+            var repObj = repProp.FindPropertyRelative("SelectedRepresentation")?.objectReferenceValue;
+            var exprId = repProp.FindPropertyRelative("SelectedExpressionId")?.stringValue;
+
+            return !string.IsNullOrEmpty(charId)
+                   || !string.IsNullOrEmpty(repName)
+                   || repObj != null
+                   || !string.IsNullOrEmpty(exprId);
+        }
+
+        private static void CopyRepData(SerializedProperty src, SerializedProperty dst)
+        {
+            if (src == null || dst == null) return;
+
+            var srcCharId = src.FindPropertyRelative("SelectedCharacterID");
+            var srcRepName = src.FindPropertyRelative("SelectedRepresentationName");
+            var srcRepObj = src.FindPropertyRelative("SelectedRepresentation");
+            var srcExprId = src.FindPropertyRelative("SelectedExpressionId");
+
+            var dstCharId = dst.FindPropertyRelative("SelectedCharacterID");
+            var dstRepName = dst.FindPropertyRelative("SelectedRepresentationName");
+            var dstRepObj = dst.FindPropertyRelative("SelectedRepresentation");
+            var dstExprId = dst.FindPropertyRelative("SelectedExpressionId");
+
+            if (dstCharId != null && srcCharId != null) dstCharId.stringValue = srcCharId.stringValue;
+            if (dstRepName != null && srcRepName != null) dstRepName.stringValue = srcRepName.stringValue;
+            if (dstExprId != null && srcExprId != null) dstExprId.stringValue = srcExprId.stringValue;
+            if (dstRepObj != null && srcRepObj != null) dstRepObj.objectReferenceValue = srcRepObj.objectReferenceValue;
+        }
+        
         private static readonly Dictionary<int, GUIContent[]> _profilePopupCache = new();
 
         private static GUIContent[] GetCachedProfileNames(ConvoCoreConversationData convo, List<ConvoCoreCharacterProfileBaseData> profiles)

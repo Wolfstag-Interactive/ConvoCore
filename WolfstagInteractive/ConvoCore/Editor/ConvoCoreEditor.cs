@@ -15,7 +15,10 @@ namespace WolfstagInteractive.ConvoCore.Editor
         {
             // Get the target object
             ConvoCore convoCore = (ConvoCore)target;
-
+            ConvoCoreEditorPresentationContext.MaxVisibleCharacterSlotsOverride =
+                convoCore.ConversationUI != null
+                    ? convoCore.ConversationUI.MaxVisibleCharacterSlots
+                    : (int?)null;
             // Access the LanguageManager Singleton instance
             _convoCoreLanguageManager = ConvoCoreLanguageManager.Instance;
 
@@ -36,6 +39,7 @@ namespace WolfstagInteractive.ConvoCore.Editor
             }
 
             DrawDefaultInspector();
+            ConvoCoreEditorPresentationContext.MaxVisibleCharacterSlotsOverride = null;
 
             EditorGUILayout.Space();
             EditorGUILayout.LabelField("Language Control", EditorStyles.boldLabel);
