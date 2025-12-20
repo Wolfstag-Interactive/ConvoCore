@@ -11,7 +11,7 @@
   "samples": [
     {
       "displayName": "Sample Assets",
-      "description": "A sample scene demonstrating how to use ConvoCore.",
+      "description": "A collection of sample assets demonstrating how to use ConvoCore.",
       "path": "Samples~/ConvoCore/SampleAssets"
     }
   ]
