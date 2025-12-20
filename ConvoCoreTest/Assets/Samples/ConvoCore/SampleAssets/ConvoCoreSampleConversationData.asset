@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!49 &-7234822386653529355
+--- !u!49 &-1897268438159788713
 TextAsset:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -103,7 +103,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 458f605aa420aee44acb27c723607006, type: 3}
-  m_Name: ConvoCoreSampleConversationData TEST
+  m_Name: ConvoCoreSampleConversationData
   m_EditorClassIdentifier: 
   ConversationParticipantProfiles:
   - {fileID: 11400000, guid: cca04ff07be1b1a478acbfc412045f2e, type: 2}
@@ -117,7 +117,7 @@ MonoBehaviour:
       SelectedCharacterID: 
       SelectedRepresentationName: Sprites
       SelectedRepresentation: {fileID: 11400000, guid: cf61be94e9ae46b4da28bb23d0bfa60f, type: 2}
-      SelectedExpressionId: 
+      SelectedExpressionId: 8d0977f727bc4b5cbeabe8d221b234ee
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
         FlipPortraitY: 0
@@ -127,9 +127,9 @@ MonoBehaviour:
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     SecondaryCharacterRepresentation:
-      SelectedCharacterID: 
-      SelectedRepresentationName: 
-      SelectedRepresentation: {fileID: 0}
+      SelectedCharacterID: Jared
+      SelectedRepresentationName: Sprites
+      SelectedRepresentation: {fileID: 11400000, guid: 5b9d585132056d5479e01ea082d4b2be, type: 2}
       SelectedExpressionId: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
@@ -140,9 +140,9 @@ MonoBehaviour:
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     TertiaryCharacterRepresentation:
-      SelectedCharacterID: 
-      SelectedRepresentationName: 
-      SelectedRepresentation: {fileID: 0}
+      SelectedCharacterID: Jared
+      SelectedRepresentationName: Sprites
+      SelectedRepresentation: {fileID: 11400000, guid: 5b9d585132056d5479e01ea082d4b2be, type: 2}
       SelectedExpressionId: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
@@ -600,8 +600,8 @@ MonoBehaviour:
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     SecondaryCharacterRepresentation:
-      SelectedCharacterID: 
-      SelectedRepresentationName: 
+      SelectedCharacterID: Wolfstag
+      SelectedRepresentationName: Sprites
       SelectedRepresentation: {fileID: 0}
       SelectedExpressionId: 
       LineSpecificDisplayOptions:
@@ -659,8 +659,8 @@ MonoBehaviour:
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     SecondaryCharacterRepresentation:
-      SelectedCharacterID: 
-      SelectedRepresentationName: 
+      SelectedCharacterID: Wolfstag
+      SelectedRepresentationName: Sprites
       SelectedRepresentation: {fileID: 0}
       SelectedExpressionId: 
       LineSpecificDisplayOptions:
@@ -901,8 +901,8 @@ MonoBehaviour:
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     SecondaryCharacterRepresentation:
-      SelectedCharacterID: 
-      SelectedRepresentationName: 
+      SelectedCharacterID: Wolfstag
+      SelectedRepresentationName: Sprites
       SelectedRepresentation: {fileID: 0}
       SelectedExpressionId: 
       LineSpecificDisplayOptions:
@@ -1415,7 +1415,9 @@ MonoBehaviour:
     - Language: es
       Text: '*Se detiene en el borde del claro, nos mira y desaparece entre la niebla.*'
     clip: {fileID: 0}
-    ActionsBeforeDialogueLine: []
+    ActionsBeforeDialogueLine:
+    - {fileID: 11400000, guid: 2650ad23580b61540b4a53f42fee53d2, type: 2}
+    - {fileID: 11400000, guid: dc2451cb96191d84db05170eea3a7d5f, type: 2}
     ActionsAfterDialogueLine: []
     UserInputMethod: 0
     TimeBeforeNextLine: 0
@@ -1546,7 +1548,7 @@ MonoBehaviour:
       BranchKey: 
       PushReturnPoint: 0
   BranchContainer: {fileID: 0}
-  ConversationYaml: {fileID: -7234822386653529355}
+  ConversationYaml: {fileID: -1897268438159788713}
   AllowPersistentOverrides: 1
   FilePath: DialogueScriptSample.yml
   SourceYaml: {fileID: 102900000, guid: 4612376414d9cc742be9c4b790213e6a, type: 3}

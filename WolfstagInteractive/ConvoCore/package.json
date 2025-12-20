@@ -12,7 +12,7 @@
     {
       "displayName": "Sample Assets",
       "description": "A sample scene demonstrating how to use ConvoCore.",
-      "path": "Samples~/SampleAssets"
+      "path": "Samples~/ConvoCore/SampleAssets"
     }
   ]
 }
