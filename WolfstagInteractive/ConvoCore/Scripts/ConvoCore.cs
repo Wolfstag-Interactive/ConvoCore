@@ -197,7 +197,6 @@ namespace WolfstagInteractive.ConvoCore
                     return _currentLineIndex < ConversationData.DialogueLines.Count;
 
                 case ConvoCoreConversationData.LineContinuationMode.EndConversation:
-                    // Let the main coroutine exit its loop
                     CurrentDialogueState = ConversationState.Completed;
                     return false;
 
@@ -205,45 +204,38 @@ namespace WolfstagInteractive.ConvoCore
                     return HandleContainerBranch(cont);
 
                 default:
-                    // Fallback to continue
                     _currentLineIndex++;
                     return _currentLineIndex < ConversationData.DialogueLines.Count;
             }
         }
+
         private bool HandleContainerBranch(ConvoCoreConversationData.LineContinuation cont)
         {
             if (ConversationData == null)
                 return false;
 
-            var branchContainer = ConversationData.BranchContainer;
-            if (branchContainer == null || string.IsNullOrWhiteSpace(cont.BranchKey))
+            var container = cont.TargetContainer;
+            if (container == null)
             {
-                // No branch container configured: treat this as end
-                CurrentDialogueState = ConversationState.Completed;
-                return false;
+                Debug.LogWarning("[ConvoCore] ContainerBranch used but TargetContainer is null.");
+                return TryReturnOrEnd();
             }
 
             if (cont.PushReturnPoint)
-            {
-                // Return to the line after this one
                 _returnStack.Push((ConversationData, _currentLineIndex + 1));
-            }
 
-            if (!branchContainer.TryResolve(cont.BranchKey, _context, out var result))
+            var result = container.ResolveForBranch(_context, cont.TargetAliasOrName);
+            if (result.Conversation == null)
             {
-                // Branch key not found: end or return
+                Debug.LogWarning($"[ConvoCore] Container '{container.name}' returned no conversation for branch.");
                 return TryReturnOrEnd();
             }
 
-            if (result.EndsConversation || result.Conversation == null)
-            {
-                return TryReturnOrEnd();
-            }
-
-            // Switch to new conversation and index
-            SwitchConversation(result.Conversation, result.LineIndex);
+            SwitchConversation(result.Conversation, result.StartLineIndex);
             return true;
         }
+
+
 
         private bool TryReturnOrEnd()
         {
@@ -257,6 +249,7 @@ namespace WolfstagInteractive.ConvoCore
             CurrentDialogueState = ConversationState.Completed;
             return false;
         }
+
 
         private void SwitchConversation(ConvoCoreConversationData newConversation, int startIndex)
         {

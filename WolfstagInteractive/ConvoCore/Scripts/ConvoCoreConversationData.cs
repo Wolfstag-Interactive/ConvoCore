@@ -17,11 +17,9 @@ namespace WolfstagInteractive.ConvoCore
             new List<ConvoCoreCharacterProfileBaseData>();
         
         public List<DialogueLineInfo> DialogueLines; // Metadata for all dialogues in the YAML
-        public ConversationBranchContainer BranchContainer;
 
         [Header("YAML Source (pick one or more)")]
         public TextAsset ConversationYaml; // sample-friendly direct reference
-
         public bool AllowPersistentOverrides = true; // enable device-side hotfixes
         [Tooltip("Resources path without extension, e.g. ConvoCore/Dialogue/ForestIntro")]
         public string FilePath;
@@ -32,6 +30,8 @@ namespace WolfstagInteractive.ConvoCore
         [Tooltip("Define the unique key for the conversation.")]
         public string ConversationKey; // Add this field to hold the key
 
+        
+        
         private Dictionary<string, List<DialogueYamlConfig>> _dialogueDataByKey; // Stored YAML data at runtime
 
         public ConvoCoreConversationData()

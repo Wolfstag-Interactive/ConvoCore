@@ -133,52 +133,47 @@ namespace WolfstagInteractive.ConvoCore.Editor
         private static Rect DrawLineContinuation(Rect rect, SerializedProperty property)
         {
             var contProp = property.FindPropertyRelative("LineContinuationSettings");
-            if (contProp == null)
-                return rect;
+            if (contProp == null) return rect;
 
-            var modeProp         = contProp.FindPropertyRelative("Mode");
-            var branchKeyProp    = contProp.FindPropertyRelative("BranchKey");
-            var pushReturnProp   = contProp.FindPropertyRelative("PushReturnPoint");
+            var modeProp = contProp.FindPropertyRelative("Mode");
+            var containerProp = contProp.FindPropertyRelative("TargetContainer");
+            var aliasProp = contProp.FindPropertyRelative("TargetAliasOrName");
+            var pushReturnProp = contProp.FindPropertyRelative("PushReturnPoint");
 
-            float lineHeight = EditorGUIUtility.singleLineHeight;
+            float line = EditorGUIUtility.singleLineHeight;
 
-            // Header
             EditorGUI.LabelField(rect, GC_ContinuationHeader, EditorStyles.boldLabel);
-            rect.y += lineHeight + k_Spacing;
+            rect.y += line + k_Spacing;
 
-            if (modeProp == null)
-                return rect;
-
-            // Mode dropdown
             var mode = (ConvoCoreConversationData.LineContinuationMode)modeProp.enumValueIndex;
-            mode = (ConvoCoreConversationData.LineContinuationMode)EditorGUI.EnumPopup(
-                rect,
-                GC_ContinuationMode,
-                mode
-            );
+            mode = (ConvoCoreConversationData.LineContinuationMode)EditorGUI.EnumPopup(rect, GC_ContinuationMode, mode);
             modeProp.enumValueIndex = (int)mode;
-            rect.y += lineHeight + k_Spacing;
+            rect.y += line + k_Spacing;
 
-            // Extra fields if branching
             if (mode == ConvoCoreConversationData.LineContinuationMode.ContainerBranch)
             {
-                if (branchKeyProp != null)
+                if (containerProp != null)
                 {
-                    // For now this is a free text field.
-                    // Later you can upgrade it to a popup fed from ConversationData.BranchContainer.
-                    EditorGUI.PropertyField(rect, branchKeyProp, GC_BranchKey);
-                    rect.y += lineHeight + k_Spacing;
+                    EditorGUI.PropertyField(rect, containerProp, new GUIContent("Target Container"));
+                    rect.y += EditorGUI.GetPropertyHeight(containerProp, true) + k_Spacing;
+                }
+
+                if (aliasProp != null)
+                {
+                    EditorGUI.PropertyField(rect, aliasProp, new GUIContent("Target Alias/Name"));
+                    rect.y += EditorGUI.GetPropertyHeight(aliasProp, true) + k_Spacing;
                 }
 
                 if (pushReturnProp != null)
                 {
                     EditorGUI.PropertyField(rect, pushReturnProp, GC_PushReturnPoint);
-                    rect.y += lineHeight + k_Spacing;
+                    rect.y += EditorGUI.GetPropertyHeight(pushReturnProp, true) + k_Spacing;
                 }
             }
 
             return rect;
         }
+
 
         
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
@@ -195,37 +190,40 @@ namespace WolfstagInteractive.ConvoCore.Editor
             total += GetLineContinuationHeight(property);
             return total;
         }
-        private float GetLineContinuationHeight(SerializedProperty property)
+        private float GetLineContinuationHeight(SerializedProperty lineProp)
         {
-            var contProp = property.FindPropertyRelative("LineContinuationSettings");
-            if (contProp == null)
-                return 0f;
-
-            float h = 0f;
-            float line = EditorGUIUtility.singleLineHeight + k_Spacing;
-
-            // Header
-            h += line;
+            var contProp = lineProp.FindPropertyRelative("LineContinuationSettings");
+            if (contProp == null) return 0f;
 
             var modeProp = contProp.FindPropertyRelative("Mode");
-            if (modeProp == null)
-                return h;
+            if (modeProp == null) return 0f;
+
+            float h = 0f;
+
+            h += EditorGUIUtility.singleLineHeight + k_Spacing; // header
+            h += EditorGUIUtility.singleLineHeight + k_Spacing; // enum popup
 
             var mode = (ConvoCoreConversationData.LineContinuationMode)modeProp.enumValueIndex;
 
-            // Mode dropdown
-            h += line;
-
-            // Extra fields for branch mode
             if (mode == ConvoCoreConversationData.LineContinuationMode.ContainerBranch)
             {
-                // BranchKey + PushReturnPoint
-                h += line; // Branch Key
-                h += line; // Push Return Point
+                var containerProp  = contProp.FindPropertyRelative("TargetContainer");
+                var aliasProp      = contProp.FindPropertyRelative("TargetAliasOrName");
+                var pushReturnProp = contProp.FindPropertyRelative("PushReturnPoint");
+
+                if (containerProp != null)
+                    h += EditorGUI.GetPropertyHeight(containerProp, true) + k_Spacing;
+
+                if (aliasProp != null)
+                    h += EditorGUI.GetPropertyHeight(aliasProp, true) + k_Spacing;
+
+                if (pushReturnProp != null)
+                    h += EditorGUI.GetPropertyHeight(pushReturnProp, true) + k_Spacing;
             }
 
             return h;
         }
+
 
         private float GetBasicInfoHeight() =>
             3 * (EditorGUIUtility.singleLineHeight + k_Spacing);
@@ -314,7 +312,7 @@ namespace WolfstagInteractive.ConvoCore.Editor
             return h;
         }
 
-private float GetCharacterRepresentationSectionHeight(SerializedProperty property)
+        private float GetCharacterRepresentationSectionHeight(SerializedProperty property)
 {
     float h = 0f;
     h += EditorGUIUtility.singleLineHeight + k_Spacing; // foldout
@@ -658,7 +656,7 @@ private float GetCharacterRepresentationSectionHeight(SerializedProperty propert
         }
 
 
-private Rect DrawCharacterRepresentation(Rect rect, SerializedProperty property)
+        private Rect DrawCharacterRepresentation(Rect rect, SerializedProperty property)
 {
     string foldoutKey =
         $"{property.serializedObject.targetObject.GetInstanceID()}_{property.propertyPath}_CharacterRep";

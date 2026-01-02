@@ -56,13 +56,11 @@ namespace WolfstagInteractive.ConvoCore
         public struct LineContinuation
         {
             public LineContinuationMode Mode;
-
-            // Only used when Mode == Branch
-            public string BranchKey;
-
-            // Optional: return behavior
+            public ConversationContainer TargetContainer;
+            public string TargetAliasOrName;
             public bool PushReturnPoint;
         }
+
     }
     public partial class ConvoCoreConversationData
     {
@@ -114,8 +112,9 @@ namespace WolfstagInteractive.ConvoCore
                 TimeBeforeNextLine = 0f;
                 LineContinuationSettings = new LineContinuation
                 {
-                    Mode = LineContinuationMode.Continue,
-                    BranchKey = null,
+                    Mode = LineContinuationMode.Continue, 
+                    TargetAliasOrName= null,
+                    TargetContainer =  null,
                     PushReturnPoint = false
                 };
             }
