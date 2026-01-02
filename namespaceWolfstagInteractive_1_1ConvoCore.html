@@ -103,15 +103,11 @@ $(document).ready(function(){initNavTree('namespaceWolfstagInteractive_1_1ConvoC
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1BaseDialogueLineAction.html">BaseDialogueLineAction</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1BranchEntry.html">BranchEntry</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structWolfstagInteractive_1_1ConvoCore_1_1BranchResult.html">BranchResult</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1CharacterRepresentationBase.html">CharacterRepresentationBase</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1ContainerInput.html">ContainerInput</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1ConversationBranchContainer.html">ConversationBranchContainer</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structWolfstagInteractive_1_1ConvoCore_1_1ConversationBranchResult.html">ConversationBranchResult</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1ConversationContainer.html">ConversationContainer</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -262,16 +258,16 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
 Enumerations</h2></td></tr>
-<tr class="memitem:ab499952880f1b834ef5b656eaefab67e" id="r_ab499952880f1b834ef5b656eaefab67e"><td class="memItemLeft" align="right" valign="top"><a id="ab499952880f1b834ef5b656eaefab67e" name="ab499952880f1b834ef5b656eaefab67e"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>BranchTargetType</b> { <br />
-&#160;&#160;<b>ConversationStart</b>
-, <b>ConversationLine</b>
-, <b>RandomFromList</b>
-, <b>UseConversationContainer</b>
-, <br />
-&#160;&#160;<b>EndConversation</b>
-<br />
+<tr class="memitem:a6c70857d1accf842107cbea48908d710" id="r_a6c70857d1accf842107cbea48908d710"><td class="memItemLeft" align="right" valign="top"><a id="a6c70857d1accf842107cbea48908d710" name="a6c70857d1accf842107cbea48908d710"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>ConversationContainerMode</b> { <b>Playlist</b>
+, <b>Selector</b>
  }</td></tr>
-<tr class="separator:ab499952880f1b834ef5b656eaefab67e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:a6c70857d1accf842107cbea48908d710"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a842505d4978372cedbefe3e48d25b707" id="r_a842505d4978372cedbefe3e48d25b707"><td class="memItemLeft" align="right" valign="top"><a id="a842505d4978372cedbefe3e48d25b707" name="a842505d4978372cedbefe3e48d25b707"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>ConversationSelectionMode</b> { <b>First</b>
+, <b>Sequential</b>
+, <b>Random</b>
+, <b>WeightedRandom</b>
+ }</td></tr>
+<tr class="separator:a842505d4978372cedbefe3e48d25b707"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7672af973360b3e5b2b3259e3f6088ae" id="r_a7672af973360b3e5b2b3259e3f6088ae"><td class="memItemLeft" align="right" valign="top"><a id="a7672af973360b3e5b2b3259e3f6088ae" name="a7672af973360b3e5b2b3259e3f6088ae"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>DisplaySlot</b> { <b>Left</b>
 , <b>Right</b>
 , <b>Center</b>

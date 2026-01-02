@@ -1,12 +1,9 @@
 <map id="WolfstagInteractive.ConvoCore.SingleConversationInput" name="WolfstagInteractive.ConvoCore.SingleConversationInput">
-<area shape="rect" id="Node000001" title=" " alt="" coords="8,285,223,325"/>
-<area shape="rect" id="Node000002" href="$interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoInput.html" title=" " alt="" coords="5,190,105,215"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="71,226,106,284,102,287,67,228"/>
-<area shape="rect" id="Node000003" href="$classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData.html" title=" " alt="" coords="129,183,373,223"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="216,233,142,287,139,283,213,229"/>
-<area shape="rect" id="Node000004" title=" " alt="" coords="121,5,251,31"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="188,45,189,81,198,119,215,153,236,181,232,184,211,156,193,121,184,81,182,45"/>
-<area shape="rect" id="Node000005" href="$classWolfstagInteractive_1_1ConvoCore_1_1ConversationBranchContainer.html" title=" " alt="" coords="207,80,458,120"/>
-<area shape="poly" id="edge5_Node000005_Node000004" title=" " alt="" coords="220,35,299,78,297,82,218,40"/>
-<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="311,132,269,184,264,181,307,129"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="8,183,223,223"/>
+<area shape="rect" id="Node000002" href="$interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoInput.html" title=" " alt="" coords="5,87,105,113"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="71,123,106,181,102,184,67,126"/>
+<area shape="rect" id="Node000003" href="$classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData.html" title=" " alt="" coords="129,80,373,120"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="216,130,142,185,139,180,213,126"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="187,5,316,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="254,44,254,80,249,80,249,44"/>
 </map>

@@ -3,7 +3,7 @@ var searchData=
   ['characterrepresentationbase_0',['CharacterRepresentationBase',['../classWolfstagInteractive_1_1ConvoCore_1_1CharacterRepresentationBase.html',1,'WolfstagInteractive::ConvoCore']]],
   ['characterrepresentationdata_1',['CharacterRepresentationData',['../structWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData_1_1CharacterRepresentationData.html',1,'WolfstagInteractive::ConvoCore::ConvoCoreConversationData']]],
   ['containerinput_2',['ContainerInput',['../classWolfstagInteractive_1_1ConvoCore_1_1ContainerInput.html',1,'WolfstagInteractive::ConvoCore']]],
-  ['conversationbranchcontainer_3',['ConversationBranchContainer',['../classWolfstagInteractive_1_1ConvoCore_1_1ConversationBranchContainer.html',1,'WolfstagInteractive::ConvoCore']]],
+  ['conversationbranchresult_3',['ConversationBranchResult',['../structWolfstagInteractive_1_1ConvoCore_1_1ConversationBranchResult.html',1,'WolfstagInteractive::ConvoCore']]],
   ['conversationcontainer_4',['ConversationContainer',['../classWolfstagInteractive_1_1ConvoCore_1_1ConversationContainer.html',1,'WolfstagInteractive::ConvoCore']]],
   ['convocore_5',['ConvoCore',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCore.html',1,'WolfstagInteractive::ConvoCore']]],
   ['convocorecharacterdisplaybase_6',['ConvoCoreCharacterDisplayBase',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreCharacterDisplayBase.html',1,'WolfstagInteractive::ConvoCore']]],

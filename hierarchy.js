@@ -3,9 +3,8 @@ var hierarchy =
     [ "AssetPostprocessor", null, [
       [ "WolfstagInteractive.ConvoCore.Editor.ConvoCoreYamlWatcher", "classWolfstagInteractive_1_1ConvoCore_1_1Editor_1_1ConvoCoreYamlWatcher.html", null ]
     ] ],
-    [ "WolfstagInteractive.ConvoCore.BranchEntry", "classWolfstagInteractive_1_1ConvoCore_1_1BranchEntry.html", null ],
-    [ "WolfstagInteractive.ConvoCore.BranchResult", "structWolfstagInteractive_1_1ConvoCore_1_1BranchResult.html", null ],
     [ "WolfstagInteractive.ConvoCore.ConvoCoreConversationData.CharacterRepresentationData", "structWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData_1_1CharacterRepresentationData.html", null ],
+    [ "WolfstagInteractive.ConvoCore.ConversationBranchResult", "structWolfstagInteractive_1_1ConvoCore_1_1ConversationBranchResult.html", null ],
     [ "WolfstagInteractive.ConvoCore.ConvoCoreDialogueLocalizationHandler", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreDialogueLocalizationHandler.html", null ],
     [ "WolfstagInteractive.ConvoCore.ConvoCoreLanguageManager", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreLanguageManager.html", null ],
     [ "WolfstagInteractive.ConvoCore.ConvoCoreYamlUtilities", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreYamlUtilities.html", null ],
@@ -90,7 +89,6 @@ var hierarchy =
         [ "WolfstagInteractive.ConvoCore.ConvoCoreDialogueLineActionPlayAudioClip", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreDialogueLineActionPlayAudioClip.html", null ]
       ] ],
       [ "WolfstagInteractive.ConvoCore.CharacterRepresentationBase", "classWolfstagInteractive_1_1ConvoCore_1_1CharacterRepresentationBase.html", null ],
-      [ "WolfstagInteractive.ConvoCore.ConversationBranchContainer", "classWolfstagInteractive_1_1ConvoCore_1_1ConversationBranchContainer.html", null ],
       [ "WolfstagInteractive.ConvoCore.ConversationContainer", "classWolfstagInteractive_1_1ConvoCore_1_1ConversationContainer.html", null ],
       [ "WolfstagInteractive.ConvoCore.ConvoCoreCharacterExpression", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreCharacterExpression.html", null ],
       [ "WolfstagInteractive.ConvoCore.ConvoCoreCharacterProfileBaseData", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreCharacterProfileBaseData.html", null ],

@@ -6,11 +6,9 @@ var annotated_dup =
           [ "ConvoCoreYamlWatcher", "classWolfstagInteractive_1_1ConvoCore_1_1Editor_1_1ConvoCoreYamlWatcher.html", null ]
         ] ],
         [ "BaseDialogueLineAction", "classWolfstagInteractive_1_1ConvoCore_1_1BaseDialogueLineAction.html", "classWolfstagInteractive_1_1ConvoCore_1_1BaseDialogueLineAction" ],
-        [ "BranchEntry", "classWolfstagInteractive_1_1ConvoCore_1_1BranchEntry.html", null ],
-        [ "BranchResult", "structWolfstagInteractive_1_1ConvoCore_1_1BranchResult.html", null ],
         [ "CharacterRepresentationBase", "classWolfstagInteractive_1_1ConvoCore_1_1CharacterRepresentationBase.html", "classWolfstagInteractive_1_1ConvoCore_1_1CharacterRepresentationBase" ],
         [ "ContainerInput", "classWolfstagInteractive_1_1ConvoCore_1_1ContainerInput.html", null ],
-        [ "ConversationBranchContainer", "classWolfstagInteractive_1_1ConvoCore_1_1ConversationBranchContainer.html", null ],
+        [ "ConversationBranchResult", "structWolfstagInteractive_1_1ConvoCore_1_1ConversationBranchResult.html", null ],
         [ "ConversationContainer", "classWolfstagInteractive_1_1ConvoCore_1_1ConversationContainer.html", "classWolfstagInteractive_1_1ConvoCore_1_1ConversationContainer" ],
         [ "ConvoCore", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCore.html", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCore" ],
         [ "ConvoCoreCharacterDisplayBase", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreCharacterDisplayBase.html", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreCharacterDisplayBase" ],
