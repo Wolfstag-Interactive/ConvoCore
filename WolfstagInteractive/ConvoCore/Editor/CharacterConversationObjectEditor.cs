@@ -277,7 +277,7 @@ private void DrawLanguagePreviewSection()
                 // Hash the array contents to detect changes
                 uint h = 2166136261;
                 var arr = settings.SupportedLanguages;
-                for (int i = 0; i < arr.Capacity; i++)
+                for (int i = 0; i < arr.Count; i++)
                 {
                     var s = arr[i] ?? "";
                     unchecked
@@ -294,14 +294,14 @@ private void DrawLanguagePreviewSection()
                 if (_cached != null && _hash == h) return _cached;
 
                 // Normalize once (trim + distinct + sort)
-                var list = settings.SupportedLanguages;
+                var newList = new List<string>(arr.Count);
                 for (int i = 0; i < arr.Count; i++)
                 {
                     var s = arr[i];
-                    if (!string.IsNullOrWhiteSpace(s)) list.Add(s.Trim());
+                    if (!string.IsNullOrWhiteSpace(s)) newList.Add(s.Trim());
                 }
 
-                _cached = list
+                _cached = newList
                     .Distinct(StringComparer.OrdinalIgnoreCase)
                     .OrderBy(x => x, StringComparer.OrdinalIgnoreCase)
                     .ToArray();
