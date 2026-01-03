@@ -8,7 +8,7 @@ using WolfstagInteractive.ConvoCore.Editor;
 #endif
 namespace WolfstagInteractive.ConvoCore
 {
-    [UnityEngine.HelpURL("https://docs.wolfstaginteractive.com/classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData.html")]
+    [HelpURL("https://docs.wolfstaginteractive.com/classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData.html")]
 [CreateAssetMenu(fileName = "ConvoCoreData",
         menuName = "ConvoCore/ConversationDialogueObject")]
     public partial class ConvoCoreConversationData : ScriptableObject
@@ -151,7 +151,7 @@ namespace WolfstagInteractive.ConvoCore
             if (needsAutoFix)
             {
                 // Auto-assign the first available representation for the primary character
-                if (speakerProfile.Representations != null && speakerProfile.Representations.Count > 0)
+                if (speakerProfile.Representations is { Count: > 0 })
                 {
                     var firstRep = speakerProfile.Representations[0];
                     
@@ -203,7 +203,7 @@ namespace WolfstagInteractive.ConvoCore
                 return needsSync;
             }
         }
-        // <summary>
+        /// <summary>
         /// Forces synchronization of object references for all dialogue lines that have representation names but missing object references
         /// </summary>
         [ContextMenu("Sync All Representation Object References")]

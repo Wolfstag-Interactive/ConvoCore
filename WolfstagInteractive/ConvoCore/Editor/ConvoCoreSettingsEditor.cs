@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace WolfstagInteractive.ConvoCore.Editor
 {
-    [UnityEngine.HelpURL("https://docs.wolfstaginteractive.com/classWolfstagInteractive_1_1ConvoCore_1_1Editor_1_1ConvoCoreSettingsEditor.html")]
+    [HelpURL("https://docs.wolfstaginteractive.com/classWolfstagInteractive_1_1ConvoCore_1_1Editor_1_1ConvoCoreSettingsEditor.html")]
 [CustomEditor(typeof(ConvoCoreSettings))]
     public class ConvoCoreSettingsEditor : UnityEditor.Editor
     {
@@ -104,9 +104,12 @@ namespace WolfstagInteractive.ConvoCore.Editor
             serializedObject.ApplyModifiedProperties();
         }
 
-        // ------------------------------------------------------------------
-        // Helper: Auto-populate renderer profiles
-        // ------------------------------------------------------------------
+        /// <summary>
+        /// Populates the ConvoCoreSettings instance with renderer profiles based on discovered
+        /// IConvoCoreHistoryRenderer implementations. Updates the settings with new renderer
+        /// profiles if they are not already present and removes any invalid profiles.
+        /// </summary>
+        /// <param name="settings">The ConvoCoreSettings instance to be updated with renderer profiles.</param>
         private void PopulateRendererProfiles(ConvoCoreSettings settings)
         {
             ConvoCoreHistoryRendererRegistry.DiscoverRenderers();

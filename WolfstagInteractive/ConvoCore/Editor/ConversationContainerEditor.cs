@@ -1,5 +1,4 @@
 #if UNITY_EDITOR
-using System;
 using UnityEditor;
 using UnityEditorInternal;
 using UnityEngine;
@@ -33,7 +32,7 @@ namespace WolfstagInteractive.ConvoCore.Editor
 
             BuildList();
         }
-        private int _containerModeLabelFontSize = 20;
+        private readonly int _containerModeLabelFontSize = 20;
 
         private GUIStyle _containerModeLabelStyle;
 
@@ -158,105 +157,105 @@ namespace WolfstagInteractive.ConvoCore.Editor
         private void DrawListSection()
         {
             if (_list == null)
+            {
                 BuildList();
-
-            _list.DoLayoutList();
+            }
+            if (_list != null)
+            {
+                _list.DoLayoutList();
+            }
 
             DrawValidation();
         }
 
         private void BuildList()
         {
-            _list = new ReorderableList(serializedObject, _conversationsProp, true, true, true, true);
-
-            _list.drawHeaderCallback = rect =>
-            {
-                EditorGUI.LabelField(rect, "Entries");
-            };
-
-            _list.elementHeightCallback = index =>
-            {
-                var element = _conversationsProp.GetArrayElementAtIndex(index);
-                if (element == null)
-                    return EditorGUIUtility.singleLineHeight;
-
-                var mode = (ConversationContainerMode)_containerModeProp.enumValueIndex;
-                var sel = (ConversationSelectionMode)_selectionModeProp.enumValueIndex;
-
-                float h = 0f;
-                float space = Spacing;
-
-                var aliasProp = element.FindPropertyRelative("Alias");
-                var convoProp = element.FindPropertyRelative("ConversationData");
-                var enabledProp = element.FindPropertyRelative("Enabled");
-                var delayProp = element.FindPropertyRelative("DelayAfterEndSeconds");
-                var startIndexProp = element.FindPropertyRelative("StartLineIndex");
-                var weightProp = element.FindPropertyRelative("Weight");
-                var tagsProp = element.FindPropertyRelative("Tags");
-
-                h += EditorGUI.GetPropertyHeight(aliasProp, true) + space;
-                h += EditorGUI.GetPropertyHeight(convoProp, true) + space;
-                h += EditorGUI.GetPropertyHeight(enabledProp, true) + space;
-
-                if (mode == ConversationContainerMode.Playlist)
+            _list = new ReorderableList(serializedObject, _conversationsProp, true, true, true, true)
                 {
-                    h += EditorGUI.GetPropertyHeight(delayProp, true) + space;
-                }
-                else
-                {
-                    h += EditorGUI.GetPropertyHeight(startIndexProp, true) + space;
+                    drawHeaderCallback = rect =>
+                    {
+                        EditorGUI.LabelField(rect, "Entries");
+                    },
+                    elementHeightCallback = index =>
+                    {
+                        var element = _conversationsProp.GetArrayElementAtIndex(index);
+                        if (element == null)
+                            return EditorGUIUtility.singleLineHeight;
 
-                    if (sel == ConversationSelectionMode.WeightedRandom)
-                        h += EditorGUI.GetPropertyHeight(weightProp, true) + space;
-                }
+                        var mode = (ConversationContainerMode)_containerModeProp.enumValueIndex;
+                        var sel = (ConversationSelectionMode)_selectionModeProp.enumValueIndex;
 
-                if (tagsProp != null)
-                    h += EditorGUI.GetPropertyHeight(tagsProp, true) + space;
+                        float h = 0f;
+                        float space = Spacing;
 
-                h += 2f;
-                return h;
-            };
+                        var aliasProp = element.FindPropertyRelative("Alias");
+                        var convoProp = element.FindPropertyRelative("ConversationData");
+                        var enabledProp = element.FindPropertyRelative("Enabled");
+                        var delayProp = element.FindPropertyRelative("DelayAfterEndSeconds");
+                        var startIndexProp = element.FindPropertyRelative("StartLineIndex");
+                        var weightProp = element.FindPropertyRelative("Weight");
+                        var tagsProp = element.FindPropertyRelative("Tags");
 
+                        h += EditorGUI.GetPropertyHeight(aliasProp, true) + space;
+                        h += EditorGUI.GetPropertyHeight(convoProp, true) + space;
+                        h += EditorGUI.GetPropertyHeight(enabledProp, true) + space;
 
-            _list.drawElementCallback = (rect, index, isActive, isFocused) =>
-            {
-                var element = _conversationsProp.GetArrayElementAtIndex(index);
-                if (element == null)
-                    return;
+                        if (mode == ConversationContainerMode.Playlist)
+                        {
+                            h += EditorGUI.GetPropertyHeight(delayProp, true) + space;
+                        }
+                        else
+                        {
+                            h += EditorGUI.GetPropertyHeight(startIndexProp, true) + space;
 
-                var mode = (ConversationContainerMode)_containerModeProp.enumValueIndex;
-                var sel = (ConversationSelectionMode)_selectionModeProp.enumValueIndex;
+                            if (sel == ConversationSelectionMode.WeightedRandom)
+                                h += EditorGUI.GetPropertyHeight(weightProp, true) + space;
+                        }
 
-                var aliasProp = element.FindPropertyRelative("Alias");
-                var convoProp = element.FindPropertyRelative("ConversationData");
-                var enabledProp = element.FindPropertyRelative("Enabled");
-                var delayProp = element.FindPropertyRelative("DelayAfterEndSeconds");
-                var startIndexProp = element.FindPropertyRelative("StartLineIndex");
-                var weightProp = element.FindPropertyRelative("Weight");
-                var tagsProp = element.FindPropertyRelative("Tags");
+                        if (tagsProp != null)
+                            h += EditorGUI.GetPropertyHeight(tagsProp, true) + space;
 
-                rect.height = EditorGUIUtility.singleLineHeight;
+                        h += 2f;
+                        return h;
+                    },
+                    drawElementCallback = (rect, index, _, _) =>
+                    {
+                        var element = _conversationsProp.GetArrayElementAtIndex(index);
+                        if (element == null)
+                            return;
 
-                DrawProperty(ref rect, aliasProp, "Alias");
-                DrawProperty(ref rect, convoProp, "Conversation");
-                DrawProperty(ref rect, enabledProp, "Enabled");
+                        var mode = (ConversationContainerMode)_containerModeProp.enumValueIndex;
+                        var sel = (ConversationSelectionMode)_selectionModeProp.enumValueIndex;
 
-                if (mode == ConversationContainerMode.Playlist)
-                {
-                    DrawProperty(ref rect, delayProp, "Delay After End (sec)");
-                }
-                else
-                {
-                    DrawProperty(ref rect, startIndexProp, "Start Line Index");
+                        var aliasProp = element.FindPropertyRelative("Alias");
+                        var convoProp = element.FindPropertyRelative("ConversationData");
+                        var enabledProp = element.FindPropertyRelative("Enabled");
+                        var delayProp = element.FindPropertyRelative("DelayAfterEndSeconds");
+                        var startIndexProp = element.FindPropertyRelative("StartLineIndex");
+                        var weightProp = element.FindPropertyRelative("Weight");
+                        var tagsProp = element.FindPropertyRelative("Tags");
 
-                    if (sel == ConversationSelectionMode.WeightedRandom)
-                        DrawProperty(ref rect, weightProp, "Weight");
-                }
+                        rect.height = EditorGUIUtility.singleLineHeight;
 
-                DrawProperty(ref rect, tagsProp, "Tags");
+                        DrawProperty(ref rect, aliasProp, "Alias");
+                        DrawProperty(ref rect, convoProp, "Conversation");
+                        DrawProperty(ref rect, enabledProp, "Enabled");
 
+                        if (mode == ConversationContainerMode.Playlist)
+                        {
+                            DrawProperty(ref rect, delayProp, "Delay After End (sec)");
+                        }
+                        else
+                        {
+                            DrawProperty(ref rect, startIndexProp, "Start Line Index");
 
-            };
+                            if (sel == ConversationSelectionMode.WeightedRandom)
+                                DrawProperty(ref rect, weightProp, "Weight");
+                        }
+
+                        DrawProperty(ref rect, tagsProp, "Tags");
+                    }
+                };
         }
 
         
@@ -291,8 +290,7 @@ namespace WolfstagInteractive.ConvoCore.Editor
                 var enabledProp = e.FindPropertyRelative("Enabled");
                 var convoProp = e.FindPropertyRelative("ConversationData");
 
-                if (enabledProp != null &&
-                    enabledProp.boolValue &&
+                if (enabledProp is { boolValue: true } &&
                     convoProp != null &&
                     convoProp.objectReferenceValue != null)
                 {
@@ -321,7 +319,7 @@ namespace WolfstagInteractive.ConvoCore.Editor
                         var enabledProp = e.FindPropertyRelative("Enabled");
                         var weightProp = e.FindPropertyRelative("Weight");
 
-                        if (enabledProp != null && enabledProp.boolValue && weightProp != null && weightProp.floatValue > 0f)
+                        if (enabledProp is { boolValue: true } && weightProp is { floatValue: > 0f })
                         {
                             anyPositiveWeight = true;
                             break;

@@ -40,7 +40,7 @@ namespace WolfstagInteractive.ConvoCore
         private readonly Stack<(ConvoCoreConversationData convo, int index)> _returnStack =
             new Stack<(ConvoCoreConversationData, int)>();
 
-        private IConversationContext _context = DefaultConversationContext.Instance;
+        private readonly IConversationContext _context = DefaultConversationContext.Instance;
         /// <summary>
         /// Represents a frame of dialogue within a conversation sequence.
         /// </summary>
@@ -53,8 +53,8 @@ namespace WolfstagInteractive.ConvoCore
         private sealed class LineFrame
         {
             public int LineIndex;
-            public List<BaseDialogueLineAction> Before = new();
-            public List<BaseDialogueLineAction> After = new();
+            public readonly List<BaseDialogueLineAction> Before = new();
+            public readonly List<BaseDialogueLineAction> After = new();
         }
         public bool CanReverseOneLine =>
             CurrentDialogueState == ConversationState.Active && _currentLineIndex > 0 && _currentLineIndex <= ConversationData.DialogueLines.Count - 1;
@@ -116,7 +116,7 @@ namespace WolfstagInteractive.ConvoCore
                 var frame = new LineFrame { LineIndex = _currentLineIndex };
 
                 // before line actions
-                if (line.ActionsBeforeDialogueLine != null && line.ActionsBeforeDialogueLine.Count > 0)
+                if (line.ActionsBeforeDialogueLine is { Count: > 0 })
                 {
                     yield return StartCoroutine(ConversationData.ActionsBeforeDialogueLine(this, line, frame.Before));
                 }
@@ -137,7 +137,7 @@ namespace WolfstagInteractive.ConvoCore
                 );
 
                 // Actions after the dialogue line
-                if (line.ActionsAfterDialogueLine != null && line.ActionsAfterDialogueLine.Count > 0)
+                if (line.ActionsAfterDialogueLine is { Count: > 0 })
                 {
                     yield return StartCoroutine(ConversationData.DoActionsAfterDialogueLine(this, line, frame.After));
                 }
@@ -285,10 +285,9 @@ namespace WolfstagInteractive.ConvoCore
                 _executedActionsPerLine[action] = lines;
             }
 
-            if (lines.Contains(lineIndex))
+            if (!lines.Add(lineIndex))
                 return false;
 
-            lines.Add(lineIndex);
             return true;
         }
 
@@ -348,8 +347,6 @@ namespace WolfstagInteractive.ConvoCore
         /// <param name="representationData">The representation data from the dialogue line</param>
         private CharacterRepresentationBase GetPrimaryCharacterRepresentation(ConvoCoreCharacterProfileBaseData primaryProfile, ConvoCoreConversationData.CharacterRepresentationData representationData)
         {
-            CharacterRepresentationBase result = null;
-            
             // For primary characters, if no specific representation is set, try to get the first available one
             if (string.IsNullOrEmpty(representationData.SelectedRepresentationName) && 
                 representationData.SelectedRepresentation == null &&
@@ -357,9 +354,9 @@ namespace WolfstagInteractive.ConvoCore
             {
                 // This looks like an uninitialized primary character representation
                 // Try to get the first available representation from the primary character's profile
-                if (primaryProfile.Representations != null && primaryProfile.Representations.Count > 0)
+                if (primaryProfile.Representations is { Count: > 0 })
                 {
-                    result = primaryProfile.Representations[0].CharacterRepresentationType;
+                    var result = primaryProfile.Representations[0].CharacterRepresentationType;
                     if (result != null)
                     {
                         Debug.LogWarning($"Auto-assigning first available representation '{primaryProfile.Representations[0].CharacterRepresentationName}' from profile '{primaryProfile.CharacterName}' for primary character.");
@@ -383,7 +380,7 @@ namespace WolfstagInteractive.ConvoCore
         /// <param name="isPrimaryCharacter">Whether this is for a primary character (primary characters cannot be "None")</param>
         private CharacterRepresentationBase GetCharacterRepresentationFromData(ConvoCoreCharacterProfileBaseData profile, ConvoCoreConversationData.CharacterRepresentationData representationData, bool isPrimaryCharacter = false)
         {
-            CharacterRepresentationBase result = null;
+            CharacterRepresentationBase result;
             
             // Check if this is using the new secondary/tertiary system (has SelectedCharacterID)
             if (!string.IsNullOrEmpty(representationData.SelectedCharacterID))
@@ -404,7 +401,7 @@ namespace WolfstagInteractive.ConvoCore
                         Debug.LogWarning($"Representation '{representationData.SelectedRepresentationName}' not found in profile '{selectedProfile.CharacterName}'. Trying fallbacks.");
                         
                         // Fallback: Try to get the first available representation from the selected profile
-                        if (selectedProfile.Representations != null && selectedProfile.Representations.Count > 0)
+                        if (selectedProfile.Representations is { Count: > 0 })
                         {
                             result = selectedProfile.Representations[0].CharacterRepresentationType;
                             if (result != null)
@@ -456,7 +453,7 @@ namespace WolfstagInteractive.ConvoCore
                             Debug.LogError($"Primary character '{profile.CharacterName}' cannot have 'None' representation. The primary character must have a valid representation as they are the speaker.");
                             
                             // Try to auto-assign the first available representation as a fallback
-                            if (profile.Representations != null && profile.Representations.Count > 0)
+                            if (profile.Representations is { Count: > 0 })
                             {
                                 result = profile.Representations[0].CharacterRepresentationType;
                                 if (result != null)
@@ -488,7 +485,7 @@ namespace WolfstagInteractive.ConvoCore
                     }
                     
                     // Fallback: Get the first available representation from the profile
-                    if (profile.Representations != null && profile.Representations.Count > 0)
+                    if (profile.Representations is { Count: > 0 })
                     {
                         result = profile.Representations[0].CharacterRepresentationType;
                         if (result != null)
@@ -571,21 +568,24 @@ namespace WolfstagInteractive.ConvoCore
                 var currentLine = ConversationData.DialogueLines[_currentLineIndex];
                 
                 // Get the localized dialogue for the new language
-                var localizedResult = LocalizationHandler.GetLocalizedDialogue(currentLine);
-                if (localizedResult.Success)
+                if (LocalizationHandler != null)
                 {
-                    // Replace player name placeholders
-                    string finalOutputString = ReplacePlayerNameInDialogueLine(localizedResult.Text);
-                    
-                    // Update the UI with both the new localized text and language code
-                    if (ConversationUI != null)
+                    var localizedResult = LocalizationHandler.GetLocalizedDialogue(currentLine);
+                    if (localizedResult.Success)
                     {
-                        ConversationUI.UpdateForLanguageChange(finalOutputString, selectedLanguage);
+                        // Replace player name placeholders
+                        string finalOutputString = ReplacePlayerNameInDialogueLine(localizedResult.Text);
+                    
+                        // Update the UI with both the new localized text and language code
+                        if (ConversationUI != null)
+                        {
+                            ConversationUI.UpdateForLanguageChange(finalOutputString, selectedLanguage);
+                        }
                     }
-                }
-                else
-                {
-                    Debug.LogWarning($"Failed to get localized dialogue for new language '{selectedLanguage}': {localizedResult.ErrorMessage}");
+                    else
+                    {
+                        Debug.LogWarning($"Failed to get localized dialogue for new language '{selectedLanguage}': {localizedResult.ErrorMessage}");
+                    }
                 }
             }
             else

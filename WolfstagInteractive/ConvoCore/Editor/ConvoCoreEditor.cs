@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
@@ -8,8 +9,8 @@ namespace WolfstagInteractive.ConvoCore.Editor
     public class ConvoCoreEditor : UnityEditor.Editor
     {
         private ConvoCoreLanguageManager _convoCoreLanguageManager;
-        private int _selectedLanguageIndex = 0;
-        private bool _indexInitialized = false;
+        private int _selectedLanguageIndex;
+        private bool _indexInitialized;
 
         public override void OnInspectorGUI()
         {
@@ -18,7 +19,7 @@ namespace WolfstagInteractive.ConvoCore.Editor
             ConvoCoreEditorPresentationContext.MaxVisibleCharacterSlotsOverride =
                 convoCore.ConversationUI != null
                     ? convoCore.ConversationUI.MaxVisibleCharacterSlots
-                    : (int?)null;
+                    : null;
             // Access the LanguageManager Singleton instance
             _convoCoreLanguageManager = ConvoCoreLanguageManager.Instance;
 
@@ -54,7 +55,7 @@ namespace WolfstagInteractive.ConvoCore.Editor
 
             // Display dropdown to select a language
             var supportedLanguages = _convoCoreLanguageManager.GetSupportedLanguages();
-            if (supportedLanguages != null && supportedLanguages.Count > 0)
+            if (supportedLanguages is { Count: > 0 })
             {
                 // Initialize the dropdown index only once or when language changes externally
                 if (!_indexInitialized || !IsValidIndex(supportedLanguages))
@@ -114,7 +115,7 @@ namespace WolfstagInteractive.ConvoCore.Editor
             EditorGUILayout.LabelField("Current Conversation State:", convoCore.CurrentDialogueState.ToString());
         }
 
-        private bool IsValidIndex(System.Collections.Generic.List<string> supportedLanguages)
+        private bool IsValidIndex(List<string> supportedLanguages)
         {
             return _selectedLanguageIndex >= 0 && 
                    _selectedLanguageIndex < supportedLanguages.Count && 

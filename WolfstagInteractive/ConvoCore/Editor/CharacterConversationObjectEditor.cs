@@ -271,7 +271,7 @@ private void DrawLanguagePreviewSection()
 
             public static string[] Get()
             {
-                var settings = ConvoCoreSettings.Instance; // adjust to your accessor
+                var settings = ConvoCoreSettings.Instance; 
                 if (settings == null || settings.SupportedLanguages == null) return Array.Empty<string>();
 
                 // Hash the array contents to detect changes
@@ -294,8 +294,8 @@ private void DrawLanguagePreviewSection()
                 if (_cached != null && _hash == h) return _cached;
 
                 // Normalize once (trim + distinct + sort)
-                var list = new List<string>(arr.Capacity);
-                for (int i = 0; i < arr.Capacity; i++)
+                var list = settings.SupportedLanguages;
+                for (int i = 0; i < arr.Count; i++)
                 {
                     var s = arr[i];
                     if (!string.IsNullOrWhiteSpace(s)) list.Add(s.Trim());

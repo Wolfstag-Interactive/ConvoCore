@@ -152,7 +152,43 @@ MonoBehaviour:
         DisplayPosition: 0
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
-    CharacterRepresentations: []
+    CharacterRepresentations:
+    - SelectedCharacterID: 
+      SelectedRepresentationName: Sprites
+      SelectedRepresentation: {fileID: 11400000, guid: cf61be94e9ae46b4da28bb23d0bfa60f, type: 2}
+      SelectedExpressionId: 8d0977f727bc4b5cbeabe8d221b234ee
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 0, y: 0, z: 0}
+        FullBodyScale: {x: 0, y: 0, z: 0}
+    - SelectedCharacterID: Jared
+      SelectedRepresentationName: Sprites
+      SelectedRepresentation: {fileID: 11400000, guid: 5b9d585132056d5479e01ea082d4b2be, type: 2}
+      SelectedExpressionId: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 0, y: 0, z: 0}
+        FullBodyScale: {x: 0, y: 0, z: 0}
+    - SelectedCharacterID: Jared
+      SelectedRepresentationName: Sprites
+      SelectedRepresentation: {fileID: 11400000, guid: 5b9d585132056d5479e01ea082d4b2be, type: 2}
+      SelectedExpressionId: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 0, y: 0, z: 0}
+        FullBodyScale: {x: 0, y: 0, z: 0}
     LocalizedDialogues:
     - Language: en
       Text: "Jared... we\u2019re definitely off-trail."
@@ -166,8 +202,9 @@ MonoBehaviour:
     UserInputMethod: 0
     TimeBeforeNextLine: 0
     LineContinuationSettings:
-      Mode: 0
-      BranchKey: 
+      Mode: 2
+      TargetContainer: {fileID: 0}
+      TargetAliasOrName: 
       PushReturnPoint: 0
   - ConversationID: Conversation1
     ConversationLineIndex: 1
@@ -211,7 +248,19 @@ MonoBehaviour:
         DisplayPosition: 0
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
-    CharacterRepresentations: []
+    CharacterRepresentations:
+    - SelectedCharacterID: 
+      SelectedRepresentationName: Sprites
+      SelectedRepresentation: {fileID: 11400000, guid: 5b9d585132056d5479e01ea082d4b2be, type: 2}
+      SelectedExpressionId: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 0, y: 0, z: 0}
+        FullBodyScale: {x: 0, y: 0, z: 0}
     LocalizedDialogues:
     - Language: en
       Text: "Technically, we\u2019re *still* in the forest. Nature counts."
@@ -226,7 +275,8 @@ MonoBehaviour:
     TimeBeforeNextLine: 0
     LineContinuationSettings:
       Mode: 0
-      BranchKey: 
+      TargetContainer: {fileID: 0}
+      TargetAliasOrName: 
       PushReturnPoint: 0
   - ConversationID: Conversation1
     ConversationLineIndex: 2
@@ -285,7 +335,8 @@ MonoBehaviour:
     TimeBeforeNextLine: 0
     LineContinuationSettings:
       Mode: 0
-      BranchKey: 
+      TargetContainer: {fileID: 0}
+      TargetAliasOrName: 
       PushReturnPoint: 0
   - ConversationID: Conversation1
     ConversationLineIndex: 3
@@ -344,7 +395,8 @@ MonoBehaviour:
     TimeBeforeNextLine: 0
     LineContinuationSettings:
       Mode: 0
-      BranchKey: 
+      TargetContainer: {fileID: 0}
+      TargetAliasOrName: 
       PushReturnPoint: 0
   - ConversationID: Conversation1
     ConversationLineIndex: 4
@@ -403,7 +455,8 @@ MonoBehaviour:
     TimeBeforeNextLine: 0
     LineContinuationSettings:
       Mode: 0
-      BranchKey: 
+      TargetContainer: {fileID: 0}
+      TargetAliasOrName: 
       PushReturnPoint: 0
   - ConversationID: Conversation1
     ConversationLineIndex: 5
@@ -462,7 +515,8 @@ MonoBehaviour:
     TimeBeforeNextLine: 0
     LineContinuationSettings:
       Mode: 0
-      BranchKey: 
+      TargetContainer: {fileID: 0}
+      TargetAliasOrName: 
       PushReturnPoint: 0
   - ConversationID: Conversation1
     ConversationLineIndex: 6
@@ -522,7 +576,8 @@ MonoBehaviour:
     TimeBeforeNextLine: 0
     LineContinuationSettings:
       Mode: 0
-      BranchKey: 
+      TargetContainer: {fileID: 0}
+      TargetAliasOrName: 
       PushReturnPoint: 0
   - ConversationID: Conversation1
     ConversationLineIndex: 7
@@ -581,7 +636,8 @@ MonoBehaviour:
     TimeBeforeNextLine: 0
     LineContinuationSettings:
       Mode: 0
-      BranchKey: 
+      TargetContainer: {fileID: 0}
+      TargetAliasOrName: 
       PushReturnPoint: 0
   - ConversationID: Conversation1
     ConversationLineIndex: 8
@@ -640,7 +696,8 @@ MonoBehaviour:
     TimeBeforeNextLine: 0
     LineContinuationSettings:
       Mode: 0
-      BranchKey: 
+      TargetContainer: {fileID: 0}
+      TargetAliasOrName: 
       PushReturnPoint: 0
   - ConversationID: Conversation1
     ConversationLineIndex: 9
@@ -702,7 +759,8 @@ MonoBehaviour:
     TimeBeforeNextLine: 0
     LineContinuationSettings:
       Mode: 0
-      BranchKey: 
+      TargetContainer: {fileID: 0}
+      TargetAliasOrName: 
       PushReturnPoint: 0
   - ConversationID: Conversation1
     ConversationLineIndex: 10
@@ -761,7 +819,8 @@ MonoBehaviour:
     TimeBeforeNextLine: 0
     LineContinuationSettings:
       Mode: 0
-      BranchKey: 
+      TargetContainer: {fileID: 0}
+      TargetAliasOrName: 
       PushReturnPoint: 0
   - ConversationID: Conversation1
     ConversationLineIndex: 11
@@ -820,7 +879,8 @@ MonoBehaviour:
     TimeBeforeNextLine: 0
     LineContinuationSettings:
       Mode: 0
-      BranchKey: 
+      TargetContainer: {fileID: 0}
+      TargetAliasOrName: 
       PushReturnPoint: 0
   - ConversationID: Conversation1
     ConversationLineIndex: 12
@@ -882,7 +942,8 @@ MonoBehaviour:
     TimeBeforeNextLine: 0
     LineContinuationSettings:
       Mode: 0
-      BranchKey: 
+      TargetContainer: {fileID: 0}
+      TargetAliasOrName: 
       PushReturnPoint: 0
   - ConversationID: Conversation1
     ConversationLineIndex: 13
@@ -941,7 +1002,8 @@ MonoBehaviour:
     TimeBeforeNextLine: 0
     LineContinuationSettings:
       Mode: 0
-      BranchKey: 
+      TargetContainer: {fileID: 0}
+      TargetAliasOrName: 
       PushReturnPoint: 0
   - ConversationID: Conversation1
     ConversationLineIndex: 14
@@ -1000,7 +1062,8 @@ MonoBehaviour:
     TimeBeforeNextLine: 0
     LineContinuationSettings:
       Mode: 0
-      BranchKey: 
+      TargetContainer: {fileID: 0}
+      TargetAliasOrName: 
       PushReturnPoint: 0
   - ConversationID: Conversation1
     ConversationLineIndex: 15
@@ -1059,7 +1122,8 @@ MonoBehaviour:
     TimeBeforeNextLine: 0
     LineContinuationSettings:
       Mode: 0
-      BranchKey: 
+      TargetContainer: {fileID: 0}
+      TargetAliasOrName: 
       PushReturnPoint: 0
   - ConversationID: Conversation1
     ConversationLineIndex: 16
@@ -1118,7 +1182,8 @@ MonoBehaviour:
     TimeBeforeNextLine: 0
     LineContinuationSettings:
       Mode: 0
-      BranchKey: 
+      TargetContainer: {fileID: 0}
+      TargetAliasOrName: 
       PushReturnPoint: 0
   - ConversationID: Conversation1
     ConversationLineIndex: 17
@@ -1177,7 +1242,8 @@ MonoBehaviour:
     TimeBeforeNextLine: 0
     LineContinuationSettings:
       Mode: 0
-      BranchKey: 
+      TargetContainer: {fileID: 0}
+      TargetAliasOrName: 
       PushReturnPoint: 0
   - ConversationID: Conversation1
     ConversationLineIndex: 18
@@ -1239,7 +1305,8 @@ MonoBehaviour:
     TimeBeforeNextLine: 0
     LineContinuationSettings:
       Mode: 0
-      BranchKey: 
+      TargetContainer: {fileID: 0}
+      TargetAliasOrName: 
       PushReturnPoint: 0
   - ConversationID: Conversation1
     ConversationLineIndex: 19
@@ -1301,7 +1368,8 @@ MonoBehaviour:
     TimeBeforeNextLine: 0
     LineContinuationSettings:
       Mode: 0
-      BranchKey: 
+      TargetContainer: {fileID: 0}
+      TargetAliasOrName: 
       PushReturnPoint: 0
   - ConversationID: Conversation1
     ConversationLineIndex: 20
@@ -1360,7 +1428,8 @@ MonoBehaviour:
     TimeBeforeNextLine: 0
     LineContinuationSettings:
       Mode: 0
-      BranchKey: 
+      TargetContainer: {fileID: 0}
+      TargetAliasOrName: 
       PushReturnPoint: 0
   - ConversationID: Conversation1
     ConversationLineIndex: 21
@@ -1423,7 +1492,8 @@ MonoBehaviour:
     TimeBeforeNextLine: 0
     LineContinuationSettings:
       Mode: 0
-      BranchKey: 
+      TargetContainer: {fileID: 0}
+      TargetAliasOrName: 
       PushReturnPoint: 0
   - ConversationID: Conversation1
     ConversationLineIndex: 22
@@ -1483,7 +1553,8 @@ MonoBehaviour:
     TimeBeforeNextLine: 0
     LineContinuationSettings:
       Mode: 0
-      BranchKey: 
+      TargetContainer: {fileID: 0}
+      TargetAliasOrName: 
       PushReturnPoint: 0
   - ConversationID: Conversation1
     ConversationLineIndex: 23
@@ -1545,9 +1616,9 @@ MonoBehaviour:
     TimeBeforeNextLine: 0
     LineContinuationSettings:
       Mode: 0
-      BranchKey: 
+      TargetContainer: {fileID: 0}
+      TargetAliasOrName: 
       PushReturnPoint: 0
-  BranchContainer: {fileID: 0}
   ConversationYaml: {fileID: -1897268438159788713}
   AllowPersistentOverrides: 1
   FilePath: DialogueScriptSample.yml

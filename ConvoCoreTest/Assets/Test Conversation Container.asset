@@ -12,11 +12,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76c51c4aa3803cc41a054d2bb2cd2aa6, type: 3}
   m_Name: Test Conversation Container
   m_EditorClassIdentifier: 
+  ContainerMode: 1
+  SelectionMode: 0
   Conversations:
   - Alias: Convo1
     ConversationData: {fileID: 11400000, guid: 0a37cee1b6901ff4e8a11815f11e990c, type: 2}
     Enabled: 1
     DelayAfterEndSeconds: 0
     Tags: []
+    Weight: 1
+    StartLineIndex: 0
+  - Alias: Convo1
+    ConversationData: {fileID: 11400000, guid: 0a37cee1b6901ff4e8a11815f11e990c, type: 2}
+    Enabled: 1
+    DelayAfterEndSeconds: 0
+    Tags: []
+    Weight: 1
+    StartLineIndex: 0
   Loop: 1
   DefaultStart: 

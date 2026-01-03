@@ -23,13 +23,13 @@ namespace WolfstagInteractive.ConvoCore
             TextSourceKind.Resources
         };
 
-        [Header("Resources")] public string resourcesRoot = "ConvoCore/Dialogue"; // only used if FilePath given
+        public string resourcesRoot = "ConvoCore/Dialogue"; // only used if FilePath given
         [Header("Language Settings")]
         [Tooltip("List of supported language codes (e.g., 'en', 'fr', 'es')")]
         public List<string> SupportedLanguages = new List<string> { "EN" };
         [Tooltip("Currently active language code")]
         public string CurrentLanguage = "EN";
-        [Header("Addressables (optional)")] public bool AddressablesEnabled = false; // flip on when project uses it
+        public bool AddressablesEnabled = false; // flip on when project uses it
         public string AddressablesKeyTemplate = "{filePath}.yml"; // maps FilePath -> key
         public bool VerboseLogs = false;
         private static ConvoCoreSettings _instance;
@@ -46,7 +46,6 @@ namespace WolfstagInteractive.ConvoCore
             }
         }
 #if UNITY_EDITOR
-        // Optional editor-only check
         [UnityEditor.InitializeOnLoadMethod]
         private static void EditorInitialize()
         {

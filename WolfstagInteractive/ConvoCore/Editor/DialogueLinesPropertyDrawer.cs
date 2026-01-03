@@ -82,7 +82,15 @@ namespace WolfstagInteractive.ConvoCore.Editor
 
             return result;
         }
-        
+
+        /// <summary>
+        /// Customizes the rendering of a dialogue line property's GUI in the Unity Editor. This method handles
+        /// drawing the individual sections of the dialogue line, including the header, basic info, input methods,
+        /// audio clips, localized dialogues, action lists, character representation, and line continuation settings.
+        /// </summary>
+        /// <param name="position">The position and dimensions where the property should be rendered in the Inspector.</param>
+        /// <param name="property">The serialized property representing the dialogue line to be rendered and edited.</param>
+        /// <param name="label">The label associated with the property in the Inspector.</param>
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
             if (property == null || property.serializedObject == null)
@@ -130,6 +138,17 @@ namespace WolfstagInteractive.ConvoCore.Editor
 
             EditorGUI.EndProperty();
         }
+
+        /// <summary>
+        /// Renders the line continuation settings for a dialogue line in the Unity Inspector.
+        /// This includes configurable options such as continuation mode, target container,
+        /// alias or name of the target, and whether to push a return point.
+        /// </summary>
+        /// <param name="rect">The current rendering area in the Inspector, defining the layout for this section.</param>
+        /// <param name="property">The serialized property representing the line continuation settings,
+        /// containing the relevant data to be displayed and modified.</param>
+        /// <returns>The updated rendering area rectangle after the section has been drawn, accounting for
+        /// the height of the rendered fields and any spacing.</returns>
         private static Rect DrawLineContinuation(Rect rect, SerializedProperty property)
         {
             var contProp = property.FindPropertyRelative("LineContinuationSettings");
@@ -174,8 +193,14 @@ namespace WolfstagInteractive.ConvoCore.Editor
             return rect;
         }
 
-
-        
+        /// <summary>
+        /// Calculates the total height, in pixels, required to render the custom property drawer for a single dialogue line in the Unity Inspector.
+        /// This includes the heights of all sections, such as basic information, input method, audio clip, localized dialogues,
+        /// actions list, character representation, and line continuation areas.
+        /// </summary>
+        /// <param name="property">The serialized property representing a dialogue line, containing all relevant data used in rendering.</param>
+        /// <param name="label">The label of the property as displayed in the Inspector.</param>
+        /// <returns>The total height, in pixels, required to display the custom property drawer.</returns>
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
         {
             float spacing = k_Spacing;
@@ -224,7 +249,6 @@ namespace WolfstagInteractive.ConvoCore.Editor
             return h;
         }
 
-
         private float GetBasicInfoHeight() =>
             3 * (EditorGUIUtility.singleLineHeight + k_Spacing);
 
@@ -244,6 +268,13 @@ namespace WolfstagInteractive.ConvoCore.Editor
             return EditorGUI.GetPropertyHeight(clipProp) + k_Spacing;
         }
 
+        /// <summary>
+        /// Determines the total height, in pixels, required to render the localized dialogues section within the dialogue line UI.
+        /// This includes the label, spacing, and a wrapped text preview of the localized dialogue for the current language,
+        /// falling back to the first localized entry if a match is not found.
+        /// </summary>
+        /// <param name="property">The serialized property representing a dialogue line, which contains an array of localized dialogues.</param>
+        /// <returns>The height, in pixels, needed to render the localized dialogues section, including text wrapping for the selected or fallback dialogue.</returns>
         private float GetLocalizedDialoguesHeight(SerializedProperty property)
         {
             var localizedDialoguesProp = property.FindPropertyRelative("LocalizedDialogues");
@@ -285,6 +316,14 @@ namespace WolfstagInteractive.ConvoCore.Editor
             return height;
         }
 
+        /// <summary>
+        /// Calculates the total height required to render the Actions List section within the dialogue line UI.
+        /// This includes headers, foldouts for both actions before and after a dialogue line,
+        /// and optionally expanded items with their associated buttons for modification.
+        /// </summary>
+        /// <param name="property">The serialized property representing the Actions List section,
+        /// which contains arrays for actions before and after the dialogue line.</param>
+        /// <returns>The total height, in pixels, needed to fully render the Actions List section.</returns>
         private float GetActionsListHeight(SerializedProperty property)
         {
             var beforeProp = property.FindPropertyRelative("ActionsBeforeDialogueLine");
@@ -312,10 +351,16 @@ namespace WolfstagInteractive.ConvoCore.Editor
             return h;
         }
 
+        /// <summary>
+        /// Calculates the total height required to render the Character Representation section of the dialogue line property UI.
+        /// Includes the height for the foldout element, separators, and dynamic elements based on the conversation data.
+        /// </summary>
+        /// <param name="property">The serialized property representing the dialogue line data, which contains information about character representations.</param>
+        /// <returns>The total height, in pixels, needed to render the Character Representation section.</returns>
         private float GetCharacterRepresentationSectionHeight(SerializedProperty property)
-{
-    float h = 0f;
-    h += EditorGUIUtility.singleLineHeight + k_Spacing; // foldout
+        {
+            float h = 0f;
+            h += EditorGUIUtility.singleLineHeight + k_Spacing; // foldout
 
     string key =
         $"{property.serializedObject.targetObject.GetInstanceID()}_{property.propertyPath}_CharacterRep";
@@ -485,10 +530,12 @@ namespace WolfstagInteractive.ConvoCore.Editor
         }
 
 
-
-        // ──────────────────────────────────────────────
-        // Sections (draw)
-        // ──────────────────────────────────────────────
+        /// <summary>
+        /// Renders the basic information section for a dialogue line, including conversation ID, line index, and character ID.
+        /// </summary>
+        /// <param name="rect">The position and dimensions of the current UI area to be drawn.</param>
+        /// <param name="property">The serialized property representing the dialogue line data.</param>
+        /// <returns>The updated rectangle position and size after rendering the basic information section.</returns>
         private static Rect DrawBasicInfo(Rect rect, SerializedProperty property)
         {
             DrawLabelValue(ref rect, GC_ConversationID.text,
@@ -499,6 +546,12 @@ namespace WolfstagInteractive.ConvoCore.Editor
             return rect;
         }
 
+        /// <summary>
+        /// Renders the UI for specifying the input method for a dialogue line, including user input interaction or timed progression.
+        /// </summary>
+        /// <param name="rect">The position and dimensions of the control to be drawn.</param>
+        /// <param name="property">The serialized property representing the dialogue line data.</param>
+        /// <returns>The updated rectangle position and size after drawing the input method UI.</returns>
         private static Rect DrawInputMethod(Rect rect, SerializedProperty property)
         {
             var methodProp = property.FindPropertyRelative("UserInputMethod");
@@ -800,9 +853,18 @@ namespace WolfstagInteractive.ConvoCore.Editor
         bool isOverflow = i >= cap;
 
         string label;
-        if (i == 0) label = "Speaker";
-        else label = $"Visible Character {i + 1}";
-        if (isOverflow) label += " (Overflow)";
+        if (i == 0)
+        {
+            label = "Speaker";
+        }
+        else
+        {
+            label = $"Visible Character {i + 1}";
+        }
+        if (isOverflow)
+        {
+            label += " (Overflow)";
+        }
 
         using (new EditorGUI.DisabledScope(isOverflow && !editOverflow))
         {
@@ -1122,7 +1184,7 @@ namespace WolfstagInteractive.ConvoCore.Editor
         }
 
         /// <summary>
-        /// Representation specific draw options
+        /// Representation-specific draw options
         /// </summary>
         /// <param name="rect"></param>
         /// <param name="representationProp"></param>
@@ -1150,6 +1212,23 @@ namespace WolfstagInteractive.ConvoCore.Editor
             return rect;
         }
 
+        /// <summary>
+        /// Calculates the height required for displaying specific options
+        /// of a character representation based on its type and associated expression.
+        /// </summary>
+        /// <param name="representation">
+        /// The character representation object associated with the dialogue line.
+        /// </param>
+        /// <param name="expressionGuid">
+        /// The unique identifier of the expression associated with the representation.
+        /// </param>
+        /// <param name="representationProp">
+        /// The serialized property containing the data for the character representation.
+        /// </param>
+        /// <returns>
+        /// The height necessary to display the specific options for the representation;
+        /// returns 0 if no additional height is required or the representation is not customizable.
+        /// </returns>
         private float GetRepresentationSpecificOptionsHeight(
             CharacterRepresentationBase representation,
             string expressionGuid,
@@ -1168,9 +1247,11 @@ namespace WolfstagInteractive.ConvoCore.Editor
             return 0f;
         }
 
-        // ──────────────────────────────────────────────
-        // Hover preview helpers (reusing preview logic)
-        // ──────────────────────────────────────────────
+        /// <summary>
+        /// Calculates and returns the clamped height for the preview block of the specified object.
+        /// </summary>
+        /// <param name="previewable">The object implementing <see cref="IEditorPreviewableRepresentation"/> to retrieve the preview height from.</param>
+        /// <returns>The clamped preview block height, constrained between a minimum and maximum value, or 0 if the input is null or has no valid height.</returns>
         private static float GetPreviewBlockHeight(IEditorPreviewableRepresentation previewable)
         {
             if (previewable == null) return 0f;
@@ -1184,6 +1265,12 @@ namespace WolfstagInteractive.ConvoCore.Editor
         private static readonly Color s_TooltipInnerBgPro   = new Color(0.18f, 0.18f, 0.18f, 1f);
         private static readonly Color s_TooltipInnerBgLight = new Color(0.95f, 0.95f, 0.95f, 1f);
 
+        /// <summary>
+        /// Displays a hover tooltip with a preview of the given representation.
+        /// </summary>
+        /// <param name="anchorRect">The rectangular area used to position the tooltip.</param>
+        /// <param name="previewable">The object containing the content to be previewed in the tooltip.</param>
+        /// <param name="expressionGuid">The unique identifier for the specific expression to be displayed in the preview.</param>
         private static void DrawHoverPreviewTooltip(
             Rect anchorRect,
             IEditorPreviewableRepresentation previewable,
@@ -1248,6 +1335,12 @@ namespace WolfstagInteractive.ConvoCore.Editor
             // Draw preview inside the inner rect
             previewable.DrawInlineEditorPreview(expressionMapping, inner);
         }
+
+        /// <summary>
+        /// Retrieves a cached preview text representation of a dialogue line.
+        /// </summary>
+        /// <param name="property">The serialized property representing a dialogue line.</param>
+        /// <returns>A string containing the cached preview text.</returns>
         private string GetCachedPreviewText(SerializedProperty property)
         {
             int id = HashCacheKey(property);
@@ -1268,6 +1361,15 @@ namespace WolfstagInteractive.ConvoCore.Editor
             return preview;
         }
 
+        /// <summary>
+        /// Retrieves a preview text from a serialized property representing dialogue line information.
+        /// Filters the preview based on the current language setting or provides a fallback text.
+        /// </summary>
+        /// <param name="property">The serialized property containing localized dialogue data.</param>
+        /// <returns>
+        /// A string representation of the dialogue preview text. Returns a truncated version if
+        /// the text exceeds the maximum length of 60 characters or a fallback string if no suitable text is found.
+        /// </returns>
         private string GetPreviewText(SerializedProperty property)
         {
             var localizedDialoguesProp = property.FindPropertyRelative("LocalizedDialogues");
@@ -1293,19 +1395,27 @@ namespace WolfstagInteractive.ConvoCore.Editor
             return fallback.Length > 60 ? fallback[..60] + "..." : fallback;
         }
 
+        /// <summary>
+        /// Generates a unique hash key for caching purposes based on the specified serialized property.
+        /// </summary>
+        /// <param name="property">The serialized property from which the hash key is derived.</param>
+        /// <returns>An integer representing the hash cache key for the given property.</returns>
         private static int HashCacheKey(SerializedProperty property)
         {
             unchecked
             {
                 int id = property.serializedObject.targetObject.GetInstanceID();
-                int pathHash = property.propertyPath != null ? property.propertyPath.GetHashCode() : 0;
+                int pathHash = property.propertyPath?.GetHashCode() ?? 0;
                 return (id * 397) ^ pathHash;
             }
         }
 
-        // ──────────────────────────────────────────────
-        // Small label helper
-        // ──────────────────────────────────────────────
+        /// <summary>
+        /// Renders a label and its corresponding value within the given rectangular area, adjusting the layout for subsequent elements.
+        /// </summary>
+        /// <param name="rect">The rectangular area in which to draw the label and value. Updated to account for the next element's position after drawing.</param>
+        /// <param name="label">The text for the label to be displayed.</param>
+        /// <param name="value">The text representing the value to be displayed next to the label.</param>
         private static void DrawLabelValue(ref Rect rect, string label, string value)
         {
             EditorGUI.LabelField(rect, label, value);

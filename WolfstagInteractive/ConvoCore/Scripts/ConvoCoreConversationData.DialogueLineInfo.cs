@@ -72,13 +72,13 @@ namespace WolfstagInteractive.ConvoCore
             public string characterID; //ID of the character speaking the line
 
             [Tooltip("Primary character representation (usually the speaker).")]
-            public CharacterRepresentationData PrimaryCharacterRepresentation = new CharacterRepresentationData();
+            public CharacterRepresentationData PrimaryCharacterRepresentation;
 
             [Tooltip("Optional representation for a secondary character.")]
-            public CharacterRepresentationData SecondaryCharacterRepresentation = new CharacterRepresentationData();
+            public CharacterRepresentationData SecondaryCharacterRepresentation;
 
             [Tooltip("Optional representation for a tertiary character.")]
-            public CharacterRepresentationData TertiaryCharacterRepresentation = new CharacterRepresentationData();
+            public CharacterRepresentationData TertiaryCharacterRepresentation;
             [Tooltip("Ordered list of visible character representations for this line. Index 0 is the speaker.")]
             public List<CharacterRepresentationData> CharacterRepresentations = new();
 
