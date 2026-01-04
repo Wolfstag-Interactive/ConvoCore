@@ -146,9 +146,14 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>StopConversation</b> 
 <tr class="memdesc:a170de86d1f885324fe33fdcb7dfaa939"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stops the current conversation. <br /></td></tr>
 <tr class="separator:a170de86d1f885324fe33fdcb7dfaa939"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a52d312daba7f072fa528b90fbf4c3bdd" id="r_a52d312daba7f072fa528b90fbf4c3bdd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1ConvoCore.html#a52d312daba7f072fa528b90fbf4c3bdd">PlayConversation</a> (<a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData.html">ConvoCoreConversationData</a> conversation)</td></tr>
+<tr class="memdesc:a52d312daba7f072fa528b90fbf4c3bdd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes and starts the specified conversation, setting up the necessary UI and internal states.  <br /></td></tr>
 <tr class="separator:a52d312daba7f072fa528b90fbf4c3bdd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a641a290877ed138a98aa3071f88a8364" id="r_a641a290877ed138a98aa3071f88a8364"><td class="memItemLeft" align="right" valign="top"><a id="a641a290877ed138a98aa3071f88a8364" name="a641a290877ed138a98aa3071f88a8364"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>PlayConversation</b> ()</td></tr>
+<tr class="memitem:ac1088f2419eab064304f1f05a17791fb" id="r_ac1088f2419eab064304f1f05a17791fb"><td class="memItemLeft" align="right" valign="top"><a id="ac1088f2419eab064304f1f05a17791fb" name="ac1088f2419eab064304f1f05a17791fb"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>StartConversation</b> ()</td></tr>
+<tr class="memdesc:ac1088f2419eab064304f1f05a17791fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Entry point for Unity SendMessage or systems that don't support method overloading. This triggers the conversation using the currently assigned Input settings. <br /></td></tr>
+<tr class="separator:ac1088f2419eab064304f1f05a17791fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a641a290877ed138a98aa3071f88a8364" id="r_a641a290877ed138a98aa3071f88a8364"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1ConvoCore.html#a641a290877ed138a98aa3071f88a8364">PlayConversation</a> ()</td></tr>
+<tr class="memdesc:a641a290877ed138a98aa3071f88a8364"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts the playback of a conversation using the active input mechanism.  <br /></td></tr>
 <tr class="separator:a641a290877ed138a98aa3071f88a8364"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
@@ -189,8 +194,36 @@ Action&#160;</td><td class="memItemRight" valign="bottom"><b>CompletedConversati
 <tr class="separator:aeb547f42e7ccfa8eede9a334a45783ab inherit events_interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoCoreRunner"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="a641a290877ed138a98aa3071f88a8364" name="a641a290877ed138a98aa3071f88a8364"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a641a290877ed138a98aa3071f88a8364">&#9670;&#160;</a></span>PlayConversation() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void WolfstagInteractive.ConvoCore.ConvoCore.PlayConversation </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Starts the playback of a conversation using the active input mechanism. </p>
+<p>This method determines the appropriate way to play a conversation based on the current <code>Input</code> instance. For a <code>SingleConversationInput</code> with a valid conversation, it invokes the typed overload method. Otherwise, it delegates the playback control to the input system itself by calling <code>Input.Play()</code>. If no input mechanism is defined, a warning is logged, and the method returns without initiating playback. </p>
+
+</div>
+</div>
 <a id="a52d312daba7f072fa528b90fbf4c3bdd" name="a52d312daba7f072fa528b90fbf4c3bdd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a52d312daba7f072fa528b90fbf4c3bdd">&#9670;&#160;</a></span>PlayConversation()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a52d312daba7f072fa528b90fbf4c3bdd">&#9670;&#160;</a></span>PlayConversation() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -212,6 +245,14 @@ Action&#160;</td><td class="memItemRight" valign="bottom"><b>CompletedConversati
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Initializes and starts the specified conversation, setting up the necessary UI and internal states. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">conversation</td><td>The conversation data to be played. Includes dialogue lines and relevant metadata.</td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p>Implements <a class="el" href="interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoCoreRunner.html">WolfstagInteractive.ConvoCore.IConvoCoreRunner</a>.</p>
 

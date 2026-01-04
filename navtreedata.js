@@ -49,7 +49,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"interfaceWolfstagInteractive_1_1ConvoCore_1_1IDialogueHistoryOutputPrefab.html"
+"interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoCoreRunner.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
