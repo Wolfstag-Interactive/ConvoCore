@@ -218,7 +218,7 @@ Action&#160;</td><td class="memItemRight" valign="bottom"><b>CompletedConversati
 </div><div class="memdoc">
 
 <p>Starts the playback of a conversation using the active input mechanism. </p>
-<p>This method determines the appropriate way to play a conversation based on the current <code>Input</code> instance. For a <code>SingleConversationInput</code> with a valid conversation, it invokes the typed overload method. Otherwise, it delegates the playback control to the input system itself by calling <code>Input.Play()</code>. If no input mechanism is defined, a warning is logged, and the method returns without initiating playback. </p>
+<p>This method determines the appropriate way to play a conversation based on the current <code>Input</code> instance. For a <code>SingleConversationInput</code> with a valid conversation, it invokes the typed overload method. Otherwise, it delegates the playback control to the container input itself by calling <code>Input.Play()</code>. If no input mechanism is defined, a warning is logged, and the method returns without initiating playback. </p>
 
 </div>
 </div>
