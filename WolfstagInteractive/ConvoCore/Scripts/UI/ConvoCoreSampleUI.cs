@@ -37,6 +37,7 @@ namespace WolfstagInteractive.ConvoCore
 
         [SerializeField] private ScrollRect DialogueHistoryScrollRect;
         [SerializeField] private RectTransform DialogueHistoryScrollRectContent;
+        [SerializeField] private Image DialogueHistoryContentBackground;
         [SerializeField] private TMP_Text DialogueHistoryText;
         [SerializeField] private Button ToggleDialogueHistoryButton;
 
@@ -58,12 +59,22 @@ namespace WolfstagInteractive.ConvoCore
         private CanvasGroup _historyGroup;
 
         private bool _togglingGuard;
+        
+        public bool AutoHideUIOnStart;
         private DisplaySlot GetSlotForIndex(int index)
         {
             if (index == 0) return DisplaySlot.Left;
             if (index == 1) return DisplaySlot.Right;
             if (index == 2) return DisplaySlot.Center;
             return DisplaySlot.Center;
+        }
+
+        private void Start()
+        {
+            if (AutoHideUIOnStart)
+            {
+                HideDialogue();
+            }
         }
 
         public override void InitializeUI(ConvoCore convoCoreInstance)
@@ -316,7 +327,7 @@ namespace WolfstagInteractive.ConvoCore
             DialoguePanel.gameObject.SetActive(false);
             HideAllSpriteImages();
             ContinueButton.gameObject.SetActive(false);
-            ToggleDialogueHistoryUI(false, focus: false);
+            ToggleDialogueHistoryUI(false);
             RefreshNavButtons();
         }
 
@@ -421,7 +432,7 @@ namespace WolfstagInteractive.ConvoCore
         public void ToggleDialogueHistoryUI() => ToggleDialogueHistoryUI(null);
 
         // Explicitly show/hide by passing true/false; pass null to toggle.
-        public void ToggleDialogueHistoryUI(bool? setVisible, bool focus = true)
+        public void ToggleDialogueHistoryUI(bool? setVisible)
         {
             if (_togglingGuard) return;
 
@@ -433,8 +444,7 @@ namespace WolfstagInteractive.ConvoCore
             }
 
             bool target = setVisible ?? !_historyVisible;
-            if (target == _historyVisible) return; // no-op if already in desired state
-
+            
             _togglingGuard = true;
             _historyVisible = target;
 
@@ -451,13 +461,18 @@ namespace WolfstagInteractive.ConvoCore
                 if (!target)
                 {
                     // If you truly want it disabled, uncomment:
-                    // DialogueHistoryPanelRoot.SetActive(false);
+                    // DialogueHistoryPanelRoot.gameObject.SetActive(false);
                 }
             }
             else
             {
                 // Fallback to SetActive when no CanvasGroup is present
                 DialogueHistoryPanelRoot.gameObject.SetActive(target);
+            }
+
+            if (DialogueHistoryContentBackground)
+            {
+                DialogueHistoryContentBackground.enabled = target;
             }
 
             // Optional: when history is open, guard against “advance” clicks bleeding through
