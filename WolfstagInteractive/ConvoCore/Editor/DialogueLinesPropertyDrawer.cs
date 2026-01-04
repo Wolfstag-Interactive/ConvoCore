@@ -410,6 +410,8 @@ namespace WolfstagInteractive.ConvoCore.Editor
                     int count = Mathf.Max(1, listProp.arraySize);
                     for (int i = 0; i < count; i++)
                     {
+                        // Ensure the index is actually within the current array bounds before retrieving
+                        if (i >= listProp.arraySize) break;
                         var repElement = listProp.GetArrayElementAtIndex(i);
 
                         if (i == 0)

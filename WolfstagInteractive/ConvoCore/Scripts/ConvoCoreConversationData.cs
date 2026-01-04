@@ -407,6 +407,10 @@ namespace WolfstagInteractive.ConvoCore
 
             foreach (var profile in profiles)
             {
+                if (profile == null)
+                {
+                    return null;
+                }
                 if (profile.CharacterID == characterID)
                 {
                     return profile;
