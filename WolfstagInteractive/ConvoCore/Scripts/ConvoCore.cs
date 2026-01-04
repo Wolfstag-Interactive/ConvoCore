@@ -705,7 +705,7 @@ namespace WolfstagInteractive.ConvoCore
         /// <remarks>
         /// This method determines the appropriate way to play a conversation based on the current `Input` instance.
         /// For a `SingleConversationInput` with a valid conversation, it invokes the typed overload method.
-        /// Otherwise, it delegates the playback control to the input system itself by calling `Input.Play()`.
+        /// Otherwise, it delegates the playback control to the container input itself by calling `Input.Play()`.
         /// If no input mechanism is defined, a warning is logged, and the method returns without initiating playback.
         /// </remarks>
         public void PlayConversation()
