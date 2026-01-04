@@ -45,6 +45,7 @@ namespace WolfstagInteractive.ConvoCore
         [SerializeField] private bool EnableTypewriterEffect = true;
         [SerializeField] private float TypewriterSpeed = 0.05f; // Time in seconds per character
         [SerializeField] private bool CanSkipTypewriter = true;
+        public bool AutoHideUIOnStart;
 
         [Header("Input Settings")] [SerializeField]
         private InputAction AdvanceDialogueAction;
@@ -60,7 +61,6 @@ namespace WolfstagInteractive.ConvoCore
 
         private bool _togglingGuard;
         
-        public bool AutoHideUIOnStart;
         private DisplaySlot GetSlotForIndex(int index)
         {
             if (index == 0) return DisplaySlot.Left;
