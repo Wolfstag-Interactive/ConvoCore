@@ -645,6 +645,10 @@ namespace WolfstagInteractive.ConvoCore
             Debug.Log("Conversation stopped.");
         }
 
+        /// <summary>
+        /// Initializes and starts the specified conversation, setting up the necessary UI and internal states.
+        /// </summary>
+        /// <param name="conversation">The conversation data to be played. Includes dialogue lines and relevant metadata.</param>
         public void PlayConversation(ConvoCoreConversationData conversation)
         {
             if (conversation == null)
@@ -686,7 +690,24 @@ namespace WolfstagInteractive.ConvoCore
             ConversationUI.RequestAdvance += () => _advanceRequested = true;
             ConversationUI.RequestReverse += () => _reverseRequested = true;
         }
-        
+        /// <summary>
+        /// Entry point for Unity SendMessage or systems that don't support method overloading.
+        /// This triggers the conversation using the currently assigned Input settings.
+        /// </summary>
+        public void StartConversation()
+        {
+            PlayConversation();
+        }
+
+        /// <summary>
+        /// Starts the playback of a conversation using the active input mechanism.
+        /// </summary>
+        /// <remarks>
+        /// This method determines the appropriate way to play a conversation based on the current `Input` instance.
+        /// For a `SingleConversationInput` with a valid conversation, it invokes the typed overload method.
+        /// Otherwise, it delegates the playback control to the input system itself by calling `Input.Play()`.
+        /// If no input mechanism is defined, a warning is logged, and the method returns without initiating playback.
+        /// </remarks>
         public void PlayConversation()
         {
             if (Input == null)
