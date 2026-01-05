@@ -11,8 +11,8 @@ namespace WolfstagInteractive.ConvoCore
 {
     [HelpURL(
         "https://docs.wolfstaginteractive.com/classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData.html")]
-    [CreateAssetMenu(fileName = "ConvoCoreData",
-        menuName = "ConvoCore/ConversationDialogueObject")]
+    [CreateAssetMenu(fileName = "New ConvoCore Conversation",
+        menuName = "ConvoCore/Conversation Dialogue Object")]
     public partial class ConvoCoreConversationData : ScriptableObject
     {
         public List<ConvoCoreCharacterProfileBaseData> ConversationParticipantProfiles =

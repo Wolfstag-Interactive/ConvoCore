@@ -11,7 +11,6 @@ namespace WolfstagInteractive.ConvoCore
         Resources
     }
 
-    [CreateAssetMenu(fileName = "ConvoCoreSettings", menuName = "ConvoCore/Settings")]
     public sealed class ConvoCoreSettings : ScriptableObject
     {
         [Header("Order the sources to try (first hit wins)")]

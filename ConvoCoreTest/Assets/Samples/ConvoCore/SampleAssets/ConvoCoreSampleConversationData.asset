@@ -18,7 +18,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 086dcde826a3fcb4b903e747228d482b, type: 2}
   DialogueLines:
   - ConversationID: Conversation1
-    LineID: L_1d81acbabbaf
+    LineID: L_04d64b899837
     ConversationLineIndex: 0
     characterID: Ava
     CharacterRepresentations:
@@ -76,7 +76,7 @@ MonoBehaviour:
       TargetAliasOrName: 
       PushReturnPoint: 0
   - ConversationID: Conversation1
-    LineID: L_f911037a3afe
+    LineID: L_cb8d04d73eed
     ConversationLineIndex: 1
     characterID: Jared
     CharacterRepresentations:
@@ -110,7 +110,7 @@ MonoBehaviour:
       TargetAliasOrName: 
       PushReturnPoint: 0
   - ConversationID: Conversation1
-    LineID: L_e347a5993728
+    LineID: L_8205ac8c4e8a
     ConversationLineIndex: 2
     characterID: Ava
     CharacterRepresentations:
@@ -144,7 +144,7 @@ MonoBehaviour:
       TargetAliasOrName: 
       PushReturnPoint: 0
   - ConversationID: Conversation1
-    LineID: L_20ab123c7986
+    LineID: L_9cd861a48566
     ConversationLineIndex: 3
     characterID: Jared
     CharacterRepresentations:
@@ -178,7 +178,7 @@ MonoBehaviour:
       TargetAliasOrName: 
       PushReturnPoint: 0
   - ConversationID: Conversation1
-    LineID: L_d7c77faffa6d
+    LineID: L_e01c38d35e8f
     ConversationLineIndex: 4
     characterID: Ava
     CharacterRepresentations:
@@ -212,7 +212,7 @@ MonoBehaviour:
       TargetAliasOrName: 
       PushReturnPoint: 0
   - ConversationID: Conversation1
-    LineID: L_482679d42ab5
+    LineID: L_8e7776524b04
     ConversationLineIndex: 5
     characterID: Jared
     CharacterRepresentations:
@@ -246,7 +246,7 @@ MonoBehaviour:
       TargetAliasOrName: 
       PushReturnPoint: 0
   - ConversationID: Conversation1
-    LineID: L_bc6e5fd287da
+    LineID: L_ec0dec9027e2
     ConversationLineIndex: 6
     characterID: Wolfstag
     CharacterRepresentations:
@@ -281,7 +281,7 @@ MonoBehaviour:
       TargetAliasOrName: 
       PushReturnPoint: 0
   - ConversationID: Conversation1
-    LineID: L_666f70295cdf
+    LineID: L_603c3f4ba4d6
     ConversationLineIndex: 7
     characterID: Ava
     CharacterRepresentations:
@@ -315,7 +315,7 @@ MonoBehaviour:
       TargetAliasOrName: 
       PushReturnPoint: 0
   - ConversationID: Conversation1
-    LineID: L_caa4532dcc86
+    LineID: L_d1cfb2aa2db7
     ConversationLineIndex: 8
     characterID: Jared
     CharacterRepresentations:
@@ -349,7 +349,7 @@ MonoBehaviour:
       TargetAliasOrName: 
       PushReturnPoint: 0
   - ConversationID: Conversation1
-    LineID: L_e76cb91cb1b9
+    LineID: L_16a17b3396e4
     ConversationLineIndex: 9
     characterID: Jared
     CharacterRepresentations:
@@ -386,7 +386,7 @@ MonoBehaviour:
       TargetAliasOrName: 
       PushReturnPoint: 0
   - ConversationID: Conversation1
-    LineID: L_3985fb81d5da
+    LineID: L_fecc5a327214
     ConversationLineIndex: 10
     characterID: Wolfstag
     CharacterRepresentations:
@@ -420,7 +420,7 @@ MonoBehaviour:
       TargetAliasOrName: 
       PushReturnPoint: 0
   - ConversationID: Conversation1
-    LineID: L_c92941416c34
+    LineID: L_4e12510204f1
     ConversationLineIndex: 11
     characterID: Ava
     CharacterRepresentations:
@@ -454,7 +454,7 @@ MonoBehaviour:
       TargetAliasOrName: 
       PushReturnPoint: 0
   - ConversationID: Conversation1
-    LineID: L_ba59115903c7
+    LineID: L_81d918d79d10
     ConversationLineIndex: 12
     characterID: Wolfstag
     CharacterRepresentations:
@@ -491,7 +491,7 @@ MonoBehaviour:
       TargetAliasOrName: 
       PushReturnPoint: 0
   - ConversationID: Conversation1
-    LineID: L_f752b67800ba
+    LineID: L_44b11d6cd642
     ConversationLineIndex: 13
     characterID: Jared
     CharacterRepresentations:
@@ -525,7 +525,7 @@ MonoBehaviour:
       TargetAliasOrName: 
       PushReturnPoint: 0
   - ConversationID: Conversation1
-    LineID: L_60bce86b2283
+    LineID: L_b06da097d428
     ConversationLineIndex: 14
     characterID: Ava
     CharacterRepresentations:
@@ -559,7 +559,7 @@ MonoBehaviour:
       TargetAliasOrName: 
       PushReturnPoint: 0
   - ConversationID: Conversation1
-    LineID: L_b9bf0bd0afad
+    LineID: L_9379a5301f7e
     ConversationLineIndex: 15
     characterID: Wolfstag
     CharacterRepresentations:
@@ -593,7 +593,7 @@ MonoBehaviour:
       TargetAliasOrName: 
       PushReturnPoint: 0
   - ConversationID: Conversation1
-    LineID: L_d7abfe986f2c
+    LineID: L_b5e5b1e08f68
     ConversationLineIndex: 16
     characterID: Jared
     CharacterRepresentations:
@@ -627,7 +627,7 @@ MonoBehaviour:
       TargetAliasOrName: 
       PushReturnPoint: 0
   - ConversationID: Conversation1
-    LineID: L_bf426c45fe1d
+    LineID: L_6c2df39ca769
     ConversationLineIndex: 17
     characterID: Ava
     CharacterRepresentations:
@@ -661,7 +661,7 @@ MonoBehaviour:
       TargetAliasOrName: 
       PushReturnPoint: 0
   - ConversationID: Conversation1
-    LineID: L_3939192ad898
+    LineID: L_ff77ae8df82b
     ConversationLineIndex: 18
     characterID: Wolfstag
     CharacterRepresentations:
@@ -698,7 +698,7 @@ MonoBehaviour:
       TargetAliasOrName: 
       PushReturnPoint: 0
   - ConversationID: Conversation1
-    LineID: L_c8e675243847
+    LineID: L_dc490e2592df
     ConversationLineIndex: 19
     characterID: Jared
     CharacterRepresentations:
@@ -735,7 +735,7 @@ MonoBehaviour:
       TargetAliasOrName: 
       PushReturnPoint: 0
   - ConversationID: Conversation1
-    LineID: L_9cbaef22248f
+    LineID: L_2e2673368a71
     ConversationLineIndex: 20
     characterID: Ava
     CharacterRepresentations:
@@ -769,7 +769,7 @@ MonoBehaviour:
       TargetAliasOrName: 
       PushReturnPoint: 0
   - ConversationID: Conversation1
-    LineID: L_c596ce6ddc52
+    LineID: L_4c04459eaeba
     ConversationLineIndex: 21
     characterID: Wolfstag
     CharacterRepresentations:
@@ -807,7 +807,7 @@ MonoBehaviour:
       TargetAliasOrName: 
       PushReturnPoint: 0
   - ConversationID: Conversation1
-    LineID: L_8b152df2138c
+    LineID: L_6e955da171a6
     ConversationLineIndex: 22
     characterID: Jared
     CharacterRepresentations:
@@ -842,7 +842,7 @@ MonoBehaviour:
       TargetAliasOrName: 
       PushReturnPoint: 0
   - ConversationID: Conversation1
-    LineID: L_4c2845dd0ba4
+    LineID: L_1d54676a6a5b
     ConversationLineIndex: 23
     characterID: Ava
     CharacterRepresentations:

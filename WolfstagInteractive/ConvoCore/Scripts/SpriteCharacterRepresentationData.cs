@@ -8,7 +8,7 @@ using UnityEngine;
 namespace WolfstagInteractive.ConvoCore
 {
     [HelpURL("https://docs.wolfstaginteractive.com/classWolfstagInteractive_1_1ConvoCore_1_1SpriteCharacterRepresentationData.html")]
-[CreateAssetMenu(fileName = "SpriteRepresentation", menuName = "ConvoCore/Sprite Representation")]
+[CreateAssetMenu(fileName = "SpriteRepresentation", menuName = "ConvoCore/Character/Representation/Sprite Character Representation")]
     //This class dictates how a sprite should be represented by telling ConvoCore how to get and apply expressions and expression actions 
     public class SpriteCharacterRepresentationData : CharacterRepresentationBase
 #if UNITY_EDITOR
