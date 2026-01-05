@@ -29,8 +29,6 @@ namespace WolfstagInteractive.ConvoCore
 #endif
         [Tooltip("Define the unique key for the conversation.")]
         public string ConversationKey; // Add this field to hold the key
-
-        
         
         private Dictionary<string, List<DialogueYamlConfig>> _dialogueDataByKey; // Stored YAML data at runtime
 
@@ -58,7 +56,7 @@ namespace WolfstagInteractive.ConvoCore
 
             if (verboseLogs)
                 Debug.Log($"=== Starting Dialogue Validation for {name} ===");
-            
+
             bool madeChanges = false;
 
             for (int i = 0; i < DialogueLines.Count; i++)
@@ -66,17 +64,18 @@ namespace WolfstagInteractive.ConvoCore
                 var line = DialogueLines[i];
                 if (line == null) continue;
 
-                // Validate primary character representation
+                line.EnsureCharacterRepresentationListInitialized();
+
                 if (ValidatePrimaryCharacterRepresentation(line, i))
                 {
                     madeChanges = true;
                 }
 
-                // Validate secondary and tertiary character representations
-                ValidateSecondaryTertiaryRepresentation(line.SecondaryCharacterRepresentation, "Secondary", i);
-                ValidateSecondaryTertiaryRepresentation(line.TertiaryCharacterRepresentation, "Tertiary", i);
+                for (int r = 1; r < line.CharacterRepresentations.Count; r++)
+                {
+                    ValidateNonSpeakerRepresentation(line, r, i);
+                }
 
-                // Ensure conversation ID and line index are set
                 if (string.IsNullOrEmpty(line.ConversationID))
                 {
                     line.ConversationID = ConversationKey;
@@ -104,105 +103,107 @@ namespace WolfstagInteractive.ConvoCore
                     Debug.Log($"Validation completed - no changes needed for {name}.");
             }
         }
-        /// <summary>
-        /// Validates primary character representation (must have a valid representation)
-        /// </summary>
-        private bool ValidatePrimaryCharacterRepresentation(DialogueLineInfo line, int lineIndex)
+       private bool ValidatePrimaryCharacterRepresentation(DialogueLineInfo line, int lineIndex)
+{
+    bool verboseLogs = ConvoCoreYamlLoader.Settings?.VerboseLogs ?? false;
+
+    if (verboseLogs)
+        Debug.Log($"Validating line {lineIndex}: CharacterID='{line.characterID}'");
+
+    if (string.IsNullOrEmpty(line.characterID))
+    {
+        if (verboseLogs)
+            Debug.LogWarning($"Line {lineIndex}: CharacterID is not set for the speaking character.");
+        return false;
+    }
+
+    line.EnsureCharacterRepresentationListInitialized();
+
+    var speakerProfile = ResolveCharacterProfile(ConversationParticipantProfiles, line.characterID);
+    if (speakerProfile == null)
+    {
+        if (verboseLogs)
+            Debug.LogWarning($"Line {lineIndex}: No profile found for CharacterID '{line.characterID}'.");
+        return false;
+    }
+
+    var speakerRep = line.CharacterRepresentations.Count > 0
+        ? line.CharacterRepresentations[0]
+        : new CharacterRepresentationData();
+
+    if (verboseLogs)
+    {
+        Debug.Log($"Line {lineIndex}: Found profile '{speakerProfile.CharacterName}' with {speakerProfile.Representations?.Count ?? 0} representations");
+        Debug.Log($"Line {lineIndex}: Current Speaker representation state:");
+        Debug.Log($"SelectedRepresentationName: '{speakerRep.SelectedRepresentationName}'");
+        Debug.Log($"SelectedRepresentation: {(speakerRep.SelectedRepresentation != null ? "NOT NULL" : "NULL")}");
+        Debug.Log($"SelectedCharacterID: '{speakerRep.SelectedCharacterID}'");
+    }
+
+    bool needsAutoFix = string.IsNullOrEmpty(speakerRep.SelectedRepresentationName) &&
+                        speakerRep.SelectedRepresentation == null &&
+                        string.IsNullOrEmpty(speakerRep.SelectedCharacterID);
+
+    if (verboseLogs)
+        Debug.Log($"Line {lineIndex}: NeedsAutoFix = {needsAutoFix}");
+
+    if (needsAutoFix)
+    {
+        if (speakerProfile.Representations is { Count: > 0 })
         {
-            bool verboseLogs = ConvoCoreYamlLoader.Settings?.VerboseLogs ?? false;
+            var firstRep = speakerProfile.Representations[0];
 
             if (verboseLogs)
-                Debug.Log($"Validating line {lineIndex}: CharacterID='{line.characterID}'");
+                Debug.Log($"Line {lineIndex}: First representation found: CharacterRepresentationName='{firstRep.CharacterRepresentationName}', Object={(firstRep.CharacterRepresentationType != null ? "NOT NULL" : "NULL")}");
 
-            if (string.IsNullOrEmpty(line.characterID))
+            speakerRep.SelectedRepresentationName = firstRep.CharacterRepresentationName;
+            speakerRep.SelectedRepresentation = firstRep.CharacterRepresentationType;
+
+            line.CharacterRepresentations[0] = speakerRep;
+
+            if (verboseLogs)
+                Debug.Log($"Line {lineIndex}: Auto-assigned primary representation '{firstRep.CharacterRepresentationName}' for character '{speakerProfile.CharacterName}'.");
+
+            return true;
+        }
+
+        if (verboseLogs)
+            Debug.LogWarning($"Line {lineIndex}: Character '{speakerProfile.CharacterName}' has no available representations.");
+
+        return false;
+    }
+    else
+    {
+        bool needsSync = false;
+
+        if (!string.IsNullOrEmpty(speakerRep.SelectedRepresentationName) &&
+            speakerRep.SelectedRepresentation == null)
+        {
+            var representation = speakerProfile.GetRepresentation(speakerRep.SelectedRepresentationName);
+            if (representation != null)
             {
+                speakerRep.SelectedRepresentation = representation;
+                line.CharacterRepresentations[0] = speakerRep;
+
                 if (verboseLogs)
-                    Debug.LogWarning($"Line {lineIndex}: CharacterID is not set for the speaking character.");
-                return false;
-            }
+                    Debug.Log($"Line {lineIndex}: Synced object reference for representation '{speakerRep.SelectedRepresentationName}'.");
 
-            var speakerProfile = ResolveCharacterProfile(ConversationParticipantProfiles, line.characterID);
-            if (speakerProfile == null)
-            {
-                if (verboseLogs)
-                    Debug.LogWarning($"Line {lineIndex}: No profile found for CharacterID '{line.characterID}'.");
-                return false;
-            }
-
-            if (verboseLogs)
-            {
-                Debug.Log($"Line {lineIndex}: Found profile '{speakerProfile.CharacterName}' with {speakerProfile.Representations?.Count ?? 0} representations");
-
-                // Check current state of primary representation
-                Debug.Log($"Line {lineIndex}: Current PrimaryCharacterRepresentation state:");
-                Debug.Log($"  - SelectedRepresentationName: '{line.PrimaryCharacterRepresentation.SelectedRepresentationName}'");
-                Debug.Log($"  - SelectedRepresentation: {(line.PrimaryCharacterRepresentation.SelectedRepresentation != null ? "NOT NULL" : "NULL")}");
-                Debug.Log($"  - SelectedCharacterID: '{line.PrimaryCharacterRepresentation.SelectedCharacterID}'");
-            }
-
-            // Check if primary representation needs fixing
-            bool needsAutoFix = string.IsNullOrEmpty(line.PrimaryCharacterRepresentation.SelectedRepresentationName) &&
-                                line.PrimaryCharacterRepresentation.SelectedRepresentation == null &&
-                                string.IsNullOrEmpty(line.PrimaryCharacterRepresentation.SelectedCharacterID);
-
-            if (verboseLogs)
-                Debug.Log($"Line {lineIndex}: NeedsAutoFix = {needsAutoFix}");
-
-            if (needsAutoFix)
-            {
-                // Auto-assign the first available representation for the primary character
-                if (speakerProfile.Representations is { Count: > 0 })
-                {
-                    var firstRep = speakerProfile.Representations[0];
-                    
-                    if (verboseLogs)
-                        Debug.Log($"Line {lineIndex}: First representation found: CharacterRepresentationName='{firstRep.CharacterRepresentationName}', Object={(firstRep.CharacterRepresentationType != null ? "NOT NULL" : "NULL")}");
-
-                    // Set both the name and the object reference
-                    line.PrimaryCharacterRepresentation.SelectedRepresentationName = firstRep.CharacterRepresentationName;
-                    line.PrimaryCharacterRepresentation.SelectedRepresentation = firstRep.CharacterRepresentationType;
-
-                    if (verboseLogs)
-                        Debug.Log($"Line {lineIndex}: Auto-assigned primary representation '{firstRep.CharacterRepresentationName}' for character '{speakerProfile.CharacterName}'.");
-
-                    return true; // Changes were made
-                }
-                else
-                {
-                    if (verboseLogs)
-                        Debug.LogWarning($"Line {lineIndex}: Character '{speakerProfile.CharacterName}' has no available representations.");
-                    return false;
-                }
+                needsSync = true;
             }
             else
             {
-                // Even if not auto-fixing, check if we need to sync the object reference
-                bool needsSync = false;
-
-                if (!string.IsNullOrEmpty(line.PrimaryCharacterRepresentation.SelectedRepresentationName) &&
-                    line.PrimaryCharacterRepresentation.SelectedRepresentation == null)
-                {
-                    // We have a name but no object reference - try to resolve it
-                    var representation = speakerProfile.GetRepresentation(line.PrimaryCharacterRepresentation.SelectedRepresentationName);
-                    if (representation != null)
-                    {
-                        line.PrimaryCharacterRepresentation.SelectedRepresentation = representation;
-                        if (verboseLogs)
-                            Debug.Log($"Line {lineIndex}: Synced object reference for representation '{line.PrimaryCharacterRepresentation.SelectedRepresentationName}'.");
-                        needsSync = true;
-                    }
-                    else
-                    {
-                        if (verboseLogs)
-                            Debug.LogWarning($"Line {lineIndex}: Could not resolve representation '{line.PrimaryCharacterRepresentation.SelectedRepresentationName}' in profile '{speakerProfile.CharacterName}'.");
-                    }
-                }
-
                 if (verboseLogs)
-                    Debug.Log($"Line {lineIndex}: Primary representation appears to be already set, skipping auto-fix. Sync needed: {needsSync}");
-                return needsSync;
+                    Debug.LogWarning($"Line {lineIndex}: Could not resolve representation '{speakerRep.SelectedRepresentationName}' in profile '{speakerProfile.CharacterName}'.");
             }
         }
+
+        if (verboseLogs)
+            Debug.Log($"Line {lineIndex}: Primary representation appears to be already set, skipping auto-fix. Sync needed: {needsSync}");
+
+        return needsSync;
+    }
+}
+
         /// <summary>
         /// Forces synchronization of object references for all dialogue lines that have representation names but missing object references
         /// </summary>
@@ -213,7 +214,7 @@ namespace WolfstagInteractive.ConvoCore
 
             if (verboseLogs)
                 Debug.Log("=== Syncing All Representation Object References ===");
-            
+
             bool madeChanges = false;
 
             if (DialogueLines == null) return;
@@ -223,28 +224,28 @@ namespace WolfstagInteractive.ConvoCore
                 var line = DialogueLines[i];
                 if (line == null) continue;
 
-                // Sync primary character representation
-                if (SyncRepresentationObjectReference(line.PrimaryCharacterRepresentation, line.characterID, i, "Primary"))
+                line.EnsureCharacterRepresentationListInitialized();
+
+                if (line.CharacterRepresentations == null || line.CharacterRepresentations.Count == 0)
+                    continue;
+
+                var speakerRep = line.CharacterRepresentations[0];
+                if (SyncRepresentationObjectReference(ref speakerRep, line.characterID, i, "Speaker"))
                 {
+                    line.CharacterRepresentations[0] = speakerRep;
                     madeChanges = true;
                 }
 
-                // Sync secondary character representation
-                if (!string.IsNullOrEmpty(line.SecondaryCharacterRepresentation.SelectedCharacterID))
+                for (int r = 1; r < line.CharacterRepresentations.Count; r++)
                 {
-                    if (SyncRepresentationObjectReference(line.SecondaryCharacterRepresentation,
-                            line.SecondaryCharacterRepresentation.SelectedCharacterID, i, "Secondary"))
-                    {
-                        madeChanges = true;
-                    }
-                }
+                    var rep = line.CharacterRepresentations[r];
 
-                // Sync tertiary character representation
-                if (!string.IsNullOrEmpty(line.TertiaryCharacterRepresentation.SelectedCharacterID))
-                {
-                    if (SyncRepresentationObjectReference(line.TertiaryCharacterRepresentation,
-                            line.TertiaryCharacterRepresentation.SelectedCharacterID, i, "Tertiary"))
+                    if (string.IsNullOrEmpty(rep.SelectedCharacterID))
+                        continue;
+
+                    if (SyncRepresentationObjectReference(ref rep, rep.SelectedCharacterID, i, $"Visible[{r}]"))
                     {
+                        line.CharacterRepresentations[r] = rep;
                         madeChanges = true;
                     }
                 }
@@ -265,16 +266,17 @@ namespace WolfstagInteractive.ConvoCore
                     Debug.Log("Representation object reference sync completed - no changes needed.");
             }
         }
+
         /// <summary>
         /// Helper method to sync a single representation object reference
         /// </summary>
-        private bool SyncRepresentationObjectReference(CharacterRepresentationData representationData,
+        private bool SyncRepresentationObjectReference(ref CharacterRepresentationData representationData,
             string characterID, int lineIndex, string type)
         {
             if (string.IsNullOrEmpty(representationData.SelectedRepresentationName) ||
                 representationData.SelectedRepresentation != null)
             {
-                return false; // Nothing to sync
+                return false;
             }
 
             bool verboseLogs = ConvoCoreYamlLoader.Settings?.VerboseLogs ?? false;
@@ -303,46 +305,40 @@ namespace WolfstagInteractive.ConvoCore
             }
         }
 
-        /// <summary>
-        /// Validates secondary/tertiary character representations (can be None)
-        /// </summary>
-        private void ValidateSecondaryTertiaryRepresentation(CharacterRepresentationData representationData,
-            string type, int lineIndex)
+
+        private void ValidateNonSpeakerRepresentation(DialogueLineInfo line, int repIndex, int lineIndex)
         {
             bool verboseLogs = ConvoCoreYamlLoader.Settings?.VerboseLogs ?? false;
 
-            // For secondary/tertiary characters, having no representation is valid (None selection)
-            // But if they have a SelectedCharacterID, they should also have a SelectedRepresentationName (unless intentionally None)
+            if (line.CharacterRepresentations == null) return;
+            if (repIndex < 0 || repIndex >= line.CharacterRepresentations.Count) return;
 
-            if (!string.IsNullOrEmpty(representationData.SelectedCharacterID))
+            var rep = line.CharacterRepresentations[repIndex];
+
+            if (string.IsNullOrEmpty(rep.SelectedCharacterID))
+                return;
+
+            var selectedProfile = ConversationParticipantProfiles
+                .FirstOrDefault(p => p != null && p.CharacterID == rep.SelectedCharacterID);
+
+            if (selectedProfile == null)
             {
-                var selectedProfile = ConversationParticipantProfiles
-                    .FirstOrDefault(p => p != null && p.CharacterID == representationData.SelectedCharacterID);
+                if (verboseLogs)
+                    Debug.LogWarning($"Line {lineIndex}: Visible character [{repIndex}] references unknown CharacterID '{rep.SelectedCharacterID}'.");
+                return;
+            }
 
-                if (selectedProfile == null)
-                {
-                    if (verboseLogs)
-                        Debug.LogWarning($"Line {lineIndex}: {type} character representation references unknown CharacterID '{representationData.SelectedCharacterID}'.");
-                    return;
-                }
+            if (string.IsNullOrEmpty(rep.SelectedRepresentationName))
+                return;
 
-                // If they selected a character but no representation name, it might be intentional "None"
-                // or they might need a default representation
-                if (string.IsNullOrEmpty(representationData.SelectedRepresentationName))
-                {
-                    // This is fine - it means "None" selection for secondary/tertiary characters
-                    return;
-                }
-
-                // Validate that the selected representation exists
-                var representation = selectedProfile.GetRepresentation(representationData.SelectedRepresentationName);
-                if (representation == null)
-                {
-                    if (verboseLogs)
-                        Debug.LogWarning($"Line {lineIndex}: {type} character representation '{representationData.SelectedRepresentationName}' not found in profile '{selectedProfile.CharacterName}'.");
-                }
+            var representation = selectedProfile.GetRepresentation(rep.SelectedRepresentationName);
+            if (representation == null)
+            {
+                if (verboseLogs)
+                    Debug.LogWarning($"Line {lineIndex}: Visible character [{repIndex}] representation '{rep.SelectedRepresentationName}' not found in profile '{selectedProfile.CharacterName}'.");
             }
         }
+
 
         /// <summary>
         /// Forces validation of dialogue lines (accessible from context menu)
@@ -385,10 +381,9 @@ namespace WolfstagInteractive.ConvoCore
                     for (int i = 0; i < profile.Representations.Count; i++)
                     {
                         var rep = profile.Representations[i];
-                        Debug.Log($"    [{i}] RepresentationName: '{rep.CharacterRepresentationName}'");
-                        Debug.Log($"    [{i}] CharacterRepresentationName: '{rep.CharacterRepresentationName}'");
-                        Debug.Log(
-                            $"    [{i}] CharacterRepresentation: {(rep.CharacterRepresentationType != null ? rep.CharacterRepresentationType.GetType().Name : "NULL")}");
+                        Debug.Log($"[{i}] RepresentationName: '{rep.CharacterRepresentationName}'");
+                        Debug.Log($"[{i}] CharacterRepresentationName: '{rep.CharacterRepresentationName}'");
+                        Debug.Log($"[{i}] CharacterRepresentation: {(rep.CharacterRepresentationType != null ? rep.CharacterRepresentationType.GetType().Name : "NULL")}");
                     }
                 }
             }
@@ -409,7 +404,7 @@ namespace WolfstagInteractive.ConvoCore
             {
                 if (profile == null)
                 {
-                    return null;
+                    continue;
                 }
                 if (profile.CharacterID == characterID)
                 {

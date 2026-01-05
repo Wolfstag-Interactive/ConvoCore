@@ -70,15 +70,7 @@ namespace WolfstagInteractive.ConvoCore
             public string ConversationID; // Key or ConversationID in the YAML
             public int ConversationLineIndex; // Line index within the conversation
             public string characterID; //ID of the character speaking the line
-
-            [Tooltip("Primary character representation (usually the speaker).")]
-            public CharacterRepresentationData PrimaryCharacterRepresentation;
-
-            [Tooltip("Optional representation for a secondary character.")]
-            public CharacterRepresentationData SecondaryCharacterRepresentation;
-
-            [Tooltip("Optional representation for a tertiary character.")]
-            public CharacterRepresentationData TertiaryCharacterRepresentation;
+            
             [Tooltip("Ordered list of visible character representations for this line. Index 0 is the speaker.")]
             public List<CharacterRepresentationData> CharacterRepresentations = new();
 
@@ -101,9 +93,6 @@ namespace WolfstagInteractive.ConvoCore
                 ConversationID = conversationID;
                 ConversationLineIndex = 0;
                 characterID = "";
-                PrimaryCharacterRepresentation = new CharacterRepresentationData();
-                SecondaryCharacterRepresentation = new CharacterRepresentationData();
-                TertiaryCharacterRepresentation = new CharacterRepresentationData();
                 LocalizedDialogues = new List<LocalizedDialogue>();
                 clip = null;
                 ActionsBeforeDialogueLine = new List<BaseDialogueLineAction>();
@@ -121,19 +110,11 @@ namespace WolfstagInteractive.ConvoCore
             public void EnsureCharacterRepresentationListInitialized()
             {
                 CharacterRepresentations ??= new List<CharacterRepresentationData>();
-
-                if (CharacterRepresentations.Count > 0)
-                    return;
-
-                CharacterRepresentations.Add(PrimaryCharacterRepresentation);
-
-                if (HasAnySelection(SecondaryCharacterRepresentation))
-                    CharacterRepresentations.Add(SecondaryCharacterRepresentation);
-
-                if (HasAnySelection(TertiaryCharacterRepresentation))
-                    CharacterRepresentations.Add(TertiaryCharacterRepresentation);
+                if (CharacterRepresentations.Count == 0)
+                {
+                    CharacterRepresentations.Add(new CharacterRepresentationData());
+                }            
             }
-
             private static bool HasAnySelection(CharacterRepresentationData data)
             {
                 return !string.IsNullOrEmpty(data.SelectedCharacterID)

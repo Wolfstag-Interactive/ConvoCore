@@ -88,7 +88,12 @@ namespace WolfstagInteractive.ConvoCore
                 }
 
                 // Get the primary character representation
-                var primaryRepresentation = GetPrimaryCharacterRepresentation(primaryProfile, line.PrimaryCharacterRepresentation);
+                line.EnsureCharacterRepresentationListInitialized();
+                var speakerRepData = (line.CharacterRepresentations != null && line.CharacterRepresentations.Count > 0)
+                    ? line.CharacterRepresentations[0]
+                    : default;
+
+                var primaryRepresentation = GetPrimaryCharacterRepresentation(primaryProfile, speakerRepData);
 
                 if (primaryRepresentation == null)
                 {
@@ -329,7 +334,12 @@ namespace WolfstagInteractive.ConvoCore
                 ConversationData.ConversationParticipantProfiles,
                 prevLine.characterID);
 
-            var primaryRepresentation = GetPrimaryCharacterRepresentation(primaryProfile, prevLine.PrimaryCharacterRepresentation);
+            prevLine.EnsureCharacterRepresentationListInitialized();
+            var speakerRepData = (prevLine.CharacterRepresentations != null && prevLine.CharacterRepresentations.Count > 0)
+                ? prevLine.CharacterRepresentations[0]
+                : default;
+
+            var primaryRepresentation = GetPrimaryCharacterRepresentation(primaryProfile, speakerRepData);
 
             var localized = LocalizationHandler.GetLocalizedDialogue(prevLine);
             string finalOutput = ReplacePlayerNameInDialogueLine(localized.Text);
