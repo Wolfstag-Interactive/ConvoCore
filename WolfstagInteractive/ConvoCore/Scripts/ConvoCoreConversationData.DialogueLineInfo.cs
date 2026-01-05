@@ -67,10 +67,10 @@ namespace WolfstagInteractive.ConvoCore
         [Serializable]
         public class DialogueLineInfo
         {
-            public string ConversationID; // Key or ConversationID in the YAML
+            public string ConversationID;            // Key or ConversationID in the YAML
+            public string LineID; // Stable Line ID
             public int ConversationLineIndex; // Line index within the conversation
             public string characterID; //ID of the character speaking the line
-            
             [Tooltip("Ordered list of visible character representations for this line. Index 0 is the speaker.")]
             public List<CharacterRepresentationData> CharacterRepresentations = new();
 
@@ -92,6 +92,7 @@ namespace WolfstagInteractive.ConvoCore
             {
                 ConversationID = conversationID;
                 ConversationLineIndex = 0;
+                LineID = null;
                 characterID = "";
                 LocalizedDialogues = new List<LocalizedDialogue>();
                 clip = null;

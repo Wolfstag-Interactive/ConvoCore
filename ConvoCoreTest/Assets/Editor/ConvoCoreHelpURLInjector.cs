@@ -258,7 +258,7 @@ private static bool TryInjectHelpUrl(string scriptPath, out FailReason failReaso
 
     insertIndex = Mathf.Clamp(insertIndex, 0, text.Length);
 
-    string helpAttr = $"[UnityEngine.HelpURL(\"{url}\")]\n";
+    string helpAttr = $"[HelpURL(\"{url}\")]\n";
 
     try
     {

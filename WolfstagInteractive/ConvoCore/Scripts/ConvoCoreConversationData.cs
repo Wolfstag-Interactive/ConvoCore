@@ -6,20 +6,23 @@ using System.Linq;
 #if UNITY_EDITOR
 using WolfstagInteractive.ConvoCore.Editor;
 #endif
+
 namespace WolfstagInteractive.ConvoCore
 {
-    [HelpURL("https://docs.wolfstaginteractive.com/classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData.html")]
-[CreateAssetMenu(fileName = "ConvoCoreData",
+    [HelpURL(
+        "https://docs.wolfstaginteractive.com/classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData.html")]
+    [CreateAssetMenu(fileName = "ConvoCoreData",
         menuName = "ConvoCore/ConversationDialogueObject")]
     public partial class ConvoCoreConversationData : ScriptableObject
     {
         public List<ConvoCoreCharacterProfileBaseData> ConversationParticipantProfiles =
             new List<ConvoCoreCharacterProfileBaseData>();
-        
+
         public List<DialogueLineInfo> DialogueLines; // Metadata for all dialogues in the YAML
 
         [Header("YAML Source (pick one or more)")]
         public TextAsset ConversationYaml; // sample-friendly direct reference
+
         public bool AllowPersistentOverrides = true; // enable device-side hotfixes
         [Tooltip("Resources path without extension, e.g. ConvoCore/Dialogue/ForestIntro")]
         public string FilePath;
@@ -29,7 +32,7 @@ namespace WolfstagInteractive.ConvoCore
 #endif
         [Tooltip("Define the unique key for the conversation.")]
         public string ConversationKey; // Add this field to hold the key
-        
+
         private Dictionary<string, List<DialogueYamlConfig>> _dialogueDataByKey; // Stored YAML data at runtime
 
         public ConvoCoreConversationData()
@@ -103,106 +106,115 @@ namespace WolfstagInteractive.ConvoCore
                     Debug.Log($"Validation completed - no changes needed for {name}.");
             }
         }
-       private bool ValidatePrimaryCharacterRepresentation(DialogueLineInfo line, int lineIndex)
-{
-    bool verboseLogs = ConvoCoreYamlLoader.Settings?.VerboseLogs ?? false;
 
-    if (verboseLogs)
-        Debug.Log($"Validating line {lineIndex}: CharacterID='{line.characterID}'");
-
-    if (string.IsNullOrEmpty(line.characterID))
-    {
-        if (verboseLogs)
-            Debug.LogWarning($"Line {lineIndex}: CharacterID is not set for the speaking character.");
-        return false;
-    }
-
-    line.EnsureCharacterRepresentationListInitialized();
-
-    var speakerProfile = ResolveCharacterProfile(ConversationParticipantProfiles, line.characterID);
-    if (speakerProfile == null)
-    {
-        if (verboseLogs)
-            Debug.LogWarning($"Line {lineIndex}: No profile found for CharacterID '{line.characterID}'.");
-        return false;
-    }
-
-    var speakerRep = line.CharacterRepresentations.Count > 0
-        ? line.CharacterRepresentations[0]
-        : new CharacterRepresentationData();
-
-    if (verboseLogs)
-    {
-        Debug.Log($"Line {lineIndex}: Found profile '{speakerProfile.CharacterName}' with {speakerProfile.Representations?.Count ?? 0} representations");
-        Debug.Log($"Line {lineIndex}: Current Speaker representation state:");
-        Debug.Log($"SelectedRepresentationName: '{speakerRep.SelectedRepresentationName}'");
-        Debug.Log($"SelectedRepresentation: {(speakerRep.SelectedRepresentation != null ? "NOT NULL" : "NULL")}");
-        Debug.Log($"SelectedCharacterID: '{speakerRep.SelectedCharacterID}'");
-    }
-
-    bool needsAutoFix = string.IsNullOrEmpty(speakerRep.SelectedRepresentationName) &&
-                        speakerRep.SelectedRepresentation == null &&
-                        string.IsNullOrEmpty(speakerRep.SelectedCharacterID);
-
-    if (verboseLogs)
-        Debug.Log($"Line {lineIndex}: NeedsAutoFix = {needsAutoFix}");
-
-    if (needsAutoFix)
-    {
-        if (speakerProfile.Representations is { Count: > 0 })
+        private bool ValidatePrimaryCharacterRepresentation(DialogueLineInfo line, int lineIndex)
         {
-            var firstRep = speakerProfile.Representations[0];
+            bool verboseLogs = ConvoCoreYamlLoader.Settings?.VerboseLogs ?? false;
 
             if (verboseLogs)
-                Debug.Log($"Line {lineIndex}: First representation found: CharacterRepresentationName='{firstRep.CharacterRepresentationName}', Object={(firstRep.CharacterRepresentationType != null ? "NOT NULL" : "NULL")}");
+                Debug.Log($"Validating line {lineIndex}: CharacterID='{line.characterID}'");
 
-            speakerRep.SelectedRepresentationName = firstRep.CharacterRepresentationName;
-            speakerRep.SelectedRepresentation = firstRep.CharacterRepresentationType;
-
-            line.CharacterRepresentations[0] = speakerRep;
-
-            if (verboseLogs)
-                Debug.Log($"Line {lineIndex}: Auto-assigned primary representation '{firstRep.CharacterRepresentationName}' for character '{speakerProfile.CharacterName}'.");
-
-            return true;
-        }
-
-        if (verboseLogs)
-            Debug.LogWarning($"Line {lineIndex}: Character '{speakerProfile.CharacterName}' has no available representations.");
-
-        return false;
-    }
-    else
-    {
-        bool needsSync = false;
-
-        if (!string.IsNullOrEmpty(speakerRep.SelectedRepresentationName) &&
-            speakerRep.SelectedRepresentation == null)
-        {
-            var representation = speakerProfile.GetRepresentation(speakerRep.SelectedRepresentationName);
-            if (representation != null)
+            if (string.IsNullOrEmpty(line.characterID))
             {
-                speakerRep.SelectedRepresentation = representation;
-                line.CharacterRepresentations[0] = speakerRep;
+                if (verboseLogs)
+                    Debug.LogWarning($"Line {lineIndex}: CharacterID is not set for the speaking character.");
+                return false;
+            }
+
+            line.EnsureCharacterRepresentationListInitialized();
+
+            var speakerProfile = ResolveCharacterProfile(ConversationParticipantProfiles, line.characterID);
+            if (speakerProfile == null)
+            {
+                if (verboseLogs)
+                    Debug.LogWarning($"Line {lineIndex}: No profile found for CharacterID '{line.characterID}'.");
+                return false;
+            }
+
+            var speakerRep = line.CharacterRepresentations.Count > 0
+                ? line.CharacterRepresentations[0]
+                : new CharacterRepresentationData();
+
+            if (verboseLogs)
+            {
+                Debug.Log(
+                    $"Line {lineIndex}: Found profile '{speakerProfile.CharacterName}' with {speakerProfile.Representations?.Count ?? 0} representations");
+                Debug.Log($"Line {lineIndex}: Current Speaker representation state:");
+                Debug.Log($"SelectedRepresentationName: '{speakerRep.SelectedRepresentationName}'");
+                Debug.Log(
+                    $"SelectedRepresentation: {(speakerRep.SelectedRepresentation != null ? "NOT NULL" : "NULL")}");
+                Debug.Log($"SelectedCharacterID: '{speakerRep.SelectedCharacterID}'");
+            }
+
+            bool needsAutoFix = string.IsNullOrEmpty(speakerRep.SelectedRepresentationName) &&
+                                speakerRep.SelectedRepresentation == null &&
+                                string.IsNullOrEmpty(speakerRep.SelectedCharacterID);
+
+            if (verboseLogs)
+                Debug.Log($"Line {lineIndex}: NeedsAutoFix = {needsAutoFix}");
+
+            if (needsAutoFix)
+            {
+                if (speakerProfile.Representations is { Count: > 0 })
+                {
+                    var firstRep = speakerProfile.Representations[0];
+
+                    if (verboseLogs)
+                        Debug.Log(
+                            $"Line {lineIndex}: First representation found: CharacterRepresentationName='{firstRep.CharacterRepresentationName}', Object={(firstRep.CharacterRepresentationType != null ? "NOT NULL" : "NULL")}");
+
+                    speakerRep.SelectedRepresentationName = firstRep.CharacterRepresentationName;
+                    speakerRep.SelectedRepresentation = firstRep.CharacterRepresentationType;
+
+                    line.CharacterRepresentations[0] = speakerRep;
+
+                    if (verboseLogs)
+                        Debug.Log(
+                            $"Line {lineIndex}: Auto-assigned primary representation '{firstRep.CharacterRepresentationName}' for character '{speakerProfile.CharacterName}'.");
+
+                    return true;
+                }
 
                 if (verboseLogs)
-                    Debug.Log($"Line {lineIndex}: Synced object reference for representation '{speakerRep.SelectedRepresentationName}'.");
+                    Debug.LogWarning(
+                        $"Line {lineIndex}: Character '{speakerProfile.CharacterName}' has no available representations.");
 
-                needsSync = true;
+                return false;
             }
             else
             {
+                bool needsSync = false;
+
+                if (!string.IsNullOrEmpty(speakerRep.SelectedRepresentationName) &&
+                    speakerRep.SelectedRepresentation == null)
+                {
+                    var representation = speakerProfile.GetRepresentation(speakerRep.SelectedRepresentationName);
+                    if (representation != null)
+                    {
+                        speakerRep.SelectedRepresentation = representation;
+                        line.CharacterRepresentations[0] = speakerRep;
+
+                        if (verboseLogs)
+                            Debug.Log(
+                                $"Line {lineIndex}: Synced object reference for representation '{speakerRep.SelectedRepresentationName}'.");
+
+                        needsSync = true;
+                    }
+                    else
+                    {
+                        if (verboseLogs)
+                            Debug.LogWarning(
+                                $"Line {lineIndex}: Could not resolve representation '{speakerRep.SelectedRepresentationName}' in profile '{speakerProfile.CharacterName}'.");
+                    }
+                }
+
                 if (verboseLogs)
-                    Debug.LogWarning($"Line {lineIndex}: Could not resolve representation '{speakerRep.SelectedRepresentationName}' in profile '{speakerProfile.CharacterName}'.");
+                    Debug.Log(
+                        $"Line {lineIndex}: Primary representation appears to be already set, skipping auto-fix. Sync needed: {needsSync}");
+
+                return needsSync;
             }
         }
-
-        if (verboseLogs)
-            Debug.Log($"Line {lineIndex}: Primary representation appears to be already set, skipping auto-fix. Sync needed: {needsSync}");
-
-        return needsSync;
-    }
-}
 
         /// <summary>
         /// Forces synchronization of object references for all dialogue lines that have representation names but missing object references
@@ -285,7 +297,8 @@ namespace WolfstagInteractive.ConvoCore
             if (profile == null)
             {
                 if (verboseLogs)
-                    Debug.LogWarning($"Line {lineIndex}: Cannot sync {type} representation - profile not found for CharacterID '{characterID}'.");
+                    Debug.LogWarning(
+                        $"Line {lineIndex}: Cannot sync {type} representation - profile not found for CharacterID '{characterID}'.");
                 return false;
             }
 
@@ -294,13 +307,15 @@ namespace WolfstagInteractive.ConvoCore
             {
                 representationData.SelectedRepresentation = representation;
                 if (verboseLogs)
-                    Debug.Log($"Line {lineIndex}: Synced {type} representation object reference for '{representationData.SelectedRepresentationName}'.");
+                    Debug.Log(
+                        $"Line {lineIndex}: Synced {type} representation object reference for '{representationData.SelectedRepresentationName}'.");
                 return true;
             }
             else
             {
                 if (verboseLogs)
-                    Debug.LogWarning($"Line {lineIndex}: Could not find {type} representation '{representationData.SelectedRepresentationName}' in profile '{profile.CharacterName}'.");
+                    Debug.LogWarning(
+                        $"Line {lineIndex}: Could not find {type} representation '{representationData.SelectedRepresentationName}' in profile '{profile.CharacterName}'.");
                 return false;
             }
         }
@@ -324,7 +339,8 @@ namespace WolfstagInteractive.ConvoCore
             if (selectedProfile == null)
             {
                 if (verboseLogs)
-                    Debug.LogWarning($"Line {lineIndex}: Visible character [{repIndex}] references unknown CharacterID '{rep.SelectedCharacterID}'.");
+                    Debug.LogWarning(
+                        $"Line {lineIndex}: Visible character [{repIndex}] references unknown CharacterID '{rep.SelectedCharacterID}'.");
                 return;
             }
 
@@ -335,7 +351,8 @@ namespace WolfstagInteractive.ConvoCore
             if (representation == null)
             {
                 if (verboseLogs)
-                    Debug.LogWarning($"Line {lineIndex}: Visible character [{repIndex}] representation '{rep.SelectedRepresentationName}' not found in profile '{selectedProfile.CharacterName}'.");
+                    Debug.LogWarning(
+                        $"Line {lineIndex}: Visible character [{repIndex}] representation '{rep.SelectedRepresentationName}' not found in profile '{selectedProfile.CharacterName}'.");
             }
         }
 
@@ -347,10 +364,10 @@ namespace WolfstagInteractive.ConvoCore
         public void ForceValidateDialogueLines()
         {
             bool verboseLogs = ConvoCoreYamlLoader.Settings?.VerboseLogs ?? false;
-            
+
             if (verboseLogs)
                 Debug.Log("Manually triggering dialogue line validation...");
-            
+
             ValidateAndFixDialogueLines();
 #if UNITY_EDITOR
             UnityEditor.EditorUtility.SetDirty(this);
@@ -383,7 +400,8 @@ namespace WolfstagInteractive.ConvoCore
                         var rep = profile.Representations[i];
                         Debug.Log($"[{i}] RepresentationName: '{rep.CharacterRepresentationName}'");
                         Debug.Log($"[{i}] CharacterRepresentationName: '{rep.CharacterRepresentationName}'");
-                        Debug.Log($"[{i}] CharacterRepresentation: {(rep.CharacterRepresentationType != null ? rep.CharacterRepresentationType.GetType().Name : "NULL")}");
+                        Debug.Log(
+                            $"[{i}] CharacterRepresentation: {(rep.CharacterRepresentationType != null ? rep.CharacterRepresentationType.GetType().Name : "NULL")}");
                     }
                 }
             }
@@ -406,6 +424,7 @@ namespace WolfstagInteractive.ConvoCore
                 {
                     continue;
                 }
+
                 if (profile.CharacterID == characterID)
                 {
                     return profile;
@@ -424,7 +443,6 @@ namespace WolfstagInteractive.ConvoCore
         /// </summary>
         public void InitializeDialogueData()
         {
-            //   Order (by ConvoCoreSettings): Assigned TextAsset → persistentDataPath → Addressables (if enabled) → Resources
             string yamlData = ConvoCoreYamlLoader.Load(this);
             if (string.IsNullOrEmpty(yamlData))
             {
@@ -436,58 +454,75 @@ namespace WolfstagInteractive.ConvoCore
             try
             {
                 _dialogueDataByKey = ConvoCoreYamlParser.Parse(yamlData);
+
                 if (ConvoCoreYamlLoader.Settings?.VerboseLogs == true)
-                {
                     Debug.Log(
                         $"Successfully loaded YAML data. Found {_dialogueDataByKey.Count} conversation sections.");
-                }
 
                 for (int i = 0; i < DialogueLines.Count; i++)
                 {
                     var currentLine = DialogueLines[i];
+                    if (currentLine == null) continue;
 
-                    if (_dialogueDataByKey.TryGetValue(currentLine.ConversationID, out var configList))
-                    {
-                        // Get the config at the same index as our dialogue line
-                        var matchingConfig = (currentLine.ConversationLineIndex < configList.Count)
-                            ? configList[currentLine.ConversationLineIndex]
-                            : null;
-
-                        if (matchingConfig is { LocalizedDialogue: not null })
-                        {
-                            // Initialize or update the list of localized dialogues
-                            List<LocalizedDialogue> localizedDialogueList = new List<LocalizedDialogue>();
-                            foreach (var kvp in matchingConfig.LocalizedDialogue)
-                            {
-                                localizedDialogueList.Add(new LocalizedDialogue
-                                {
-                                    Language = kvp.Key,
-                                    Text = kvp.Value
-                                });
-                            }
-
-                            // Update the dialogue line with localization data
-                            var dialogueLine = DialogueLines[i];
-                            dialogueLine.LocalizedDialogues = localizedDialogueList;
-                            DialogueLines[i] = dialogueLine;
-                            if (ConvoCoreYamlLoader.Settings?.VerboseLogs == true)
-                            {
-                                Debug.Log($"Updated line {i} with {localizedDialogueList.Count} translations");
-                            }
-                        }
-                        else
-                        {
-                            if (ConvoCoreYamlLoader.Settings?.VerboseLogs == true)
-                            {
-                                Debug.LogWarning(
-                                    $"No matching config found at index {currentLine.ConversationLineIndex} for conversation {currentLine.ConversationID}");
-                            }
-                        }
-                    }
-                    else
+                    if (!_dialogueDataByKey.TryGetValue(currentLine.ConversationID, out var configList) ||
+                        configList == null)
                     {
                         Debug.LogWarning($"No config list found for ConversationID: '{currentLine.ConversationID}'");
+                        continue;
                     }
+
+                    DialogueYamlConfig matchingConfig = null;
+
+                    // Prefer matching by stable LineID
+                    if (!string.IsNullOrEmpty(currentLine.LineID))
+                    {
+                        for (int c = 0; c < configList.Count; c++)
+                        {
+                            var cfg = configList[c];
+                            if (cfg != null && cfg.LineID == currentLine.LineID)
+                            {
+                                matchingConfig = cfg;
+                                break;
+                            }
+                        }
+                    }
+
+                    // Fallback: legacy assets still matching by index
+                    if (matchingConfig == null)
+                    {
+                        matchingConfig = (currentLine.ConversationLineIndex >= 0 &&
+                                          currentLine.ConversationLineIndex < configList.Count)
+                            ? configList[currentLine.ConversationLineIndex]
+                            : null;
+                    }
+
+                    if (matchingConfig?.LocalizedDialogue == null)
+                    {
+                        if (ConvoCoreYamlLoader.Settings?.VerboseLogs == true)
+                        {
+                            Debug.LogWarning(
+                                $"No matching config found for LineID='{currentLine.LineID}' (fallback index {currentLine.ConversationLineIndex}) " +
+                                $"for conversation '{currentLine.ConversationID}'.");
+                        }
+
+                        continue;
+                    }
+
+                    var localizedDialogueList = new List<LocalizedDialogue>();
+                    foreach (var kvp in matchingConfig.LocalizedDialogue)
+                    {
+                        localizedDialogueList.Add(new LocalizedDialogue
+                        {
+                            Language = kvp.Key,
+                            Text = kvp.Value
+                        });
+                    }
+
+                    // DialogueLineInfo is a class, so just assign directly
+                    currentLine.LocalizedDialogues = localizedDialogueList;
+
+                    if (ConvoCoreYamlLoader.Settings?.VerboseLogs == true)
+                        Debug.Log($"Updated line {i} with {localizedDialogueList.Count} translations");
                 }
             }
             catch (Exception ex)
@@ -516,9 +551,7 @@ namespace WolfstagInteractive.ConvoCore
 
                     if (representationPair.CharacterRepresentationType is IConvoCoreRepresentationInitializable
                         initializable)
-                    {
                         initializable.Initialize();
-                    }
                 }
             }
         }
@@ -529,7 +562,8 @@ namespace WolfstagInteractive.ConvoCore
             return ConversationParticipantProfiles.FirstOrDefault(profile => profile.IsPlayerCharacter);
         }
 
-        public IEnumerator ActionsBeforeDialogueLine(ConvoCore core, DialogueLineInfo lineInfo, List<BaseDialogueLineAction> capture)
+        public IEnumerator ActionsBeforeDialogueLine(ConvoCore core, DialogueLineInfo lineInfo,
+            List<BaseDialogueLineAction> capture)
         {
             foreach (var action in lineInfo.ActionsBeforeDialogueLine)
             {
@@ -543,6 +577,7 @@ namespace WolfstagInteractive.ConvoCore
                 {
                     continue;
                 }
+
                 var instance = Instantiate(action);
                 capture?.Add(instance);
                 yield return core.StartCoroutine(instance.ExecuteLineAction());
@@ -552,7 +587,8 @@ namespace WolfstagInteractive.ConvoCore
             }
         }
 
-        public IEnumerator DoActionsAfterDialogueLine(ConvoCore core, DialogueLineInfo lineInfo, List<BaseDialogueLineAction> capture)
+        public IEnumerator DoActionsAfterDialogueLine(ConvoCore core, DialogueLineInfo lineInfo,
+            List<BaseDialogueLineAction> capture)
         {
             foreach (var action in lineInfo.ActionsAfterDialogueLine)
             {
@@ -561,10 +597,12 @@ namespace WolfstagInteractive.ConvoCore
                     Debug.LogError("Line " + lineInfo.ConversationLineIndex + " has null action");
                     continue;
                 }
+
                 if (core.ShouldExecuteAction(action, lineInfo.ConversationLineIndex))
                 {
                     continue;
                 }
+
                 var instance = Instantiate(action);
                 capture?.Add(instance);
                 yield return core.StartCoroutine(instance.ExecuteLineAction());

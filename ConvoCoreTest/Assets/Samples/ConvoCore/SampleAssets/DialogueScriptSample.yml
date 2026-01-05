@@ -1,144 +1,169 @@
 Conversation1:
-  - CharacterID: "Ava"
-    LocalizedDialogue:
-      EN: "Jared... we’re definitely off-trail."
-      FR: "Jared... on s'est clairement égarés."
-      ES: "Jared... definitivamente nos perdimos del sendero."
-
-  - CharacterID: "Jared"
-    LocalizedDialogue:
-      EN: "Technically, we’re *still* in the forest. Nature counts."
-      FR: "Techniquement, on est toujours dans la forêt. Ça compte, non?"
-      ES: "Técnicamente, seguimos en el bosque. Eso cuenta."
-
-  - CharacterID: "Ava"
-    LocalizedDialogue:
-      EN: "We’ve circled that tree three times now."
-      FR: "On a tourné autour de cet arbre trois fois."
-      ES: "Hemos rodeado ese árbol tres veces."
-
-  - CharacterID: "Jared"
-    LocalizedDialogue:
-      EN: "It’s a popular tree. Five stars on TreeAdvisor."
-      FR: "C’est un arbre populaire. Cinq étoiles sur TreeAdvisor."
-      ES: "Es un árbol famoso. Cinco estrellas en TreeAdvisor."
-
-  - CharacterID: "Ava"
-    LocalizedDialogue:
-      EN: "Shh! Did you hear that?"
-      FR: "Chut! T’as entendu ça ?"
-      ES: "¡Shh! ¿Escuchaste eso?"
-
-  - CharacterID: "Jared"
-    LocalizedDialogue:
-      EN: "Maybe it’s a bear. Or a ranger with snacks."
-      FR: "Peut-être un ours. Ou un garde forestier avec des snacks."
-      ES: "Quizás un oso. O un guardabosques con bocadillos."
-
-  - CharacterID: "Wolfstag"
-    LocalizedDialogue:
-      EN: "*A towering silhouette appears between the trees. Antlers like twisted branches.*"
-      FR: "*Une silhouette massive émerge entre les arbres. Des bois torsadés.*"
-      ES: "*Una silueta imponente aparece entre los árboles. Astas retorcidas.*"
-
-  - CharacterID: "Ava"
-    LocalizedDialogue:
-      EN: "What is *that?!*"
-      FR: "C’est quoi *ça* ?!"
-      ES: "¿¡Qué es *eso*!?"
-
-  - CharacterID: "Jared"
-    LocalizedDialogue:
-      EN: "*gasps* Whoooooa. Look at you!"
-      FR: "*halètement* Wooooow. Regarde-moi ça!"
-      ES: "*jadea* ¡Wooooow! ¡Mírate!"
-
-  - CharacterID: "Jared"
-    LocalizedDialogue:
-      EN: "Are you lost too, buddy? You need scritches? Huh? Who’s a majestic forest beast? *You* are!"
-      FR: "Tu t’es perdu aussi, mon grand ? Tu veux des gratouilles ? Qui est une bête majestueuse ? *C’est toi!*"
-      ES: "¿También estás perdido, amigo? ¿Quieres caricias? ¿Quién es una bestia majestuosa? ¡*Tú*!"
-
-  - CharacterID: "Wolfstag"
-    LocalizedDialogue:
-      EN: "*It tilts its head slightly. Curious.*"
-      FR: "*Il incline légèrement la tête. Curieux.*"
-      ES: "*Inclina ligeramente la cabeza. Curioso.*"
-
-  - CharacterID: "Ava"
-    LocalizedDialogue:
-      EN: "Jared… stop trying to pet the antler demon!"
-      FR: "Jared… arrête d’essayer de caresser le démon à bois!"
-      ES: "¡Jared... deja de intentar acariciar al demonio de los cuernos!"
-
-  - CharacterID: "Wolfstag"
-    LocalizedDialogue:
-      EN: "*The shadows melt away. The creature’s full form is revealed—fur glows silver in the moonlight.*"
-      FR: "*Les ombres se dissipent. La créature se dévoile — sa fourrure luit à la lumière lunaire.*"
-      ES: "*Las sombras se desvanecen. Su forma completa aparece — su pelaje brilla bajo la luna.*"
-
-  - CharacterID: "Jared"
-    LocalizedDialogue:
-      EN: "Oh my god. He’s gorgeous. I want ten of him."
-      FR: "Oh mon dieu. Il est splendide. J’en veux dix."
-      ES: "Dios mío. Es hermoso. Quiero diez."
-
-  - CharacterID: "Ava"
-    LocalizedDialogue:
-      EN: "...I think he’s leading us somewhere."
-      FR: "...Je crois qu’il nous guide quelque part."
-      ES: "...Creo que nos está guiando."
-
-  - CharacterID: "Wolfstag"
-    LocalizedDialogue:
-      EN: "*He glances back, takes a few careful steps, then waits.*"
-      FR: "*Il jette un regard en arrière, avance lentement, puis s’arrête.*"
-      ES: "*Mira hacia atrás, da unos pasos y espera.*"
-
-  - CharacterID: "Jared"
-    LocalizedDialogue:
-      EN: "Look at him! He’s so polite. Trail angel confirmed."
-      FR: "Regarde-le ! Trop poli. Ange du sentier confirmé."
-      ES: "¡Míralo! Tan educado. Ángel del sendero confirmado."
-
-  - CharacterID: "Ava"
-    LocalizedDialogue:
-      EN: "I think he wants us to follow. And... I think we should."
-      FR: "Il veut qu’on le suive. Et... je crois qu’on devrait."
-      ES: "Quiere que lo sigamos. Y... creo que debemos hacerlo."
-
-  - CharacterID: "Wolfstag"
-    LocalizedDialogue:
-      EN: "*The creature moves ahead again, parting the brush. Bits of a path peek through behind him.*"
-      FR: "*La créature avance à nouveau, écartant les buissons. Un sentier apparaît derrière lui.*"
-      ES: "*La criatura avanza, apartando los arbustos. Se revela un sendero detrás de él.*"
-
-  - CharacterID: "Jared"
-    LocalizedDialogue:
-      EN: "Wait... this looks familiar. That’s the ridge! That’s the way back!"
-      FR: "Attends... ça me dit quelque chose. C’est la crête ! C’est le bon chemin !"
-      ES: "Espera... esto me suena. ¡Esa es la cresta! ¡Ese es el camino de regreso!"
-
-  - CharacterID: "Ava"
-    LocalizedDialogue:
-      EN: "He really *is* guiding us..."
-      FR: "Il nous guide vraiment..."
-      ES: "De verdad nos está guiando..."
-
-  - CharacterID: "Wolfstag"
-    LocalizedDialogue:
-      EN: "*He pauses at the clearing's edge, makes eye contact, then silently disappears into the mist.*"
-      FR: "*Il s’arrête à la lisière de la clairière, nous regarde, puis disparaît dans la brume.*"
-      ES: "*Se detiene en el borde del claro, nos mira y desaparece entre la niebla.*"
-
-  - CharacterID: "Jared"
-    LocalizedDialogue:
-      EN: "...Goodbye, magic antler puppy. I hope you find your own trail home."
-      FR: "...Adieu, chien magique à bois. J’espère que tu retrouveras ton chemin."
-      ES: "...Adiós, cachorro mágico de astas. Ojalá encuentres tu camino."
-
-  - CharacterID: "Ava"
-    LocalizedDialogue:
-      EN: "...Next time, I’m bringing a map and a compass. And maybe pepper spray."
-      FR: "...La prochaine fois, je prends une carte, une boussole... et du spray au poivre."
-      ES: "...La próxima vez, llevaré un mapa, una brújula... y tal vez gas pimienta."
+- ConversationID: 
+  LineID: L_1d81acbabbaf
+  CharacterID: Ava
+  LocalizedDialogue:
+    en: Jared... we’re definitely off-trail.
+    fr: Jared... on s'est clairement égarés.
+    es: Jared... definitivamente nos perdimos del sendero.
+- ConversationID: 
+  LineID: L_f911037a3afe
+  CharacterID: Jared
+  LocalizedDialogue:
+    en: Technically, we’re *still* in the forest. Nature counts.
+    fr: Techniquement, on est toujours dans la forêt. Ça compte, non?
+    es: Técnicamente, seguimos en el bosque. Eso cuenta.
+- ConversationID: 
+  LineID: L_e347a5993728
+  CharacterID: Ava
+  LocalizedDialogue:
+    en: We’ve circled that tree three times now.
+    fr: On a tourné autour de cet arbre trois fois.
+    es: Hemos rodeado ese árbol tres veces.
+- ConversationID: 
+  LineID: L_20ab123c7986
+  CharacterID: Jared
+  LocalizedDialogue:
+    en: It’s a popular tree. Five stars on TreeAdvisor.
+    fr: C’est un arbre populaire. Cinq étoiles sur TreeAdvisor.
+    es: Es un árbol famoso. Cinco estrellas en TreeAdvisor.
+- ConversationID: 
+  LineID: L_d7c77faffa6d
+  CharacterID: Ava
+  LocalizedDialogue:
+    en: Shh! Did you hear that?
+    fr: Chut! T’as entendu ça ?
+    es: ¡Shh! ¿Escuchaste eso?
+- ConversationID: 
+  LineID: L_482679d42ab5
+  CharacterID: Jared
+  LocalizedDialogue:
+    en: Maybe it’s a bear. Or a ranger with snacks.
+    fr: Peut-être un ours. Ou un garde forestier avec des snacks.
+    es: Quizás un oso. O un guardabosques con bocadillos.
+- ConversationID: 
+  LineID: L_bc6e5fd287da
+  CharacterID: Wolfstag
+  LocalizedDialogue:
+    en: '*A towering silhouette appears between the trees. Antlers like twisted branches.*'
+    fr: '*Une silhouette massive émerge entre les arbres. Des bois torsadés.*'
+    es: '*Una silueta imponente aparece entre los árboles. Astas retorcidas.*'
+- ConversationID: 
+  LineID: L_666f70295cdf
+  CharacterID: Ava
+  LocalizedDialogue:
+    en: What is *that?!*
+    fr: C’est quoi *ça* ?!
+    es: ¿¡Qué es *eso*!?
+- ConversationID: 
+  LineID: L_caa4532dcc86
+  CharacterID: Jared
+  LocalizedDialogue:
+    en: '*gasps* Whoooooa. Look at you!'
+    fr: '*halètement* Wooooow. Regarde-moi ça!'
+    es: '*jadea* ¡Wooooow! ¡Mírate!'
+- ConversationID: 
+  LineID: L_e76cb91cb1b9
+  CharacterID: Jared
+  LocalizedDialogue:
+    en: Are you lost too, buddy? You need scritches? Huh? Who’s a majestic forest beast? *You* are!
+    fr: Tu t’es perdu aussi, mon grand ? Tu veux des gratouilles ? Qui est une bête majestueuse ? *C’est toi!*
+    es: ¿También estás perdido, amigo? ¿Quieres caricias? ¿Quién es una bestia majestuosa? ¡*Tú*!
+- ConversationID: 
+  LineID: L_3985fb81d5da
+  CharacterID: Wolfstag
+  LocalizedDialogue:
+    en: '*It tilts its head slightly. Curious.*'
+    fr: '*Il incline légèrement la tête. Curieux.*'
+    es: '*Inclina ligeramente la cabeza. Curioso.*'
+- ConversationID: 
+  LineID: L_c92941416c34
+  CharacterID: Ava
+  LocalizedDialogue:
+    en: Jared… stop trying to pet the antler demon!
+    fr: Jared… arrête d’essayer de caresser le démon à bois!
+    es: ¡Jared... deja de intentar acariciar al demonio de los cuernos!
+- ConversationID: 
+  LineID: L_ba59115903c7
+  CharacterID: Wolfstag
+  LocalizedDialogue:
+    en: '*The shadows melt away. The creature’s full form is revealed—fur glows silver in the moonlight.*'
+    fr: '*Les ombres se dissipent. La créature se dévoile — sa fourrure luit à la lumière lunaire.*'
+    es: '*Las sombras se desvanecen. Su forma completa aparece — su pelaje brilla bajo la luna.*'
+- ConversationID: 
+  LineID: L_f752b67800ba
+  CharacterID: Jared
+  LocalizedDialogue:
+    en: Oh my god. He’s gorgeous. I want ten of him.
+    fr: Oh mon dieu. Il est splendide. J’en veux dix.
+    es: Dios mío. Es hermoso. Quiero diez.
+- ConversationID: 
+  LineID: L_60bce86b2283
+  CharacterID: Ava
+  LocalizedDialogue:
+    en: '...I think he’s leading us somewhere.'
+    fr: '...Je crois qu’il nous guide quelque part.'
+    es: '...Creo que nos está guiando.'
+- ConversationID: 
+  LineID: L_b9bf0bd0afad
+  CharacterID: Wolfstag
+  LocalizedDialogue:
+    en: '*He glances back, takes a few careful steps, then waits.*'
+    fr: '*Il jette un regard en arrière, avance lentement, puis s’arrête.*'
+    es: '*Mira hacia atrás, da unos pasos y espera.*'
+- ConversationID: 
+  LineID: L_d7abfe986f2c
+  CharacterID: Jared
+  LocalizedDialogue:
+    en: Look at him! He’s so polite. Trail angel confirmed.
+    fr: Regarde-le ! Trop poli. Ange du sentier confirmé.
+    es: ¡Míralo! Tan educado. Ángel del sendero confirmado.
+- ConversationID: 
+  LineID: L_bf426c45fe1d
+  CharacterID: Ava
+  LocalizedDialogue:
+    en: I think he wants us to follow. And... I think we should.
+    fr: Il veut qu’on le suive. Et... je crois qu’on devrait.
+    es: Quiere que lo sigamos. Y... creo que debemos hacerlo.
+- ConversationID: 
+  LineID: L_3939192ad898
+  CharacterID: Wolfstag
+  LocalizedDialogue:
+    en: '*The creature moves ahead again, parting the brush. Bits of a path peek through behind him.*'
+    fr: '*La créature avance à nouveau, écartant les buissons. Un sentier apparaît derrière lui.*'
+    es: '*La criatura avanza, apartando los arbustos. Se revela un sendero detrás de él.*'
+- ConversationID: 
+  LineID: L_c8e675243847
+  CharacterID: Jared
+  LocalizedDialogue:
+    en: Wait... this looks familiar. That’s the ridge! That’s the way back!
+    fr: Attends... ça me dit quelque chose. C’est la crête ! C’est le bon chemin !
+    es: Espera... esto me suena. ¡Esa es la cresta! ¡Ese es el camino de regreso!
+- ConversationID: 
+  LineID: L_9cbaef22248f
+  CharacterID: Ava
+  LocalizedDialogue:
+    en: He really *is* guiding us...
+    fr: Il nous guide vraiment...
+    es: De verdad nos está guiando...
+- ConversationID: 
+  LineID: L_c596ce6ddc52
+  CharacterID: Wolfstag
+  LocalizedDialogue:
+    en: "*He pauses at the clearing's edge, makes eye contact, then silently disappears into the mist.*"
+    fr: '*Il s’arrête à la lisière de la clairière, nous regarde, puis disparaît dans la brume.*'
+    es: '*Se detiene en el borde del claro, nos mira y desaparece entre la niebla.*'
+- ConversationID: 
+  LineID: L_8b152df2138c
+  CharacterID: Jared
+  LocalizedDialogue:
+    en: '...Goodbye, magic antler puppy. I hope you find your own trail home.'
+    fr: '...Adieu, chien magique à bois. J’espère que tu retrouveras ton chemin.'
+    es: '...Adiós, cachorro mágico de astas. Ojalá encuentres tu camino.'
+- ConversationID: 
+  LineID: L_4c2845dd0ba4
+  CharacterID: Ava
+  LocalizedDialogue:
+    en: '...Next time, I’m bringing a map and a compass. And maybe pepper spray.'
+    fr: '...La prochaine fois, je prends une carte, une boussole... et du spray au poivre.'
+    es: '...La próxima vez, llevaré un mapa, una brújula... y tal vez gas pimienta.'

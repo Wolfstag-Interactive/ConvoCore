@@ -931,13 +931,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: ConvoCoreSampleUI
       objectReference: {fileID: 0}
+    - target: {fileID: 1961101549865962711, guid: 37defd90b8cf4c644b832efe22df606d, type: 3}
+      propertyPath: AutoHideUIOnStart
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2475525088512401250, guid: 37defd90b8cf4c644b832efe22df606d, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 0.000061035156
       objectReference: {fileID: 0}
     - target: {fileID: 2475525088512401250, guid: 37defd90b8cf4c644b832efe22df606d, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 191.49977
+      value: 191.49956
       objectReference: {fileID: 0}
     - target: {fileID: 2674301797292854259, guid: 37defd90b8cf4c644b832efe22df606d, type: 3}
       propertyPath: m_AnchorMax.x
@@ -1074,6 +1078,18 @@ PrefabInstance:
     - target: {fileID: 6846698865680571438, guid: 37defd90b8cf4c644b832efe22df606d, type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7358730962914570107, guid: 37defd90b8cf4c644b832efe22df606d, type: 3}
+      propertyPath: m_Size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8549435574733789447, guid: 37defd90b8cf4c644b832efe22df606d, type: 3}
+      propertyPath: m_Value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9016958570006270770, guid: 37defd90b8cf4c644b832efe22df606d, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 37defd90b8cf4c644b832efe22df606d, type: 3}
