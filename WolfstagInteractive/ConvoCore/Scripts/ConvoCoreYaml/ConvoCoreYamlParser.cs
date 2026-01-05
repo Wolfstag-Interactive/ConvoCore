@@ -5,11 +5,10 @@ using YamlDotNet.Serialization;
 namespace WolfstagInteractive.ConvoCore
 {
     /// <summary>
-    /// Centralized YAML -> object parse for ConvoCore.
-    /// - Parses your schema: Dictionary&lt;string, List&lt;DialogueYamlConfig&gt;&gt;.
-    /// - Normalizes locale keys so lookups are case-insensitive (EN/en/en-US).
+    /// Provides methods to parse YAML text into a conversation data structure and manage associated dialogue configurations.
     /// </summary>
-[UnityEngine.HelpURL("https://docs.wolfstaginteractive.com/classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreYamlParser.html")]
+    [UnityEngine.HelpURL(
+        "https://docs.wolfstaginteractive.com/classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreYamlParser.html")]
     public static class ConvoCoreYamlParser
     {
         // Build the YamlDotNet deserializer once

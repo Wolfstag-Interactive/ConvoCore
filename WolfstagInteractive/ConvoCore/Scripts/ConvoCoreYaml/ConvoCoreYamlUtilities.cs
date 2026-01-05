@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using YamlDotNet.Serialization;
 
 namespace WolfstagInteractive.ConvoCore
 {
@@ -43,17 +42,11 @@ namespace WolfstagInteractive.ConvoCore
                 Debug.LogError($"YAML file not found. {sourcesMsg}");
                 return;
             }
-
-            var deserializer = new DeserializerBuilder().Build();
-
+            
             Dictionary<string, List<DialogueYamlConfig>> dialoguesBySection;
             try
             {
-                dialoguesBySection = deserializer.Deserialize<Dictionary<string, List<DialogueYamlConfig>>>(yamlData) ??
-                                     new();
-
-                foreach (var kv in dialoguesBySection)
-                    NormalizeLocales(kv.Value);
+                dialoguesBySection = ConvoCoreYamlParser.Parse(yamlData);
             }
             catch (Exception ex)
             {
@@ -234,31 +227,6 @@ namespace WolfstagInteractive.ConvoCore
                     return dl;
             }
             return null;
-        }
-
-        /// <summary>
-        /// Normalizes the localized dialogue keys in a list of dialogue configurations.
-        /// Ensures that keys are converted to lower-invariant strings and case-insensitive lookups are enabled.
-        /// </summary>
-        /// <param name="list">The list of <see cref="DialogueYamlConfig"/> objects containing localized dialogue data to be normalized.</param>
-        private static void NormalizeLocales(List<DialogueYamlConfig> list)
-        {
-            if (list == null) return;
-            foreach (var cfg in list)
-            {
-                if (cfg?.LocalizedDialogue == null) continue;
-
-                // Normalize locale keys to lower-invariant and ensure case-insensitive lookups
-                var norm = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
-                foreach (var p in cfg.LocalizedDialogue)
-                {
-                    if (string.IsNullOrEmpty(p.Key)) continue;
-                    var key = p.Key.Trim().ToLowerInvariant();
-                    norm[key] = p.Value;
-                }
-
-                cfg.LocalizedDialogue = norm;
-            }
         }
     }
 }

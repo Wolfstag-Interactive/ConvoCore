@@ -66,7 +66,11 @@ namespace WolfstagInteractive.ConvoCore
             {
                 var line = DialogueLines[i];
                 if (line == null) continue;
-
+                if (string.IsNullOrEmpty(line.LineID))
+                {
+                    Debug.LogError($"Dialogue Line ID {line.ConversationLineIndex} is empty. " +
+                                   $"Re-embed the conversation on this conversation object and reimport the dialogue lines.",this);
+                }
                 line.EnsureCharacterRepresentationListInitialized();
 
                 if (ValidatePrimaryCharacterRepresentation(line, i))
