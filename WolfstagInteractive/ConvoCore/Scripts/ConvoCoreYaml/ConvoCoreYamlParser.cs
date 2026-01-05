@@ -12,7 +12,7 @@ namespace WolfstagInteractive.ConvoCore
     public static class ConvoCoreYamlParser
     {
         // Build the YamlDotNet deserializer once
-        private static readonly IDeserializer _deserializer = new DeserializerBuilder().Build();
+        private static readonly IDeserializer Deserializer = new DeserializerBuilder().Build();
 
         /// <summary>
         /// Parse YAML text to Dictionary{conversationKey -> List of DialogueYamlConfig}.
@@ -23,7 +23,7 @@ namespace WolfstagInteractive.ConvoCore
             if (string.IsNullOrWhiteSpace(yamlText))
                 return new Dictionary<string, List<DialogueYamlConfig>>();
 
-            var dict = _deserializer
+            var dict = Deserializer
                            .Deserialize<Dictionary<string, List<DialogueYamlConfig>>>(yamlText)
                        ?? new Dictionary<string, List<DialogueYamlConfig>>();
 

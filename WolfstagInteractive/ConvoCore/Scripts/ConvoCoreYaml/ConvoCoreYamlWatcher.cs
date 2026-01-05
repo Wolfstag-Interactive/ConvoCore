@@ -128,7 +128,7 @@ namespace WolfstagInteractive.ConvoCore.Editor
             {
                 srcText = ConvoCoreYamlSerializer.Serialize(dict);
 
-                // Persist to source file only when writable
+                // Persist to the source file only when writable
                 if (sourcePath.StartsWith("Assets/", StringComparison.Ordinal))
                 {
                     try
@@ -157,18 +157,18 @@ namespace WolfstagInteractive.ConvoCore.Editor
                 {
                     for (int i = 0; i < reps.Length; i++)
                     {
-                        if (reps[i] is TextAsset repTa && repTa.name == "EmbeddedYaml")
+                        if (reps[i] is TextAsset { name: "EmbeddedYaml" } repTa)
                             UnityEngine.Object.DestroyImmediate(repTa, true);
                     }
                 }
             }
 
-            // Create new embedded yaml TextAsset subasset
+            // Create a new embedded YAML TextAsset subasset
             var embedded = new TextAsset(srcText) { name = "EmbeddedYaml" };
             AssetDatabase.AddObjectToAsset(embedded, data);
             data.ConversationYaml = embedded;
 
-            // Keep default FilePath stable if not set
+            // Keep the default FilePath stable if not set
             if (string.IsNullOrEmpty(data.FilePath))
             {
                 var baseName = Path.GetFileNameWithoutExtension(sourcePath);
