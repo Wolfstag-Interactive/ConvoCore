@@ -1,0 +1,7 @@
+<map id="WolfstagInteractive.ConvoCore.CharacterRepresentationBase" name="WolfstagInteractive.ConvoCore.CharacterRepresentationBase">
+<area shape="rect" id="Node000001" title=" " alt="" coords="50,79,301,119"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,135,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="98,37,152,76,148,81,95,41"/>
+<area shape="rect" id="Node000003" href="$interfaceWolfstagInteractive_1_1ConvoCore_1_1IEditorPreviewableRepresentation.html" title=" " alt="" coords="159,5,402,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="256,41,202,81,199,76,253,37"/>
+</map>

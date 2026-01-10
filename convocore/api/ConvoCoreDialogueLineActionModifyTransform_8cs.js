@@ -1,0 +1,4 @@
+var ConvoCoreDialogueLineActionModifyTransform_8cs =
+[
+    [ "WolfstagInteractive.ConvoCore.ConvoCoreDialogueLineActionModifyTransform", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreDialogueLineActionModifyTransform.html", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreDialogueLineActionModifyTransform" ]
+];

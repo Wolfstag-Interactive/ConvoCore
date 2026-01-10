@@ -24,16 +24,46 @@
 */
 var NAVTREE =
 [
-  [ "My Project", "index.html", [
-    [ "ConvoCore", "md__r_e_a_d_m_e.html", null ]
+  [ "ConvoCore", "index.html", [
+    [ "Namespaces", "namespaces.html", [
+      [ "Namespace List", "namespaces.html", "namespaces_dup" ],
+      [ "Namespace Members", "namespacemembers.html", [
+        [ "All", "namespacemembers.html", null ],
+        [ "Enumerations", "namespacemembers_enum.html", null ]
+      ] ]
+    ] ],
+    [ "Classes", "annotated.html", [
+      [ "Class List", "annotated.html", "annotated_dup" ],
+      [ "Class Index", "classes.html", null ],
+      [ "Class Hierarchy", "hierarchy.html", "hierarchy" ],
+      [ "Class Members", "functions.html", [
+        [ "All", "functions.html", "functions_dup" ],
+        [ "Functions", "functions_func.html", "functions_func" ],
+        [ "Variables", "functions_vars.html", "functions_vars" ],
+        [ "Enumerations", "functions_enum.html", null ],
+        [ "Properties", "functions_prop.html", null ],
+        [ "Events", "functions_evnt.html", null ]
+      ] ]
+    ] ],
+    [ "Files", "files.html", [
+      [ "File List", "files.html", "files_dup" ],
+      [ "File Members", "globals.html", [
+        [ "All", "globals.html", null ],
+        [ "Typedefs", "globals_type.html", null ]
+      ] ]
+    ] ]
   ] ]
 ];
 
 var NAVTREEINDEX =
 [
-"index.html"
+"BaseDialogueLineAction_8cs.html",
+"classWolfstagInteractive_1_1ConvoCore_1_1ConvoCore.html#af71ccf0e9d25ce86bae7590a42e279a4",
+"classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreDialogueLineActionModifyTransform.html#afdc2d7d9d29eaaf923365d3ff420c475",
+"classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSettings.html#a606b3032aa0144bc2cb392458ce9bf1c",
+"classWolfstagInteractive_1_1ConvoCore_1_1PagedListAttribute.html#ac0af12799b796e7f9b9146a07fe09f96",
+"functions_r.html"
 ];
 
-var SYNCONMSG = 'click to disable panel synchronization';
-var SYNCOFFMSG = 'click to enable panel synchronization';
-var LISTOFALLMEMBERS = 'List of all members';
+var SYNCONMSG = 'click to disable panel synchronisation';
+var SYNCOFFMSG = 'click to enable panel synchronisation';

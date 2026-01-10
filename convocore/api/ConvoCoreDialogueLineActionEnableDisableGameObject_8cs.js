@@ -1,0 +1,4 @@
+var ConvoCoreDialogueLineActionEnableDisableGameObject_8cs =
+[
+    [ "WolfstagInteractive.ConvoCore.ConvoCoreDialogueLineActionEnableDisableGameObject", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreDialogueLineActionEnableDisableGameObject.html", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreDialogueLineActionEnableDisableGameObject" ]
+];

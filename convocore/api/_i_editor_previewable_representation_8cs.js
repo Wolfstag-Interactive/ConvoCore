@@ -1,0 +1,4 @@
+var _i_editor_previewable_representation_8cs =
+[
+    [ "WolfstagInteractive.ConvoCore.IEditorPreviewableRepresentation", "interface_wolfstag_interactive_1_1_convo_core_1_1_i_editor_previewable_representation.html", "interface_wolfstag_interactive_1_1_convo_core_1_1_i_editor_previewable_representation" ]
+];

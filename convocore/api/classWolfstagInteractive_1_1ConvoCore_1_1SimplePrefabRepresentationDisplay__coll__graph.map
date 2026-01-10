@@ -1,0 +1,17 @@
+<map id="WolfstagInteractive.ConvoCore.SimplePrefabRepresentationDisplay" name="WolfstagInteractive.ConvoCore.SimplePrefabRepresentationDisplay">
+<area shape="rect" id="Node000001" title=" " alt="" coords="961,65,1204,120"/>
+<area shape="rect" id="Node000002" href="$classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreCharacterDisplayBase.html" title="Generic base class for all prefab&#45;based character displays." alt="" coords="589,51,827,76"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="841,71,961,81,961,86,841,76"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="343,5,467,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="481,27,623,48,622,53,481,32"/>
+<area shape="rect" id="Node000004" href="$interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoCoreCharacterDisplay.html" title=" " alt="" coords="301,55,510,80"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="524,63,589,62,589,68,524,68"/>
+<area shape="rect" id="Node000005" href="$classWolfstagInteractive_1_1ConvoCore_1_1PrefabCharacterRepresentationData.html" title=" " alt="" coords="563,101,853,141"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="867,106,961,99,961,104,867,111"/>
+<area shape="rect" id="Node000006" href="$classWolfstagInteractive_1_1ConvoCore_1_1CharacterRepresentationBase.html" title=" " alt="" coords="297,108,513,133"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="527,118,562,118,562,123,527,123"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="62,83,191,108"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="205,100,297,108,297,113,205,105"/>
+<area shape="rect" id="Node000008" href="$interfaceWolfstagInteractive_1_1ConvoCore_1_1IEditorPreviewableRepresentation.html" title=" " alt="" coords="5,132,248,157"/>
+<area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="261,130,297,127,297,133,262,136"/>
+</map>
