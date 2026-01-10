@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace WolfstagInteractive.ConvoCore
 {
-[UnityEngine.HelpURL("https://docs.wolfstaginteractive.com/classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreAddressablesUtil.html")]
+[UnityEngine.HelpURL("https://docs.wolfstaginteractive.com/convocore/api/classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreAddressablesUtil.html")]
     public static class ConvoCoreAddressablesUtil
     {
 #if CONVOCORE_ADDRESSABLES

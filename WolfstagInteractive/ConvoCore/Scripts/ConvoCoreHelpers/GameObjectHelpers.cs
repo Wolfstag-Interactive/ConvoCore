@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace WolfstagInteractive.ConvoCore
 {
-[UnityEngine.HelpURL("https://docs.wolfstaginteractive.com/classWolfstagInteractive_1_1ConvoCore_1_1GameObjectHelper.html")]
+[UnityEngine.HelpURL("https://docs.wolfstaginteractive.com/convocore/api/classWolfstagInteractive_1_1ConvoCore_1_1GameObjectHelper.html")]
     public static class GameObjectHelper
     {
         private static Transform searchRoot;

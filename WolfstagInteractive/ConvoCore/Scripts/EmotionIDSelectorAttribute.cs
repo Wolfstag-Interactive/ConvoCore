@@ -7,7 +7,7 @@ namespace WolfstagInteractive.ConvoCore
     /// SerializedProperty that references a CharacterRepresentationBase asset.
     /// Stores the GUID, shows DisplayName.
     /// </summary>
-    [UnityEngine.HelpURL("https://docs.wolfstaginteractive.com/classWolfstagInteractive_1_1ConvoCore_1_1ExpressionIDSelectorAttribute.html")]
+    [UnityEngine.HelpURL("https://docs.wolfstaginteractive.com/convocore/api/classWolfstagInteractive_1_1ConvoCore_1_1ExpressionIDSelectorAttribute.html")]
 [System.AttributeUsage(System.AttributeTargets.Field, AllowMultiple = false)]
     public class ExpressionIDSelectorAttribute : PropertyAttribute
     {

@@ -7,7 +7,7 @@ using System.Linq;
 using System.Collections.Generic;
 namespace WolfstagInteractive.ConvoCore.Editor
 {
-    [UnityEngine.HelpURL("https://docs.wolfstaginteractive.com/classWolfstagInteractive_1_1ConvoCore_1_1Editor_1_1CharacterConversationObjectEditor.html")]
+    [UnityEngine.HelpURL("https://docs.wolfstaginteractive.com/convocore/api/classWolfstagInteractive_1_1ConvoCore_1_1Editor_1_1CharacterConversationObjectEditor.html")]
 [CustomEditor(typeof(ConvoCoreConversationData))]
     public class CharacterConversationObjectEditor : UnityEditor.Editor
     {

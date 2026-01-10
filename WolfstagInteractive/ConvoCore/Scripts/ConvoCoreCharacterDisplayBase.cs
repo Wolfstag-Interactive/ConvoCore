@@ -6,7 +6,7 @@ namespace WolfstagInteractive.ConvoCore
     /// Generic base class for all prefab-based character displays.
     /// Applies scale, flip, and side offsets using ConvoCore's side-based layout model.
     /// </summary>
-[UnityEngine.HelpURL("https://docs.wolfstaginteractive.com/classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreCharacterDisplayBase.html")]
+[UnityEngine.HelpURL("https://docs.wolfstaginteractive.com/convocore/api/classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreCharacterDisplayBase.html")]
     public abstract class ConvoCoreCharacterDisplayBase : MonoBehaviour, IConvoCoreCharacterDisplay
     {
         [Header("Display Root Settings")]

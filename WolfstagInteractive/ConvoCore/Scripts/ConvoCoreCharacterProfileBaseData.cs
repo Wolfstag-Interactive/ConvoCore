@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace WolfstagInteractive.ConvoCore
 {
-    [UnityEngine.HelpURL("https://docs.wolfstaginteractive.com/classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreCharacterProfileBaseData.html")]
+    [UnityEngine.HelpURL("https://docs.wolfstaginteractive.com/convocore/api/classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreCharacterProfileBaseData.html")]
 [CreateAssetMenu(fileName = "NewCharacterProfile", menuName = "ConvoCore/CharacterProfile")]
     public class ConvoCoreCharacterProfileBaseData : ScriptableObject
     {

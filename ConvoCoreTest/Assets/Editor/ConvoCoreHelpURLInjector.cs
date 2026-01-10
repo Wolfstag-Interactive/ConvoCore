@@ -19,7 +19,7 @@ using System.Text.RegularExpressions;
 /// </summary>
 public class ConvoCoreHelpURLInjector : AssetModificationProcessor
 {
-    private const string DocsBaseUrl = "https://docs.wolfstaginteractive.com/";
+    private const string DocsBaseUrl = "https://docs.wolfstaginteractive.com/convocore/api";
     private const string RootFolder  = "Packages/com.wolfstaginteractive.convocore/";
     private static readonly Regex HelpUrlAttrRegex =
         new Regex(@"\[\s*(?:UnityEngine\.)?HelpURL\s*\(", RegexOptions.Multiline);
@@ -299,22 +299,14 @@ private static bool TryInjectHelpUrl(string scriptPath, out FailReason failReaso
         // Join namespaces with _1_1 separators (Doxygen style)
         string joinedNamespaces = string.Join("_1_1", parts);
 
-        // --- Doxygen Rule ---
-        // If the class name is identical to the final namespace segment,
-        // Doxygen *keeps both* (e.g. ConvoCore.ConvoCore -> ..._ConvoCore_1_1ConvoCore.html)
-        bool duplicateAllowed = parts.Length > 0 &&
-                                parts[^1].Equals(typeName, StringComparison.Ordinal);
-
         // Construct final filename
-        string fileName = duplicateAllowed
-            ? $"{prefix}{joinedNamespaces}_1_1{typeName}.html"
-            : $"{prefix}{joinedNamespaces}_1_1{typeName}.html"; // identical here for clarity
+        string fileName = $"{prefix}{joinedNamespaces}_1_1{typeName}.html";
 
         // For safety, collapse any accidental double separators
         fileName = fileName.Replace("__", "_");
 
-        // Compose final URL
-        return $"https://docs.wolfstaginteractive.com/{fileName}";
+        // Compose final URL using the DocsBaseUrl
+        return $"{DocsBaseUrl}/{fileName}";
     }
 
 

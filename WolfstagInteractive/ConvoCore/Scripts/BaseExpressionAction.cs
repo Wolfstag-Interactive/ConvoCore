@@ -1,7 +1,7 @@
 using UnityEngine;
 using WolfstagInteractive.ConvoCore;
 
-[UnityEngine.HelpURL("https://docs.wolfstaginteractive.com/classWolfstagInteractive_1_1ConvoCore_1_1BaseExpressionAction.html")]
+[UnityEngine.HelpURL("https://docs.wolfstaginteractive.com/convocore/api/classWolfstagInteractive_1_1ConvoCore_1_1BaseExpressionAction.html")]
 
 public abstract class BaseExpressionAction : ScriptableObject
 {

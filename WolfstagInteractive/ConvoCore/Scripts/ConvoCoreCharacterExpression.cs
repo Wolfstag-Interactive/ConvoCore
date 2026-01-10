@@ -6,7 +6,7 @@ using UnityEngine.Serialization;
 
 namespace WolfstagInteractive.ConvoCore
 {
-    [HelpURL("https://docs.wolfstaginteractive.com/classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreCharacterExpression.html")]
+    [HelpURL("https://docs.wolfstaginteractive.com/convocore/api/classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreCharacterExpression.html")]
 [CreateAssetMenu(fileName = "NewCharacterExpression", menuName = "ConvoCore/Character/Expression")]
     public class ConvoCoreCharacterExpression : ScriptableObject
     {

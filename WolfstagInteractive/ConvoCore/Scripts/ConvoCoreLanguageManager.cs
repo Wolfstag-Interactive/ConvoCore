@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace WolfstagInteractive.ConvoCore
 {
-    [HelpURL("https://docs.wolfstaginteractive.com/classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreLanguageManager.html")]
+    [HelpURL("https://docs.wolfstaginteractive.com/convocore/api/classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreLanguageManager.html")]
     public class ConvoCoreLanguageManager
     {
         private static ConvoCoreLanguageManager _instance;

@@ -4,7 +4,7 @@ using System.IO;
 
 namespace WolfstagInteractive.ConvoCore.Editor
 {
-[UnityEngine.HelpURL("https://docs.wolfstaginteractive.com/classWolfstagInteractive_1_1ConvoCore_1_1Editor_1_1ConvoCoreEditorUtilities.html")]
+[UnityEngine.HelpURL("https://docs.wolfstaginteractive.com/convocore/api/classWolfstagInteractive_1_1ConvoCore_1_1Editor_1_1ConvoCoreEditorUtilities.html")]
     public static class ConvoCoreEditorUtilities
     {
         [MenuItem("Tools/Wolfstag Interactive/ConvoCore/Create LanguageSettings")]

@@ -10,7 +10,7 @@ namespace WolfstagInteractive.ConvoCore
     /// Simple dialogue history renderer that appends plain text lines
     /// to a TMP_Text component with no markup or color formatting.
     /// </summary>
-[UnityEngine.HelpURL("https://docs.wolfstaginteractive.com/classWolfstagInteractive_1_1ConvoCore_1_1PlainTextHistoryRenderer.html")]
+[UnityEngine.HelpURL("https://docs.wolfstaginteractive.com/convocore/api/classWolfstagInteractive_1_1ConvoCore_1_1PlainTextHistoryRenderer.html")]
     public class PlainTextHistoryRenderer : IConvoCoreHistoryRenderer
     {
         public string RendererName => "Plain";

@@ -6,7 +6,7 @@ using System.Linq;
 namespace WolfstagInteractive.ConvoCore.Editor
 {
     [CanEditMultipleObjects]
-    [UnityEngine.HelpURL("https://docs.wolfstaginteractive.com/classWolfstagInteractive_1_1ConvoCore_1_1Editor_1_1ConvoCoreDialogueHistoryUIEditor.html")]
+    [UnityEngine.HelpURL("https://docs.wolfstaginteractive.com/convocore/api/classWolfstagInteractive_1_1ConvoCore_1_1Editor_1_1ConvoCoreDialogueHistoryUIEditor.html")]
 [CustomEditor(typeof(ConvoCoreDialogueHistoryUI))]
     public class ConvoCoreDialogueHistoryUIEditor : UnityEditor.Editor
     {

@@ -7,7 +7,7 @@ namespace WolfstagInteractive.ConvoCore
     /// Renderer that requests prefab-based dialogue entry creation via IDialogueHistoryOutputPrefab.
     /// Does not directly instantiate or manipulate Unity UI elements.
     /// </summary>
-[UnityEngine.HelpURL("https://docs.wolfstaginteractive.com/classWolfstagInteractive_1_1ConvoCore_1_1PrefabHistoryRenderer.html")]
+[UnityEngine.HelpURL("https://docs.wolfstaginteractive.com/convocore/api/classWolfstagInteractive_1_1ConvoCore_1_1PrefabHistoryRenderer.html")]
     public class PrefabHistoryRenderer : IConvoCoreHistoryRenderer
     {
         public string RendererName => "Prefab";

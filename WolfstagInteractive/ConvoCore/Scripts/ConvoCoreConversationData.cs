@@ -10,7 +10,7 @@ using WolfstagInteractive.ConvoCore.Editor;
 namespace WolfstagInteractive.ConvoCore
 {
     [HelpURL(
-        "https://docs.wolfstaginteractive.com/classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData.html")]
+        "https://docs.wolfstaginteractive.com/convocore/api/classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData.html")]
     [CreateAssetMenu(fileName = "New ConvoCore Conversation",
         menuName = "ConvoCore/Conversation Dialogue Object")]
     public partial class ConvoCoreConversationData : ScriptableObject

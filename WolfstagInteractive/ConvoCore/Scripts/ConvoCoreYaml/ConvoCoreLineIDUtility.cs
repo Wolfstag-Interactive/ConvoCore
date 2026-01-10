@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 namespace WolfstagInteractive.ConvoCore
 {
+[HelpURL("https://docs.wolfstaginteractive.com/convocore/api/classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreLineID.html")]
     public static class ConvoCoreLineID
     {
         public static string NewLineID()

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace WolfstagInteractive.ConvoCore
 {
-    [HelpURL("https://docs.wolfstaginteractive.com/classWolfstagInteractive_1_1ConvoCore_1_1PrefabCharacterRepresentationData.html")]
+    [HelpURL("https://docs.wolfstaginteractive.com/convocore/api/classWolfstagInteractive_1_1ConvoCore_1_1PrefabCharacterRepresentationData.html")]
 [CreateAssetMenu(fileName = "PrefabCharacterRepresentation",
         menuName = "ConvoCore/Character/Representation/Prefab Character Representation")]
     //This class dictates how a prefab should be represented by telling ConvoCore how to get and apply expressions and expression actions 

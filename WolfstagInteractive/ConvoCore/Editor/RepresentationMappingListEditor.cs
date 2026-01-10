@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace WolfstagInteractive.ConvoCoreEditor
 {
-[UnityEngine.HelpURL("https://docs.wolfstaginteractive.com/classWolfstagInteractive_1_1ConvoCoreEditor_1_1RepresentationMappingListEditor.html")]
+[UnityEngine.HelpURL("https://docs.wolfstaginteractive.com/convocore/api/classWolfstagInteractive_1_1ConvoCoreEditor_1_1RepresentationMappingListEditor.html")]
     public static class RepresentationMappingListEditor
     {
         public static ReorderableList Build(

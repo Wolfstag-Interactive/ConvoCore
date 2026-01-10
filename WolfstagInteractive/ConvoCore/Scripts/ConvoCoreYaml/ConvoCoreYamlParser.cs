@@ -8,7 +8,7 @@ namespace WolfstagInteractive.ConvoCore
     /// Provides methods to parse YAML text into a conversation data structure and manage associated dialogue configurations.
     /// </summary>
     [UnityEngine.HelpURL(
-        "https://docs.wolfstaginteractive.com/classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreYamlParser.html")]
+        "https://docs.wolfstaginteractive.com/convocore/api/classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreYamlParser.html")]
     public static class ConvoCoreYamlParser
     {
         // Build the YamlDotNet deserializer once
