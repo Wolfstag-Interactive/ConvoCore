@@ -24,14 +24,45 @@
 */
 var NAVTREE =
 [
-  [ "My Project", "index.html", [
-    [ "ConvoCore", "md__r_e_a_d_m_e.html", null ]
+  [ "ConvoCore", "index.html", [
+    [ "Namespaces", "namespaces.html", [
+      [ "Namespace List", "namespaces.html", "namespaces_dup" ],
+      [ "Namespace Members", "namespacemembers.html", [
+        [ "All", "namespacemembers.html", null ],
+        [ "Enumerations", "namespacemembers_enum.html", null ]
+      ] ]
+    ] ],
+    [ "Classes", "annotated.html", [
+      [ "Class List", "annotated.html", "annotated_dup" ],
+      [ "Class Index", "classes.html", null ],
+      [ "Class Hierarchy", "hierarchy.html", "hierarchy" ],
+      [ "Class Members", "functions.html", [
+        [ "All", "functions.html", "functions_dup" ],
+        [ "Functions", "functions_func.html", "functions_func" ],
+        [ "Variables", "functions_vars.html", "functions_vars" ],
+        [ "Enumerations", "functions_enum.html", null ],
+        [ "Properties", "functions_prop.html", null ],
+        [ "Events", "functions_evnt.html", null ]
+      ] ]
+    ] ],
+    [ "Files", "files.html", [
+      [ "File List", "files.html", "files_dup" ],
+      [ "File Members", "globals.html", [
+        [ "All", "globals.html", null ],
+        [ "Typedefs", "globals_type.html", null ]
+      ] ]
+    ] ]
   ] ]
 ];
 
 var NAVTREEINDEX =
 [
-"index.html"
+"_base_dialogue_line_action_8cs.html",
+"class_wolfstag_interactive_1_1_convo_core_1_1_convo_core_character_display_base.html#a45fee51fab13fe00b449b07065d711c9",
+"class_wolfstag_interactive_1_1_convo_core_1_1_convo_core_dialogue_localization_handler.html",
+"class_wolfstag_interactive_1_1_convo_core_1_1_convo_core_settings.html#ace9633e2b1bab5320a8662918a37fbfc",
+"class_wolfstag_interactive_1_1_convo_core_1_1_plain_text_history_renderer.html#a90920e86f91e03f57668cf6a5b6fd627",
+"functions_vars_s.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronization';

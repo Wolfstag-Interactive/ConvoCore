@@ -33,6 +33,15 @@ jobs:
           rm -rf website_docusaurus/static/convocore/api
           mkdir -p website_docusaurus/static/convocore/api
           rsync -a Docs/html/ website_docusaurus/static/convocore/api/
+      - name: Ensure copied API contains class pages
+        run: |
+          test -f website_docusaurus/static/convocore/api/annotated.html
+          test -f website_docusaurus/static/convocore/api/classes.html
+
+      - name: Ensure Doxygen produced class pages
+        run: |
+          test -f Docs/html/annotated.html
+          test -f Docs/html/classes.html
 
       # Hard fail if API did not generate correctly
       - name: Ensure API index exists
