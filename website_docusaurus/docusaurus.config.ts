@@ -27,8 +27,8 @@ const config: Config = {
     navbar: {
       title: 'ConvoCore',
       items: [
-        {to: '/convocore/', label: 'Guide', position: 'left'},
-        {href: '/convocore/api/index.html', label: 'API', position: 'left'},
+        {to: 'convocore/', label: 'Guide', position: 'left'},
+        {href: 'convocore/api/index.html', label: 'API', position: 'left'},
       ],
     },
   },

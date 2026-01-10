@@ -20,6 +20,8 @@ jobs:
 
       - name: Build Doxygen API
         run: doxygen Doxyfile
+      - name: Ensure API index exists
+        run: test -f website_docusaurus/static/convocore/api/index.html
 
       - name: Copy Doxygen HTML into Docusaurus static path
         run: |
