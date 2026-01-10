@@ -16,7 +16,7 @@ using System.Collections;
 
 namespace WolfstagInteractive.ConvoCore
 {
-    [HelpURL("https://docs.wolfstaginteractive.com/classWolfstagInteractive_1_1ConvoCore_1_1BaseAction.html")]
+    [HelpURL("https://docs.wolfstaginteractive.com/classWolfstagInteractive_1_1ConvoCore_1_1BaseDialogueLineAction.html")]
     [System.Serializable]
     public class BaseDialogueLineAction : ScriptableObject
     {

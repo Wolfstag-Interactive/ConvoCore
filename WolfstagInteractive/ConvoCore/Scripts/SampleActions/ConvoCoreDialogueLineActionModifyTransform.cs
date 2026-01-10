@@ -3,7 +3,7 @@ using System.Collections;
 
 namespace WolfstagInteractive.ConvoCore
 {
-    [UnityEngine.HelpURL("https://docs.wolfstaginteractive.com/classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreAction_ModifyTransform.html")]
+    [UnityEngine.HelpURL("https://docs.wolfstaginteractive.com/classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreDialogueLineActionModifyTransform.html")]
 [CreateAssetMenu(menuName = "ConvoCore/Actions/ModifyTransform")] [System.Serializable]
     public class ConvoCoreDialogueLineActionModifyTransform : BaseDialogueLineAction
     {
