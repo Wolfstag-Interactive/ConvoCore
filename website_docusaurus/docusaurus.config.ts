@@ -25,10 +25,9 @@ const config: Config = {
 
   themeConfig: {
     navbar: {
-      title: 'ConvoCore',
       items: [
         {to: '/convocore/', label: 'Guide', position: 'left'},
-        {href: '/convocore/api/', label: 'API', position: 'left'},
+        {href: 'https://docs.wolfstaginteractive.com/convocore/api/', label: 'API', position: 'left'},
       ],
     },
   },

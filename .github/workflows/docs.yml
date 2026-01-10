@@ -28,6 +28,11 @@ jobs:
           rm -rf website_docusaurus/static/convocore/api
           mkdir -p website_docusaurus/static/convocore/api
           rsync -a html/ website_docusaurus/static/convocore/api/
+      - name: Debug API folder contents
+        run: |
+          ls -la website_docusaurus/static/convocore || true
+          ls -la website_docusaurus/static/convocore/api | head -n 50 || true
+          test -f website_docusaurus/static/convocore/api/index.html
 
       - name: Build Docusaurus
         working-directory: website_docusaurus
