@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunkwebsite_docusaurus=globalThis.webpackChunkwebsite_docusaurus||[]).push([[583],{6866(u,e,s){s.r(e),s.d(e,{default:()=>o});var c=s(6540),a=s(6347);function o(){const u=(0,a.W6)();return(0,c.useEffect)(()=>{u.replace("/convocore/")},[u]),null}}}]);

@@ -1,6 +1,0 @@
-var searchData=
-[
-  ['updatedialogueui_0',['updatedialogueui',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSampleUI.html#ab41999d6e8f7608a2dc85b8da43fcd3e',1,'WolfstagInteractive.ConvoCore.ConvoCoreSampleUI.UpdateDialogueUI()'],['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreUIFoundation.html#ab41db2fa70934e61ce34d20a20edcf31',1,'WolfstagInteractive.ConvoCore.ConvoCoreUIFoundation.UpdateDialogueUI()'],['../interfaceWolfstagInteractive_1_1ConvoCore_1_1IUIFoundation.html#afc21f3e590881c86993106590ca58810',1,'WolfstagInteractive.ConvoCore.IUIFoundation.UpdateDialogueUI()']]],
-  ['updateforlanguagechange_1',['updateforlanguagechange',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreUIFoundation.html#a9f915f46c92b1997e4cea3623b3a21da',1,'WolfstagInteractive.ConvoCore.ConvoCoreUIFoundation.UpdateForLanguageChange()'],['../interfaceWolfstagInteractive_1_1ConvoCore_1_1IUIFoundation.html#abf8381752b98430738d8ae33b95c2f93',1,'WolfstagInteractive.ConvoCore.IUIFoundation.UpdateForLanguageChange()']]],
-  ['updateuiforlanguage_2',['UpdateUIForLanguage',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCore.html#a524283cee7fa22ab2e20d6bc5d30bc59',1,'WolfstagInteractive::ConvoCore::ConvoCore']]]
-];

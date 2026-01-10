@@ -1,9 +1,0 @@
-<map id="WolfstagInteractive.ConvoCore.SingleConversationInput" name="WolfstagInteractive.ConvoCore.SingleConversationInput">
-<area shape="rect" id="Node000001" title=" " alt="" coords="8,183,223,223"/>
-<area shape="rect" id="Node000002" href="$interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoInput.html" title=" " alt="" coords="5,87,105,113"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="71,123,106,181,102,184,67,126"/>
-<area shape="rect" id="Node000003" href="$classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData.html" title=" " alt="" coords="129,80,373,120"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="216,130,142,185,139,180,213,126"/>
-<area shape="rect" id="Node000004" title=" " alt="" coords="187,5,316,31"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="254,44,254,80,249,80,249,44"/>
-</map>
