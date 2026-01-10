@@ -98,7 +98,7 @@ $(function(){initNavTree('class_wolfstag_interactive_1_1_convo_core_1_1_convo_co
 <tr class="heading"><td colspan="2"><h2 id="header-pub-static-methods" class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:aa7fb77f31542ee7d549caf5c21fa2c2e" id="r_aa7fb77f31542ee7d549caf5c21fa2c2e"><td class="memItemLeft" align="right" valign="top">static Dictionary&lt; string, List&lt; <a class="el" href="class_wolfstag_interactive_1_1_convo_core_1_1_dialogue_yaml_config.html">DialogueYamlConfig</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa7fb77f31542ee7d549caf5c21fa2c2e">Parse</a> (string yamlText)</td></tr>
-<tr class="memdesc:aa7fb77f31542ee7d549caf5c21fa2c2e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse YAML text to Dictionary{conversationKey -&gt; List of <a class="el" href="class_wolfstag_interactive_1_1_convo_core_1_1_dialogue_yaml_config.html">DialogueYamlConfig</a>}. Also normalizes LocalizedDialogue keys to lower-invariant and uses a case-insensitive map.  <br /></td></tr>
+<tr class="memdesc:aa7fb77f31542ee7d549caf5c21fa2c2e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse YAML text to Dictionary{conversationKey -&gt; List of <a class="el" href="class_wolfstag_interactive_1_1_convo_core_1_1_dialogue_yaml_config.html">DialogueYamlConfig</a>}.  <br /></td></tr>
 <tr class="memitem:aa2ac221850abc05d284aa3e4ac3d50bf" id="r_aa2ac221850abc05d284aa3e4ac3d50bf"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa2ac221850abc05d284aa3e4ac3d50bf">TryParse</a> (string yamlText, out Dictionary&lt; string, List&lt; <a class="el" href="class_wolfstag_interactive_1_1_convo_core_1_1_dialogue_yaml_config.html">DialogueYamlConfig</a> &gt; &gt; result, out string error)</td></tr>
 <tr class="memdesc:aa2ac221850abc05d284aa3e4ac3d50bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Safe parse that won’t throw. Returns false and sets error on failure.  <br /></td></tr>
 <tr class="memitem:a311309888fc8295dcd7ed2e93a8ca300" id="r_a311309888fc8295dcd7ed2e93a8ca300"><td class="memItemLeft" align="right" valign="top">static IEnumerable&lt; string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a311309888fc8295dcd7ed2e93a8ca300">GetConversationKeys</a> (Dictionary&lt; string, List&lt; <a class="el" href="class_wolfstag_interactive_1_1_convo_core_1_1_dialogue_yaml_config.html">DialogueYamlConfig</a> &gt; &gt; dict)</td></tr>
@@ -193,7 +193,8 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Parse YAML text to Dictionary{conversationKey -&gt; List of <a class="el" href="class_wolfstag_interactive_1_1_convo_core_1_1_dialogue_yaml_config.html">DialogueYamlConfig</a>}. Also normalizes LocalizedDialogue keys to lower-invariant and uses a case-insensitive map. </p>
+<p>Parse YAML text to Dictionary{conversationKey -&gt; List of <a class="el" href="class_wolfstag_interactive_1_1_convo_core_1_1_dialogue_yaml_config.html">DialogueYamlConfig</a>}. </p>
+<p>Also normalizes LocalizedDialogue keys to lower-invariant and uses a case-insensitive map. </p>
 
 </div>
 </div>

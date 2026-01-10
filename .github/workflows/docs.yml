@@ -11,38 +11,45 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
+      # Checkout repository
       - name: Checkout
         uses: actions/checkout@v4
 
+      # Install Doxygen, Graphviz, rsync
       - name: Install Doxygen and tools
-        run: sudo apt-get update && sudo apt-get install -y doxygen graphviz rsync
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y doxygen graphviz rsync
 
+      # Generate Doxygen documentation
       - name: Build Doxygen API
         run: doxygen Doxyfile
-      - name: Ensure API index exists
-        run: test -f website_docusaurus/static/convocore/api/index.html
 
+      # Copy Doxygen output into Docusaurus static folder
       - name: Copy Doxygen HTML into Docusaurus static path
         run: |
           rm -rf website_docusaurus/static/convocore/api
           mkdir -p website_docusaurus/static/convocore/api
-          rsync -a html/ website_docusaurus/static/convocore/api/
-      - name: Debug API folder contents
-        run: |
-          ls -la website_docusaurus/static/convocore || true
-          ls -la website_docusaurus/static/convocore/api | head -n 50 || true
-          test -f website_docusaurus/static/convocore/api/index.html
+          rsync -a Docs/html/ website_docusaurus/static/convocore/api/
 
+      # Hard fail if API did not generate correctly
+      - name: Ensure API index exists
+        run: test -f website_docusaurus/static/convocore/api/index.html
+
+      # Build Docusaurus site
       - name: Build Docusaurus
         working-directory: website_docusaurus
         run: |
           npm ci
           npm run build
 
+      # Add CNAME for custom domain
       - name: Add CNAME for custom domain
         run: echo "docs.wolfstaginteractive.com" > website_docusaurus/build/CNAME
 
+      # Deploy to gh-pages
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v4
         with:

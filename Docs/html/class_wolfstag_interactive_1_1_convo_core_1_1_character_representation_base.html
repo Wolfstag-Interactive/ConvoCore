@@ -105,11 +105,11 @@ Collaboration diagram for WolfstagInteractive.ConvoCore.CharacterRepresentationB
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a234736ebe5dce75b104f6b3efaa93a2a" id="r_a234736ebe5dce75b104f6b3efaa93a2a"><td class="memItemLeft" align="right" valign="top">object&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a234736ebe5dce75b104f6b3efaa93a2a">ProcessExpression</a> (string expressionID)</td></tr>
-<tr class="memdesc:a234736ebe5dce75b104f6b3efaa93a2a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Processes the given expression and returns UI-relevant data (e.g., a sprite or GameObject). Allows each character representation to define its own output.  <br /></td></tr>
+<tr class="memdesc:a234736ebe5dce75b104f6b3efaa93a2a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Processes the given expression and returns UI-relevant data (e.g., a sprite or GameObject).  <br /></td></tr>
 <tr class="memitem:afafb72cb3bd57b5f99d01a90a466d950" id="r_afafb72cb3bd57b5f99d01a90a466d950"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afafb72cb3bd57b5f99d01a90a466d950">ApplyExpression</a> (string expressionId, <a class="el" href="class_wolfstag_interactive_1_1_convo_core_1_1_convo_core.html">ConvoCore</a> runtime, <a class="el" href="class_wolfstag_interactive_1_1_convo_core_1_1_convo_core_conversation_data.html">ConvoCoreConversationData</a> conversation, int lineIndex, <a class="el" href="interface_wolfstag_interactive_1_1_convo_core_1_1_i_convo_core_character_display.html">IConvoCoreCharacterDisplay</a> display)</td></tr>
-<tr class="memdesc:afafb72cb3bd57b5f99d01a90a466d950"><td class="mdescLeft">&#160;</td><td class="mdescRight">Apply an expression for this representation. Implementations are expected to run any attached <a class="el" href="class_base_expression_action.html">BaseExpressionAction</a>.  <br /></td></tr>
+<tr class="memdesc:afafb72cb3bd57b5f99d01a90a466d950"><td class="mdescLeft">&#160;</td><td class="mdescRight">Apply an expression for this representation.  <br /></td></tr>
 <tr class="memitem:a5b1d4b5133a233ff689828880ba24555" id="r_a5b1d4b5133a233ff689828880ba24555"><td class="memItemLeft" align="right" valign="top">object&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5b1d4b5133a233ff689828880ba24555">GetExpressionMappingByGuid</a> (string expressionGuid)</td></tr>
-<tr class="memdesc:a5b1d4b5133a233ff689828880ba24555"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the expression mapping object by its GUID. Used by the editor to display the correct expression in previews.  <br /></td></tr>
+<tr class="memdesc:a5b1d4b5133a233ff689828880ba24555"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the expression mapping object by its GUID.  <br /></td></tr>
 <tr class="memitem:aeaac5df34e65df4f8de67dbabce99bc8" id="r_aeaac5df34e65df4f8de67dbabce99bc8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aeaac5df34e65df4f8de67dbabce99bc8">DrawInlineEditorPreview</a> (object expressionMapping, Rect position)</td></tr>
 <tr class="memdesc:aeaac5df34e65df4f8de67dbabce99bc8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draws a custom representation-specific section in the inspector.  <br /></td></tr>
 <tr class="memitem:aa83c3e052546a175de00f0d60deda5f0" id="r_aa83c3e052546a175de00f0d60deda5f0"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa83c3e052546a175de00f0d60deda5f0">GetPreviewHeight</a> ()</td></tr>
@@ -158,7 +158,8 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Apply an expression for this representation. Implementations are expected to run any attached <a class="el" href="class_base_expression_action.html">BaseExpressionAction</a>. </p>
+<p>Apply an expression for this representation. </p>
+<p>Implementations are expected to run any attached <a class="el" href="class_base_expression_action.html">BaseExpressionAction</a>. </p>
 
 </div>
 </div>
@@ -225,7 +226,8 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Retrieves the expression mapping object by its GUID. Used by the editor to display the correct expression in previews. </p>
+<p>Retrieves the expression mapping object by its GUID. </p>
+<p>Used by the editor to display the correct expression in previews.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">expressionGuid</td><td>The GUID of the expression to retrieve.</td></tr>
@@ -289,7 +291,8 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Processes the given expression and returns UI-relevant data (e.g., a sprite or GameObject). Allows each character representation to define its own output. </p>
+<p>Processes the given expression and returns UI-relevant data (e.g., a sprite or GameObject). </p>
+<p>Allows each character representation to define its own output.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">expressionID</td><td>The expression to process.</td></tr>
