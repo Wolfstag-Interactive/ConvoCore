@@ -28,7 +28,7 @@ const config: Config = {
       title: 'ConvoCore',
       items: [
         {to: '/convocore/', label: 'Guide', position: 'left'},
-        {href: '/convocore/api/index.html', label: 'API', position: 'left'},
+        {href: '/convocore/api/', label: 'API', position: 'left'},
       ],
     },
   },
