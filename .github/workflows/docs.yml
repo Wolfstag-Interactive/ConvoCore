@@ -1,0 +1,44 @@
+name: Build ConvoCore Docs Site
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Doxygen and tools
+        run: sudo apt-get update && sudo apt-get install -y doxygen graphviz rsync
+
+      - name: Build Doxygen API
+        run: doxygen Doxyfile
+
+      - name: Copy Doxygen HTML into Docusaurus static path
+        run: |
+          rm -rf website_docusaurus/static/convocore/api
+          mkdir -p website_docusaurus/static/convocore/api
+          rsync -a html/ website_docusaurus/static/convocore/api/
+
+      - name: Build Docusaurus
+        working-directory: website_docusaurus
+        run: |
+          npm ci
+          npm run build
+
+      - name: Add CNAME for custom domain
+        run: echo "docs.wolfstaginteractive.com" > website_docusaurus/build/CNAME
+
+      - name: Deploy to gh-pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: website_docusaurus/build
+          publish_branch: gh-pages
