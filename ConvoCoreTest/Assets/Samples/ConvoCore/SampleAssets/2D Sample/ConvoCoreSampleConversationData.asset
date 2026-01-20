@@ -882,7 +882,7 @@ MonoBehaviour:
   AllowPersistentOverrides: 1
   FilePath: DialogueScriptSample.yml
   SourceYaml: {fileID: 102900000, guid: 4612376414d9cc742be9c4b790213e6a, type: 3}
-  SourceYamlAssetPath: Assets/Samples/ConvoCore/SampleAssets/DialogueScriptSample.yml
+  SourceYamlAssetPath: Assets/Samples/ConvoCore/SampleAssets/2D Sample/DialogueScriptSample.yml
   ConversationKey: Conversation1
 --- !u!49 &6663482106465219901
 TextAsset:

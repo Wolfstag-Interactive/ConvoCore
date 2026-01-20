@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 458f605aa420aee44acb27c723607006, type: 3}
+  m_Name: ConvoCore3DSampleConversation
+  m_EditorClassIdentifier: 
+  ConversationParticipantProfiles: []
+  DialogueLines: []
+  ConversationYaml: {fileID: 0}
+  AllowPersistentOverrides: 1
+  FilePath: 
+  SourceYaml: {fileID: 0}
+  SourceYamlAssetPath: 
+  ConversationKey: 

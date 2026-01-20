@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32c649907e2db674684d795adc21be6b, type: 3}
+  m_Name: CubeCharacterRepresentation
+  m_EditorClassIdentifier: 
+  CharacterPrefab: {fileID: 5511822953808233190, guid: d2f1d2d5baa19cd45a2d2126ec37728f, type: 3}
+  ExpressionMappings:
+  - expressionID: be0c0fced70343f18624e6f57bc03254
+    DisplayName: Default
+    ExpressionActions: []
