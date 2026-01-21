@@ -1,0 +1,229 @@
+3DSampleConversation:
+- CharacterID: cube
+  LineID: L_e7b1541e75ee
+  LocalizedDialogue:
+    en: Let us remain where we are.
+    fr: Restons où nous sommes.
+    es: Permanezcamos donde estamos.
+- CharacterID: sphere
+  LineID: L_82d9385ae0ce
+  LocalizedDialogue:
+    en: That sounds ominous.
+    fr: Cela semble inquiétant.
+    es: Eso suena ominoso.
+- CharacterID: capsule
+  LineID: L_ff38a3664539
+  LocalizedDialogue:
+    en: It always does.
+    fr: Toujours.
+    es: Siempre lo es.
+- CharacterID: cube
+  LineID: L_966c6b047edd
+  LocalizedDialogue:
+    en: Nothing is about to happen.
+    fr: Rien n’est sur le point de se produire.
+    es: No está a punto de pasar nada.
+- CharacterID: sphere
+  LineID: L_2e8a2ba6e44f
+  LocalizedDialogue:
+    en: Then why do I feel observed.
+    fr: Alors pourquoi ai-je l’impression d’être observé.
+    es: Entonces por qué me siento observado.
+- CharacterID: capsule
+  LineID: L_036a7263c8be
+  LocalizedDialogue:
+    en: You always feel that.
+    fr: Tu ressens toujours ça.
+    es: Siempre te sientes así.
+- CharacterID: sphere
+  LineID: L_3996eb7674ea
+  LocalizedDialogue:
+    en: Not like this.
+    fr: Pas comme ça.
+    es: No así.
+- CharacterID: cube
+  LineID: L_290f45aab96e
+  LocalizedDialogue:
+    en: You are being attentive.
+    fr: Tu es attentif.
+    es: Estás siendo atento.
+- CharacterID: sphere
+  LineID: L_fe418b31f8af
+  LocalizedDialogue:
+    en: I do not like what that did to me.
+    fr: Je n’aime pas ce que ça m’a fait.
+    es: No me gusta lo que eso me hizo.
+- CharacterID: capsule
+  LineID: L_66f23c525fba
+  LocalizedDialogue:
+    en: You look taller.
+    fr: Tu as l’air plus grand.
+    es: Pareces más alto.
+- CharacterID: sphere
+  LineID: L_ec812df5dedc
+  LocalizedDialogue:
+    en: I feel taller.
+    fr: Je me sens plus grand.
+    es: Me siento más alto.
+- CharacterID: cube
+  LineID: L_4ebbdf6b318e
+  LocalizedDialogue:
+    en: Focus suits you.
+    fr: La concentration te va bien.
+    es: La concentración te sienta bien.
+- CharacterID: capsule
+  LineID: L_3303b5b7ad60
+  LocalizedDialogue:
+    en: Why is the space leaning.
+    fr: Pourquoi l’espace penche-t-il.
+    es: Por qué el espacio se inclina.
+- CharacterID: cube
+  LineID: L_4c4d8ef303c8
+  LocalizedDialogue:
+    en: It is listening.
+    fr: Il écoute.
+    es: Está escuchando.
+- CharacterID: sphere
+  LineID: L_9c4e4cb092da
+  LocalizedDialogue:
+    en: That is worse.
+    fr: C’est pire.
+    es: Eso es peor.
+- CharacterID: capsule
+  LineID: L_56f78df496f1
+  LocalizedDialogue:
+    en: Something is appearing.
+    fr: Quelque chose apparaît.
+    es: Algo está apareciendo.
+- CharacterID: sphere
+  LineID: L_64f392cb5170
+  LocalizedDialogue:
+    en: I refuse to acknowledge it.
+    fr: Je refuse de le reconnaître.
+    es: Me niego a reconocerlo.
+- CharacterID: cube
+  LineID: L_aa4cda36a7b0
+  LocalizedDialogue:
+    en: Acknowledged.
+    fr: Reconnu.
+    es: Reconocido.
+- CharacterID: capsule
+  LineID: L_28f1aaeebd0b
+  LocalizedDialogue:
+    en: It is very present.
+    fr: C’est très présent.
+    es: Es muy presente.
+- CharacterID: sphere
+  LineID: L_c08a9040363b
+  LocalizedDialogue:
+    en: It feels closer now.
+    fr: Ça semble plus proche maintenant.
+    es: Ahora se siente más cerca.
+- CharacterID: cube
+  LineID: L_a8e143897792
+  LocalizedDialogue:
+    en: Perspective.
+    fr: Perspective.
+    es: Perspectiva.
+- CharacterID: capsule
+  LineID: L_32af80687858
+  LocalizedDialogue:
+    en: That does not help.
+    fr: Ça n’aide pas.
+    es: Eso no ayuda.
+- CharacterID: sphere
+  LineID: L_96b25c7e4067
+  LocalizedDialogue:
+    en: Neither does this.
+    fr: Ceci non plus.
+    es: Esto tampoco.
+- CharacterID: cube
+  LineID: L_9c3379ff536f
+  LocalizedDialogue:
+    en: You are reacting.
+    fr: Tu réagis.
+    es: Estás reaccionando.
+- CharacterID: sphere
+  LineID: L_71aa9ae78417
+  LocalizedDialogue:
+    en: I am adapting.
+    fr: Je m’adapte.
+    es: Me estoy adaptando.
+- CharacterID: capsule
+  LineID: L_fe4a220418dc
+  LocalizedDialogue:
+    en: I remain unchanged.
+    fr: Je reste inchangé.
+    es: Sigo sin cambios.
+- CharacterID: capsule
+  LineID: L_74bc301d08a0
+  LocalizedDialogue:
+    en: I spoke too soon.
+    fr: J’ai parlé trop vite.
+    es: Hablé demasiado pronto.
+- CharacterID: cube
+  LineID: L_26f14ccf536f
+  LocalizedDialogue:
+    en: Good. Now we are balanced.
+    fr: Bien. Nous sommes maintenant équilibrés.
+    es: Bien. Ahora estamos equilibrados.
+- CharacterID: sphere
+  LineID: L_af9cf8d84109
+  LocalizedDialogue:
+    en: I do not feel balanced.
+    fr: Je ne me sens pas équilibré.
+    es: No me siento equilibrado.
+- CharacterID: cube
+  LineID: L_c26e113ea67d
+  LocalizedDialogue:
+    en: That is normal.
+    fr: C’est normal.
+    es: Eso es normal.
+- CharacterID: capsule
+  LineID: L_5625833edb7e
+  LocalizedDialogue:
+    en: Is it ending.
+    fr: Est-ce que ça se termine.
+    es: Está terminando.
+- CharacterID: cube
+  LineID: L_54978f41d6b4
+  LocalizedDialogue:
+    en: Nearly.
+    fr: Presque.
+    es: Casi.
+- CharacterID: sphere
+  LineID: L_6a01e56b0aaa
+  LocalizedDialogue:
+    en: Thank goodness.
+    fr: Dieu merci.
+    es: Menos mal.
+- CharacterID: cube
+  LineID: L_29a6b11e747e
+  LocalizedDialogue:
+    en: Remain composed.
+    fr: Reste calme.
+    es: Mantén la compostura.
+- CharacterID: capsule
+  LineID: L_56c63e182a65
+  LocalizedDialogue:
+    en: I miss it already.
+    fr: Ça me manque déjà.
+    es: Ya lo extraño.
+- CharacterID: cube
+  LineID: L_317e2e69e69e
+  LocalizedDialogue:
+    en: Of course you do.
+    fr: Bien sûr que oui.
+    es: Claro que sí.
+- CharacterID: sphere
+  LineID: L_5be180e765a5
+  LocalizedDialogue:
+    en: Let us never do that again.
+    fr: Ne faisons plus jamais ça.
+    es: No volvamos a hacer eso nunca.
+- CharacterID: cube
+  LineID: L_d855dab11596
+  LocalizedDialogue:
+    en: Agreed.
+    fr: D’accord.
+    es: De acuerdo.

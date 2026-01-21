@@ -47,50 +47,6 @@ namespace WolfstagInteractive.ConvoCore.Editor
 
             Debug.Log($"LanguageSettings asset was successfully created at: {assetPath}");
         }
-        [MenuItem("Tools/Wolfstag Interactive/ConvoCore/Create Sample Dialogue YAML")]
-        public static void CreateSampleYamlFile()
-        {
-            // Determine the StreamingAssets folder path.
-            string streamingAssetsPath = Path.Combine(Application.dataPath, "StreamingAssets");
-        
-            // Create the StreamingAssets folder if it doesn't exist.
-            if (!Directory.Exists(streamingAssetsPath))
-            {
-                Directory.CreateDirectory(streamingAssetsPath);
-                Debug.Log($"Created StreamingAssets folder at: {streamingAssetsPath}");
-            }
-
-            // Define the full file path.
-            string filePath = Path.Combine(streamingAssetsPath, "DialogueScriptSample.yml");
-
-            // Define the YAML content.
-            string yamlContent = @"contents:
-
-Conversation1:
-  - CharacterID: ""NPC1""
-    LocalizedDialogue:
-      EN: ""Hello there!""
-      FR: ""Bonjour!""
-      ES: ""¡Hola!""
-  - CharacterID: ""NPC1""
-    LocalizedDialogue:
-      EN: ""Good to meet you!""
-      FR: ""We we!""
-      ES: ""¡Ey Campadre!""
-  - CharacterID: ""NPC1""
-    LocalizedDialogue:
-      EN: ""Goodbye!""
-      FR: ""Au revoir!""
-      ES: ""¡Adiós!""
-";
-
-            // Write the YAML content to the file.
-            File.WriteAllText(filePath, yamlContent);
-            Debug.Log($"Sample YAML file created at: {filePath}");
-
-            // Refresh the asset database so that the file appears in the Editor.
-            AssetDatabase.Refresh();
-        }
         [MenuItem("Tools/Wolfstag Interactive/ConvoCore/Create ConvoCore Conversation GameObject")]
         public static void CreateConvoCoreConversationGameObject()
         {

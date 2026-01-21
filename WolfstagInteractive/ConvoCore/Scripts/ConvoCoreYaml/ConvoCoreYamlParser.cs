@@ -12,7 +12,7 @@ namespace WolfstagInteractive.ConvoCore
     public static class ConvoCoreYamlParser
     {
         // Build the YamlDotNet deserializer once
-        private static readonly IDeserializer Deserializer = new DeserializerBuilder().Build();
+        private static readonly IDeserializer Deserializer = new DeserializerBuilder().IgnoreUnmatchedProperties().Build();
 
         /// <summary>
         /// Parse YAML text to Dictionary{conversationKey -> List of DialogueYamlConfig}.
@@ -22,7 +22,8 @@ namespace WolfstagInteractive.ConvoCore
         {
             if (string.IsNullOrWhiteSpace(yamlText))
                 return new Dictionary<string, List<DialogueYamlConfig>>();
-
+            // Pre-process to ensure dialogue values are quoted to prevent parsing errors with special characters
+            yamlText = EnsureQuotesOnLocalizedValues(yamlText);
             var dict = Deserializer
                            .Deserialize<Dictionary<string, List<DialogueYamlConfig>>>(yamlText)
                        ?? new Dictionary<string, List<DialogueYamlConfig>>();
@@ -33,7 +34,16 @@ namespace WolfstagInteractive.ConvoCore
 
             return dict;
         }
-
+        /// <summary>
+        /// Uses regex to find localized dialogue lines (e.g., "en: Text") and ensures the value is quoted.
+        /// </summary>
+        private static string EnsureQuotesOnLocalizedValues(string yaml)
+        {
+            // Matches language keys (2-3 letters) followed by a colon and unquoted text.
+            // It captures the indentation, the key, and the raw text.
+            var pattern = @"^(\s*)([a-z]{2,3}):\s*([^""'\r\n][^\r\n]*)";
+            return System.Text.RegularExpressions.Regex.Replace(yaml, pattern, "$1$2: \"$3\"", System.Text.RegularExpressions.RegexOptions.Multiline);
+        }
         /// <summary>Safe parse that won’t throw. Returns false and sets error on failure.</summary>
         public static bool TryParse(string yamlText, out Dictionary<string, List<DialogueYamlConfig>> result, out string error)
         {

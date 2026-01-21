@@ -1,5 +1,93 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!49 &-7622796456671618352
+TextAsset:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: EmbeddedYaml
+  m_Script: "3DSampleConversation:\r\n- CharacterID: cube\r\n  LineID: L_e7b1541e75ee\r\n 
+    LocalizedDialogue:\r\n    en: Let us remain where we are.\r\n    fr: Restons
+    o\xF9 nous sommes.\r\n    es: Permanezcamos donde estamos.\r\n- CharacterID:
+    sphere\r\n  LineID: L_82d9385ae0ce\r\n  LocalizedDialogue:\r\n    en: That sounds
+    ominous.\r\n    fr: Cela semble inqui\xE9tant.\r\n    es: Eso suena ominoso.\r\n-
+    CharacterID: capsule\r\n  LineID: L_ff38a3664539\r\n  LocalizedDialogue:\r\n   
+    en: It always does.\r\n    fr: Toujours.\r\n    es: Siempre lo es.\r\n- CharacterID:
+    cube\r\n  LineID: L_966c6b047edd\r\n  LocalizedDialogue:\r\n    en: Nothing is
+    about to happen.\r\n    fr: Rien n\u2019est sur le point de se produire.\r\n   
+    es: No est\xE1 a punto de pasar nada.\r\n- CharacterID: sphere\r\n  LineID: L_2e8a2ba6e44f\r\n 
+    LocalizedDialogue:\r\n    en: Then why do I feel observed.\r\n    fr: Alors pourquoi
+    ai-je l\u2019impression d\u2019\xEAtre observ\xE9.\r\n    es: Entonces por qu\xE9
+    me siento observado.\r\n- CharacterID: capsule\r\n  LineID: L_036a7263c8be\r\n 
+    LocalizedDialogue:\r\n    en: You always feel that.\r\n    fr: Tu ressens toujours
+    \xE7a.\r\n    es: Siempre te sientes as\xED.\r\n- CharacterID: sphere\r\n  LineID:
+    L_3996eb7674ea\r\n  LocalizedDialogue:\r\n    en: Not like this.\r\n    fr: Pas
+    comme \xE7a.\r\n    es: No as\xED.\r\n- CharacterID: cube\r\n  LineID: L_290f45aab96e\r\n 
+    LocalizedDialogue:\r\n    en: You are being attentive.\r\n    fr: Tu es attentif.\r\n   
+    es: Est\xE1s siendo atento.\r\n- CharacterID: sphere\r\n  LineID: L_fe418b31f8af\r\n 
+    LocalizedDialogue:\r\n    en: I do not like what that did to me.\r\n    fr: Je
+    n\u2019aime pas ce que \xE7a m\u2019a fait.\r\n    es: No me gusta lo que eso
+    me hizo.\r\n- CharacterID: capsule\r\n  LineID: L_66f23c525fba\r\n  LocalizedDialogue:\r\n   
+    en: You look taller.\r\n    fr: Tu as l\u2019air plus grand.\r\n    es: Pareces
+    m\xE1s alto.\r\n- CharacterID: sphere\r\n  LineID: L_ec812df5dedc\r\n  LocalizedDialogue:\r\n   
+    en: I feel taller.\r\n    fr: Je me sens plus grand.\r\n    es: Me siento m\xE1s
+    alto.\r\n- CharacterID: cube\r\n  LineID: L_4ebbdf6b318e\r\n  LocalizedDialogue:\r\n   
+    en: Focus suits you.\r\n    fr: La concentration te va bien.\r\n    es: La concentraci\xF3n
+    te sienta bien.\r\n- CharacterID: capsule\r\n  LineID: L_3303b5b7ad60\r\n  LocalizedDialogue:\r\n   
+    en: Why is the space leaning.\r\n    fr: Pourquoi l\u2019espace penche-t-il.\r\n   
+    es: Por qu\xE9 el espacio se inclina.\r\n- CharacterID: cube\r\n  LineID: L_4c4d8ef303c8\r\n 
+    LocalizedDialogue:\r\n    en: It is listening.\r\n    fr: Il \xE9coute.\r\n   
+    es: Est\xE1 escuchando.\r\n- CharacterID: sphere\r\n  LineID: L_9c4e4cb092da\r\n 
+    LocalizedDialogue:\r\n    en: That is worse.\r\n    fr: C\u2019est pire.\r\n   
+    es: Eso es peor.\r\n- CharacterID: capsule\r\n  LineID: L_56f78df496f1\r\n  LocalizedDialogue:\r\n   
+    en: Something is appearing.\r\n    fr: Quelque chose appara\xEEt.\r\n    es:
+    Algo est\xE1 apareciendo.\r\n- CharacterID: sphere\r\n  LineID: L_64f392cb5170\r\n 
+    LocalizedDialogue:\r\n    en: I refuse to acknowledge it.\r\n    fr: Je refuse
+    de le reconna\xEEtre.\r\n    es: Me niego a reconocerlo.\r\n- CharacterID: cube\r\n 
+    LineID: L_aa4cda36a7b0\r\n  LocalizedDialogue:\r\n    en: Acknowledged.\r\n   
+    fr: Reconnu.\r\n    es: Reconocido.\r\n- CharacterID: capsule\r\n  LineID: L_28f1aaeebd0b\r\n 
+    LocalizedDialogue:\r\n    en: It is very present.\r\n    fr: C\u2019est tr\xE8s
+    pr\xE9sent.\r\n    es: Es muy presente.\r\n- CharacterID: sphere\r\n  LineID:
+    L_c08a9040363b\r\n  LocalizedDialogue:\r\n    en: It feels closer now.\r\n   
+    fr: \xC7a semble plus proche maintenant.\r\n    es: Ahora se siente m\xE1s cerca.\r\n-
+    CharacterID: cube\r\n  LineID: L_a8e143897792\r\n  LocalizedDialogue:\r\n   
+    en: Perspective.\r\n    fr: Perspective.\r\n    es: Perspectiva.\r\n- CharacterID:
+    capsule\r\n  LineID: L_32af80687858\r\n  LocalizedDialogue:\r\n    en: That does
+    not help.\r\n    fr: \xC7a n\u2019aide pas.\r\n    es: Eso no ayuda.\r\n- CharacterID:
+    sphere\r\n  LineID: L_96b25c7e4067\r\n  LocalizedDialogue:\r\n    en: Neither
+    does this.\r\n    fr: Ceci non plus.\r\n    es: Esto tampoco.\r\n- CharacterID:
+    cube\r\n  LineID: L_9c3379ff536f\r\n  LocalizedDialogue:\r\n    en: You are reacting.\r\n   
+    fr: Tu r\xE9agis.\r\n    es: Est\xE1s reaccionando.\r\n- CharacterID: sphere\r\n 
+    LineID: L_71aa9ae78417\r\n  LocalizedDialogue:\r\n    en: I am adapting.\r\n   
+    fr: Je m\u2019adapte.\r\n    es: Me estoy adaptando.\r\n- CharacterID: capsule\r\n 
+    LineID: L_fe4a220418dc\r\n  LocalizedDialogue:\r\n    en: I remain unchanged.\r\n   
+    fr: Je reste inchang\xE9.\r\n    es: Sigo sin cambios.\r\n- CharacterID: capsule\r\n 
+    LineID: L_74bc301d08a0\r\n  LocalizedDialogue:\r\n    en: I spoke too soon.\r\n   
+    fr: J\u2019ai parl\xE9 trop vite.\r\n    es: Habl\xE9 demasiado pronto.\r\n-
+    CharacterID: cube\r\n  LineID: L_26f14ccf536f\r\n  LocalizedDialogue:\r\n   
+    en: Good. Now we are balanced.\r\n    fr: Bien. Nous sommes maintenant \xE9quilibr\xE9s.\r\n   
+    es: Bien. Ahora estamos equilibrados.\r\n- CharacterID: sphere\r\n  LineID: L_af9cf8d84109\r\n 
+    LocalizedDialogue:\r\n    en: I do not feel balanced.\r\n    fr: Je ne me sens
+    pas \xE9quilibr\xE9.\r\n    es: No me siento equilibrado.\r\n- CharacterID: cube\r\n 
+    LineID: L_c26e113ea67d\r\n  LocalizedDialogue:\r\n    en: That is normal.\r\n   
+    fr: C\u2019est normal.\r\n    es: Eso es normal.\r\n- CharacterID: capsule\r\n 
+    LineID: L_5625833edb7e\r\n  LocalizedDialogue:\r\n    en: Is it ending.\r\n   
+    fr: Est-ce que \xE7a se termine.\r\n    es: Est\xE1 terminando.\r\n- CharacterID:
+    cube\r\n  LineID: L_54978f41d6b4\r\n  LocalizedDialogue:\r\n    en: Nearly.\r\n   
+    fr: Presque.\r\n    es: Casi.\r\n- CharacterID: sphere\r\n  LineID: L_6a01e56b0aaa\r\n 
+    LocalizedDialogue:\r\n    en: Thank goodness.\r\n    fr: Dieu merci.\r\n    es:
+    Menos mal.\r\n- CharacterID: cube\r\n  LineID: L_29a6b11e747e\r\n  LocalizedDialogue:\r\n   
+    en: Remain composed.\r\n    fr: Reste calme.\r\n    es: Mant\xE9n la compostura.\r\n-
+    CharacterID: capsule\r\n  LineID: L_56c63e182a65\r\n  LocalizedDialogue:\r\n   
+    en: I miss it already.\r\n    fr: \xC7a me manque d\xE9j\xE0.\r\n    es: Ya lo
+    extra\xF1o.\r\n- CharacterID: cube\r\n  LineID: L_317e2e69e69e\r\n  LocalizedDialogue:\r\n   
+    en: Of course you do.\r\n    fr: Bien s\xFBr que oui.\r\n    es: Claro que s\xED.\r\n-
+    CharacterID: sphere\r\n  LineID: L_5be180e765a5\r\n  LocalizedDialogue:\r\n   
+    en: Let us never do that again.\r\n    fr: Ne faisons plus jamais \xE7a.\r\n   
+    es: No volvamos a hacer eso nunca.\r\n- CharacterID: cube\r\n  LineID: L_d855dab11596\r\n 
+    LocalizedDialogue:\r\n    en: Agreed.\r\n    fr: D\u2019accord.\r\n    es: De
+    acuerdo.\r\n"
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12,11 +100,1306 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 458f605aa420aee44acb27c723607006, type: 3}
   m_Name: ConvoCore3DSampleConversation
   m_EditorClassIdentifier: 
-  ConversationParticipantProfiles: []
-  DialogueLines: []
-  ConversationYaml: {fileID: 0}
+  ConversationParticipantProfiles:
+  - {fileID: 11400000, guid: 6d56885077f77054a92670ce5e67732f, type: 2}
+  - {fileID: 11400000, guid: ccf385c6e1255124fa3b9fc536ba2206, type: 2}
+  - {fileID: 11400000, guid: 4480ae89d8eb3fb409e01358ae87caec, type: 2}
+  DialogueLines:
+  - ConversationID: 3DSampleConversation
+    LineID: L_e7b1541e75ee
+    ConversationLineIndex: 0
+    characterID: cube
+    CharacterRepresentations:
+    - SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedExpressionId: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    LocalizedDialogues:
+    - Language: en
+      Text: Let us remain where we are.
+    - Language: fr
+      Text: "Restons o\xF9 nous sommes."
+    - Language: es
+      Text: Permanezcamos donde estamos.
+    clip: {fileID: 0}
+    ActionsBeforeDialogueLine: []
+    ActionsAfterDialogueLine: []
+    UserInputMethod: 0
+    TimeBeforeNextLine: 0
+    LineContinuationSettings:
+      Mode: 0
+      TargetContainer: {fileID: 0}
+      TargetAliasOrName: 
+      PushReturnPoint: 0
+  - ConversationID: 3DSampleConversation
+    LineID: L_82d9385ae0ce
+    ConversationLineIndex: 1
+    characterID: sphere
+    CharacterRepresentations:
+    - SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedExpressionId: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    LocalizedDialogues:
+    - Language: en
+      Text: That sounds ominous.
+    - Language: fr
+      Text: "Cela semble inqui\xE9tant."
+    - Language: es
+      Text: Eso suena ominoso.
+    clip: {fileID: 0}
+    ActionsBeforeDialogueLine: []
+    ActionsAfterDialogueLine: []
+    UserInputMethod: 0
+    TimeBeforeNextLine: 0
+    LineContinuationSettings:
+      Mode: 0
+      TargetContainer: {fileID: 0}
+      TargetAliasOrName: 
+      PushReturnPoint: 0
+  - ConversationID: 3DSampleConversation
+    LineID: L_ff38a3664539
+    ConversationLineIndex: 2
+    characterID: capsule
+    CharacterRepresentations:
+    - SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedExpressionId: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    LocalizedDialogues:
+    - Language: en
+      Text: It always does.
+    - Language: fr
+      Text: Toujours.
+    - Language: es
+      Text: Siempre lo es.
+    clip: {fileID: 0}
+    ActionsBeforeDialogueLine: []
+    ActionsAfterDialogueLine: []
+    UserInputMethod: 0
+    TimeBeforeNextLine: 0
+    LineContinuationSettings:
+      Mode: 0
+      TargetContainer: {fileID: 0}
+      TargetAliasOrName: 
+      PushReturnPoint: 0
+  - ConversationID: 3DSampleConversation
+    LineID: L_966c6b047edd
+    ConversationLineIndex: 3
+    characterID: cube
+    CharacterRepresentations:
+    - SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedExpressionId: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    LocalizedDialogues:
+    - Language: en
+      Text: Nothing is about to happen.
+    - Language: fr
+      Text: "Rien n\u2019est sur le point de se produire."
+    - Language: es
+      Text: "No est\xE1 a punto de pasar nada."
+    clip: {fileID: 0}
+    ActionsBeforeDialogueLine: []
+    ActionsAfterDialogueLine: []
+    UserInputMethod: 0
+    TimeBeforeNextLine: 0
+    LineContinuationSettings:
+      Mode: 0
+      TargetContainer: {fileID: 0}
+      TargetAliasOrName: 
+      PushReturnPoint: 0
+  - ConversationID: 3DSampleConversation
+    LineID: L_2e8a2ba6e44f
+    ConversationLineIndex: 4
+    characterID: sphere
+    CharacterRepresentations:
+    - SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedExpressionId: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    LocalizedDialogues:
+    - Language: en
+      Text: Then why do I feel observed.
+    - Language: fr
+      Text: "Alors pourquoi ai-je l\u2019impression d\u2019\xEAtre observ\xE9."
+    - Language: es
+      Text: "Entonces por qu\xE9 me siento observado."
+    clip: {fileID: 0}
+    ActionsBeforeDialogueLine: []
+    ActionsAfterDialogueLine: []
+    UserInputMethod: 0
+    TimeBeforeNextLine: 0
+    LineContinuationSettings:
+      Mode: 0
+      TargetContainer: {fileID: 0}
+      TargetAliasOrName: 
+      PushReturnPoint: 0
+  - ConversationID: 3DSampleConversation
+    LineID: L_036a7263c8be
+    ConversationLineIndex: 5
+    characterID: capsule
+    CharacterRepresentations:
+    - SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedExpressionId: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    LocalizedDialogues:
+    - Language: en
+      Text: You always feel that.
+    - Language: fr
+      Text: "Tu ressens toujours \xE7a."
+    - Language: es
+      Text: "Siempre te sientes as\xED."
+    clip: {fileID: 0}
+    ActionsBeforeDialogueLine: []
+    ActionsAfterDialogueLine: []
+    UserInputMethod: 0
+    TimeBeforeNextLine: 0
+    LineContinuationSettings:
+      Mode: 0
+      TargetContainer: {fileID: 0}
+      TargetAliasOrName: 
+      PushReturnPoint: 0
+  - ConversationID: 3DSampleConversation
+    LineID: L_3996eb7674ea
+    ConversationLineIndex: 6
+    characterID: sphere
+    CharacterRepresentations:
+    - SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedExpressionId: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    LocalizedDialogues:
+    - Language: en
+      Text: Not like this.
+    - Language: fr
+      Text: "Pas comme \xE7a."
+    - Language: es
+      Text: "No as\xED."
+    clip: {fileID: 0}
+    ActionsBeforeDialogueLine: []
+    ActionsAfterDialogueLine: []
+    UserInputMethod: 0
+    TimeBeforeNextLine: 0
+    LineContinuationSettings:
+      Mode: 0
+      TargetContainer: {fileID: 0}
+      TargetAliasOrName: 
+      PushReturnPoint: 0
+  - ConversationID: 3DSampleConversation
+    LineID: L_290f45aab96e
+    ConversationLineIndex: 7
+    characterID: cube
+    CharacterRepresentations:
+    - SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedExpressionId: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    LocalizedDialogues:
+    - Language: en
+      Text: You are being attentive.
+    - Language: fr
+      Text: Tu es attentif.
+    - Language: es
+      Text: "Est\xE1s siendo atento."
+    clip: {fileID: 0}
+    ActionsBeforeDialogueLine: []
+    ActionsAfterDialogueLine: []
+    UserInputMethod: 0
+    TimeBeforeNextLine: 0
+    LineContinuationSettings:
+      Mode: 0
+      TargetContainer: {fileID: 0}
+      TargetAliasOrName: 
+      PushReturnPoint: 0
+  - ConversationID: 3DSampleConversation
+    LineID: L_fe418b31f8af
+    ConversationLineIndex: 8
+    characterID: sphere
+    CharacterRepresentations:
+    - SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedExpressionId: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    LocalizedDialogues:
+    - Language: en
+      Text: I do not like what that did to me.
+    - Language: fr
+      Text: "Je n\u2019aime pas ce que \xE7a m\u2019a fait."
+    - Language: es
+      Text: No me gusta lo que eso me hizo.
+    clip: {fileID: 0}
+    ActionsBeforeDialogueLine: []
+    ActionsAfterDialogueLine: []
+    UserInputMethod: 0
+    TimeBeforeNextLine: 0
+    LineContinuationSettings:
+      Mode: 0
+      TargetContainer: {fileID: 0}
+      TargetAliasOrName: 
+      PushReturnPoint: 0
+  - ConversationID: 3DSampleConversation
+    LineID: L_66f23c525fba
+    ConversationLineIndex: 9
+    characterID: capsule
+    CharacterRepresentations:
+    - SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedExpressionId: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    LocalizedDialogues:
+    - Language: en
+      Text: You look taller.
+    - Language: fr
+      Text: "Tu as l\u2019air plus grand."
+    - Language: es
+      Text: "Pareces m\xE1s alto."
+    clip: {fileID: 0}
+    ActionsBeforeDialogueLine: []
+    ActionsAfterDialogueLine: []
+    UserInputMethod: 0
+    TimeBeforeNextLine: 0
+    LineContinuationSettings:
+      Mode: 0
+      TargetContainer: {fileID: 0}
+      TargetAliasOrName: 
+      PushReturnPoint: 0
+  - ConversationID: 3DSampleConversation
+    LineID: L_ec812df5dedc
+    ConversationLineIndex: 10
+    characterID: sphere
+    CharacterRepresentations:
+    - SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedExpressionId: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    LocalizedDialogues:
+    - Language: en
+      Text: I feel taller.
+    - Language: fr
+      Text: Je me sens plus grand.
+    - Language: es
+      Text: "Me siento m\xE1s alto."
+    clip: {fileID: 0}
+    ActionsBeforeDialogueLine: []
+    ActionsAfterDialogueLine: []
+    UserInputMethod: 0
+    TimeBeforeNextLine: 0
+    LineContinuationSettings:
+      Mode: 0
+      TargetContainer: {fileID: 0}
+      TargetAliasOrName: 
+      PushReturnPoint: 0
+  - ConversationID: 3DSampleConversation
+    LineID: L_4ebbdf6b318e
+    ConversationLineIndex: 11
+    characterID: cube
+    CharacterRepresentations:
+    - SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedExpressionId: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    LocalizedDialogues:
+    - Language: en
+      Text: Focus suits you.
+    - Language: fr
+      Text: La concentration te va bien.
+    - Language: es
+      Text: "La concentraci\xF3n te sienta bien."
+    clip: {fileID: 0}
+    ActionsBeforeDialogueLine: []
+    ActionsAfterDialogueLine: []
+    UserInputMethod: 0
+    TimeBeforeNextLine: 0
+    LineContinuationSettings:
+      Mode: 0
+      TargetContainer: {fileID: 0}
+      TargetAliasOrName: 
+      PushReturnPoint: 0
+  - ConversationID: 3DSampleConversation
+    LineID: L_3303b5b7ad60
+    ConversationLineIndex: 12
+    characterID: capsule
+    CharacterRepresentations:
+    - SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedExpressionId: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    LocalizedDialogues:
+    - Language: en
+      Text: Why is the space leaning.
+    - Language: fr
+      Text: "Pourquoi l\u2019espace penche-t-il."
+    - Language: es
+      Text: "Por qu\xE9 el espacio se inclina."
+    clip: {fileID: 0}
+    ActionsBeforeDialogueLine: []
+    ActionsAfterDialogueLine: []
+    UserInputMethod: 0
+    TimeBeforeNextLine: 0
+    LineContinuationSettings:
+      Mode: 0
+      TargetContainer: {fileID: 0}
+      TargetAliasOrName: 
+      PushReturnPoint: 0
+  - ConversationID: 3DSampleConversation
+    LineID: L_4c4d8ef303c8
+    ConversationLineIndex: 13
+    characterID: cube
+    CharacterRepresentations:
+    - SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedExpressionId: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    LocalizedDialogues:
+    - Language: en
+      Text: It is listening.
+    - Language: fr
+      Text: "Il \xE9coute."
+    - Language: es
+      Text: "Est\xE1 escuchando."
+    clip: {fileID: 0}
+    ActionsBeforeDialogueLine: []
+    ActionsAfterDialogueLine: []
+    UserInputMethod: 0
+    TimeBeforeNextLine: 0
+    LineContinuationSettings:
+      Mode: 0
+      TargetContainer: {fileID: 0}
+      TargetAliasOrName: 
+      PushReturnPoint: 0
+  - ConversationID: 3DSampleConversation
+    LineID: L_9c4e4cb092da
+    ConversationLineIndex: 14
+    characterID: sphere
+    CharacterRepresentations:
+    - SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedExpressionId: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    LocalizedDialogues:
+    - Language: en
+      Text: That is worse.
+    - Language: fr
+      Text: "C\u2019est pire."
+    - Language: es
+      Text: Eso es peor.
+    clip: {fileID: 0}
+    ActionsBeforeDialogueLine: []
+    ActionsAfterDialogueLine: []
+    UserInputMethod: 0
+    TimeBeforeNextLine: 0
+    LineContinuationSettings:
+      Mode: 0
+      TargetContainer: {fileID: 0}
+      TargetAliasOrName: 
+      PushReturnPoint: 0
+  - ConversationID: 3DSampleConversation
+    LineID: L_56f78df496f1
+    ConversationLineIndex: 15
+    characterID: capsule
+    CharacterRepresentations:
+    - SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedExpressionId: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    LocalizedDialogues:
+    - Language: en
+      Text: Something is appearing.
+    - Language: fr
+      Text: "Quelque chose appara\xEEt."
+    - Language: es
+      Text: "Algo est\xE1 apareciendo."
+    clip: {fileID: 0}
+    ActionsBeforeDialogueLine: []
+    ActionsAfterDialogueLine: []
+    UserInputMethod: 0
+    TimeBeforeNextLine: 0
+    LineContinuationSettings:
+      Mode: 0
+      TargetContainer: {fileID: 0}
+      TargetAliasOrName: 
+      PushReturnPoint: 0
+  - ConversationID: 3DSampleConversation
+    LineID: L_64f392cb5170
+    ConversationLineIndex: 16
+    characterID: sphere
+    CharacterRepresentations:
+    - SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedExpressionId: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    LocalizedDialogues:
+    - Language: en
+      Text: I refuse to acknowledge it.
+    - Language: fr
+      Text: "Je refuse de le reconna\xEEtre."
+    - Language: es
+      Text: Me niego a reconocerlo.
+    clip: {fileID: 0}
+    ActionsBeforeDialogueLine: []
+    ActionsAfterDialogueLine: []
+    UserInputMethod: 0
+    TimeBeforeNextLine: 0
+    LineContinuationSettings:
+      Mode: 0
+      TargetContainer: {fileID: 0}
+      TargetAliasOrName: 
+      PushReturnPoint: 0
+  - ConversationID: 3DSampleConversation
+    LineID: L_aa4cda36a7b0
+    ConversationLineIndex: 17
+    characterID: cube
+    CharacterRepresentations:
+    - SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedExpressionId: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    LocalizedDialogues:
+    - Language: en
+      Text: Acknowledged.
+    - Language: fr
+      Text: Reconnu.
+    - Language: es
+      Text: Reconocido.
+    clip: {fileID: 0}
+    ActionsBeforeDialogueLine: []
+    ActionsAfterDialogueLine: []
+    UserInputMethod: 0
+    TimeBeforeNextLine: 0
+    LineContinuationSettings:
+      Mode: 0
+      TargetContainer: {fileID: 0}
+      TargetAliasOrName: 
+      PushReturnPoint: 0
+  - ConversationID: 3DSampleConversation
+    LineID: L_28f1aaeebd0b
+    ConversationLineIndex: 18
+    characterID: capsule
+    CharacterRepresentations:
+    - SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedExpressionId: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    LocalizedDialogues:
+    - Language: en
+      Text: It is very present.
+    - Language: fr
+      Text: "C\u2019est tr\xE8s pr\xE9sent."
+    - Language: es
+      Text: Es muy presente.
+    clip: {fileID: 0}
+    ActionsBeforeDialogueLine: []
+    ActionsAfterDialogueLine: []
+    UserInputMethod: 0
+    TimeBeforeNextLine: 0
+    LineContinuationSettings:
+      Mode: 0
+      TargetContainer: {fileID: 0}
+      TargetAliasOrName: 
+      PushReturnPoint: 0
+  - ConversationID: 3DSampleConversation
+    LineID: L_c08a9040363b
+    ConversationLineIndex: 19
+    characterID: sphere
+    CharacterRepresentations:
+    - SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedExpressionId: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    LocalizedDialogues:
+    - Language: en
+      Text: It feels closer now.
+    - Language: fr
+      Text: "\xC7a semble plus proche maintenant."
+    - Language: es
+      Text: "Ahora se siente m\xE1s cerca."
+    clip: {fileID: 0}
+    ActionsBeforeDialogueLine: []
+    ActionsAfterDialogueLine: []
+    UserInputMethod: 0
+    TimeBeforeNextLine: 0
+    LineContinuationSettings:
+      Mode: 0
+      TargetContainer: {fileID: 0}
+      TargetAliasOrName: 
+      PushReturnPoint: 0
+  - ConversationID: 3DSampleConversation
+    LineID: L_a8e143897792
+    ConversationLineIndex: 20
+    characterID: cube
+    CharacterRepresentations:
+    - SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedExpressionId: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    LocalizedDialogues:
+    - Language: en
+      Text: Perspective.
+    - Language: fr
+      Text: Perspective.
+    - Language: es
+      Text: Perspectiva.
+    clip: {fileID: 0}
+    ActionsBeforeDialogueLine: []
+    ActionsAfterDialogueLine: []
+    UserInputMethod: 0
+    TimeBeforeNextLine: 0
+    LineContinuationSettings:
+      Mode: 0
+      TargetContainer: {fileID: 0}
+      TargetAliasOrName: 
+      PushReturnPoint: 0
+  - ConversationID: 3DSampleConversation
+    LineID: L_32af80687858
+    ConversationLineIndex: 21
+    characterID: capsule
+    CharacterRepresentations:
+    - SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedExpressionId: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    LocalizedDialogues:
+    - Language: en
+      Text: That does not help.
+    - Language: fr
+      Text: "\xC7a n\u2019aide pas."
+    - Language: es
+      Text: Eso no ayuda.
+    clip: {fileID: 0}
+    ActionsBeforeDialogueLine: []
+    ActionsAfterDialogueLine: []
+    UserInputMethod: 0
+    TimeBeforeNextLine: 0
+    LineContinuationSettings:
+      Mode: 0
+      TargetContainer: {fileID: 0}
+      TargetAliasOrName: 
+      PushReturnPoint: 0
+  - ConversationID: 3DSampleConversation
+    LineID: L_96b25c7e4067
+    ConversationLineIndex: 22
+    characterID: sphere
+    CharacterRepresentations:
+    - SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedExpressionId: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    LocalizedDialogues:
+    - Language: en
+      Text: Neither does this.
+    - Language: fr
+      Text: Ceci non plus.
+    - Language: es
+      Text: Esto tampoco.
+    clip: {fileID: 0}
+    ActionsBeforeDialogueLine: []
+    ActionsAfterDialogueLine: []
+    UserInputMethod: 0
+    TimeBeforeNextLine: 0
+    LineContinuationSettings:
+      Mode: 0
+      TargetContainer: {fileID: 0}
+      TargetAliasOrName: 
+      PushReturnPoint: 0
+  - ConversationID: 3DSampleConversation
+    LineID: L_9c3379ff536f
+    ConversationLineIndex: 23
+    characterID: cube
+    CharacterRepresentations:
+    - SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedExpressionId: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    LocalizedDialogues:
+    - Language: en
+      Text: You are reacting.
+    - Language: fr
+      Text: "Tu r\xE9agis."
+    - Language: es
+      Text: "Est\xE1s reaccionando."
+    clip: {fileID: 0}
+    ActionsBeforeDialogueLine: []
+    ActionsAfterDialogueLine: []
+    UserInputMethod: 0
+    TimeBeforeNextLine: 0
+    LineContinuationSettings:
+      Mode: 0
+      TargetContainer: {fileID: 0}
+      TargetAliasOrName: 
+      PushReturnPoint: 0
+  - ConversationID: 3DSampleConversation
+    LineID: L_71aa9ae78417
+    ConversationLineIndex: 24
+    characterID: sphere
+    CharacterRepresentations:
+    - SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedExpressionId: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    LocalizedDialogues:
+    - Language: en
+      Text: I am adapting.
+    - Language: fr
+      Text: "Je m\u2019adapte."
+    - Language: es
+      Text: Me estoy adaptando.
+    clip: {fileID: 0}
+    ActionsBeforeDialogueLine: []
+    ActionsAfterDialogueLine: []
+    UserInputMethod: 0
+    TimeBeforeNextLine: 0
+    LineContinuationSettings:
+      Mode: 0
+      TargetContainer: {fileID: 0}
+      TargetAliasOrName: 
+      PushReturnPoint: 0
+  - ConversationID: 3DSampleConversation
+    LineID: L_fe4a220418dc
+    ConversationLineIndex: 25
+    characterID: capsule
+    CharacterRepresentations:
+    - SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedExpressionId: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    LocalizedDialogues:
+    - Language: en
+      Text: I remain unchanged.
+    - Language: fr
+      Text: "Je reste inchang\xE9."
+    - Language: es
+      Text: Sigo sin cambios.
+    clip: {fileID: 0}
+    ActionsBeforeDialogueLine: []
+    ActionsAfterDialogueLine: []
+    UserInputMethod: 0
+    TimeBeforeNextLine: 0
+    LineContinuationSettings:
+      Mode: 0
+      TargetContainer: {fileID: 0}
+      TargetAliasOrName: 
+      PushReturnPoint: 0
+  - ConversationID: 3DSampleConversation
+    LineID: L_74bc301d08a0
+    ConversationLineIndex: 26
+    characterID: capsule
+    CharacterRepresentations:
+    - SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedExpressionId: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    LocalizedDialogues:
+    - Language: en
+      Text: I spoke too soon.
+    - Language: fr
+      Text: "J\u2019ai parl\xE9 trop vite."
+    - Language: es
+      Text: "Habl\xE9 demasiado pronto."
+    clip: {fileID: 0}
+    ActionsBeforeDialogueLine: []
+    ActionsAfterDialogueLine: []
+    UserInputMethod: 0
+    TimeBeforeNextLine: 0
+    LineContinuationSettings:
+      Mode: 0
+      TargetContainer: {fileID: 0}
+      TargetAliasOrName: 
+      PushReturnPoint: 0
+  - ConversationID: 3DSampleConversation
+    LineID: L_26f14ccf536f
+    ConversationLineIndex: 27
+    characterID: cube
+    CharacterRepresentations:
+    - SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedExpressionId: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    LocalizedDialogues:
+    - Language: en
+      Text: Good. Now we are balanced.
+    - Language: fr
+      Text: "Bien. Nous sommes maintenant \xE9quilibr\xE9s."
+    - Language: es
+      Text: Bien. Ahora estamos equilibrados.
+    clip: {fileID: 0}
+    ActionsBeforeDialogueLine: []
+    ActionsAfterDialogueLine: []
+    UserInputMethod: 0
+    TimeBeforeNextLine: 0
+    LineContinuationSettings:
+      Mode: 0
+      TargetContainer: {fileID: 0}
+      TargetAliasOrName: 
+      PushReturnPoint: 0
+  - ConversationID: 3DSampleConversation
+    LineID: L_af9cf8d84109
+    ConversationLineIndex: 28
+    characterID: sphere
+    CharacterRepresentations:
+    - SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedExpressionId: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    LocalizedDialogues:
+    - Language: en
+      Text: I do not feel balanced.
+    - Language: fr
+      Text: "Je ne me sens pas \xE9quilibr\xE9."
+    - Language: es
+      Text: No me siento equilibrado.
+    clip: {fileID: 0}
+    ActionsBeforeDialogueLine: []
+    ActionsAfterDialogueLine: []
+    UserInputMethod: 0
+    TimeBeforeNextLine: 0
+    LineContinuationSettings:
+      Mode: 0
+      TargetContainer: {fileID: 0}
+      TargetAliasOrName: 
+      PushReturnPoint: 0
+  - ConversationID: 3DSampleConversation
+    LineID: L_c26e113ea67d
+    ConversationLineIndex: 29
+    characterID: cube
+    CharacterRepresentations:
+    - SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedExpressionId: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    LocalizedDialogues:
+    - Language: en
+      Text: That is normal.
+    - Language: fr
+      Text: "C\u2019est normal."
+    - Language: es
+      Text: Eso es normal.
+    clip: {fileID: 0}
+    ActionsBeforeDialogueLine: []
+    ActionsAfterDialogueLine: []
+    UserInputMethod: 0
+    TimeBeforeNextLine: 0
+    LineContinuationSettings:
+      Mode: 0
+      TargetContainer: {fileID: 0}
+      TargetAliasOrName: 
+      PushReturnPoint: 0
+  - ConversationID: 3DSampleConversation
+    LineID: L_5625833edb7e
+    ConversationLineIndex: 30
+    characterID: capsule
+    CharacterRepresentations:
+    - SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedExpressionId: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    LocalizedDialogues:
+    - Language: en
+      Text: Is it ending.
+    - Language: fr
+      Text: "Est-ce que \xE7a se termine."
+    - Language: es
+      Text: "Est\xE1 terminando."
+    clip: {fileID: 0}
+    ActionsBeforeDialogueLine: []
+    ActionsAfterDialogueLine: []
+    UserInputMethod: 0
+    TimeBeforeNextLine: 0
+    LineContinuationSettings:
+      Mode: 0
+      TargetContainer: {fileID: 0}
+      TargetAliasOrName: 
+      PushReturnPoint: 0
+  - ConversationID: 3DSampleConversation
+    LineID: L_54978f41d6b4
+    ConversationLineIndex: 31
+    characterID: cube
+    CharacterRepresentations:
+    - SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedExpressionId: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    LocalizedDialogues:
+    - Language: en
+      Text: Nearly.
+    - Language: fr
+      Text: Presque.
+    - Language: es
+      Text: Casi.
+    clip: {fileID: 0}
+    ActionsBeforeDialogueLine: []
+    ActionsAfterDialogueLine: []
+    UserInputMethod: 0
+    TimeBeforeNextLine: 0
+    LineContinuationSettings:
+      Mode: 0
+      TargetContainer: {fileID: 0}
+      TargetAliasOrName: 
+      PushReturnPoint: 0
+  - ConversationID: 3DSampleConversation
+    LineID: L_6a01e56b0aaa
+    ConversationLineIndex: 32
+    characterID: sphere
+    CharacterRepresentations:
+    - SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedExpressionId: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    LocalizedDialogues:
+    - Language: en
+      Text: Thank goodness.
+    - Language: fr
+      Text: Dieu merci.
+    - Language: es
+      Text: Menos mal.
+    clip: {fileID: 0}
+    ActionsBeforeDialogueLine: []
+    ActionsAfterDialogueLine: []
+    UserInputMethod: 0
+    TimeBeforeNextLine: 0
+    LineContinuationSettings:
+      Mode: 0
+      TargetContainer: {fileID: 0}
+      TargetAliasOrName: 
+      PushReturnPoint: 0
+  - ConversationID: 3DSampleConversation
+    LineID: L_29a6b11e747e
+    ConversationLineIndex: 33
+    characterID: cube
+    CharacterRepresentations:
+    - SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedExpressionId: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    LocalizedDialogues:
+    - Language: en
+      Text: Remain composed.
+    - Language: fr
+      Text: Reste calme.
+    - Language: es
+      Text: "Mant\xE9n la compostura."
+    clip: {fileID: 0}
+    ActionsBeforeDialogueLine: []
+    ActionsAfterDialogueLine: []
+    UserInputMethod: 0
+    TimeBeforeNextLine: 0
+    LineContinuationSettings:
+      Mode: 0
+      TargetContainer: {fileID: 0}
+      TargetAliasOrName: 
+      PushReturnPoint: 0
+  - ConversationID: 3DSampleConversation
+    LineID: L_56c63e182a65
+    ConversationLineIndex: 34
+    characterID: capsule
+    CharacterRepresentations:
+    - SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedExpressionId: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    LocalizedDialogues:
+    - Language: en
+      Text: I miss it already.
+    - Language: fr
+      Text: "\xC7a me manque d\xE9j\xE0."
+    - Language: es
+      Text: "Ya lo extra\xF1o."
+    clip: {fileID: 0}
+    ActionsBeforeDialogueLine: []
+    ActionsAfterDialogueLine: []
+    UserInputMethod: 0
+    TimeBeforeNextLine: 0
+    LineContinuationSettings:
+      Mode: 0
+      TargetContainer: {fileID: 0}
+      TargetAliasOrName: 
+      PushReturnPoint: 0
+  - ConversationID: 3DSampleConversation
+    LineID: L_317e2e69e69e
+    ConversationLineIndex: 35
+    characterID: cube
+    CharacterRepresentations:
+    - SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedExpressionId: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    LocalizedDialogues:
+    - Language: en
+      Text: Of course you do.
+    - Language: fr
+      Text: "Bien s\xFBr que oui."
+    - Language: es
+      Text: "Claro que s\xED."
+    clip: {fileID: 0}
+    ActionsBeforeDialogueLine: []
+    ActionsAfterDialogueLine: []
+    UserInputMethod: 0
+    TimeBeforeNextLine: 0
+    LineContinuationSettings:
+      Mode: 0
+      TargetContainer: {fileID: 0}
+      TargetAliasOrName: 
+      PushReturnPoint: 0
+  - ConversationID: 3DSampleConversation
+    LineID: L_5be180e765a5
+    ConversationLineIndex: 36
+    characterID: sphere
+    CharacterRepresentations:
+    - SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedExpressionId: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    LocalizedDialogues:
+    - Language: en
+      Text: Let us never do that again.
+    - Language: fr
+      Text: "Ne faisons plus jamais \xE7a."
+    - Language: es
+      Text: No volvamos a hacer eso nunca.
+    clip: {fileID: 0}
+    ActionsBeforeDialogueLine: []
+    ActionsAfterDialogueLine: []
+    UserInputMethod: 0
+    TimeBeforeNextLine: 0
+    LineContinuationSettings:
+      Mode: 0
+      TargetContainer: {fileID: 0}
+      TargetAliasOrName: 
+      PushReturnPoint: 0
+  - ConversationID: 3DSampleConversation
+    LineID: L_d855dab11596
+    ConversationLineIndex: 37
+    characterID: cube
+    CharacterRepresentations:
+    - SelectedCharacterID: 
+      SelectedRepresentationName: 
+      SelectedRepresentation: {fileID: 0}
+      SelectedExpressionId: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplayPosition: 0
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    LocalizedDialogues:
+    - Language: en
+      Text: Agreed.
+    - Language: fr
+      Text: "D\u2019accord."
+    - Language: es
+      Text: De acuerdo.
+    clip: {fileID: 0}
+    ActionsBeforeDialogueLine: []
+    ActionsAfterDialogueLine: []
+    UserInputMethod: 0
+    TimeBeforeNextLine: 0
+    LineContinuationSettings:
+      Mode: 0
+      TargetContainer: {fileID: 0}
+      TargetAliasOrName: 
+      PushReturnPoint: 0
+  ConversationYaml: {fileID: -7622796456671618352}
   AllowPersistentOverrides: 1
-  FilePath: 
-  SourceYaml: {fileID: 0}
-  SourceYamlAssetPath: 
-  ConversationKey: 
+  FilePath: ConvoCore/Dialogue/ConvoCore3DDialogueSampleConversation
+  SourceYaml: {fileID: 102900000, guid: 24d61ad70f2f49441891f99c350c0620, type: 3}
+  SourceYamlAssetPath: Assets/Samples/ConvoCore/SampleAssets/3D Sample/ConvoCore3DDialogueSampleConversation.yml
+  ConversationKey: 3DSampleConversation
