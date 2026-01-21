@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['maxentries_0',['maxentries',['../structWolfstagInteractive_1_1ConvoCore_1_1DialogueHistoryRendererContext.html#a22c85a44eb392869ad1061bf8863719c',1,'WolfstagInteractive.ConvoCore.DialogueHistoryRendererContext.MaxEntries'],['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreDialogueHistoryUI.html#aa055338f0918e7d4ad16c66854533b1c',1,'WolfstagInteractive.ConvoCore.ConvoCoreDialogueHistoryUI.maxEntries']]],
+  ['maxentries_0',['maxentries',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreDialogueHistoryUI.html#aa055338f0918e7d4ad16c66854533b1c',1,'WolfstagInteractive.ConvoCore.ConvoCoreDialogueHistoryUI.maxEntries'],['../structWolfstagInteractive_1_1ConvoCore_1_1DialogueHistoryRendererContext.html#a22c85a44eb392869ad1061bf8863719c',1,'WolfstagInteractive.ConvoCore.DialogueHistoryRendererContext.MaxEntries']]],
   ['maxvisiblecharacterslots_1',['maxvisiblecharacterslots',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreUIFoundation.html#ab9c2ac397d38e8fe967a38f09fc329bf',1,'WolfstagInteractive.ConvoCore.ConvoCoreUIFoundation.maxVisibleCharacterSlots'],['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreUIFoundation.html#a5efc2df5fe12db12a18f2cf99fd49c54',1,'WolfstagInteractive.ConvoCore.ConvoCoreUIFoundation.MaxVisibleCharacterSlots']]],
   ['mode_2',['Mode',['../structWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData_1_1LineContinuation.html#ad9c49f2e30248a27c9a5e493fdf1a416',1,'WolfstagInteractive::ConvoCore::ConvoCoreConversationData::LineContinuation']]]
 ];
