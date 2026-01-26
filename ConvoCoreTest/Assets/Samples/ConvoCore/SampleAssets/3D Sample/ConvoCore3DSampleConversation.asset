@@ -111,8 +111,8 @@ MonoBehaviour:
     characterID: cube
     CharacterRepresentations:
     - SelectedCharacterID: 
-      SelectedRepresentationName: 
-      SelectedRepresentation: {fileID: 0}
+      SelectedRepresentationName: Prefab Representation
+      SelectedRepresentation: {fileID: 11400000, guid: 3a653faf41f2c334fa8db7c3805d147c, type: 2}
       SelectedExpressionId: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
@@ -145,8 +145,8 @@ MonoBehaviour:
     characterID: sphere
     CharacterRepresentations:
     - SelectedCharacterID: 
-      SelectedRepresentationName: 
-      SelectedRepresentation: {fileID: 0}
+      SelectedRepresentationName: Prefab Representation
+      SelectedRepresentation: {fileID: 11400000, guid: 664b3f2510ccede488b6012d83c83d09, type: 2}
       SelectedExpressionId: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
@@ -179,8 +179,8 @@ MonoBehaviour:
     characterID: capsule
     CharacterRepresentations:
     - SelectedCharacterID: 
-      SelectedRepresentationName: 
-      SelectedRepresentation: {fileID: 0}
+      SelectedRepresentationName: Prefab Representation
+      SelectedRepresentation: {fileID: 11400000, guid: 1f68b1907135bc941abf273cec5be8c1, type: 2}
       SelectedExpressionId: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
@@ -213,8 +213,8 @@ MonoBehaviour:
     characterID: cube
     CharacterRepresentations:
     - SelectedCharacterID: 
-      SelectedRepresentationName: 
-      SelectedRepresentation: {fileID: 0}
+      SelectedRepresentationName: Prefab Representation
+      SelectedRepresentation: {fileID: 11400000, guid: 3a653faf41f2c334fa8db7c3805d147c, type: 2}
       SelectedExpressionId: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
@@ -247,8 +247,8 @@ MonoBehaviour:
     characterID: sphere
     CharacterRepresentations:
     - SelectedCharacterID: 
-      SelectedRepresentationName: 
-      SelectedRepresentation: {fileID: 0}
+      SelectedRepresentationName: Prefab Representation
+      SelectedRepresentation: {fileID: 11400000, guid: 664b3f2510ccede488b6012d83c83d09, type: 2}
       SelectedExpressionId: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
@@ -281,8 +281,8 @@ MonoBehaviour:
     characterID: capsule
     CharacterRepresentations:
     - SelectedCharacterID: 
-      SelectedRepresentationName: 
-      SelectedRepresentation: {fileID: 0}
+      SelectedRepresentationName: Prefab Representation
+      SelectedRepresentation: {fileID: 11400000, guid: 1f68b1907135bc941abf273cec5be8c1, type: 2}
       SelectedExpressionId: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
@@ -315,8 +315,8 @@ MonoBehaviour:
     characterID: sphere
     CharacterRepresentations:
     - SelectedCharacterID: 
-      SelectedRepresentationName: 
-      SelectedRepresentation: {fileID: 0}
+      SelectedRepresentationName: Prefab Representation
+      SelectedRepresentation: {fileID: 11400000, guid: 664b3f2510ccede488b6012d83c83d09, type: 2}
       SelectedExpressionId: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
@@ -349,8 +349,8 @@ MonoBehaviour:
     characterID: cube
     CharacterRepresentations:
     - SelectedCharacterID: 
-      SelectedRepresentationName: 
-      SelectedRepresentation: {fileID: 0}
+      SelectedRepresentationName: Prefab Representation
+      SelectedRepresentation: {fileID: 11400000, guid: 3a653faf41f2c334fa8db7c3805d147c, type: 2}
       SelectedExpressionId: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
@@ -383,8 +383,8 @@ MonoBehaviour:
     characterID: sphere
     CharacterRepresentations:
     - SelectedCharacterID: 
-      SelectedRepresentationName: 
-      SelectedRepresentation: {fileID: 0}
+      SelectedRepresentationName: Prefab Representation
+      SelectedRepresentation: {fileID: 11400000, guid: 664b3f2510ccede488b6012d83c83d09, type: 2}
       SelectedExpressionId: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
@@ -417,8 +417,8 @@ MonoBehaviour:
     characterID: capsule
     CharacterRepresentations:
     - SelectedCharacterID: 
-      SelectedRepresentationName: 
-      SelectedRepresentation: {fileID: 0}
+      SelectedRepresentationName: Prefab Representation
+      SelectedRepresentation: {fileID: 11400000, guid: 1f68b1907135bc941abf273cec5be8c1, type: 2}
       SelectedExpressionId: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
@@ -451,8 +451,8 @@ MonoBehaviour:
     characterID: sphere
     CharacterRepresentations:
     - SelectedCharacterID: 
-      SelectedRepresentationName: 
-      SelectedRepresentation: {fileID: 0}
+      SelectedRepresentationName: Prefab Representation
+      SelectedRepresentation: {fileID: 11400000, guid: 664b3f2510ccede488b6012d83c83d09, type: 2}
       SelectedExpressionId: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
@@ -485,8 +485,8 @@ MonoBehaviour:
     characterID: cube
     CharacterRepresentations:
     - SelectedCharacterID: 
-      SelectedRepresentationName: 
-      SelectedRepresentation: {fileID: 0}
+      SelectedRepresentationName: Prefab Representation
+      SelectedRepresentation: {fileID: 11400000, guid: 3a653faf41f2c334fa8db7c3805d147c, type: 2}
       SelectedExpressionId: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
@@ -519,8 +519,8 @@ MonoBehaviour:
     characterID: capsule
     CharacterRepresentations:
     - SelectedCharacterID: 
-      SelectedRepresentationName: 
-      SelectedRepresentation: {fileID: 0}
+      SelectedRepresentationName: Prefab Representation
+      SelectedRepresentation: {fileID: 11400000, guid: 1f68b1907135bc941abf273cec5be8c1, type: 2}
       SelectedExpressionId: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
@@ -553,8 +553,8 @@ MonoBehaviour:
     characterID: cube
     CharacterRepresentations:
     - SelectedCharacterID: 
-      SelectedRepresentationName: 
-      SelectedRepresentation: {fileID: 0}
+      SelectedRepresentationName: Prefab Representation
+      SelectedRepresentation: {fileID: 11400000, guid: 3a653faf41f2c334fa8db7c3805d147c, type: 2}
       SelectedExpressionId: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
@@ -587,8 +587,8 @@ MonoBehaviour:
     characterID: sphere
     CharacterRepresentations:
     - SelectedCharacterID: 
-      SelectedRepresentationName: 
-      SelectedRepresentation: {fileID: 0}
+      SelectedRepresentationName: Prefab Representation
+      SelectedRepresentation: {fileID: 11400000, guid: 664b3f2510ccede488b6012d83c83d09, type: 2}
       SelectedExpressionId: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
@@ -621,8 +621,8 @@ MonoBehaviour:
     characterID: capsule
     CharacterRepresentations:
     - SelectedCharacterID: 
-      SelectedRepresentationName: 
-      SelectedRepresentation: {fileID: 0}
+      SelectedRepresentationName: Prefab Representation
+      SelectedRepresentation: {fileID: 11400000, guid: 1f68b1907135bc941abf273cec5be8c1, type: 2}
       SelectedExpressionId: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
@@ -655,8 +655,8 @@ MonoBehaviour:
     characterID: sphere
     CharacterRepresentations:
     - SelectedCharacterID: 
-      SelectedRepresentationName: 
-      SelectedRepresentation: {fileID: 0}
+      SelectedRepresentationName: Prefab Representation
+      SelectedRepresentation: {fileID: 11400000, guid: 664b3f2510ccede488b6012d83c83d09, type: 2}
       SelectedExpressionId: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
@@ -689,8 +689,8 @@ MonoBehaviour:
     characterID: cube
     CharacterRepresentations:
     - SelectedCharacterID: 
-      SelectedRepresentationName: 
-      SelectedRepresentation: {fileID: 0}
+      SelectedRepresentationName: Prefab Representation
+      SelectedRepresentation: {fileID: 11400000, guid: 3a653faf41f2c334fa8db7c3805d147c, type: 2}
       SelectedExpressionId: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
@@ -723,8 +723,8 @@ MonoBehaviour:
     characterID: capsule
     CharacterRepresentations:
     - SelectedCharacterID: 
-      SelectedRepresentationName: 
-      SelectedRepresentation: {fileID: 0}
+      SelectedRepresentationName: Prefab Representation
+      SelectedRepresentation: {fileID: 11400000, guid: 1f68b1907135bc941abf273cec5be8c1, type: 2}
       SelectedExpressionId: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
@@ -757,8 +757,8 @@ MonoBehaviour:
     characterID: sphere
     CharacterRepresentations:
     - SelectedCharacterID: 
-      SelectedRepresentationName: 
-      SelectedRepresentation: {fileID: 0}
+      SelectedRepresentationName: Prefab Representation
+      SelectedRepresentation: {fileID: 11400000, guid: 664b3f2510ccede488b6012d83c83d09, type: 2}
       SelectedExpressionId: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
@@ -791,8 +791,8 @@ MonoBehaviour:
     characterID: cube
     CharacterRepresentations:
     - SelectedCharacterID: 
-      SelectedRepresentationName: 
-      SelectedRepresentation: {fileID: 0}
+      SelectedRepresentationName: Prefab Representation
+      SelectedRepresentation: {fileID: 11400000, guid: 3a653faf41f2c334fa8db7c3805d147c, type: 2}
       SelectedExpressionId: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
@@ -825,8 +825,8 @@ MonoBehaviour:
     characterID: capsule
     CharacterRepresentations:
     - SelectedCharacterID: 
-      SelectedRepresentationName: 
-      SelectedRepresentation: {fileID: 0}
+      SelectedRepresentationName: Prefab Representation
+      SelectedRepresentation: {fileID: 11400000, guid: 1f68b1907135bc941abf273cec5be8c1, type: 2}
       SelectedExpressionId: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
@@ -859,8 +859,8 @@ MonoBehaviour:
     characterID: sphere
     CharacterRepresentations:
     - SelectedCharacterID: 
-      SelectedRepresentationName: 
-      SelectedRepresentation: {fileID: 0}
+      SelectedRepresentationName: Prefab Representation
+      SelectedRepresentation: {fileID: 11400000, guid: 664b3f2510ccede488b6012d83c83d09, type: 2}
       SelectedExpressionId: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
@@ -893,8 +893,8 @@ MonoBehaviour:
     characterID: cube
     CharacterRepresentations:
     - SelectedCharacterID: 
-      SelectedRepresentationName: 
-      SelectedRepresentation: {fileID: 0}
+      SelectedRepresentationName: Prefab Representation
+      SelectedRepresentation: {fileID: 11400000, guid: 3a653faf41f2c334fa8db7c3805d147c, type: 2}
       SelectedExpressionId: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
@@ -927,8 +927,8 @@ MonoBehaviour:
     characterID: sphere
     CharacterRepresentations:
     - SelectedCharacterID: 
-      SelectedRepresentationName: 
-      SelectedRepresentation: {fileID: 0}
+      SelectedRepresentationName: Prefab Representation
+      SelectedRepresentation: {fileID: 11400000, guid: 664b3f2510ccede488b6012d83c83d09, type: 2}
       SelectedExpressionId: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
@@ -961,8 +961,8 @@ MonoBehaviour:
     characterID: capsule
     CharacterRepresentations:
     - SelectedCharacterID: 
-      SelectedRepresentationName: 
-      SelectedRepresentation: {fileID: 0}
+      SelectedRepresentationName: Prefab Representation
+      SelectedRepresentation: {fileID: 11400000, guid: 1f68b1907135bc941abf273cec5be8c1, type: 2}
       SelectedExpressionId: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
@@ -995,8 +995,8 @@ MonoBehaviour:
     characterID: capsule
     CharacterRepresentations:
     - SelectedCharacterID: 
-      SelectedRepresentationName: 
-      SelectedRepresentation: {fileID: 0}
+      SelectedRepresentationName: Prefab Representation
+      SelectedRepresentation: {fileID: 11400000, guid: 1f68b1907135bc941abf273cec5be8c1, type: 2}
       SelectedExpressionId: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
@@ -1029,8 +1029,8 @@ MonoBehaviour:
     characterID: cube
     CharacterRepresentations:
     - SelectedCharacterID: 
-      SelectedRepresentationName: 
-      SelectedRepresentation: {fileID: 0}
+      SelectedRepresentationName: Prefab Representation
+      SelectedRepresentation: {fileID: 11400000, guid: 3a653faf41f2c334fa8db7c3805d147c, type: 2}
       SelectedExpressionId: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
@@ -1063,8 +1063,8 @@ MonoBehaviour:
     characterID: sphere
     CharacterRepresentations:
     - SelectedCharacterID: 
-      SelectedRepresentationName: 
-      SelectedRepresentation: {fileID: 0}
+      SelectedRepresentationName: Prefab Representation
+      SelectedRepresentation: {fileID: 11400000, guid: 664b3f2510ccede488b6012d83c83d09, type: 2}
       SelectedExpressionId: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
@@ -1097,8 +1097,8 @@ MonoBehaviour:
     characterID: cube
     CharacterRepresentations:
     - SelectedCharacterID: 
-      SelectedRepresentationName: 
-      SelectedRepresentation: {fileID: 0}
+      SelectedRepresentationName: Prefab Representation
+      SelectedRepresentation: {fileID: 11400000, guid: 3a653faf41f2c334fa8db7c3805d147c, type: 2}
       SelectedExpressionId: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
@@ -1131,8 +1131,8 @@ MonoBehaviour:
     characterID: capsule
     CharacterRepresentations:
     - SelectedCharacterID: 
-      SelectedRepresentationName: 
-      SelectedRepresentation: {fileID: 0}
+      SelectedRepresentationName: Prefab Representation
+      SelectedRepresentation: {fileID: 11400000, guid: 1f68b1907135bc941abf273cec5be8c1, type: 2}
       SelectedExpressionId: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
@@ -1165,8 +1165,8 @@ MonoBehaviour:
     characterID: cube
     CharacterRepresentations:
     - SelectedCharacterID: 
-      SelectedRepresentationName: 
-      SelectedRepresentation: {fileID: 0}
+      SelectedRepresentationName: Prefab Representation
+      SelectedRepresentation: {fileID: 11400000, guid: 3a653faf41f2c334fa8db7c3805d147c, type: 2}
       SelectedExpressionId: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
@@ -1199,8 +1199,8 @@ MonoBehaviour:
     characterID: sphere
     CharacterRepresentations:
     - SelectedCharacterID: 
-      SelectedRepresentationName: 
-      SelectedRepresentation: {fileID: 0}
+      SelectedRepresentationName: Prefab Representation
+      SelectedRepresentation: {fileID: 11400000, guid: 664b3f2510ccede488b6012d83c83d09, type: 2}
       SelectedExpressionId: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
@@ -1233,8 +1233,8 @@ MonoBehaviour:
     characterID: cube
     CharacterRepresentations:
     - SelectedCharacterID: 
-      SelectedRepresentationName: 
-      SelectedRepresentation: {fileID: 0}
+      SelectedRepresentationName: Prefab Representation
+      SelectedRepresentation: {fileID: 11400000, guid: 3a653faf41f2c334fa8db7c3805d147c, type: 2}
       SelectedExpressionId: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
@@ -1267,8 +1267,8 @@ MonoBehaviour:
     characterID: capsule
     CharacterRepresentations:
     - SelectedCharacterID: 
-      SelectedRepresentationName: 
-      SelectedRepresentation: {fileID: 0}
+      SelectedRepresentationName: Prefab Representation
+      SelectedRepresentation: {fileID: 11400000, guid: 1f68b1907135bc941abf273cec5be8c1, type: 2}
       SelectedExpressionId: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
@@ -1301,8 +1301,8 @@ MonoBehaviour:
     characterID: cube
     CharacterRepresentations:
     - SelectedCharacterID: 
-      SelectedRepresentationName: 
-      SelectedRepresentation: {fileID: 0}
+      SelectedRepresentationName: Prefab Representation
+      SelectedRepresentation: {fileID: 11400000, guid: 3a653faf41f2c334fa8db7c3805d147c, type: 2}
       SelectedExpressionId: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
@@ -1335,8 +1335,8 @@ MonoBehaviour:
     characterID: sphere
     CharacterRepresentations:
     - SelectedCharacterID: 
-      SelectedRepresentationName: 
-      SelectedRepresentation: {fileID: 0}
+      SelectedRepresentationName: Prefab Representation
+      SelectedRepresentation: {fileID: 11400000, guid: 664b3f2510ccede488b6012d83c83d09, type: 2}
       SelectedExpressionId: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
@@ -1369,8 +1369,8 @@ MonoBehaviour:
     characterID: cube
     CharacterRepresentations:
     - SelectedCharacterID: 
-      SelectedRepresentationName: 
-      SelectedRepresentation: {fileID: 0}
+      SelectedRepresentationName: Prefab Representation
+      SelectedRepresentation: {fileID: 11400000, guid: 3a653faf41f2c334fa8db7c3805d147c, type: 2}
       SelectedExpressionId: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0

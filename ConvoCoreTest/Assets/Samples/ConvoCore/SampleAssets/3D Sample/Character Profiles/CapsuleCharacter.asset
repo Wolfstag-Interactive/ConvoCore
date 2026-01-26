@@ -15,8 +15,8 @@ MonoBehaviour:
   IsPlayerCharacter: 0
   CharacterName: Capsule
   PlayerPlaceholder: 
-  CharacterID: 
-  CharacterNameColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  CharacterID: capsule
+  CharacterNameColor: {r: 1, g: 1, b: 1, a: 1}
   CharacterDescription: 
   Representations:
   - CharacterRepresentationName: Prefab Representation
