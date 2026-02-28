@@ -152,6 +152,31 @@ namespace WolfstagInteractive.ConvoCore
                 else if (_history.Count > frame.LineIndex)
                     _history[frame.LineIndex] = frame;
 
+                // PlayerChoice mode: present options, branch on selection, skip normal input/continuation.
+                if (line.LineContinuationSettings.Mode == ConvoCoreConversationData.LineContinuationMode.PlayerChoice)
+                {
+                    var choices = line.LineContinuationSettings.Choices;
+
+                    if (choices == null || choices.Count == 0)
+                    {
+                        Debug.LogWarning($"[ConvoCore] Line {_currentLineIndex} has PlayerChoice mode but no choices defined. Advancing.");
+                        _currentLineIndex++;
+                        continue;
+                    }
+
+                    var labels = ResolveChoiceLabels(choices);
+                    var choiceResult = new ChoiceResult();
+
+                    yield return StartCoroutine(ConversationUI.PresentChoices(choices, labels, choiceResult));
+
+                    int selected = Mathf.Clamp(choiceResult.SelectedIndex, 0, choices.Count - 1);
+
+                    if (!HandleChoiceBranch(choices[selected]))
+                        break;
+
+                    continue;
+                }
+
                 // Handle line progression method
                 if (line.UserInputMethod == ConvoCoreConversationData.DialogueLineProgressionMethod.Timed)
                 {
@@ -191,6 +216,49 @@ namespace WolfstagInteractive.ConvoCore
             }
             Debug.Log("Conversation completed!");
         }
+        private List<string> ResolveChoiceLabels(List<ConvoCoreConversationData.ChoiceOption> choices)
+        {
+            var labels = new List<string>(choices.Count);
+            foreach (var choice in choices)
+            {
+                if (choice.Labels == null || choice.Labels.Count == 0)
+                {
+                    labels.Add("[Choice]");
+                    continue;
+                }
+
+                // Reuse the localization handler by constructing a temporary line info
+                var tempLine = new ConvoCoreConversationData.DialogueLineInfo("choice")
+                {
+                    LocalizedDialogues = choice.Labels
+                };
+                var result = LocalizationHandler.GetLocalizedDialogue(tempLine);
+                labels.Add(result.Success ? result.Text : "[Choice]");
+            }
+            return labels;
+        }
+
+        private bool HandleChoiceBranch(ConvoCoreConversationData.ChoiceOption choice)
+        {
+            if (choice.TargetContainer == null)
+            {
+                Debug.LogWarning("[ConvoCore] Selected choice has no TargetContainer. Ending conversation.");
+                CurrentDialogueState = ConversationState.Completed;
+                return false;
+            }
+
+            // Reuse the existing container branch logic
+            var continuation = new ConvoCoreConversationData.LineContinuation
+            {
+                Mode = ConvoCoreConversationData.LineContinuationMode.ContainerBranch,
+                TargetContainer = choice.TargetContainer,
+                TargetAliasOrName = choice.TargetAliasOrName,
+                PushReturnPoint = choice.PushReturnPoint
+            };
+
+            return HandleContainerBranch(continuation);
+        }
+
         private bool HandleLineContinuation(ConvoCoreConversationData.DialogueLineInfo line)
         {
             var cont = line.LineContinuationSettings;
