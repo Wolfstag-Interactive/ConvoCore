@@ -8,6 +8,7 @@ var dir_716fc4c6cb98b933cc0fa884d6e5d043 =
     [ "BaseDialogueLineAction.cs", "BaseDialogueLineAction_8cs.html", "BaseDialogueLineAction_8cs" ],
     [ "BaseExpressionAction.cs", "BaseExpressionAction_8cs.html", "BaseExpressionAction_8cs" ],
     [ "CharacterRepresentationBase.cs", "CharacterRepresentationBase_8cs.html", "CharacterRepresentationBase_8cs" ],
+    [ "ChoiceResult.cs", "ChoiceResult_8cs.html", "ChoiceResult_8cs" ],
     [ "ConvoCore.cs", "ConvoCore_8cs.html", "ConvoCore_8cs" ],
     [ "ConvoCoreAddressablesUtil.cs", "ConvoCoreAddressablesUtil_8cs.html", "ConvoCoreAddressablesUtil_8cs" ],
     [ "ConvoCoreCharacterDisplayBase.cs", "ConvoCoreCharacterDisplayBase_8cs.html", "ConvoCoreCharacterDisplayBase_8cs" ],

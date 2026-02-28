@@ -4,6 +4,8 @@ var hierarchy =
       [ "WolfstagInteractive.ConvoCore.Editor.ConvoCoreYamlWatcher", "classWolfstagInteractive_1_1ConvoCore_1_1Editor_1_1ConvoCoreYamlWatcher.html", null ]
     ] ],
     [ "WolfstagInteractive.ConvoCore.ConvoCoreConversationData.CharacterRepresentationData", "structWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData_1_1CharacterRepresentationData.html", null ],
+    [ "WolfstagInteractive.ConvoCore.ConvoCoreConversationData.ChoiceOption", "structWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData_1_1ChoiceOption.html", null ],
+    [ "WolfstagInteractive.ConvoCore.ChoiceResult", "classWolfstagInteractive_1_1ConvoCore_1_1ChoiceResult.html", null ],
     [ "WolfstagInteractive.ConvoCore.ConversationBranchResult", "structWolfstagInteractive_1_1ConvoCore_1_1ConversationBranchResult.html", null ],
     [ "WolfstagInteractive.ConvoCore.ConversationContainerRuntime", "classWolfstagInteractive_1_1ConvoCore_1_1ConversationContainerRuntime.html", null ],
     [ "WolfstagInteractive.ConvoCore.ConvoCoreAddressablesUtil", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreAddressablesUtil.html", null ],

@@ -1,6 +1,7 @@
 var classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData =
 [
     [ "CharacterRepresentationData", "structWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData_1_1CharacterRepresentationData.html", "structWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData_1_1CharacterRepresentationData" ],
+    [ "ChoiceOption", "structWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData_1_1ChoiceOption.html", "structWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData_1_1ChoiceOption" ],
     [ "DialogueLineInfo", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData_1_1DialogueLineInfo.html", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData_1_1DialogueLineInfo" ],
     [ "LineContinuation", "structWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData_1_1LineContinuation.html", "structWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData_1_1LineContinuation" ],
     [ "LocalizedDialogue", "structWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData_1_1LocalizedDialogue.html", "structWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData_1_1LocalizedDialogue" ],
@@ -11,7 +12,8 @@ var classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData =
     [ "LineContinuationMode", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData.html#a0aa0fdd4cefc8aad605fe6d59182a0d9", [
       [ "Continue", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData.html#a0aa0fdd4cefc8aad605fe6d59182a0d9aa0bfb8e59e6c13fc8d990781f77694fe", null ],
       [ "EndConversation", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData.html#a0aa0fdd4cefc8aad605fe6d59182a0d9a50aae5e8cd897277d2fcc7344f5cac2f", null ],
-      [ "ContainerBranch", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData.html#a0aa0fdd4cefc8aad605fe6d59182a0d9ab90d1df99ef57685f3c6c686dee21d25", null ]
+      [ "ContainerBranch", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData.html#a0aa0fdd4cefc8aad605fe6d59182a0d9ab90d1df99ef57685f3c6c686dee21d25", null ],
+      [ "PlayerChoice", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData.html#a0aa0fdd4cefc8aad605fe6d59182a0d9ae61d97bb2a7d7f91f86f092fc5ce4d65", null ]
     ] ],
     [ "ConvoCoreConversationData", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData.html#ac82fad577df98effb74caf7c7bd0d52b", null ],
     [ "ActionsBeforeDialogueLine", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData.html#a89c249b22a655216118bc0a2c7941ed7", null ],

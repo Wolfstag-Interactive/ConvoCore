@@ -58,11 +58,11 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "BaseDialogueLineAction_8cs.html",
-"classWolfstagInteractive_1_1ConvoCore_1_1ConvoCore.html#af71ccf0e9d25ce86bae7590a42e279a4",
-"classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreDialogueLineActionModifyTransform.html#afdc2d7d9d29eaaf923365d3ff420c475",
-"classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSettings.html#a606b3032aa0144bc2cb392458ce9bf1c",
-"classWolfstagInteractive_1_1ConvoCore_1_1PagedListAttribute.html#a0e215b9fefe64ee217423b9ce2c80d92",
-"functions_p.html"
+"classWolfstagInteractive_1_1ConvoCore_1_1ConvoCore.html#ad47627eab2d1d726c168a0f1bc1d47fa",
+"classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreDialogueLineActionInstantiatePrefab.html#ae0e0abca80e0ac434edef84dfce171bf",
+"classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSampleUI.html#aecd929b202b5880ad1ed8fef3ed43904",
+"classWolfstagInteractive_1_1ConvoCore_1_1GameObjectReference.html#acd4e76a147f409fb4ebb98160636eaa1ac60345add82630978868f72d5296fd22",
+"functions_func_f.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

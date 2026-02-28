@@ -192,6 +192,10 @@ Private Member Functions</h2></td></tr>
 <tr class="memitem:ad112fbab187152ea211e9c5a61b4bd44" id="r_ad112fbab187152ea211e9c5a61b4bd44"><td class="memItemLeft" align="right" valign="top">IEnumerator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1ConvoCore.html#ad112fbab187152ea211e9c5a61b4bd44">ExecuteDialogueSequence</a> ()</td></tr>
 <tr class="memdesc:ad112fbab187152ea211e9c5a61b4bd44"><td class="mdescLeft">&#160;</td><td class="mdescRight">Main coroutine that handles the conversation flow.  <br /></td></tr>
 <tr class="separator:ad112fbab187152ea211e9c5a61b4bd44"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aef93c3524a23aaf0a299b87f1bbfdb5e" id="r_aef93c3524a23aaf0a299b87f1bbfdb5e"><td class="memItemLeft" align="right" valign="top">List&lt; string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1ConvoCore.html#aef93c3524a23aaf0a299b87f1bbfdb5e">ResolveChoiceLabels</a> (List&lt; <a class="el" href="structWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData_1_1ChoiceOption.html">ConvoCoreConversationData.ChoiceOption</a> &gt; choices)</td></tr>
+<tr class="separator:aef93c3524a23aaf0a299b87f1bbfdb5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8afa13241331240c42169cdc636840f0" id="r_a8afa13241331240c42169cdc636840f0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1ConvoCore.html#a8afa13241331240c42169cdc636840f0">HandleChoiceBranch</a> (<a class="el" href="structWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData_1_1ChoiceOption.html">ConvoCoreConversationData.ChoiceOption</a> choice)</td></tr>
+<tr class="separator:a8afa13241331240c42169cdc636840f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0361ff66b289fcccbbab9bfbe452f240" id="r_a0361ff66b289fcccbbab9bfbe452f240"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1ConvoCore.html#a0361ff66b289fcccbbab9bfbe452f240">HandleLineContinuation</a> (<a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData_1_1DialogueLineInfo.html">ConvoCoreConversationData.DialogueLineInfo</a> line)</td></tr>
 <tr class="separator:a0361ff66b289fcccbbab9bfbe452f240"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0baf99599ca57ee011a376d60aa2bbc3" id="r_a0baf99599ca57ee011a376d60aa2bbc3"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1ConvoCore.html#a0baf99599ca57ee011a376d60aa2bbc3">HandleContainerBranch</a> (<a class="el" href="structWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData_1_1LineContinuation.html">ConvoCoreConversationData.LineContinuation</a> cont)</td></tr>
@@ -454,6 +458,32 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a8afa13241331240c42169cdc636840f0" name="a8afa13241331240c42169cdc636840f0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8afa13241331240c42169cdc636840f0">&#9670;&#160;</a></span>HandleChoiceBranch()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool WolfstagInteractive.ConvoCore.ConvoCore.HandleChoiceBranch </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData_1_1ChoiceOption.html">ConvoCoreConversationData::ChoiceOption</a>&#160;</td>
+          <td class="paramname"><em>choice</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a0baf99599ca57ee011a376d60aa2bbc3" name="a0baf99599ca57ee011a376d60aa2bbc3"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0baf99599ca57ee011a376d60aa2bbc3">&#9670;&#160;</a></span>HandleContainerBranch()</h2>
 
@@ -712,6 +742,32 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Replaces player name placeholders in dialogue text. </p>
+
+</div>
+</div>
+<a id="aef93c3524a23aaf0a299b87f1bbfdb5e" name="aef93c3524a23aaf0a299b87f1bbfdb5e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aef93c3524a23aaf0a299b87f1bbfdb5e">&#9670;&#160;</a></span>ResolveChoiceLabels()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">List&lt; string &gt; WolfstagInteractive.ConvoCore.ConvoCore.ResolveChoiceLabels </td>
+          <td>(</td>
+          <td class="paramtype">List&lt; <a class="el" href="structWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData_1_1ChoiceOption.html">ConvoCoreConversationData::ChoiceOption</a> &gt;&#160;</td>
+          <td class="paramname"><em>choices</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>

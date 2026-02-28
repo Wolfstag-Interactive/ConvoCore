@@ -7,6 +7,7 @@ var annotated_dup =
         ] ],
         [ "BaseDialogueLineAction", "classWolfstagInteractive_1_1ConvoCore_1_1BaseDialogueLineAction.html", "classWolfstagInteractive_1_1ConvoCore_1_1BaseDialogueLineAction" ],
         [ "CharacterRepresentationBase", "classWolfstagInteractive_1_1ConvoCore_1_1CharacterRepresentationBase.html", "classWolfstagInteractive_1_1ConvoCore_1_1CharacterRepresentationBase" ],
+        [ "ChoiceResult", "classWolfstagInteractive_1_1ConvoCore_1_1ChoiceResult.html", "classWolfstagInteractive_1_1ConvoCore_1_1ChoiceResult" ],
         [ "ContainerInput", "classWolfstagInteractive_1_1ConvoCore_1_1ContainerInput.html", "classWolfstagInteractive_1_1ConvoCore_1_1ContainerInput" ],
         [ "ConversationBranchResult", "structWolfstagInteractive_1_1ConvoCore_1_1ConversationBranchResult.html", "structWolfstagInteractive_1_1ConvoCore_1_1ConversationBranchResult" ],
         [ "ConversationContainer", "classWolfstagInteractive_1_1ConvoCore_1_1ConversationContainer.html", "classWolfstagInteractive_1_1ConvoCore_1_1ConversationContainer" ],

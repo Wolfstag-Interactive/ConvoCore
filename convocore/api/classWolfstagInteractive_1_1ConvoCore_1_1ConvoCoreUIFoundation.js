@@ -4,6 +4,7 @@ var classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreUIFoundation =
     [ "Dispose", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreUIFoundation.html#a43c4664b2f5da3ea57ab6cb653c0ad75", null ],
     [ "HideDialogue", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreUIFoundation.html#a3f26f116e727d8fda353cb9511ac8db0", null ],
     [ "InitializeUI", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreUIFoundation.html#a06a54cd4a4baa430447c7972ea95220b", null ],
+    [ "PresentChoices", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreUIFoundation.html#aaecb74d16301d9bfe132928eb9684129", null ],
     [ "RaiseAdvance", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreUIFoundation.html#a5714c4d7d8622434afb0fcd4abcd5cf4", null ],
     [ "RaiseReverse", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreUIFoundation.html#a0c83cd6729c79e18cc9baa5ee0b59464", null ],
     [ "UpdateDialogueUI", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreUIFoundation.html#ab41db2fa70934e61ce34d20a20edcf31", null ],

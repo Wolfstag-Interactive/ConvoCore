@@ -11,11 +11,12 @@ var searchData=
   ['renderrepresentation_8',['RenderRepresentation',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSampleUI.html#a4d14198109646b90ec6a633e4bd34bc5',1,'WolfstagInteractive::ConvoCore::ConvoCoreSampleUI']]],
   ['replaceplayernameindialogueline_9',['ReplacePlayerNameInDialogueLine',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCore.html#aea1e04265af7308bd38fbf984d7775c1',1,'WolfstagInteractive::ConvoCore::ConvoCore']]],
   ['resolvecharacterprofile_10',['ResolveCharacterProfile',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData.html#a6114876ed640ee960306f5f58614c043',1,'WolfstagInteractive::ConvoCore::ConvoCoreConversationData']]],
-  ['resolveforbranch_11',['ResolveForBranch',['../classWolfstagInteractive_1_1ConvoCore_1_1ConversationContainer.html#aed67ef1724ff7a7d4d3f3836c500c50c',1,'WolfstagInteractive::ConvoCore::ConversationContainer']]],
-  ['resolveindex_12',['ResolveIndex',['../classWolfstagInteractive_1_1ConvoCore_1_1ConversationContainerRuntime.html#a5f4a880c02189b1917291edd6ef90983',1,'WolfstagInteractive::ConvoCore::ConversationContainerRuntime']]],
-  ['resolvesequentialentry_13',['ResolveSequentialEntry',['../classWolfstagInteractive_1_1ConvoCore_1_1ConversationContainer.html#aa046d744771ea273a44a61ab48cdc661',1,'WolfstagInteractive::ConvoCore::ConversationContainer']]],
-  ['resolveweightedrandomentry_14',['ResolveWeightedRandomEntry',['../classWolfstagInteractive_1_1ConvoCore_1_1ConversationContainer.html#a8da23e2aee7e2f9b4f503d92bbc67c17',1,'WolfstagInteractive::ConvoCore::ConversationContainer']]],
-  ['resumeconversation_15',['ResumeConversation',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCore.html#aa7a95c9b8fc2b3652a9c1526c447dd03',1,'WolfstagInteractive::ConvoCore::ConvoCore']]],
-  ['reverseoneline_16',['ReverseOneLine',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCore.html#ac707a0f9bcb2b98b9383198c18a0f0a0',1,'WolfstagInteractive::ConvoCore::ConvoCore']]],
-  ['reverseonelineroutine_17',['ReverseOneLineRoutine',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCore.html#ad2fe06331123099db4f05fd324e16a43',1,'WolfstagInteractive::ConvoCore::ConvoCore']]]
+  ['resolvechoicelabels_11',['ResolveChoiceLabels',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCore.html#aef93c3524a23aaf0a299b87f1bbfdb5e',1,'WolfstagInteractive::ConvoCore::ConvoCore']]],
+  ['resolveforbranch_12',['ResolveForBranch',['../classWolfstagInteractive_1_1ConvoCore_1_1ConversationContainer.html#aed67ef1724ff7a7d4d3f3836c500c50c',1,'WolfstagInteractive::ConvoCore::ConversationContainer']]],
+  ['resolveindex_13',['ResolveIndex',['../classWolfstagInteractive_1_1ConvoCore_1_1ConversationContainerRuntime.html#a5f4a880c02189b1917291edd6ef90983',1,'WolfstagInteractive::ConvoCore::ConversationContainerRuntime']]],
+  ['resolvesequentialentry_14',['ResolveSequentialEntry',['../classWolfstagInteractive_1_1ConvoCore_1_1ConversationContainer.html#aa046d744771ea273a44a61ab48cdc661',1,'WolfstagInteractive::ConvoCore::ConversationContainer']]],
+  ['resolveweightedrandomentry_15',['ResolveWeightedRandomEntry',['../classWolfstagInteractive_1_1ConvoCore_1_1ConversationContainer.html#a8da23e2aee7e2f9b4f503d92bbc67c17',1,'WolfstagInteractive::ConvoCore::ConversationContainer']]],
+  ['resumeconversation_16',['ResumeConversation',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCore.html#aa7a95c9b8fc2b3652a9c1526c447dd03',1,'WolfstagInteractive::ConvoCore::ConvoCore']]],
+  ['reverseoneline_17',['ReverseOneLine',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCore.html#ac707a0f9bcb2b98b9383198c18a0f0a0',1,'WolfstagInteractive::ConvoCore::ConvoCore']]],
+  ['reverseonelineroutine_18',['ReverseOneLineRoutine',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCore.html#ad2fe06331123099db4f05fd324e16a43',1,'WolfstagInteractive::ConvoCore::ConvoCore']]]
 ];
