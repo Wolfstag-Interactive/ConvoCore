@@ -54,6 +54,7 @@ namespace WolfstagInteractive.ConvoCore.Editor
         private static readonly GUIContent GC_ContinuationMode   = new("Continuation Mode:");
         private static readonly GUIContent GC_BranchKey         = new("Branch Key:");
         private static readonly GUIContent GC_PushReturnPoint   = new("Push Return Point:");
+        private static readonly GUIContent GC_Choices           = new("Choices");
 
 
         // Preview header text cache
@@ -189,6 +190,15 @@ namespace WolfstagInteractive.ConvoCore.Editor
                     rect.y += EditorGUI.GetPropertyHeight(pushReturnProp, true) + k_Spacing;
                 }
             }
+            else if (mode == ConvoCoreConversationData.LineContinuationMode.PlayerChoice)
+            {
+                var choicesProp = contProp.FindPropertyRelative("Choices");
+                if (choicesProp != null)
+                {
+                    EditorGUI.PropertyField(rect, choicesProp, GC_Choices, true);
+                    rect.y += EditorGUI.GetPropertyHeight(choicesProp, true) + k_Spacing;
+                }
+            }
 
             return rect;
         }
@@ -244,6 +254,12 @@ namespace WolfstagInteractive.ConvoCore.Editor
 
                 if (pushReturnProp != null)
                     h += EditorGUI.GetPropertyHeight(pushReturnProp, true) + k_Spacing;
+            }
+            else if (mode == ConvoCoreConversationData.LineContinuationMode.PlayerChoice)
+            {
+                var choicesProp = contProp.FindPropertyRelative("Choices");
+                if (choicesProp != null)
+                    h += EditorGUI.GetPropertyHeight(choicesProp, true) + k_Spacing;
             }
 
             return h;
