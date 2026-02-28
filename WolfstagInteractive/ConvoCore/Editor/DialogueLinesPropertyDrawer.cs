@@ -195,12 +195,44 @@ namespace WolfstagInteractive.ConvoCore.Editor
                 var choicesProp = contProp.FindPropertyRelative("Choices");
                 if (choicesProp != null)
                 {
+                    SeedNewChoiceLabels(choicesProp);
                     EditorGUI.PropertyField(rect, choicesProp, GC_Choices, true);
                     rect.y += EditorGUI.GetPropertyHeight(choicesProp, true) + k_Spacing;
                 }
             }
 
             return rect;
+        }
+
+        /// <summary>
+        /// Seeds the Labels list of any newly-added ChoiceOption (identified by having an empty Labels list)
+        /// with one entry per language defined in ConvoCoreSettings.SupportedLanguages.
+        /// This removes the need to manually type language codes when authoring choices in the inspector.
+        /// </summary>
+        private static void SeedNewChoiceLabels(SerializedProperty choicesProp)
+        {
+            var languages = ConvoCoreSettings.Instance?.SupportedLanguages;
+            if (languages == null || languages.Count == 0) return;
+
+            bool changed = false;
+            for (int i = 0; i < choicesProp.arraySize; i++)
+            {
+                var element = choicesProp.GetArrayElementAtIndex(i);
+                var labelsProp = element.FindPropertyRelative("Labels");
+                if (labelsProp == null || labelsProp.arraySize > 0) continue;
+
+                labelsProp.arraySize = languages.Count;
+                for (int j = 0; j < languages.Count; j++)
+                {
+                    var entry = labelsProp.GetArrayElementAtIndex(j);
+                    entry.FindPropertyRelative("Language").stringValue = languages[j];
+                    entry.FindPropertyRelative("Text").stringValue = "";
+                }
+                changed = true;
+            }
+
+            if (changed)
+                choicesProp.serializedObject.ApplyModifiedPropertiesWithoutUndo();
         }
 
         /// <summary>
