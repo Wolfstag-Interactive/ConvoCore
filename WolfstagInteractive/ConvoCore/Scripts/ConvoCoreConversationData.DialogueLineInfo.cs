@@ -49,7 +49,18 @@ public partial class ConvoCoreConversationData
         {
             Continue,
             EndConversation,
-            ContainerBranch
+            ContainerBranch,
+            PlayerChoice
+        }
+
+        [Serializable]
+        public struct ChoiceOption
+        {
+            [Tooltip("Localized display text for this choice option.")]
+            public List<LocalizedDialogue> Labels;
+            public ConversationContainer TargetContainer;
+            public string TargetAliasOrName;
+            public bool PushReturnPoint;
         }
 
         [Serializable]
@@ -59,6 +70,8 @@ public partial class ConvoCoreConversationData
             public ConversationContainer TargetContainer;
             public string TargetAliasOrName;
             public bool PushReturnPoint;
+            /// <summary>Only populated when Mode == PlayerChoice.</summary>
+            public List<ChoiceOption> Choices;
         }
 
     }
@@ -102,10 +115,11 @@ public partial class ConvoCoreConversationData
                 TimeBeforeNextLine = 0f;
                 LineContinuationSettings = new LineContinuation
                 {
-                    Mode = LineContinuationMode.Continue, 
-                    TargetAliasOrName= null,
-                    TargetContainer =  null,
-                    PushReturnPoint = false
+                    Mode = LineContinuationMode.Continue,
+                    TargetAliasOrName = null,
+                    TargetContainer = null,
+                    PushReturnPoint = false,
+                    Choices = null
                 };
             }
             public void EnsureCharacterRepresentationListInitialized()

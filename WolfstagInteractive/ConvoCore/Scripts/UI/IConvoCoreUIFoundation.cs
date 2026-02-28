@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace WolfstagInteractive.ConvoCore
@@ -39,6 +40,24 @@ namespace WolfstagInteractive.ConvoCore
         /// </summary>
         /// <returns></returns>
         public IEnumerator WaitForUserInput();
+
+        /// <summary>
+        /// Present a set of player choices and wait for the player to select one.
+        /// Implementations must set result.SelectedIndex before the coroutine completes.
+        /// The base implementation auto-selects index 0 so the runner never hangs
+        /// if no choice UI has been wired up.
+        /// </summary>
+        /// <param name="options">The choice options defined on the dialogue line.</param>
+        /// <param name="localizedLabels">Pre-resolved display strings, one per option.</param>
+        /// <param name="result">Shared result object; set SelectedIndex to signal completion.</param>
+        public virtual IEnumerator PresentChoices(
+            List<ConvoCoreConversationData.ChoiceOption> options,
+            List<string> localizedLabels,
+            ChoiceResult result)
+        {
+            result.SelectedIndex = 0;
+            yield return null;
+        }
 
         /// <summary>
         /// Handles cleanup when the UI builder is no longer needed.

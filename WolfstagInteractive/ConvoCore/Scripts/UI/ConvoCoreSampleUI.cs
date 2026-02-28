@@ -15,6 +15,11 @@ namespace WolfstagInteractive.ConvoCore
     [HelpURL("https://docs.wolfstaginteractive.com/convocore/api/classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSampleUI.html")]
     public class ConvoCoreSampleUI : ConvoCoreUIFoundation
     {
+        [Header("Choice UI Elements")]
+        [SerializeField] private GameObject ChoicePanel;
+        [SerializeField] private Transform ChoiceButtonContainer;
+        [SerializeField] private GameObject ChoiceButtonPrefab;
+
         [Header("Dialogue UI Elements")] [SerializeField]
         private TextMeshProUGUI DialogueText;
 
@@ -341,6 +346,45 @@ namespace WolfstagInteractive.ConvoCore
                 yield return null;
             }
             ContinueButton.gameObject.SetActive(false);
+        }
+
+        public override IEnumerator PresentChoices(
+            List<ConvoCoreConversationData.ChoiceOption> options,
+            List<string> localizedLabels,
+            ChoiceResult result)
+        {
+            if (ChoicePanel == null || ChoiceButtonContainer == null || ChoiceButtonPrefab == null)
+            {
+                Debug.LogWarning("[ConvoCore] ConvoCoreSampleUI: ChoicePanel, ChoiceButtonContainer, or ChoiceButtonPrefab is not assigned. Auto-selecting first choice.");
+                result.SelectedIndex = 0;
+                yield break;
+            }
+
+            ChoicePanel.SetActive(true);
+            ContinueButton?.gameObject.SetActive(false);
+
+            var spawnedButtons = new List<GameObject>();
+
+            for (int i = 0; i < localizedLabels.Count; i++)
+            {
+                int captured = i;
+                var instance = Instantiate(ChoiceButtonPrefab, ChoiceButtonContainer);
+                spawnedButtons.Add(instance);
+
+                var btn = instance.GetComponent<Button>();
+                var label = instance.GetComponentInChildren<TextMeshProUGUI>();
+
+                if (label != null) label.text = localizedLabels[captured];
+                if (btn != null) btn.onClick.AddListener(() => result.SelectedIndex = captured);
+            }
+
+            yield return new WaitUntil(() => result.IsResolved);
+
+            foreach (var btn in spawnedButtons)
+                if (btn != null) Destroy(btn);
+
+            ChoicePanel.SetActive(false);
+            ContinueButton?.gameObject.SetActive(true);
         }
 
         public void OnContinueButtonPressed()

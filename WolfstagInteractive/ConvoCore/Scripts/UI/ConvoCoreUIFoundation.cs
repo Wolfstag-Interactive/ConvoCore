@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace WolfstagInteractive.ConvoCore
@@ -52,6 +53,21 @@ namespace WolfstagInteractive.ConvoCore
 
         public virtual IEnumerator WaitForUserInput()
         {
+            yield return null;
+        }
+
+        /// <summary>
+        /// Present a set of player choices and wait for the player to select one.
+        /// Override this in subclasses to display actual choice UI.
+        /// The base implementation auto-selects index 0 so conversations never hang
+        /// if no choice UI has been implemented.
+        /// </summary>
+        public virtual IEnumerator PresentChoices(
+            List<ConvoCoreConversationData.ChoiceOption> options,
+            List<string> localizedLabels,
+            ChoiceResult result)
+        {
+            result.SelectedIndex = 0;
             yield return null;
         }
 
