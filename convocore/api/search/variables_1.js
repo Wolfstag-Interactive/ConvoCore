@@ -8,8 +8,9 @@ var searchData=
   ['advancedialogueaction_5',['AdvanceDialogueAction',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSampleUI.html#afc59b36269e75d340f1a63ef7894febd',1,'WolfstagInteractive::ConvoCore::ConvoCoreSampleUI']]],
   ['after_6',['After',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCore_1_1LineFrame.html#ae1a6403b0f069d7162669bfb95809180',1,'WolfstagInteractive::ConvoCore::ConvoCore::LineFrame']]],
   ['alias_7',['Alias',['../classWolfstagInteractive_1_1ConvoCore_1_1ConversationContainer_1_1Entry.html#ad488b371b6f03f3a3be258b7530cb0ab',1,'WolfstagInteractive::ConvoCore::ConversationContainer::Entry']]],
-  ['allowlineadvanceoutsidebutton_8',['AllowLineAdvanceOutsideButton',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSampleUI.html#ac73ccd77421b67751b3eaf2164b96b65',1,'WolfstagInteractive::ConvoCore::ConvoCoreSampleUI']]],
-  ['allowpersistentoverrides_9',['AllowPersistentOverrides',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData.html#a5d8c4a062eb9c901ab9f15e3ae7ed56d',1,'WolfstagInteractive::ConvoCore::ConvoCoreConversationData']]],
-  ['audioclip_10',['AudioClip',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreDialogueLineActionPlayAudioClip.html#a3d1137a286b9aff5faf42f49cc1a5982',1,'WolfstagInteractive::ConvoCore::ConvoCoreDialogueLineActionPlayAudioClip']]],
-  ['autohideuionstart_11',['AutoHideUIOnStart',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSampleUI.html#a43873d489783abc4bc1739e86c9a884e',1,'WolfstagInteractive::ConvoCore::ConvoCoreSampleUI']]]
+  ['allowgoback_8',['AllowGoBack',['../structWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData_1_1LineContinuation.html#a16ad0d0f0bba22de2e3736a346d179eb',1,'WolfstagInteractive::ConvoCore::ConvoCoreConversationData::LineContinuation']]],
+  ['allowlineadvanceoutsidebutton_9',['AllowLineAdvanceOutsideButton',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSampleUI.html#ac73ccd77421b67751b3eaf2164b96b65',1,'WolfstagInteractive::ConvoCore::ConvoCoreSampleUI']]],
+  ['allowpersistentoverrides_10',['AllowPersistentOverrides',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData.html#a5d8c4a062eb9c901ab9f15e3ae7ed56d',1,'WolfstagInteractive::ConvoCore::ConvoCoreConversationData']]],
+  ['audioclip_11',['AudioClip',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreDialogueLineActionPlayAudioClip.html#a3d1137a286b9aff5faf42f49cc1a5982',1,'WolfstagInteractive::ConvoCore::ConvoCoreDialogueLineActionPlayAudioClip']]],
+  ['autohideuionstart_12',['AutoHideUIOnStart',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSampleUI.html#a43873d489783abc4bc1739e86c9a884e',1,'WolfstagInteractive::ConvoCore::ConvoCoreSampleUI']]]
 ];
