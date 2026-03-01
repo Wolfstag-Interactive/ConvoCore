@@ -155,22 +155,54 @@ namespace WolfstagInteractive.ConvoCore
                 // PlayerChoice mode: present options, branch on selection, skip normal input/continuation.
                 if (line.LineContinuationSettings.Mode == ConvoCoreConversationData.LineContinuationMode.PlayerChoice)
                 {
-                    var choices = line.LineContinuationSettings.Choices;
+                    var choices    = line.LineContinuationSettings.Choices;
+                    bool allowBack = line.LineContinuationSettings.AllowGoBack;
+                    int choiceCount = choices?.Count ?? 0;
 
-                    if (choices == null || choices.Count == 0)
+                    if (choiceCount == 0 && !allowBack)
                     {
                         Debug.LogWarning($"[ConvoCore] Line {_currentLineIndex} has PlayerChoice mode but no choices defined. Advancing.");
                         _currentLineIndex++;
                         continue;
                     }
 
-                    var labels = ResolveChoiceLabels(choices);
+                    var labels = choiceCount > 0
+                        ? ResolveChoiceLabels(choices)
+                        : new System.Collections.Generic.List<string>();
+
+                    // Append a "Go Back" entry only when there is a previous line to return to.
+                    bool goBackAvailable = allowBack && _currentLineIndex > 0;
+                    if (goBackAvailable)
+                        labels.Add("← Go Back");
+
+                    if (labels.Count == 0)
+                    {
+                        _currentLineIndex++;
+                        continue;
+                    }
+
                     var choiceResult = new ChoiceResult();
+                    yield return StartCoroutine(ConversationUI.PresentChoices(
+                        choices ?? new System.Collections.Generic.List<ConvoCoreConversationData.ChoiceOption>(),
+                        labels,
+                        choiceResult));
 
-                    yield return StartCoroutine(ConversationUI.PresentChoices(choices, labels, choiceResult));
+                    int selected = Mathf.Clamp(choiceResult.SelectedIndex, 0, labels.Count - 1);
 
-                    int selected = Mathf.Clamp(choiceResult.SelectedIndex, 0, choices.Count - 1);
+                    // "Go Back" is always the last entry (index == choiceCount).
+                    if (goBackAvailable && selected >= choiceCount)
+                    {
+                        _currentLineIndex = Mathf.Max(0, _currentLineIndex - 1);
+                        continue;
+                    }
 
+                    if (choiceCount == 0)
+                    {
+                        _currentLineIndex++;
+                        continue;
+                    }
+
+                    selected = Mathf.Clamp(selected, 0, choiceCount - 1);
                     if (!HandleChoiceBranch(choices[selected]))
                         break;
 

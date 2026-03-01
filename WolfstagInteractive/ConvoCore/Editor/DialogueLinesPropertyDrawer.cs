@@ -54,7 +54,10 @@ namespace WolfstagInteractive.ConvoCore.Editor
         private static readonly GUIContent GC_ContinuationMode   = new("Continuation Mode:");
         private static readonly GUIContent GC_BranchKey         = new("Branch Key:");
         private static readonly GUIContent GC_PushReturnPoint   = new("Push Return Point:");
-        private static readonly GUIContent GC_Choices           = new("Choices");
+        private static readonly GUIContent GC_Choices            = new("Choices");
+        private static readonly GUIContent GC_AllowGoBack        = new("Allow Go Back",
+            "When enabled, a '← Go Back' option is appended to the choice list at runtime. " +
+            "If selected, the player is taken back to the previous dialogue line.");
 
 
         // Preview header text cache
@@ -192,12 +195,18 @@ namespace WolfstagInteractive.ConvoCore.Editor
             }
             else if (mode == ConvoCoreConversationData.LineContinuationMode.PlayerChoice)
             {
+                var allowGoBackProp = contProp.FindPropertyRelative("AllowGoBack");
+                if (allowGoBackProp != null)
+                {
+                    EditorGUI.PropertyField(rect, allowGoBackProp, GC_AllowGoBack);
+                    rect.y += EditorGUI.GetPropertyHeight(allowGoBackProp, true) + k_Spacing;
+                }
+
                 var choicesProp = contProp.FindPropertyRelative("Choices");
                 if (choicesProp != null)
                 {
                     SeedNewChoiceLabels(choicesProp);
-                    EditorGUI.PropertyField(rect, choicesProp, GC_Choices, true);
-                    rect.y += EditorGUI.GetPropertyHeight(choicesProp, true) + k_Spacing;
+                    rect = DrawChoicesArray(rect, choicesProp);
                 }
             }
 
@@ -233,6 +242,83 @@ namespace WolfstagInteractive.ConvoCore.Editor
 
             if (changed)
                 choicesProp.serializedObject.ApplyModifiedPropertiesWithoutUndo();
+        }
+
+        /// <summary>
+        /// Manually draws the Choices array with per-element labels (e.g. "Choice 1: Hello") instead
+        /// of the default "Element 0" labels Unity would show via a plain PropertyField on the list.
+        /// </summary>
+        private static Rect DrawChoicesArray(Rect rect, SerializedProperty choicesProp)
+        {
+            float line = EditorGUIUtility.singleLineHeight;
+
+            choicesProp.isExpanded = EditorGUI.Foldout(rect, choicesProp.isExpanded, GC_Choices, true, EditorStyles.foldoutHeader);
+            rect.y += line + k_Spacing;
+
+            if (!choicesProp.isExpanded) return rect;
+
+            EditorGUI.indentLevel++;
+
+            int newSize = EditorGUI.IntField(rect, "Size", choicesProp.arraySize);
+            if (newSize != choicesProp.arraySize && newSize >= 0)
+                choicesProp.arraySize = newSize;
+            rect.y += line + k_Spacing;
+
+            for (int i = 0; i < choicesProp.arraySize; i++)
+            {
+                var element = choicesProp.GetArrayElementAtIndex(i);
+                var label   = GetChoiceElementLabel(element, i);
+                float h     = EditorGUI.GetPropertyHeight(element, label, true);
+                EditorGUI.PropertyField(rect, element, label, true);
+                rect.y += h + k_Spacing;
+            }
+
+            EditorGUI.indentLevel--;
+            return rect;
+        }
+
+        /// <summary>
+        /// Returns the height consumed by <see cref="DrawChoicesArray"/> so it matches exactly.
+        /// </summary>
+        private static float GetChoicesArrayHeight(SerializedProperty choicesProp)
+        {
+            float line = EditorGUIUtility.singleLineHeight;
+            float h    = line + k_Spacing; // foldout header
+
+            if (!choicesProp.isExpanded) return h;
+
+            h += line + k_Spacing; // Size field
+
+            for (int i = 0; i < choicesProp.arraySize; i++)
+            {
+                var element = choicesProp.GetArrayElementAtIndex(i);
+                var label   = GetChoiceElementLabel(element, i);
+                h += EditorGUI.GetPropertyHeight(element, label, true) + k_Spacing;
+            }
+
+            return h;
+        }
+
+        /// <summary>
+        /// Builds a GUIContent label for a single ChoiceOption element.
+        /// Shows "Choice N: &lt;first non-empty label text&gt;" when text is available,
+        /// otherwise falls back to "Choice N".
+        /// </summary>
+        private static GUIContent GetChoiceElementLabel(SerializedProperty element, int index)
+        {
+            var labelsProp = element.FindPropertyRelative("Labels");
+            if (labelsProp != null)
+            {
+                for (int i = 0; i < labelsProp.arraySize; i++)
+                {
+                    var text = labelsProp.GetArrayElementAtIndex(i)
+                                        .FindPropertyRelative("Text")?.stringValue;
+                    if (string.IsNullOrWhiteSpace(text)) continue;
+                    if (text.Length > 30) text = text.Substring(0, 27) + "...";
+                    return new GUIContent($"Choice {index + 1}: {text}");
+                }
+            }
+            return new GUIContent($"Choice {index + 1}");
         }
 
         /// <summary>
@@ -289,9 +375,13 @@ namespace WolfstagInteractive.ConvoCore.Editor
             }
             else if (mode == ConvoCoreConversationData.LineContinuationMode.PlayerChoice)
             {
+                var allowGoBackProp = contProp.FindPropertyRelative("AllowGoBack");
+                if (allowGoBackProp != null)
+                    h += EditorGUI.GetPropertyHeight(allowGoBackProp, true) + k_Spacing;
+
                 var choicesProp = contProp.FindPropertyRelative("Choices");
                 if (choicesProp != null)
-                    h += EditorGUI.GetPropertyHeight(choicesProp, true) + k_Spacing;
+                    h += GetChoicesArrayHeight(choicesProp);
             }
 
             return h;
