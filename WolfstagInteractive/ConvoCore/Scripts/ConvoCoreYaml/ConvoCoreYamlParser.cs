@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using YamlDotNet.Serialization;
 
 namespace WolfstagInteractive.ConvoCore
@@ -45,18 +46,17 @@ namespace WolfstagInteractive.ConvoCore
         /// </summary>
         private static string EnsureQuotesOnLocalizedValues(string yaml)
         {
-            var re = System.Text.RegularExpressions.Regex;
-            var opts = System.Text.RegularExpressions.RegexOptions.Multiline;
+            const RegexOptions opts = RegexOptions.Multiline;
 
-            // Pass 1: wrap completely unquoted values.
-            yaml = re.Replace(yaml,
+            // Pass 1: wrap completely unquoted values in double quotes.
+            yaml = Regex.Replace(yaml,
                 @"^(\s*)([a-z]{2,3}):\s*([^""'\r\n][^\r\n]*)",
                 "$1$2: \"$3\"", opts);
 
             // Pass 2: find single-quoted values — pattern captures everything between the outer quotes.
             // If the captured inner text contains a ' that is NOT part of a '' escape pair, the string
             // is invalid YAML; convert it to a double-quoted string (which handles ' natively).
-            yaml = re.Replace(yaml,
+            yaml = Regex.Replace(yaml,
                 @"^(\s*[a-z]{2,3}:\s*)'(.*)'$",
                 m =>
                 {
