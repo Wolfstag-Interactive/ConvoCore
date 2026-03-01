@@ -35,14 +35,45 @@ namespace WolfstagInteractive.ConvoCore
             return dict;
         }
         /// <summary>
-        /// Uses regex to find localized dialogue lines (e.g., "en: Text") and ensures the value is quoted.
+        /// Uses regex to find localized dialogue lines (e.g., "en: Text") and ensures the value is
+        /// safely double-quoted to survive YAML parsing regardless of apostrophes or special characters.
+        ///
+        /// Pass 1 – wraps unquoted values in double quotes.
+        /// Pass 2 – converts single-quoted values that contain unescaped apostrophes to double-quoted,
+        ///          since YAML requires apostrophes inside single-quoted strings to be written as ''
+        ///          (authors frequently forget this rule).
         /// </summary>
         private static string EnsureQuotesOnLocalizedValues(string yaml)
         {
-            // Matches language keys (2-3 letters) followed by a colon and unquoted text.
-            // It captures the indentation, the key, and the raw text.
-            var pattern = @"^(\s*)([a-z]{2,3}):\s*([^""'\r\n][^\r\n]*)";
-            return System.Text.RegularExpressions.Regex.Replace(yaml, pattern, "$1$2: \"$3\"", System.Text.RegularExpressions.RegexOptions.Multiline);
+            var re = System.Text.RegularExpressions.Regex;
+            var opts = System.Text.RegularExpressions.RegexOptions.Multiline;
+
+            // Pass 1: wrap completely unquoted values.
+            yaml = re.Replace(yaml,
+                @"^(\s*)([a-z]{2,3}):\s*([^""'\r\n][^\r\n]*)",
+                "$1$2: \"$3\"", opts);
+
+            // Pass 2: find single-quoted values — pattern captures everything between the outer quotes.
+            // If the captured inner text contains a ' that is NOT part of a '' escape pair, the string
+            // is invalid YAML; convert it to a double-quoted string (which handles ' natively).
+            yaml = re.Replace(yaml,
+                @"^(\s*[a-z]{2,3}:\s*)'(.*)'$",
+                m =>
+                {
+                    string prefix = m.Groups[1].Value;
+                    string inner  = m.Groups[2].Value;
+
+                    // Remove all properly-escaped '' pairs; if a lone ' remains the string is broken.
+                    bool hasUnescapedApostrophe = inner.Replace("''", "\x00").Contains('\'');
+                    if (!hasUnescapedApostrophe)
+                        return m.Value; // already valid, leave untouched
+
+                    // Re-wrap as double-quoted, escaping any literal double quotes in the content.
+                    inner = inner.Replace("\"", "\\\"");
+                    return $"{prefix}\"{inner}\"";
+                }, opts);
+
+            return yaml;
         }
         /// <summary>Safe parse that won’t throw. Returns false and sets error on failure.</summary>
         public static bool TryParse(string yamlText, out Dictionary<string, List<DialogueYamlConfig>> result, out string error)

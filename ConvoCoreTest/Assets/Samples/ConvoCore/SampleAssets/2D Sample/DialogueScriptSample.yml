@@ -74,7 +74,7 @@ Conversation1:
 - CharacterID: Wolfstag
   LineID: L_81d918d79d10
   LocalizedDialogue:
-    en: '*The shadows melt away. The creature’s full form is revealed—fur glows silver in the moonlight.*'
+    en: "*The shadows melt away. The creature’s full form is revealed—fur glows silver in the moonlight.*"
     fr: '*Les ombres se dissipent. La créature se dévoile — sa fourrure luit à la lumière lunaire.*'
     es: '*Las sombras se desvanecen. Su forma completa aparece — su pelaje brilla bajo la luna.*'
 - CharacterID: Jared
@@ -86,14 +86,14 @@ Conversation1:
 - CharacterID: Ava
   LineID: L_b06da097d428
   LocalizedDialogue:
-    en: '...I think he’s leading us somewhere.'
-    fr: '...Je crois qu’il nous guide quelque part.'
+    en: "...I think he’s leading us somewhere."
+    fr: "...Je crois qu’il nous guide quelque part."
     es: '...Creo que nos está guiando.'
 - CharacterID: Wolfstag
   LineID: L_9379a5301f7e
   LocalizedDialogue:
     en: '*He glances back, takes a few careful steps, then waits.*'
-    fr: '*Il jette un regard en arrière, avance lentement, puis s’arrête.*'
+    fr: "*Il jette un regard en arrière, avance lentement, puis s’arrête.*"
     es: '*Mira hacia atrás, da unos pasos y espera.*'
 - CharacterID: Jared
   LineID: L_b5e5b1e08f68
@@ -129,17 +129,17 @@ Conversation1:
   LineID: L_4c04459eaeba
   LocalizedDialogue:
     en: "*He pauses at the clearing's edge, makes eye contact, then silently disappears into the mist.*"
-    fr: '*Il s’arrête à la lisière de la clairière, nous regarde, puis disparaît dans la brume.*'
+    fr: "*Il s’arrête à la lisière de la clairière, nous regarde, puis disparaît dans la brume.*"
     es: '*Se detiene en el borde del claro, nos mira y desaparece entre la niebla.*'
 - CharacterID: Jared
   LineID: L_6e955da171a6
   LocalizedDialogue:
     en: '...Goodbye, magic antler puppy. I hope you find your own trail home.'
-    fr: '...Adieu, chien magique à bois. J’espère que tu retrouveras ton chemin.'
+    fr: "...Adieu, chien magique à bois. J’espère que tu retrouveras ton chemin."
     es: '...Adiós, cachorro mágico de astas. Ojalá encuentres tu camino.'
 - CharacterID: Ava
   LineID: L_1d54676a6a5b
   LocalizedDialogue:
-    en: '...Next time, I’m bringing a map and a compass. And maybe pepper spray.'
+    en: "...Next time, I’m bringing a map and a compass. And maybe pepper spray."
     fr: '...La prochaine fois, je prends une carte, une boussole... et du spray au poivre.'
     es: '...La próxima vez, llevaré un mapa, una brújula... y tal vez gas pimienta.'
