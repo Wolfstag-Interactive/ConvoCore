@@ -139,6 +139,7 @@ MonoBehaviour:
       TargetContainer: {fileID: 0}
       TargetAliasOrName: 
       PushReturnPoint: 0
+      Choices: []
   - ConversationID: 3DSampleConversation
     LineID: L_82d9385ae0ce
     ConversationLineIndex: 1
@@ -173,6 +174,7 @@ MonoBehaviour:
       TargetContainer: {fileID: 0}
       TargetAliasOrName: 
       PushReturnPoint: 0
+      Choices: []
   - ConversationID: 3DSampleConversation
     LineID: L_ff38a3664539
     ConversationLineIndex: 2
@@ -207,6 +209,7 @@ MonoBehaviour:
       TargetContainer: {fileID: 0}
       TargetAliasOrName: 
       PushReturnPoint: 0
+      Choices: []
   - ConversationID: 3DSampleConversation
     LineID: L_966c6b047edd
     ConversationLineIndex: 3
@@ -241,6 +244,7 @@ MonoBehaviour:
       TargetContainer: {fileID: 0}
       TargetAliasOrName: 
       PushReturnPoint: 0
+      Choices: []
   - ConversationID: 3DSampleConversation
     LineID: L_2e8a2ba6e44f
     ConversationLineIndex: 4
@@ -275,6 +279,7 @@ MonoBehaviour:
       TargetContainer: {fileID: 0}
       TargetAliasOrName: 
       PushReturnPoint: 0
+      Choices: []
   - ConversationID: 3DSampleConversation
     LineID: L_036a7263c8be
     ConversationLineIndex: 5
@@ -309,6 +314,7 @@ MonoBehaviour:
       TargetContainer: {fileID: 0}
       TargetAliasOrName: 
       PushReturnPoint: 0
+      Choices: []
   - ConversationID: 3DSampleConversation
     LineID: L_3996eb7674ea
     ConversationLineIndex: 6
@@ -343,6 +349,7 @@ MonoBehaviour:
       TargetContainer: {fileID: 0}
       TargetAliasOrName: 
       PushReturnPoint: 0
+      Choices: []
   - ConversationID: 3DSampleConversation
     LineID: L_290f45aab96e
     ConversationLineIndex: 7
@@ -377,6 +384,7 @@ MonoBehaviour:
       TargetContainer: {fileID: 0}
       TargetAliasOrName: 
       PushReturnPoint: 0
+      Choices: []
   - ConversationID: 3DSampleConversation
     LineID: L_fe418b31f8af
     ConversationLineIndex: 8
@@ -411,6 +419,7 @@ MonoBehaviour:
       TargetContainer: {fileID: 0}
       TargetAliasOrName: 
       PushReturnPoint: 0
+      Choices: []
   - ConversationID: 3DSampleConversation
     LineID: L_66f23c525fba
     ConversationLineIndex: 9
@@ -445,6 +454,7 @@ MonoBehaviour:
       TargetContainer: {fileID: 0}
       TargetAliasOrName: 
       PushReturnPoint: 0
+      Choices: []
   - ConversationID: 3DSampleConversation
     LineID: L_ec812df5dedc
     ConversationLineIndex: 10
@@ -479,6 +489,7 @@ MonoBehaviour:
       TargetContainer: {fileID: 0}
       TargetAliasOrName: 
       PushReturnPoint: 0
+      Choices: []
   - ConversationID: 3DSampleConversation
     LineID: L_4ebbdf6b318e
     ConversationLineIndex: 11
@@ -513,6 +524,7 @@ MonoBehaviour:
       TargetContainer: {fileID: 0}
       TargetAliasOrName: 
       PushReturnPoint: 0
+      Choices: []
   - ConversationID: 3DSampleConversation
     LineID: L_3303b5b7ad60
     ConversationLineIndex: 12
@@ -547,6 +559,7 @@ MonoBehaviour:
       TargetContainer: {fileID: 0}
       TargetAliasOrName: 
       PushReturnPoint: 0
+      Choices: []
   - ConversationID: 3DSampleConversation
     LineID: L_4c4d8ef303c8
     ConversationLineIndex: 13
@@ -581,6 +594,7 @@ MonoBehaviour:
       TargetContainer: {fileID: 0}
       TargetAliasOrName: 
       PushReturnPoint: 0
+      Choices: []
   - ConversationID: 3DSampleConversation
     LineID: L_9c4e4cb092da
     ConversationLineIndex: 14
@@ -615,6 +629,7 @@ MonoBehaviour:
       TargetContainer: {fileID: 0}
       TargetAliasOrName: 
       PushReturnPoint: 0
+      Choices: []
   - ConversationID: 3DSampleConversation
     LineID: L_56f78df496f1
     ConversationLineIndex: 15
@@ -649,6 +664,7 @@ MonoBehaviour:
       TargetContainer: {fileID: 0}
       TargetAliasOrName: 
       PushReturnPoint: 0
+      Choices: []
   - ConversationID: 3DSampleConversation
     LineID: L_64f392cb5170
     ConversationLineIndex: 16
@@ -683,6 +699,7 @@ MonoBehaviour:
       TargetContainer: {fileID: 0}
       TargetAliasOrName: 
       PushReturnPoint: 0
+      Choices: []
   - ConversationID: 3DSampleConversation
     LineID: L_aa4cda36a7b0
     ConversationLineIndex: 17
@@ -717,6 +734,7 @@ MonoBehaviour:
       TargetContainer: {fileID: 0}
       TargetAliasOrName: 
       PushReturnPoint: 0
+      Choices: []
   - ConversationID: 3DSampleConversation
     LineID: L_28f1aaeebd0b
     ConversationLineIndex: 18
@@ -751,6 +769,7 @@ MonoBehaviour:
       TargetContainer: {fileID: 0}
       TargetAliasOrName: 
       PushReturnPoint: 0
+      Choices: []
   - ConversationID: 3DSampleConversation
     LineID: L_c08a9040363b
     ConversationLineIndex: 19
@@ -785,6 +804,7 @@ MonoBehaviour:
       TargetContainer: {fileID: 0}
       TargetAliasOrName: 
       PushReturnPoint: 0
+      Choices: []
   - ConversationID: 3DSampleConversation
     LineID: L_a8e143897792
     ConversationLineIndex: 20
@@ -819,6 +839,7 @@ MonoBehaviour:
       TargetContainer: {fileID: 0}
       TargetAliasOrName: 
       PushReturnPoint: 0
+      Choices: []
   - ConversationID: 3DSampleConversation
     LineID: L_32af80687858
     ConversationLineIndex: 21
@@ -853,6 +874,7 @@ MonoBehaviour:
       TargetContainer: {fileID: 0}
       TargetAliasOrName: 
       PushReturnPoint: 0
+      Choices: []
   - ConversationID: 3DSampleConversation
     LineID: L_96b25c7e4067
     ConversationLineIndex: 22
@@ -887,6 +909,7 @@ MonoBehaviour:
       TargetContainer: {fileID: 0}
       TargetAliasOrName: 
       PushReturnPoint: 0
+      Choices: []
   - ConversationID: 3DSampleConversation
     LineID: L_9c3379ff536f
     ConversationLineIndex: 23
@@ -921,6 +944,7 @@ MonoBehaviour:
       TargetContainer: {fileID: 0}
       TargetAliasOrName: 
       PushReturnPoint: 0
+      Choices: []
   - ConversationID: 3DSampleConversation
     LineID: L_71aa9ae78417
     ConversationLineIndex: 24
@@ -955,6 +979,7 @@ MonoBehaviour:
       TargetContainer: {fileID: 0}
       TargetAliasOrName: 
       PushReturnPoint: 0
+      Choices: []
   - ConversationID: 3DSampleConversation
     LineID: L_fe4a220418dc
     ConversationLineIndex: 25
@@ -989,6 +1014,7 @@ MonoBehaviour:
       TargetContainer: {fileID: 0}
       TargetAliasOrName: 
       PushReturnPoint: 0
+      Choices: []
   - ConversationID: 3DSampleConversation
     LineID: L_74bc301d08a0
     ConversationLineIndex: 26
@@ -1023,6 +1049,7 @@ MonoBehaviour:
       TargetContainer: {fileID: 0}
       TargetAliasOrName: 
       PushReturnPoint: 0
+      Choices: []
   - ConversationID: 3DSampleConversation
     LineID: L_26f14ccf536f
     ConversationLineIndex: 27
@@ -1057,6 +1084,7 @@ MonoBehaviour:
       TargetContainer: {fileID: 0}
       TargetAliasOrName: 
       PushReturnPoint: 0
+      Choices: []
   - ConversationID: 3DSampleConversation
     LineID: L_af9cf8d84109
     ConversationLineIndex: 28
@@ -1091,6 +1119,7 @@ MonoBehaviour:
       TargetContainer: {fileID: 0}
       TargetAliasOrName: 
       PushReturnPoint: 0
+      Choices: []
   - ConversationID: 3DSampleConversation
     LineID: L_c26e113ea67d
     ConversationLineIndex: 29
@@ -1125,6 +1154,7 @@ MonoBehaviour:
       TargetContainer: {fileID: 0}
       TargetAliasOrName: 
       PushReturnPoint: 0
+      Choices: []
   - ConversationID: 3DSampleConversation
     LineID: L_5625833edb7e
     ConversationLineIndex: 30
@@ -1159,6 +1189,7 @@ MonoBehaviour:
       TargetContainer: {fileID: 0}
       TargetAliasOrName: 
       PushReturnPoint: 0
+      Choices: []
   - ConversationID: 3DSampleConversation
     LineID: L_54978f41d6b4
     ConversationLineIndex: 31
@@ -1193,6 +1224,7 @@ MonoBehaviour:
       TargetContainer: {fileID: 0}
       TargetAliasOrName: 
       PushReturnPoint: 0
+      Choices: []
   - ConversationID: 3DSampleConversation
     LineID: L_6a01e56b0aaa
     ConversationLineIndex: 32
@@ -1227,6 +1259,7 @@ MonoBehaviour:
       TargetContainer: {fileID: 0}
       TargetAliasOrName: 
       PushReturnPoint: 0
+      Choices: []
   - ConversationID: 3DSampleConversation
     LineID: L_29a6b11e747e
     ConversationLineIndex: 33
@@ -1261,6 +1294,7 @@ MonoBehaviour:
       TargetContainer: {fileID: 0}
       TargetAliasOrName: 
       PushReturnPoint: 0
+      Choices: []
   - ConversationID: 3DSampleConversation
     LineID: L_56c63e182a65
     ConversationLineIndex: 34
@@ -1295,6 +1329,7 @@ MonoBehaviour:
       TargetContainer: {fileID: 0}
       TargetAliasOrName: 
       PushReturnPoint: 0
+      Choices: []
   - ConversationID: 3DSampleConversation
     LineID: L_317e2e69e69e
     ConversationLineIndex: 35
@@ -1329,6 +1364,7 @@ MonoBehaviour:
       TargetContainer: {fileID: 0}
       TargetAliasOrName: 
       PushReturnPoint: 0
+      Choices: []
   - ConversationID: 3DSampleConversation
     LineID: L_5be180e765a5
     ConversationLineIndex: 36
@@ -1363,6 +1399,7 @@ MonoBehaviour:
       TargetContainer: {fileID: 0}
       TargetAliasOrName: 
       PushReturnPoint: 0
+      Choices: []
   - ConversationID: 3DSampleConversation
     LineID: L_d855dab11596
     ConversationLineIndex: 37
@@ -1397,6 +1434,7 @@ MonoBehaviour:
       TargetContainer: {fileID: 0}
       TargetAliasOrName: 
       PushReturnPoint: 0
+      Choices: []
   ConversationYaml: {fileID: -7622796456671618352}
   AllowPersistentOverrides: 1
   FilePath: ConvoCore/Dialogue/ConvoCore3DDialogueSampleConversation

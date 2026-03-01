@@ -38,7 +38,6 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -212,6 +211,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5413f2d59be099247a912f4b4417ff81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &364105816 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6341640318056460866, guid: 37defd90b8cf4c644b832efe22df606d, type: 3}
+  m_PrefabInstance: {fileID: 1293074658488180136}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &364105818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 364105816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 0
+  m_Spacing: 0
+  m_ChildForceExpandWidth: 1
+  m_ChildForceExpandHeight: 1
+  m_ChildControlWidth: 0
+  m_ChildControlHeight: 0
+  m_ChildScaleWidth: 0
+  m_ChildScaleHeight: 0
+  m_ReverseArrangement: 0
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -400,6 +430,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1577445918}
   - component: {fileID: 1577445917}
+  - component: {fileID: 1577445919}
   m_Layer: 0
   m_Name: ConvoCore Conversation
   m_TagString: Untagged
@@ -419,8 +450,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f83cb113c2798d49b512e1fdd5e0dcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ConversationData: {fileID: 11400000, guid: 939c62473d966244bab0eb28ef86023a, type: 2}
+  Input:
+    rid: 8883873189358993408
   ConversationUI: {fileID: 293130684}
+  references:
+    version: 2
+    RefIds:
+    - rid: 8883873189358993408
+      type: {class: SingleConversationInput, ns: WolfstagInteractive.ConvoCore, asm: ConvoCore}
+      data:
+        Conversation: {fileID: 11400000, guid: 0a37cee1b6901ff4e8a11815f11e990c, type: 2}
 --- !u!4 &1577445918
 Transform:
   m_ObjectHideFlags: 0
@@ -436,6 +475,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1577445919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1577445916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01009535afa4641429378a448793abbc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1293074658488180136
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -443,6 +494,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 124178385466690470, guid: 37defd90b8cf4c644b832efe22df606d, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 124178385466690470, guid: 37defd90b8cf4c644b832efe22df606d, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 124178385466690470, guid: 37defd90b8cf4c644b832efe22df606d, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 124178385466690470, guid: 37defd90b8cf4c644b832efe22df606d, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 444105413700069326, guid: 37defd90b8cf4c644b832efe22df606d, type: 3}
       propertyPath: m_Name
       value: ConversationToolDialogueUI
@@ -453,7 +520,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2475525088512401250, guid: 37defd90b8cf4c644b832efe22df606d, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.000028244802
+      value: 191.4992
+      objectReference: {fileID: 0}
+    - target: {fileID: 2674301797292854259, guid: 37defd90b8cf4c644b832efe22df606d, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2674301797292854259, guid: 37defd90b8cf4c644b832efe22df606d, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2692523063024359977, guid: 37defd90b8cf4c644b832efe22df606d, type: 3}
       propertyPath: m_Pivot.x
@@ -547,6 +622,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3388152572731170396, guid: 37defd90b8cf4c644b832efe22df606d, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4438968453605833816, guid: 37defd90b8cf4c644b832efe22df606d, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -582,6 +661,14 @@ PrefabInstance:
     - target: {fileID: 5467354190400067069, guid: 37defd90b8cf4c644b832efe22df606d, type: 3}
       propertyPath: m_ChildForceExpandHeight
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6846698865680571438, guid: 37defd90b8cf4c644b832efe22df606d, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6846698865680571438, guid: 37defd90b8cf4c644b832efe22df606d, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 37defd90b8cf4c644b832efe22df606d, type: 3}
