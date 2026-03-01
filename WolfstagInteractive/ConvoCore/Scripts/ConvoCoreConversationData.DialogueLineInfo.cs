@@ -72,6 +72,12 @@ public partial class ConvoCoreConversationData
             public bool PushReturnPoint;
             /// <summary>Only populated when Mode == PlayerChoice.</summary>
             public List<ChoiceOption> Choices;
+            /// <summary>
+            /// When true and Mode == PlayerChoice, a "Go Back" option is appended to the
+            /// presented choices at runtime. If selected, the runner revisits the previous
+            /// dialogue line, allowing the player to re-read it before committing to a choice.
+            /// </summary>
+            public bool AllowGoBack;
         }
 
     }
