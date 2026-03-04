@@ -31,6 +31,17 @@ namespace WolfstagInteractive.ConvoCore
         public bool AddressablesEnabled = false; // flip on when project uses it
         public string AddressablesKeyTemplate = "{filePath}.yml"; // maps FilePath -> key
         public bool VerboseLogs = false;
+
+        [Header("Save System")]
+        [Tooltip("Prefix for all save system keys. Must not be empty.")]
+        public string SaveKeyPrefix = "convocore.";
+        [Tooltip("Enable the save system for persisting game state.")]
+        public bool EnableSaveSystem = true;
+        [Tooltip("Enable the variable store for tracking runtime variables.")]
+        public bool EnableVariableStore = true;
+        [Tooltip("Enable the language/localization system.")]
+        public bool EnableLanguageSystem = true;
+
         private static ConvoCoreSettings _instance;
 
         public static ConvoCoreSettings Instance
@@ -109,6 +120,25 @@ namespace WolfstagInteractive.ConvoCore
             {
                 CurrentLanguage = SupportedLanguages[0];
             }
+            // Validate SaveKeyPrefix
+            if (string.IsNullOrEmpty(SaveKeyPrefix))
+            {
+                Debug.LogWarning("[ConvoCoreSettings] SaveKeyPrefix is empty. Defaulting to 'convocore.'.");
+                SaveKeyPrefix = "convocore.";
+            }
+            else
+            {
+                for (int i = 0; i < SaveKeyPrefix.Length; i++)
+                {
+                    char c = SaveKeyPrefix[i];
+                    if (!char.IsLetterOrDigit(c) && c != '.' && c != '_' && c != '-')
+                    {
+                        Debug.LogWarning($"[ConvoCoreSettings] SaveKeyPrefix contains invalid character '{c}'. Only letters, digits, '.', '_', and '-' are allowed.");
+                        break;
+                    }
+                }
+            }
+
             CleanRendererProfiles();
         }
         // ------------------------------
