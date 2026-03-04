@@ -133,6 +133,7 @@ GameObject:
   - component: {fileID: 61876852}
   - component: {fileID: 61876851}
   - component: {fileID: 61876850}
+  - component: {fileID: 61876853}
   m_Layer: 0
   m_Name: ConvoCore Conversation
   m_TagString: Untagged
@@ -188,6 +189,74 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &61876853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 61876849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7ca12b80cab2db4cb3b46a7e8c6e1cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SaveManager: {fileID: 11400000, guid: b08f61d41a8d14b448b08ed187919256, type: 2}
+  _conversationId: test
+  _autoCommitOnEnd: 1
+  _autoCommitOnStart: 1
+  _autoCommitOnLineComplete: 1
+  _autoCommitOnChoiceMade: 1
+  _autoRestoreOnAwake: 1
+  _autoRestoreOnStart: 1
+  _restoreBehavior: 0
+--- !u!1 &465949187
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 465949189}
+  - component: {fileID: 465949188}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &465949188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 465949187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fec9504f9ee31348806bc0c93118c95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SaveManager: {fileID: 11400000, guid: b08f61d41a8d14b448b08ed187919256, type: 2}
+  InitializeOnAwake: 1
+  LoadSettingsOnAwake: 1
+--- !u!4 &465949189
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 465949187}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 219.9, y: 109.500305, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &556557079
 GameObject:
@@ -316,7 +385,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2475525088512401250, guid: 37defd90b8cf4c644b832efe22df606d, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 191.49998
+      value: 191.49997
       objectReference: {fileID: 0}
     - target: {fileID: 2674301797292854259, guid: 37defd90b8cf4c644b832efe22df606d, type: 3}
       propertyPath: m_AnchorMax.x

@@ -12,8 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 816970ac06e21a743abff4fb96e9ae38, type: 3}
   m_Name: NewConvoRuntimeState
   m_EditorClassIdentifier: 
-  SettingsState: {fileID: 0}
-  VariableStore: {fileID: 0}
-  ActiveConversationId: 
-  ActiveLineId: 
-  _conversationStates: []
+  VariableStore: {fileID: 11400000, guid: 61b7de833586e77488cf4e1064369964, type: 2}
+  _conversationStates:
+  - ConversationId: 
+    ActiveLineId: 
+    IsComplete: 0
+    SaveTimestamp: 0
+    VisitedLineIds: []
+    Variables: []

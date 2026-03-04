@@ -12,4 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 032e9d1603ab73349bcd6500b02f68ac, type: 3}
   m_Name: NewVariableStore
   m_EditorClassIdentifier: 
-  _entries: []
+  _entries:
+  - CoreVariable:
+      Key: testglobal
+      Type: 0
+      Description: 
+      Tags: []
+      _stringValue: exists
+      _intValue: 0
+      _floatValue: 0
+      _boolValue: 0
+    Scope: 0
+    IsReadOnly: 0

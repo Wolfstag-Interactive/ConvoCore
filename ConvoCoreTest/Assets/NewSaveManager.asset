@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9840caac9362778429fe11beae7aa2aa, type: 3}
   m_Name: NewSaveManager
   m_EditorClassIdentifier: 
-  VariableStore: {fileID: 0}
-  SettingsState: {fileID: 0}
+  VariableStore: {fileID: 11400000, guid: 61b7de833586e77488cf4e1064369964, type: 2}
+  SettingsState: {fileID: 11400000, guid: 22a37d84910cff94cae36391952d8548, type: 2}
   _useYaml: 1
   _defaultSlot: default
