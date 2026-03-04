@@ -38,9 +38,9 @@ Conversation1:
 - CharacterID: Wolfstag
   LineID: L_ec0dec9027e2
   LocalizedDialogue:
-    en: '*A towering silhouette appears between the trees. Antlers like twisted branches.*'
-    fr: '*Une silhouette massive émerge entre les arbres. Des bois torsadés.*'
-    es: '*Una silueta imponente aparece entre los árboles. Astas retorcidas.*'
+    en: *A towering silhouette appears between the trees. Antlers like twisted branches.*
+    fr: *Une silhouette massive émerge entre les arbres. Des bois torsadés.*
+    es: *Una silueta imponente aparece entre los árboles. Astas retorcidas.*
 - CharacterID: Ava
   LineID: L_603c3f4ba4d6
   LocalizedDialogue:
@@ -50,9 +50,9 @@ Conversation1:
 - CharacterID: Jared
   LineID: L_d1cfb2aa2db7
   LocalizedDialogue:
-    en: '*gasps* Whoooooa. Look at you!'
-    fr: '*halètement* Wooooow. Regarde-moi ça!'
-    es: '*jadea* ¡Wooooow! ¡Mírate!'
+    en: *gasps* Whoooooa. Look at you!
+    fr: *halètement* Wooooow. Regarde-moi ça!
+    es: *jadea* ¡Wooooow! ¡Mírate!
 - CharacterID: Jared
   LineID: L_16a17b3396e4
   LocalizedDialogue:
@@ -62,9 +62,9 @@ Conversation1:
 - CharacterID: Wolfstag
   LineID: L_fecc5a327214
   LocalizedDialogue:
-    en: '*It tilts its head slightly. Curious.*'
-    fr: '*Il incline légèrement la tête. Curieux.*'
-    es: '*Inclina ligeramente la cabeza. Curioso.*'
+    en: *It tilts its head slightly. Curious.*
+    fr: *Il incline légèrement la tête. Curieux.*
+    es: *Inclina ligeramente la cabeza. Curioso.*
 - CharacterID: Ava
   LineID: L_4e12510204f1
   LocalizedDialogue:
@@ -74,9 +74,9 @@ Conversation1:
 - CharacterID: Wolfstag
   LineID: L_81d918d79d10
   LocalizedDialogue:
-    en: "*The shadows melt away. The creature’s full form is revealed—fur glows silver in the moonlight.*"
-    fr: '*Les ombres se dissipent. La créature se dévoile — sa fourrure luit à la lumière lunaire.*'
-    es: '*Las sombras se desvanecen. Su forma completa aparece — su pelaje brilla bajo la luna.*'
+    en: *The shadows melt away. The creature’s full form is revealed—fur glows silver in the moonlight.*
+    fr: *Les ombres se dissipent. La créature se dévoile — sa fourrure luit à la lumière lunaire.*
+    es: *Las sombras se desvanecen. Su forma completa aparece — su pelaje brilla bajo la luna.*
 - CharacterID: Jared
   LineID: L_44b11d6cd642
   LocalizedDialogue:
@@ -86,15 +86,15 @@ Conversation1:
 - CharacterID: Ava
   LineID: L_b06da097d428
   LocalizedDialogue:
-    en: "...I think he’s leading us somewhere."
-    fr: "...Je crois qu’il nous guide quelque part."
-    es: '...Creo que nos está guiando.'
+    en: ...I think he’s leading us somewhere.
+    fr: ...Je crois qu’il nous guide quelque part.
+    es: ...Creo que nos está guiando.
 - CharacterID: Wolfstag
   LineID: L_9379a5301f7e
   LocalizedDialogue:
-    en: '*He glances back, takes a few careful steps, then waits.*'
-    fr: "*Il jette un regard en arrière, avance lentement, puis s’arrête.*"
-    es: '*Mira hacia atrás, da unos pasos y espera.*'
+    en: *He glances back, takes a few careful steps, then waits.*
+    fr: *Il jette un regard en arrière, avance lentement, puis s’arrête.*
+    es: *Mira hacia atrás, da unos pasos y espera.*
 - CharacterID: Jared
   LineID: L_b5e5b1e08f68
   LocalizedDialogue:
@@ -110,14 +110,14 @@ Conversation1:
 - CharacterID: Wolfstag
   LineID: L_ff77ae8df82b
   LocalizedDialogue:
-    en: '*The creature moves ahead again, parting the brush. Bits of a path peek through behind him.*'
-    fr: '*La créature avance à nouveau, écartant les buissons. Un sentier apparaît derrière lui.*'
-    es: '*La criatura avanza, apartando los arbustos. Se revela un sendero detrás de él.*'
+    en: *The creature moves ahead again, parting the brush. Bits of a path peek through behind him.*
+    fr: *La créature avance à nouveau, écartant les buissons. Un sentier apparaît derrière lui.*
+    es: *La criatura avanza, apartando los arbustos. Se revela un sendero detrás de él.*
 - CharacterID: Jared
   LineID: L_dc490e2592df
   LocalizedDialogue:
     en: Wait... this looks familiar. That’s the ridge! That’s the way back!
-    fr: Attends... ça me dit quelque chose. C’est la crête ! C’est le bon chemin !
+    fr: Attends... ça me dit quelque chose. C’est la crête ! C’est le bon chemin!
     es: Espera... esto me suena. ¡Esa es la cresta! ¡Ese es el camino de regreso!
 - CharacterID: Ava
   LineID: L_2e2673368a71
@@ -128,18 +128,18 @@ Conversation1:
 - CharacterID: Wolfstag
   LineID: L_4c04459eaeba
   LocalizedDialogue:
-    en: "*He pauses at the clearing's edge, makes eye contact, then silently disappears into the mist.*"
-    fr: "*Il s’arrête à la lisière de la clairière, nous regarde, puis disparaît dans la brume.*"
-    es: '*Se detiene en el borde del claro, nos mira y desaparece entre la niebla.*'
+    en: *He pauses at the clearing's edge, makes eye contact, then silently disappears into the mist.*
+    fr: *Il s’arrête à la lisière de la clairière, nous regarde, puis disparaît dans la brume.*
+    es: *Se detiene en el borde del claro, nos mira y desaparece entre la niebla.*
 - CharacterID: Jared
   LineID: L_6e955da171a6
   LocalizedDialogue:
-    en: '...Goodbye, magic antler puppy. I hope you find your own trail home.'
-    fr: "...Adieu, chien magique à bois. J’espère que tu retrouveras ton chemin."
-    es: '...Adiós, cachorro mágico de astas. Ojalá encuentres tu camino.'
+    en: ...Goodbye, magic antler puppy. I hope you find your own trail home.
+    fr: ...Adieu, chien magique à bois. J’espère que tu retrouveras ton chemin.
+    es: ...Adiós, cachorro mágico de astas. Ojalá encuentres tu camino.
 - CharacterID: Ava
   LineID: L_1d54676a6a5b
   LocalizedDialogue:
-    en: "...Next time, I’m bringing a map and a compass. And maybe pepper spray."
-    fr: '...La prochaine fois, je prends une carte, une boussole... et du spray au poivre.'
-    es: '...La próxima vez, llevaré un mapa, una brújula... y tal vez gas pimienta.'
+    en: ...Next time, I’m bringing a map and a compass. And maybe pepper spray.
+    fr: ...La prochaine fois, je prends une carte, une boussole... et du spray au poivre.
+    es: ...La próxima vez, llevaré un mapa, una brújula... y tal vez gas pimienta.
