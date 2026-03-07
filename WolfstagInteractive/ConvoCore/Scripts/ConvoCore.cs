@@ -26,6 +26,16 @@ namespace WolfstagInteractive.ConvoCore
         public event Action PausedConversation;
         public event Action EndedConversation;
         public event Action CompletedConversation;
+
+        // Save-system signals — granular hooks for the save manager
+        public event Action         OnConversationStarted;
+        public event Action         OnConversationEnded;
+        public event Action<string> OnLineStarted;
+        public event Action<string> OnLineCompleted;
+        public event Action<int>    OnChoiceMade;
+
+        // Visited-line tracking (runtime only)
+        [NonSerialized] private readonly HashSet<string> _visitedLineIds = new HashSet<string>();
         private readonly Dictionary<BaseDialogueLineAction, HashSet<int>> _executedActionsPerLine =
             new Dictionary<BaseDialogueLineAction, HashSet<int>>();
         private bool _reverseRequested;
@@ -41,6 +51,40 @@ namespace WolfstagInteractive.ConvoCore
             new Stack<(ConvoCoreConversationData, int)>();
 
         private readonly IConversationContext _context = DefaultConversationContext.Instance;
+
+        // ----- Visited-line API -----
+
+        /// <summary>Replaces the current visited-line set with the provided list.</summary>
+        public void SetVisitedLines(List<string> lineIds)
+        {
+            _visitedLineIds.Clear();
+            if (lineIds == null) return;
+            for (int i = 0; i < lineIds.Count; i++)
+                _visitedLineIds.Add(lineIds[i]);
+        }
+
+        /// <summary>Adds all provided line IDs to the existing visited-line set.</summary>
+        internal void ApplyVisitedLines(List<string> lineIds)
+        {
+            if (lineIds == null) return;
+            for (int i = 0; i < lineIds.Count; i++)
+                _visitedLineIds.Add(lineIds[i]);
+        }
+
+        /// <summary>Sets the current line index to the line matching <paramref name="lineId"/>.</summary>
+        internal void BeginFromLine(string lineId)
+        {
+            if (ConversationData?.DialogueLines == null || string.IsNullOrEmpty(lineId)) return;
+            for (int i = 0; i < ConversationData.DialogueLines.Count; i++)
+            {
+                if (ConversationData.DialogueLines[i].LineID == lineId)
+                {
+                    _currentLineIndex = i;
+                    return;
+                }
+            }
+            Debug.LogWarning($"[ConvoCore] BeginFromLine: LineID '{lineId}' not found. Starting from beginning.");
+        }
         /// <summary>
         /// Represents a frame of dialogue within a conversation sequence.
         /// </summary>
@@ -74,7 +118,10 @@ namespace WolfstagInteractive.ConvoCore
             while (_currentLineIndex < ConversationData.DialogueLines.Count && CurrentDialogueState == ConversationState.Active)
             {
                 var line = ConversationData.DialogueLines[_currentLineIndex];
-                
+                var lineId = line.LineID;
+                _visitedLineIds.Add(lineId ?? string.Empty);
+                OnLineStarted?.Invoke(lineId);
+
                 // Resolve the primary character profile
                 var primaryProfile = ConversationData.ResolveCharacterProfile(
                     ConversationData.ConversationParticipantProfiles, 
@@ -203,6 +250,7 @@ namespace WolfstagInteractive.ConvoCore
                     }
 
                     selected = Mathf.Clamp(selected, 0, choiceCount - 1);
+                    OnChoiceMade?.Invoke(selected);
                     if (!HandleChoiceBranch(choices[selected]))
                         break;
 
@@ -237,10 +285,12 @@ namespace WolfstagInteractive.ConvoCore
                     // Conversation ended or could not continue
                     break;
                 }
+                OnLineCompleted?.Invoke(lineId);
             }
 
             // End conversation
             CurrentDialogueState = ConversationState.Completed;
+            OnConversationEnded?.Invoke();
             CompletedConversation?.Invoke();
             if (ConversationUI != null)
             {
@@ -747,6 +797,7 @@ namespace WolfstagInteractive.ConvoCore
         {
             CurrentDialogueState = ConversationState.Inactive;
             EndedConversation?.Invoke();
+            OnConversationEnded?.Invoke();
             _currentLineIndex = 0;
             if (ConversationUI != null)
             {
@@ -788,9 +839,26 @@ namespace WolfstagInteractive.ConvoCore
                 return;
             }
 
-            CurrentDialogueState = ConversationState.Active;
+            _visitedLineIds.Clear();
             _currentLineIndex = 0;
+
+            // Let a co-located IConvoStartContextProvider control how playback begins
+            var provider = GetComponent<IConvoStartContextProvider>();
+            if (provider != null)
+            {
+                var ctx = provider.GetStartContext();
+                if (ctx.Mode == ConvoStartMode.Resume)
+                {
+                    if (ctx.VisitedLineIds != null) SetVisitedLines(ctx.VisitedLineIds);
+                    if (!string.IsNullOrEmpty(ctx.StartLineId)) BeginFromLine(ctx.StartLineId);
+                }
+                // Restart: index stays 0, _visitedLineIds already cleared
+                // Fresh: nothing to do
+            }
+
+            CurrentDialogueState = ConversationState.Active;
             StartedConversation?.Invoke();
+            OnConversationStarted?.Invoke();
             StartCoroutine(ExecuteDialogueSequence());
         }
 

@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 032e9d1603ab73349bcd6500b02f68ac, type: 3}
+  m_Name: NewVariableStore
+  m_EditorClassIdentifier: 
+  _persistentEntries:
+  - CoreVariable:
+      Key: 
+      Type: 3
+      Description: 
+      Tags: []
+      _stringValue: 
+      _intValue: 0
+      _floatValue: 0
+      _boolValue: 1
+    Scope: 2
+    IsReadOnly: 0
+  - CoreVariable:
+      Key: 
+      Type: 1
+      Description: 
+      Tags: []
+      _stringValue: 
+      _intValue: 7
+      _floatValue: 0
+      _boolValue: 0
+    Scope: 2
+    IsReadOnly: 0
+  - CoreVariable:
+      Key: 
+      Type: 3
+      Description: 
+      Tags: []
+      _stringValue: 
+      _intValue: 0
+      _floatValue: 0
+      _boolValue: 1
+    Scope: 2
+    IsReadOnly: 0
+  - CoreVariable:
+      Key: 23
+      Type: 1
+      Description: 
+      Tags: []
+      _stringValue: 
+      _intValue: 0
+      _floatValue: 0
+      _boolValue: 0
+    Scope: 2
+    IsReadOnly: 0

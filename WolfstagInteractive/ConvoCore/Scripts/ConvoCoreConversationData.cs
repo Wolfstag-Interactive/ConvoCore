@@ -33,6 +33,39 @@ namespace WolfstagInteractive.ConvoCore
         [Tooltip("Define the unique key for the conversation.")]
         public string ConversationKey; // Add this field to hold the key
 
+        // ----- GUID Identity -----
+
+        /// <summary>Human-readable title, separate from the asset file name.</summary>
+        public string ConversationTitle;
+
+        [SerializeField, HideInInspector] private string _conversationGuid;
+
+        /// <summary>
+        /// Stable unique identifier for this conversation. Generated automatically on first access
+        /// and persisted via <see cref="_conversationGuid"/>. Use for save-system keying.
+        /// </summary>
+        public string ConversationGuid
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(_conversationGuid))
+                    _conversationGuid = System.Guid.NewGuid().ToString();
+                return _conversationGuid;
+            }
+        }
+
+        /// <summary>
+        /// Generates a new GUID for this asset. Use only when intentionally breaking
+        /// save-data continuity (e.g. duplicating an asset that should be independent).
+        /// </summary>
+        public void RegenerateGuid()
+        {
+            _conversationGuid = System.Guid.NewGuid().ToString();
+#if UNITY_EDITOR
+            UnityEditor.EditorUtility.SetDirty(this);
+#endif
+        }
+
         private Dictionary<string, List<DialogueYamlConfig>> _dialogueDataByKey; // Stored YAML data at runtime
 
         public ConvoCoreConversationData()
@@ -46,6 +79,10 @@ namespace WolfstagInteractive.ConvoCore
         private void OnValidate()
         {
             ValidateAndFixDialogueLines();
+
+            // Ensure every asset has a stable GUID
+            if (string.IsNullOrEmpty(_conversationGuid))
+                _conversationGuid = System.Guid.NewGuid().ToString();
         }
 
         /// <summary>

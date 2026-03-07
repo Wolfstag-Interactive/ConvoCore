@@ -22,6 +22,10 @@ MonoBehaviour:
   AddressablesEnabled: 0
   AddressablesKeyTemplate: '{filePath}.yml'
   VerboseLogs: 0
+  SaveKeyPrefix: convocore.
+  EnableSaveSystem: 1
+  EnableVariableStore: 1
+  EnableLanguageSystem: 1
   historyRendererProfiles:
   - {fileID: 11400000, guid: 94a4ff3a2894ac644a3c5310a1ea77b5, type: 2}
   - {fileID: 11400000, guid: 52ff87450e8436342bb338bf54984e89, type: 2}

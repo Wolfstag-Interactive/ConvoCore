@@ -47,7 +47,7 @@ MonoBehaviour:
     UserInputMethod: 0
     TimeBeforeNextLine: 0
     LineContinuationSettings:
-      Mode: 3
+      Mode: 0
       TargetContainer: {fileID: 11400000, guid: c15e437cbe731e040b035d6f06005974, type: 2}
       TargetAliasOrName: 
       PushReturnPoint: 0
@@ -754,7 +754,7 @@ MonoBehaviour:
         way back!"
     - Language: fr
       Text: "Attends... \xE7a me dit quelque chose. C\u2019est la cr\xEAte ! C\u2019est
-        le bon chemin !"
+        le bon chemin!"
     - Language: es
       Text: "Espera... esto me suena. \xA1Esa es la cresta! \xA1Ese es el camino
         de regreso!"

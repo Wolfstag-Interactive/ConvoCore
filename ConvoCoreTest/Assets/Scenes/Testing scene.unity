@@ -431,6 +431,7 @@ GameObject:
   - component: {fileID: 1577445918}
   - component: {fileID: 1577445917}
   - component: {fileID: 1577445919}
+  - component: {fileID: 1577445920}
   m_Layer: 0
   m_Name: ConvoCore Conversation
   m_TagString: Untagged
@@ -487,6 +488,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01009535afa4641429378a448793abbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1577445920
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1577445916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7ca12b80cab2db4cb3b46a7e8c6e1cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DirectConversation: {fileID: 11400000, guid: 0a37cee1b6901ff4e8a11815f11e990c, type: 2}
+  ConversationContainer: {fileID: 0}
+  ActiveConversationIndex: 0
+  SaveManager: {fileID: 11400000, guid: b08f61d41a8d14b448b08ed187919256, type: 2}
+  VariableStore: {fileID: 11400000, guid: 61b7de833586e77488cf4e1064369964, type: 2}
+  _defaultStartMode: 1
+  _restoreBehavior: 0
+  _autoCommitOnStart: 1
+  _autoCommitOnEnd: 1
+  _autoCommitOnLineComplete: 1
+  _autoCommitOnChoiceMade: 1
+  _autoRestoreOnAwake: 1
+  _autoRestoreOnStart: 1
 --- !u!1001 &1293074658488180136
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -520,7 +546,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2475525088512401250, guid: 37defd90b8cf4c644b832efe22df606d, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 191.4992
+      value: 191.49916
       objectReference: {fileID: 0}
     - target: {fileID: 2674301797292854259, guid: 37defd90b8cf4c644b832efe22df606d, type: 3}
       propertyPath: m_AnchorMax.x
@@ -672,3 +698,60 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 37defd90b8cf4c644b832efe22df606d, type: 3}
+--- !u!1001 &5596723618039785590
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5596723616945483290, guid: 02bc0ecb4db6aff4590106ee07697110, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5596723616945483290, guid: 02bc0ecb4db6aff4590106ee07697110, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5596723616945483290, guid: 02bc0ecb4db6aff4590106ee07697110, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5596723616945483290, guid: 02bc0ecb4db6aff4590106ee07697110, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5596723616945483290, guid: 02bc0ecb4db6aff4590106ee07697110, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5596723616945483290, guid: 02bc0ecb4db6aff4590106ee07697110, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5596723616945483290, guid: 02bc0ecb4db6aff4590106ee07697110, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5596723616945483290, guid: 02bc0ecb4db6aff4590106ee07697110, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5596723616945483290, guid: 02bc0ecb4db6aff4590106ee07697110, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5596723616945483290, guid: 02bc0ecb4db6aff4590106ee07697110, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5596723616945483290, guid: 02bc0ecb4db6aff4590106ee07697110, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5596723616945483292, guid: 02bc0ecb4db6aff4590106ee07697110, type: 3}
+      propertyPath: m_Name
+      value: ConvoCoreSaveManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 02bc0ecb4db6aff4590106ee07697110, type: 3}
