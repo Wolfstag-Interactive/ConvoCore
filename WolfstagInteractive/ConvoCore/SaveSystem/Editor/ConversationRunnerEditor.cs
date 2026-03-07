@@ -193,8 +193,13 @@ namespace WolfstagInteractive.ConvoCore.SaveSystem.Editor
                 EditorGUILayout.LabelField("Title", title);
 
                 string guid = data.ConversationGuid;
-                string truncated = guid?.Length > 12 ? guid.Substring(0, 8) + "…" : guid;
-                EditorGUILayout.LabelField("GUID", truncated ?? "(none)");
+                using (new EditorGUILayout.HorizontalScope())
+                {
+                    EditorGUILayout.PrefixLabel("GUID");
+                    EditorGUILayout.SelectableLabel(
+                        guid ?? "(none)",
+                        GUILayout.Height(EditorGUIUtility.singleLineHeight));
+                }
             }
         }
 
