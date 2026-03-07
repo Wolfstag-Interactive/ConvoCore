@@ -15,6 +15,7 @@ namespace WolfstagInteractive.ConvoCore.SaveSystem
 
         private void Awake()
         {
+            DontDestroyOnLoad(gameObject);
             if (SaveManager == null)
             {
                 Debug.LogWarning("[ConvoCoreSaveManagerBootstrapper] SaveManager is not assigned.");

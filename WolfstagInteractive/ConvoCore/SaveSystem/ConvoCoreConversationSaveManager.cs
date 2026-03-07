@@ -17,7 +17,6 @@ namespace WolfstagInteractive.ConvoCore.SaveSystem
     {
         // ── Conversation identity ─────────────────────────────────────────────
 
-        [Header("Conversation")]
         [Tooltip("Assign a single ConvoCoreConversationData for direct-conversation mode.")]
         public ConvoCoreConversationData DirectConversation;
 
@@ -29,13 +28,11 @@ namespace WolfstagInteractive.ConvoCore.SaveSystem
 
         // ── References ───────────────────────────────────────────────────────
 
-        [Header("References")]
         public ConvoCoreSaveManager SaveManager;
         public ConvoVariableStore    VariableStore;
 
         // ── Start behaviour ──────────────────────────────────────────────────
 
-        [Header("Start Behavior")]
         [Tooltip("How to start the conversation when a saved snapshot is found.\n" +
                  "Fresh: ignore the snapshot.\n" +
                  "Resume: restore active line + visited history.\n" +
@@ -48,7 +45,6 @@ namespace WolfstagInteractive.ConvoCore.SaveSystem
 
         // ── Auto-commit ──────────────────────────────────────────────────────
 
-        [Header("Auto-Commit")]
         [Tooltip("Write the snapshot to the Save Manager every time the conversation starts.")]
         [SerializeField] private bool _autoCommitOnStart;
 
@@ -63,7 +59,6 @@ namespace WolfstagInteractive.ConvoCore.SaveSystem
 
         // ── Auto-restore ─────────────────────────────────────────────────────
 
-        [Header("Auto-Restore")]
         [Tooltip("Attempt to restore from a saved snapshot in Awake.")]
         [SerializeField] private bool _autoRestoreOnAwake;
 

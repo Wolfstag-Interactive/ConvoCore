@@ -15,7 +15,40 @@ MonoBehaviour:
   _persistentEntries:
   - CoreVariable:
       Key: 
-      Type: 0
+      Type: 3
+      Description: 
+      Tags: []
+      _stringValue: 
+      _intValue: 0
+      _floatValue: 0
+      _boolValue: 1
+    Scope: 2
+    IsReadOnly: 0
+  - CoreVariable:
+      Key: 
+      Type: 1
+      Description: 
+      Tags: []
+      _stringValue: 
+      _intValue: 7
+      _floatValue: 0
+      _boolValue: 0
+    Scope: 2
+    IsReadOnly: 0
+  - CoreVariable:
+      Key: 
+      Type: 3
+      Description: 
+      Tags: []
+      _stringValue: 
+      _intValue: 0
+      _floatValue: 0
+      _boolValue: 1
+    Scope: 2
+    IsReadOnly: 0
+  - CoreVariable:
+      Key: 23
+      Type: 1
       Description: 
       Tags: []
       _stringValue: 
@@ -23,26 +56,4 @@ MonoBehaviour:
       _floatValue: 0
       _boolValue: 0
     Scope: 2
-    IsReadOnly: 0
-  - CoreVariable:
-      Key: 
-      Type: 0
-      Description: 
-      Tags: []
-      _stringValue: 
-      _intValue: 0
-      _floatValue: 0
-      _boolValue: 0
-    Scope: 0
-    IsReadOnly: 0
-  - CoreVariable:
-      Key: 
-      Type: 0
-      Description: 
-      Tags: []
-      _stringValue: 
-      _intValue: 0
-      _floatValue: 0
-      _boolValue: 0
-    Scope: 0
     IsReadOnly: 0

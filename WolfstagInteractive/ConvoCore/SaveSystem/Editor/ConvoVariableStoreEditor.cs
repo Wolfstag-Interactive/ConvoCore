@@ -31,8 +31,8 @@ namespace WolfstagInteractive.ConvoCore.SaveSystem.Editor
         // ── Filter state ───────────────────────────────────────────────────────
 
         private string   _textFilter      = string.Empty;
-        private int      _scopeFilterIdx; // 0=All, 1=Global, 2=Conversation
-        private static readonly string[] k_ScopeFilterLabels = { "All", "Global", "Conversation" };
+        private int      _scopeFilterIdx; // 0=All, 1=Global, 2=Conversation, 3=Session
+        private static readonly string[] k_ScopeFilterLabels = { "All", "Global", "Conversation", "Session" };
 
         // ── Diff / authored-default tracking ──────────────────────────────────
 
@@ -133,6 +133,9 @@ namespace WolfstagInteractive.ConvoCore.SaveSystem.Editor
             // Scope filter
             if (_scopeFilterIdx > 0)
             {
+                // Session (idx 3) — persistent entries never carry Session scope, so none match.
+                if (_scopeFilterIdx == 3) return false;
+
                 int target = _scopeFilterIdx == 1
                     ? (int)ConvoVariableScope.Global
                     : (int)ConvoVariableScope.Conversation;
@@ -231,27 +234,41 @@ namespace WolfstagInteractive.ConvoCore.SaveSystem.Editor
                 new Rect(x + roLabelW + 1f, y1, roToggleW, lineH),
                 isReadOnlyProp, GUIContent.none);
 
-            // ── Row 2: Default value (with diff highlight in play mode) ────────
+            // ── Row 2: Default value (edit mode) / authored → current (play mode) ─
             float y2 = rect.y + lineH + pad * 2f + 2f;
 
             var type = (ConvoVariableType)typeProp.enumValueIndex;
 
-            // Diff highlight: compare current serialised value against captured authored default
             if (Application.isPlaying && _authoredDefaults != null)
             {
-                string key = keyProp.stringValue;
-                if (_authoredDefaults.TryGetValue(key, out var authored))
-                {
-                    string current = GetCurrentValueString(element, type);
-                    if (authored != current)
-                    {
-                        var highlightRect = new Rect(rect.x, y2 - 1f, w, lineH + 2f);
-                        EditorGUI.DrawRect(highlightRect, new Color(1f, 0.65f, 0f, 0.18f));
-                    }
-                }
-            }
+                string key      = keyProp.stringValue;
+                string authored = _authoredDefaults.TryGetValue(key, out var a) ? a : string.Empty;
+                string current  = GetCurrentValueString(element, type);
 
-            DrawDefaultValueRow(new Rect(rect.x, y2, w, lineH), element, type);
+                if (authored != current)
+                {
+                    var highlightRect = new Rect(rect.x, y2 - 1f, w, lineH + 2f);
+                    EditorGUI.DrawRect(highlightRect, new Color(1f, 0.65f, 0f, 0.18f));
+                }
+
+                // Draw: "Default" label  authored-value  →  current-value
+                const float labelW = 54f;
+                const float gap    = 3f;
+                const float arrowW = 18f;
+                float areaX = rect.x + labelW + gap;
+                float areaW = w - labelW - gap;
+                float halfW = (areaW - arrowW) / 2f;
+
+                EditorGUI.LabelField(new Rect(rect.x,            y2, labelW, lineH),
+                    new GUIContent("Default", "Authored default → current runtime value."));
+                EditorGUI.LabelField(new Rect(areaX,             y2, halfW,  lineH), authored);
+                EditorGUI.LabelField(new Rect(areaX + halfW,     y2, arrowW, lineH), "→");
+                EditorGUI.LabelField(new Rect(areaX + halfW + arrowW, y2, halfW, lineH), current);
+            }
+            else
+            {
+                DrawDefaultValueRow(new Rect(rect.x, y2, w, lineH), element, type);
+            }
         }
 
         private static string GetCurrentValueString(SerializedProperty element, ConvoVariableType type)
@@ -326,11 +343,14 @@ namespace WolfstagInteractive.ConvoCore.SaveSystem.Editor
             }
 
             EditorGUILayout.Space(2f);
+            // Persistent entries are read-only at runtime — values shown as authored → current.
+            EditorGUI.BeginDisabledGroup(Application.isPlaying);
             bool isFiltered = _scopeFilterIdx > 0 || !string.IsNullOrEmpty(_textFilter);
             if (isFiltered)
                 DrawFilteredAuthoredList();
             else
                 _authoredList.DoLayoutList();
+            EditorGUI.EndDisabledGroup();
 
             EditorGUILayout.Space(6f);
             DrawSessionSection();

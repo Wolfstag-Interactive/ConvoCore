@@ -8,7 +8,6 @@ namespace WolfstagInteractive.ConvoCore.SaveSystem
 [CreateAssetMenu(fileName = "NewSaveManager", menuName = "ConvoCore/Runtime/Save Manager")]
     public class ConvoCoreSaveManager : ScriptableObject
     {
-        [Header("References")]
         public ConvoVariableStore VariableStore;
         public ConvoSettingsState SettingsState;
 
