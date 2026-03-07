@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['left_0',['left',['../classWolfstagInteractive_1_1ConvoCore_1_1DialogueLineDisplayOptions.html#adffa004212574b32622f09ae1c32c0c3a945d5e233cf7d6240f6b783b36a374ff',1,'WolfstagInteractive.ConvoCore.DialogueLineDisplayOptions.Left'],['../namespaceWolfstagInteractive_1_1ConvoCore.html#a7672af973360b3e5b2b3259e3f6088aea945d5e233cf7d6240f6b783b36a374ff',1,'WolfstagInteractive.ConvoCore.Left'],['../namespaceWolfstagInteractive_1_1ConvoCore.html#a641e3e9ced2cb6f0f0e0ccc6e90318caa945d5e233cf7d6240f6b783b36a374ff',1,'WolfstagInteractive.ConvoCore.Left']]]
+  ['inactive_0',['Inactive',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCore.html#a783c34858791c0cc16ae3fc36a7dfa82a3cab03c00dbd11bc3569afa0748013f0',1,'WolfstagInteractive::ConvoCore::ConvoCore']]],
+  ['int_1',['Int',['../namespaceWolfstagInteractive_1_1ConvoCore_1_1SaveSystem.html#a49466d7ea46b39b1e03baedb09da5a86a1686a6c336b71b36d77354cea19a8b52',1,'WolfstagInteractive::ConvoCore::SaveSystem']]]
 ];

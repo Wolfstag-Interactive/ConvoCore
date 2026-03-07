@@ -1,9 +1,7 @@
 var searchData=
 [
-  ['pagedlistattribute_0',['PagedListAttribute',['../classWolfstagInteractive_1_1ConvoCore_1_1PagedListAttribute.html',1,'WolfstagInteractive::ConvoCore']]],
-  ['plaintexthistoryrenderer_1',['PlainTextHistoryRenderer',['../classWolfstagInteractive_1_1ConvoCore_1_1PlainTextHistoryRenderer.html',1,'WolfstagInteractive::ConvoCore']]],
-  ['prefabcharacterrepresentationdata_2',['PrefabCharacterRepresentationData',['../classWolfstagInteractive_1_1ConvoCore_1_1PrefabCharacterRepresentationData.html',1,'WolfstagInteractive::ConvoCore']]],
-  ['prefabdialoguehistoryoutput_3',['PrefabDialogueHistoryOutput',['../classWolfstagInteractive_1_1ConvoCore_1_1PrefabDialogueHistoryOutput.html',1,'WolfstagInteractive::ConvoCore']]],
-  ['prefabexpressionmapping_4',['PrefabExpressionMapping',['../classWolfstagInteractive_1_1ConvoCore_1_1PrefabExpressionMapping.html',1,'WolfstagInteractive::ConvoCore']]],
-  ['prefabhistoryrenderer_5',['PrefabHistoryRenderer',['../classWolfstagInteractive_1_1ConvoCore_1_1PrefabHistoryRenderer.html',1,'WolfstagInteractive::ConvoCore']]]
+  ['linecontinuation_0',['LineContinuation',['../structWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData_1_1LineContinuation.html',1,'WolfstagInteractive::ConvoCore::ConvoCoreConversationData']]],
+  ['lineframe_1',['LineFrame',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCore_1_1LineFrame.html',1,'WolfstagInteractive::ConvoCore::ConvoCore']]],
+  ['localizeddialogue_2',['LocalizedDialogue',['../structWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData_1_1LocalizedDialogue.html',1,'WolfstagInteractive::ConvoCore::ConvoCoreConversationData']]],
+  ['localizeddialogueresult_3',['LocalizedDialogueResult',['../classWolfstagInteractive_1_1ConvoCore_1_1LocalizedDialogueResult.html',1,'WolfstagInteractive::ConvoCore']]]
 ];

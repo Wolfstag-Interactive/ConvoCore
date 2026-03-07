@@ -1,6 +1,7 @@
 var namespaceWolfstagInteractive_1_1ConvoCore =
 [
     [ "Editor", "namespaceWolfstagInteractive_1_1ConvoCore_1_1Editor.html", "namespaceWolfstagInteractive_1_1ConvoCore_1_1Editor" ],
+    [ "SaveSystem", "namespaceWolfstagInteractive_1_1ConvoCore_1_1SaveSystem.html", "namespaceWolfstagInteractive_1_1ConvoCore_1_1SaveSystem" ],
     [ "BaseDialogueLineAction", "classWolfstagInteractive_1_1ConvoCore_1_1BaseDialogueLineAction.html", "classWolfstagInteractive_1_1ConvoCore_1_1BaseDialogueLineAction" ],
     [ "BaseExpressionAction", "classWolfstagInteractive_1_1ConvoCore_1_1BaseExpressionAction.html", "classWolfstagInteractive_1_1ConvoCore_1_1BaseExpressionAction" ],
     [ "CharacterRepresentationBase", "classWolfstagInteractive_1_1ConvoCore_1_1CharacterRepresentationBase.html", "classWolfstagInteractive_1_1ConvoCore_1_1CharacterRepresentationBase" ],

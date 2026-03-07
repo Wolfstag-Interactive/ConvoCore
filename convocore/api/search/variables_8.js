@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['input_0',['Input',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCore.html#a9b2c561c9023545eb0f4070620f85818',1,'WolfstagInteractive::ConvoCore::ConvoCore']]],
-  ['instance_1',['Instance',['../classWolfstagInteractive_1_1ConvoCore_1_1DefaultConversationContext.html#a347efea4e6f4365f0545d31deff7998c',1,'WolfstagInteractive::ConvoCore::DefaultConversationContext']]],
-  ['isplayercharacter_2',['IsPlayerCharacter',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreCharacterProfileBaseData.html#a5b3e48a2f6a4b51323ca3402882b207e',1,'WolfstagInteractive::ConvoCore::ConvoCoreCharacterProfileBaseData']]]
+  ['hassearched_0',['hasSearched',['../classWolfstagInteractive_1_1ConvoCore_1_1GameObjectReference.html#a14cd2b01eefff4f47279c1f1c3d09fd5',1,'WolfstagInteractive::ConvoCore::GameObjectReference']]],
+  ['historyrendererprofiles_1',['historyRendererProfiles',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSettings.html#a5a207bc089ac5f7a02931b86f93990c0',1,'WolfstagInteractive::ConvoCore::ConvoCoreSettings']]]
 ];

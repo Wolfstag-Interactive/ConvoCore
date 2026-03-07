@@ -1,20 +1,8 @@
 var searchData=
 [
-  ['objectname_0',['objectName',['../classWolfstagInteractive_1_1ConvoCore_1_1GameObjectReference.html#a631616c00b4a1cb9508f3eee54e3aa3f',1,'WolfstagInteractive::ConvoCore::GameObjectReference']]],
-  ['onadvancedialogueperformed_1',['OnAdvanceDialoguePerformed',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSampleUI.html#a66707b4f046500815d5a9e40af421bbb',1,'WolfstagInteractive::ConvoCore::ConvoCoreSampleUI']]],
-  ['onchoicemade_2',['OnChoiceMade',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCore.html#a64ee57a8cec9a2b25ca2f7912f385911',1,'WolfstagInteractive::ConvoCore::ConvoCore']]],
-  ['oncontinuebuttonpressed_3',['OnContinueButtonPressed',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSampleUI.html#ab1f44783ef6e3d66c9b572e6db850ab3',1,'WolfstagInteractive::ConvoCore::ConvoCoreSampleUI']]],
-  ['onconversationended_4',['OnConversationEnded',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCore.html#ae088878c5860c4e21c0b3be8679e5cb6',1,'WolfstagInteractive::ConvoCore::ConvoCore']]],
-  ['onconversationstarted_5',['OnConversationStarted',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCore.html#a2379894b064b7c7d20c24824cd0bde35',1,'WolfstagInteractive::ConvoCore::ConvoCore']]],
-  ['ondestroy_6',['OnDestroy',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSampleUI.html#a2b886f1bba70fc5e432e8b19bf8ac6a4',1,'WolfstagInteractive::ConvoCore::ConvoCoreSampleUI']]],
-  ['ondisable_7',['OnDisable',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSampleUI.html#a14968b1b857e7417b9f349f4d82322c2',1,'WolfstagInteractive::ConvoCore::ConvoCoreSampleUI']]],
-  ['onenable_8',['OnEnable',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSampleUI.html#a9bf92135d58009dbace02ce87ebf75a2',1,'WolfstagInteractive::ConvoCore::ConvoCoreSampleUI']]],
-  ['onlanguagechanged_9',['OnLanguageChanged',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreLanguageManager.html#a15e5d2814a57597519a00444eca06fb0',1,'WolfstagInteractive::ConvoCore::ConvoCoreLanguageManager']]],
-  ['onlinecompleted_10',['OnLineCompleted',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCore.html#ac0b4319ce3758ec6fa9fb583562b24dd',1,'WolfstagInteractive::ConvoCore::ConvoCore']]],
-  ['onlinestarted_11',['OnLineStarted',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCore.html#adaac393be316047dd38dffadae736edc',1,'WolfstagInteractive::ConvoCore::ConvoCore']]],
-  ['onpostprocessallassets_12',['OnPostprocessAllAssets',['../classWolfstagInteractive_1_1ConvoCore_1_1Editor_1_1ConvoCoreYamlWatcher.html#ac62936df5c9253cf25c2e40a78eceae3',1,'WolfstagInteractive::ConvoCore::Editor::ConvoCoreYamlWatcher']]],
-  ['onpreviousdialogueperformed_13',['OnPreviousDialoguePerformed',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSampleUI.html#a924b1f6bcfe6ebee9b25f7132796e84f',1,'WolfstagInteractive::ConvoCore::ConvoCoreSampleUI']]],
-  ['onpreviouslinebuttonpressed_14',['OnPreviousLineButtonPressed',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSampleUI.html#a239968b89d5a16d4f0f61426989f5ec8',1,'WolfstagInteractive::ConvoCore::ConvoCoreSampleUI']]],
-  ['onvalidate_15',['onvalidate',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData.html#a333ed94391f5adec30b1f5d16d0f4af1',1,'WolfstagInteractive.ConvoCore.ConvoCoreConversationData.OnValidate()'],['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSettings.html#a01e3870aeaa4cae3c2fb526434653d8a',1,'WolfstagInteractive.ConvoCore.ConvoCoreSettings.OnValidate()'],['../classWolfstagInteractive_1_1ConvoCore_1_1PrefabCharacterRepresentationData.html#afae63cc5515a9fd4d3ae2f6c7e90a2c8',1,'WolfstagInteractive.ConvoCore.PrefabCharacterRepresentationData.OnValidate()']]],
-  ['outputhandler_16',['OutputHandler',['../structWolfstagInteractive_1_1ConvoCore_1_1DialogueHistoryRendererContext.html#a31921b95601f388e2a1cd4460eeb5ac7',1,'WolfstagInteractive::ConvoCore::DialogueHistoryRendererContext']]]
+  ['newlineid_0',['NewLineID',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreLineID.html#a3dc93f6db933d95dc65d1152fe83c2ca',1,'WolfstagInteractive::ConvoCore::ConvoCoreLineID']]],
+  ['newposition_1',['NewPosition',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreDialogueLineActionModifyTransform.html#aa01869e7765f778401e6cad7b6b2c105',1,'WolfstagInteractive::ConvoCore::ConvoCoreDialogueLineActionModifyTransform']]],
+  ['newrotation_2',['NewRotation',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreDialogueLineActionModifyTransform.html#a6fec88edb6b64cc593e85150e479993e',1,'WolfstagInteractive::ConvoCore::ConvoCoreDialogueLineActionModifyTransform']]],
+  ['newscale_3',['NewScale',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreDialogueLineActionModifyTransform.html#a188684ded3eed033fe235dfb4733e1d2',1,'WolfstagInteractive::ConvoCore::ConvoCoreDialogueLineActionModifyTransform']]],
+  ['normalizelocales_4',['NormalizeLocales',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreYamlParser.html#a2895686ed539c497a33923f9a3686a3e',1,'WolfstagInteractive::ConvoCore::ConvoCoreYamlParser']]]
 ];

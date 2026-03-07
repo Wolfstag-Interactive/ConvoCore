@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['keyfromfilepath_0',['KeyFromFilePath',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreYamlLoader.html#ad73a116e3c9326805597c953fa561181',1,'WolfstagInteractive::ConvoCore::ConvoCoreYamlLoader']]]
+  ['jsonfileconvosaveprovider_0',['JsonFileConvoSaveProvider',['../classWolfstagInteractive_1_1ConvoCore_1_1SaveSystem_1_1JsonFileConvoSaveProvider.html#a876ac71c74deac9d58fcba68df23daaa',1,'WolfstagInteractive::ConvoCore::SaveSystem::JsonFileConvoSaveProvider']]]
 ];

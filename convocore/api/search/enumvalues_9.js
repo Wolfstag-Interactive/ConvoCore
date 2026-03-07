@@ -1,8 +1,7 @@
 var searchData=
 [
-  ['random_0',['Random',['../namespaceWolfstagInteractive_1_1ConvoCore.html#a842505d4978372cedbefe3e48d25b707a64663f4646781c9c0110838b905daa23',1,'WolfstagInteractive::ConvoCore']]],
-  ['resources_1',['Resources',['../namespaceWolfstagInteractive_1_1ConvoCore.html#ae5e9633d75a8b3c6bf69f6eaa4339485addcf50c29294d4414f3f7c1bbc892cb5',1,'WolfstagInteractive::ConvoCore']]],
-  ['restart_2',['Restart',['../namespaceWolfstagInteractive_1_1ConvoCore.html#ab51458c34c46dd42dd277279af380b8ba51cfbcff36da74a9fc47f3a5140f99f2',1,'WolfstagInteractive::ConvoCore']]],
-  ['resume_3',['Resume',['../namespaceWolfstagInteractive_1_1ConvoCore.html#ab51458c34c46dd42dd277279af380b8baf1cefec9e2196c672a622347f1fbc325',1,'WolfstagInteractive::ConvoCore']]],
-  ['right_4',['right',['../classWolfstagInteractive_1_1ConvoCore_1_1DialogueLineDisplayOptions.html#adffa004212574b32622f09ae1c32c0c3a92b09c7c48c520c3c55e497875da437c',1,'WolfstagInteractive.ConvoCore.DialogueLineDisplayOptions.Right'],['../namespaceWolfstagInteractive_1_1ConvoCore.html#a7672af973360b3e5b2b3259e3f6088aea92b09c7c48c520c3c55e497875da437c',1,'WolfstagInteractive.ConvoCore.Right'],['../namespaceWolfstagInteractive_1_1ConvoCore.html#a641e3e9ced2cb6f0f0e0ccc6e90318caa92b09c7c48c520c3c55e497875da437c',1,'WolfstagInteractive.ConvoCore.Right']]]
+  ['paused_0',['Paused',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCore.html#a783c34858791c0cc16ae3fc36a7dfa82ae99180abf47a8b3a856e0bcb2656990a',1,'WolfstagInteractive::ConvoCore::ConvoCore']]],
+  ['persistent_1',['Persistent',['../namespaceWolfstagInteractive_1_1ConvoCore.html#ae5e9633d75a8b3c6bf69f6eaa4339485a5fe7b9358c9cb1b9eaa8d5aec000def4',1,'WolfstagInteractive::ConvoCore']]],
+  ['playerchoice_2',['PlayerChoice',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData.html#a0aa0fdd4cefc8aad605fe6d59182a0d9ae61d97bb2a7d7f91f86f092fc5ce4d65',1,'WolfstagInteractive::ConvoCore::ConvoCoreConversationData']]],
+  ['playlist_3',['Playlist',['../namespaceWolfstagInteractive_1_1ConvoCore.html#a6c70857d1accf842107cbea48908d710abfb6800020a06f5986570499d33f3ce5',1,'WolfstagInteractive::ConvoCore']]]
 ];

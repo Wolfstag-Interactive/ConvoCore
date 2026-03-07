@@ -9,10 +9,11 @@ var searchData=
   ['iconvocorerepresentationinitializable_6',['IConvoCoreRepresentationInitializable',['../interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoCoreRepresentationInitializable.html',1,'WolfstagInteractive::ConvoCore']]],
   ['iconvocorerunner_7',['IConvoCoreRunner',['../interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoCoreRunner.html',1,'WolfstagInteractive::ConvoCore']]],
   ['iconvoinput_8',['IConvoInput',['../interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoInput.html',1,'WolfstagInteractive::ConvoCore']]],
-  ['iconvostartcontextprovider_9',['IConvoStartContextProvider',['../interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoStartContextProvider.html',1,'WolfstagInteractive::ConvoCore']]],
-  ['idialoguehistoryoutput_10',['IDialogueHistoryOutput',['../interfaceWolfstagInteractive_1_1ConvoCore_1_1IDialogueHistoryOutput.html',1,'WolfstagInteractive::ConvoCore']]],
-  ['idialoguehistoryoutputprefab_11',['IDialogueHistoryOutputPrefab',['../interfaceWolfstagInteractive_1_1ConvoCore_1_1IDialogueHistoryOutputPrefab.html',1,'WolfstagInteractive::ConvoCore']]],
-  ['idialoguelineeditorcustomizable_12',['IDialogueLineEditorCustomizable',['../interfaceWolfstagInteractive_1_1ConvoCore_1_1IDialogueLineEditorCustomizable.html',1,'WolfstagInteractive::ConvoCore']]],
-  ['ieditorpreviewablerepresentation_13',['IEditorPreviewableRepresentation',['../interfaceWolfstagInteractive_1_1ConvoCore_1_1IEditorPreviewableRepresentation.html',1,'WolfstagInteractive::ConvoCore']]],
-  ['iuifoundation_14',['IUIFoundation',['../interfaceWolfstagInteractive_1_1ConvoCore_1_1IUIFoundation.html',1,'WolfstagInteractive::ConvoCore']]]
+  ['iconvosaveprovider_9',['IConvoSaveProvider',['../interfaceWolfstagInteractive_1_1ConvoCore_1_1SaveSystem_1_1IConvoSaveProvider.html',1,'WolfstagInteractive::ConvoCore::SaveSystem']]],
+  ['iconvostartcontextprovider_10',['IConvoStartContextProvider',['../interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoStartContextProvider.html',1,'WolfstagInteractive::ConvoCore']]],
+  ['idialoguehistoryoutput_11',['IDialogueHistoryOutput',['../interfaceWolfstagInteractive_1_1ConvoCore_1_1IDialogueHistoryOutput.html',1,'WolfstagInteractive::ConvoCore']]],
+  ['idialoguehistoryoutputprefab_12',['IDialogueHistoryOutputPrefab',['../interfaceWolfstagInteractive_1_1ConvoCore_1_1IDialogueHistoryOutputPrefab.html',1,'WolfstagInteractive::ConvoCore']]],
+  ['idialoguelineeditorcustomizable_13',['IDialogueLineEditorCustomizable',['../interfaceWolfstagInteractive_1_1ConvoCore_1_1IDialogueLineEditorCustomizable.html',1,'WolfstagInteractive::ConvoCore']]],
+  ['ieditorpreviewablerepresentation_14',['IEditorPreviewableRepresentation',['../interfaceWolfstagInteractive_1_1ConvoCore_1_1IEditorPreviewableRepresentation.html',1,'WolfstagInteractive::ConvoCore']]],
+  ['iuifoundation_15',['IUIFoundation',['../interfaceWolfstagInteractive_1_1ConvoCore_1_1IUIFoundation.html',1,'WolfstagInteractive::ConvoCore']]]
 ];

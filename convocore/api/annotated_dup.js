@@ -5,6 +5,23 @@ var annotated_dup =
         [ "Editor", "namespaceWolfstagInteractive_1_1ConvoCore_1_1Editor.html", [
           [ "ConvoCoreYamlWatcher", "classWolfstagInteractive_1_1ConvoCore_1_1Editor_1_1ConvoCoreYamlWatcher.html", "classWolfstagInteractive_1_1ConvoCore_1_1Editor_1_1ConvoCoreYamlWatcher" ]
         ] ],
+        [ "SaveSystem", "namespaceWolfstagInteractive_1_1ConvoCore_1_1SaveSystem.html", [
+          [ "ConversationSnapshot", "classWolfstagInteractive_1_1ConvoCore_1_1SaveSystem_1_1ConversationSnapshot.html", "classWolfstagInteractive_1_1ConvoCore_1_1SaveSystem_1_1ConversationSnapshot" ],
+          [ "ConvoCoreCharacterProfileExtensions", "classWolfstagInteractive_1_1ConvoCore_1_1SaveSystem_1_1ConvoCoreCharacterProfileExtensions.html", "classWolfstagInteractive_1_1ConvoCore_1_1SaveSystem_1_1ConvoCoreCharacterProfileExtensions" ],
+          [ "ConvoCoreConversationSaveManager", "classWolfstagInteractive_1_1ConvoCore_1_1SaveSystem_1_1ConvoCoreConversationSaveManager.html", "classWolfstagInteractive_1_1ConvoCore_1_1SaveSystem_1_1ConvoCoreConversationSaveManager" ],
+          [ "ConvoCoreGameSnapshot", "classWolfstagInteractive_1_1ConvoCore_1_1SaveSystem_1_1ConvoCoreGameSnapshot.html", "classWolfstagInteractive_1_1ConvoCore_1_1SaveSystem_1_1ConvoCoreGameSnapshot" ],
+          [ "ConvoCoreSaveManager", "classWolfstagInteractive_1_1ConvoCore_1_1SaveSystem_1_1ConvoCoreSaveManager.html", "classWolfstagInteractive_1_1ConvoCore_1_1SaveSystem_1_1ConvoCoreSaveManager" ],
+          [ "ConvoCoreSaveManagerBootstrapper", "classWolfstagInteractive_1_1ConvoCore_1_1SaveSystem_1_1ConvoCoreSaveManagerBootstrapper.html", "classWolfstagInteractive_1_1ConvoCore_1_1SaveSystem_1_1ConvoCoreSaveManagerBootstrapper" ],
+          [ "ConvoCoreSettingsSnapshot", "classWolfstagInteractive_1_1ConvoCore_1_1SaveSystem_1_1ConvoCoreSettingsSnapshot.html", "classWolfstagInteractive_1_1ConvoCore_1_1SaveSystem_1_1ConvoCoreSettingsSnapshot" ],
+          [ "ConvoCoreSnapshotMigrator", "classWolfstagInteractive_1_1ConvoCore_1_1SaveSystem_1_1ConvoCoreSnapshotMigrator.html", "classWolfstagInteractive_1_1ConvoCore_1_1SaveSystem_1_1ConvoCoreSnapshotMigrator" ],
+          [ "ConvoCoreVariable", "classWolfstagInteractive_1_1ConvoCore_1_1SaveSystem_1_1ConvoCoreVariable.html", "classWolfstagInteractive_1_1ConvoCore_1_1SaveSystem_1_1ConvoCoreVariable" ],
+          [ "ConvoSettingsState", "classWolfstagInteractive_1_1ConvoCore_1_1SaveSystem_1_1ConvoSettingsState.html", "classWolfstagInteractive_1_1ConvoCore_1_1SaveSystem_1_1ConvoSettingsState" ],
+          [ "ConvoVariableEntry", "classWolfstagInteractive_1_1ConvoCore_1_1SaveSystem_1_1ConvoVariableEntry.html", "classWolfstagInteractive_1_1ConvoCore_1_1SaveSystem_1_1ConvoVariableEntry" ],
+          [ "ConvoVariableStore", "classWolfstagInteractive_1_1ConvoCore_1_1SaveSystem_1_1ConvoVariableStore.html", "classWolfstagInteractive_1_1ConvoCore_1_1SaveSystem_1_1ConvoVariableStore" ],
+          [ "IConvoSaveProvider", "interfaceWolfstagInteractive_1_1ConvoCore_1_1SaveSystem_1_1IConvoSaveProvider.html", "interfaceWolfstagInteractive_1_1ConvoCore_1_1SaveSystem_1_1IConvoSaveProvider" ],
+          [ "JsonFileConvoSaveProvider", "classWolfstagInteractive_1_1ConvoCore_1_1SaveSystem_1_1JsonFileConvoSaveProvider.html", "classWolfstagInteractive_1_1ConvoCore_1_1SaveSystem_1_1JsonFileConvoSaveProvider" ],
+          [ "YamlFileConvoSaveProvider", "classWolfstagInteractive_1_1ConvoCore_1_1SaveSystem_1_1YamlFileConvoSaveProvider.html", "classWolfstagInteractive_1_1ConvoCore_1_1SaveSystem_1_1YamlFileConvoSaveProvider" ]
+        ] ],
         [ "BaseDialogueLineAction", "classWolfstagInteractive_1_1ConvoCore_1_1BaseDialogueLineAction.html", "classWolfstagInteractive_1_1ConvoCore_1_1BaseDialogueLineAction" ],
         [ "BaseExpressionAction", "classWolfstagInteractive_1_1ConvoCore_1_1BaseExpressionAction.html", "classWolfstagInteractive_1_1ConvoCore_1_1BaseExpressionAction" ],
         [ "CharacterRepresentationBase", "classWolfstagInteractive_1_1ConvoCore_1_1CharacterRepresentationBase.html", "classWolfstagInteractive_1_1ConvoCore_1_1CharacterRepresentationBase" ],

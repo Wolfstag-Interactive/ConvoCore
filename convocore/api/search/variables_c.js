@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['objectname_0',['objectName',['../classWolfstagInteractive_1_1ConvoCore_1_1GameObjectReference.html#a631616c00b4a1cb9508f3eee54e3aa3f',1,'WolfstagInteractive::ConvoCore::GameObjectReference']]],
-  ['outputhandler_1',['OutputHandler',['../structWolfstagInteractive_1_1ConvoCore_1_1DialogueHistoryRendererContext.html#a31921b95601f388e2a1cd4460eeb5ac7',1,'WolfstagInteractive::ConvoCore::DialogueHistoryRendererContext']]]
+  ['maxentries_0',['maxentries',['../structWolfstagInteractive_1_1ConvoCore_1_1DialogueHistoryRendererContext.html#a22c85a44eb392869ad1061bf8863719c',1,'WolfstagInteractive.ConvoCore.DialogueHistoryRendererContext.MaxEntries'],['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreDialogueHistoryUI.html#aa055338f0918e7d4ad16c66854533b1c',1,'WolfstagInteractive.ConvoCore.ConvoCoreDialogueHistoryUI.maxEntries']]],
+  ['maxvisiblecharacterslots_1',['maxVisibleCharacterSlots',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreUIFoundation.html#ab9c2ac397d38e8fe967a38f09fc329bf',1,'WolfstagInteractive::ConvoCore::ConvoCoreUIFoundation']]],
+  ['mode_2',['mode',['../structWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData_1_1LineContinuation.html#ad9c49f2e30248a27c9a5e493fdf1a416',1,'WolfstagInteractive.ConvoCore.ConvoCoreConversationData.LineContinuation.Mode'],['../structWolfstagInteractive_1_1ConvoCore_1_1ConvoStartContext.html#a8d5aaade51a6f67e2b41d51dfd433e6e',1,'WolfstagInteractive.ConvoCore.ConvoStartContext.Mode']]]
 ];

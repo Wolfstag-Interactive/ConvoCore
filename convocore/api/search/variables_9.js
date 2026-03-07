@@ -1,15 +1,9 @@
 var searchData=
 [
-  ['labels_0',['Labels',['../structWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData_1_1ChoiceOption.html#a06020925a65e678136da8597693cbb2f',1,'WolfstagInteractive::ConvoCore::ConvoCoreConversationData::ChoiceOption']]],
-  ['language_1',['Language',['../structWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData_1_1LocalizedDialogue.html#a93cb9e846a6eaa65b2871aae14140087',1,'WolfstagInteractive::ConvoCore::ConvoCoreConversationData::LocalizedDialogue']]],
-  ['leftparent_2',['leftParent',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCorePrefabRepresentationSpawner.html#a9853540a7c7d8f2f20ea5d5b74fc088b',1,'WolfstagInteractive::ConvoCore::ConvoCorePrefabRepresentationSpawner']]],
-  ['leftpositionoffset_3',['leftPositionOffset',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreCharacterDisplayBase.html#ab900c3913acb2c88196b5ab006c78b8b',1,'WolfstagInteractive::ConvoCore::ConvoCoreCharacterDisplayBase']]],
-  ['linecontinuationsettings_4',['LineContinuationSettings',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData_1_1DialogueLineInfo.html#a199f14b7b201e36c35b584ce6e3a2b1f',1,'WolfstagInteractive::ConvoCore::ConvoCoreConversationData::DialogueLineInfo']]],
-  ['lineid_5',['LineID',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData_1_1DialogueLineInfo.html#a464163b8b6891fd3997863ddd9859676',1,'WolfstagInteractive::ConvoCore::ConvoCoreConversationData::DialogueLineInfo']]],
-  ['lineindex_6',['lineindex',['../structWolfstagInteractive_1_1ConvoCore_1_1ExpressionActionContext.html#a244d10519bacef22dc08f4e3bf61c526',1,'WolfstagInteractive.ConvoCore.ExpressionActionContext.LineIndex'],['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCore_1_1LineFrame.html#a2a88ea020c6f51da738239b19b0c8601',1,'WolfstagInteractive.ConvoCore.ConvoCore.LineFrame.LineIndex']]],
-  ['linespecificdisplayoptions_7',['LineSpecificDisplayOptions',['../structWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData_1_1CharacterRepresentationData.html#a28f3af4df7ea4c3fbef41c22be8ee351',1,'WolfstagInteractive::ConvoCore::ConvoCoreConversationData::CharacterRepresentationData']]],
-  ['localizationhandler_8',['LocalizationHandler',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCore.html#aabc968ddce22668995a8120fc735d2dc',1,'WolfstagInteractive::ConvoCore::ConvoCore']]],
-  ['localizeddialogues_9',['LocalizedDialogues',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData_1_1DialogueLineInfo.html#a9a88fa281c79203449b042415e071a8c',1,'WolfstagInteractive::ConvoCore::ConvoCoreConversationData::DialogueLineInfo']]],
-  ['loop_10',['Loop',['../classWolfstagInteractive_1_1ConvoCore_1_1ConversationContainer.html#a0134def06fc4f8f452bde3bdc141353e',1,'WolfstagInteractive::ConvoCore::ConversationContainer']]],
-  ['loopoverride_11',['LoopOverride',['../classWolfstagInteractive_1_1ConvoCore_1_1ContainerInput.html#a1ba99fac4710c559585c028f21e293cd',1,'WolfstagInteractive::ConvoCore::ContainerInput']]]
+  ['initializeonawake_0',['InitializeOnAwake',['../classWolfstagInteractive_1_1ConvoCore_1_1SaveSystem_1_1ConvoCoreSaveManagerBootstrapper.html#a5cf3305f750f30de6d3c3c8fac60dd6d',1,'WolfstagInteractive::ConvoCore::SaveSystem::ConvoCoreSaveManagerBootstrapper']]],
+  ['input_1',['Input',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCore.html#a9b2c561c9023545eb0f4070620f85818',1,'WolfstagInteractive::ConvoCore::ConvoCore']]],
+  ['instance_2',['Instance',['../classWolfstagInteractive_1_1ConvoCore_1_1DefaultConversationContext.html#a347efea4e6f4365f0545d31deff7998c',1,'WolfstagInteractive::ConvoCore::DefaultConversationContext']]],
+  ['iscomplete_3',['IsComplete',['../classWolfstagInteractive_1_1ConvoCore_1_1SaveSystem_1_1ConversationSnapshot.html#a2c8791329895dec739500799374ca5ed',1,'WolfstagInteractive::ConvoCore::SaveSystem::ConversationSnapshot']]],
+  ['isplayercharacter_4',['IsPlayerCharacter',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreCharacterProfileBaseData.html#a5b3e48a2f6a4b51323ca3402882b207e',1,'WolfstagInteractive::ConvoCore::ConvoCoreCharacterProfileBaseData']]],
+  ['isreadonly_5',['IsReadOnly',['../classWolfstagInteractive_1_1ConvoCore_1_1SaveSystem_1_1ConvoVariableEntry.html#a64e4f53f3db8be9abb9f22785e49405c',1,'WolfstagInteractive::ConvoCore::SaveSystem::ConvoVariableEntry']]]
 ];

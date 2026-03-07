@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['maxvisiblecharacterslots_0',['MaxVisibleCharacterSlots',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreUIFoundation.html#a5efc2df5fe12db12a18f2cf99fd49c54',1,'WolfstagInteractive::ConvoCore::ConvoCoreUIFoundation']]]
+  ['keylisteners_0',['KeyListeners',['../classWolfstagInteractive_1_1ConvoCore_1_1SaveSystem_1_1ConvoVariableStore.html#acfea65c4f6934e953a2a8b4d6f624d5d',1,'WolfstagInteractive::ConvoCore::SaveSystem::ConvoVariableStore']]]
 ];

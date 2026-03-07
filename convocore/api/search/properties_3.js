@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['gameobject_0',['GameObject',['../classWolfstagInteractive_1_1ConvoCore_1_1GameObjectReference.html#a7c62f50caeaae41c63349e0d871216e1',1,'WolfstagInteractive::ConvoCore::GameObjectReference']]]
+  ['fullbodyside_0',['FullBodySide',['../classWolfstagInteractive_1_1ConvoCore_1_1DialogueLineDisplayOptions.html#a351a3ff45022929c359f2c51c576efa0',1,'WolfstagInteractive::ConvoCore::DialogueLineDisplayOptions']]]
 ];

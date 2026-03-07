@@ -5,8 +5,9 @@ var searchData=
   ['iconvocoreconversationhistoryrenderer_2ecs_2',['IConvoCoreConversationHistoryRenderer.cs',['../IConvoCoreConversationHistoryRenderer_8cs.html',1,'']]],
   ['iconvocoreuifoundation_2ecs_3',['IConvoCoreUIFoundation.cs',['../IConvoCoreUIFoundation_8cs.html',1,'']]],
   ['iconvoinput_2ecs_4',['IConvoInput.cs',['../IConvoInput_8cs.html',1,'']]],
-  ['iconvostartcontextprovider_2ecs_5',['IConvoStartContextProvider.cs',['../IConvoStartContextProvider_8cs.html',1,'']]],
-  ['idialoguehistoryoutput_2ecs_6',['IDialogueHistoryOutput.cs',['../IDialogueHistoryOutput_8cs.html',1,'']]],
-  ['idialoguelineeditorcustomizable_2ecs_7',['IDialogueLineEditorCustomizable.cs',['../IDialogueLineEditorCustomizable_8cs.html',1,'']]],
-  ['ieditorpreviewablerepresentation_2ecs_8',['IEditorPreviewableRepresentation.cs',['../IEditorPreviewableRepresentation_8cs.html',1,'']]]
+  ['iconvosaveprovider_2ecs_5',['IConvoSaveProvider.cs',['../IConvoSaveProvider_8cs.html',1,'']]],
+  ['iconvostartcontextprovider_2ecs_6',['IConvoStartContextProvider.cs',['../IConvoStartContextProvider_8cs.html',1,'']]],
+  ['idialoguehistoryoutput_2ecs_7',['IDialogueHistoryOutput.cs',['../IDialogueHistoryOutput_8cs.html',1,'']]],
+  ['idialoguelineeditorcustomizable_2ecs_8',['IDialogueLineEditorCustomizable.cs',['../IDialogueLineEditorCustomizable_8cs.html',1,'']]],
+  ['ieditorpreviewablerepresentation_2ecs_9',['IEditorPreviewableRepresentation.cs',['../IEditorPreviewableRepresentation_8cs.html',1,'']]]
 ];

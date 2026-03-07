@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['weightedrandom_0',['WeightedRandom',['../namespaceWolfstagInteractive_1_1ConvoCore.html#a842505d4978372cedbefe3e48d25b707adb1e5179aef662aa5e3238520c223405',1,'WolfstagInteractive::ConvoCore']]]
+  ['userinput_0',['UserInput',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData.html#a869564b1c98a8c1cf47b60888c4adeccabcee2009d5808b92788b2adf74896ef3',1,'WolfstagInteractive::ConvoCore::ConvoCoreConversationData']]]
 ];
