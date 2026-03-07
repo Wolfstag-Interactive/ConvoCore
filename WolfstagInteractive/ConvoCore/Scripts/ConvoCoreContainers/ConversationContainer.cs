@@ -142,6 +142,47 @@ namespace WolfstagInteractive.ConvoCore
             return new ConversationBranchResult(chosen.ConversationData, startIndex);
         }
 
+        // ----- GUID-based lookups -----
+
+        /// <summary>Returns the <see cref="ConvoCoreConversationData"/> whose ConversationGuid matches,
+        /// or null if not found.</summary>
+        public ConvoCoreConversationData GetByGuid(string guid)
+        {
+            if (string.IsNullOrEmpty(guid) || Conversations == null) return null;
+            for (int i = 0; i < Conversations.Count; i++)
+            {
+                var data = Conversations[i]?.ConversationData;
+                if (data != null && data.ConversationGuid == guid)
+                    return data;
+            }
+            return null;
+        }
+
+        /// <summary>Returns the index of the entry whose ConversationData reference equals
+        /// <paramref name="data"/>, or -1.</summary>
+        public int IndexOf(ConvoCoreConversationData data)
+        {
+            if (data == null || Conversations == null) return -1;
+            for (int i = 0; i < Conversations.Count; i++)
+            {
+                if (Conversations[i]?.ConversationData == data) return i;
+            }
+            return -1;
+        }
+
+        /// <summary>Returns the index of the entry whose ConversationData.ConversationGuid matches,
+        /// or -1.</summary>
+        public int IndexOfGuid(string guid)
+        {
+            if (string.IsNullOrEmpty(guid) || Conversations == null) return -1;
+            for (int i = 0; i < Conversations.Count; i++)
+            {
+                var data = Conversations[i]?.ConversationData;
+                if (data != null && data.ConversationGuid == guid) return i;
+            }
+            return -1;
+        }
+
         private Entry ResolveSequentialEntry(List<Entry> candidates)
         {
             if (!_sequentialIndices.TryGetValue(this, out var idx))

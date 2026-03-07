@@ -4,237 +4,335 @@ using UnityEngine;
 
 namespace WolfstagInteractive.ConvoCore.SaveSystem
 {
-[HelpURL("https://docs.wolfstaginteractive.com/convocore/api/classWolfstagInteractive_1_1ConvoCore_1_1SaveSystem_1_1ConvoCoreConversationRunner.html")]
-    public class ConvoCoreConversationSaveManager : MonoBehaviour
+    /// <summary>
+    /// Attach alongside a <see cref="ConvoCore"/> component to persist and restore
+    /// conversation state (active line, visited lines, conversation-scoped variables).
+    ///
+    /// Implements <see cref="IConvoStartContextProvider"/> so that
+    /// <see cref="ConvoCore.StartConversation"/> automatically picks up the restore
+    /// context from this component.
+    /// </summary>
+    [HelpURL("https://docs.wolfstaginteractive.com/convocore/api/classWolfstagInteractive_1_1ConvoCore_1_1SaveSystem_1_1ConvoCoreConversationSaveManager.html")]
+    public class ConvoCoreConversationSaveManager : MonoBehaviour, IConvoStartContextProvider
     {
-        [Header("References")]
-        public ConvoCoreSaveManager SaveManager;
+        // ── Conversation identity ─────────────────────────────────────────────
 
         [Header("Conversation")]
-        [SerializeField] private string _conversationId;
+        [Tooltip("Assign a single ConvoCoreConversationData for direct-conversation mode.")]
+        public ConvoCoreConversationData DirectConversation;
 
-        [SerializeField] private bool _autoCommitOnEnd;
-        [SerializeField] private bool _autoCommitOnStart;
-        [SerializeField] private bool _autoCommitOnLineComplete;
-        [SerializeField] private bool _autoCommitOnChoiceMade;
+        [Tooltip("Assign a ConversationContainer to pick a conversation by index.")]
+        public ConversationContainer ConversationContainer;
 
-        [Header("Auto-Restore")]
-        [SerializeField] private bool _autoRestoreOnAwake;
-        [SerializeField] private bool _autoRestoreOnStart;
+        [Tooltip("Index into ConversationContainer.Conversations. Ignored when DirectConversation is set.")]
+        public int ActiveConversationIndex;
+
+        // ── References ───────────────────────────────────────────────────────
+
+        [Header("References")]
+        public ConvoCoreSaveManager SaveManager;
+        public ConvoVariableStore    VariableStore;
+
+        // ── Start behaviour ──────────────────────────────────────────────────
+
+        [Header("Start Behavior")]
+        [Tooltip("How to start the conversation when a saved snapshot is found.\n" +
+                 "Fresh: ignore the snapshot.\n" +
+                 "Resume: restore active line + visited history.\n" +
+                 "Restart: restore variables but start from the first line.")]
+        [SerializeField] private ConvoStartMode _defaultStartMode = ConvoStartMode.Fresh;
+
+        [Tooltip("Controls what happens when RestoreConversationSnapshot is called manually " +
+                 "and the snapshot has not already been auto-applied.")]
         [SerializeField] private ConvoRestoreBehavior _restoreBehavior = ConvoRestoreBehavior.ResumeFromActiveLine;
 
-        // ----- Runtime State -----
+        // ── Auto-commit ──────────────────────────────────────────────────────
 
-        private ConvoCore _convoCore;
-        private string _activeLineId;
-        private bool _isComplete;
-        private List<string> _visitedLineIds = new List<string>();
-        private List<ConvoVariableEntry> _conversationVariables = new List<ConvoVariableEntry>();
+        [Header("Auto-Commit")]
+        [Tooltip("Write the snapshot to the Save Manager every time the conversation starts.")]
+        [SerializeField] private bool _autoCommitOnStart;
 
-        public bool IsDirty { get; private set; }
+        [Tooltip("Write the snapshot when the conversation ends or is stopped.")]
+        [SerializeField] private bool _autoCommitOnEnd;
+
+        [Tooltip("Write the snapshot each time a line finishes.")]
+        [SerializeField] private bool _autoCommitOnLineComplete;
+
+        [Tooltip("Write the snapshot each time a player choice is made.")]
+        [SerializeField] private bool _autoCommitOnChoiceMade;
+
+        // ── Auto-restore ─────────────────────────────────────────────────────
+
+        [Header("Auto-Restore")]
+        [Tooltip("Attempt to restore from a saved snapshot in Awake.")]
+        [SerializeField] private bool _autoRestoreOnAwake;
+
+        [Tooltip("Attempt to restore from a saved snapshot in Start.")]
+        [SerializeField] private bool _autoRestoreOnStart;
+
+        // ── Runtime state ────────────────────────────────────────────────────
+
+        private ConvoCore              _runner;
+        private string                 _activeLineId;
+        private bool                   _isComplete;
+        private readonly HashSet<string> _visitedLineIds = new HashSet<string>();
+
+        // Context prepared by TryAutoRestore, consumed by GetStartContext
+        private bool             _contextReady;
+        private ConvoStartContext _pendingContext;
+
+        public bool     IsDirty        { get; private set; }
         public DateTime LastCommitTime { get; private set; }
-        public string ConversationId => _conversationId;
 
-        // ----- Events -----
+        // ── Events ───────────────────────────────────────────────────────────
 
-        public Action<ConversationSnapshot> OnRestoreDecisionRequired;
+        /// <summary>Fired when <see cref="_restoreBehavior"/> is
+        /// <see cref="ConvoRestoreBehavior.AskViaEvent"/>. Subscribe to decide
+        /// whether to resume or restart, then call <see cref="ResumeFromSnapshot"/>
+        /// or <see cref="RestartWithRestoredVariables"/>.</summary>
+        public event Action<ConversationSnapshot> OnRestoreDecisionRequired;
 
-        // ----- Lifecycle -----
+        // ── Read-only state accessors (for editor + external code) ────────────
+
+        public string ActiveLineId            => _activeLineId;
+        public bool   IsComplete              => _isComplete;
+        public int    VisitedLinesCount       => _visitedLineIds.Count;
+        public int    ConversationVariablesCount =>
+            VariableStore != null ? VariableStore.GetByScope(ConvoVariableScope.Conversation).Count : 0;
+
+        // ── IConvoStartContextProvider ────────────────────────────────────────
+
+        /// <summary>Called by <see cref="ConvoCore.StartConversation"/> via GetComponent.</summary>
+        public ConvoStartContext GetStartContext()
+        {
+            return _contextReady
+                ? _pendingContext
+                : new ConvoStartContext { Mode = ConvoStartMode.Fresh };
+        }
+
+        // ── Lifecycle ────────────────────────────────────────────────────────
 
         private void Awake()
         {
-            _convoCore = GetComponent<ConvoCore>();
-
-            if (_convoCore != null)
-            {
-                _convoCore.StartedConversation += OnConversationStarted;
-                _convoCore.EndedConversation += OnConversationEnded;
-                _convoCore.CompletedConversation += OnConversationEnded;
-            }
-
-            if (_autoRestoreOnAwake)
-                TryAutoRestore();
+            _runner = GetComponent<ConvoCore>();
+            if (_autoRestoreOnAwake) TryAutoRestore();
         }
 
         private void Start()
         {
-            if (_autoRestoreOnStart)
-                TryAutoRestore();
+            if (_autoRestoreOnStart) TryAutoRestore();
         }
 
-        private void OnDestroy()
+        private void OnEnable()
         {
-            if (_convoCore != null)
-            {
-                _convoCore.StartedConversation -= OnConversationStarted;
-                _convoCore.EndedConversation -= OnConversationEnded;
-                _convoCore.CompletedConversation -= OnConversationEnded;
-            }
+            if (_runner == null) _runner = GetComponent<ConvoCore>();
+            if (_runner == null) return;
+
+            _runner.OnConversationStarted += HandleConversationStarted;
+            _runner.OnConversationEnded   += HandleConversationEnded;
+            _runner.OnLineStarted         += HandleLineStarted;
+            _runner.OnLineCompleted       += HandleLineCompleted;
+            _runner.OnChoiceMade          += HandleChoiceMade;
         }
 
-        // ----- Public Methods -----
-
-        public ConversationSnapshot GetConversationSnapshot()
+        private void OnDisable()
         {
-            return new ConversationSnapshot
-            {
-                ConversationId = _conversationId,
-                ActiveLineId = _activeLineId,
-                IsComplete = _isComplete,
-                SaveTimestamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds(),
-                VisitedLineIds = new List<string>(_visitedLineIds),
-                Variables = CloneVariables(_conversationVariables)
-            };
+            if (_runner == null) return;
+
+            _runner.OnConversationStarted -= HandleConversationStarted;
+            _runner.OnConversationEnded   -= HandleConversationEnded;
+            _runner.OnLineStarted         -= HandleLineStarted;
+            _runner.OnLineCompleted       -= HandleLineCompleted;
+            _runner.OnChoiceMade          -= HandleChoiceMade;
         }
 
-        public void RestoreConversationSnapshot(ConversationSnapshot snapshot)
+        // ── Restore ──────────────────────────────────────────────────────────
+
+        /// <summary>Loads the saved snapshot and prepares a start context for the next
+        /// <see cref="ConvoCore.StartConversation"/> call. Safe to call multiple times;
+        /// does nothing when <see cref="SaveManager"/> is not initialized.</summary>
+        public void TryAutoRestore()
         {
-            if (snapshot == null)
+            if (SaveManager == null)
             {
-                Debug.LogWarning("[ConvoCoreConversationRunner] Cannot restore null snapshot.");
+                Debug.LogWarning("[ConvoCoreConversationSaveManager] SaveManager not assigned. Skipping restore.");
                 return;
             }
 
-            switch (_restoreBehavior)
+            if (!SaveManager.IsInitialized)
             {
-                case ConvoRestoreBehavior.ResumeFromActiveLine:
-                    ApplySnapshot(snapshot);
-                    break;
-                case ConvoRestoreBehavior.RestartFromBeginning:
-                    RestartWithRestoredVariables(snapshot);
-                    break;
-                case ConvoRestoreBehavior.AskViaEvent:
-                    OnRestoreDecisionRequired?.Invoke(snapshot);
-                    break;
+                Debug.LogWarning("[ConvoCoreConversationSaveManager] SaveManager is not yet initialized. Skipping restore.");
+                return;
             }
+
+            var data = GetActiveConversation();
+            if (data == null)
+            {
+                Debug.LogWarning("[ConvoCoreConversationSaveManager] No active conversation to restore.");
+                return;
+            }
+
+            var snapshot = SaveManager.GetConversationSnapshot(data.ConversationGuid);
+            if (snapshot == null) return; // no saved state, start fresh
+
+            if (_defaultStartMode == ConvoStartMode.Fresh) return; // user wants to ignore the snapshot
+
+            if (_restoreBehavior == ConvoRestoreBehavior.AskViaEvent)
+            {
+                OnRestoreDecisionRequired?.Invoke(snapshot);
+                return;
+            }
+
+            ApplySnapshot(snapshot, _defaultStartMode);
         }
 
+        /// <summary>Call from an <see cref="OnRestoreDecisionRequired"/> handler to
+        /// resume from the supplied snapshot's active line.</summary>
+        public void ResumeFromSnapshot(ConversationSnapshot snapshot)
+        {
+            if (snapshot == null) return;
+            ApplySnapshot(snapshot, ConvoStartMode.Resume);
+        }
+
+        /// <summary>Call from an <see cref="OnRestoreDecisionRequired"/> handler to
+        /// restore variables from the snapshot but restart from line 0.</summary>
+        public void RestartWithRestoredVariables(ConversationSnapshot snapshot)
+        {
+            if (snapshot == null) return;
+            ApplySnapshot(snapshot, ConvoStartMode.Restart);
+        }
+
+        private void ApplySnapshot(ConversationSnapshot snapshot, ConvoStartMode mode)
+        {
+            // Restore conversation-scoped variables to the store
+            if (VariableStore != null && snapshot.Variables != null)
+                VariableStore.RestoreEntries(snapshot.Variables);
+
+            // Update local tracking state
+            _activeLineId = snapshot.ActiveLineId;
+            _isComplete   = snapshot.IsComplete;
+            _visitedLineIds.Clear();
+            if (snapshot.VisitedLineIds != null)
+                foreach (var id in snapshot.VisitedLineIds)
+                    _visitedLineIds.Add(id);
+
+            // Prepare the context that GetStartContext() will return
+            switch (mode)
+            {
+                case ConvoStartMode.Resume:
+                    _pendingContext = new ConvoStartContext
+                    {
+                        Mode          = ConvoStartMode.Resume,
+                        StartLineId   = snapshot.ActiveLineId,
+                        VisitedLineIds = snapshot.VisitedLineIds
+                    };
+                    _contextReady = true;
+                    break;
+
+                case ConvoStartMode.Restart:
+                    _pendingContext = new ConvoStartContext { Mode = ConvoStartMode.Restart };
+                    _contextReady = true;
+                    break;
+            }
+
+            IsDirty = false;
+        }
+
+        // ── Commit ───────────────────────────────────────────────────────────
+
+        /// <summary>Builds a snapshot from current state and registers it with the
+        /// <see cref="SaveManager"/>. No-ops with a warning when references are missing.</summary>
         public void CommitSnapshot()
         {
             if (SaveManager == null)
             {
-                Debug.LogWarning("[ConvoCoreConversationRunner] SaveManager is not assigned. Skipping commit.");
+                Debug.LogWarning("[ConvoCoreConversationSaveManager] SaveManager not assigned. Skipping commit.");
                 return;
             }
 
-            if (string.IsNullOrEmpty(_conversationId))
+            var data = GetActiveConversation();
+            if (data == null)
             {
-                Debug.LogWarning("[ConvoCoreConversationRunner] Conversation ID is empty. Skipping commit.");
+                Debug.LogWarning("[ConvoCoreConversationSaveManager] No active conversation. Skipping commit.");
                 return;
             }
 
-            var snapshot = GetConversationSnapshot();
+            var snapshot = BuildSnapshot(data);
             SaveManager.RegisterConversationSnapshot(snapshot);
-            IsDirty = false;
+            IsDirty       = false;
             LastCommitTime = DateTime.Now;
+            _contextReady  = false; // context has been consumed by a play session
         }
 
-        public void ResumeFromSnapshot()
+        /// <summary>Returns a snapshot of the current conversation state without committing.</summary>
+        public ConversationSnapshot GetConversationSnapshot()
         {
-            var snapshot = GetPendingSnapshot();
-            if (snapshot != null)
-                ApplySnapshot(snapshot);
+            var data = GetActiveConversation();
+            return data != null ? BuildSnapshot(data) : null;
         }
 
-        public void RestartWithRestoredVariables()
+        // ── Private helpers ──────────────────────────────────────────────────
+
+        private ConvoCoreConversationData GetActiveConversation()
         {
-            var snapshot = GetPendingSnapshot();
-            if (snapshot != null)
-                RestartWithRestoredVariables(snapshot);
+            if (DirectConversation != null) return DirectConversation;
+
+            if (ConversationContainer?.Conversations != null &&
+                ActiveConversationIndex >= 0 &&
+                ActiveConversationIndex < ConversationContainer.Conversations.Count)
+            {
+                return ConversationContainer.Conversations[ActiveConversationIndex]?.ConversationData;
+            }
+
+            return null;
         }
 
-        // ----- Internal Lifecycle Hooks -----
-
-        private void OnConversationStarted()
+        private ConversationSnapshot BuildSnapshot(ConvoCoreConversationData data)
         {
-            IsDirty = true;
-            if (_autoCommitOnStart)
-                CommitSnapshot();
+            return new ConversationSnapshot
+            {
+                ConversationId = data.ConversationGuid,
+                ActiveLineId   = _activeLineId,
+                IsComplete     = _isComplete,
+                SaveTimestamp  = DateTimeOffset.UtcNow.ToUnixTimeSeconds(),
+                VisitedLineIds = new List<string>(_visitedLineIds),
+                Variables      = VariableStore?.ExportByScope(ConvoVariableScope.Conversation)
+                                 ?? new List<ConvoVariableEntry>()
+            };
         }
 
-        private void OnConversationEnded()
+        // ── ConvoCore event handlers ─────────────────────────────────────────
+
+        private void HandleConversationStarted()
+        {
+            _isComplete = false;
+            IsDirty     = true;
+            if (_autoCommitOnStart) CommitSnapshot();
+        }
+
+        private void HandleConversationEnded()
         {
             _isComplete = true;
-            IsDirty = true;
-            if (_autoCommitOnEnd)
-                CommitSnapshot();
+            IsDirty     = true;
+            if (_autoCommitOnEnd) CommitSnapshot();
         }
 
-        public void OnLineCompleted()
+        private void HandleLineStarted(string lineId)
+        {
+            _activeLineId = lineId;
+            _visitedLineIds.Add(lineId);
+        }
+
+        private void HandleLineCompleted(string lineId)
         {
             IsDirty = true;
-            if (_autoCommitOnLineComplete)
-                CommitSnapshot();
+            if (_autoCommitOnLineComplete) CommitSnapshot();
         }
 
-        public void OnChoiceMade(int choiceIndex)
+        private void HandleChoiceMade(int choiceIndex)
         {
             IsDirty = true;
-            if (_autoCommitOnChoiceMade)
-                CommitSnapshot();
-        }
-
-        // ----- Read-Only State Accessors (for editor) -----
-
-        public string ActiveLineId => _activeLineId;
-        public bool IsComplete => _isComplete;
-        public int VisitedLinesCount => _visitedLineIds.Count;
-        public int ConversationVariablesCount => _conversationVariables.Count;
-
-        // ----- Private Helpers -----
-
-        private void TryAutoRestore()
-        {
-            if (SaveManager == null || string.IsNullOrEmpty(_conversationId))
-                return;
-
-            var snapshot = SaveManager.GetConversationSnapshot(_conversationId);
-            if (snapshot != null)
-                RestoreConversationSnapshot(snapshot);
-        }
-
-        private void ApplySnapshot(ConversationSnapshot snapshot)
-        {
-            _activeLineId = snapshot.ActiveLineId;
-            _isComplete = snapshot.IsComplete;
-            _visitedLineIds = snapshot.VisitedLineIds != null
-                ? new List<string>(snapshot.VisitedLineIds)
-                : new List<string>();
-            _conversationVariables = CloneVariables(snapshot.Variables);
-            IsDirty = false;
-        }
-
-        private void RestartWithRestoredVariables(ConversationSnapshot snapshot)
-        {
-            _activeLineId = null;
-            _isComplete = false;
-            _visitedLineIds.Clear();
-            _conversationVariables = CloneVariables(snapshot.Variables);
-            IsDirty = false;
-        }
-
-        private ConversationSnapshot GetPendingSnapshot()
-        {
-            if (SaveManager == null || string.IsNullOrEmpty(_conversationId))
-                return null;
-            return SaveManager.GetConversationSnapshot(_conversationId);
-        }
-
-        private static List<ConvoVariableEntry> CloneVariables(List<ConvoVariableEntry> source)
-        {
-            if (source == null) return new List<ConvoVariableEntry>();
-
-            var result = new List<ConvoVariableEntry>(source.Count);
-            for (int i = 0; i < source.Count; i++)
-            {
-                result.Add(new ConvoVariableEntry
-                {
-                    CoreVariable = source[i].CoreVariable?.Clone(),
-                    Scope = source[i].Scope,
-                    IsReadOnly = source[i].IsReadOnly
-                });
-            }
-            return result;
+            if (_autoCommitOnChoiceMade) CommitSnapshot();
         }
     }
 }
