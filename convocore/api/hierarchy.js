@@ -18,13 +18,14 @@ var hierarchy =
     [ "WolfstagInteractive.ConvoCore.ConvoCoreYamlParser", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreYamlParser.html", null ],
     [ "WolfstagInteractive.ConvoCore.ConvoCoreYamlSerializer", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreYamlSerializer.html", null ],
     [ "WolfstagInteractive.ConvoCore.ConvoCoreYamlUtilities", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreYamlUtilities.html", null ],
+    [ "WolfstagInteractive.ConvoCore.ConvoStartContext", "structWolfstagInteractive_1_1ConvoCore_1_1ConvoStartContext.html", null ],
     [ "WolfstagInteractive.ConvoCore.DialogueHistoryEntry", "classWolfstagInteractive_1_1ConvoCore_1_1DialogueHistoryEntry.html", null ],
     [ "WolfstagInteractive.ConvoCore.DialogueHistoryRendererContext", "structWolfstagInteractive_1_1ConvoCore_1_1DialogueHistoryRendererContext.html", null ],
     [ "WolfstagInteractive.ConvoCore.DialogueLineDisplayOptions", "classWolfstagInteractive_1_1ConvoCore_1_1DialogueLineDisplayOptions.html", null ],
     [ "WolfstagInteractive.ConvoCore.ConvoCoreConversationData.DialogueLineInfo", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData_1_1DialogueLineInfo.html", null ],
     [ "WolfstagInteractive.ConvoCore.DialogueYamlConfig", "classWolfstagInteractive_1_1ConvoCore_1_1DialogueYamlConfig.html", null ],
     [ "WolfstagInteractive.ConvoCore.ConversationContainer.Entry", "classWolfstagInteractive_1_1ConvoCore_1_1ConversationContainer_1_1Entry.html", null ],
-    [ "ExpressionActionContext", "structExpressionActionContext.html", null ],
+    [ "WolfstagInteractive.ConvoCore.ExpressionActionContext", "structWolfstagInteractive_1_1ConvoCore_1_1ExpressionActionContext.html", null ],
     [ "WolfstagInteractive.ConvoCore.GameObjectHelper", "classWolfstagInteractive_1_1ConvoCore_1_1GameObjectHelper.html", null ],
     [ "WolfstagInteractive.ConvoCore.GameObjectReference", "classWolfstagInteractive_1_1ConvoCore_1_1GameObjectReference.html", null ],
     [ "WolfstagInteractive.ConvoCore.IConversationContext", "interfaceWolfstagInteractive_1_1ConvoCore_1_1IConversationContext.html", [
@@ -53,6 +54,7 @@ var hierarchy =
       [ "WolfstagInteractive.ConvoCore.ContainerInput", "classWolfstagInteractive_1_1ConvoCore_1_1ContainerInput.html", null ],
       [ "WolfstagInteractive.ConvoCore.SingleConversationInput", "classWolfstagInteractive_1_1ConvoCore_1_1SingleConversationInput.html", null ]
     ] ],
+    [ "WolfstagInteractive.ConvoCore.IConvoStartContextProvider", "interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoStartContextProvider.html", null ],
     [ "WolfstagInteractive.ConvoCore.IDialogueHistoryOutput", "interfaceWolfstagInteractive_1_1ConvoCore_1_1IDialogueHistoryOutput.html", [
       [ "WolfstagInteractive.ConvoCore.IDialogueHistoryOutputPrefab", "interfaceWolfstagInteractive_1_1ConvoCore_1_1IDialogueHistoryOutputPrefab.html", [
         [ "WolfstagInteractive.ConvoCore.PrefabDialogueHistoryOutput", "classWolfstagInteractive_1_1ConvoCore_1_1PrefabDialogueHistoryOutput.html", null ]
@@ -91,7 +93,6 @@ var hierarchy =
     [ "WolfstagInteractive.ConvoCore.RepresentationExpressionOverride", "classWolfstagInteractive_1_1ConvoCore_1_1RepresentationExpressionOverride.html", null ],
     [ "WolfstagInteractive.ConvoCore.RepresentationPair", "classWolfstagInteractive_1_1ConvoCore_1_1RepresentationPair.html", null ],
     [ "ScriptableObject", null, [
-      [ "BaseExpressionAction", "classBaseExpressionAction.html", null ],
       [ "WolfstagInteractive.ConvoCore.BaseDialogueLineAction", "classWolfstagInteractive_1_1ConvoCore_1_1BaseDialogueLineAction.html", [
         [ "WolfstagInteractive.ConvoCore.ConvoCoreDialogueLineActionDialogueLineActionGroup", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreDialogueLineActionDialogueLineActionGroup.html", null ],
         [ "WolfstagInteractive.ConvoCore.ConvoCoreDialogueLineActionEnableDisableGameObject", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreDialogueLineActionEnableDisableGameObject.html", null ],
@@ -100,6 +101,7 @@ var hierarchy =
         [ "WolfstagInteractive.ConvoCore.ConvoCoreDialogueLineActionModifyTransform", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreDialogueLineActionModifyTransform.html", null ],
         [ "WolfstagInteractive.ConvoCore.ConvoCoreDialogueLineActionPlayAudioClip", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreDialogueLineActionPlayAudioClip.html", null ]
       ] ],
+      [ "WolfstagInteractive.ConvoCore.BaseExpressionAction", "classWolfstagInteractive_1_1ConvoCore_1_1BaseExpressionAction.html", null ],
       [ "WolfstagInteractive.ConvoCore.CharacterRepresentationBase", "classWolfstagInteractive_1_1ConvoCore_1_1CharacterRepresentationBase.html", null ],
       [ "WolfstagInteractive.ConvoCore.ConversationContainer", "classWolfstagInteractive_1_1ConvoCore_1_1ConversationContainer.html", null ],
       [ "WolfstagInteractive.ConvoCore.ConvoCoreCharacterExpression", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreCharacterExpression.html", null ],

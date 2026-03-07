@@ -6,6 +6,7 @@ var annotated_dup =
           [ "ConvoCoreYamlWatcher", "classWolfstagInteractive_1_1ConvoCore_1_1Editor_1_1ConvoCoreYamlWatcher.html", "classWolfstagInteractive_1_1ConvoCore_1_1Editor_1_1ConvoCoreYamlWatcher" ]
         ] ],
         [ "BaseDialogueLineAction", "classWolfstagInteractive_1_1ConvoCore_1_1BaseDialogueLineAction.html", "classWolfstagInteractive_1_1ConvoCore_1_1BaseDialogueLineAction" ],
+        [ "BaseExpressionAction", "classWolfstagInteractive_1_1ConvoCore_1_1BaseExpressionAction.html", "classWolfstagInteractive_1_1ConvoCore_1_1BaseExpressionAction" ],
         [ "CharacterRepresentationBase", "classWolfstagInteractive_1_1ConvoCore_1_1CharacterRepresentationBase.html", "classWolfstagInteractive_1_1ConvoCore_1_1CharacterRepresentationBase" ],
         [ "ChoiceResult", "classWolfstagInteractive_1_1ConvoCore_1_1ChoiceResult.html", "classWolfstagInteractive_1_1ConvoCore_1_1ChoiceResult" ],
         [ "ContainerInput", "classWolfstagInteractive_1_1ConvoCore_1_1ContainerInput.html", "classWolfstagInteractive_1_1ConvoCore_1_1ContainerInput" ],
@@ -42,11 +43,13 @@ var annotated_dup =
         [ "ConvoCoreYamlParser", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreYamlParser.html", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreYamlParser" ],
         [ "ConvoCoreYamlSerializer", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreYamlSerializer.html", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreYamlSerializer" ],
         [ "ConvoCoreYamlUtilities", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreYamlUtilities.html", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreYamlUtilities" ],
+        [ "ConvoStartContext", "structWolfstagInteractive_1_1ConvoCore_1_1ConvoStartContext.html", "structWolfstagInteractive_1_1ConvoCore_1_1ConvoStartContext" ],
         [ "DefaultConversationContext", "classWolfstagInteractive_1_1ConvoCore_1_1DefaultConversationContext.html", "classWolfstagInteractive_1_1ConvoCore_1_1DefaultConversationContext" ],
         [ "DialogueHistoryEntry", "classWolfstagInteractive_1_1ConvoCore_1_1DialogueHistoryEntry.html", "classWolfstagInteractive_1_1ConvoCore_1_1DialogueHistoryEntry" ],
         [ "DialogueHistoryRendererContext", "structWolfstagInteractive_1_1ConvoCore_1_1DialogueHistoryRendererContext.html", "structWolfstagInteractive_1_1ConvoCore_1_1DialogueHistoryRendererContext" ],
         [ "DialogueLineDisplayOptions", "classWolfstagInteractive_1_1ConvoCore_1_1DialogueLineDisplayOptions.html", "classWolfstagInteractive_1_1ConvoCore_1_1DialogueLineDisplayOptions" ],
         [ "DialogueYamlConfig", "classWolfstagInteractive_1_1ConvoCore_1_1DialogueYamlConfig.html", "classWolfstagInteractive_1_1ConvoCore_1_1DialogueYamlConfig" ],
+        [ "ExpressionActionContext", "structWolfstagInteractive_1_1ConvoCore_1_1ExpressionActionContext.html", "structWolfstagInteractive_1_1ConvoCore_1_1ExpressionActionContext" ],
         [ "ExpressionIDSelectorAttribute", "classWolfstagInteractive_1_1ConvoCore_1_1ExpressionIDSelectorAttribute.html", "classWolfstagInteractive_1_1ConvoCore_1_1ExpressionIDSelectorAttribute" ],
         [ "GameObjectHelper", "classWolfstagInteractive_1_1ConvoCore_1_1GameObjectHelper.html", "classWolfstagInteractive_1_1ConvoCore_1_1GameObjectHelper" ],
         [ "GameObjectReference", "classWolfstagInteractive_1_1ConvoCore_1_1GameObjectReference.html", "classWolfstagInteractive_1_1ConvoCore_1_1GameObjectReference" ],
@@ -59,6 +62,7 @@ var annotated_dup =
         [ "IConvoCoreRepresentationInitializable", "interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoCoreRepresentationInitializable.html", "interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoCoreRepresentationInitializable" ],
         [ "IConvoCoreRunner", "interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoCoreRunner.html", "interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoCoreRunner" ],
         [ "IConvoInput", "interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoInput.html", "interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoInput" ],
+        [ "IConvoStartContextProvider", "interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoStartContextProvider.html", "interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoStartContextProvider" ],
         [ "IDialogueHistoryOutput", "interfaceWolfstagInteractive_1_1ConvoCore_1_1IDialogueHistoryOutput.html", "interfaceWolfstagInteractive_1_1ConvoCore_1_1IDialogueHistoryOutput" ],
         [ "IDialogueHistoryOutputPrefab", "interfaceWolfstagInteractive_1_1ConvoCore_1_1IDialogueHistoryOutputPrefab.html", "interfaceWolfstagInteractive_1_1ConvoCore_1_1IDialogueHistoryOutputPrefab" ],
         [ "IDialogueLineEditorCustomizable", "interfaceWolfstagInteractive_1_1ConvoCore_1_1IDialogueLineEditorCustomizable.html", "interfaceWolfstagInteractive_1_1ConvoCore_1_1IDialogueLineEditorCustomizable" ],
@@ -80,7 +84,5 @@ var annotated_dup =
         [ "SpriteExpressionMapping", "classWolfstagInteractive_1_1ConvoCore_1_1SpriteExpressionMapping.html", "classWolfstagInteractive_1_1ConvoCore_1_1SpriteExpressionMapping" ],
         [ "TMPDialogueHistoryOutput", "classWolfstagInteractive_1_1ConvoCore_1_1TMPDialogueHistoryOutput.html", "classWolfstagInteractive_1_1ConvoCore_1_1TMPDialogueHistoryOutput" ]
       ] ]
-    ] ],
-    [ "BaseExpressionAction", "classBaseExpressionAction.html", "classBaseExpressionAction" ],
-    [ "ExpressionActionContext", "structExpressionActionContext.html", "structExpressionActionContext" ]
+    ] ]
 ];

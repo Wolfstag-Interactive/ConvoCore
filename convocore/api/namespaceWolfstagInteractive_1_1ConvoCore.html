@@ -109,6 +109,8 @@ Namespaces</h2></td></tr>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1BaseDialogueLineAction.html">BaseDialogueLineAction</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1BaseExpressionAction.html">BaseExpressionAction</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1CharacterRepresentationBase.html">CharacterRepresentationBase</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1ChoiceResult.html">ChoiceResult</a></td></tr>
@@ -186,6 +188,8 @@ Classes</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreYamlUtilities.html">ConvoCoreYamlUtilities</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structWolfstagInteractive_1_1ConvoCore_1_1ConvoStartContext.html">ConvoStartContext</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1DefaultConversationContext.html">DefaultConversationContext</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default no-op implementation.  <a href="classWolfstagInteractive_1_1ConvoCore_1_1DefaultConversationContext.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -197,6 +201,9 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1DialogueLineDisplayOptions.html">DialogueLineDisplayOptions</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1DialogueYamlConfig.html">DialogueYamlConfig</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structWolfstagInteractive_1_1ConvoCore_1_1ExpressionActionContext.html">ExpressionActionContext</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Context passed to BaseExpressionAction when a character expression is applied.  <a href="structWolfstagInteractive_1_1ConvoCore_1_1ExpressionActionContext.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1ExpressionIDSelectorAttribute.html">ExpressionIDSelectorAttribute</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Marks a string field to be rendered as a popup of expression IDs coming from a sibling SerializedProperty that references a CharacterRepresentationBase asset.  <a href="classWolfstagInteractive_1_1ConvoCore_1_1ExpressionIDSelectorAttribute.html#details">More...</a><br /></td></tr>
@@ -225,6 +232,9 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">interface &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoCoreRunner.html">IConvoCoreRunner</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">interface &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoInput.html">IConvoInput</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">interface &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoStartContextProvider.html">IConvoStartContextProvider</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implement on a component alongside ConvoCore to control how a conversation is started.  <a href="interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoStartContextProvider.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">interface &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceWolfstagInteractive_1_1ConvoCore_1_1IDialogueHistoryOutput.html">IDialogueHistoryOutput</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -300,6 +310,11 @@ Enumerations</h2></td></tr>
  }</td></tr>
 <tr class="memdesc:a641e3e9ced2cb6f0f0e0ccc6e90318ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Shared enum for prefab and UI side positioning.  <a href="namespaceWolfstagInteractive_1_1ConvoCore.html#a641e3e9ced2cb6f0f0e0ccc6e90318ca">More...</a><br /></td></tr>
 <tr class="separator:a641e3e9ced2cb6f0f0e0ccc6e90318ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab51458c34c46dd42dd277279af380b8b" id="r_ab51458c34c46dd42dd277279af380b8b"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceWolfstagInteractive_1_1ConvoCore.html#ab51458c34c46dd42dd277279af380b8b">ConvoStartMode</a> { <a class="el" href="namespaceWolfstagInteractive_1_1ConvoCore.html#ab51458c34c46dd42dd277279af380b8bafe8965a9748c1bc48af1711be837124e">Fresh</a>
+, <a class="el" href="namespaceWolfstagInteractive_1_1ConvoCore.html#ab51458c34c46dd42dd277279af380b8baf1cefec9e2196c672a622347f1fbc325">Resume</a>
+, <a class="el" href="namespaceWolfstagInteractive_1_1ConvoCore.html#ab51458c34c46dd42dd277279af380b8ba51cfbcff36da74a9fc47f3a5140f99f2">Restart</a>
+ }</td></tr>
+<tr class="separator:ab51458c34c46dd42dd277279af380b8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Base Action serves as the base for all derivative classes, allowing them to all automatically share the values and functions within this script Derivative classes must inherenit from BaseAction in order to work and should not derive from monobehavior or scriptable object on their own. </p>
@@ -339,6 +354,28 @@ Enumerations</h2></td></tr>
 <tr><td class="fieldname"><a id="a842505d4978372cedbefe3e48d25b707aa7e82daa7280af25afbaa076ac16eb1e" name="a842505d4978372cedbefe3e48d25b707aa7e82daa7280af25afbaa076ac16eb1e"></a>Sequential&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a842505d4978372cedbefe3e48d25b707a64663f4646781c9c0110838b905daa23" name="a842505d4978372cedbefe3e48d25b707a64663f4646781c9c0110838b905daa23"></a>Random&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a842505d4978372cedbefe3e48d25b707adb1e5179aef662aa5e3238520c223405" name="a842505d4978372cedbefe3e48d25b707adb1e5179aef662aa5e3238520c223405"></a>WeightedRandom&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
+<a id="ab51458c34c46dd42dd277279af380b8b" name="ab51458c34c46dd42dd277279af380b8b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab51458c34c46dd42dd277279af380b8b">&#9670;&#160;</a></span>ConvoStartMode</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="namespaceWolfstagInteractive_1_1ConvoCore.html#ab51458c34c46dd42dd277279af380b8b">WolfstagInteractive.ConvoCore.ConvoStartMode</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ab51458c34c46dd42dd277279af380b8bafe8965a9748c1bc48af1711be837124e" name="ab51458c34c46dd42dd277279af380b8bafe8965a9748c1bc48af1711be837124e"></a>Fresh&#160;</td><td class="fielddoc"><p>Ignore any saved snapshot and start the conversation from the first line. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ab51458c34c46dd42dd277279af380b8baf1cefec9e2196c672a622347f1fbc325" name="ab51458c34c46dd42dd277279af380b8baf1cefec9e2196c672a622347f1fbc325"></a>Resume&#160;</td><td class="fielddoc"><p>Resume from the last recorded active line with visited-line history applied. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ab51458c34c46dd42dd277279af380b8ba51cfbcff36da74a9fc47f3a5140f99f2" name="ab51458c34c46dd42dd277279af380b8ba51cfbcff36da74a9fc47f3a5140f99f2"></a>Restart&#160;</td><td class="fielddoc"><p>Restore saved variables but restart from the first line. </p>
+</td></tr>
 </table>
 
 </div>

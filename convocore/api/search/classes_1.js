@@ -38,5 +38,6 @@ var searchData=
   ['convocoreyamlparser_35',['ConvoCoreYamlParser',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreYamlParser.html',1,'WolfstagInteractive::ConvoCore']]],
   ['convocoreyamlserializer_36',['ConvoCoreYamlSerializer',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreYamlSerializer.html',1,'WolfstagInteractive::ConvoCore']]],
   ['convocoreyamlutilities_37',['ConvoCoreYamlUtilities',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreYamlUtilities.html',1,'WolfstagInteractive::ConvoCore']]],
-  ['convocoreyamlwatcher_38',['ConvoCoreYamlWatcher',['../classWolfstagInteractive_1_1ConvoCore_1_1Editor_1_1ConvoCoreYamlWatcher.html',1,'WolfstagInteractive::ConvoCore::Editor']]]
+  ['convocoreyamlwatcher_38',['ConvoCoreYamlWatcher',['../classWolfstagInteractive_1_1ConvoCore_1_1Editor_1_1ConvoCoreYamlWatcher.html',1,'WolfstagInteractive::ConvoCore::Editor']]],
+  ['convostartcontext_39',['ConvoStartContext',['../structWolfstagInteractive_1_1ConvoCore_1_1ConvoStartContext.html',1,'WolfstagInteractive::ConvoCore']]]
 ];

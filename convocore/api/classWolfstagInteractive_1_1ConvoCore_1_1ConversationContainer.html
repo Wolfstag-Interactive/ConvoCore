@@ -120,6 +120,15 @@ Classes</h2></td></tr>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:aed67ef1724ff7a7d4d3f3836c500c50c" id="r_aed67ef1724ff7a7d4d3f3836c500c50c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structWolfstagInteractive_1_1ConvoCore_1_1ConversationBranchResult.html">ConversationBranchResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1ConversationContainer.html#aed67ef1724ff7a7d4d3f3836c500c50c">ResolveForBranch</a> (<a class="el" href="interfaceWolfstagInteractive_1_1ConvoCore_1_1IConversationContext.html">IConversationContext</a> context, string aliasOrName=null)</td></tr>
 <tr class="separator:aed67ef1724ff7a7d4d3f3836c500c50c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7766f6d2f4fe869e57c70d266aab6032" id="r_a7766f6d2f4fe869e57c70d266aab6032"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData.html">ConvoCoreConversationData</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1ConversationContainer.html#a7766f6d2f4fe869e57c70d266aab6032">GetByGuid</a> (string guid)</td></tr>
+<tr class="memdesc:a7766f6d2f4fe869e57c70d266aab6032"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the ConvoCoreConversationData whose ConversationGuid matches, or null if not found.  <br /></td></tr>
+<tr class="separator:a7766f6d2f4fe869e57c70d266aab6032"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9100acce2d22882ecec01d956719f2cf" id="r_a9100acce2d22882ecec01d956719f2cf"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1ConversationContainer.html#a9100acce2d22882ecec01d956719f2cf">IndexOf</a> (<a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData.html">ConvoCoreConversationData</a> data)</td></tr>
+<tr class="memdesc:a9100acce2d22882ecec01d956719f2cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the index of the entry whose ConversationData reference equals <em>data</em> , or -1.  <br /></td></tr>
+<tr class="separator:a9100acce2d22882ecec01d956719f2cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a68d6361fb58cd75b5b42cbcc1b13c94c" id="r_a68d6361fb58cd75b5b42cbcc1b13c94c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1ConversationContainer.html#a68d6361fb58cd75b5b42cbcc1b13c94c">IndexOfGuid</a> (string guid)</td></tr>
+<tr class="memdesc:a68d6361fb58cd75b5b42cbcc1b13c94c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the index of the entry whose ConversationData.ConversationGuid matches, or -1.  <br /></td></tr>
+<tr class="separator:a68d6361fb58cd75b5b42cbcc1b13c94c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -150,6 +159,90 @@ Static Private Attributes</h2></td></tr>
 <tr class="separator:acede167aea5f484f08559033e370c1bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="a7766f6d2f4fe869e57c70d266aab6032" name="a7766f6d2f4fe869e57c70d266aab6032"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7766f6d2f4fe869e57c70d266aab6032">&#9670;&#160;</a></span>GetByGuid()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData.html">ConvoCoreConversationData</a> WolfstagInteractive.ConvoCore.ConversationContainer.GetByGuid </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>guid</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns the ConvoCoreConversationData whose ConversationGuid matches, or null if not found. </p>
+
+</div>
+</div>
+<a id="a9100acce2d22882ecec01d956719f2cf" name="a9100acce2d22882ecec01d956719f2cf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9100acce2d22882ecec01d956719f2cf">&#9670;&#160;</a></span>IndexOf()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int WolfstagInteractive.ConvoCore.ConversationContainer.IndexOf </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData.html">ConvoCoreConversationData</a>&#160;</td>
+          <td class="paramname"><em>data</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns the index of the entry whose ConversationData reference equals <em>data</em> , or -1. </p>
+
+</div>
+</div>
+<a id="a68d6361fb58cd75b5b42cbcc1b13c94c" name="a68d6361fb58cd75b5b42cbcc1b13c94c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a68d6361fb58cd75b5b42cbcc1b13c94c">&#9670;&#160;</a></span>IndexOfGuid()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int WolfstagInteractive.ConvoCore.ConversationContainer.IndexOfGuid </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>guid</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns the index of the entry whose ConversationData.ConversationGuid matches, or -1. </p>
+
+</div>
+</div>
 <a id="aed67ef1724ff7a7d4d3f3836c500c50c" name="aed67ef1724ff7a7d4d3f3836c500c50c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aed67ef1724ff7a7d4d3f3836c500c50c">&#9670;&#160;</a></span>ResolveForBranch()</h2>
 

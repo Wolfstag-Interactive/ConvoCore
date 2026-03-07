@@ -26,6 +26,7 @@ var classWolfstagInteractive_1_1ConvoCore_1_1ConvoCore =
     [ "ResumeConversation", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCore.html#aa7a95c9b8fc2b3652a9c1526c447dd03", null ],
     [ "ReverseOneLine", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCore.html#ac707a0f9bcb2b98b9383198c18a0f0a0", null ],
     [ "ReverseOneLineRoutine", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCore.html#ad2fe06331123099db4f05fd324e16a43", null ],
+    [ "SetVisitedLines", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCore.html#af5fbfe7772f008bbe675f732ee4108be", null ],
     [ "StartConversation", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCore.html#ac1088f2419eab064304f1f05a17791fb", null ],
     [ "StopConversation", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCore.html#a170de86d1f885324fe33fdcb7dfaa939", null ],
     [ "SwitchConversation", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCore.html#a0e7754a8ffb05af58971f374bb51465c", null ],
@@ -38,6 +39,7 @@ var classWolfstagInteractive_1_1ConvoCore_1_1ConvoCore =
     [ "_history", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCore.html#a6506c2deeccec59ea1e5039af4bf0b10", null ],
     [ "_returnStack", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCore.html#acafad81124e93855fce10436521ab678", null ],
     [ "_reverseRequested", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCore.html#ad47627eab2d1d726c168a0f1bc1d47fa", null ],
+    [ "_visitedLineIds", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCore.html#a4496ad2715c2a08bac6c50daa4ca1d1a", null ],
     [ "ConversationData", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCore.html#a0db97f5c53662ad48b3c4d6d2b88f73a", null ],
     [ "ConversationUI", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCore.html#a80f9bbc23f155b242c0629baa7228321", null ],
     [ "Input", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCore.html#a9b2c561c9023545eb0f4070620f85818", null ],
@@ -46,6 +48,11 @@ var classWolfstagInteractive_1_1ConvoCore_1_1ConvoCore =
     [ "CurrentDialogueState", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCore.html#a0e230cc55fa2d04e4a3f821c1d76bb18", null ],
     [ "CompletedConversation", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCore.html#ad593653ddb1d0a45d43e9867897d2e85", null ],
     [ "EndedConversation", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCore.html#a90230e67c452ad85008519e9b6604692", null ],
+    [ "OnChoiceMade", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCore.html#a64ee57a8cec9a2b25ca2f7912f385911", null ],
+    [ "OnConversationEnded", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCore.html#ae088878c5860c4e21c0b3be8679e5cb6", null ],
+    [ "OnConversationStarted", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCore.html#a2379894b064b7c7d20c24824cd0bde35", null ],
+    [ "OnLineCompleted", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCore.html#ac0b4319ce3758ec6fa9fb583562b24dd", null ],
+    [ "OnLineStarted", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCore.html#adaac393be316047dd38dffadae736edc", null ],
     [ "PausedConversation", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCore.html#adb5c40381c789964cae9fd94c1690445", null ],
     [ "StartedConversation", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCore.html#a3934af3d0b94ed3e4a49ccf82362840e", null ]
 ];

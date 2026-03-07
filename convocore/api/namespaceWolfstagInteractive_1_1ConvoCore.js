@@ -2,6 +2,7 @@ var namespaceWolfstagInteractive_1_1ConvoCore =
 [
     [ "Editor", "namespaceWolfstagInteractive_1_1ConvoCore_1_1Editor.html", "namespaceWolfstagInteractive_1_1ConvoCore_1_1Editor" ],
     [ "BaseDialogueLineAction", "classWolfstagInteractive_1_1ConvoCore_1_1BaseDialogueLineAction.html", "classWolfstagInteractive_1_1ConvoCore_1_1BaseDialogueLineAction" ],
+    [ "BaseExpressionAction", "classWolfstagInteractive_1_1ConvoCore_1_1BaseExpressionAction.html", "classWolfstagInteractive_1_1ConvoCore_1_1BaseExpressionAction" ],
     [ "CharacterRepresentationBase", "classWolfstagInteractive_1_1ConvoCore_1_1CharacterRepresentationBase.html", "classWolfstagInteractive_1_1ConvoCore_1_1CharacterRepresentationBase" ],
     [ "ChoiceResult", "classWolfstagInteractive_1_1ConvoCore_1_1ChoiceResult.html", "classWolfstagInteractive_1_1ConvoCore_1_1ChoiceResult" ],
     [ "ContainerInput", "classWolfstagInteractive_1_1ConvoCore_1_1ContainerInput.html", "classWolfstagInteractive_1_1ConvoCore_1_1ContainerInput" ],
@@ -38,11 +39,13 @@ var namespaceWolfstagInteractive_1_1ConvoCore =
     [ "ConvoCoreYamlParser", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreYamlParser.html", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreYamlParser" ],
     [ "ConvoCoreYamlSerializer", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreYamlSerializer.html", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreYamlSerializer" ],
     [ "ConvoCoreYamlUtilities", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreYamlUtilities.html", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreYamlUtilities" ],
+    [ "ConvoStartContext", "structWolfstagInteractive_1_1ConvoCore_1_1ConvoStartContext.html", "structWolfstagInteractive_1_1ConvoCore_1_1ConvoStartContext" ],
     [ "DefaultConversationContext", "classWolfstagInteractive_1_1ConvoCore_1_1DefaultConversationContext.html", "classWolfstagInteractive_1_1ConvoCore_1_1DefaultConversationContext" ],
     [ "DialogueHistoryEntry", "classWolfstagInteractive_1_1ConvoCore_1_1DialogueHistoryEntry.html", "classWolfstagInteractive_1_1ConvoCore_1_1DialogueHistoryEntry" ],
     [ "DialogueHistoryRendererContext", "structWolfstagInteractive_1_1ConvoCore_1_1DialogueHistoryRendererContext.html", "structWolfstagInteractive_1_1ConvoCore_1_1DialogueHistoryRendererContext" ],
     [ "DialogueLineDisplayOptions", "classWolfstagInteractive_1_1ConvoCore_1_1DialogueLineDisplayOptions.html", "classWolfstagInteractive_1_1ConvoCore_1_1DialogueLineDisplayOptions" ],
     [ "DialogueYamlConfig", "classWolfstagInteractive_1_1ConvoCore_1_1DialogueYamlConfig.html", "classWolfstagInteractive_1_1ConvoCore_1_1DialogueYamlConfig" ],
+    [ "ExpressionActionContext", "structWolfstagInteractive_1_1ConvoCore_1_1ExpressionActionContext.html", "structWolfstagInteractive_1_1ConvoCore_1_1ExpressionActionContext" ],
     [ "ExpressionIDSelectorAttribute", "classWolfstagInteractive_1_1ConvoCore_1_1ExpressionIDSelectorAttribute.html", "classWolfstagInteractive_1_1ConvoCore_1_1ExpressionIDSelectorAttribute" ],
     [ "GameObjectHelper", "classWolfstagInteractive_1_1ConvoCore_1_1GameObjectHelper.html", "classWolfstagInteractive_1_1ConvoCore_1_1GameObjectHelper" ],
     [ "GameObjectReference", "classWolfstagInteractive_1_1ConvoCore_1_1GameObjectReference.html", "classWolfstagInteractive_1_1ConvoCore_1_1GameObjectReference" ],
@@ -55,6 +58,7 @@ var namespaceWolfstagInteractive_1_1ConvoCore =
     [ "IConvoCoreRepresentationInitializable", "interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoCoreRepresentationInitializable.html", "interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoCoreRepresentationInitializable" ],
     [ "IConvoCoreRunner", "interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoCoreRunner.html", "interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoCoreRunner" ],
     [ "IConvoInput", "interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoInput.html", "interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoInput" ],
+    [ "IConvoStartContextProvider", "interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoStartContextProvider.html", "interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoStartContextProvider" ],
     [ "IDialogueHistoryOutput", "interfaceWolfstagInteractive_1_1ConvoCore_1_1IDialogueHistoryOutput.html", "interfaceWolfstagInteractive_1_1ConvoCore_1_1IDialogueHistoryOutput" ],
     [ "IDialogueHistoryOutputPrefab", "interfaceWolfstagInteractive_1_1ConvoCore_1_1IDialogueHistoryOutputPrefab.html", "interfaceWolfstagInteractive_1_1ConvoCore_1_1IDialogueHistoryOutputPrefab" ],
     [ "IDialogueLineEditorCustomizable", "interfaceWolfstagInteractive_1_1ConvoCore_1_1IDialogueLineEditorCustomizable.html", "interfaceWolfstagInteractive_1_1ConvoCore_1_1IDialogueLineEditorCustomizable" ],
@@ -84,6 +88,11 @@ var namespaceWolfstagInteractive_1_1ConvoCore =
       [ "Sequential", "namespaceWolfstagInteractive_1_1ConvoCore.html#a842505d4978372cedbefe3e48d25b707aa7e82daa7280af25afbaa076ac16eb1e", null ],
       [ "Random", "namespaceWolfstagInteractive_1_1ConvoCore.html#a842505d4978372cedbefe3e48d25b707a64663f4646781c9c0110838b905daa23", null ],
       [ "WeightedRandom", "namespaceWolfstagInteractive_1_1ConvoCore.html#a842505d4978372cedbefe3e48d25b707adb1e5179aef662aa5e3238520c223405", null ]
+    ] ],
+    [ "ConvoStartMode", "namespaceWolfstagInteractive_1_1ConvoCore.html#ab51458c34c46dd42dd277279af380b8b", [
+      [ "Fresh", "namespaceWolfstagInteractive_1_1ConvoCore.html#ab51458c34c46dd42dd277279af380b8bafe8965a9748c1bc48af1711be837124e", null ],
+      [ "Resume", "namespaceWolfstagInteractive_1_1ConvoCore.html#ab51458c34c46dd42dd277279af380b8baf1cefec9e2196c672a622347f1fbc325", null ],
+      [ "Restart", "namespaceWolfstagInteractive_1_1ConvoCore.html#ab51458c34c46dd42dd277279af380b8ba51cfbcff36da74a9fc47f3a5140f99f2", null ]
     ] ],
     [ "DisplaySide", "namespaceWolfstagInteractive_1_1ConvoCore.html#a641e3e9ced2cb6f0f0e0ccc6e90318ca", [
       [ "Left", "namespaceWolfstagInteractive_1_1ConvoCore.html#a641e3e9ced2cb6f0f0e0ccc6e90318caa945d5e233cf7d6240f6b783b36a374ff", null ],

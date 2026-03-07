@@ -24,6 +24,7 @@ var dir_716fc4c6cb98b933cc0fa884d6e5d043 =
     [ "DialogueLineDisplayOptions.cs", "DialogueLineDisplayOptions_8cs.html", "DialogueLineDisplayOptions_8cs" ],
     [ "EmotionIDSelectorAttribute.cs", "EmotionIDSelectorAttribute_8cs.html", "EmotionIDSelectorAttribute_8cs" ],
     [ "IConvoCoreCharacterDisplay.cs", "IConvoCoreCharacterDisplay_8cs.html", "IConvoCoreCharacterDisplay_8cs" ],
+    [ "IConvoStartContextProvider.cs", "IConvoStartContextProvider_8cs.html", "IConvoStartContextProvider_8cs" ],
     [ "IDialogueLineEditorCustomizable.cs", "IDialogueLineEditorCustomizable_8cs.html", "IDialogueLineEditorCustomizable_8cs" ],
     [ "IEditorPreviewableRepresentation.cs", "IEditorPreviewableRepresentation_8cs.html", "IEditorPreviewableRepresentation_8cs" ],
     [ "PagedListAttribute.cs", "PagedListAttribute_8cs.html", "PagedListAttribute_8cs" ],

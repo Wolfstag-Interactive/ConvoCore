@@ -2,7 +2,7 @@ var searchData=
 [
   ['basedialoguelineaction_0',['BaseDialogueLineAction',['../classWolfstagInteractive_1_1ConvoCore_1_1BaseDialogueLineAction.html',1,'WolfstagInteractive::ConvoCore']]],
   ['basedialoguelineaction_2ecs_1',['BaseDialogueLineAction.cs',['../BaseDialogueLineAction_8cs.html',1,'']]],
-  ['baseexpressionaction_2',['BaseExpressionAction',['../classBaseExpressionAction.html',1,'']]],
+  ['baseexpressionaction_2',['BaseExpressionAction',['../classWolfstagInteractive_1_1ConvoCore_1_1BaseExpressionAction.html',1,'WolfstagInteractive::ConvoCore']]],
   ['baseexpressionaction_2ecs_3',['BaseExpressionAction.cs',['../BaseExpressionAction_8cs.html',1,'']]],
   ['baselang_4',['BaseLang',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreDialogueLocalizationHandler.html#a282919dc69022d7ec99181db0c16967e',1,'WolfstagInteractive::ConvoCore::ConvoCoreDialogueLocalizationHandler']]],
   ['before_5',['Before',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCore_1_1LineFrame.html#a3101cad630f6ffeba3e494484c23681c',1,'WolfstagInteractive::ConvoCore::ConvoCore::LineFrame']]],
