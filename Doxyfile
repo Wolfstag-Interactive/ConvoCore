@@ -1,6 +1,7 @@
 PROJECT_NAME           = "ConvoCore"
 OUTPUT_DIRECTORY       = Docs
-INPUT                  = ./WolfstagInteractive/ConvoCore/Scripts
+INPUT                  = ./WolfstagInteractive/ConvoCore/Scripts \
+                         ./WolfstagInteractive/ConvoCore/SaveSystem
 FILE_PATTERNS          = *.cs
 RECURSIVE              = YES
 EXCLUDE_PATTERNS       = */Editor/*
