@@ -5,7 +5,7 @@ title: Installation
 
 # Installation
 
-This page walks you through installing ConvoCore into a Unity project, verifying the installation, and completing first-time setup. There are two installation methods: via the Unity Package Manager (recommended for most projects) and from a local disk clone.
+This page walks you through installing ConvoCore into a Unity project via the Unity Package Manager, verifying the installation, and completing first-time setup.
 
 ---
 
@@ -23,9 +23,9 @@ ConvoCore ships with its YAML parser (YamlDotNet) bundled inside the package, so
 
 ---
 
-## Install via Unity Package Manager (recommended)
+## Install via Unity Package Manager
 
-The Unity Package Manager (UPM) is the cleanest way to install ConvoCore. It keeps the package files separate from your project's `Assets/` folder and makes updating straightforward.
+The Unity Package Manager (UPM) is the standard way to install ConvoCore. It keeps the package files separate from your project's `Assets/` folder and makes future updates straightforward.
 
 :::note
 The **Unity Package Manager** is a built-in Unity tool for installing reusable code packages — think of it like an app store for Unity project features. Packages live outside your `Assets/` folder so they don't clutter your project, and you can add, update, or remove them without manually copying files.
@@ -35,50 +35,10 @@ The **Unity Package Manager** is a built-in Unity tool for installing reusable c
 
 1. Open Unity and go to **Window → Package Manager**. The Package Manager window will open.
 
-2. Click the **+** button in the top-left corner of the Package Manager window.
-
-3. Select **Add package from git URL...** from the dropdown.
-
-4. In the text field that appears, enter the ConvoCore git URL in this format:
-
-   ```
-   https://github.com/WolfstagInteractive/ConvoCore.git?path=WolfstagInteractive/ConvoCore
-   ```
-
-   The `?path=` suffix tells UPM to look inside a specific subfolder of the repository — this is required because the installable package lives inside a subdirectory, not at the repository root.
-
-5. Click **Add**. Unity will download and import the package. This may take a moment.
-
-:::warning
-If you see an error like `"No 'package.json' found"`, double-check that the URL ends exactly with `?path=WolfstagInteractive/ConvoCore`. A missing or misspelled path suffix is the most common cause of this error.
-:::
-
----
-
-## Install from disk (local clone)
-
-If you cloned the ConvoCore repository to your machine and want to point your project at your local copy — useful for contributing to the package or iterating on it while building a game — use the "Add package from disk" flow instead.
-
-**Steps:**
-
-1. Clone the ConvoCore repository to a folder on your machine (if you haven't already).
-
-2. Open Unity and go to **Window → Package Manager**.
-
-3. Click the **+** button in the top-left corner.
-
-4. Select **Add package from disk...**
-
-5. In the file browser, navigate to your local clone and select the `package.json` file located at:
-
-   ```
-   WolfstagInteractive/ConvoCore/package.json
-   ```
-
-6. Click **Open**. Unity will import the package from your local folder.
+2. Find **ConvoCore** in the package list and click **Install**.
 
 :::tip
-When a package is installed from disk, changes you make to the package files are reflected immediately in the editor (after Unity recompiles). This makes local installation the best choice when you are actively modifying ConvoCore's source code.
+If ConvoCore does not appear in the list, make sure your Package Manager is pointed at the correct registry. Check the registry configuration in **Edit → Project Settings → Package Manager**.
 :::
 
 ---
