@@ -4,8 +4,23 @@ import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
   title: 'ConvoCore',
+  tagline: 'A modular Unity dialogue framework',
   url: 'https://docs.wolfstaginteractive.com',
   baseUrl: '/',
+
+  plugins: [
+    [
+      require.resolve("@easyops-cn/docusaurus-search-local"),
+      {
+        hashed: true,
+        language: ["en"],
+        indexDocs: true,
+        indexBlog: false,
+        indexPages: false,
+        docsRouteBasePath: "/convocore",
+      },
+    ],
+  ],
 
   presets: [
     [
@@ -25,12 +40,18 @@ const config: Config = {
 
   themeConfig: {
     navbar: {
+      title: 'ConvoCore',
       items: [
         {to: '/convocore/', label: 'Guide', position: 'left'},
         {href: 'https://docs.wolfstaginteractive.com/convocore/api/', label: 'API', position: 'left'},
       ],
     },
-  },
+    prism: {
+      theme: prismThemes.github,
+      darkTheme: prismThemes.dracula,
+      additionalLanguages: ['yaml', 'csharp'],
+    },
+  } satisfies Preset.ThemeConfig,
 };
 
 export default config;

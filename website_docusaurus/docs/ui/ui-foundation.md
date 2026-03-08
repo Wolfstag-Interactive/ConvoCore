@@ -1,0 +1,202 @@
+---
+sidebar_position: 1
+title: UI Foundation
+---
+
+# UI Foundation
+
+## What is ConvoCoreUIFoundation?
+
+`ConvoCoreUIFoundation` is an abstract `MonoBehaviour` that defines the contract between the ConvoCore runner and your dialogue display. It is the bridge: ConvoCore calls methods on this class to say what should be shown, and your subclass overrides those methods to decide how to show it.
+
+Attach a subclass of `ConvoCoreUIFoundation` to any GameObject in the scene, then drag that GameObject into the **Conversation UI** field on the `ConvoCore` component.
+
+:::note
+ConvoCore is deliberately headless — it manages conversation state and fires events, but contains zero UI code. This means you can build any kind of dialogue display: a text box, a speech bubble, a 3D floating panel, a comic strip, or a fully custom renderer. `ConvoCoreUIFoundation` is the seam where your display plugs in. ConvoCore does not care what UI system you use — Unity UI (uGUI), UI Toolkit, TextMeshPro, IMGUI, or a completely custom approach are all valid.
+:::
+
+---
+
+## Methods to Override
+
+All base implementations are no-ops. The runner will not crash if you do not override them, but nothing will appear on screen.
+
+```csharp
+public abstract class ConvoCoreUIFoundation : MonoBehaviour
+{
+    // Called once when a conversation starts.
+    // Show your dialogue panel, reset any state here.
+    protected virtual void InitializeUI(ConvoCore runner) { }
+
+    // Called every time a new line is ready to display.
+    // Update your speaker name, dialogue text, portrait, etc.
+    protected virtual void UpdateDialogueUI(
+        DialogueLineInfo lineInfo,
+        string localizedText,
+        string speakerName,
+        CharacterRepresentationBase representation,
+        ConvoCoreCharacterProfileBaseData primaryProfile) { }
+
+    // Called when the active language changes mid-conversation.
+    // Update the displayed text to the new localized string.
+    protected virtual void UpdateForLanguageChange(
+        string localizedText,
+        string languageCode) { }
+
+    // Coroutine. Must block until the player signals to advance.
+    // Do NOT return immediately — see the warning below.
+    protected virtual IEnumerator WaitForUserInput() { yield break; }
+
+    // Coroutine. Display the available choices and write the player's
+    // selection index to `result.SelectedIndex`.
+    protected virtual IEnumerator PresentChoices(
+        List<ChoiceOption> options,
+        List<string> localizedLabels,
+        ChoiceResult result) { yield break; }
+
+    // Called when the conversation ends. Hide your dialogue panel here.
+    protected virtual void HideDialogue() { }
+
+    // Utility shortcut — display an arbitrary text string directly.
+    protected virtual void DisplayDialogue(string text) { }
+}
+```
+
+### WaitForUserInput
+
+:::warning
+`WaitForUserInput()` **must loop and yield**. It must not return immediately. If it returns on the first frame, every line in the conversation will advance instantaneously before the player can read anything — the conversation will appear to complete in a single frame with no visible text.
+
+The correct pattern:
+
+```csharp
+private bool _playerAdvanced;
+
+protected override IEnumerator WaitForUserInput()
+{
+    // Reset the flag at the start of each call.
+    _playerAdvanced = false;
+
+    // Yield until the player triggers an advance.
+    yield return new WaitUntil(() => _playerAdvanced);
+}
+
+// Wire this to a button click, key press, or touch tap:
+private void OnAdvanceInput()
+{
+    _playerAdvanced = true;
+    RequestAdvance?.Invoke(); // Tell ConvoCore to continue.
+}
+```
+:::
+
+### PresentChoices
+
+`PresentChoices()` receives the list of choice options and a `ChoiceResult` object. Write the zero-based index of the player's selection to `result.SelectedIndex`. The runner reads that value after the coroutine completes and branches accordingly.
+
+```csharp
+protected override IEnumerator PresentChoices(
+    List<ChoiceOption> options,
+    List<string> localizedLabels,
+    ChoiceResult result)
+{
+    result.SelectedIndex = -1; // -1 means no selection yet
+
+    for (int i = 0; i < localizedLabels.Count; i++)
+    {
+        int capturedIndex = i;
+        Button btn = Instantiate(_choiceButtonPrefab, _choiceContainer);
+        btn.GetComponentInChildren<TMP_Text>().text = localizedLabels[i];
+        btn.onClick.AddListener(() => result.SelectedIndex = capturedIndex);
+    }
+
+    yield return new WaitUntil(() => result.SelectedIndex >= 0);
+
+    foreach (Transform child in _choiceContainer)
+        Destroy(child.gameObject);
+}
+```
+
+---
+
+## Events
+
+Fire these events from your input handler to signal the runner. ConvoCore subscribes to them internally.
+
+| Event | When to fire |
+|---|---|
+| `RequestAdvance` | When the player wants to advance to the next line (button click, key press, tap). |
+| `RequestReverse` | When the player wants to go back one line (back button, swipe left, etc.). |
+
+Example key-based input handler:
+
+```csharp
+private void Update()
+{
+    if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
+    {
+        _playerAdvanced = true;
+        RequestAdvance?.Invoke();
+    }
+}
+```
+
+---
+
+## MaxVisibleCharacterSlots
+
+```csharp
+public virtual int MaxVisibleCharacterSlots => 3;
+```
+
+Returns `3` by default — one primary speaker and up to two secondary characters visible simultaneously. Override this property if your UI supports a different number of simultaneous character portraits.
+
+ConvoCore uses this value to determine how many `ConvoCoreCharacterDisplayBase` components to manage. If your UI is speaker-only (no secondary characters shown), return `1`.
+
+---
+
+## ConvoCoreCharacterDisplayBase
+
+:::info[For Advanced Users]
+`ConvoCoreCharacterDisplayBase` is an abstract `MonoBehaviour` companion to `ConvoCoreUIFoundation`. It represents the visual panel for one character slot — the portrait area, model view, or sprite display for a single character.
+
+Your UI can have up to `MaxVisibleCharacterSlots` of these components. When the runner applies an expression for a line, it calls `ApplyExpression()` on the relevant `CharacterRepresentationBase` asset, passing the matching `ConvoCoreCharacterDisplayBase` component so the representation can update it directly.
+
+Extend it to hook into your portrait renderer, animator, or any display system:
+
+```csharp
+public class MyCharacterDisplay : ConvoCoreCharacterDisplayBase
+{
+    [SerializeField] private Image _portraitImage;
+    [SerializeField] private Animator _animator;
+
+    public override Animator Animator => _animator;
+
+    // Called by the representation with the resolved sprite.
+    public override void SetSprite(Sprite sprite)
+    {
+        _portraitImage.sprite = sprite;
+        _portraitImage.enabled = sprite != null;
+    }
+
+    // Called when this slot becomes empty (no character assigned).
+    public override void ClearDisplay()
+    {
+        _portraitImage.sprite = null;
+        _portraitImage.enabled = false;
+    }
+}
+```
+
+You do not need to use `ConvoCoreCharacterDisplayBase` — it is a convenience layer, not a requirement. If your UI manages character visuals independently and you handle `UpdateDialogueUI()` directly, you can skip it entirely.
+:::
+
+---
+
+## Next Steps
+
+| I want to… | Go here |
+|---|---|
+| Walk through building a full working UI from scratch | [Building a Custom UI →](building-a-ui) |
+| Add a scrollable dialogue transcript to your UI | [Dialogue History →](dialogue-history) |
+| Understand character portraits and expression rendering | [Character Representations →](../characters/character-representations) |
