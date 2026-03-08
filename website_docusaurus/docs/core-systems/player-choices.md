@@ -1,5 +1,5 @@
 ---
-sidebar_position: 4
+sidebar_position: 6
 title: Player Choices
 ---
 
@@ -127,18 +127,16 @@ The following example shows a complete choice setup for a scene where the player
 ```yaml
 MerchantNegotiation:
   - CharacterID: "Merchant"
-    LineID: "merchant_offer"
     LocalizedDialogue:
       EN: "I'll give you three gold pieces for the amulet. What do you say?"
   - CharacterID: "Player"
-    LineID: "player_choice"
     LocalizedDialogue:
       EN: ""
 ```
 
 The `Player` line with the empty dialogue string is the choice line. Its actual display text is defined by the `ChoiceOption` labels set in the Inspector, not by `LocalizedDialogue`. Setting an empty string here keeps the YAML clean while the Continuation Mode and options are configured on the asset.
 
-**Inspector configuration for the `player_choice` line:**
+**Inspector configuration for the choice line:**
 
 - Continuation Mode: `PlayerChoice`
 - Allow Go Back: enabled

@@ -165,5 +165,5 @@ You now have a working ConvoCore setup. Here is where to go next:
 | Understand all the YAML options (branches, choices, expressions) | [YAML Format →](../yaml-reference/yaml-format) |
 | Display dialogue text and portraits on screen | [UI Foundation →](../ui/ui-foundation) |
 | Learn about the ConvoCore component in depth | [ConvoCore Component →](../core-systems/convocore-component) |
-| Add branching choices | [Player Choices →](../yaml-reference/player-choices) |
+| Add branching choices | [Player Choices →](../core-systems/player-choices) |
 | Save conversation progress between sessions | [Save System →](../save-system/save-system-overview) |

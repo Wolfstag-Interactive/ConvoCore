@@ -76,7 +76,7 @@ If you use `ContainerBranch` without checking **Push Return Point**, control tra
 
 After this line finishes, display a set of options for the player to choose from and wait for a selection. When the player picks an option, ConvoCore branches to the conversation associated with that option.
 
-`PlayerChoice` is covered in full on the [Player Choices](./player-choices) page.
+`PlayerChoice` is covered in full on the [Player Choices](../core-systems/player-choices) page.
 
 ---
 
