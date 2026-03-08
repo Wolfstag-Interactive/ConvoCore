@@ -62,21 +62,27 @@ The identifier of the character speaking this line. This value must exactly matc
 
 ### LineID
 
-**Optional, but strongly recommended for any conversation used with the Save System.**
+**Automatically generated. Do not write these manually.**
 
-A stable, unique string identifier for this dialogue line within its conversation. ConvoCore uses LineIDs when saving and restoring conversation progress — they let the save system find the correct line even if you later add, remove, or reorder other lines in the conversation.
+A `LineID` is a stable, unique identifier for each dialogue line within its conversation. ConvoCore uses LineIDs to track which lines the player has visited and where they left off — essential for save/restore to work correctly even after you add, remove, or reorder lines in the YAML.
+
+**LineIDs are generated for you automatically.** When you link a YAML file to a `ConvoCoreConversationData` asset (by assigning it in the inspector and running validation), ConvoCore reads your YAML, assigns a unique ID to every line that doesn't already have one, and writes them back into the YAML file. You will see them appear in your source file after the first import:
 
 ```yaml
 - CharacterID: "Guard"
-  LineID: "guard_greeting"
+  LineID: "a1b2c3d4"    # ← written by ConvoCore automatically
   LocalizedDialogue:
     EN: "Halt! Who goes there?"
 ```
 
-If you omit `LineID`, ConvoCore auto-assigns one based on the line's index (0, 1, 2, …). This works correctly as long as you never add or remove lines before the saved position. The moment you add a new line before an existing one, the index-based IDs shift, and any saved progress pointing to the old indices will resume at the wrong line.
+Once a LineID has been generated for a line, it is stable for the lifetime of that line. You can freely add new lines, remove other lines, or reorder the conversation — the existing IDs do not change, so saved progress remains valid.
 
-:::tip
-Always write `LineID` values manually for any conversation that a player can partially complete and return to later. Use a naming convention that reflects the conversation and scene, such as `"village_guard_intro_01"`. LineIDs only need to be unique within their conversation, not across the entire project.
+:::warning
+Do not edit or delete a LineID that ConvoCore has written. Changing an ID is equivalent to removing the old line and adding a new one — any save data referencing the old ID will no longer match and the player's progress for that line will be lost. Treat auto-generated LineIDs as read-only.
+:::
+
+:::note
+If you delete a line from the YAML, its LineID disappears with it. Save data that referenced that line will gracefully fall back to the nearest valid line. This is expected behaviour when you intentionally remove dialogue.
 :::
 
 ---
@@ -92,7 +98,6 @@ At least one language key must be present. If the player's currently active lang
 **Single-language example:**
 ```yaml
 - CharacterID: "Narrator"
-  LineID: "narrator_intro"
   LocalizedDialogue:
     EN: "The kingdom fell silent."
 ```
@@ -100,7 +105,6 @@ At least one language key must be present. If the player's currently active lang
 **Multi-language example:**
 ```yaml
 - CharacterID: "Guard"
-  LineID: "guard_greeting"
   LocalizedDialogue:
     EN: "Halt! Who goes there?"
     FR: "Halte ! Qui va là ?"
@@ -112,18 +116,35 @@ At least one language key must be present. If the player's currently active lang
 
 ## Complete minimal example
 
+This is what you write:
+
 ```yaml
 TownSquare:
   - CharacterID: "Guard"
-    LineID: "guard_greeting"
     LocalizedDialogue:
       EN: "Halt! Who goes there?"
   - CharacterID: "Player"
-    LineID: "player_response"
     LocalizedDialogue:
       EN: "It's just me, passing through."
   - CharacterID: "Guard"
-    LineID: "guard_dismissal"
+    LocalizedDialogue:
+      EN: "Move along, then."
+```
+
+After linking this file to a `ConvoCoreConversationData` asset and running validation, ConvoCore writes the LineIDs back into the file automatically:
+
+```yaml
+TownSquare:
+  - CharacterID: "Guard"
+    LineID: "a1b2c3d4"    # written by ConvoCore — do not edit
+    LocalizedDialogue:
+      EN: "Halt! Who goes there?"
+  - CharacterID: "Player"
+    LineID: "e5f6a7b8"    # written by ConvoCore — do not edit
+    LocalizedDialogue:
+      EN: "It's just me, passing through."
+  - CharacterID: "Guard"
+    LineID: "c9d0e1f2"    # written by ConvoCore — do not edit
     LocalizedDialogue:
       EN: "Move along, then."
 ```
