@@ -5,7 +5,7 @@ using UnityEngine;
 namespace WolfstagInteractive.ConvoCore.SaveSystem
 {
     [HelpURL("https://docs.wolfstaginteractive.com/convocore/api/classWolfstagInteractive_1_1ConvoCore_1_1SaveSystem_1_1ConversationSnapshot.html")]
-[Serializable]
+    [Serializable]
     public class ConversationSnapshot
     {
         public string ConversationId;

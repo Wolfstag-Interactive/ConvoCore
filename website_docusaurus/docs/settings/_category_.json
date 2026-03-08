@@ -1,0 +1,8 @@
+{
+  "label": "Settings",
+  "position": 10,
+  "link": {
+    "type": "doc",
+    "id": "settings/convocore-settings"
+  }
+}

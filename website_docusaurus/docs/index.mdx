@@ -1,10 +1,33 @@
 ---
 slug: /
 title: ConvoCore
+sidebar_position: 1
 ---
 
 # ConvoCore
 
-Welcome to the ConvoCore documentation.
+ConvoCore is a modular Unity dialogue framework that lets you author branching conversations in YAML and play them back in any genre of game — without locking you into a specific UI, camera setup, or rendering pipeline. YAML files are the single source of truth; ConvoCore compiles them into ScriptableObjects that drive conversation state, character expressions, localization, and player choices at runtime.
 
-Use the sidebar to get started, or jump to the API reference from the navbar.
+## What's included
+
+| Feature | Description |
+|---|---|
+| **YAML authoring** | Write conversations in plain text, hot-reload in the editor, version-control with git |
+| **Character system** | Profiles, sprite/prefab representations, and per-line expressions |
+| **Branching & choices** | Route through containers, present player choices, return to the main thread |
+| **Localization** | Multi-language YAML keys, runtime language switching with one call |
+| **Save system** | Conversation progress, visited lines, and scoped variables across sessions |
+| **Dialogue actions** | ScriptableObject coroutines that fire before or after any line |
+
+## Where to start
+
+:::note[New to Unity?]
+If you're new to Unity or C#, begin with **[Installation](getting-started/installation)** and follow the **[Quick Start](getting-started/quick-start)** guide. Each page explains Unity-specific concepts (ScriptableObjects, MonoBehaviours, coroutines) as they come up.
+:::
+
+| I want to… | Go here |
+|---|---|
+| Install ConvoCore | [Installation →](getting-started/installation) |
+| Create my first conversation | [Quick Start →](getting-started/quick-start) |
+| Understand the YAML format | [YAML Format →](yaml-reference/yaml-format) |
+| Browse the C# API | [API Reference ↗](https://docs.wolfstaginteractive.com/convocore/api/) |

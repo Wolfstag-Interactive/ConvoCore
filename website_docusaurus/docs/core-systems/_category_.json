@@ -1,0 +1,8 @@
+{
+  "label": "Core Systems",
+  "position": 3,
+  "link": {
+    "type": "doc",
+    "id": "core-systems/convocore-component"
+  }
+}
