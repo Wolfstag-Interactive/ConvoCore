@@ -35,6 +35,7 @@ var classWolfstagInteractive_1_1ConvoCore_1_1ConvoCore =
     [ "_advanceRequested", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCore.html#acb9792495497ae631cb3d8a1ff1ac769", null ],
     [ "_context", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCore.html#a03244e5512ea2c3af03c70665f5f7c1b", null ],
     [ "_currentLineIndex", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCore.html#a90c7419143cc9a50382fe8e13a019b75", null ],
+    [ "_debugLogLines", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCore.html#acce1eb93ad1a883a092745f1529aa9e6", null ],
     [ "_executedActionsPerLine", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCore.html#a2008d3a6a546cad41f4648f7591e6979", null ],
     [ "_history", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCore.html#a6506c2deeccec59ea1e5039af4bf0b10", null ],
     [ "_returnStack", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCore.html#acafad81124e93855fce10436521ab678", null ],

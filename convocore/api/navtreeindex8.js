@@ -1,5 +1,7 @@
 var NAVTREEINDEX8 =
 {
+"structWolfstagInteractive_1_1ConvoCore_1_1ExpressionActionContext.html":[0,0,0,0,46],
+"structWolfstagInteractive_1_1ConvoCore_1_1ExpressionActionContext.html":[1,0,0,0,46],
 "structWolfstagInteractive_1_1ConvoCore_1_1ExpressionActionContext.html#a128451e1423e3fdf393873f78f17df69":[0,0,0,0,46,0],
 "structWolfstagInteractive_1_1ConvoCore_1_1ExpressionActionContext.html#a128451e1423e3fdf393873f78f17df69":[1,0,0,0,46,0],
 "structWolfstagInteractive_1_1ConvoCore_1_1ExpressionActionContext.html#a244d10519bacef22dc08f4e3bf61c526":[0,0,0,0,46,3],

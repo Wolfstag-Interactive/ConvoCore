@@ -1,5 +1,7 @@
 var NAVTREEINDEX7 =
 {
+"functions_t.html":[1,3,0,19],
+"functions_u.html":[1,3,0,20],
 "functions_v.html":[1,3,0,21],
 "functions_vars.html":[1,3,2],
 "functions_vars.html":[1,3,2,0],
@@ -247,7 +249,5 @@ var NAVTREEINDEX7 =
 "structWolfstagInteractive_1_1ConvoCore_1_1DialogueHistoryRendererContext.html#a31921b95601f388e2a1cd4460eeb5ac7":[0,0,0,0,43,2],
 "structWolfstagInteractive_1_1ConvoCore_1_1DialogueHistoryRendererContext.html#a31921b95601f388e2a1cd4460eeb5ac7":[1,0,0,0,43,2],
 "structWolfstagInteractive_1_1ConvoCore_1_1DialogueHistoryRendererContext.html#ad64bc7812e0575ab8c40633137c814c2":[0,0,0,0,43,0],
-"structWolfstagInteractive_1_1ConvoCore_1_1DialogueHistoryRendererContext.html#ad64bc7812e0575ab8c40633137c814c2":[1,0,0,0,43,0],
-"structWolfstagInteractive_1_1ConvoCore_1_1ExpressionActionContext.html":[0,0,0,0,46],
-"structWolfstagInteractive_1_1ConvoCore_1_1ExpressionActionContext.html":[1,0,0,0,46]
+"structWolfstagInteractive_1_1ConvoCore_1_1DialogueHistoryRendererContext.html#ad64bc7812e0575ab8c40633137c814c2":[1,0,0,0,43,0]
 };
