@@ -5,7 +5,18 @@ title: Quick Start
 
 # Quick Start
 
-This guide walks you through creating a simple "Hello World" conversation from scratch. By the end you will have a fully wired ConvoCore setup running in a Unity scene — with console log output confirming that lines are advancing correctly. Adding a visible UI is covered in the [UI Foundation](../ui/ui-foundation) page; this guide focuses on getting the core logic working first.
+This guide walks you through creating a simple “Hello World” conversation from scratch. By the end you will have a fully wired ConvoCore setup running in a Unity scene — with console log output confirming that lines are advancing correctly. Adding a visible UI is covered in the [UI Foundation](../ui/ui-foundation) page; this guide focuses on getting the core logic working first.
+
+:::info[Minimum Setup at a Glance]
+Every ConvoCore conversation needs exactly four things:
+
+1. **A YAML file** — your dialogue text
+2. **A Character Profile asset** — defines who is speaking
+3. **A Conversation Data asset** — links the YAML and participants together
+4. **A ConvoCore component** on a GameObject — the runtime runner
+
+This guide builds each one from scratch, step by step.
+:::
 
 **Time to complete: approximately 10 minutes.**
 
@@ -13,7 +24,7 @@ This guide walks you through creating a simple "Hello World" conversation from s
 
 ## Step 1: Create a YAML file
 
-Right-click anywhere in the **Project** panel → **Create → Text Asset**. Name the new file `MyFirstConversation.yml`.
+Right-click anywhere in the **Project** panel → **Create → ConvoCore → Create Yaml File**. Name the new file `MyFirstConversation`.
 
 Open the file (double-click to open in your script editor) and replace its contents with the following:
 
@@ -30,10 +41,8 @@ MyFirstConversation:
       EN: "That's it! You've finished the conversation."
 ```
 
-Save the file. Unity will detect it and add it to the project as a `TextAsset`.
-
 :::note
-**What is YAML?** YAML ("YAML Ain't Markup Language") is a human-readable plain-text format commonly used for configuration and data files. ConvoCore uses YAML as its **single source of truth** for dialogue — you write your lines in YAML, and ConvoCore compiles them into Unity assets. The indentation in YAML is significant: use two spaces per indent level (not tabs).
+**What is YAML?** YAML (“YAML Ain’t Markup Language”) is a human-readable plain-text format commonly used for configuration and data files. ConvoCore uses YAML for dialogue — you write your lines in YAML, and ConvoCore compiles them into Unity assets. The indentation in YAML is significant: use two spaces per indent level (not tabs).
 :::
 
 ---
@@ -63,18 +72,16 @@ Select the asset and configure it in the **Inspector**:
 
 1. **Conversation Key** — Set this to `MyFirstConversation`. This must exactly match the root key in your YAML file (the first line, `MyFirstConversation:`).
 
-2. **Conversation Yaml** — Drag your `MyFirstConversation.yml` TextAsset from the Project panel into this field.
+2. **Participant Profiles** — Click the **+** button on the Participant Profiles list and drag the `Narrator` Character Profile asset into the new slot.
 
-3. **Participant Profiles** — Click the **+** button on the Participant Profiles list and drag the `Narrator` Character Profile asset into the new slot.
-
-4. **Parse the YAML** — Right-click the `MyFirstConversation` asset in the Project panel and select **Force Validate Dialogue Lines** from the context menu. ConvoCore will parse the YAML and populate the compiled dialogue data inside the asset. Check the Console for any parse warnings.
+3. **Import and compile the YAML** — With the asset still selected, click the **Import YAML from Key** button in the Inspector. ConvoCore will find the YAML file by matching the Conversation Key you set in step 1, parse it, and populate the compiled dialogue data. Then click **Sync from Source** to regenerate LineIDs and finalize the asset. Check the Console for any parse warnings.
 
 :::note
-**What is a ScriptableObject?** In Unity, a ScriptableObject is a data asset stored as a file in your project — similar to a spreadsheet or config file that you can edit visually in the Inspector. The Conversation Data asset is a ScriptableObject that holds the compiled version of your YAML: the list of participants, the ordered dialogue lines, localized text, and metadata. You never need to edit the compiled data by hand; always edit the YAML and re-validate.
+**What is a ScriptableObject?** In Unity, a ScriptableObject is a data asset stored as a file in your project — similar to a spreadsheet or config file that you can edit visually in the Inspector. The Conversation Data asset is a ScriptableObject that holds the compiled version of your YAML: the list of participants, the ordered dialogue lines, localized text, and metadata. You never need to edit the compiled data by hand; always edit the YAML and re-import.
 :::
 
 :::warning
-If you skip the **Force Validate Dialogue Lines** step, the Conversation Data asset will be empty at runtime and no lines will play. If your conversation silently does nothing when you press Play, this is the first thing to check.
+If you skip the **Import YAML from Key** and **Sync from Source** steps, the Conversation Data asset will be empty at runtime and no lines will play. If your conversation silently does nothing when you press Play, this is the first thing to check.
 :::
 
 ---
@@ -125,34 +132,42 @@ public class ConvoStarter : MonoBehaviour
 4. Save the script. Back in Unity, select the `ConvoStarter` GameObject. In the Inspector, drag the `DialogueRunner` GameObject into the **Runner** field that has appeared on the `ConvoStarter` component.
 
 :::tip
-For production use, wire `StartConversation()` to a **UnityEvent** instead — for example, from a trigger collider's `OnTriggerEnter`, a UI button's `onClick` event, or a timeline signal. Calling it from `Start()` works for testing, but it fires before your scene has fully settled (e.g., before any fade-in or camera transition completes).
+For production use, wire `StartConversation()` to a **UnityEvent** instead — for example, from a trigger collider’s `OnTriggerEnter`, a UI button’s `onClick` event, or a timeline signal. Calling it from `Start()` works for testing, but it fires before your scene has fully settled (e.g., before any fade-in or camera transition completes).
 :::
 
 ---
 
-## Step 6: Press Play and check the Console
+## Step 6: Enable debug logging and press Play
 
-Press **Play**. The conversation will start, but nothing will appear on screen yet — ConvoCore is headless by design and does not include a built-in text display.
+Before pressing Play, enable per-line console logging so you can verify the conversation is running:
 
-Open the **Console** (Window → General → Console). You should see log messages from ConvoCore confirming that lines are being processed and advanced. A successful run looks something like:
+1. Select the `DialogueRunner` GameObject in the Hierarchy.
+2. In the Inspector, find the **Debug** section on the ConvoCore component.
+3. Check the **Debug Log Lines** checkbox.
+
+Now press **Play**. Open the **Console** (Window → General → Console). You should see a log entry for each dialogue line:
 
 ```
-[ConvoCore] Conversation started: MyFirstConversation
 [ConvoCore] Line 0 — Narrator: "Hello! This is your first ConvoCore conversation."
 [ConvoCore] Line 1 — Narrator: "Press any key to advance to the next line."
 [ConvoCore] Line 2 — Narrator: "That's it! You've finished the conversation."
-[ConvoCore] Conversation completed: MyFirstConversation
 ```
 
+:::tip
+Click any log entry in the Console and Unity will **highlight the ConvoCore runner** in the Hierarchy. This makes it easy to find the component responsible for the output in complex scenes.
+:::
+
 :::note
-**ConvoCore is headless by design.** It runs the conversation logic and fires C# events at each stage (line started, line completed, conversation ended), but displaying text, portraits, or choice buttons is entirely up to your custom UI layer. This means you can use any UI system — Unity UI (uGUI), UI Toolkit, TextMeshPro, or a fully custom renderer — without ConvoCore knowing or caring. The [UI Foundation](../ui/ui-foundation) page explains how to subscribe to ConvoCore's events and build a display layer.
+**ConvoCore is headless by design.** It manages conversation state and fires C# events at each stage, but displaying text, portraits, or choices is entirely up to your UI layer. This means you can use any UI system — Unity uGUI, UI Toolkit, TextMeshPro, or a custom renderer — without ConvoCore knowing or caring. The [UI Foundation](../ui/ui-foundation) page explains how to build a display layer. Turn off **Debug Log Lines** when you are done testing.
 :::
 
 If you see errors instead of log output, the most common causes are:
 
-- **"Conversation data is null"** — The Conversation asset was not assigned to the ConvoCore component. Double-check Step 4.
-- **"No lines found"** — The YAML was not validated after changes. Re-run **Force Validate Dialogue Lines** (Step 3, item 4).
-- **"Character ID not found"** — The CharacterID in the YAML does not match any Character Profile. Check case and spelling (Step 2).
+- **Conversation does nothing** — The YAML was not imported. Re-run **Import YAML from Key** and **Sync from Source** (Step 3).
+- **“Character ID not found”** — The CharacterID in the YAML does not match any Character Profile. Check case and spelling (Step 2).
+- **No log output at all** — Make sure **Debug Log Lines** is checked in the ConvoCore component’s Debug section.
+
+See [Troubleshooting →](troubleshooting) for a full list of common issues.
 
 ---
 
@@ -167,3 +182,4 @@ You now have a working ConvoCore setup. Here is where to go next:
 | Learn about the ConvoCore component in depth | [ConvoCore Component →](../core-systems/convocore-component) |
 | Add branching choices | [Player Choices →](../core-systems/player-choices) |
 | Save conversation progress between sessions | [Save System →](../save-system/save-system-overview) |
+| Solve a common setup problem | [Troubleshooting →](troubleshooting) |

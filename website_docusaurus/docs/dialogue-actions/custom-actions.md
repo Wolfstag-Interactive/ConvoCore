@@ -134,7 +134,7 @@ public override IEnumerator ExecuteOnReversedLineAction()
 ```
 
 :::warning
-The base implementation of `ExecuteOnReversedLineAction` in `BaseDialogueLineAction` is a no-op — it yields once and returns. If you do not override it, reversal silently does nothing. For any action that modifies visible scene state (colors, positions, active states, spawned objects), always implement this method so the scene remains consistent when the player reverses.
+The base implementation of `ExecuteOnReversedLineAction` in `BaseDialogueLineAction` does nothing — it yields once and returns. If you do not override it, reversal silently does nothing. For any action that modifies visible scene state (colors, positions, active states, spawned objects), always implement this method so the scene remains consistent when the player reverses.
 :::
 
 If your action has no state to undo (logging, triggering analytics, etc.), just `yield return null` and move on.

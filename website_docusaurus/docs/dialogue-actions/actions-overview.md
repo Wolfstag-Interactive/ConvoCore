@@ -5,7 +5,13 @@ title: Actions Overview
 
 # Actions Overview
 
-Dialogue actions are `ScriptableObject` assets that run game logic in sync with dialogue lines. Attach them to individual lines in the Conversation Data inspector to trigger events, move objects, play sounds, or run any custom code. Because actions are assets — not scene components — they are reusable, serializable, and easy to share across multiple conversations.
+Dialogue actions are the primary way to connect your dialogue to the rest of your game. They are `ScriptableObject` assets that run game logic in sync with individual lines — before the text appears, or after the player advances. Use them to trigger camera moves, spawn NPCs, play cutscenes, flip quest flags, update analytics, fade portraits in and out, or run any other code your game needs.
+
+Because actions are assets rather than scene components, each one is reusable across dozens of conversations, configurable per-instance in the Inspector, and tracked in version control just like any other project file. A single `FadeInCharacter` action can be shared by every scene that uses that character — change the timing once and it updates everywhere.
+
+:::tip
+Dialogue actions are one of ConvoCore's most powerful features. Everything you see in the [built-in actions](built-in-actions) is built on the same `BaseDialogueLineAction` base class that your own actions use. If the built-in actions do not cover your needs, [creating a custom action](custom-actions) takes only a few minutes.
+:::
 
 ---
 
@@ -49,7 +55,7 @@ If your action has irreversible side effects — playing a cinematic, spending c
 1. Implement a proper undo in `ExecuteOnReversedLineAction()` so the reversal path is clean.
 2. Set `RunOnlyOncePerConversation = true` so the action does not re-run if the player reverses and re-enters the line.
 
-The base implementation of `ExecuteOnReversedLineAction()` is a no-op. If you do not override it, reversal silently does nothing for your action's side effects.
+The base implementation of `ExecuteOnReversedLineAction()` does nothing by default. If you do not override it, reversal silently skips any cleanup for your action's side effects.
 :::
 
 After-actions are never reversed. They ran after the player advanced past a line — reversing to that line does not undo them.

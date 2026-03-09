@@ -17,6 +17,10 @@ namespace WolfstagInteractive.ConvoCore
 
         [Header("Conversation UI")]
         public ConvoCoreUIFoundation ConversationUI;
+
+        [Header("Debug")]
+        [Tooltip("When enabled, each dialogue line is printed to the Console. Click a log entry to highlight this runner in the Hierarchy.")]
+        [SerializeField] private bool _debugLogLines;
         
         public ConversationState CurrentDialogueState { get; private set; } = ConversationState.Inactive;
         
@@ -175,6 +179,9 @@ namespace WolfstagInteractive.ConvoCore
 
                 // Check and get the player placeholder name and replace with the player's name in the line
                 string finalOutputString = ReplacePlayerNameInDialogueLine(localizedResult.Text);
+
+                if (_debugLogLines)
+                    Debug.Log($"[ConvoCore] Line {_currentLineIndex} — {primaryProfile.CharacterName}: \"{finalOutputString}\"", this);
 
                 // Play audio and display dialogue
                 yield return StartCoroutine(PlayAudioClipWithAction(line.clip));

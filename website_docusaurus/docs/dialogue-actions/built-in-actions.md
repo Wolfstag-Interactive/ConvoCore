@@ -21,12 +21,12 @@ Activates or deactivates a GameObject in the scene when the dialogue line is rea
 | **Enable** | `bool` | `true` to activate the object, `false` to deactivate it. |
 | **Continue On Error** | `bool` | When `true`, logs a warning and continues if the target cannot be found. When `false` (default), logs an error and halts the action. |
 
-**Reversal:** `ExecuteOnReversedLineAction` is not overridden — the base no-op is used. If you need to restore the previous state on reversal, create a second action with the opposite `Enable` value and assign it manually, or write a custom subclass.
+**Reversal:** `ExecuteOnReversedLineAction` is not overridden — the base implementation does nothing. If you need to restore the previous state on reversal, create a second action with the opposite `Enable` value and assign it manually, or write a custom subclass.
 
 **Practical uses:** showing or hiding UI panels, activating trigger zones, toggling scene decorations that appear mid-conversation.
 
 :::note
-If the target GameObject is already in the desired state when the action runs, ConvoCore logs a message and skips the `SetActive` call. This prevents redundant state changes but is otherwise a no-op.
+If the target GameObject is already in the desired state when the action runs, ConvoCore logs a message and skips the `SetActive` call. This prevents redundant state changes but otherwise does nothing.
 :::
 
 ---
@@ -119,7 +119,7 @@ Plays an `AudioClip` at a world position using Unity's `AudioSource.PlayClipAtPo
 | **Position** | `Vector3` | World position to play the clip from. |
 | **Volume** | `float` (0–1) | Playback volume. |
 
-**Reversal:** `ExecuteOnReversedLineAction` is not overridden. Audio cannot be un-played. Reversal is a no-op.
+**Reversal:** `ExecuteOnReversedLineAction` is not overridden. Audio cannot be un-played. Reversal does nothing.
 
 **Practical uses:** one-shot sound effects that should block the conversation until complete — a door slamming, an explosion, a short musical sting.
 
