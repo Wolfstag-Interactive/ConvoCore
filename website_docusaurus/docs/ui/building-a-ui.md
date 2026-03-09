@@ -1,9 +1,13 @@
 ---
-sidebar_position: 2
+sidebar_position: 3
 title: Building a Custom UI
 ---
 
 # Building a Custom UI
+
+:::tip
+ConvoCore includes a ready-made sample UI in the Samples package that demonstrates all of these patterns in a working scene. If you prefer a hands-on starting point over building from scratch, [import the Sample UI](sample-ui) first — you can read its code alongside this guide.
+:::
 
 This page walks through creating a complete, working dialogue UI for ConvoCore from scratch. By the end you will have a UI that displays the speaker's name and dialogue text, handles player input to advance lines, and presents branching choices.
 
@@ -12,8 +16,13 @@ This page walks through creating a complete, working dialogue UI for ConvoCore f
 ## Prerequisites
 
 - ConvoCore is installed and a `ConvoCoreConversationData` asset exists with parsed dialogue lines.
-- TextMeshPro is installed in the project (Window → Package Manager → TextMeshPro).
+- **TextMeshPro** is installed (Window → Package Manager → TextMeshPro). The code examples on this page use TMP — see the note below if you plan to use a different text system.
 - A scene is open with a `ConvoCore` component on a GameObject.
+:::warning
+**The examples on this page use TextMeshPro** (`TMP_Text`, `TMP_Dropdown`, etc.). If you have not installed it, go to Window → Package Manager, find **TextMeshPro**, and click Install.
+
+TextMeshPro is **not** a hard dependency of ConvoCore — the framework has no TMP references. You can build your UI using standard Unity UI Text, UI Toolkit, or any other system. The `TMP_Text` references in the code below are purely a choice for the examples.
+:::
 
 ---
 
@@ -228,11 +237,11 @@ Press **Play**. Trigger the conversation (via `StartConversation()` or the start
 ## Troubleshooting
 
 :::warning
-**Text appears but never updates after the first line**: Check that `UpdateDialogueUI()` is declared with the `override` keyword. Without it, Unity will not call your implementation — it will call the no-op base method silently.
+**Text appears but never updates after the first line**: Check that `UpdateDialogueUI()` is declared with the `override` keyword. Without it, Unity will not call your implementation — it will call the empty base method (it does nothing) silently.
 :::
 
 :::warning
-**Conversation completes instantly with no text visible**: `WaitForUserInput()` is returning immediately. Make sure it sets `_playerAdvanced = false` at the top and yields on `WaitUntil(() => _playerAdvanced)`. A common mistake is missing the `override` keyword, so the base no-op runs instead.
+**Conversation completes instantly with no text visible**: `WaitForUserInput()` is returning immediately. Make sure it sets `_playerAdvanced = false` at the top and yields on `WaitUntil(() => _playerAdvanced)`. A common mistake is missing the `override` keyword, so the empty base method (it does nothing) runs instead.
 :::
 
 :::warning

@@ -19,7 +19,7 @@ ConvoCore is deliberately headless — it manages conversation state and fires e
 
 ## Methods to Override
 
-All base implementations are no-ops. The runner will not crash if you do not override them, but nothing will appear on screen.
+All base implementations do nothing by default. The runner will not crash if you do not override them, but nothing will appear on screen.
 
 ```csharp
 public abstract class ConvoCoreUIFoundation : MonoBehaviour

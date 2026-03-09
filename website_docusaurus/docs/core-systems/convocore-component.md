@@ -48,7 +48,7 @@ A reference to a `ConvoCoreUIFoundation` component. This is the UI layer ConvoCo
 | `UpdateUIForLanguage(string languageCode)` | Re-renders the current dialogue line in the given language code after a runtime language switch. |
 
 :::tip
-Use `StartConversation()` — not `PlayConversation()` — as your UnityEvent target. Unity's event system requires callbacks with no parameters when wiring events in the inspector. `StartConversation()` is that no-parameter overload.
+Use `StartConversation()` — not `PlayConversation()` — as your UnityEvent target. Unity’s event system requires callbacks with no parameters when wiring events in the inspector. `StartConversation()` is that no-parameter overload.
 :::
 
 :::warning
@@ -90,7 +90,7 @@ _runner.CompletedConversation.RemoveListener(OnConversationComplete);
 |---|---|---|
 | `OnConversationStarted` | `Action<ConvoCoreConversationData>` | Fires when a conversation starts. Carries the data asset. |
 | `OnConversationEnded` | `Action<ConvoCoreConversationData>` | Fires when a conversation ends for any reason (stop or completion). |
-| `OnLineStarted` | `Action<string>` | Fires at the start of each dialogue line. The string argument is the line's ID. |
+| `OnLineStarted` | `Action<string>` | Fires at the start of each dialogue line. The string argument is the line’s ID. |
 | `OnLineCompleted` | `Action<string>` | Fires after each dialogue line finishes (after all after-actions have run). |
 | `OnChoiceMade` | `Action<int>` | Fires when the player selects a choice. The int argument is the zero-based choice index. |
 
@@ -119,6 +119,14 @@ private void HandleChoiceMade(int choiceIndex)
     Debug.Log($"Player chose option {choiceIndex}");
 }
 ```
+
+:::warning
+**Always unsubscribe from C# events in `OnDisable` or `OnDestroy`.**
+
+Subscribing in `OnEnable` without a matching `OnDisable` unsubscription causes the runner to hold a reference to your destroyed component. When the event next fires, Unity throws a `MissingReferenceException`.
+
+**Do not use anonymous delegates as event listeners.** A lambda like `_runner.OnLineStarted += (id) => DoSomething();` creates a delegate you can never unsubscribe — use a named method instead. See [Event Subscription Safety](conversation-state#event-subscription-safety) for the full explanation.
+:::
 
 ---
 
@@ -170,7 +178,7 @@ The core execution loop is the `ExecuteDialogueSequence()` coroutine. It iterate
 3. Waits for line continuation (input, timer, or immediate, depending on `LineContinuationMode`).
 4. Runs all **after-actions**.
 5. Fires `OnLineCompleted`.
-6. Advances to the next line (or branches, if the line's `LineContinuationMode` is a branch type).
+6. Advances to the next line (or branches, if the line’s `LineContinuationMode` is a branch type).
 
 The runner maintains a `_lineActionHistory` list. Each time a line is executed, its instantiated before-actions are pushed to the history stack. When `ReverseOneLine()` is called, those actions are retrieved and `ExecuteOnReversedLineAction()` is called on each one in reverse order, allowing actions to undo any state changes they made.
 :::

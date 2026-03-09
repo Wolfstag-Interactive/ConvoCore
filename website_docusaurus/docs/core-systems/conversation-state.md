@@ -27,15 +27,15 @@ The following diagram shows all valid state transitions and the method or condit
 ```
 Inactive ──── PlayConversation() ────────────────▶ Active
                                                       │
-Active ──── PauseConversation() ──────────────▶ Paused │
+Active ──── PauseConversation() ────────────▶ Paused │
                                                       │
-Paused ──── ResumeConversation() ────────────▶ Active  │
+Paused ──── ResumeConversation() ───────────▶ Active  │
                                                       │
-Active ──── last line reached ──────────────▶ Completed ──▶ Inactive
+Active ──── last line reached ────────────▶ Completed ──▶ Inactive
                                                       │
-Active ──── StopConversation() ──────────────▶ Inactive │
+Active ──── StopConversation() ────────────▶ Inactive │
                                                       │
-Paused ──── StopConversation() ──────────────▶ Inactive
+Paused ──── StopConversation() ────────────▶ Inactive
 ```
 
 Key rules:
@@ -128,9 +128,9 @@ private void RefreshBackButton()
 
 - The conversation is at the very first line (nothing to go back to).
 - No conversation is running (`Inactive` or `Completed`).
-- The runner's history stack has been cleared.
+- The runner’s history stack has been cleared.
 
-Calling `ReverseOneLine()` when `CanReverseOneLine` is `false` is a no-op — it will not throw an error, but it will not move anywhere.
+Calling `ReverseOneLine()` when `CanReverseOneLine` is `false` does nothing — it will not throw an error, but it will not move anywhere.
 
 ---
 
@@ -169,5 +169,49 @@ private void OnConversationOver()
     _playerController.enabled = true;
     _dialoguePanel.SetActive(false);
 }
+```
+:::
+
+---
+
+## Event Subscription Safety
+
+:::warning
+**Always unsubscribe from C# events when your component is disabled or destroyed.**
+
+If a `MonoBehaviour` subscribes to a ConvoCore C# event in `OnEnable` but never removes the listener in `OnDisable`, the runner continues to hold a reference to your object even after it is destroyed. When the event fires, Unity will throw a `MissingReferenceException` or `NullReferenceException`.
+
+The correct pattern:
+
+```csharp
+private void OnEnable()
+{
+    _runner.OnLineStarted += HandleLineStarted;
+    _runner.CompletedConversation.AddListener(OnConversationComplete);
+}
+
+private void OnDisable()
+{
+    _runner.OnLineStarted -= HandleLineStarted;
+    _runner.CompletedConversation.RemoveListener(OnConversationComplete);
+}
+```
+
+**Avoid anonymous delegates as event listeners.** If you write:
+
+```csharp
+// ❌ Cannot be unsubscribed — do not use this pattern
+_runner.OnLineStarted += (id) => HandleLineStarted(id);
+```
+
+…you create a delegate object that you cannot reference later. There is no way to unsubscribe it. The runner will hold a dangling reference to your destroyed object indefinitely, causing errors.
+
+Always use a named method so you can both subscribe and unsubscribe:
+
+```csharp
+// ✅ Correct — named method can be unsubscribed
+_runner.OnLineStarted += HandleLineStarted;
+// later in OnDisable:
+_runner.OnLineStarted -= HandleLineStarted;
 ```
 :::

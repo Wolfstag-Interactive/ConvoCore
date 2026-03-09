@@ -9,12 +9,35 @@ A character representation defines **how a character looks** for a given dialogu
 
 ---
 
+## System Overview
+
+The diagram below shows how a character profile, its representations, and expressions relate:
+
+```
+CharacterProfile ("Guard")
+├── CharacterID:   "Guard"
+├── CharacterName: "Town Guard"
+└── Representations list
+    ├── Name: "Default"  ──▶  SpriteCharacterRepresentationData
+    │                             ├── Happy   ──▶  Sprite (smiling guard)
+    │                             ├── Angry   ──▶  Sprite (scowling guard)
+    │                             └── Neutral ──▶  Sprite (neutral guard)
+    ├── Name: "Armored"  ──▶  SpriteCharacterRepresentationData
+    │                             └── (different sprite set — heavy plate armor)
+    └── Name: "3D Model" ──▶  PrefabCharacterRepresentationData
+                                  └── Prefab  ──▶  GuardPrefab.prefab
+```
+
+At runtime, the ConvoCore runner reads each line’s character ID and desired representation name, looks up the matching entry in the profile’s Representations list, and calls `ApplyExpression()` to update the visible character display.
+
+---
+
 ## Profiles vs. Representations
 
 :::note
 The distinction matters: a character **profile** defines *who* a character is — their name, ID, name color, and the full list of all their visual variants. A **representation** defines *how one specific visual variant looks* — the sprites for each expression, the prefab reference, or whatever your display system needs.
 
-One profile can hold many representations. For example, a guard character might have a `"Default"` representation (normal armor), an `"Armored"` representation (heavy plate), and a `"Disguised"` representation (civilian clothes). All three are entries in the same profile's Representations list.
+One profile can hold many representations. For example, a guard character might have a `"Default"` representation (normal armor), an `"Armored"` representation (heavy plate), and a `"Disguised"` representation (civilian clothes). All three are entries in the same profile’s Representations list.
 :::
 
 ---
@@ -31,9 +54,9 @@ Used for 2D sprite-based characters. Holds an expression-to-sprite mapping via `
 
 **What it stores**:
 - A list of expression mappings, each pairing a `ConvoCoreCharacterExpression` asset with a sprite
-- The runner calls `ApplyExpression()` on this representation when a line begins, which passes the correct sprite to your UI's character display component
+- The runner calls `ApplyExpression()` on this representation when a line begins, which passes the correct sprite to your UI’s character display component
 
-When the runner processes a dialogue line, it reads the line's selected expression GUID, finds the matching entry in this representation's mapping, and gives the sprite to your `ConvoCoreCharacterDisplayBase` subclass to render.
+When the runner processes a dialogue line, it reads the line’s selected expression GUID, finds the matching entry in this representation’s mapping, and gives the sprite to your `ConvoCoreCharacterDisplayBase` subclass to render.
 
 ### PrefabCharacterRepresentationData
 
@@ -51,11 +74,11 @@ Used for 3D prefab-based characters or any setup where a prefab reference is mor
 
 When a dialogue line begins, the runner performs this resolution sequence:
 
-1. Read the line's `CharacterID` to find the speaking character.
-2. Look up that character's profile in the conversation's **Participant Profiles** list.
-3. Read the line's display settings to find the desired **representation variant name** (e.g., `"Armored"`).
-4. Search the profile's **Representations** list for an entry with that name.
-5. Call `ApplyExpression()` on the resolved `CharacterRepresentationBase` asset, passing the line's selected expression GUID and the target character display component.
+1. Read the line’s `CharacterID` to find the speaking character.
+2. Look up that character’s profile in the conversation’s **Participant Profiles** list.
+3. Read the line’s display settings to find the desired **representation variant name** (e.g., `"Armored"`).
+4. Search the profile’s **Representations** list for an entry with that name.
+5. Call `ApplyExpression()` on the resolved `CharacterRepresentationBase` asset, passing the line’s selected expression GUID and the target character display component.
 
 If the representation name is blank or not found, the runner falls back to the first entry in the Representations list.
 
@@ -68,7 +91,7 @@ If the Representations list is empty or the named variant cannot be found and th
 ## Adding a Representation to a Profile
 
 1. Create the representation asset (Sprite or Prefab type, or your custom type).
-2. Select the character's **Profile** asset in the Project panel.
+2. Select the character’s **Profile** asset in the Project panel.
 3. In the Inspector, scroll to the **Representations** list.
 4. Click **+** to add a new `RepresentationPair`.
 5. Set the **Name** field (e.g., `"Default"`).
