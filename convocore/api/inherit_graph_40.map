@@ -8,7 +8,7 @@
 <area shape="poly" id="edge30_Node000001_Node000003" title=" " alt="" coords="621,87,682,87,682,92,621,92"/>
 <area shape="rect" id="Node000004" title=" " alt="" coords="79,642,209,667"/>
 <area shape="poly" id="edge39_Node000004_Node000001" title=" " alt="" coords="154,628,222,480,273,382,328,285,399,184,460,108,465,111,404,187,333,288,277,385,227,482,159,630"/>
-<area shape="rect" id="Node000005" href="$classWolfstagInteractive_1_1ConvoCore_1_1BaseDialogueLineAction.html" title=" " alt="" coords="374,299,589,339"/>
+<area shape="rect" id="Node000005" href="$classWolfstagInteractive_1_1ConvoCore_1_1BaseDialogueLineAction.html" title="Base Action serves as the base for all derivative classes, allowing them to all automatically share t..." alt="" coords="374,299,589,339"/>
 <area shape="poly" id="edge31_Node000004_Node000005" title=" " alt="" coords="151,628,172,569,209,493,233,453,261,415,293,379,329,348,350,336,373,328,375,333,352,341,332,353,297,383,265,418,237,456,214,496,177,572,156,630"/>
 <area shape="rect" id="Node000012" href="$classWolfstagInteractive_1_1ConvoCore_1_1BaseExpressionAction.html" title=" " alt="" coords="381,363,581,403"/>
 <area shape="poly" id="edge38_Node000004_Node000012" title=" " alt="" coords="155,628,180,581,219,522,269,462,298,435,329,412,354,400,380,391,382,396,356,405,332,417,301,440,272,466,223,525,185,584,160,631"/>
