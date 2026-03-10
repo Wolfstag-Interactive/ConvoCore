@@ -107,8 +107,8 @@ At least one language key must be present. If the player's currently active lang
 - CharacterID: "Guard"
   LocalizedDialogue:
     EN: "Halt! Who goes there?"
-    FR: "Halte ! Qui va là ?"
-    ES: "¡Alto! ¿Quién va?"
+    FR: "Halte! Qui passe?"
+    ES: "Alto! Quien pasa?"
     DE: "Halt! Wer geht da?"
 ```
 
@@ -221,7 +221,7 @@ Write `{PlayerName}` anywhere inside a dialogue string. At runtime, ConvoCore re
   LineID: "innkeeper_welcome"
   LocalizedDialogue:
     EN: "Welcome back, {PlayerName}! Your usual room is ready."
-    FR: "Bienvenue, {PlayerName} ! Votre chambre habituelle est prête."
+    FR: "Bienvenue, {PlayerName}! Votre chambre est prete."
 ```
 
 The substitution happens at display time, after localization lookup, so the placeholder works identically in every language.

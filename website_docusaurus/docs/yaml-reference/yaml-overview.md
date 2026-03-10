@@ -25,7 +25,7 @@ Here is a side-by-side comparison of the same data written in JSON and YAML:
   "CharacterID": "Guard",
   "LocalizedDialogue": {
     "EN": "Halt! Who goes there?",
-    "FR": "Halte ! Qui va là ?"
+    "FR": "Halte! Qui passe?"
   }
 }
 ```
@@ -35,7 +35,7 @@ Here is a side-by-side comparison of the same data written in JSON and YAML:
 CharacterID: "Guard"
 LocalizedDialogue:
   EN: "Halt! Who goes there?"
-  FR: "Halte ! Qui va là ?"
+  FR: "Halte! Qui passe?"
 ```
 
 The YAML version contains the same information with less visual noise. Indentation (two spaces in this example) shows that `EN` and `FR` are nested under `LocalizedDialogue`.

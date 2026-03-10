@@ -926,6 +926,8 @@ MonoBehaviour:
   SourceYaml: {fileID: 102900000, guid: 4612376414d9cc742be9c4b790213e6a, type: 3}
   SourceYamlAssetPath: Assets/Samples/ConvoCore/SampleAssets/2D Sample/DialogueScriptSample.yml
   ConversationKey: Conversation1
+  ConversationTitle: 
+  _conversationGuid: bde237e7-af83-4511-9d84-4ac0211d6853
 --- !u!49 &5429869513228387122
 TextAsset:
   m_ObjectHideFlags: 0

@@ -1,4 +1,4 @@
-﻿---
+---
 sidebar_position: 4
 title: Troubleshooting
 ---
@@ -11,17 +11,17 @@ This page covers the most common problems encountered when setting up or using C
 
 ## Conversation Does Nothing on Play
 
-**Symptoms:** Pressing Play starts the scene, but nothing happens â€” no console output, no UI change.
+**Symptoms:** Pressing Play starts the scene, but nothing happens -- no console output, no UI change.
 
 **Common causes:**
 
-1. **YAML not imported** â€” Open the Conversation Data asset and click **Import YAML from Key**, then **Sync from Source**. Without this step the asset contains no dialogue lines and the conversation ends immediately.
+1. **YAML not imported** -- Open the Conversation Data asset and click **Import YAML from Key**, then **Sync from Source**. Without this step the asset contains no dialogue lines and the conversation ends immediately.
 
-2. **`StartConversation()` is never called** â€” The ConvoCore component does not auto-start. You must call `StartConversation()` (from a script, a UnityEvent, or a trigger). Check your starter script is active and the runner reference is assigned.
+2. **`StartConversation()` is never called** -- The ConvoCore component does not auto-start. You must call `StartConversation()` (from a script, a UnityEvent, or a trigger). Check your starter script is active and the runner reference is assigned.
 
-3. **ConvoCore component is inactive** â€” Select the `DialogueRunner` GameObject and confirm the component is enabled and the GameObject is active.
+3. **ConvoCore component is inactive** -- Select the `DialogueRunner` GameObject and confirm the component is enabled and the GameObject is active.
 
-4. **Wrong conversation assigned** â€” The Conversation Data slot on the ConvoCore component may be empty or point to a different asset. Check the Inspector.
+4. **Wrong conversation assigned** -- The Conversation Data slot on the ConvoCore component may be empty or point to a different asset. Check the Inspector.
 
 ---
 
@@ -29,7 +29,7 @@ This page covers the most common problems encountered when setting up or using C
 
 **Symptom:** Following the Quick Start guide, the Console shows nothing when you press Play.
 
-**Fix:** Enable the **Debug Log Lines** checkbox. Select the `DialogueRunner` GameObject, find the **Debug** section on the ConvoCore component, and check **Debug Log Lines**. Each line will then print to the Console as `[ConvoCore] Line N â€” CharacterName: "text"`. Click a log entry to highlight the runner in the Hierarchy.
+**Fix:** Enable the **Debug Log Lines** checkbox. Select the `DialogueRunner` GameObject, find the **Debug** section on the ConvoCore component, and check **Debug Log Lines**. Each line will then print to the Console as `[ConvoCore] Line N -- CharacterName: "text"`. Click a log entry to highlight the runner in the Hierarchy.
 
 ---
 
@@ -41,10 +41,10 @@ This page covers the most common problems encountered when setting up or using C
 
 **Fix:**
 ```csharp
-// âŒ Wrong â€” UpdateDialogueUI() on the base class runs instead
+// WRONG -- UpdateDialogueUI() on the base class runs instead
 protected void UpdateDialogueUI(...) { ... }
 
-// âœ… Correct
+// CORRECT
 protected override void UpdateDialogueUI(...) { ... }
 ```
 
@@ -57,8 +57,8 @@ Verify all overridden methods (`UpdateDialogueUI`, `WaitForUserInput`, `PresentC
 **Symptom:** The dialogue panel flashes briefly or not at all, and the conversation completes in a single frame.
 
 **Cause:** `WaitForUserInput()` is returning immediately. Either:
-- The `override` keyword is missing (same as above â€” the empty base version runs and exits).
-- Your `WaitForUserInput()` implementation does not yield â€” it executes and returns in one frame.
+- The `override` keyword is missing (same as above -- the empty base version runs and exits).
+- Your `WaitForUserInput()` implementation does not yield -- it executes and returns in one frame.
 
 **Fix:** Ensure `WaitForUserInput()` uses `yield return new WaitUntil(...)` and the flag it waits on is only set when the player triggers an advance action:
 
@@ -82,16 +82,16 @@ private void OnAdvanceClicked()
 
 ## Choice Buttons Appear But Clicking Does Nothing
 
-**Symptom:** Branching choices display correctly, but clicking any button has no effect â€” the conversation does not advance.
+**Symptom:** Branching choices display correctly, but clicking any button has no effect -- the conversation does not advance.
 
-**Cause:** A C# lambda closure bug. If you write `btn.onClick.AddListener(() => result.SelectedIndex = i)` inside a loop, all lambdas capture the same `i` variable â€” which equals the loop's final value after the loop ends.
+**Cause:** A C# lambda closure bug. If you write `btn.onClick.AddListener(() => result.SelectedIndex = i)` inside a loop, all lambdas capture the same `i` variable -- which equals the loop's final value after the loop ends.
 
 **Fix:** Capture the index in a local variable inside the loop body:
 
 ```csharp
 for (int i = 0; i < localizedLabels.Count; i++)
 {
-    int capturedIndex = i; // â† capture a fresh copy per iteration
+    int capturedIndex = i; // capture a fresh copy per iteration
     Button btn = Instantiate(_choiceButtonPrefab, _choiceContainer);
     btn.GetComponentInChildren<TMP_Text>().text = localizedLabels[i];
     btn.onClick.AddListener(() => result.SelectedIndex = capturedIndex);
@@ -114,7 +114,7 @@ for (int i = 0; i < localizedLabels.Count; i++)
 
 **Symptom:** C# event subscriptions work in the first Play session but stop working after you stop and re-enter Play mode, or after a scene reload.
 
-**Cause:** Subscribing in `Awake()` means the subscription persists on the original object instance â€” but after a reload, the runner is a new instance. Alternatively, subscribing with `+=` without a matching `-=` causes stale references.
+**Cause:** Subscribing in `Awake()` means the subscription persists on the original object instance -- but after a reload, the runner is a new instance. Alternatively, subscribing with `+=` without a matching `-=` causes stale references.
 
 **Fix:** Always subscribe in `OnEnable()` and unsubscribe in `OnDisable()`:
 
@@ -140,13 +140,13 @@ See [Event Subscription Safety](../core-systems/conversation-state#event-subscri
 
 **Common causes:**
 
-1. **YAML not validated after LineIDs were generated** â€” LineIDs must be present and stable in the compiled asset for save state to match. After the first import and sync, open the Conversation Data asset and confirm each line has a non-empty `LineID` field.
+1. **YAML not validated after LineIDs were generated** -- LineIDs must be present and stable in the compiled asset for save state to match. After the first import and sync, open the Conversation Data asset and confirm each line has a non-empty `LineID` field.
 
-2. **ConversationGuid changed** â€” The save system keys snapshots by `ConversationGuid`. If you called `RegenerateGuid()` or the asset was re-created, the old save data no longer matches. Existing save files become orphaned.
+2. **ConversationGuid changed** -- The save system keys snapshots by `ConversationGuid`. If you called `RegenerateGuid()` or the asset was re-created, the old save data no longer matches. Existing save files become orphaned.
 
-3. **`ConvoCoreConversationSaveManager` not on the same GameObject** â€” The save manager must be on the same GameObject as the `ConvoCore` runner, or it will not be found via `GetComponent`.
+3. **`ConvoCoreConversationSaveManager` not on the same GameObject** -- The save manager must be on the same GameObject as the `ConvoCore` runner, or it will not be found via `GetComponent`.
 
-4. **Auto-restore flags not set** â€” Confirm that **Restore On Awake** or **Restore On Start** is checked on the `ConvoCoreConversationSaveManager` component.
+4. **Auto-restore flags not set** -- Confirm that **Restore On Awake** or **Restore On Start** is checked on the `ConvoCoreConversationSaveManager` component.
 
 ---
 
@@ -154,7 +154,7 @@ See [Event Subscription Safety](../core-systems/conversation-state#event-subscri
 
 **Symptom:** After clicking Import YAML from Key and Sync from Source, the compiled dialogue lines have no LineID values.
 
-**Cause:** The YAML file was not linked to the Conversation Data asset before importing. LineIDs are generated during the import/compile step â€” they cannot be generated without a source YAML.
+**Cause:** The YAML file was not linked to the Conversation Data asset before importing. LineIDs are generated during the import/compile step -- they cannot be generated without a source YAML.
 
 **Fix:** Open the Conversation Data asset. Ensure the **Conversation Key** field exactly matches the root key in your YAML (the first line, before the colon). Then click **Import YAML from Key** followed by **Sync from Source**.
 
@@ -162,6 +162,6 @@ See [Event Subscription Safety](../core-systems/conversation-state#event-subscri
 
 ## The UI Foundation Methods Feel Backward
 
-If the connection between `ConvoCoreUIFoundation` and the runner is confusing, read it this way: ConvoCore *calls into* your UI, not the other way around. You do not poll ConvoCore â€” ConvoCore calls `UpdateDialogueUI()`, `WaitForUserInput()`, and `PresentChoices()` on your component at the right moments. Your job is to override those methods and make them do the right visual thing.
+If the connection between `ConvoCoreUIFoundation` and the runner is confusing, read it this way: ConvoCore *calls into* your UI, not the other way around. You do not poll ConvoCore -- ConvoCore calls `UpdateDialogueUI()`, `WaitForUserInput()`, and `PresentChoices()` on your component at the right moments. Your job is to override those methods and make them do the right visual thing.
 
-[UI Foundation â†’](../ui/ui-foundation) Â· [Building a Custom UI â†’](../ui/building-a-ui)
+[UI Foundation](../ui/ui-foundation) | [Building a Custom UI](../ui/building-a-ui)

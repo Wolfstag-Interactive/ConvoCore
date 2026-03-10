@@ -22,8 +22,8 @@ Dialogue:
     LocalizedDialogue:
       EN: "Good morning, traveller. What can I do for you?"
       FR: "Bonjour, voyageur. Que puis-je faire pour vous ?"
-      DE: "Guten Morgen, Reisender. Was kann ich für Sie tun?"
-      ES: "Buenos días, viajero. ¿En qué puedo ayudarle?"
+      DE: "Guten Morgen, Reisender. Wie kann ich helfen?"
+      ES: "Buenos dias, viajero. En que puedo ayudar?"
 ```
 
 When the conversation runner reaches this line, it calls `ConvoCoreDialogueLocalizationHandler.GetLocalizedDialogue(line)` with the current language from `ConvoCoreLanguageManager`. The handler returns the appropriate string, which is then passed to the UI for display.

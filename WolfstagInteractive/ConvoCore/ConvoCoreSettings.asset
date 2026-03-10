@@ -21,7 +21,7 @@ MonoBehaviour:
   CurrentLanguage: EN
   AddressablesEnabled: 0
   AddressablesKeyTemplate: '{filePath}.yml'
-  VerboseLogs: 0
+  VerboseLogs: 1
   SaveKeyPrefix: convocore.
   EnableSaveSystem: 1
   EnableVariableStore: 1
