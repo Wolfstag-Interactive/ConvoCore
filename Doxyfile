@@ -13,6 +13,7 @@ HAVE_DOT               = YES
 DOT_IMAGE_FORMAT       = svg
 HTML_OUTPUT            = html
 OPTIMIZE_OUTPUT_CSHARP  = YES
+SITEMAP_URL            = https://docs.wolfstaginteractive.com/convocore/api/
 EXTRACT_ALL             = YES
 EXTRACT_PRIVATE         = YES
 EXTRACT_INTERNALS       = YES
