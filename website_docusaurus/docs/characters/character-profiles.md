@@ -123,7 +123,7 @@ And the corresponding YAML entry:
 - CharacterID: town_guard
   LocalizedDialogue:
     EN: "Halt! State your business."
-    FR: "Halte ! Déclinez votre identité."
+    FR: "Halte! Declinez votre identite."
 ```
 
 ---
