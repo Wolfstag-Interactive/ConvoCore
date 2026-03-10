@@ -3,7 +3,7 @@ import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
-  title: 'ConvoCore',
+  title: 'ConvoCore Documentation',
   tagline: 'A modular Unity dialogue framework',
   url: 'https://docs.wolfstaginteractive.com',
   baseUrl: '/',
