@@ -53,6 +53,11 @@ public partial class ConvoCoreConversationData
             PlayerChoice
         }
 
+        /// <summary>
+        /// Represents a single selectable option in a <see cref="LineContinuationMode.PlayerChoice"/> line.
+        /// Holds the localized label text, the target <see cref="ConversationContainer"/> to branch into,
+        /// the alias or name of the entry to start from, and whether to push a return point onto the stack.
+        /// </summary>
         [Serializable]
         public struct ChoiceOption
         {

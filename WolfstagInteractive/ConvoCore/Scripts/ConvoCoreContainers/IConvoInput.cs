@@ -2,10 +2,21 @@ using UnityEngine;
 
 namespace WolfstagInteractive.ConvoCore
 {
+    /// <summary>
+    /// Input strategy interface. Implement to define how and which conversation(s) a
+    /// <see cref="ConvoCore"/> runner should play. The two built-in implementations are
+    /// <see cref="SingleConversationInput"/> for a single fixed conversation, and
+    /// <see cref="ContainerInput"/> for container-driven selection.
+    /// </summary>
     public interface IConvoInput
     {
         void Play(MonoBehaviour host, IConvoCoreRunner runner);
     }
+
+    /// <summary>
+    /// Plays a single <see cref="ConvoCoreConversationData"/> asset directly.
+    /// The simplest input strategy — suitable for NPCs with one fixed conversation.
+    /// </summary>
     [System.Serializable]
     public sealed class SingleConversationInput : IConvoInput
     {
@@ -23,6 +34,11 @@ namespace WolfstagInteractive.ConvoCore
     }
 
     
+    /// <summary>
+    /// Plays one or more conversations from a <see cref="ConversationContainer"/> asset.
+    /// Use this strategy when you want to pick a conversation by alias, play a playlist,
+    /// or use random or weighted selection.
+    /// </summary>
     [System.Serializable]
     public sealed class ContainerInput : IConvoInput
     {

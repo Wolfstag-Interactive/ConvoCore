@@ -31,6 +31,12 @@ namespace WolfstagInteractive.ConvoCore
         }
     }
 
+    /// <summary>
+    /// ScriptableObject that groups one or more <see cref="ConvoCoreConversationData"/> assets
+    /// into a single addressable unit for branching and playback. Supports two modes:
+    /// <b>Playlist</b> (play entries in sequence with optional looping) and
+    /// <b>Selector</b> (pick one entry by alias, first match, random, sequential, or weighted random).
+    /// </summary>
     [HelpURL("https://docs.wolfstaginteractive.com/classWolfstagInteractive_1_1ConvoCore_1_1ConversationContainer.html")]
     [CreateAssetMenu(menuName = "ConvoCore/Conversation Container")]
     public sealed class ConversationContainer : ScriptableObject

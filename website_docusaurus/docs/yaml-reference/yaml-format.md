@@ -227,8 +227,23 @@ Write `{PlayerName}` anywhere inside a dialogue string. At runtime, ConvoCore re
 The substitution happens at display time, after localization lookup, so the placeholder works identically in every language.
 
 :::warning
-There must be exactly one character profile in your project with `IsPlayerCharacter` checked. If no profile has it checked, `{PlayerName}` is substituted with an empty string and no error is logged. If multiple profiles have it checked, the first one found is used. Set `IsPlayerCharacter` on exactly one profile and leave it unchecked on all others.
+There must be exactly one character profile in your project with `IsPlayerCharacter` checked. If no profile has it checked, `{PlayerName}` is substituted with the literal string `"Player"` and no error is logged. If multiple profiles have it checked, the first one found is used. Set `IsPlayerCharacter` on exactly one profile and leave it unchecked on all others.
 :::
+
+---
+
+## Inspector-only fields
+
+Not every property of a dialogue line is set in the YAML file. The following fields exist on each line inside the `ConvoCoreConversationData` asset and are configured in the Unity Inspector — they have no YAML equivalent and cannot be set from the text file.
+
+| Field | Inspector label | What it controls |
+|---|---|---|
+| **UserInputMethod** | Progression Method | Whether the runner waits for the player to press advance (`UserInput`) or moves on automatically after a delay (`Timed`). Default: `UserInput`. |
+| **TimeBeforeNextLine** | Time Before Next Line | Seconds to wait before advancing when Progression Method is set to `Timed`. Has no effect when `UserInput` is selected. |
+| **Expression ID** | Expression | The expression to apply to the speaking character's representation for this line (e.g., `"happy"`, `"angry"`). Matches a key in the character's representation asset. |
+| **Continuation Mode + options** | Continuation Mode | Whether to continue, end, branch, or present choices after this line. See [Line Continuation](../core-systems/line-continuation). |
+
+These fields are separate from the YAML by design: **YAML stays as readable prose** — just characters speaking dialogue. **Timing, expressions, and branching logic belong in the asset graph**, where they can be iterated visually without touching the source text.
 
 ---
 

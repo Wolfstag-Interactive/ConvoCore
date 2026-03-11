@@ -6,7 +6,15 @@ using UnityEngine;
 
 namespace WolfstagInteractive.ConvoCore
 {
-[UnityEngine.HelpURL("https://docs.wolfstaginteractive.com/convocore/api/classWolfstagInteractive_1_1ConvoCore_1_1ConvoCore.html")]
+    /// <summary>
+    /// Main conversation runner MonoBehaviour. Attach to a GameObject, assign a
+    /// <see cref="ConvoCoreUIFoundation"/> subclass to <c>ConversationUI</c>, then call
+    /// <see cref="StartConversation"/> to begin playback. Subscribe to
+    /// <see cref="CompletedConversation"/>, <see cref="StartedConversation"/>,
+    /// <see cref="EndedConversation"/>, and <see cref="PausedConversation"/> to respond to
+    /// conversation lifecycle events.
+    /// </summary>
+    [UnityEngine.HelpURL("https://docs.wolfstaginteractive.com/convocore/api/classWolfstagInteractive_1_1ConvoCore_1_1ConvoCore.html")]
     public class ConvoCore : MonoBehaviour,IConvoCoreRunner
     {
 
@@ -31,7 +39,7 @@ namespace WolfstagInteractive.ConvoCore
         public event Action EndedConversation;
         public event Action CompletedConversation;
 
-        // Save-system signals — granular hooks for the save manager
+        // Save-system hooks for the save manager
         public event Action         OnConversationStarted;
         public event Action         OnConversationEnded;
         public event Action<string> OnLineStarted;
@@ -914,6 +922,11 @@ namespace WolfstagInteractive.ConvoCore
 
     }
 
+    /// <summary>
+    /// Minimal interface implemented by <see cref="ConvoCore"/>. Allows external systems
+    /// (container runners, save managers) to start a conversation without a direct
+    /// MonoBehaviour reference.
+    /// </summary>
     public interface IConvoCoreRunner
     {
         void PlayConversation(ConvoCoreConversationData conversation);

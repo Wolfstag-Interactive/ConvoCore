@@ -3,6 +3,11 @@ using UnityEngine;
 
 namespace WolfstagInteractive.ConvoCore.SaveSystem
 {
+    /// <summary>
+    /// A strongly-typed named variable that can hold a <c>string</c>, <c>int</c>, <c>float</c>,
+    /// or <c>bool</c> value. Variables are stored in a <see cref="ConvoVariableStore"/> and
+    /// persisted to save data by <see cref="ConvoCoreSaveManager"/>.
+    /// </summary>
     [HelpURL("https://docs.wolfstaginteractive.com/convocore/api/classWolfstagInteractive_1_1ConvoCore_1_1SaveSystem_1_1ConvoVariable.html")]
 [Serializable]
     public class ConvoCoreVariable

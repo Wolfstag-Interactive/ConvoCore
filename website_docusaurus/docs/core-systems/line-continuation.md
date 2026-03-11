@@ -1,11 +1,17 @@
 ---
-sidebar_position: 3
+sidebar_position: 7
 title: Line Continuation
 ---
 
 # Line Continuation
 
 After ConvoCore displays a dialogue line, it needs to know what to do next. Should it advance to the following line? End the conversation? Jump to a different conversation? Display a set of options for the player? The answer is controlled by the **Line Continuation Mode** — a field set on each line in the `ConvoCoreConversationData` inspector, not in the YAML file itself.
+
+:::note[Why is this in the inspector, not the YAML?]
+YAML is optimised for prose — it is where a writer authors dialogue quickly and legibly in any text editor. Branching logic belongs in the asset graph where it can be wired up visually, validated by the editor, and iterated without touching source text.
+
+In practice this means a typical workflow looks like: write all the dialogue text in YAML, import it, then open the `ConvoCoreConversationData` asset in Unity to configure continuation modes and hook up any branching. For linear conversations (the majority of lines), every line defaults to `Continue` and nothing needs touching in the inspector at all.
+:::
 
 ---
 
@@ -76,7 +82,7 @@ If you use `ContainerBranch` without checking **Push Return Point**, control tra
 
 After this line finishes, display a set of options for the player to choose from and wait for a selection. When the player picks an option, ConvoCore branches to the conversation associated with that option.
 
-`PlayerChoice` is covered in full on the [Player Choices](../core-systems/player-choices) page.
+`PlayerChoice` is covered in full on the [Player Choices](player-choices) page.
 
 ---
 
@@ -131,7 +137,7 @@ Main conversation branches to an explanation, then continues.
 ```
 Setup → Continue
 Explain more? → ContainerBranch + PushReturnPoint (branches to "Explanation")
-After explanation → Continue  ← resumes here when Explanation ends
+After explanation → Continue  <- resumes here when Explanation ends
 Conclusion → EndConversation
 ```
 

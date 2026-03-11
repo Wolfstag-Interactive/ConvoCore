@@ -2,6 +2,12 @@ using UnityEngine;
 
 namespace WolfstagInteractive.ConvoCore
 {
+    /// <summary>
+    /// Abstract ScriptableObject base class for all character visual representations.
+    /// Extend this class to map expression IDs to sprites, prefabs, or any other display asset.
+    /// Attach a concrete implementation to a <see cref="ConvoCoreCharacterProfileBaseData"/> asset
+    /// so the runner can resolve visuals and trigger expression actions on each line.
+    /// </summary>
     [HelpURL("https://docs.wolfstaginteractive.com/convocore/api/classWolfstagInteractive_1_1ConvoCore_1_1CharacterRepresentationBase.html")]
 
     public abstract class CharacterRepresentationBase : ScriptableObject,

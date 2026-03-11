@@ -4,6 +4,12 @@ using UnityEngine;
 
 namespace WolfstagInteractive.ConvoCore
 {
+    /// <summary>
+    /// ScriptableObject that defines a character's identity within ConvoCore: their display name,
+    /// CharacterID (matched against YAML), name colour, and the collection of
+    /// <see cref="CharacterRepresentationBase"/> assets that map expression IDs to visuals.
+    /// Set <c>IsPlayerCharacter</c> on exactly one profile to enable <c>{PlayerName}</c> substitution.
+    /// </summary>
     [UnityEngine.HelpURL("https://docs.wolfstaginteractive.com/convocore/api/classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreCharacterProfileBaseData.html")]
 [CreateAssetMenu(fileName = "NewCharacterProfile", menuName = "ConvoCore/Character Profile")]
     public class ConvoCoreCharacterProfileBaseData : ScriptableObject

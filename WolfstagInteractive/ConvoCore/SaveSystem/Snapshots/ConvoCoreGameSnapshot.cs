@@ -4,6 +4,11 @@ using UnityEngine;
 
 namespace WolfstagInteractive.ConvoCore.SaveSystem
 {
+    /// <summary>
+    /// Serializable snapshot of the full game save state, including all conversation progress
+    /// and global variables. Assembled and restored by <see cref="ConvoCoreSaveManager"/>
+    /// via an <see cref="IConvoSaveProvider"/>.
+    /// </summary>
     [HelpURL("https://docs.wolfstaginteractive.com/convocore/api/classWolfstagInteractive_1_1ConvoCore_1_1SaveSystem_1_1ConvoCoreGameSnapshot.html")]
 [Serializable]
     public class ConvoCoreGameSnapshot

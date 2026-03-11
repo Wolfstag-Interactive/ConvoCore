@@ -7,7 +7,7 @@ title: UI Foundation
 
 ## What is ConvoCoreUIFoundation?
 
-`ConvoCoreUIFoundation` is an abstract `MonoBehaviour` that defines the contract between the ConvoCore runner and your dialogue display. It is the bridge: ConvoCore calls methods on this class to say what should be shown, and your subclass overrides those methods to decide how to show it.
+`ConvoCoreUIFoundation` is a concrete `MonoBehaviour` that defines the contract between the ConvoCore runner and your dialogue display. It is the bridge: ConvoCore calls methods on this class to say what should be shown, and your subclass overrides those methods to decide how to show it. All methods have default no-op implementations — override only what your UI needs.
 
 Attach a subclass of `ConvoCoreUIFoundation` to any GameObject in the scene, then drag that GameObject into the **Conversation UI** field on the `ConvoCore` component.
 
@@ -22,7 +22,7 @@ ConvoCore is deliberately headless — it manages conversation state and fires e
 All base implementations do nothing by default. The runner will not crash if you do not override them, but nothing will appear on screen.
 
 ```csharp
-public abstract class ConvoCoreUIFoundation : MonoBehaviour
+public class ConvoCoreUIFoundation : MonoBehaviour
 {
     // Called once when a conversation starts.
     // Show your dialogue panel, reset any state here.
@@ -85,7 +85,7 @@ protected override IEnumerator WaitForUserInput()
 private void OnAdvanceInput()
 {
     _playerAdvanced = true;
-    RequestAdvance?.Invoke(); // Tell ConvoCore to continue.
+    RaiseAdvance(); // Tell ConvoCore to continue.
 }
 ```
 :::
@@ -136,10 +136,14 @@ private void Update()
     if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
     {
         _playerAdvanced = true;
-        RequestAdvance?.Invoke();
+        RaiseAdvance();
     }
 }
 ```
+
+:::tip
+Always use `RaiseAdvance()` (and `RaiseReverse()`) rather than invoking `RequestAdvance` or `RequestReverse` directly. The protected helpers are the intended API — they keep your subclass insulated from the event signature and make it immediately clear to readers that this is a runner signal, not an arbitrary event call.
+:::
 
 ---
 

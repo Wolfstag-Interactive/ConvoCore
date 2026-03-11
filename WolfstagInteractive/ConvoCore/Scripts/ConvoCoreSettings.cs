@@ -11,6 +11,11 @@ namespace WolfstagInteractive.ConvoCore
         Resources
     }
 
+    /// <summary>
+    /// Global runtime settings ScriptableObject for ConvoCore. Defines the list of supported
+    /// language codes, the active language, and the YAML text source load order.
+    /// Create one per project via Assets > Create > ConvoCore > Settings.
+    /// </summary>
     public sealed class ConvoCoreSettings : ScriptableObject
     {
         [Header("Order the sources to try (first hit wins)")]

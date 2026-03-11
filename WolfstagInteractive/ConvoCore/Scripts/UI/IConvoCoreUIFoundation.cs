@@ -5,7 +5,12 @@ using UnityEngine;
 
 namespace WolfstagInteractive.ConvoCore
 {
-    public interface IUIFoundation 
+    /// <summary>
+    /// Contract between the ConvoCore runner and a dialogue UI implementation.
+    /// Implement (or extend <see cref="ConvoCoreUIFoundation"/>) to display dialogue lines,
+    /// present player choices, and signal advance/reverse input back to the runner.
+    /// </summary>
+    public interface IUIFoundation
     {
         /// <summary>
         /// Initializes the UI builder and sets up required bindings.
