@@ -21,7 +21,7 @@
 <!-- Node1 -->
 <g id="Node000001" class="node">
 <title>Node1</title>
-<g id="a_Node000001"><a xlink:href="classWolfstagInteractive_1_1ConvoCore_1_1DefaultConversationContext.html" target="_top" xlink:title="Default no&#45;op implementation.">
+<g id="a_Node000001"><a xlink:href="classWolfstagInteractive_1_1ConvoCore_1_1DefaultConversationContext.html" target="_top" xlink:title="Default no&#45;op implementation of IConversationContext.">
 <polygon fill="white" stroke="#666666" points="365,-30 184,-30 184,0 365,0 365,-30"/>
 <text text-anchor="start" x="192" y="-18" font-family="Helvetica,sans-Serif" font-size="10.00">WolfstagInteractive.Convo</text>
 <text text-anchor="middle" x="274.5" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00">Core.DefaultConversationContext</text>

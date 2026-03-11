@@ -11,7 +11,7 @@
 <!-- Node1 -->
 <g id="Node000001" class="node">
 <title>Node1</title>
-<g id="a_Node000001"><a xlink:title="Base Action serves as the base for all derivative classes, allowing them to all automatically share t...">
+<g id="a_Node000001"><a xlink:title="Base ScriptableObject class for all ConvoCore dialogue line actions.">
 <polygon fill="#999999" stroke="#666666" points="294,-182.5 133,-182.5 133,-152.5 294,-152.5 294,-182.5"/>
 <text text-anchor="start" x="141" y="-170.5" font-family="Helvetica,sans-Serif" font-size="10.00">WolfstagInteractive.Convo</text>
 <text text-anchor="middle" x="213.5" y="-159.5" font-family="Helvetica,sans-Serif" font-size="10.00">Core.BaseDialogueLineAction</text>

@@ -8,7 +8,7 @@
 <area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="524,63,589,62,589,68,524,68"/>
 <area shape="rect" id="Node000005" href="$classWolfstagInteractive_1_1ConvoCore_1_1PrefabCharacterRepresentationData.html" title=" " alt="" coords="563,101,853,141"/>
 <area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="867,106,961,99,961,104,867,111"/>
-<area shape="rect" id="Node000006" href="$classWolfstagInteractive_1_1ConvoCore_1_1CharacterRepresentationBase.html" title=" " alt="" coords="297,108,513,133"/>
+<area shape="rect" id="Node000006" href="$classWolfstagInteractive_1_1ConvoCore_1_1CharacterRepresentationBase.html" title="Abstract ScriptableObject base class for all character visual representations." alt="" coords="297,108,513,133"/>
 <area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="527,118,562,118,562,123,527,123"/>
 <area shape="rect" id="Node000007" title=" " alt="" coords="62,83,191,108"/>
 <area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="205,100,297,108,297,113,205,105"/>

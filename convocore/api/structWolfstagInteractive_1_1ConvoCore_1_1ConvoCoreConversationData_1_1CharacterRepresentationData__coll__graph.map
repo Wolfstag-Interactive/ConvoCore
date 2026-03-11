@@ -1,6 +1,6 @@
 <map id="WolfstagInteractive.ConvoCore.ConvoCoreConversationData.CharacterRepresentationData" name="WolfstagInteractive.ConvoCore.ConvoCoreConversationData.CharacterRepresentationData">
 <area shape="rect" id="Node000001" title=" " alt="" coords="777,56,1025,111"/>
-<area shape="rect" id="Node000002" href="$classWolfstagInteractive_1_1ConvoCore_1_1CharacterRepresentationBase.html" title=" " alt="" coords="297,22,548,62"/>
+<area shape="rect" id="Node000002" href="$classWolfstagInteractive_1_1ConvoCore_1_1CharacterRepresentationBase.html" title="Abstract ScriptableObject base class for all character visual representations." alt="" coords="297,22,548,62"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="562,51,777,70,777,75,562,57"/>
 <area shape="rect" id="Node000003" title=" " alt="" coords="62,5,191,31"/>
 <area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="205,22,297,29,297,34,205,27"/>

@@ -8,7 +8,7 @@
 <area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="119,29,184,14,260,5,320,3,456,14,515,24,573,38,650,54,649,59,571,43,514,29,456,19,320,8,260,10,184,19,120,34"/>
 <area shape="rect" id="Node000005" href="$classWolfstagInteractive_1_1ConvoCore_1_1SaveSystem_1_1ConvoVariableStore.html" title=" " alt="" coords="185,28,455,68"/>
 <area shape="poly" id="edge5_Node000005_Node000004" title=" " alt="" coords="148,46,185,46,185,51,148,51"/>
-<area shape="rect" id="Node000006" href="$classWolfstagInteractive_1_1ConvoCore_1_1SaveSystem_1_1ConvoSettingsState.html" title=" " alt="" coords="185,92,455,132"/>
+<area shape="rect" id="Node000006" href="$classWolfstagInteractive_1_1ConvoCore_1_1SaveSystem_1_1ConvoSettingsState.html" title="ScriptableObject that bridges ConvoCoreLanguageManager with the save system." alt="" coords="185,92,455,132"/>
 <area shape="poly" id="edge7_Node000006_Node000004" title=" " alt="" coords="129,62,185,78,233,90,231,95,183,83,127,68"/>
 <area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="469,56,596,64,596,69,469,61"/>
 <area shape="poly" id="edge6_Node000003_Node000006" title=" " alt="" coords="468,97,596,87,596,92,469,103"/>

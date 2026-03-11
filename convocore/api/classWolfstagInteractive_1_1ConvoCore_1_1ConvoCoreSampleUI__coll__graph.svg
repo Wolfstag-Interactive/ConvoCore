@@ -57,7 +57,7 @@
 <!-- Node5 -->
 <g id="Node000005" class="node">
 <title>Node5</title>
-<g id="a_Node000005"><a xlink:href="classWolfstagInteractive_1_1ConvoCore_1_1ConvoCore.html" target="_top" xlink:title=" ">
+<g id="a_Node000005"><a xlink:href="classWolfstagInteractive_1_1ConvoCore_1_1ConvoCore.html" target="_top" xlink:title="Main conversation runner MonoBehaviour.">
 <polygon fill="white" stroke="#666666" points="1432.5,-341.97 1286.5,-341.97 1286.5,-311.97 1432.5,-311.97 1432.5,-341.97"/>
 <text text-anchor="start" x="1294.5" y="-329.97" font-family="Helvetica,sans-Serif" font-size="10.00">WolfstagInteractive.Convo</text>
 <text text-anchor="middle" x="1359.5" y="-318.97" font-family="Helvetica,sans-Serif" font-size="10.00">Core.ConvoCore</text>
@@ -134,7 +134,7 @@
 <!-- Node4 -->
 <g id="Node000004" class="node">
 <title>Node4</title>
-<g id="a_Node000004"><a xlink:href="interfaceWolfstagInteractive_1_1ConvoCore_1_1IUIFoundation.html" target="_top" xlink:title=" ">
+<g id="a_Node000004"><a xlink:href="interfaceWolfstagInteractive_1_1ConvoCore_1_1IUIFoundation.html" target="_top" xlink:title="Contract between the ConvoCore runner and a dialogue UI implementation.">
 <polygon fill="white" stroke="#666666" points="1401.5,-168.47 1317.5,-168.47 1317.5,-149.47 1401.5,-149.47 1401.5,-168.47"/>
 <text text-anchor="middle" x="1359.5" y="-156.47" font-family="Helvetica,sans-Serif" font-size="10.00">IUIFoundation</text>
 </a>
@@ -181,7 +181,7 @@
 <!-- Node6 -->
 <g id="Node000006" class="node">
 <title>Node6</title>
-<g id="a_Node000006"><a xlink:href="interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoCoreRunner.html" target="_top" xlink:title=" ">
+<g id="a_Node000006"><a xlink:href="interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoCoreRunner.html" target="_top" xlink:title="Minimal interface implemented by ConvoCore.">
 <polygon fill="white" stroke="#666666" points="1078,-325.47 971,-325.47 971,-306.47 1078,-306.47 1078,-325.47"/>
 <text text-anchor="middle" x="1024.5" y="-313.47" font-family="Helvetica,sans-Serif" font-size="10.00">IConvoCoreRunner</text>
 </a>
@@ -237,7 +237,7 @@
 <!-- Node13 -->
 <g id="Node000013" class="node">
 <title>Node13</title>
-<g id="a_Node000013"><a xlink:href="classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSettings.html" target="_top" xlink:title=" ">
+<g id="a_Node000013"><a xlink:href="classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSettings.html" target="_top" xlink:title="Global runtime settings ScriptableObject for ConvoCore.">
 <polygon fill="white" stroke="#666666" points="280,-156.97 134,-156.97 134,-126.97 280,-126.97 280,-156.97"/>
 <text text-anchor="start" x="142" y="-144.97" font-family="Helvetica,sans-Serif" font-size="10.00">WolfstagInteractive.Convo</text>
 <text text-anchor="middle" x="207" y="-133.97" font-family="Helvetica,sans-Serif" font-size="10.00">Core.ConvoCoreSettings</text>
@@ -275,7 +275,7 @@
 <!-- Node9 -->
 <g id="Node000009" class="node">
 <title>Node9</title>
-<g id="a_Node000009"><a xlink:href="interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoInput.html" target="_top" xlink:title=" ">
+<g id="a_Node000009"><a xlink:href="interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoInput.html" target="_top" xlink:title="Input strategy interface.">
 <polygon fill="white" stroke="#666666" points="1097.5,-459.97 951.5,-459.97 951.5,-429.97 1097.5,-429.97 1097.5,-459.97"/>
 <text text-anchor="start" x="959.5" y="-447.97" font-family="Helvetica,sans-Serif" font-size="10.00">WolfstagInteractive.Convo</text>
 <text text-anchor="middle" x="1024.5" y="-436.97" font-family="Helvetica,sans-Serif" font-size="10.00">Core.IConvoInput</text>

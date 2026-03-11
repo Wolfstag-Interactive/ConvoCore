@@ -58,7 +58,7 @@
 <!-- Node3 -->
 <g id="Node000003" class="node">
 <title>Node3</title>
-<g id="a_Node000003"><a xlink:href="interfaceWolfstagInteractive_1_1ConvoCore_1_1IUIFoundation.html" target="_top" xlink:title=" ">
+<g id="a_Node000003"><a xlink:href="interfaceWolfstagInteractive_1_1ConvoCore_1_1IUIFoundation.html" target="_top" xlink:title="Contract between the ConvoCore runner and a dialogue UI implementation.">
 <polygon fill="white" stroke="#666666" points="195.5,-151 111.5,-151 111.5,-132 195.5,-132 195.5,-151"/>
 <text text-anchor="middle" x="153.5" y="-139" font-family="Helvetica,sans-Serif" font-size="10.00">IUIFoundation</text>
 </a>

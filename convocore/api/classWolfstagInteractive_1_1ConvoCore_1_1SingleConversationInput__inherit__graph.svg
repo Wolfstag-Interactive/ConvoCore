@@ -11,7 +11,7 @@
 <!-- Node1 -->
 <g id="Node000001" class="node">
 <title>Node1</title>
-<g id="a_Node000001"><a xlink:title=" ">
+<g id="a_Node000001"><a xlink:title="Plays a single ConvoCoreConversationData asset directly.">
 <polygon fill="#999999" stroke="#666666" points="161,-30 0,-30 0,0 161,0 161,-30"/>
 <text text-anchor="start" x="8" y="-18" font-family="Helvetica,sans-Serif" font-size="10.00">WolfstagInteractive.Convo</text>
 <text text-anchor="middle" x="80.5" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00">Core.SingleConversationInput</text>
@@ -21,7 +21,7 @@
 <!-- Node2 -->
 <g id="Node000002" class="node">
 <title>Node2</title>
-<g id="a_Node000002"><a xlink:href="interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoInput.html" target="_top" xlink:title=" ">
+<g id="a_Node000002"><a xlink:href="interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoInput.html" target="_top" xlink:title="Input strategy interface.">
 <polygon fill="white" stroke="#666666" points="118,-85 43,-85 43,-66 118,-66 118,-85"/>
 <text text-anchor="middle" x="80.5" y="-73" font-family="Helvetica,sans-Serif" font-size="10.00">IConvoInput</text>
 </a>

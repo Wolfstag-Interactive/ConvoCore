@@ -39,7 +39,7 @@
 <!-- Node3 -->
 <g id="Node000003" class="node">
 <title>Node3</title>
-<g id="a_Node000003"><a xlink:href="classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSettings.html" target="_top" xlink:title=" ">
+<g id="a_Node000003"><a xlink:href="classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSettings.html" target="_top" xlink:title="Global runtime settings ScriptableObject for ConvoCore.">
 <polygon fill="white" stroke="#666666" points="310,-126 164,-126 164,-96 310,-96 310,-126"/>
 <text text-anchor="start" x="172" y="-114" font-family="Helvetica,sans-Serif" font-size="10.00">WolfstagInteractive.Convo</text>
 <text text-anchor="middle" x="237" y="-103" font-family="Helvetica,sans-Serif" font-size="10.00">Core.ConvoCoreSettings</text>
