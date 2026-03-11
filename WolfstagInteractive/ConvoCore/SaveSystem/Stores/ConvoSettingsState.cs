@@ -3,6 +3,11 @@ using UnityEngine;
 
 namespace WolfstagInteractive.ConvoCore.SaveSystem
 {
+    /// <summary>
+    /// ScriptableObject that bridges <see cref="ConvoCoreLanguageManager"/> with the save system.
+    /// Exports the current language setting to a <see cref="ConvoCoreSettingsSnapshot"/> on save,
+    /// and restores it on load via <see cref="ConvoCoreSaveManager"/>.
+    /// </summary>
     [HelpURL("https://docs.wolfstaginteractive.com/convocore/api/classWolfstagInteractive_1_1ConvoCore_1_1SaveSystem_1_1ConvoSettingsState.html")]
 [CreateAssetMenu(fileName = "NewConvoSettingsState", menuName = "ConvoCore/Runtime/Convo Settings State")]
     public class ConvoSettingsState : ScriptableObject

@@ -105,6 +105,6 @@ YAML is sensitive to indentation. A single tab character, one missing space, or 
 ## Next steps
 
 - [YAML Format](./yaml-format) — Full field reference and annotated examples for every supported field.
-- [Line Continuation](./line-continuation) — Control what happens after each dialogue line plays.
+- [Line Continuation](../core-systems/line-continuation) — Control what happens after each dialogue line plays (inspector-only — configured on the asset, not in YAML).
 - [Player Choices](../core-systems/player-choices) — Set up branching dialogue where the player selects from options.
 - [YAML Loading](./yaml-loading) — How ConvoCore finds and loads YAML files at runtime.

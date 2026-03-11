@@ -11,13 +11,11 @@ namespace WolfstagInteractive.ConvoCore
     [HelpURL("https://docs.wolfstaginteractive.com/convocore/api/classWolfstagInteractive_1_1ConvoCore_1_1BaseDialogueLineAction.html")]
     [System.Serializable]
     /// <summary>
-    /// Base Action serves as the base for all derivative classes,
-    /// allowing them to all automatically share the values and functions within this script
-    /// Derivative classes must inherenit from BaseAction in order to work and should not derive from
-    /// monobehavior or scriptable object on their own
-    ///
-    /// IMPORTANT!!!!!!!!!!
-    /// Make sure To Copy the below commented out lines over the class name into the derivative class and remove the slashes on the beginning of each line
+    /// Base ScriptableObject class for all ConvoCore dialogue line actions.
+    /// Extend this class to run custom game logic before or after any dialogue line.
+    /// Override <see cref="ExecuteLineAction"/> for forward playback and
+    /// <see cref="ExecuteOnReversedLineAction"/> to undo side effects when the player steps back.
+    /// Do not also inherit from MonoBehaviour or ScriptableObject directly — the base class handles that.
     /// </summary>
     public class BaseDialogueLineAction : ScriptableObject
     {

@@ -16,8 +16,8 @@ namespace WolfstagInteractive.ConvoCore
     }
 
     /// <summary>
-    /// Default no-op implementation.
-    /// Use this when you don't have a gameplay context to supply.
+    /// Default no-op implementation of <see cref="IConversationContext"/>.
+    /// Use this when no runtime gameplay context is needed for branch evaluation.
     /// </summary>
     public sealed class DefaultConversationContext : IConversationContext
     {
