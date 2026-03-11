@@ -14,8 +14,8 @@ Write your dialogue in plain, readable YAML files — no proprietary formats, no
 
 ```
 ┌────────────────┐                ┌────────────────────────┐               ┌──────────────────┐
-│   YAML file        │  ──────────▶│  Conversation Data           │  ─────────▶|  ConvoCore            │
-│ (your dialogue)    │  compiles      │  (ScriptableObject)          │  runs in      │ (MonoBehaviour)       |
+│   YAML file    │  ──────────▶   │  Conversation Data     │  ─────────▶   │  ConvoCore       │
+│ (your dialogue)│  compiles      │  (ScriptableObject)    │  runs in      │  (MonoBehaviour) │
 └────────────────┘                └────────────────────────┘  Play Mode    └──────────────────┘
        ▲                                                                        │
        │ edit in any                                                            │ fires C# events
