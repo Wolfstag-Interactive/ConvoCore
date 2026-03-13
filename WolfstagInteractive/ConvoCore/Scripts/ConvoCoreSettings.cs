@@ -12,6 +12,28 @@ namespace WolfstagInteractive.ConvoCore
     }
 
     /// <summary>
+    /// Controls how ConvoCore handles formula cells encountered during Excel spreadsheet import.
+    /// </summary>
+    public enum ExcelFormulaCellBehavior
+    {
+        /// <summary>
+        /// Use the cached result value stored in the cell. This is the default and works
+        /// for most cases where the file was saved with calculations up to date.
+        /// </summary>
+        UseCachedValue,
+
+        /// <summary>
+        /// Treat any formula cell as a parse error and abort import of that sheet.
+        /// </summary>
+        TreatAsError,
+
+        /// <summary>
+        /// Skip rows that contain any formula cell silently without aborting the import.
+        /// </summary>
+        SkipRow
+    }
+
+    /// <summary>
     /// Global runtime settings ScriptableObject for ConvoCore. Defines the list of supported
     /// language codes, the active language, and the YAML text source load order.
     /// Create one per project via Assets > Create > ConvoCore > Settings.
@@ -145,7 +167,41 @@ namespace WolfstagInteractive.ConvoCore
             }
 
             CleanRendererProfiles();
+
+            if (string.IsNullOrEmpty(ExcelCharacterIDHeader))
+                ExcelCharacterIDHeader = "CharacterID";
+
+            if (string.IsNullOrEmpty(ExcelLineIDHeader))
+                ExcelLineIDHeader = "LineID";
+
+            if (ExcelHeaderRowIndex < 0)
+                ExcelHeaderRowIndex = 0;
         }
+        // ------------------------------
+        // Spreadsheet Import
+        // ------------------------------
+
+        [Tooltip("The column header used to identify the character ID column in an Excel spreadsheet. Case-insensitive.")]
+        public string ExcelCharacterIDHeader = "CharacterID";
+
+        [Tooltip("The column header used to identify the line ID column. This column is auto-populated by ConvoCore on import. Case-insensitive.")]
+        public string ExcelLineIDHeader = "LineID";
+
+        [Tooltip("Sheet tabs whose names begin with this prefix are skipped during import. Use this for note sheets or scratch tabs.")]
+        public string ExcelSkipSheetPrefix = "_";
+
+        [Tooltip("Zero-based row index of the header row. Default is 0 (first row). Increase this if your spreadsheet has title rows above the column headers.")]
+        public int ExcelHeaderRowIndex = 0;
+
+        [Tooltip("If true, rows where all cells are empty or whitespace are silently skipped during import.")]
+        public bool ExcelSkipEmptyRows = true;
+
+        [Tooltip("If true, column headers that are not the CharacterID column, the LineID column, or a recognized language code will produce a warning in the console.")]
+        public bool ExcelWarnOnUnrecognizedColumns = false;
+
+        [Tooltip("Controls how cells containing Excel formulas are handled during import.")]
+        public ExcelFormulaCellBehavior ExcelFormulaCellBehavior = ExcelFormulaCellBehavior.UseCachedValue;
+
         // ------------------------------
         // Dialogue History Renderers
         // ------------------------------
