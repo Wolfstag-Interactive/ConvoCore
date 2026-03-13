@@ -175,7 +175,7 @@ namespace WolfstagInteractive.ConvoCore.Editor
             return cell.Element(Ns + "v")?.Value?.Trim() ?? string.Empty;
         }
 
-        private List<SpreadsheetRowConfig> ParseSheet(
+        private static List<SpreadsheetRowConfig> ParseSheet(
             ZipArchive zip,
             string entryPath,
             string sheetName,

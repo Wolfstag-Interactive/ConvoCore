@@ -11,7 +11,7 @@ namespace WolfstagInteractive.ConvoCore.Editor
     public class ConvoCoreSettingsEditor : UnityEditor.Editor
     {
         private const string TAB_PREF_KEY = "ConvoCore.SettingsEditor.ActiveTab";
-        private static readonly string[] TAB_LABELS = { "General", "Language", "Save System", "History Renderers", "Spreadsheet" };
+        private static readonly string[] TAB_LABELS = { "General", "Language", "Save System", "Dialogue History Renderers", "Spreadsheet" };
 
         // Serialized properties
         private SerializedProperty _sourceOrderProp;

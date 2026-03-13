@@ -12,8 +12,18 @@ namespace WolfstagInteractive.ConvoCore.Editor
 [HelpURL("https://docs.wolfstaginteractive.com/convocore/api/classWolfstagInteractive_1_1ConvoCore_1_1Editor_1_1ConvoCoreExcelWatcher.html")]
     public class ConvoCoreExcelWatcher : AssetPostprocessor
     {
-        // Guard against re-entrant calls triggered by the pipeline's own AssetDatabase.ImportAsset
+        // Guard against re-entrant calls triggered by the pipeline's own AssetDatabase.ImportAsset.
+        // Unity's AssetPostprocessor callbacks always run on the main thread, so no lock needed.
         private static readonly HashSet<string> _processing = new HashSet<string>();
+
+        // Centralised property names — if ConvoCoreConversationData renames these fields,
+        // compilation will not catch the break but at least a single place needs updating.
+        private const string PropSourceExcelAssetPath = "SourceExcelAssetPath";
+        private const string PropSourceExcelAsset     = "SourceExcelAsset";
+
+        private static bool HasXlsx(string[] paths) =>
+            paths != null &&
+            System.Array.Exists(paths, p => p.EndsWith(".xlsx", System.StringComparison.OrdinalIgnoreCase));
 
         static void OnPostprocessAllAssets(
             string[] importedAssets,
@@ -21,6 +31,11 @@ namespace WolfstagInteractive.ConvoCore.Editor
             string[] movedAssets,
             string[] movedFromAssets)
         {
+            // Early exit: skip the full ConvoCoreConversationData scan when no .xlsx files
+            // are involved — this fires for every Unity import (textures, scripts, prefabs…).
+            if (!HasXlsx(importedAssets) && !HasXlsx(movedAssets) && !HasXlsx(movedFromAssets))
+                return;
+
             var importedSet = new HashSet<string>(importedAssets);
 
             // Build moved path map: old path -> new path
@@ -48,7 +63,7 @@ namespace WolfstagInteractive.ConvoCore.Editor
                 if (data == null) continue;
 
                 var so = new SerializedObject(data);
-                var excelPathProp = so.FindProperty("SourceExcelAssetPath");
+                var excelPathProp = so.FindProperty(PropSourceExcelAssetPath);
                 if (excelPathProp == null) continue;
 
                 var linkedPath = excelPathProp.stringValue;
@@ -61,7 +76,7 @@ namespace WolfstagInteractive.ConvoCore.Editor
                     so.ApplyModifiedPropertiesWithoutUndo();
 
                     // Update the asset reference as well
-                    var excelAssetProp = so.FindProperty("SourceExcelAsset");
+                    var excelAssetProp = so.FindProperty(PropSourceExcelAsset);
                     if (excelAssetProp != null)
                         excelAssetProp.objectReferenceValue = AssetDatabase.LoadAssetAtPath<Object>(newPath);
                     so.ApplyModifiedPropertiesWithoutUndo();

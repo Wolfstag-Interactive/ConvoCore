@@ -113,8 +113,8 @@ MonoBehaviour:
     characterID: Ava
     CharacterRepresentations:
     - SelectedCharacterID: 
-      SelectedRepresentationName: 
-      SelectedRepresentation: {fileID: 0}
+      SelectedRepresentationName: Sprites
+      SelectedRepresentation: {fileID: 11400000, guid: cf61be94e9ae46b4da28bb23d0bfa60f, type: 2}
       SelectedExpressionId: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
@@ -149,8 +149,8 @@ MonoBehaviour:
     characterID: Jared
     CharacterRepresentations:
     - SelectedCharacterID: 
-      SelectedRepresentationName: 
-      SelectedRepresentation: {fileID: 0}
+      SelectedRepresentationName: Sprites
+      SelectedRepresentation: {fileID: 11400000, guid: 5b9d585132056d5479e01ea082d4b2be, type: 2}
       SelectedExpressionId: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
@@ -185,8 +185,8 @@ MonoBehaviour:
     characterID: Ava
     CharacterRepresentations:
     - SelectedCharacterID: 
-      SelectedRepresentationName: 
-      SelectedRepresentation: {fileID: 0}
+      SelectedRepresentationName: Sprites
+      SelectedRepresentation: {fileID: 11400000, guid: cf61be94e9ae46b4da28bb23d0bfa60f, type: 2}
       SelectedExpressionId: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
@@ -221,8 +221,8 @@ MonoBehaviour:
     characterID: Jared
     CharacterRepresentations:
     - SelectedCharacterID: 
-      SelectedRepresentationName: 
-      SelectedRepresentation: {fileID: 0}
+      SelectedRepresentationName: Sprites
+      SelectedRepresentation: {fileID: 11400000, guid: 5b9d585132056d5479e01ea082d4b2be, type: 2}
       SelectedExpressionId: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
@@ -257,8 +257,8 @@ MonoBehaviour:
     characterID: Ava
     CharacterRepresentations:
     - SelectedCharacterID: 
-      SelectedRepresentationName: 
-      SelectedRepresentation: {fileID: 0}
+      SelectedRepresentationName: Sprites
+      SelectedRepresentation: {fileID: 11400000, guid: cf61be94e9ae46b4da28bb23d0bfa60f, type: 2}
       SelectedExpressionId: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
@@ -293,8 +293,8 @@ MonoBehaviour:
     characterID: Jared
     CharacterRepresentations:
     - SelectedCharacterID: 
-      SelectedRepresentationName: 
-      SelectedRepresentation: {fileID: 0}
+      SelectedRepresentationName: Sprites
+      SelectedRepresentation: {fileID: 11400000, guid: 5b9d585132056d5479e01ea082d4b2be, type: 2}
       SelectedExpressionId: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
@@ -329,8 +329,8 @@ MonoBehaviour:
     characterID: Wolfstag
     CharacterRepresentations:
     - SelectedCharacterID: 
-      SelectedRepresentationName: 
-      SelectedRepresentation: {fileID: 0}
+      SelectedRepresentationName: Sprites
+      SelectedRepresentation: {fileID: 11400000, guid: 52e24c290fb50014b8aee74d5f275726, type: 2}
       SelectedExpressionId: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
@@ -366,8 +366,8 @@ MonoBehaviour:
     characterID: Ava
     CharacterRepresentations:
     - SelectedCharacterID: 
-      SelectedRepresentationName: 
-      SelectedRepresentation: {fileID: 0}
+      SelectedRepresentationName: Sprites
+      SelectedRepresentation: {fileID: 11400000, guid: cf61be94e9ae46b4da28bb23d0bfa60f, type: 2}
       SelectedExpressionId: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
@@ -402,8 +402,8 @@ MonoBehaviour:
     characterID: Jared
     CharacterRepresentations:
     - SelectedCharacterID: 
-      SelectedRepresentationName: 
-      SelectedRepresentation: {fileID: 0}
+      SelectedRepresentationName: Sprites
+      SelectedRepresentation: {fileID: 11400000, guid: 5b9d585132056d5479e01ea082d4b2be, type: 2}
       SelectedExpressionId: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
@@ -438,8 +438,8 @@ MonoBehaviour:
     characterID: Jared
     CharacterRepresentations:
     - SelectedCharacterID: 
-      SelectedRepresentationName: 
-      SelectedRepresentation: {fileID: 0}
+      SelectedRepresentationName: Sprites
+      SelectedRepresentation: {fileID: 11400000, guid: 5b9d585132056d5479e01ea082d4b2be, type: 2}
       SelectedExpressionId: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
@@ -477,8 +477,8 @@ MonoBehaviour:
     characterID: Wolfstag
     CharacterRepresentations:
     - SelectedCharacterID: 
-      SelectedRepresentationName: 
-      SelectedRepresentation: {fileID: 0}
+      SelectedRepresentationName: Sprites
+      SelectedRepresentation: {fileID: 11400000, guid: 52e24c290fb50014b8aee74d5f275726, type: 2}
       SelectedExpressionId: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
@@ -513,8 +513,8 @@ MonoBehaviour:
     characterID: Ava
     CharacterRepresentations:
     - SelectedCharacterID: 
-      SelectedRepresentationName: 
-      SelectedRepresentation: {fileID: 0}
+      SelectedRepresentationName: Sprites
+      SelectedRepresentation: {fileID: 11400000, guid: cf61be94e9ae46b4da28bb23d0bfa60f, type: 2}
       SelectedExpressionId: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
@@ -549,8 +549,8 @@ MonoBehaviour:
     characterID: Wolfstag
     CharacterRepresentations:
     - SelectedCharacterID: 
-      SelectedRepresentationName: 
-      SelectedRepresentation: {fileID: 0}
+      SelectedRepresentationName: Sprites
+      SelectedRepresentation: {fileID: 11400000, guid: 52e24c290fb50014b8aee74d5f275726, type: 2}
       SelectedExpressionId: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
@@ -588,8 +588,8 @@ MonoBehaviour:
     characterID: Jared
     CharacterRepresentations:
     - SelectedCharacterID: 
-      SelectedRepresentationName: 
-      SelectedRepresentation: {fileID: 0}
+      SelectedRepresentationName: Sprites
+      SelectedRepresentation: {fileID: 11400000, guid: 5b9d585132056d5479e01ea082d4b2be, type: 2}
       SelectedExpressionId: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
@@ -624,8 +624,8 @@ MonoBehaviour:
     characterID: Ava
     CharacterRepresentations:
     - SelectedCharacterID: 
-      SelectedRepresentationName: 
-      SelectedRepresentation: {fileID: 0}
+      SelectedRepresentationName: Sprites
+      SelectedRepresentation: {fileID: 11400000, guid: cf61be94e9ae46b4da28bb23d0bfa60f, type: 2}
       SelectedExpressionId: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
@@ -660,8 +660,8 @@ MonoBehaviour:
     characterID: Wolfstag
     CharacterRepresentations:
     - SelectedCharacterID: 
-      SelectedRepresentationName: 
-      SelectedRepresentation: {fileID: 0}
+      SelectedRepresentationName: Sprites
+      SelectedRepresentation: {fileID: 11400000, guid: 52e24c290fb50014b8aee74d5f275726, type: 2}
       SelectedExpressionId: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
@@ -696,8 +696,8 @@ MonoBehaviour:
     characterID: Jared
     CharacterRepresentations:
     - SelectedCharacterID: 
-      SelectedRepresentationName: 
-      SelectedRepresentation: {fileID: 0}
+      SelectedRepresentationName: Sprites
+      SelectedRepresentation: {fileID: 11400000, guid: 5b9d585132056d5479e01ea082d4b2be, type: 2}
       SelectedExpressionId: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
@@ -732,8 +732,8 @@ MonoBehaviour:
     characterID: Ava
     CharacterRepresentations:
     - SelectedCharacterID: 
-      SelectedRepresentationName: 
-      SelectedRepresentation: {fileID: 0}
+      SelectedRepresentationName: Sprites
+      SelectedRepresentation: {fileID: 11400000, guid: cf61be94e9ae46b4da28bb23d0bfa60f, type: 2}
       SelectedExpressionId: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
@@ -768,8 +768,8 @@ MonoBehaviour:
     characterID: Wolfstag
     CharacterRepresentations:
     - SelectedCharacterID: 
-      SelectedRepresentationName: 
-      SelectedRepresentation: {fileID: 0}
+      SelectedRepresentationName: Sprites
+      SelectedRepresentation: {fileID: 11400000, guid: 52e24c290fb50014b8aee74d5f275726, type: 2}
       SelectedExpressionId: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
@@ -807,8 +807,8 @@ MonoBehaviour:
     characterID: Jared
     CharacterRepresentations:
     - SelectedCharacterID: 
-      SelectedRepresentationName: 
-      SelectedRepresentation: {fileID: 0}
+      SelectedRepresentationName: Sprites
+      SelectedRepresentation: {fileID: 11400000, guid: 5b9d585132056d5479e01ea082d4b2be, type: 2}
       SelectedExpressionId: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
@@ -845,8 +845,8 @@ MonoBehaviour:
     characterID: Ava
     CharacterRepresentations:
     - SelectedCharacterID: 
-      SelectedRepresentationName: 
-      SelectedRepresentation: {fileID: 0}
+      SelectedRepresentationName: Sprites
+      SelectedRepresentation: {fileID: 11400000, guid: cf61be94e9ae46b4da28bb23d0bfa60f, type: 2}
       SelectedExpressionId: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
@@ -881,8 +881,8 @@ MonoBehaviour:
     characterID: Wolfstag
     CharacterRepresentations:
     - SelectedCharacterID: 
-      SelectedRepresentationName: 
-      SelectedRepresentation: {fileID: 0}
+      SelectedRepresentationName: Sprites
+      SelectedRepresentation: {fileID: 11400000, guid: 52e24c290fb50014b8aee74d5f275726, type: 2}
       SelectedExpressionId: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
@@ -919,8 +919,8 @@ MonoBehaviour:
     characterID: Jared
     CharacterRepresentations:
     - SelectedCharacterID: 
-      SelectedRepresentationName: 
-      SelectedRepresentation: {fileID: 0}
+      SelectedRepresentationName: Sprites
+      SelectedRepresentation: {fileID: 11400000, guid: 5b9d585132056d5479e01ea082d4b2be, type: 2}
       SelectedExpressionId: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
@@ -956,8 +956,8 @@ MonoBehaviour:
     characterID: Ava
     CharacterRepresentations:
     - SelectedCharacterID: 
-      SelectedRepresentationName: 
-      SelectedRepresentation: {fileID: 0}
+      SelectedRepresentationName: Sprites
+      SelectedRepresentation: {fileID: 11400000, guid: cf61be94e9ae46b4da28bb23d0bfa60f, type: 2}
       SelectedExpressionId: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0

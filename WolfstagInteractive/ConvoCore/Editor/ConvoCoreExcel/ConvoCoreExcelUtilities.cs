@@ -221,12 +221,19 @@ namespace WolfstagInteractive.ConvoCore.Editor
 
         /// <summary>
         /// Escapes a string for use inside a YAML double-quoted scalar.
-        /// Only <c>\</c> and <c>"</c> need escaping; other chars (including Unicode) are safe.
+        /// Handles backslash, double-quote, and all newline variants (Excel cells can contain
+        /// real newlines via Alt+Enter; a literal newline inside a YAML double-quoted scalar
+        /// would break the line structure and cause a parse error).
         /// </summary>
         private static string EscapeDoubleQuoted(string value)
         {
             if (string.IsNullOrEmpty(value)) return string.Empty;
-            return value.Replace("\\", "\\\\").Replace("\"", "\\\"");
+            return value
+                .Replace("\\",  "\\\\")   // must be first
+                .Replace("\"",  "\\\"")
+                .Replace("\r\n","\\n")     // Windows CRLF before individual \r/\n
+                .Replace("\n",  "\\n")
+                .Replace("\r",  "\\n");
         }
     }
 }

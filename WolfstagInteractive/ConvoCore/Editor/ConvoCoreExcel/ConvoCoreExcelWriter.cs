@@ -46,7 +46,8 @@ namespace WolfstagInteractive.ConvoCore.Editor
             try
             {
                 // Read all zip entries into memory so the file can be closed before we overwrite it
-                var entries = ReadAllZipBytes(absolutePath);
+                var entries      = ReadAllZipBytes(absolutePath);
+                var modifiedKeys = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
 
                 var sharedStrings = ReadSharedStringsFromEntries(entries);
                 var sheetMap      = ReadSheetMapFromEntries(entries);
@@ -62,10 +63,13 @@ namespace WolfstagInteractive.ConvoCore.Editor
                     var updated = UpdateWorksheetLineIds(
                         entries[entryPath], sharedStrings, sheetName, settings, rowConfigs, fileName);
                     if (updated != null)
+                    {
                         entries[entryPath] = updated;
+                        modifiedKeys.Add(entryPath);
+                    }
                 }
 
-                WriteAllZipBytes(absolutePath, entries);
+                WriteAllZipBytes(absolutePath, entries, modifiedKeys);
                 return true;
             }
             catch (Exception ex)
@@ -97,21 +101,39 @@ namespace WolfstagInteractive.ConvoCore.Editor
             return result;
         }
 
-        private static void WriteAllZipBytes(string absolutePath, Dictionary<string, byte[]> entries)
+        /// <summary>
+        /// Atomically replaces <paramref name="absolutePath"/> with new zip content.
+        /// <see cref="File.Replace"/> keeps the original safe until the new file is fully written —
+        /// no data-loss window if the move step fails mid-way.
+        /// Entries listed in <paramref name="modifiedKeys"/> are recompressed at Optimal level;
+        /// unmodified entries use Fastest so unchanged sheets aren't needlessly CPU-heavy.
+        /// </summary>
+        private static void WriteAllZipBytes(
+            string absolutePath,
+            Dictionary<string, byte[]> entries,
+            HashSet<string> modifiedKeys)
         {
-            var tempPath = absolutePath + ".tmp";
+            var tempPath   = absolutePath + ".tmp";
+            var backupPath = absolutePath + ".bak";
+
             using (var fs  = File.Create(tempPath))
             using (var zip = new ZipArchive(fs, ZipArchiveMode.Create))
             {
                 foreach (var kv in entries)
                 {
-                    var e = zip.CreateEntry(kv.Key, CompressionLevel.Optimal);
+                    var level = modifiedKeys.Contains(kv.Key)
+                        ? CompressionLevel.Optimal
+                        : CompressionLevel.Fastest;
+                    var e = zip.CreateEntry(kv.Key, level);
                     using (var es = e.Open())
                         es.Write(kv.Value, 0, kv.Value.Length);
                 }
             }
-            File.Delete(absolutePath);
-            File.Move(tempPath, absolutePath);
+
+            // File.Replace: atomically swaps temp → original, placing original → backup.
+            // The backup is a safety net for the Replace call itself; remove it immediately after.
+            File.Replace(tempPath, absolutePath, backupPath);
+            try { File.Delete(backupPath); } catch { /* non-critical — stale .bak is harmless */ }
         }
 
         // ── Metadata readers ────────────────────────────────────────────────────────
@@ -213,12 +235,31 @@ namespace WolfstagInteractive.ConvoCore.Editor
                 return null;
             }
 
+            // Detect the style index (s attribute) used by any existing cell in the LineID column.
+            // New cells inherit this style so they don't appear visually inconsistent in Excel.
+            string lineIdColStyle = null;
+            foreach (var rowEl in rowByNumber.Values)
+            {
+                var styleCell = rowEl.Elements(Ns + "c").FirstOrDefault(c =>
+                {
+                    var r = c.Attribute("r")?.Value;
+                    return r != null
+                        && ConvoCoreExcelParser.CellRefToColIndex(r) == lineIdCol.Value
+                        && c.Attribute("s") != null;
+                });
+                if (styleCell != null)
+                {
+                    lineIdColStyle = styleCell.Attribute("s")!.Value;
+                    break;
+                }
+            }
+
             // Write back using the row numbers stamped by the parser — no skip logic needed
             foreach (var src in rowConfigs)
             {
                 if (string.IsNullOrEmpty(src.Config.LineID)) continue;
                 if (!rowByNumber.TryGetValue(src.XlRowNumber, out var rowEl)) continue;
-                UpdateOrInsertCell(rowEl, src.XlRowNumber, lineIdCol.Value, src.Config.LineID);
+                UpdateOrInsertCell(rowEl, src.XlRowNumber, lineIdCol.Value, src.Config.LineID, lineIdColStyle);
             }
 
             // Serialize back — UTF-8 without BOM, no XML declaration indent
@@ -228,14 +269,31 @@ namespace WolfstagInteractive.ConvoCore.Editor
                 {
                     Encoding           = new UTF8Encoding(encoderShouldEmitUTF8Identifier: false),
                     Indent             = false,
-                    OmitXmlDeclaration = false
+                    // Omit the declaration entirely: xlsx XML files work without it, and
+                    // synthesising standalone="yes" (which Excel writes) is not exposed by
+                    // XDocument.Save — so emitting a partial declaration is worse than none.
+                    OmitXmlDeclaration = true
                 }))
                     wsDoc.Save(xw);
                 return ms.ToArray();
             }
         }
 
-        private static void UpdateOrInsertCell(XElement rowEl, int rowNum, int colIndex, string value)
+        /// <summary>
+        /// Finds the cell at <paramref name="colIndex"/> in <paramref name="rowEl"/> and
+        /// overwrites its value, or inserts a new cell in column order.
+        /// <para>
+        /// For existing cells: only the value content and type are replaced.
+        /// <c>RemoveAll()</c> must NOT be used — it strips the style index (<c>s</c>),
+        /// discarding column widths, number formats, fonts, and fill colours.
+        /// </para>
+        /// <para>
+        /// For new cells: <paramref name="columnStyle"/> (sniffed from an existing sibling
+        /// in the same column) is applied so new cells match the surrounding formatting.
+        /// </para>
+        /// </summary>
+        private static void UpdateOrInsertCell(
+            XElement rowEl, int rowNum, int colIndex, string value, string columnStyle = null)
         {
             var colLetters = ConvoCoreExcelParser.ColIndexToLetters(colIndex);
             var cellRef    = $"{colLetters}{rowNum}";
@@ -245,17 +303,21 @@ namespace WolfstagInteractive.ConvoCore.Editor
 
             if (existing != null)
             {
-                existing.RemoveAll(); // clear attributes and children
-                existing.Add(new XAttribute("r", cellRef));
-                existing.Add(new XAttribute("t", "inlineStr"));
+                // Surgical update: preserve all attributes (especially s = style index).
+                existing.SetAttributeValue("t", "inlineStr");
+                existing.Element(Ns + "v")?.Remove();
+                existing.Element(Ns + "f")?.Remove();
+                existing.Element(Ns + "is")?.Remove();
                 existing.Add(new XElement(Ns + "is", new XElement(Ns + "t", value)));
             }
             else
             {
-                var newCell = new XElement(Ns + "c",
-                    new XAttribute("r", cellRef),
-                    new XAttribute("t", "inlineStr"),
-                    new XElement(Ns + "is", new XElement(Ns + "t", value)));
+                // Attribute order: r, s (optional), t — mirrors what Excel itself writes.
+                var newCell = new XElement(Ns + "c", new XAttribute("r", cellRef));
+                if (columnStyle != null)
+                    newCell.Add(new XAttribute("s", columnStyle));
+                newCell.Add(new XAttribute("t", "inlineStr"));
+                newCell.Add(new XElement(Ns + "is", new XElement(Ns + "t", value)));
 
                 // Insert in column order
                 var insertBefore = rowEl.Elements(Ns + "c").FirstOrDefault(c =>
