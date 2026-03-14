@@ -63,6 +63,7 @@
   <url><loc>https://docs.wolfstaginteractive.com/convocore/api/IConversationContext_8cs.html</loc></url>
   <url><loc>https://docs.wolfstaginteractive.com/convocore/api/IConvoCoreCharacterDisplay_8cs.html</loc></url>
   <url><loc>https://docs.wolfstaginteractive.com/convocore/api/IConvoCoreConversationHistoryRenderer_8cs.html</loc></url>
+  <url><loc>https://docs.wolfstaginteractive.com/convocore/api/IConvoCoreSpreadsheetReader_8cs.html</loc></url>
   <url><loc>https://docs.wolfstaginteractive.com/convocore/api/IConvoCoreUIFoundation_8cs.html</loc></url>
   <url><loc>https://docs.wolfstaginteractive.com/convocore/api/IConvoInput_8cs.html</loc></url>
   <url><loc>https://docs.wolfstaginteractive.com/convocore/api/IConvoSaveProvider_8cs.html</loc></url>
@@ -78,6 +79,7 @@
   <url><loc>https://docs.wolfstaginteractive.com/convocore/api/PrefabHistoryRenderer_8cs.html</loc></url>
   <url><loc>https://docs.wolfstaginteractive.com/convocore/api/RichTextHistoryRenderer_8cs.html</loc></url>
   <url><loc>https://docs.wolfstaginteractive.com/convocore/api/SimplePrefabRepresentationDisplay_8cs.html</loc></url>
+  <url><loc>https://docs.wolfstaginteractive.com/convocore/api/SpreadsheetRowConfig_8cs.html</loc></url>
   <url><loc>https://docs.wolfstaginteractive.com/convocore/api/SpriteCharacterRepresentationData_8cs.html</loc></url>
   <url><loc>https://docs.wolfstaginteractive.com/convocore/api/TMPDialogueHistoryOutput_8cs.html</loc></url>
   <url><loc>https://docs.wolfstaginteractive.com/convocore/api/YamlFileConvoSaveProvider_8cs.html</loc></url>
@@ -290,6 +292,8 @@
   <url><loc>https://docs.wolfstaginteractive.com/convocore/api/classWolfstagInteractive_1_1ConvoCore_1_1SimplePrefabRepresentationDisplay.html</loc></url>
   <url><loc>https://docs.wolfstaginteractive.com/convocore/api/classWolfstagInteractive_1_1ConvoCore_1_1SingleConversationInput-members.html</loc></url>
   <url><loc>https://docs.wolfstaginteractive.com/convocore/api/classWolfstagInteractive_1_1ConvoCore_1_1SingleConversationInput.html</loc></url>
+  <url><loc>https://docs.wolfstaginteractive.com/convocore/api/classWolfstagInteractive_1_1ConvoCore_1_1SpreadsheetRowConfig-members.html</loc></url>
+  <url><loc>https://docs.wolfstaginteractive.com/convocore/api/classWolfstagInteractive_1_1ConvoCore_1_1SpreadsheetRowConfig.html</loc></url>
   <url><loc>https://docs.wolfstaginteractive.com/convocore/api/classWolfstagInteractive_1_1ConvoCore_1_1SpriteCharacterRepresentationData-members.html</loc></url>
   <url><loc>https://docs.wolfstaginteractive.com/convocore/api/classWolfstagInteractive_1_1ConvoCore_1_1SpriteCharacterRepresentationData.html</loc></url>
   <url><loc>https://docs.wolfstaginteractive.com/convocore/api/classWolfstagInteractive_1_1ConvoCore_1_1SpriteExpressionMapping-members.html</loc></url>
@@ -435,6 +439,7 @@
   <url><loc>https://docs.wolfstaginteractive.com/convocore/api/dir_990131bc0c1fb503bb042a8ca2223fed.html</loc></url>
   <url><loc>https://docs.wolfstaginteractive.com/convocore/api/dir_9b72daf09de1f33ce18b4af2f76272d3.html</loc></url>
   <url><loc>https://docs.wolfstaginteractive.com/convocore/api/dir_a63759a43a109fe98a541bf0d1ed1d3a.html</loc></url>
+  <url><loc>https://docs.wolfstaginteractive.com/convocore/api/dir_cf9404dafd32d86ef1740e154afde94d.html</loc></url>
   <url><loc>https://docs.wolfstaginteractive.com/convocore/api/dir_e531c8bb3125d04bc27be685d018f242.html</loc></url>
   <url><loc>https://docs.wolfstaginteractive.com/convocore/api/dir_e8e5252a032b07c14d70a7941b1137c4.html</loc></url>
   <url><loc>https://docs.wolfstaginteractive.com/convocore/api/dir_f1ac31342a31fd6c0d822532bb9a9535.html</loc></url>
@@ -513,6 +518,7 @@
   <url><loc>https://docs.wolfstaginteractive.com/convocore/api/functions_vars_v.html</loc></url>
   <url><loc>https://docs.wolfstaginteractive.com/convocore/api/functions_vars_w.html</loc></url>
   <url><loc>https://docs.wolfstaginteractive.com/convocore/api/functions_w.html</loc></url>
+  <url><loc>https://docs.wolfstaginteractive.com/convocore/api/functions_x.html</loc></url>
   <url><loc>https://docs.wolfstaginteractive.com/convocore/api/functions_y.html</loc></url>
   <url><loc>https://docs.wolfstaginteractive.com/convocore/api/globals.html</loc></url>
   <url><loc>https://docs.wolfstaginteractive.com/convocore/api/globals_type.html</loc></url>
@@ -535,6 +541,8 @@
   <url><loc>https://docs.wolfstaginteractive.com/convocore/api/interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoCoreRepresentationInitializable.html</loc></url>
   <url><loc>https://docs.wolfstaginteractive.com/convocore/api/interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoCoreRunner-members.html</loc></url>
   <url><loc>https://docs.wolfstaginteractive.com/convocore/api/interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoCoreRunner.html</loc></url>
+  <url><loc>https://docs.wolfstaginteractive.com/convocore/api/interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoCoreSpreadsheetReader-members.html</loc></url>
+  <url><loc>https://docs.wolfstaginteractive.com/convocore/api/interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoCoreSpreadsheetReader.html</loc></url>
   <url><loc>https://docs.wolfstaginteractive.com/convocore/api/interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoInput-members.html</loc></url>
   <url><loc>https://docs.wolfstaginteractive.com/convocore/api/interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoInput.html</loc></url>
   <url><loc>https://docs.wolfstaginteractive.com/convocore/api/interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoStartContextProvider-members.html</loc></url>

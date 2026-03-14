@@ -9,7 +9,8 @@ var searchData=
   ['updatefromdiscovered_6',['UpdateFromDiscovered',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreHistoryRendererProfile.html#a178da2098839a1c72a67babc7f946c0e',1,'WolfstagInteractive::ConvoCore::ConvoCoreHistoryRendererProfile']]],
   ['updateuiforlanguage_7',['UpdateUIForLanguage',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCore.html#a524283cee7fa22ab2e20d6bc5d30bc59',1,'WolfstagInteractive::ConvoCore::ConvoCore']]],
   ['useautoalphavalues_8',['useAutoAlphaValues',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreDialogueLineActionFadeInOutSpriteRenderer.html#a4e5284f58f3365de28d883fd610d61e0',1,'WolfstagInteractive::ConvoCore::ConvoCoreDialogueLineActionFadeInOutSpriteRenderer']]],
-  ['usedlanguage_9',['UsedLanguage',['../classWolfstagInteractive_1_1ConvoCore_1_1LocalizedDialogueResult.html#acdad43827d728e73948554e4489f0ea5',1,'WolfstagInteractive::ConvoCore::LocalizedDialogueResult']]],
-  ['userinput_10',['UserInput',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData.html#a869564b1c98a8c1cf47b60888c4adeccabcee2009d5808b92788b2adf74896ef3',1,'WolfstagInteractive::ConvoCore::ConvoCoreConversationData']]],
-  ['userinputmethod_11',['UserInputMethod',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData_1_1DialogueLineInfo.html#a3cd713988a80a3b12eec110fa10e12ec',1,'WolfstagInteractive::ConvoCore::ConvoCoreConversationData::DialogueLineInfo']]]
+  ['usecachedvalue_9',['UseCachedValue',['../namespaceWolfstagInteractive_1_1ConvoCore.html#a94a97dbcb9d0d470cea1b3f05679ee5ea7a8fe460a57fbb44e72aae3c2c374694',1,'WolfstagInteractive::ConvoCore']]],
+  ['usedlanguage_10',['UsedLanguage',['../classWolfstagInteractive_1_1ConvoCore_1_1LocalizedDialogueResult.html#acdad43827d728e73948554e4489f0ea5',1,'WolfstagInteractive::ConvoCore::LocalizedDialogueResult']]],
+  ['userinput_11',['UserInput',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData.html#a869564b1c98a8c1cf47b60888c4adeccabcee2009d5808b92788b2adf74896ef3',1,'WolfstagInteractive::ConvoCore::ConvoCoreConversationData']]],
+  ['userinputmethod_12',['UserInputMethod',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData_1_1DialogueLineInfo.html#a3cd713988a80a3b12eec110fa10e12ec',1,'WolfstagInteractive::ConvoCore::ConvoCoreConversationData::DialogueLineInfo']]]
 ];

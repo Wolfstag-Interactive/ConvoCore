@@ -1,6 +1,7 @@
 var dir_716fc4c6cb98b933cc0fa884d6e5d043 =
 [
     [ "ConvoCoreContainers", "dir_610fcbfc3bd96f3150ee927b0b681e14.html", "dir_610fcbfc3bd96f3150ee927b0b681e14" ],
+    [ "ConvoCoreExcel", "dir_cf9404dafd32d86ef1740e154afde94d.html", "dir_cf9404dafd32d86ef1740e154afde94d" ],
     [ "ConvoCoreHelpers", "dir_46dfb0738a1b8b9e6b30a912d9b04ab6.html", "dir_46dfb0738a1b8b9e6b30a912d9b04ab6" ],
     [ "ConvoCoreYaml", "dir_f1ac31342a31fd6c0d822532bb9a9535.html", "dir_f1ac31342a31fd6c0d822532bb9a9535" ],
     [ "SampleActions", "dir_9b72daf09de1f33ce18b4af2f76272d3.html", "dir_9b72daf09de1f33ce18b4af2f76272d3" ],

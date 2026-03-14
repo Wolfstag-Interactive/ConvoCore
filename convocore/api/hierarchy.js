@@ -57,6 +57,7 @@ var hierarchy =
     [ "WolfstagInteractive.ConvoCore.IConvoCoreRunner", "interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoCoreRunner.html", [
       [ "WolfstagInteractive.ConvoCore.ConvoCore", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCore.html", null ]
     ] ],
+    [ "WolfstagInteractive.ConvoCore.IConvoCoreSpreadsheetReader", "interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoCoreSpreadsheetReader.html", null ],
     [ "WolfstagInteractive.ConvoCore.IConvoInput", "interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoInput.html", [
       [ "WolfstagInteractive.ConvoCore.ContainerInput", "classWolfstagInteractive_1_1ConvoCore_1_1ContainerInput.html", null ],
       [ "WolfstagInteractive.ConvoCore.SingleConversationInput", "classWolfstagInteractive_1_1ConvoCore_1_1SingleConversationInput.html", null ]
@@ -129,5 +130,6 @@ var hierarchy =
       [ "WolfstagInteractive.ConvoCore.SaveSystem.ConvoSettingsState", "classWolfstagInteractive_1_1ConvoCore_1_1SaveSystem_1_1ConvoSettingsState.html", null ],
       [ "WolfstagInteractive.ConvoCore.SaveSystem.ConvoVariableStore", "classWolfstagInteractive_1_1ConvoCore_1_1SaveSystem_1_1ConvoVariableStore.html", null ]
     ] ],
+    [ "WolfstagInteractive.ConvoCore.SpreadsheetRowConfig", "classWolfstagInteractive_1_1ConvoCore_1_1SpreadsheetRowConfig.html", null ],
     [ "WolfstagInteractive.ConvoCore.SpriteExpressionMapping", "classWolfstagInteractive_1_1ConvoCore_1_1SpriteExpressionMapping.html", null ]
 ];

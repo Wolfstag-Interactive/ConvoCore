@@ -78,6 +78,7 @@ var annotated_dup =
         [ "IConvoCoreLanguageSettingsLoader", "interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoCoreLanguageSettingsLoader.html", "interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoCoreLanguageSettingsLoader" ],
         [ "IConvoCoreRepresentationInitializable", "interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoCoreRepresentationInitializable.html", "interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoCoreRepresentationInitializable" ],
         [ "IConvoCoreRunner", "interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoCoreRunner.html", "interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoCoreRunner" ],
+        [ "IConvoCoreSpreadsheetReader", "interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoCoreSpreadsheetReader.html", "interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoCoreSpreadsheetReader" ],
         [ "IConvoInput", "interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoInput.html", "interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoInput" ],
         [ "IConvoStartContextProvider", "interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoStartContextProvider.html", "interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoStartContextProvider" ],
         [ "IDialogueHistoryOutput", "interfaceWolfstagInteractive_1_1ConvoCore_1_1IDialogueHistoryOutput.html", "interfaceWolfstagInteractive_1_1ConvoCore_1_1IDialogueHistoryOutput" ],
@@ -97,6 +98,7 @@ var annotated_dup =
         [ "RichTextHistoryRenderer", "classWolfstagInteractive_1_1ConvoCore_1_1RichTextHistoryRenderer.html", "classWolfstagInteractive_1_1ConvoCore_1_1RichTextHistoryRenderer" ],
         [ "SimplePrefabRepresentationDisplay", "classWolfstagInteractive_1_1ConvoCore_1_1SimplePrefabRepresentationDisplay.html", "classWolfstagInteractive_1_1ConvoCore_1_1SimplePrefabRepresentationDisplay" ],
         [ "SingleConversationInput", "classWolfstagInteractive_1_1ConvoCore_1_1SingleConversationInput.html", "classWolfstagInteractive_1_1ConvoCore_1_1SingleConversationInput" ],
+        [ "SpreadsheetRowConfig", "classWolfstagInteractive_1_1ConvoCore_1_1SpreadsheetRowConfig.html", "classWolfstagInteractive_1_1ConvoCore_1_1SpreadsheetRowConfig" ],
         [ "SpriteCharacterRepresentationData", "classWolfstagInteractive_1_1ConvoCore_1_1SpriteCharacterRepresentationData.html", "classWolfstagInteractive_1_1ConvoCore_1_1SpriteCharacterRepresentationData" ],
         [ "SpriteExpressionMapping", "classWolfstagInteractive_1_1ConvoCore_1_1SpriteExpressionMapping.html", "classWolfstagInteractive_1_1ConvoCore_1_1SpriteExpressionMapping" ],
         [ "TMPDialogueHistoryOutput", "classWolfstagInteractive_1_1ConvoCore_1_1TMPDialogueHistoryOutput.html", "classWolfstagInteractive_1_1ConvoCore_1_1TMPDialogueHistoryOutput" ]

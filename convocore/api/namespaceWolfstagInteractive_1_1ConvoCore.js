@@ -58,6 +58,7 @@ var namespaceWolfstagInteractive_1_1ConvoCore =
     [ "IConvoCoreLanguageSettingsLoader", "interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoCoreLanguageSettingsLoader.html", "interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoCoreLanguageSettingsLoader" ],
     [ "IConvoCoreRepresentationInitializable", "interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoCoreRepresentationInitializable.html", "interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoCoreRepresentationInitializable" ],
     [ "IConvoCoreRunner", "interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoCoreRunner.html", "interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoCoreRunner" ],
+    [ "IConvoCoreSpreadsheetReader", "interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoCoreSpreadsheetReader.html", "interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoCoreSpreadsheetReader" ],
     [ "IConvoInput", "interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoInput.html", "interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoInput" ],
     [ "IConvoStartContextProvider", "interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoStartContextProvider.html", "interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoStartContextProvider" ],
     [ "IDialogueHistoryOutput", "interfaceWolfstagInteractive_1_1ConvoCore_1_1IDialogueHistoryOutput.html", "interfaceWolfstagInteractive_1_1ConvoCore_1_1IDialogueHistoryOutput" ],
@@ -77,6 +78,7 @@ var namespaceWolfstagInteractive_1_1ConvoCore =
     [ "RichTextHistoryRenderer", "classWolfstagInteractive_1_1ConvoCore_1_1RichTextHistoryRenderer.html", "classWolfstagInteractive_1_1ConvoCore_1_1RichTextHistoryRenderer" ],
     [ "SimplePrefabRepresentationDisplay", "classWolfstagInteractive_1_1ConvoCore_1_1SimplePrefabRepresentationDisplay.html", "classWolfstagInteractive_1_1ConvoCore_1_1SimplePrefabRepresentationDisplay" ],
     [ "SingleConversationInput", "classWolfstagInteractive_1_1ConvoCore_1_1SingleConversationInput.html", "classWolfstagInteractive_1_1ConvoCore_1_1SingleConversationInput" ],
+    [ "SpreadsheetRowConfig", "classWolfstagInteractive_1_1ConvoCore_1_1SpreadsheetRowConfig.html", "classWolfstagInteractive_1_1ConvoCore_1_1SpreadsheetRowConfig" ],
     [ "SpriteCharacterRepresentationData", "classWolfstagInteractive_1_1ConvoCore_1_1SpriteCharacterRepresentationData.html", "classWolfstagInteractive_1_1ConvoCore_1_1SpriteCharacterRepresentationData" ],
     [ "SpriteExpressionMapping", "classWolfstagInteractive_1_1ConvoCore_1_1SpriteExpressionMapping.html", "classWolfstagInteractive_1_1ConvoCore_1_1SpriteExpressionMapping" ],
     [ "TMPDialogueHistoryOutput", "classWolfstagInteractive_1_1ConvoCore_1_1TMPDialogueHistoryOutput.html", "classWolfstagInteractive_1_1ConvoCore_1_1TMPDialogueHistoryOutput" ],
@@ -104,6 +106,11 @@ var namespaceWolfstagInteractive_1_1ConvoCore =
       [ "Left", "namespaceWolfstagInteractive_1_1ConvoCore.html#a7672af973360b3e5b2b3259e3f6088aea945d5e233cf7d6240f6b783b36a374ff", null ],
       [ "Right", "namespaceWolfstagInteractive_1_1ConvoCore.html#a7672af973360b3e5b2b3259e3f6088aea92b09c7c48c520c3c55e497875da437c", null ],
       [ "Center", "namespaceWolfstagInteractive_1_1ConvoCore.html#a7672af973360b3e5b2b3259e3f6088aea4f1f6016fc9f3f2353c0cc7c67b292bd", null ]
+    ] ],
+    [ "ExcelFormulaCellBehavior", "namespaceWolfstagInteractive_1_1ConvoCore.html#a94a97dbcb9d0d470cea1b3f05679ee5e", [
+      [ "UseCachedValue", "namespaceWolfstagInteractive_1_1ConvoCore.html#a94a97dbcb9d0d470cea1b3f05679ee5ea7a8fe460a57fbb44e72aae3c2c374694", null ],
+      [ "TreatAsError", "namespaceWolfstagInteractive_1_1ConvoCore.html#a94a97dbcb9d0d470cea1b3f05679ee5ea61e205231d27196d52b04475d38c944d", null ],
+      [ "SkipRow", "namespaceWolfstagInteractive_1_1ConvoCore.html#a94a97dbcb9d0d470cea1b3f05679ee5ea9bd180aa0636dc56e4ba452d3c23aa0b", null ]
     ] ],
     [ "TextSourceKind", "namespaceWolfstagInteractive_1_1ConvoCore.html#ae5e9633d75a8b3c6bf69f6eaa4339485", [
       [ "AssignedTextAsset", "namespaceWolfstagInteractive_1_1ConvoCore.html#ae5e9633d75a8b3c6bf69f6eaa4339485acc4cf545e0f024d2cb9a60292a4d7d71", null ],
