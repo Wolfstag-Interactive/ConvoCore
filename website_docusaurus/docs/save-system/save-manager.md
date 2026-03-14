@@ -11,7 +11,7 @@ title: Save Manager
 
 ## What kind of object is it?
 
-`ConvoCoreSaveManager` is a **ScriptableObject** - a project asset, not a scene component. You create one per project, keep it in your project files, and reference it from scene GameObjects (your bootstrapper, conversation runners, UI, etc.) via serialized fields.
+`ConvoCoreSaveManager` is a **ScriptableObject**, a project asset rather than a scene component. You create one per project, keep it in your project files, and reference it from scene GameObjects (your bootstrapper, conversation runners, UI, etc.) via serialized fields.
 
 **Create via**: Right-click in the Project window → **Create → ConvoCore → Runtime → Save Manager**
 
@@ -49,7 +49,7 @@ public class GameBootstrapper : MonoBehaviour
 ```
 
 :::warning
-`Initialize()` must be called before any `Save()`, `Load()`, `HasSave()`, or `DeleteSave()` call. Invoking those methods on an uninitialized manager logs a warning and returns without taking action. Ensure your bootstrapper's `Awake()` runs before any scene objects that call `PlayConversation()` - use Unity's Script Execution Order settings if needed.
+`Initialize()` must be called before any `Save()`, `Load()`, `HasSave()`, or `DeleteSave()` call. Invoking those methods on an uninitialized manager logs a warning and returns without taking action. Ensure your bootstrapper's `Awake()` runs before any scene objects that call `PlayConversation()`; use Unity's Script Execution Order settings if needed.
 :::
 
 ---

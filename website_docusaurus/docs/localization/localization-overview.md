@@ -32,15 +32,15 @@ When the conversation runner reaches this line, it calls `ConvoCoreDialogueLocal
 
 ## The Fallback Chain
 
-If the active language is not present in a line's `LocalizedDialogue` map, the handler does not fail - it walks a fallback chain and returns the best available translation:
+If the active language is not present in a line's `LocalizedDialogue` map, the handler does not fail; it walks a fallback chain and returns the best available translation:
 
 1. **Exact match** - looks for the requested language code (case-insensitive). `"FR"` matches `"fr"`, `"Fr"`, and `"FR"` equally.
 2. **Base locale** - if the requested code is a regional variant (e.g., `"fr-CA"`), strips the region suffix and tries the base (`"fr"`).
-3. **English fallback** - tries `"en"` (case-insensitive) as a universal fallback.
-4. **Base of English** - strips any region suffix from the English code (rarely needed).
-5. **First available key** - uses whichever key is first in the map.
+3. **English fallback**: tries `"en"` (case-insensitive) as a universal fallback.
+4. **Base of English**: strips any region suffix from the English code (rarely needed).
+5. **First available key**: uses whichever key is first in the map.
 
-The result also carries an `IsFallback` flag and an `ErrorMessage` string. When `IsFallback` is `true`, ConvoCore logs a warning to the console so you can track missing translations during development. The text still displays - the conversation does not break.
+The result also carries an `IsFallback` flag and an `ErrorMessage` string. When `IsFallback` is `true`, ConvoCore logs a warning to the console so you can track missing translations during development. The text still displays; the conversation does not break.
 
 :::tip
 Include an `EN` entry in every dialogue line. It serves as the catch-all fallback for any language whose translation is incomplete. If a line has only an `EN` key, all non-English players will see the English text rather than a missing-translation error.
@@ -97,7 +97,7 @@ If `SupportedLanguages` is empty when initialization runs, `"EN"` is added autom
 
 ## Language Codes
 
-Language codes in ConvoCore are arbitrary strings - the system has no built-in list of valid codes. A few rules apply:
+Language codes in ConvoCore are arbitrary strings with no built-in list of valid values. A few rules apply:
 
 - Matching is **case-insensitive**: `"EN"`, `"en"`, and `"En"` all refer to the same language.
 - `SetLanguage` performs a **canonical lookup** against the Supported Languages list in `ConvoCoreSettings`. If you call `SetLanguage("fr")` and the list contains `"FR"`, the active language is stored as `"FR"` (the canonical form from the list).
@@ -109,7 +109,7 @@ For interoperability and readability, use ISO 639-1 two-letter codes (`EN`, `FR`
 
 ## Changing Language at Runtime
 
-Call `SetLanguage` at any point - before a conversation, during a conversation, or from a settings menu.
+Call `SetLanguage` at any point: before a conversation, during a conversation, or from a settings menu.
 
 ```csharp
 // Switch to French.
@@ -135,7 +135,7 @@ This re-localizes and re-renders the current dialogue line in the new language w
 
 Choice options (`ChoiceOption.Labels`) use the same `List<LocalizedDialogue>` structure as dialogue lines. Each choice label is a list of `Language`/`Text` pairs. The same fallback chain applies. When displaying a choice prompt, ConvoCore resolves each option's label using the active language.
 
-Manage choice labels in the Conversation Data inspector - they are not part of the raw YAML format because choices are configured as ScriptableObject data on the `ConvoCoreConversationData` asset after YAML import.
+Manage choice labels in the Conversation Data inspector, as they are not part of the raw YAML format; choices are configured as ScriptableObject data on the `ConvoCoreConversationData` asset after YAML import.
 
 ---
 
@@ -154,7 +154,7 @@ Manage choice labels in the Conversation Data inspector - they are not part of t
 The runner logs a `Debug.LogWarning` when `IsFallback` is `true` and a `Debug.LogError` when `Success` is `false`. Use these logs during development to audit incomplete translation coverage.
 
 :::info[For Advanced Users]
-`ConvoCoreDialogueLocalizationHandler` is instantiated once per `ConvoCore` MonoBehaviour during `Awake`, with the `ConvoCoreLanguageManager.Instance` passed as a constructor argument. The handler holds no state of its own - it reads `CurrentLanguage` from the manager on every call. This means language changes take effect on the very next line that is resolved, with no additional wiring required.
+`ConvoCoreDialogueLocalizationHandler` is instantiated once per `ConvoCore` MonoBehaviour during `Awake`, with the `ConvoCoreLanguageManager.Instance` passed as a constructor argument. The handler holds no state of its own; it reads `CurrentLanguage` from the manager on every call. This means language changes take effect on the very next line that is resolved, with no additional wiring required.
 
 If you want to replace the localization strategy entirely (for example, to integrate with Unity Localization or a custom translation backend), instantiate a custom handler that wraps your backend and call it in place of the built-in one. Because `ConvoCoreDialogueLocalizationHandler` is not sealed, you can also subclass it.
 :::

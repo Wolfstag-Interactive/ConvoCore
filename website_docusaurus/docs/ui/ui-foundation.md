@@ -7,7 +7,7 @@ title: UI Foundation
 
 ## What is ConvoCoreUIFoundation?
 
-`ConvoCoreUIFoundation` is a concrete `MonoBehaviour` that defines the contract between the ConvoCore runner and your dialogue display. It is the bridge: ConvoCore calls methods on this class to say what should be shown, and your subclass overrides those methods to decide how to show it. All methods have default no-op implementations - override only what your UI needs.
+`ConvoCoreUIFoundation` is a concrete `MonoBehaviour` that defines the contract between the ConvoCore runner and your dialogue display. It is the bridge: ConvoCore calls methods on this class to say what should be shown, and your subclass overrides those methods to decide how to show it. All methods have default no-op implementations; override only what your UI needs.
 
 Attach a subclass of `ConvoCoreUIFoundation` to any GameObject in the scene, then drag that GameObject into the **Conversation UI** field on the `ConvoCore` component.
 
@@ -65,7 +65,7 @@ public class ConvoCoreUIFoundation : MonoBehaviour
 ### WaitForUserInput
 
 :::warning
-`WaitForUserInput()` **must loop and yield**. It must not return immediately. If it returns on the first frame, every line in the conversation will advance instantaneously before the player can read anything - the conversation will appear to complete in a single frame with no visible text.
+`WaitForUserInput()` **must loop and yield**. It must not return immediately. If it returns on the first frame, every line in the conversation will advance instantaneously before the player can read anything; the conversation will appear to complete in a single frame with no visible text.
 
 The correct pattern:
 
@@ -142,7 +142,7 @@ private void Update()
 ```
 
 :::tip
-Always use `RaiseAdvance()` (and `RaiseReverse()`) rather than invoking `RequestAdvance` or `RequestReverse` directly. The protected helpers are the intended API - they keep your subclass insulated from the event signature and make it immediately clear to readers that this is a runner signal, not an arbitrary event call.
+Always use `RaiseAdvance()` (and `RaiseReverse()`) rather than invoking `RequestAdvance` or `RequestReverse` directly. The protected helpers are the intended API; they keep your subclass insulated from the event signature and make it immediately clear to readers that this is a runner signal, not an arbitrary event call.
 :::
 
 ---
@@ -153,7 +153,7 @@ Always use `RaiseAdvance()` (and `RaiseReverse()`) rather than invoking `Request
 public virtual int MaxVisibleCharacterSlots => 3;
 ```
 
-Returns `3` by default - one primary speaker and up to two secondary characters visible simultaneously. Override this property if your UI supports a different number of simultaneous character portraits.
+Returns `3` by default: one primary speaker and up to two secondary characters visible simultaneously. Override this property if your UI supports a different number of simultaneous character portraits.
 
 ConvoCore uses this value to determine how many `ConvoCoreCharacterDisplayBase` components to manage. If your UI is speaker-only (no secondary characters shown), return `1`.
 
@@ -162,7 +162,7 @@ ConvoCore uses this value to determine how many `ConvoCoreCharacterDisplayBase` 
 ## ConvoCoreCharacterDisplayBase
 
 :::info[For Advanced Users]
-`ConvoCoreCharacterDisplayBase` is an abstract `MonoBehaviour` companion to `ConvoCoreUIFoundation`. It represents the visual panel for one character slot - the portrait area, model view, or sprite display for a single character.
+`ConvoCoreCharacterDisplayBase` is an abstract `MonoBehaviour` companion to `ConvoCoreUIFoundation`. It represents the visual panel for one character slot: the portrait area, model view, or sprite display for a single character.
 
 Your UI can have up to `MaxVisibleCharacterSlots` of these components. When the runner applies an expression for a line, it calls `ApplyExpression()` on the relevant `CharacterRepresentationBase` asset, passing the matching `ConvoCoreCharacterDisplayBase` component so the representation can update it directly.
 
@@ -192,7 +192,7 @@ public class MyCharacterDisplay : ConvoCoreCharacterDisplayBase
 }
 ```
 
-You do not need to use `ConvoCoreCharacterDisplayBase` - it is a convenience layer, not a requirement. If your UI manages character visuals independently and you handle `UpdateDialogueUI()` directly, you can skip it entirely.
+You do not need to use `ConvoCoreCharacterDisplayBase`; it is a convenience layer, not a requirement. If your UI manages character visuals independently and you handle `UpdateDialogueUI()` directly, you can skip it entirely.
 :::
 
 ---

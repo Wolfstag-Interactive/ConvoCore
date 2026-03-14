@@ -134,7 +134,7 @@ public override IEnumerator ExecuteOnReversedLineAction()
 ```
 
 :::warning
-The base implementation of `ExecuteOnReversedLineAction` in `BaseDialogueLineAction` does nothing - it yields once and returns. If you do not override it, reversal silently does nothing. For any action that modifies visible scene state (colors, positions, active states, spawned objects), always implement this method so the scene remains consistent when the player reverses.
+The base implementation of `ExecuteOnReversedLineAction` in `BaseDialogueLineAction` does nothing; it yields once and returns. If you do not override it, reversal silently does nothing. For any action that modifies visible scene state (colors, positions, active states, spawned objects), always implement this method so the scene remains consistent when the player reverses.
 :::
 
 If your action has no state to undo (logging, triggering analytics, etc.), just `yield return null` and move on.
@@ -168,7 +168,7 @@ Once your script compiles, right-click in the Project panel:
 
 This creates an asset instance. Select it to configure the serialized fields in the inspector (`_targetObject`, `_flashColor`, `_holdDuration`). Assign the asset to a dialogue line's **Actions Before Dialogue Line** or **Actions After Dialogue Line** list.
 
-You can create multiple asset instances from the same script - each is independently configured. One `FlashObjectColorAction` might flash red for a combat scene; another might flash yellow for a warning.
+You can create multiple asset instances from the same script; each is independently configured. One `FlashObjectColorAction` might flash red for a combat scene; another might flash yellow for a warning.
 
 ---
 
@@ -180,7 +180,7 @@ At runtime, ConvoCore calls `ScriptableObject.Instantiate()` on each action asse
 - If two dialogue lines reference the same action asset, each gets its own instance and they do not interfere with each other.
 - After the conversation ends, the instances are garbage-collected. The asset is unchanged and ready for the next conversation.
 
-This is why it is safe to store instance-only state in plain (non-serialized) fields - they exist only during execution.
+This is why it is safe to store instance-only state in plain (non-serialized) fields: they exist only during execution.
 
 ---
 
@@ -205,10 +205,10 @@ public class MyExpressionAction : BaseExpressionAction
 }
 ```
 
-`BaseExpressionAction` is **not** a coroutine - `ExecuteAction` is a synchronous void method. It receives an `ExpressionActionContext` struct that carries the character representation, the expression ID, the conversation data, and the runner itself. Use this when you need to react to expression changes (updating sprite renderers, blendshapes, animation states) rather than doing time-based work tied to a specific line.
+`BaseExpressionAction` is **not** a coroutine; `ExecuteAction` is a synchronous void method. It receives an `ExpressionActionContext` struct that carries the character representation, the expression ID, the conversation data, and the runner itself. Use this when you need to react to expression changes (updating sprite renderers, blendshapes, animation states) rather than doing time-based work tied to a specific line.
 
 :::info[For Advanced Users]
-`BaseExpressionAction` and `BaseDialogueLineAction` are entirely separate hierarchies. They are both `ScriptableObject` subclasses but they are invoked by different parts of the runtime - expression actions are called by the expression resolution system when a character's displayed expression changes, while line actions are called by the conversation runner for each line. You cannot assign a `BaseExpressionAction` to a line's action list, or a `BaseDialogueLineAction` to an expression slot.
+`BaseExpressionAction` and `BaseDialogueLineAction` are entirely separate hierarchies. They are both `ScriptableObject` subclasses but they are invoked by different parts of the runtime: expression actions are called by the expression resolution system when a character's displayed expression changes, while line actions are called by the conversation runner for each line. You cannot assign a `BaseExpressionAction` to a line's action list, or a `BaseDialogueLineAction` to an expression slot.
 :::
 
 ---

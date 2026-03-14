@@ -75,7 +75,7 @@ A `LineID` is a stable, unique identifier for each dialogue line within its conv
     EN: "Halt! Who goes there?"
 ```
 
-Once a LineID has been generated for a line, it is stable for the lifetime of that line. You can freely add new lines, remove other lines, or reorder the conversation - the existing IDs do not change, so saved progress remains valid.
+Once a LineID has been generated for a line, it is stable for the lifetime of that line. You can freely add new lines, remove other lines, or reorder the conversation. The existing IDs do not change, so saved progress remains valid.
 
 :::warning
 Do not edit or delete a LineID that ConvoCore has written. Changing an ID is equivalent to removing the old line and adding a new one - any save data referencing the old ID will no longer match and the player's progress for that line will be lost. Treat auto-generated LineIDs as read-only.

@@ -13,7 +13,7 @@ ConvoCore ships with six ready-to-use dialogue actions in the `SampleActions` fo
 
 **Create:** Right-click → Create → ConvoCore → Actions → Enable Or Disable GameObject
 
-Activates or deactivates a GameObject in the scene when the dialogue line is reached. The action completes in a single frame - there is no animation.
+Activates or deactivates a GameObject in the scene when the dialogue line is reached. The action completes in a single frame; there is no animation.
 
 | Field | Type | Description |
 |---|---|---|
@@ -21,7 +21,7 @@ Activates or deactivates a GameObject in the scene when the dialogue line is rea
 | **Enable** | `bool` | `true` to activate the object, `false` to deactivate it. |
 | **Continue On Error** | `bool` | When `true`, logs a warning and continues if the target cannot be found. When `false` (default), logs an error and halts the action. |
 
-**Reversal:** `ExecuteOnReversedLineAction` is not overridden - the base implementation does nothing. If you need to restore the previous state on reversal, create a second action with the opposite `Enable` value and assign it manually, or write a custom subclass.
+**Reversal:** `ExecuteOnReversedLineAction` is not overridden; the base implementation does nothing. If you need to restore the previous state on reversal, create a second action with the opposite `Enable` value and assign it manually, or write a custom subclass.
 
 **Practical uses:** showing or hiding UI panels, activating trigger zones, toggling scene decorations that appear mid-conversation.
 
@@ -50,7 +50,7 @@ Fades the alpha of a `SpriteRenderer` over a configurable duration using an `Ani
 | **Disable GameObject On Fade Out** | `bool` | When `true`, deactivates the GameObject after a FadeOut that ends at alpha 0. |
 | **Continue On Error** | `bool` | When `true`, logs a warning and exits if the target or `SpriteRenderer` cannot be found. |
 
-**Reversal:** `ExecuteOnReversedLineAction` is not overridden - no automatic fade-back occurs on reversal. Add a second action with the opposite `FadeType` assigned to handle the reversed path, or set `RunOnlyOncePerConversation` if the fade should only happen once.
+**Reversal:** `ExecuteOnReversedLineAction` is not overridden; no automatic fade-back occurs on reversal. Add a second action with the opposite `FadeType` assigned to handle the reversed path, or set `RunOnlyOncePerConversation` if the fade should only happen once.
 
 **Practical uses:** fading character portraits in and out, revealing scene elements as narration plays, transitioning between dialogue beats.
 
@@ -72,7 +72,7 @@ Spawns a prefab into the scene when the line is reached. The instance is placed 
 | **Position** | `Vector3` | World position for the instantiated object. |
 | **Rotation** | `Vector3` | Euler rotation applied as `Quaternion.Euler(Rotation)`. |
 
-**Reversal:** `ExecuteOnReversedLineAction` is not overridden - the spawned instance is not automatically destroyed on reversal. For scenarios where you need reversal support, use `RunOnlyOncePerConversation` to prevent double-spawning, or write a custom subclass that tracks the spawned reference and destroys it in the reversed action.
+**Reversal:** `ExecuteOnReversedLineAction` is not overridden; the spawned instance is not automatically destroyed on reversal. For scenarios where you need reversal support, use `RunOnlyOncePerConversation` to prevent double-spawning, or write a custom subclass that tracks the spawned reference and destroys it in the reversed action.
 
 **Practical uses:** spawning an NPC mid-conversation, placing a quest item in the world, triggering a particle system prefab.
 
@@ -102,7 +102,7 @@ Finds a `Transform` in the scene by name and sets its world position, rotation, 
 :::warning
 `GameObject.Find()` searches the entire scene hierarchy by name every time this action runs. In scenes with large hierarchies, this has a non-trivial cost. For performance-sensitive dialogue, prefer a custom action that holds a direct `Transform` reference instead of a name string.
 
-Also note: if more than one GameObject in the scene shares the same name, `GameObject.Find()` returns the first match - which may not be the intended target.
+Also note: if more than one GameObject in the scene shares the same name, `GameObject.Find()` returns the first match, which may not be the intended target.
 :::
 
 ---
@@ -111,7 +111,7 @@ Also note: if more than one GameObject in the scene shares the same name, `GameO
 
 **Create:** Right-click → Create → ConvoCore → Actions → PlayAudioClip
 
-Plays an `AudioClip` at a world position using Unity's `AudioSource.PlayClipAtPoint`. The action **waits for the full clip to finish** before the runner proceeds - the clip's duration determines how long the action takes.
+Plays an `AudioClip` at a world position using Unity's `AudioSource.PlayClipAtPoint`. The action **waits for the full clip to finish** before the runner proceeds; the clip's duration determines how long the action takes.
 
 | Field | Type | Description |
 |---|---|---|
@@ -121,7 +121,7 @@ Plays an `AudioClip` at a world position using Unity's `AudioSource.PlayClipAtPo
 
 **Reversal:** `ExecuteOnReversedLineAction` is not overridden. Audio cannot be un-played. Reversal does nothing.
 
-**Practical uses:** one-shot sound effects that should block the conversation until complete - a door slamming, an explosion, a short musical sting.
+**Practical uses:** one-shot sound effects that should block the conversation until complete, such as a door slamming, an explosion, or a short musical sting.
 
 :::note
 This action uses `AudioSource.PlayClipAtPoint`, which creates a temporary `AudioSource` at the specified world position for the duration of the clip. It is not the right choice for dialogue voiceover that should align with line display timing.
@@ -135,15 +135,15 @@ For character voiceover that plays alongside a displayed line, assign the `Audio
 
 **Create:** Right-click → Create → ConvoCore → Actions → Action Group
 
-A composite action that runs a list of other `BaseDialogueLineAction` assets in sequence. The group itself is a single action asset - assign it to a line's action list and it executes all its children one after another, each waiting for the previous to complete.
+A composite action that runs a list of other `BaseDialogueLineAction` assets in sequence. The group itself is a single action asset; assign it to a line's action list and it executes all its children one after another, each waiting for the previous to complete.
 
 | Field | Type | Description |
 |---|---|---|
 | **Action Group** | `List<BaseDialogueLineAction>` | The ordered list of child actions to run. |
 
-**Reversal:** `ExecuteOnReversedLineAction` is not overridden on the built-in group. Reversal of child actions is not automatic - each child's own reversal behavior applies only when the runner reverses through the individual actions on the line stack.
+**Reversal:** `ExecuteOnReversedLineAction` is not overridden on the built-in group. Reversal of child actions is not automatic; each child's own reversal behavior applies only when the runner reverses through the individual actions on the line stack.
 
-**Practical uses:** grouping a set of actions that always execute together as a logical unit - for example, an "intro sequence" that enables a UI panel, fades in a character, and plays a sound effect.
+**Practical uses:** grouping a set of actions that always execute together as a logical unit, for example an "intro sequence" that enables a UI panel, fades in a character, and plays a sound effect.
 
 :::tip
 Use action groups when a single dialogue line triggers three or more actions. A group named `"TavernIntro"` that contains an enable action, a fade, and an audio cue is far easier to maintain in the inspector than six individual entries in the line's action list. Groups also make it easy to reuse the same sequence across multiple conversations by sharing the single group asset.

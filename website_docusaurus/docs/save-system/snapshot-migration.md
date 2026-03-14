@@ -5,7 +5,7 @@ title: Snapshot Migration
 
 # Snapshot Migration
 
-As you develop and ship updates to your game, the structure of your save data may change - new fields added, variables renamed, conversation GUIDs regenerated, or scope assignments altered. `ConvoCoreSnapshotMigrator` ensures that save files created with an older version of the schema can still be loaded correctly after an update.
+As you develop and ship updates to your game, the structure of your save data may change: new fields added, variables renamed, conversation GUIDs regenerated, or scope assignments altered. `ConvoCoreSnapshotMigrator` ensures that save files created with an older version of the schema can still be loaded correctly after an update.
 
 ---
 
@@ -24,7 +24,7 @@ Both `ConvoCoreGameSnapshot` and `ConvoCoreSettingsSnapshot` carry a `SchemaVers
 The current schema version is `"1.0"`.
 
 :::note
-For the majority of projects, the migrator requires no configuration whatsoever. It is infrastructure for forward-compatibility - a safety net that costs nothing until you need it. You only need to register migration steps if you deliberately change the shape of the save schema between shipped versions.
+For the majority of projects, the migrator requires no configuration whatsoever. It is infrastructure for forward-compatibility, a safety net that costs nothing until you need it. You only need to register migration steps if you deliberately change the shape of the save schema between shipped versions.
 :::
 
 ---
@@ -189,4 +189,4 @@ If `ConvoCoreSaveManager.Load()` reads a snapshot whose `SchemaVersion` is great
 The save was created with a newer version of the game. Some data may not be loaded correctly.
 ```
 
-This typically indicates a player is running an older build after saving with a newer one. There is no automatic fix for downgrade scenarios - handle this case by displaying a warning to the player or preventing the load.
+This typically indicates a player is running an older build after saving with a newer one. There is no automatic fix for downgrade scenarios; handle this case by displaying a warning to the player or preventing the load.

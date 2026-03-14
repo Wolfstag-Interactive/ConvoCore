@@ -10,7 +10,7 @@ title: Dialogue History
 `ConvoCoreDialogueHistoryUI` is an optional component that maintains a rolling log of dialogue lines as a conversation plays. It pairs a **renderer** (which formats each entry as text or a prefab) with an **output** (which displays the formatted result on screen). Use it to build a chat-window style UI, an in-game transcript, a visual-novel message log, or an accessibility replay feature.
 
 :::tip
-Dialogue history is completely optional. Add it only if your UI design requires a scrollable transcript. Most standard dialogue boxes - name + text + portrait - do not need it.
+Dialogue history is completely optional. Add it only if your UI design requires a scrollable transcript. Most standard dialogue boxes (name, text, and portrait) do not need it.
 :::
 
 ---
@@ -151,7 +151,7 @@ protected override void InitializeUI(ConvoCore runner)
 `Clear()` removes all existing entries from the output and resets the internal list. For `TMPDialogueHistoryOutput`, it sets the `TMP_Text` text to empty. For `PrefabDialogueHistoryOutput`, it destroys all child GameObjects under the content transform.
 
 :::note
-Dialogue history tracks **display events** - each call to `AddLine()` appends an entry. It is completely independent of the save system. The save system tracks line progress using `LineID` values for restore purposes; clearing the history UI has no effect on save state, and loading a saved conversation does not automatically rebuild the history log. If you need the history to reflect replayed lines after a restore, call `AddLine()` for each replayed line in your restore logic.
+Dialogue history tracks **display events**: each call to `AddLine()` appends an entry. It is completely independent of the save system. The save system tracks line progress using `LineID` values for restore purposes; clearing the history UI has no effect on save state, and loading a saved conversation does not automatically rebuild the history log. If you need the history to reflect replayed lines after a restore, call `AddLine()` for each replayed line in your restore logic.
 :::
 
 ---
@@ -177,7 +177,7 @@ protected override void UpdateDialogueUI(...)
 ```
 
 :::warning
-`Canvas.ForceUpdateCanvases()` forces an immediate layout rebuild, which can be expensive if called every frame. Calling it only inside `UpdateDialogueUI()` - once per line - is acceptable. Do not call it in `Update()`.
+`Canvas.ForceUpdateCanvases()` forces an immediate layout rebuild, which can be expensive if called every frame. Calling it only inside `UpdateDialogueUI()` (once per line) is acceptable. Do not call it in `Update()`.
 :::
 
 ---

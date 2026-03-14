@@ -5,7 +5,7 @@ title: Conversation Container
 
 # Conversation Container
 
-A `ConversationContainer` is a ScriptableObject that groups multiple conversations and defines a strategy for selecting which one to play. Rather than hard-coding a single conversation into a runner, you can point the runner at a container and let it decide at runtime - cycling through a pool of NPC greetings, playing a story sequence in order, or choosing dialogue based on weighted probability.
+A `ConversationContainer` is a ScriptableObject that groups multiple conversations and defines a strategy for selecting which one to play. Rather than hard-coding a single conversation into a runner, you can point the runner at a container and let it decide at runtime, cycling through a pool of NPC greetings, playing a story sequence in order, or choosing dialogue based on weighted probability.
 
 ---
 
@@ -23,7 +23,7 @@ Add `ConvoCoreConversationData` assets to the **Entries** list and configure the
 
 ### Playlist
 
-Conversations play sequentially - first entry, then second, then third, and so on. When the last conversation ends, the container either loops back to the first entry (if **Loop** is enabled) or stops.
+Conversations play sequentially: first entry, then second, then third, and so on. When the last conversation ends, the container either loops back to the first entry (if **Loop** is enabled) or stops.
 
 **Use for:** Cutscenes, tutorial sequences, multi-part story beats, any situation where order matters and every conversation must play.
 
@@ -62,7 +62,7 @@ Each entry in a container's list exposes the following fields:
 | **Delay After End Seconds** | (Playlist mode only.) How many seconds to wait after this conversation ends before the next one begins. Set to `0` for no delay. |
 | **Weight** | (WeightedRandom strategy only.) The relative weight of this entry. A weight of `2` makes this entry twice as likely to be chosen as an entry with weight `1`. |
 | **Start Line Index** | When this entry is jumped to via a branch, the conversation starts at this line index rather than line 0. Set to `0` for the default start. |
-| **Tags** | Optional string tags you can inspect from custom logic or condition checks. ConvoCore does not use these internally - they are provided for your own systems. |
+| **Tags** | Optional string tags you can inspect from custom logic or condition checks. ConvoCore does not use these internally; they are provided for your own systems. |
 
 :::tip
 Always assign meaningful **Alias** names to your entries (e.g., `"confrontation"`, `"peaceful_resolution"`, `"greeting_day1"`). These are the strings you reference in YAML choice targets and branching lines. Blank or generic aliases make branching harder to maintain as your project grows.
@@ -74,8 +74,8 @@ Always assign meaningful **Alias** names to your entries (e.g., `"confrontation"
 
 When a dialogue line's `LineContinuationMode` is set to `ContainerBranch`, ConvoCore needs two pieces of information:
 
-1. **Target Container** - the `ConversationContainer` asset to jump into.
-2. **Target Alias Or Name** - a string that must match the **Alias** of an entry in that container.
+1. **Target Container**: the `ConversationContainer` asset to jump into.
+2. **Target Alias Or Name**: a string that must match the **Alias** of an entry in that container.
 
 At runtime, the container resolves the alias to the corresponding `ConvoCoreConversationData` and starts it at the entry's configured `Start Line Index`.
 

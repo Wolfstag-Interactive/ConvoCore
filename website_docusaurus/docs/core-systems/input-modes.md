@@ -5,7 +5,7 @@ title: Input Modes
 
 # Input Modes
 
-The **Input** field on the ConvoCore component determines what conversation (or group of conversations) plays when you call `PlayConversation()` with no arguments. Instead of a fixed reference to one conversation, this field accepts an `IConvoInput` implementation - a small object that resolves a conversation at the moment `PlayConversation()` is called.
+The **Input** field on the ConvoCore component determines what conversation (or group of conversations) plays when you call `PlayConversation()` with no arguments. Instead of a fixed reference to one conversation, this field accepts an `IConvoInput` implementation, a small object that resolves a conversation at the moment `PlayConversation()` is called.
 
 ---
 
@@ -100,7 +100,7 @@ _runner.StartConversation();
 ---
 
 :::info[For Advanced Users]
-You can implement `IConvoInput` yourself to create fully custom conversation selection logic - procedural selection driven by game state, condition checks, external databases, probability tables, or anything else.
+You can implement `IConvoInput` yourself to create fully custom conversation selection logic: procedural selection driven by game state, condition checks, external databases, probability tables, or anything else.
 
 The interface has one method:
 

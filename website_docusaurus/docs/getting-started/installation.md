@@ -75,7 +75,7 @@ Assets/Resources/ConvoCoreSettings.asset
 The Inspector will open showing the settings asset.
 
 :::note
-**What is a ScriptableObject?** A ScriptableObject is a reusable data container that Unity stores as an asset file in your project - like a config file you can edit in the Inspector and share across multiple scenes. `ConvoCoreSettings` is a ScriptableObject that holds global configuration for the framework (supported languages, default fallback behavior, etc.). You edit it once and it applies everywhere.
+**What is a ScriptableObject?** A ScriptableObject is a reusable data container that Unity stores as an asset file in your project, like a config file you can edit in the Inspector and share across multiple scenes. `ConvoCoreSettings` is a ScriptableObject that holds global configuration for the framework (supported languages, default fallback behavior, etc.). You edit it once and it applies everywhere.
 :::
 
 **Step 2: Add a supported language**

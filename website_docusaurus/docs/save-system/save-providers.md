@@ -67,7 +67,7 @@ namespace WolfstagInteractive.ConvoCore.SaveSystem
 }
 ```
 
-All six methods are required. There is no partial implementation base class - implement all methods, even if some are empty stubs for your backend (e.g. a read-only cloud provider might leave `Delete` as a no-operation that logs a warning).
+All six methods are required. There is no partial implementation base class; implement all methods, even if some are empty stubs for your backend (e.g. a read-only cloud provider might leave `Delete` as a no-operation that logs a warning).
 
 ---
 

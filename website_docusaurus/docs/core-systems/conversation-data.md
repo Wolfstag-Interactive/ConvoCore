@@ -12,7 +12,7 @@ title: Conversation Data
 ## What Is a ScriptableObject?
 
 :::note
-ScriptableObjects are Unity's way of storing data as project assets - like a config file you can edit in the inspector and reference from multiple scenes. A `ConvoCoreConversationData` asset lives in your project folders (not embedded in a scene), so it persists across scene loads and can be shared between multiple ConvoCore components.
+ScriptableObjects are Unity's way of storing data as project assets, like a config file you can edit in the inspector and reference from multiple scenes. A `ConvoCoreConversationData` asset lives in your project folders (not embedded in a scene), so it persists across scene loads and can be shared between multiple ConvoCore components.
 :::
 
 ---
@@ -50,9 +50,9 @@ Never manually edit the **Dialogue Lines** list in the inspector. It is auto-gen
 
 ## Conversation GUID
 
-Every `ConvoCoreConversationData` asset has a **Conversation GUID** - a stable, unique identifier that is automatically generated the first time the asset is validated (in `OnValidate`). The GUID is stored in the `_conversationGuid` serialized field and exposed via the `ConversationGuid` property.
+Every `ConvoCoreConversationData` asset has a **Conversation GUID**, a stable, unique identifier that is automatically generated the first time the asset is validated (in `OnValidate`). The GUID is stored in the `_conversationGuid` serialized field and exposed via the `ConversationGuid` property.
 
-The GUID is used as the key for all save data. The save system stores conversation progress and visited-line records under this GUID - not under the asset name or file path. This means you can rename the asset or move it in your project without breaking existing saves.
+The GUID is used as the key for all save data. The save system stores conversation progress and visited-line records under this GUID, not under the asset name or file path. This means you can rename the asset or move it in your project without breaking existing saves.
 
 ### Viewing the GUID
 
@@ -63,9 +63,9 @@ The Conversation GUID is displayed in the inspector on the asset. You do not nee
 The GUID is generated once, the first time Unity calls `OnValidate` on the asset (which happens on import, on first selection in the Project panel, or when you force a reimport). After that it never changes unless you explicitly regenerate it.
 
 :::warning
-Calling **Regenerate Guid** assigns a brand new GUID to the asset. This **breaks all existing save data** for this conversation - any saved progress, visited lines, or variable snapshots stored under the old GUID will no longer be found.
+Calling **Regenerate Guid** assigns a brand new GUID to the asset. This **breaks all existing save data** for this conversation: any saved progress, visited lines, or variable snapshots stored under the old GUID will no longer be found.
 
-Only regenerate the GUID if you intentionally want to invalidate old saves - for example, after making dialogue changes so significant that restoring old save states would be incorrect or confusing. A context menu item on the asset exposes this action.
+Only regenerate the GUID if you intentionally want to invalidate old saves, for example after making dialogue changes so significant that restoring old save states would be incorrect or confusing. A context menu item on the asset exposes this action.
 :::
 
 ---
@@ -87,10 +87,10 @@ Right-click the asset in the Project panel to access these actions:
 
 When `ConvoCore.PlayConversation(data)` is called, it invokes `data.InitializeDialogueData()`, which performs the following steps:
 
-1. **Load YAML** - The asset's YAML TextAsset (or file path) is passed to `ConvoCoreYamlLoader`, which provides the raw YAML string.
-2. **Parse** - `ConvoCoreYamlParser` parses the YAML string into an intermediate representation of dialogue lines.
-3. **Match and update** - The parsed lines are matched to the existing `DialogueLines` list by `LineID`. If a line's `LineID` matches, its localized text and expression data are updated in-place. If no `LineID` is present, lines are matched by index.
-4. **Ready** - The `DialogueLines` list is now up to date for the current language and YAML state, and the runner begins iteration.
+1. **Load YAML**: The asset's YAML TextAsset (or file path) is passed to `ConvoCoreYamlLoader`, which provides the raw YAML string.
+2. **Parse**: `ConvoCoreYamlParser` parses the YAML string into an intermediate representation of dialogue lines.
+3. **Match and update**: The parsed lines are matched to the existing `DialogueLines` list by `LineID`. If a line's `LineID` matches, its localized text and expression data are updated in-place. If no `LineID` is present, lines are matched by index.
+4. **Ready**: The `DialogueLines` list is now up to date for the current language and YAML state, and the runner begins iteration.
 
 This two-step design (pre-compiled ScriptableObject + runtime YAML refresh) means the inspector-visible `DialogueLines` list serves as a stable reference that the editor and save system can inspect at any time, while the YAML remains the authoritative source of text content.
 
@@ -98,6 +98,6 @@ This two-step design (pre-compiled ScriptableObject + runtime YAML refresh) mean
 
 ## Relationship to Other Assets
 
-- **ConversationContainer** - A container can hold multiple `ConvoCoreConversationData` assets and choose between them at runtime. See [Conversation Container](conversation-container).
+- **ConversationContainer**: A container can hold multiple `ConvoCoreConversationData` assets and choose between them at runtime. See [Conversation Container](conversation-container).
 - **Character Profiles** - Each participant listed in the YAML must have a corresponding `ConvoCoreCharacterProfileBaseData` entry in the **Conversation Participant Profiles** list.
 - **Dialogue Actions** - Actions are referenced per-line inside the `DialogueLineInfo` objects within `DialogueLines`. They are ScriptableObject assets assigned via the inspector or YAML directives.

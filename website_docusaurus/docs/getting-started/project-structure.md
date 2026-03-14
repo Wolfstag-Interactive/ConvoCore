@@ -39,7 +39,7 @@ Unity editor tools that are **not** included in game builds. These are the scrip
 
 ### `Samples~/`
 
-Optional sample scenes, prefabs, and assets. The tilde (`~`) in the folder name is a Unity convention that tells the importer to **skip this folder by default** - the contents are not added to your project automatically.
+Optional sample scenes, prefabs, and assets. The tilde (`~`) in the folder name is a Unity convention that tells the importer to **skip this folder by default**; the contents are not added to your project automatically.
 
 :::note
 The tilde suffix (`Samples~`) tells Unity not to auto-import the folder. To import a sample, open **Window → Package Manager**, find ConvoCore in the list, click on it, and go to the **Samples** tab. Each sample has an **Import** button. Importing copies the sample files into `Assets/Samples/ConvoCore/<version>/` in your project, where you can freely edit them.
@@ -67,7 +67,7 @@ Place your `.yml` files anywhere in your `Assets/` folder. Two common convention
 - `Assets/Resources/Dialogue/` - required if you want to load YAML files at runtime using `Resources.Load` (without Addressables)
 
 :::tip
-If you have many conversations, consider organizing them by chapter, level, or character: `Assets/Dialogue/Chapter1/`, `Assets/Dialogue/NPCs/`, etc. YAML files are just text assets - Unity treats them the same regardless of where they live.
+If you have many conversations, consider organizing them by chapter, level, or character: `Assets/Dialogue/Chapter1/`, `Assets/Dialogue/NPCs/`, etc. YAML files are just text assets; Unity treats them the same regardless of where they live.
 :::
 
 ### Character Profile assets
@@ -108,7 +108,7 @@ ConvoCore ships with two **assembly definition** (`.asmdef`) files that control 
 :::note
 **What are assembly definitions?** Assembly definitions group scripts into separate compilation units. Think of each assembly as its own mini-DLL: it compiles independently from the rest of your project, and you control exactly which other assemblies it can reference. The main practical benefits are faster compile times (only changed assemblies recompile) and clear boundaries between editor-only code and runtime code.
 
-Most small projects never need to think about them - Unity handles it automatically. You only need to act if you write **custom scripts that reference ConvoCore types** and get a "type not found" or "unknown namespace" error, which usually means your script's assembly is missing a reference to `WolfstagInteractive.ConvoCore`.
+Most small projects never need to think about them; Unity handles it automatically. You only need to act if you write **custom scripts that reference ConvoCore types** and get a "type not found" or "unknown namespace" error, which usually means your script's assembly is missing a reference to `WolfstagInteractive.ConvoCore`.
 
 To add the reference: select your own `.asmdef` asset → Inspector → **Assembly Definition References** → click **+** → pick `WolfstagInteractive.ConvoCore`.
 :::
@@ -129,7 +129,7 @@ SaveSystem  →  ConvoCore  (allowed)
 ConvoCore   →  SaveSystem (never - would create a circular dependency)
 ```
 
-If you are building custom systems that need to communicate with both the core runner and the save system, keep this direction in mind. Any **interface** that both assemblies need to share must live in the core `WolfstagInteractive.ConvoCore` assembly - for example, `IConvoStartContextProvider` is defined there and implemented by `ConvoCoreConversationSaveManager` in the SaveSystem assembly. The same pattern applies to any extension points you create that cross this boundary.
+If you are building custom systems that need to communicate with both the core runner and the save system, keep this direction in mind. Any **interface** that both assemblies need to share must live in the core `WolfstagInteractive.ConvoCore` assembly; for example, `IConvoStartContextProvider` is defined there and implemented by `ConvoCoreConversationSaveManager` in the SaveSystem assembly. The same pattern applies to any extension points you create that cross this boundary.
 
 The Save System editor tools live in a fourth assembly (`WolfstagInteractive.ConvoCore.SaveSystem.Editor`) that references all three of the above, plus `WolfstagInteractive.ConvoCoreEditor` and YamlDotNet. Note that assembly references are **not transitive**: if your editor assembly needs YamlDotNet, you must reference it explicitly even if a runtime assembly you depend on already does.
 :::

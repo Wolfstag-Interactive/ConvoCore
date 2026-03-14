@@ -49,7 +49,7 @@ Each entry in the **Choice Options** list has the following fields:
 
 Each choice-bearing line has an **Allow Go Back** toggle. When it is enabled, ConvoCore automatically appends an extra option to the end of the choices list at runtime. Its label is `"← Go Back"` (or a localized equivalent if you configure one in `ConvoCoreSettings`). Selecting it calls `ReverseOneLine()` internally, which steps the conversation back to the previous line and replays it.
 
-Use `AllowGoBack` on choices where the player might want to re-read the preceding line before committing to an answer - for example, a character asking a question that the player may not have fully read yet.
+Use `AllowGoBack` on choices where the player might want to re-read the preceding line before committing to an answer, for example a character asking a question that the player may not have fully read yet.
 
 :::warning
 `AllowGoBack` is not a full undo mechanism. It only moves back one line and does not restore any side effects that fired during that line (such as custom dialogue actions that triggered game events). Use it only for re-reading, not for reversing meaningful in-game state changes.
@@ -90,11 +90,11 @@ protected override IEnumerator PresentChoices(
 | Parameter | Type | Description |
 |---|---|---|
 | `options` | `List<ChoiceOption>` | The raw choice data from the Conversation Data asset. Access `Target Container`, `Target Alias Or Name`, and `Push Return Point` here if your UI needs them (e.g., to display branch previews or icons). |
-| `localizedLabels` | `List<string>` | The already-localized display strings for the current language, in the same order as `options`. Use these for button text - do not re-localize manually. |
+| `localizedLabels` | `List<string>` | The already-localized display strings for the current language, in the same order as `options`. Use these for button text; do not re-localize manually. |
 | `result` | `ChoiceResult` | Write the player's 0-based selection index to `result.SelectedIndex` when a choice is made. ConvoCore reads this value when the coroutine completes. |
 
 :::note
-A coroutine is a function that can pause its execution and resume later without blocking the rest of the game. The line `yield return new WaitUntil(() => result.SelectedIndex >= 0)` means "pause here and check this condition every frame. When it becomes true - meaning a button was clicked and wrote a valid index - continue executing." This pattern lets your UI remain responsive while ConvoCore waits for input.
+A coroutine is a function that can pause its execution and resume later without blocking the rest of the game. The line `yield return new WaitUntil(() => result.SelectedIndex >= 0)` means "pause here and check this condition every frame. When it becomes true (meaning a button was clicked and wrote a valid index), continue executing." This pattern lets your UI remain responsive while ConvoCore waits for input.
 :::
 
 :::warning
@@ -111,10 +111,10 @@ The line `int capturedIndex = i;` inside the loop is important. Without it, ever
 
 If a line is set to `PlayerChoice` but its **Choice Options** list is empty and `AllowGoBack` is false, ConvoCore has no valid options to present. In this case it logs a warning to the Unity Console and automatically advances to the next line as if the continuation mode were `Continue`. The `PresentChoices` coroutine is not called.
 
-This behavior allows you to stub out choice lines during development - leave the options list empty, continue building other content, and fill in the choices later without breaking playback.
+This behavior allows you to stub out choice lines during development: leave the options list empty, continue building other content, and fill in the choices later without breaking playback.
 
 :::tip
-While developing, check the Unity Console for warnings about empty choice lines. A warning here during play mode usually means a choice line you intended to configure is missing its options - it will not cause a crash but it will skip the choice entirely.
+While developing, check the Unity Console for warnings about empty choice lines. A warning here during play mode usually means a choice line you intended to configure is missing its options; it will not cause a crash but it will skip the choice entirely.
 :::
 
 ---
@@ -141,14 +141,14 @@ The `Player` line with the empty dialogue string is the choice line. Its actual 
 - Continuation Mode: `PlayerChoice`
 - Allow Go Back: enabled
 - Choice Options:
-  - Option 0 - Labels: `EN: "Deal. Three gold it is."` → Target: `MerchantNegotiation/AcceptBranch`
-  - Option 1 - Labels: `EN: "I want five gold."` → Target: `MerchantNegotiation/CounterBranch`, Push Return Point: enabled
-  - Option 2 - Labels: `EN: "Forget it. I'm keeping it."` → Target: `MerchantNegotiation/RefuseBranch`
+  - Option 0: Labels `EN: "Deal. Three gold it is."` → Target: `MerchantNegotiation/AcceptBranch`
+  - Option 1: Labels `EN: "I want five gold."` → Target: `MerchantNegotiation/CounterBranch`, Push Return Point: enabled
+  - Option 2: Labels `EN: "Forget it. I'm keeping it."` → Target: `MerchantNegotiation/RefuseBranch`
 
 With `AllowGoBack` enabled, a fourth option "← Go Back" will appear automatically at runtime, letting the player re-read the merchant's offer before choosing.
 
 ---
 
 :::info[For Advanced Users]
-`ChoiceResult` is a plain class with a single `int SelectedIndex` field initialized to `-1`. ConvoCore reads it synchronously after your `PresentChoices` coroutine finishes - there is no thread-safety concern because Unity coroutines run on the main thread. If you need to handle animated transitions, tween-out effects, or audio cues after a choice is made but before ConvoCore branches, perform all of that work inside `PresentChoices` before the coroutine returns. ConvoCore will not branch until the coroutine completes.
+`ChoiceResult` is a plain class with a single `int SelectedIndex` field initialized to `-1`. ConvoCore reads it synchronously after your `PresentChoices` coroutine finishes. There is no thread-safety concern because Unity coroutines run on the main thread. If you need to handle animated transitions, tween-out effects, or audio cues after a choice is made but before ConvoCore branches, perform all of that work inside `PresentChoices` before the coroutine returns. ConvoCore will not branch until the coroutine completes.
 :::

@@ -6,7 +6,7 @@ title: Building a Custom UI
 # Building a Custom UI
 
 :::tip
-ConvoCore includes a ready-made sample UI in the Samples package that demonstrates all of these patterns in a working scene. If you prefer a hands-on starting point over building from scratch, [import the Sample UI](sample-ui) first - you can read its code alongside this guide.
+ConvoCore includes a ready-made sample UI in the Samples package that demonstrates all of these patterns in a working scene. If you prefer a hands-on starting point over building from scratch, [import the Sample UI](sample-ui) first and read its code alongside this guide.
 :::
 
 This page walks through creating a complete, working dialogue UI for ConvoCore from scratch. By the end you will have a UI that displays the speaker's name and dialogue text, handles player input to advance lines, and presents branching choices.
@@ -217,7 +217,7 @@ private void Update()
 Add this method to `MyDialogueUI`. The guard condition (`childCount == 0`) prevents keyboard input from interfering while choice buttons are visible.
 
 :::tip
-For keyboard input, prefer `GetKeyDown` over `GetKey` - `GetKey` fires every frame and would skip lines too fast.
+For keyboard input, prefer `GetKeyDown` over `GetKey`; `GetKey` fires every frame and would skip lines too fast.
 :::
 
 ---
@@ -237,7 +237,7 @@ Press **Play**. Trigger the conversation (via `StartConversation()` or the start
 ## Troubleshooting
 
 :::warning
-**Text appears but never updates after the first line**: Check that `UpdateDialogueUI()` is declared with the `override` keyword. Without it, Unity will not call your implementation - it will call the empty base method (it does nothing) silently.
+**Text appears but never updates after the first line**: Check that `UpdateDialogueUI()` is declared with the `override` keyword. Without it, Unity will not call your implementation; it will call the empty base method (which does nothing) silently.
 :::
 
 :::warning

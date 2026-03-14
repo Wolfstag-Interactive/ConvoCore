@@ -13,7 +13,7 @@ A `ConvoCoreCharacterProfileBaseData` ScriptableObject represents one character 
 
 Right-click in the **Project** panel → **Create → ConvoCore → Character Profile**.
 
-Name the asset something descriptive - typically the character's in-world name or a short identifier. The asset name does not need to match any ID, but keeping them consistent avoids confusion.
+Name the asset something descriptive, typically the character's in-world name or a short identifier. The asset name does not need to match any ID, but keeping them consistent avoids confusion.
 
 ---
 
@@ -21,12 +21,12 @@ Name the asset something descriptive - typically the character's in-world name o
 
 | Field | Description |
 |---|---|
-| **Character Name** | Display name shown in the dialogue UI - this is what players see. Can include spaces, punctuation, and unicode. |
+| **Character Name** | Display name shown in the dialogue UI (this is what players see). Can include spaces, punctuation, and unicode. |
 | **Character ID** | Unique identifier used in YAML and conversation data. Must match the `CharacterID` field in your YAML exactly. Case-sensitive. |
 | **Character Name Color** | Color used for this character's name label in the dialogue UI. Passed through to your `ConvoCoreUIFoundation` subclass as `primaryProfile.CharacterNameColor`. |
 | **Character Description** | Optional free-text notes for your team's reference. Not shown at runtime. |
 | **Is Player Character** | Mark this for the player-controlled character. Enables `{PlayerName}` substitution in dialogue text. Exactly one profile per conversation should have this checked. |
-| **Representations** | A list of `RepresentationPair` entries - each pairs a variant name with a `CharacterRepresentationBase` asset. See [Character Representations](character-representations). |
+| **Representations** | A list of `RepresentationPair` entries, each pairing a variant name with a `CharacterRepresentationBase` asset. See [Character Representations](character-representations). |
 
 ---
 
@@ -40,11 +40,11 @@ The **Character ID** is the most important field on this asset. It is the link b
 - Should contain only alphanumeric characters and underscores - avoid spaces and special characters to prevent subtle matching issues
 
 :::tip
-Use short, lowercase IDs with underscores: `town_guard`, `merchant`, `player`. Avoid spaces and special characters. Copy-paste IDs between YAML and profile assets rather than typing them twice - a single character typo causes a silent mismatch.
+Use short, lowercase IDs with underscores: `town_guard`, `merchant`, `player`. Avoid spaces and special characters. Copy-paste IDs between YAML and profile assets rather than typing them twice; a single character typo causes a silent mismatch.
 :::
 
 :::warning
-A mismatched Character ID - wrong case, typo, or a profile simply missing from the conversation's participant list - causes ConvoCore to log a warning at runtime and skip character resolution for that line. The dialogue still advances, but the speaker will appear as unknown and no character representation will be displayed. If a character's portrait or name never appears, this is the first thing to check.
+A mismatched Character ID (wrong case, typo, or a profile simply missing from the conversation's participant list) causes ConvoCore to log a warning at runtime and skip character resolution for that line. The dialogue still advances, but the speaker will appear as unknown and no character representation will be displayed. If a character's portrait or name never appears, this is the first thing to check.
 :::
 
 ---
@@ -58,7 +58,7 @@ Character profiles do not automatically apply to every conversation. You must ex
 3. Click **+** and drag the character's profile asset into the new slot.
 4. Repeat for every character whose `CharacterID` appears in the conversation's YAML.
 
-Every `CharacterID` referenced in the YAML must have a matching profile in this list. ConvoCore resolves speaker data at parse time - missing profiles produce a warning and leave the speaker unresolved for affected lines.
+Every `CharacterID` referenced in the YAML must have a matching profile in this list. ConvoCore resolves speaker data at parse time; missing profiles produce a warning and leave the speaker unresolved for affected lines.
 
 :::note
 The **Conversation Participant Profiles** list is on the `ConvoCoreConversationData` asset, not on the `ConvoCore` component. It is scoped per conversation, so two different conversations can have different participant sets even if they share some characters.
@@ -81,11 +81,11 @@ For example, if the player's character name is `Alex` and a line contains:
 At runtime this becomes: `"Welcome back, Alex! Ready to trade?"`
 
 :::note
-`{PlayerName}` substitution uses the **Character Name** field of the profile marked as **Is Player Character** - not any runtime-entered player name. If you need the player to enter their own name, you must implement that separately and update the profile's Character Name at runtime before the conversation starts.
+`{PlayerName}` substitution uses the **Character Name** field of the profile marked as **Is Player Character**, not any runtime-entered player name. If you need the player to enter their own name, you must implement that separately and update the profile's Character Name at runtime before the conversation starts.
 :::
 
 :::warning
-If no profile in the conversation is marked **Is Player Character**, the `{PlayerName}` token is left unreplaced in the output text. If multiple profiles are marked as **Is Player Character**, ConvoCore uses the first one it finds - the result is undefined if the order varies. Mark exactly one profile per conversation.
+If no profile in the conversation is marked **Is Player Character**, the `{PlayerName}` token is left unreplaced in the output text. If multiple profiles are marked as **Is Player Character**, ConvoCore uses the first one it finds; the result is undefined if the order varies. Mark exactly one profile per conversation.
 :::
 
 ---
@@ -99,7 +99,7 @@ Each entry in the **Representations** list is a `RepresentationPair` containing:
 | **Name** | A label for this visual variant, e.g. `"Default"`, `"Armored"`, `"Disguised"`. Used by the dialogue line to select which variant to show. |
 | **Representation** | A `CharacterRepresentationBase` asset that defines the sprites, prefab, or other visual data for this variant. |
 
-A character can have as many representations as you need - different outfits, alternate forms, or level-of-detail variants. The runner selects which representation to use based on each dialogue line's display settings.
+A character can have as many representations as you need: different outfits, alternate forms, or level-of-detail variants. The runner selects which representation to use based on each dialogue line's display settings.
 
 For full details on creating and customizing representations, see [Character Representations](character-representations).
 
