@@ -5,7 +5,7 @@ title: Input Modes
 
 # Input Modes
 
-The **Input** field on the ConvoCore component determines what conversation (or group of conversations) plays when you call `PlayConversation()` with no arguments. Instead of a fixed reference to one conversation, this field accepts an `IConvoInput` implementation — a small object that resolves a conversation at the moment `PlayConversation()` is called.
+The **Input** field on the ConvoCore component determines what conversation (or group of conversations) plays when you call `PlayConversation()` with no arguments. Instead of a fixed reference to one conversation, this field accepts an `IConvoInput` implementation - a small object that resolves a conversation at the moment `PlayConversation()` is called.
 
 ---
 
@@ -31,7 +31,7 @@ The simplest input mode. Points to one specific `ConvoCoreConversationData` asse
 
 ### When to use it
 
-Use `SingleConversationInput` when a ConvoCore component is dedicated to one conversation that never changes — for example, an NPC with a single greeting, a door that always plays the same "locked" explanation, or a quest-giver whose dialogue is replaced by swapping the entire `ConvoCoreConversationData` reference in code.
+Use `SingleConversationInput` when a ConvoCore component is dedicated to one conversation that never changes - for example, an NPC with a single greeting, a door that always plays the same "locked" explanation, or a quest-giver whose dialogue is replaced by swapping the entire `ConvoCoreConversationData` reference in code.
 
 ### Overriding at runtime
 
@@ -69,7 +69,7 @@ Points to a `ConversationContainer` and delegates conversation selection to the 
 Use `ContainerInput` when:
 
 - An NPC cycles through several different greetings (Sequential or Random).
-- You want weighted dialogue pools — some lines are rarer than others (WeightedRandom).
+- You want weighted dialogue pools - some lines are rarer than others (WeightedRandom).
 - A single container asset is shared across many NPCs of the same type, each with their own runner.
 - A scripted sequence needs to play multiple conversations in order with delays (Playlist mode on the container).
 
@@ -90,7 +90,7 @@ There are three ways to trigger conversation playback:
 The reason `StartConversation()` exists is Unity's event system constraint: methods wired in the inspector via UnityEvent must have no parameters. `PlayConversation()` has an overload with a parameter, which confuses the inspector dropdown. `StartConversation()` is the unambiguous, no-argument entry point suitable for drag-and-drop event wiring.
 
 ```csharp
-// In code — these are equivalent:
+// In code - these are equivalent:
 _runner.PlayConversation();
 _runner.StartConversation();
 
@@ -100,7 +100,7 @@ _runner.StartConversation();
 ---
 
 :::info[For Advanced Users]
-You can implement `IConvoInput` yourself to create fully custom conversation selection logic — procedural selection driven by game state, condition checks, external databases, probability tables, or anything else.
+You can implement `IConvoInput` yourself to create fully custom conversation selection logic - procedural selection driven by game state, condition checks, external databases, probability tables, or anything else.
 
 The interface has one method:
 

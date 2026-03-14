@@ -28,7 +28,7 @@ ConvoCore ships with its YAML parser (YamlDotNet) bundled inside the package, so
 The Unity Package Manager (UPM) is the standard way to install ConvoCore. It keeps the package files separate from your project's `Assets/` folder and makes future updates straightforward.
 
 :::note
-The **Unity Package Manager** is a built-in Unity tool for installing reusable code packages — think of it like an app store for Unity project features. Packages live outside your `Assets/` folder so they don't clutter your project, and you can add, update, or remove them without manually copying files.
+The **Unity Package Manager** is a built-in Unity tool for installing reusable code packages - think of it like an app store for Unity project features. Packages live outside your `Assets/` folder so they don't clutter your project, and you can add, update, or remove them without manually copying files.
 :::
 
 **Steps:**
@@ -54,7 +54,7 @@ After the import finishes:
 If the ConvoCore menu does not appear, check the Console for compilation errors. The most common causes are:
 
 - A .NET compatibility mismatch (ensure your project is set to .NET Standard 2.1 in **Edit → Project Settings → Player → Other Settings → Api Compatibility Level**).
-- A corrupted package download — try removing and re-adding the package via the Package Manager.
+- A corrupted package download - try removing and re-adding the package via the Package Manager.
 
 ---
 
@@ -75,7 +75,7 @@ Assets/Resources/ConvoCoreSettings.asset
 The Inspector will open showing the settings asset.
 
 :::note
-**What is a ScriptableObject?** A ScriptableObject is a reusable data container that Unity stores as an asset file in your project — like a config file you can edit in the Inspector and share across multiple scenes. `ConvoCoreSettings` is a ScriptableObject that holds global configuration for the framework (supported languages, default fallback behavior, etc.). You edit it once and it applies everywhere.
+**What is a ScriptableObject?** A ScriptableObject is a reusable data container that Unity stores as an asset file in your project - like a config file you can edit in the Inspector and share across multiple scenes. `ConvoCoreSettings` is a ScriptableObject that holds global configuration for the framework (supported languages, default fallback behavior, etc.). You edit it once and it applies everywhere.
 :::
 
 **Step 2: Add a supported language**
@@ -118,5 +118,5 @@ If you add the `CONVOCORE_ADDRESSABLES` scripting define but the Addressables pa
 
 With ConvoCore installed and configured, you're ready to create your first conversation.
 
-- [Quick Start →](./quick-start) — Build a working "Hello World" conversation in under ten minutes.
-- [Project Structure →](./project-structure) — Understand where to put your files and how the package is organized.
+- [Quick Start →](./quick-start) - Build a working "Hello World" conversation in under ten minutes.
+- [Project Structure →](./project-structure) - Understand where to put your files and how the package is organized.

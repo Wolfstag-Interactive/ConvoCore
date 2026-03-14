@@ -5,7 +5,7 @@ title: Save System Overview
 
 # Save System Overview
 
-The ConvoCore Save System persists conversation progress and game state across play sessions. It is a separate, optional module — the core ConvoCore runner has no hard dependency on it. Drop it in when your project needs durable progress tracking.
+The ConvoCore Save System persists conversation progress and game state across play sessions. It is a separate, optional module - the core ConvoCore runner has no hard dependency on it. Drop it in when your project needs durable progress tracking.
 
 ---
 
@@ -13,10 +13,10 @@ The ConvoCore Save System persists conversation progress and game state across p
 
 The save system records four categories of data:
 
-- **Visited dialogue lines** — which lines a player has already seen in each conversation, so conditional logic like "if visited" and "skip-if-seen" works correctly across sessions.
-- **Active line position** — where in a conversation the player last left off, enabling resume-from-exact-position behaviour.
-- **Variables** — typed key-value pairs (Bool, Int, Float, String) scoped to a single conversation, globally across all conversations, or only for the current session.
-- **Player settings** — language preference and any user-defined settings fields.
+- **Visited dialogue lines** - which lines a player has already seen in each conversation, so conditional logic like "if visited" and "skip-if-seen" works correctly across sessions.
+- **Active line position** - where in a conversation the player last left off, enabling resume-from-exact-position behaviour.
+- **Variables** - typed key-value pairs (Bool, Int, Float, String) scoped to a single conversation, globally across all conversations, or only for the current session.
+- **Player settings** - language preference and any user-defined settings fields.
 
 ---
 
@@ -28,7 +28,7 @@ The save system is built from three cooperating components, each with a focused 
 |---|---|---|
 | `ConvoCoreSaveManager` | ScriptableObject | Central orchestrator: owns the save provider, manages save slots, assembles and restores the full game snapshot. |
 | `ConvoCoreConversationSaveManager` | MonoBehaviour | Per-conversation tracker: records progress for one conversation and provides a resume context to the ConvoCore runner. |
-| `ConvoVariableStore` | ScriptableObject | Typed, scoped variable storage — the runtime database for gameplay state that dialogue can read and write. |
+| `ConvoVariableStore` | ScriptableObject | Typed, scoped variable storage - the runtime database for gameplay state that dialogue can read and write. |
 
 :::note
 A **ScriptableObject** is a Unity asset that lives in your project files and can be referenced from any scene. A **MonoBehaviour** is a script component you attach to a GameObject in a scene. The save system uses both: `ConvoCoreSaveManager` and `ConvoVariableStore` are shared project assets, while `ConvoCoreConversationSaveManager` is a per-runner scene component that sits alongside your `ConvoCore` component.
@@ -57,9 +57,9 @@ Player settings are stored separately as a `ConvoCoreSettingsSnapshot` (language
 
 ---
 
-## ConversationGuid — the stable key
+## ConversationGuid - the stable key
 
-Every `ConvoCoreConversationData` asset has a `ConversationGuid` property — a stable UUID auto-generated the first time the asset is imported or validated. The save system uses this GUID as the dictionary key for `ConversationSnapshot` entries.
+Every `ConvoCoreConversationData` asset has a `ConversationGuid` property - a stable UUID auto-generated the first time the asset is imported or validated. The save system uses this GUID as the dictionary key for `ConversationSnapshot` entries.
 
 This means:
 
@@ -89,7 +89,7 @@ At a high level, the data flow is:
 
 ## Bootstrapper setup
 
-The recommended pattern is a **bootstrapper** — a persistent GameObject that initializes the save system before any scene-specific code runs. A prefab called `ConvoCoreSaveManagerBootstrapper` is included in the save system samples.
+The recommended pattern is a **bootstrapper** - a persistent GameObject that initializes the save system before any scene-specific code runs. A prefab called `ConvoCoreSaveManagerBootstrapper` is included in the save system samples.
 
 The bootstrapper's `Awake()` method should call:
 
@@ -114,7 +114,7 @@ All save system types live in the `WolfstagInteractive.ConvoCore.SaveSystem` nam
 using WolfstagInteractive.ConvoCore.SaveSystem;
 ```
 
-The save system assembly references the ConvoCore runtime assembly. The dependency only flows one way — the core ConvoCore runtime has no reference back to the save system. Interfaces that span both assemblies (such as `IConvoStartContextProvider`) live in the ConvoCore runtime assembly.
+The save system assembly references the ConvoCore runtime assembly. The dependency only flows one way - the core ConvoCore runtime has no reference back to the save system. Interfaces that span both assemblies (such as `IConvoStartContextProvider`) live in the ConvoCore runtime assembly.
 
 ---
 

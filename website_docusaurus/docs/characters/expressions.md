@@ -5,7 +5,7 @@ title: Expressions
 
 # Expressions
 
-Expressions are named emotional states — `Happy`, `Angry`, `Surprised`, `Neutral` — that control what a character looks like during a specific dialogue line. Each expression maps to a visual change: a different sprite, an animation trigger, a shader parameter update, or any custom logic you provide.
+Expressions are named emotional states - `Happy`, `Angry`, `Surprised`, `Neutral` - that control what a character looks like during a specific dialogue line. Each expression maps to a visual change: a different sprite, an animation trigger, a shader parameter update, or any custom logic you provide.
 
 ---
 
@@ -20,7 +20,7 @@ A `ConvoCoreCharacterExpression` is a ScriptableObject that names an emotion and
 | Field | Description |
 |---|---|
 | **Expression Name** | A human-readable label shown in the inspector and expression picker (e.g., `"Surprised"`, `"Happy"`, `"Neutral"`). |
-| **Expression GUID** | An auto-generated, stable unique identifier. The GUID is what ConvoCore uses internally to reference this expression — not the name. |
+| **Expression GUID** | An auto-generated, stable unique identifier. The GUID is what ConvoCore uses internally to reference this expression - not the name. |
 | **Default Sprite** | The sprite used for this expression when no per-representation override is set. |
 | **Representation Overrides** | A list of `RepresentationExpressionOverride` entries. Each entry pairs a specific `CharacterRepresentationBase` asset with an alternate sprite, allowing the same emotion to look different across visual variants of the same character. |
 
@@ -29,7 +29,7 @@ A `ConvoCoreCharacterExpression` is a ScriptableObject that names an emotion and
 The GUID is the most important property of a `ConvoCoreCharacterExpression` asset.
 
 :::tip
-Prefer expression GUIDs over expression names when referencing expressions in code. GUIDs are stable across renames — even if you rename `"Surprised"` to `"Shocked"`, the GUID stays the same and all dialogue lines that reference it continue to work correctly. Display names are cosmetic; GUIDs are the actual identity.
+Prefer expression GUIDs over expression names when referencing expressions in code. GUIDs are stable across renames - even if you rename `"Surprised"` to `"Shocked"`, the GUID stays the same and all dialogue lines that reference it continue to work correctly. Display names are cosmetic; GUIDs are the actual identity.
 :::
 
 When you create a new `ConvoCoreCharacterExpression`, ConvoCore generates a GUID for it automatically. You should never need to set or change this value manually.
@@ -75,7 +75,7 @@ If the expression selector is empty, it means the speaking character's profile h
 
 ## BaseExpressionAction
 
-For expression changes that require more than a static sprite swap — triggering an animation, playing a particle effect, blending a shader, or any coroutine-based visual — create a ScriptableObject that extends `BaseExpressionAction`.
+For expression changes that require more than a static sprite swap - triggering an animation, playing a particle effect, blending a shader, or any coroutine-based visual - create a ScriptableObject that extends `BaseExpressionAction`.
 
 ```csharp
 using System.Collections;
@@ -108,11 +108,11 @@ public class MyExpressionAction : BaseExpressionAction
 Attach the `BaseExpressionAction` asset to the expression via the representation's expression mapping entry. When the runner applies the expression, it runs `ExecuteExpression()` as a coroutine before advancing to the dialogue text display.
 
 :::tip
-`ExecuteExpression()` runs as a coroutine and the line will not display until it completes. Keep transitions short — 0.2–0.5 seconds is usually enough. If you need an animation to play in parallel with the text, start a separate coroutine and yield nothing, returning immediately from `ExecuteExpression()`.
+`ExecuteExpression()` runs as a coroutine and the line will not display until it completes. Keep transitions short - 0.2–0.5 seconds is usually enough. If you need an animation to play in parallel with the text, start a separate coroutine and yield nothing, returning immediately from `ExecuteExpression()`.
 :::
 
 :::info[For Advanced Users]
-`BaseExpressionAction` is a ScriptableObject. You can have multiple expression action types (one for animation, one for VFX, one for audio) and mix them per expression mapping entry. The runner processes them in order. You can also access the full `ConvoCore` runner instance and `ConvoCoreConversationData` from within `ExecuteExpression()` if you need conversation-level context — for example, to check a variable store value and conditionally apply a different visual.
+`BaseExpressionAction` is a ScriptableObject. You can have multiple expression action types (one for animation, one for VFX, one for audio) and mix them per expression mapping entry. The runner processes them in order. You can also access the full `ConvoCore` runner instance and `ConvoCoreConversationData` from within `ExecuteExpression()` if you need conversation-level context - for example, to check a variable store value and conditionally apply a different visual.
 :::
 
 ---

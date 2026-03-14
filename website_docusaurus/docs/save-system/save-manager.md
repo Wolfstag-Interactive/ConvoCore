@@ -11,7 +11,7 @@ title: Save Manager
 
 ## What kind of object is it?
 
-`ConvoCoreSaveManager` is a **ScriptableObject** — a project asset, not a scene component. You create one per project, keep it in your project files, and reference it from scene GameObjects (your bootstrapper, conversation runners, UI, etc.) via serialized fields.
+`ConvoCoreSaveManager` is a **ScriptableObject** - a project asset, not a scene component. You create one per project, keep it in your project files, and reference it from scene GameObjects (your bootstrapper, conversation runners, UI, etc.) via serialized fields.
 
 **Create via**: Right-click in the Project window → **Create → ConvoCore → Runtime → Save Manager**
 
@@ -23,7 +23,7 @@ title: Save Manager
 |---|---|
 | **Variable Store** | Reference to your `ConvoVariableStore` asset. The save manager reads Global-scoped variables from here when assembling a snapshot, and writes them back when restoring. |
 | **Settings State** | Reference to a `ConvoCoreSettingsSnapshot` asset. Used to persist language preference and other settings independently of game slot data. |
-| **Use Yaml** | When enabled, the built-in YAML provider is used instead of JSON. Both produce the same data — YAML is more readable for debugging, JSON is more compact. Has no effect if you inject a custom provider via `SetProvider()`. |
+| **Use Yaml** | When enabled, the built-in YAML provider is used instead of JSON. Both produce the same data - YAML is more readable for debugging, JSON is more compact. Has no effect if you inject a custom provider via `SetProvider()`. |
 | **Default Slot** | The slot name used by `SaveToDefaultSlot()` and `LoadFromDefaultSlot()`. Useful for simple single-slot games. |
 
 ---
@@ -49,7 +49,7 @@ public class GameBootstrapper : MonoBehaviour
 ```
 
 :::warning
-`Initialize()` must be called before any `Save()`, `Load()`, `HasSave()`, or `DeleteSave()` call. Invoking those methods on an uninitialized manager logs a warning and returns without taking action. Ensure your bootstrapper's `Awake()` runs before any scene objects that call `PlayConversation()` — use Unity's Script Execution Order settings if needed.
+`Initialize()` must be called before any `Save()`, `Load()`, `HasSave()`, or `DeleteSave()` call. Invoking those methods on an uninitialized manager logs a warning and returns without taking action. Ensure your bootstrapper's `Awake()` runs before any scene objects that call `PlayConversation()` - use Unity's Script Execution Order settings if needed.
 :::
 
 ---
@@ -60,7 +60,7 @@ public class GameBootstrapper : MonoBehaviour
 // Save the current game state to a named slot
 _saveManager.Save("slot_1");
 
-// Load a saved slot — restores the game state from disk
+// Load a saved slot - restores the game state from disk
 _saveManager.Load("slot_1");
 
 // Save and load using the Default Slot configured in the inspector
@@ -70,7 +70,7 @@ _saveManager.LoadFromDefaultSlot();
 // Check whether a save slot exists on disk
 bool hasSave = _saveManager.HasSave("slot_1");
 
-// Delete a save slot from disk (permanent — cannot be undone at runtime)
+// Delete a save slot from disk (permanent - cannot be undone at runtime)
 _saveManager.DeleteSave("slot_1");
 ```
 

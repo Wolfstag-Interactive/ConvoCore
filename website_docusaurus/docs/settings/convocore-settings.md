@@ -16,7 +16,7 @@ title: ConvoCore Settings
 This menu item finds the existing `ConvoCoreSettings.asset` in your project and pings it in the Project panel, then selects it so it appears in the inspector. If no asset exists, it creates one automatically at `Assets/Resources/ConvoCoreSettings.asset`.
 
 :::tip
-You rarely need to create this asset manually. ConvoCore auto-creates it with sensible defaults the first time it is needed. Use **Tools → ConvoCore → Open Settings** as your entry point — it always finds the correct asset regardless of where it lives in your project.
+You rarely need to create this asset manually. ConvoCore auto-creates it with sensible defaults the first time it is needed. Use **Tools → ConvoCore → Open Settings** as your entry point - it always finds the correct asset regardless of where it lives in your project.
 :::
 
 ---
@@ -25,10 +25,10 @@ You rarely need to create this asset manually. ConvoCore auto-creates it with se
 
 ConvoCore uses the following resolution order to find `ConvoCoreSettings`:
 
-1. **Already loaded** — if `ConvoCoreSettings.Instance` is already set in memory, that value is returned immediately (no I/O).
-2. **Resources folder** — `Resources.Load<ConvoCoreSettings>("ConvoCoreSettings")`. This is the path that works in builds.
-3. **AssetDatabase search** (editor only) — `AssetDatabase.FindAssets("t:ConvoCoreSettings")`, using the first result found anywhere in the project.
-4. **Auto-create** (editor only) — if nothing is found, a new asset is created at `Assets/Resources/ConvoCoreSettings.asset` and a warning is logged.
+1. **Already loaded** - if `ConvoCoreSettings.Instance` is already set in memory, that value is returned immediately (no I/O).
+2. **Resources folder** - `Resources.Load<ConvoCoreSettings>("ConvoCoreSettings")`. This is the path that works in builds.
+3. **AssetDatabase search** (editor only) - `AssetDatabase.FindAssets("t:ConvoCoreSettings")`, using the first result found anywhere in the project.
+4. **Auto-create** (editor only) - if nothing is found, a new asset is created at `Assets/Resources/ConvoCoreSettings.asset` and a warning is logged.
 
 For **builds**, ensure the asset is inside a `Resources/` folder so Unity includes it in the build output. An asset outside `Resources/` will not be found at runtime and ConvoCore will log an error.
 
@@ -72,7 +72,7 @@ The runner tries each entry in `SourceOrder` in sequence and stops at the first 
 | **Verbose Logs** | `bool` | `false` | Enables detailed log output across all ConvoCore systems: conversation runner state transitions, YAML parsing steps, localization resolution, expression application, and save system operations. |
 
 :::warning
-**Verbose Logs** can produce hundreds of log entries per conversation. It is intended for development and debugging only. Disable it before making a production build — leaving it on will flood the console and may affect performance, particularly on mobile devices.
+**Verbose Logs** can produce hundreds of log entries per conversation. It is intended for development and debugging only. Disable it before making a production build - leaving it on will flood the console and may affect performance, particularly on mobile devices.
 :::
 
 ### Save System
@@ -100,7 +100,7 @@ Whenever you modify the settings asset in the editor (or when Unity reimports it
 
 - **Supported Languages must not be empty.** If the list is empty, `"EN"` is added automatically.
 - **Current Language must be in the list.** If `CurrentLanguage` is not found (case-insensitive) in `SupportedLanguages`, it is reset to `SupportedLanguages[0]`.
-- **Save Key Prefix must be valid.** If the prefix is empty, it resets to `"convocore."`. If any character is not a letter, digit, `.`, `_`, or `-`, a warning is logged (the value is not automatically corrected — fix it manually).
+- **Save Key Prefix must be valid.** If the prefix is empty, it resets to `"convocore."`. If any character is not a letter, digit, `.`, `_`, or `-`, a warning is logged (the value is not automatically corrected - fix it manually).
 - **History Renderer Profiles are cleaned.** Any `null` entries in the profiles list are removed.
 
 ---
@@ -127,7 +127,7 @@ In the editor, `Instance` is also populated via `[InitializeOnLoadMethod]` so it
 **Do not change Save Key Prefix after shipping.** Save data is keyed on the prefix. Changing the prefix in a shipped build means existing save data will not be found and players will lose their progress. If you need to rename the prefix, write a migration step that reads the old keys and writes them to the new ones before updating the setting.
 
 :::info[For Advanced Users]
-`ConvoCoreSettings` is `sealed` — you cannot subclass it. If you need to extend the configuration surface, the recommended pattern is to create your own `ScriptableObject` settings asset alongside `ConvoCoreSettings` and reference it from your custom systems. ConvoCore's systems read only from `ConvoCoreSettings` and will not be aware of your extended asset.
+`ConvoCoreSettings` is `sealed` - you cannot subclass it. If you need to extend the configuration surface, the recommended pattern is to create your own `ScriptableObject` settings asset alongside `ConvoCoreSettings` and reference it from your custom systems. ConvoCore's systems read only from `ConvoCoreSettings` and will not be aware of your extended asset.
 
 The `HistoryRendererProfiles` property returns an `IReadOnlyList<ConvoCoreHistoryRendererProfile>`. To add or remove profiles at runtime, use the `AddRendererProfile` and `CleanRendererProfiles` methods rather than casting to the internal list. This preserves the null-cleaning invariant that `OnValidate` enforces.
 :::

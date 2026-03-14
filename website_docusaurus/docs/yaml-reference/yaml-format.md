@@ -11,7 +11,7 @@ This page is the complete field reference for ConvoCore's YAML dialogue format. 
 
 ## Root structure
 
-A ConvoCore YAML file contains one or more conversations. Each conversation is a **top-level key** — the Conversation Key — mapped to a list of dialogue lines. The Conversation Key is the identifier that links this YAML block to a `ConvoCoreConversationData` asset in Unity.
+A ConvoCore YAML file contains one or more conversations. Each conversation is a **top-level key** - the Conversation Key - mapped to a list of dialogue lines. The Conversation Key is the identifier that links this YAML block to a `ConvoCoreConversationData` asset in Unity.
 
 ```yaml
 MyConversation:
@@ -64,7 +64,7 @@ The identifier of the character speaking this line. This value must exactly matc
 
 **Automatically generated. Do not write these manually.**
 
-A `LineID` is a stable, unique identifier for each dialogue line within its conversation. ConvoCore uses LineIDs to track which lines the player has visited and where they left off — essential for save/restore to work correctly even after you add, remove, or reorder lines in the YAML.
+A `LineID` is a stable, unique identifier for each dialogue line within its conversation. ConvoCore uses LineIDs to track which lines the player has visited and where they left off - essential for save/restore to work correctly even after you add, remove, or reorder lines in the YAML.
 
 **LineIDs are generated for you automatically.** When you link a YAML file to a `ConvoCoreConversationData` asset (by assigning it in the inspector and running validation), ConvoCore reads your YAML, assigns a unique ID to every line that doesn't already have one, and writes them back into the YAML file. You will see them appear in your source file after the first import:
 
@@ -75,10 +75,10 @@ A `LineID` is a stable, unique identifier for each dialogue line within its conv
     EN: "Halt! Who goes there?"
 ```
 
-Once a LineID has been generated for a line, it is stable for the lifetime of that line. You can freely add new lines, remove other lines, or reorder the conversation — the existing IDs do not change, so saved progress remains valid.
+Once a LineID has been generated for a line, it is stable for the lifetime of that line. You can freely add new lines, remove other lines, or reorder the conversation - the existing IDs do not change, so saved progress remains valid.
 
 :::warning
-Do not edit or delete a LineID that ConvoCore has written. Changing an ID is equivalent to removing the old line and adding a new one — any save data referencing the old ID will no longer match and the player's progress for that line will be lost. Treat auto-generated LineIDs as read-only.
+Do not edit or delete a LineID that ConvoCore has written. Changing an ID is equivalent to removing the old line and adding a new one - any save data referencing the old ID will no longer match and the player's progress for that line will be lost. Treat auto-generated LineIDs as read-only.
 :::
 
 :::note
@@ -91,7 +91,7 @@ If you delete a line from the YAML, its LineID disappears with it. Save data tha
 
 **Required.**
 
-A map of language codes to display strings. The language code keys must match the codes registered in your `ConvoCoreSettings` asset, but matching is case-insensitive at runtime — `EN`, `en`, and `En` all resolve correctly.
+A map of language codes to display strings. The language code keys must match the codes registered in your `ConvoCoreSettings` asset, but matching is case-insensitive at runtime - `EN`, `en`, and `En` all resolve correctly.
 
 At least one language key must be present. If the player's currently active language has no entry for a line, ConvoCore falls back to the first available language and logs a warning.
 
@@ -136,15 +136,15 @@ After linking this file to a `ConvoCoreConversationData` asset and running valid
 ```yaml
 TownSquare:
   - CharacterID: "Guard"
-    LineID: "a1b2c3d4"    # written by ConvoCore — do not edit
+    LineID: "a1b2c3d4"    # written by ConvoCore - do not edit
     LocalizedDialogue:
       EN: "Halt! Who goes there?"
   - CharacterID: "Player"
-    LineID: "e5f6a7b8"    # written by ConvoCore — do not edit
+    LineID: "e5f6a7b8"    # written by ConvoCore - do not edit
     LocalizedDialogue:
       EN: "It's just me, passing through."
   - CharacterID: "Guard"
-    LineID: "c9d0e1f2"    # written by ConvoCore — do not edit
+    LineID: "c9d0e1f2"    # written by ConvoCore - do not edit
     LocalizedDialogue:
       EN: "Move along, then."
 ```
@@ -159,14 +159,14 @@ Apostrophes inside single-quoted YAML strings will break parsing because YAML us
 
 **Use double quotes (recommended):**
 ```yaml
-# Safe — double quotes let apostrophes appear freely
+# Safe - double quotes let apostrophes appear freely
 LocalizedDialogue:
   EN: "It's a trap!"
 ```
 
 **Escape the apostrophe inside single-quoted strings:**
 ```yaml
-# Also valid — double the apostrophe to escape it in single-quoted context
+# Also valid - double the apostrophe to escape it in single-quoted context
 LocalizedDialogue:
   EN: 'It''s a trap!'
 ```
@@ -186,7 +186,7 @@ ConvoCore includes a pre-processor that auto-wraps many common apostrophe cases 
 
 For long lines of dialogue that wrap across multiple source lines, use YAML's literal block scalar (`|`) or folded block scalar (`>`).
 
-**Literal block scalar** (`|`) — preserves newlines exactly:
+**Literal block scalar** (`|`) - preserves newlines exactly:
 ```yaml
 - CharacterID: "Narrator"
   LineID: "narrator_prologue"
@@ -196,7 +196,7 @@ For long lines of dialogue that wrap across multiple source lines, use YAML's li
       a hero rose from the ashes of a fallen empire.
 ```
 
-**Folded block scalar** (`>`) — joins lines with spaces, keeps paragraph breaks:
+**Folded block scalar** (`>`) - joins lines with spaces, keeps paragraph breaks:
 ```yaml
 - CharacterID: "Elder"
   LineID: "elder_warning"
@@ -207,7 +207,7 @@ For long lines of dialogue that wrap across multiple source lines, use YAML's li
 ```
 
 :::tip
-Prefer the folded scalar (`>`) for dialogue that your UI will word-wrap automatically. Use the literal scalar (`|`) when you need explicit line breaks — for example, poetry, in-game letters, or UI tooltips where you control the layout.
+Prefer the folded scalar (`>`) for dialogue that your UI will word-wrap automatically. Use the literal scalar (`|`) when you need explicit line breaks - for example, poetry, in-game letters, or UI tooltips where you control the layout.
 :::
 
 ---
@@ -234,7 +234,7 @@ There must be exactly one character profile in your project with `IsPlayerCharac
 
 ## Inspector-only fields
 
-Not every property of a dialogue line is set in the YAML file. The following fields exist on each line inside the `ConvoCoreConversationData` asset and are configured in the Unity Inspector — they have no YAML equivalent and cannot be set from the text file.
+Not every property of a dialogue line is set in the YAML file. The following fields exist on each line inside the `ConvoCoreConversationData` asset and are configured in the Unity Inspector - they have no YAML equivalent and cannot be set from the text file.
 
 | Field | Inspector label | What it controls |
 |---|---|---|
@@ -243,7 +243,7 @@ Not every property of a dialogue line is set in the YAML file. The following fie
 | **Expression ID** | Expression | The expression to apply to the speaking character's representation for this line (e.g., `"happy"`, `"angry"`). Matches a key in the character's representation asset. |
 | **Continuation Mode + options** | Continuation Mode | Whether to continue, end, branch, or present choices after this line. See [Line Continuation](../core-systems/line-continuation). |
 
-These fields are separate from the YAML by design: **YAML stays as readable prose** — just characters speaking dialogue. **Timing, expressions, and branching logic belong in the asset graph**, where they can be iterated visually without touching the source text.
+These fields are separate from the YAML by design: **YAML stays as readable prose** - just characters speaking dialogue. **Timing, expressions, and branching logic belong in the asset graph**, where they can be iterated visually without touching the source text.
 
 ---
 
@@ -276,7 +276,7 @@ Grouping related short conversations in one file keeps the source directory tidy
 ---
 
 :::info[For Advanced Users]
-The `ConvoCoreYamlParser` uses YamlDotNet with `IgnoreUnmatchedProperties` enabled. Any key present in your YAML that does not correspond to a known field (for example, a comment-as-field or a future field you are testing) is silently ignored — it will not cause a parse error.
+The `ConvoCoreYamlParser` uses YamlDotNet with `IgnoreUnmatchedProperties` enabled. Any key present in your YAML that does not correspond to a known field (for example, a comment-as-field or a future field you are testing) is silently ignored - it will not cause a parse error.
 
-Language code normalization happens at parse time: all language codes are lowercased before being stored in the `DialogueLineInfo.LocalizedDialogue` dictionary. The `ConvoCoreDialogueLocalizationHandler.GetLocalizedDialogue()` method also lowercases the requested language code before performing the dictionary lookup. This means a mismatch between the casing in your YAML (`EN`) and the casing in `ConvoCoreSettings` (`en`) is handled transparently — they will always match.
+Language code normalization happens at parse time: all language codes are lowercased before being stored in the `DialogueLineInfo.LocalizedDialogue` dictionary. The `ConvoCoreDialogueLocalizationHandler.GetLocalizedDialogue()` method also lowercases the requested language code before performing the dictionary lookup. This means a mismatch between the casing in your YAML (`EN`) and the casing in `ConvoCoreSettings` (`en`) is handled transparently - they will always match.
 :::

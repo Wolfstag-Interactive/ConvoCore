@@ -183,10 +183,10 @@ LocalizedDialogue:
   fr-CA: "Bonjour, eh."
 ```
 
-If the active language is `"fr-CA"` and a line has an `fr-CA` key, it is used. If the line only has `fr`, ConvoCore's fallback chain strips the region suffix and matches `fr` automatically. This means you do not need to duplicate translations for every regional variant — add the base locale and only add regional variants where the text genuinely differs.
+If the active language is `"fr-CA"` and a line has an `fr-CA` key, it is used. If the line only has `fr`, ConvoCore's fallback chain strips the region suffix and matches `fr` automatically. This means you do not need to duplicate translations for every regional variant - add the base locale and only add regional variants where the text genuinely differs.
 
 Add each regional code you want players to be able to select to the Supported Languages list separately (e.g., both `"fr"` and `"fr-CA"` if you want to support both).
 
 :::info[For Advanced Users]
-The fallback chain in `ConvoCoreDialogueLocalizationHandler` is: exact match → base locale of requested → `"en"` → base locale of `"en"` → first available key. This means even with a completely untranslated line, the worst case is displaying the English text rather than a blank or error — as long as at least one `EN` key exists. The `IsFallback` flag and `ErrorMessage` field on the returned `LocalizedDialogueResult` let you audit exactly which fallback path was taken for each line during testing.
+The fallback chain in `ConvoCoreDialogueLocalizationHandler` is: exact match → base locale of requested → `"en"` → base locale of `"en"` → first available key. This means even with a completely untranslated line, the worst case is displaying the English text rather than a blank or error - as long as at least one `EN` key exists. The `IsFallback` flag and `ErrorMessage` field on the returned `LocalizedDialogueResult` let you audit exactly which fallback path was taken for each line during testing.
 :::

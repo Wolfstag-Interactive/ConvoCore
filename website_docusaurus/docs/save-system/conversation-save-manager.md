@@ -11,10 +11,10 @@ title: Conversation Save Manager
 
 ## How it connects to ConvoCore
 
-You do not need to write any glue code. `ConvoCore.PlayConversation()` calls `GetComponent<IConvoStartContextProvider>()` on its own GameObject before starting. `ConvoCoreConversationSaveManager` implements that interface and returns a `ConvoStartContext` describing what to do. If no provider is present, the runner starts fresh as usual — the interface is optional.
+You do not need to write any glue code. `ConvoCore.PlayConversation()` calls `GetComponent<IConvoStartContextProvider>()` on its own GameObject before starting. `ConvoCoreConversationSaveManager` implements that interface and returns a `ConvoStartContext` describing what to do. If no provider is present, the runner starts fresh as usual - the interface is optional.
 
 :::note
-`IConvoStartContextProvider` lives in the ConvoCore runtime assembly (not the save system assembly) so the core runner can reference it without creating a circular dependency. The save system assembly implements the interface. You never need to call the interface directly — it is wired up automatically.
+`IConvoStartContextProvider` lives in the ConvoCore runtime assembly (not the save system assembly) so the core runner can reference it without creating a circular dependency. The save system assembly implements the interface. You never need to call the interface directly - it is wired up automatically.
 :::
 
 ---
@@ -35,13 +35,13 @@ That is all. On the first run, `ConvoCore` starts fresh and the saver records pr
 
 Pick **one** of the two modes:
 
-**Direct Conversation mode** — track a single `ConvoCoreConversationData` asset:
+**Direct Conversation mode** - track a single `ConvoCoreConversationData` asset:
 
 | Field | Description |
 |---|---|
 | **Direct Conversation** | Assign the `ConvoCoreConversationData` asset you want to track. |
 
-**Container mode** — track one entry inside a `ConversationContainer`:
+**Container mode** - track one entry inside a `ConversationContainer`:
 
 | Field | Description |
 |---|---|
@@ -54,7 +54,7 @@ Use Direct Conversation mode for standalone NPCs. Use Container mode when one Ga
 
 ---
 
-## Inspector fields — references
+## Inspector fields - references
 
 | Field | Description |
 |---|---|
@@ -63,7 +63,7 @@ Use Direct Conversation mode for standalone NPCs. Use Container mode when one Ga
 
 ---
 
-## Inspector fields — start mode
+## Inspector fields - start mode
 
 **Default Start Mode** controls what happens when a saved snapshot exists for this conversation:
 
@@ -82,7 +82,7 @@ Use Direct Conversation mode for standalone NPCs. Use Container mode when one Ga
 
 ---
 
-## Inspector fields — auto-commit flags
+## Inspector fields - auto-commit flags
 
 These flags control when `CommitSnapshot()` is called automatically. All default to `false`.
 
@@ -90,7 +90,7 @@ These flags control when `CommitSnapshot()` is called automatically. All default
 |---|---|
 | **Auto Commit On Start** | Fired when `ConvoCore.StartedConversation` fires. Commits the snapshot at conversation start (useful for recording that the player entered this conversation). |
 | **Auto Commit On End** | Fired when `ConvoCore.EndedConversation` fires. Commits the snapshot when the conversation stops (paused, ended, or completed). |
-| **Auto Commit On Line Complete** | Fired when `ConvoCore.OnLineCompleted` fires. Commits after every line. Most granular option — highest I/O frequency. |
+| **Auto Commit On Line Complete** | Fired when `ConvoCore.OnLineCompleted` fires. Commits after every line. Most granular option - highest I/O frequency. |
 | **Auto Commit On Choice Made** | Fired when `ConvoCore.OnChoiceMade` fires. Commits whenever the player selects a branch choice. |
 
 :::tip
@@ -99,12 +99,12 @@ For most projects, enable only **Auto Commit On End**. This records progress onc
 
 ---
 
-## Inspector fields — auto-restore flags
+## Inspector fields - auto-restore flags
 
 | Flag | Trigger |
 |---|---|
 | **Auto Restore On Awake** | Calls `TryAutoRestore()` in `Awake()`. Use this if conversation objects are active at scene load and you want restore to happen as early as possible. |
-| **Auto Restore On Start** | Calls `TryAutoRestore()` in `Start()`. Safer default — gives other Awake() callbacks time to run first (e.g. the save manager bootstrapper). |
+| **Auto Restore On Start** | Calls `TryAutoRestore()` in `Start()`. Safer default - gives other Awake() callbacks time to run first (e.g. the save manager bootstrapper). |
 
 :::warning
 If your bootstrapper initialises `ConvoCoreSaveManager` in `Awake()` and `ConvoCoreConversationSaveManager` also restores in `Awake()`, the order of execution matters. Use **Auto Restore On Start** unless you have configured Script Execution Order to guarantee the bootstrapper runs first.
@@ -135,7 +135,7 @@ public struct ConvoStartContext
 
 ```csharp
 // Push the current conversation progress to ConvoCoreSaveManager's registry.
-// Does not write to disk — call ConvoCoreSaveManager.Save() to persist.
+// Does not write to disk - call ConvoCoreSaveManager.Save() to persist.
 _conversationSaver.CommitSnapshot();
 
 // Read the current in-memory snapshot without committing it.
@@ -187,7 +187,7 @@ public class ConversationResumeUI : MonoBehaviour
         _newGameButton.onClick.AddListener(() =>
         {
             _resumePanel.SetActive(false);
-            // Do not call ResumeFromSnapshot — runner will start fresh
+            // Do not call ResumeFromSnapshot - runner will start fresh
             _runner.PlayConversation();
         });
     }
@@ -217,4 +217,4 @@ These properties reflect the current in-memory state and update in real time dur
 
 ## Custom inspector
 
-The `ConvoCoreConversationSaveManager` inspector repaints at 0.1-second intervals during Play Mode so the read-only state properties update in real time without requiring manual inspector refreshes. The inspector layout adapts based on whether a snapshot exists — if no save data is present for the current conversation, the restore section is hidden.
+The `ConvoCoreConversationSaveManager` inspector repaints at 0.1-second intervals during Play Mode so the read-only state properties update in real time without requiring manual inspector refreshes. The inspector layout adapts based on whether a snapshot exists - if no save data is present for the current conversation, the restore section is hidden.

@@ -5,10 +5,10 @@ title: Line Continuation
 
 # Line Continuation
 
-After ConvoCore displays a dialogue line, it needs to know what to do next. Should it advance to the following line? End the conversation? Jump to a different conversation? Display a set of options for the player? The answer is controlled by the **Line Continuation Mode** — a field set on each line in the `ConvoCoreConversationData` inspector, not in the YAML file itself.
+After ConvoCore displays a dialogue line, it needs to know what to do next. Should it advance to the following line? End the conversation? Jump to a different conversation? Display a set of options for the player? The answer is controlled by the **Line Continuation Mode** - a field set on each line in the `ConvoCoreConversationData` inspector, not in the YAML file itself.
 
 :::note[Why is this in the inspector, not the YAML?]
-YAML is optimised for prose — it is where a writer authors dialogue quickly and legibly in any text editor. Branching logic belongs in the asset graph where it can be wired up visually, validated by the editor, and iterated without touching source text.
+YAML is optimised for prose - it is where a writer authors dialogue quickly and legibly in any text editor. Branching logic belongs in the asset graph where it can be wired up visually, validated by the editor, and iterated without touching source text.
 
 In practice this means a typical workflow looks like: write all the dialogue text in YAML, import it, then open the `ConvoCoreConversationData` asset in Unity to configure continuation modes and hook up any branching. For linear conversations (the majority of lines), every line defaults to `Continue` and nothing needs touching in the inspector at all.
 :::
@@ -41,7 +41,7 @@ Line 1 → Continue → Line 2 → Continue → Line 3 → ...
 
 After this line finishes, stop the conversation entirely. ConvoCore fires the `CompletedConversation` event, which your game code can listen to in order to trigger a cutscene, unlock a quest step, return camera control to the player, and so on.
 
-Use `EndConversation` on the final line of every conversation that has a definitive end. If the last line in a conversation list uses the default `Continue` mode and there is no next line, ConvoCore will also fire `CompletedConversation` — but setting `EndConversation` explicitly makes the intent clear and is the recommended practice.
+Use `EndConversation` on the final line of every conversation that has a definitive end. If the last line in a conversation list uses the default `Continue` mode and there is no next line, ConvoCore will also fire `CompletedConversation` - but setting `EndConversation` explicitly makes the intent clear and is the recommended practice.
 
 ---
 
@@ -70,10 +70,10 @@ When `Push Return Point` is checked:
 4. When that conversation reaches an `EndConversation` line, ConvoCore checks the return stack.
 5. If the stack has entries, it pops the top entry and resumes the original conversation from that saved position, rather than firing `CompletedConversation`.
 
-This makes it possible to build reusable sub-dialogues — for example, a character's backstory explanation that can be triggered from multiple different points in your main conversation, always returning to the caller when it ends.
+This makes it possible to build reusable sub-dialogues - for example, a character's backstory explanation that can be triggered from multiple different points in your main conversation, always returning to the caller when it ends.
 
 :::warning
-If you use `ContainerBranch` without checking **Push Return Point**, control transfers permanently to the target conversation. The original conversation will never resume. Only omit `Push Return Point` when you genuinely intend a one-way branch — for example, a decision that permanently changes the conversation path.
+If you use `ContainerBranch` without checking **Push Return Point**, control transfers permanently to the target conversation. The original conversation will never resume. Only omit `Push Return Point` when you genuinely intend a one-way branch - for example, a decision that permanently changes the conversation path.
 :::
 
 ---
@@ -112,7 +112,7 @@ Main conversation
 ```
 
 :::tip
-The return stack supports arbitrary nesting depth. There is no enforced maximum. However, deeply nested stacks are harder to reason about — use them deliberately and document the branching intent with comments in your YAML or in the asset name.
+The return stack supports arbitrary nesting depth. There is no enforced maximum. However, deeply nested stacks are harder to reason about - use them deliberately and document the branching intent with comments in your YAML or in the asset name.
 :::
 
 ---
@@ -145,7 +145,7 @@ The "Explanation" container ends with `EndConversation`, which pops the return s
 
 ### Permanent transfer to a new conversation
 
-Player completes a quest milestone and the game moves permanently to the post-quest conversation — no return.
+Player completes a quest milestone and the game moves permanently to the post-quest conversation - no return.
 
 ```
 Quest complete line → ContainerBranch (no PushReturnPoint)

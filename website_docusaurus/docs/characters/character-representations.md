@@ -5,7 +5,7 @@ title: Character Representations
 
 # Character Representations
 
-A character representation defines **how a character looks** for a given dialogue line — their sprite set, 3D prefab, or any other visual configuration. Representations are ScriptableObjects that extend `CharacterRepresentationBase`.
+A character representation defines **how a character looks** for a given dialogue line - their sprite set, 3D prefab, or any other visual configuration. Representations are ScriptableObjects that extend `CharacterRepresentationBase`.
 
 ---
 
@@ -23,7 +23,7 @@ CharacterProfile ("Guard")
     │                             ├── Angry   ──▶  Sprite (scowling guard)
     │                             └── Neutral ──▶  Sprite (neutral guard)
     ├── Name: "Armored"  ──▶  SpriteCharacterRepresentationData
-    │                             └── (different sprite set — heavy plate armor)
+    │                             └── (different sprite set - heavy plate armor)
     └── Name: "3D Model" ──▶  PrefabCharacterRepresentationData
                                   └── Prefab  ──▶  GuardPrefab.prefab
 ```
@@ -35,7 +35,7 @@ At runtime, the ConvoCore runner reads each line’s character ID and desired re
 ## Profiles vs. Representations
 
 :::note
-The distinction matters: a character **profile** defines *who* a character is — their name, ID, name color, and the full list of all their visual variants. A **representation** defines *how one specific visual variant looks* — the sprites for each expression, the prefab reference, or whatever your display system needs.
+The distinction matters: a character **profile** defines *who* a character is - their name, ID, name color, and the full list of all their visual variants. A **representation** defines *how one specific visual variant looks* - the sprites for each expression, the prefab reference, or whatever your display system needs.
 
 One profile can hold many representations. For example, a guard character might have a `"Default"` representation (normal armor), an `"Armored"` representation (heavy plate), and a `"Disguised"` representation (civilian clothes). All three are entries in the same profile’s Representations list.
 :::
@@ -83,7 +83,7 @@ When a dialogue line begins, the runner performs this resolution sequence:
 If the representation name is blank or not found, the runner falls back to the first entry in the Representations list.
 
 :::warning
-If the Representations list is empty or the named variant cannot be found and there is no fallback entry, no expression will be applied and the character display will remain in whatever state it was in from the previous line. This does not log a hard error — it fails silently. Always ensure every profile has at least one representation entry.
+If the Representations list is empty or the named variant cannot be found and there is no fallback entry, no expression will be applied and the character display will remain in whatever state it was in from the previous line. This does not log a hard error - it fails silently. Always ensure every profile has at least one representation entry.
 :::
 
 ---
@@ -104,7 +104,7 @@ Repeat for each visual variant the character needs.
 ## Creating Custom Representation Types
 
 :::info[For Advanced Users]
-You can create your own representation type for any visual system — a spine animation controller, a dynamic texture system, a VRM avatar, or anything else.
+You can create your own representation type for any visual system - a spine animation controller, a dynamic texture system, a VRM avatar, or anything else.
 
 Extend `CharacterRepresentationBase` (which is a `ScriptableObject`) and implement the following members:
 
@@ -148,7 +148,7 @@ public class MyCustomRepresentationData : CharacterRepresentationBase
 }
 ```
 
-If your representation needs to perform a one-time setup step before it is first used in a conversation — for example, loading assets asynchronously or acquiring a reference to a scene object — implement `IConvoCoreRepresentationInitializable`:
+If your representation needs to perform a one-time setup step before it is first used in a conversation - for example, loading assets asynchronously or acquiring a reference to a scene object - implement `IConvoCoreRepresentationInitializable`:
 
 ```csharp
 public class MyCustomRepresentationData : CharacterRepresentationBase,
@@ -175,7 +175,7 @@ Representations and expressions work together:
 
 For example, a `SpriteCharacterRepresentationData` might contain entries for `Happy`, `Angry`, and `Neutral` expressions. When a dialogue line has the `Happy` expression selected, the runner reads the sprite mapped to `Happy` in that representation and passes it to your display.
 
-This means the same expression asset can be reused across multiple representations — the expression defines the name and GUID, while the representation defines what that expression looks like for that specific visual variant.
+This means the same expression asset can be reused across multiple representations - the expression defines the name and GUID, while the representation defines what that expression looks like for that specific visual variant.
 
 See [Expressions](expressions) for full details on creating and assigning expressions.
 

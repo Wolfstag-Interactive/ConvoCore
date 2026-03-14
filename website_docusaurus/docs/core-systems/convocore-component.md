@@ -14,7 +14,7 @@ The `ConvoCore` MonoBehaviour is the central piece of the runtime system. Attach
 1. Create an empty GameObject (or use an existing manager object).
 2. Add the **ConvoCore** component via *Add Component → ConvoCore*.
 3. Set the **Input** field to determine what plays when `PlayConversation()` is called with no argument. See [Input Modes](input-modes) for the available types.
-4. Optionally assign a **Conversation UI** — a reference to a `ConvoCoreUIFoundation` component in your scene.
+4. Optionally assign a **Conversation UI** - a reference to a `ConvoCoreUIFoundation` component in your scene.
 
 ---
 
@@ -30,7 +30,7 @@ See [Input Modes](input-modes) for a full breakdown of both types.
 
 ### Conversation UI
 
-A reference to a `ConvoCoreUIFoundation` component. This is the UI layer ConvoCore writes dialogue to. If this field is `null`, ConvoCore still runs the full conversation (all actions fire, all events fire, all state transitions happen) — but nothing appears on screen. This can be intentional for headless or automated testing scenarios.
+A reference to a `ConvoCoreUIFoundation` component. This is the UI layer ConvoCore writes dialogue to. If this field is `null`, ConvoCore still runs the full conversation (all actions fire, all events fire, all state transitions happen) - but nothing appears on screen. This can be intentional for headless or automated testing scenarios.
 
 ---
 
@@ -48,11 +48,11 @@ A reference to a `ConvoCoreUIFoundation` component. This is the UI layer ConvoCo
 | `UpdateUIForLanguage(string languageCode)` | Re-renders the current dialogue line in the given language code after a runtime language switch. |
 
 :::tip
-Use `StartConversation()` — not `PlayConversation()` — as your UnityEvent target. Unity’s event system requires callbacks with no parameters when wiring events in the inspector. `StartConversation()` is that no-parameter overload.
+Use `StartConversation()` - not `PlayConversation()` - as your UnityEvent target. Unity’s event system requires callbacks with no parameters when wiring events in the inspector. `StartConversation()` is that no-parameter overload.
 :::
 
 :::warning
-`StopConversation()` fires `EndedConversation`, **not** `CompletedConversation`. `CompletedConversation` fires only when the last line of a conversation finishes naturally and no more lines remain. If you stop early, listen to `EndedConversation` for cleanup — do not rely on `CompletedConversation`.
+`StopConversation()` fires `EndedConversation`, **not** `CompletedConversation`. `CompletedConversation` fires only when the last line of a conversation finishes naturally and no more lines remain. If you stop early, listen to `EndedConversation` for cleanup - do not rely on `CompletedConversation`.
 :::
 
 ---
@@ -125,14 +125,14 @@ private void HandleChoiceMade(int choiceIndex)
 
 Subscribing in `OnEnable` without a matching `OnDisable` unsubscription causes the runner to hold a reference to your destroyed component. When the event next fires, Unity throws a `MissingReferenceException`.
 
-**Do not use anonymous delegates as event listeners.** A lambda like `_runner.OnLineStarted += (id) => DoSomething();` creates a delegate you can never unsubscribe — use a named method instead. See [Event Subscription Safety](conversation-state#event-subscription-safety) for the full explanation.
+**Do not use anonymous delegates as event listeners.** A lambda like `_runner.OnLineStarted += (id) => DoSomething();` creates a delegate you can never unsubscribe - use a named method instead. See [Event Subscription Safety](conversation-state#event-subscription-safety) for the full explanation.
 :::
 
 ---
 
 ## The `{PlayerName}` Placeholder
 
-Write `{PlayerName}` anywhere in a YAML dialogue string and ConvoCore will substitute it at runtime with the `CharacterName` of the character whose profile has `IsPlayerCharacter` checked. No additional code is required — the substitution happens automatically during line rendering.
+Write `{PlayerName}` anywhere in a YAML dialogue string and ConvoCore will substitute it at runtime with the `CharacterName` of the character whose profile has `IsPlayerCharacter` checked. No additional code is required - the substitution happens automatically during line rendering.
 
 **Example YAML:**
 
@@ -154,10 +154,10 @@ When `PlayConversation()` is called, ConvoCore performs a `GetComponent<IConvoSt
 
 The `ConvoStartContext` can specify:
 
-- **Where to start** — a specific line index rather than line 0.
-- **Which lines to mark as visited** — a set of line IDs that are treated as already-seen (used by the save system to restore visited-line state).
+- **Where to start** - a specific line index rather than line 0.
+- **Which lines to mark as visited** - a set of line IDs that are treated as already-seen (used by the save system to restore visited-line state).
 
-This integration is entirely transparent — the ConvoCore component itself does not need to know anything about the save system. You do not need to change any code on ConvoCore to activate save-system integration. Just add `ConvoCoreConversationSaveManager` to the same GameObject.
+This integration is entirely transparent - the ConvoCore component itself does not need to know anything about the save system. You do not need to change any code on ConvoCore to activate save-system integration. Just add `ConvoCoreConversationSaveManager` to the same GameObject.
 
 ---
 

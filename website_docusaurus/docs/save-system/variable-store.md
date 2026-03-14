@@ -5,7 +5,7 @@ title: Variable Store
 
 # Variable Store
 
-`ConvoVariableStore` is a ScriptableObject that stores typed, scoped key-value pairs — a lightweight runtime database for gameplay state that dialogue can read and write. It is the bridge between what happens in a conversation and the rest of your game.
+`ConvoVariableStore` is a ScriptableObject that stores typed, scoped key-value pairs - a lightweight runtime database for gameplay state that dialogue can read and write. It is the bridge between what happens in a conversation and the rest of your game.
 
 **Create via**: Right-click in the Project window → **Create → ConvoCore → Runtime → Variable Store**
 
@@ -24,7 +24,7 @@ Every variable has a scope that determines how it is persisted:
 | **Session** | No | Memory only | Reset when the application closes or Play Mode exits. Never written to disk. Use for temporary flags that exist only within a single play session. |
 
 :::note
-Think of **Global** as your save file's top-level entries — "has the player freed the village?". **Conversation** scope is per-NPC state — "did the player choose the aggressive option with this merchant?". **Session** scope is for scratch variables — counters, temporary flags, or UI state that is meaningless after a restart.
+Think of **Global** as your save file's top-level entries - "has the player freed the village?". **Conversation** scope is per-NPC state - "did the player choose the aggressive option with this merchant?". **Session** scope is for scratch variables - counters, temporary flags, or UI state that is meaningless after a restart.
 :::
 
 ---
@@ -86,7 +86,7 @@ All `Set` methods overwrite any existing value for that key. If the key does not
 ## Reading variables
 
 ```csharp
-// TryGet — returns false if the variable does not exist.
+// TryGet - returns false if the variable does not exist.
 // Use this when the variable might not have been set yet.
 if (_store.TryGetBool("quest_started", out bool questStarted))
 {
@@ -112,7 +112,7 @@ if (_store.TryGetString("last_choice", out string choice))
     Debug.Log($"Last choice: {choice}");
 }
 
-// Direct access — retrieves the raw ConvoCoreVariable entry.
+// Direct access - retrieves the raw ConvoCoreVariable entry.
 // Prefer TryGet for gameplay code; use this when you need the full entry metadata.
 ConvoCoreVariable variable = _store.GetVariable("player_gold");
 int directGold = variable.GetInt();
@@ -213,7 +213,7 @@ Variables can be pre-declared in the **Variable Store** inspector under `_persis
 Pre-declared variables appear in the inspector during Play Mode with their current runtime value shown next to the authored default.
 
 :::warning
-The authored defaults in `_persistentEntries` represent the **starting state for a new game**. They are not updated by the save system — they are the baseline. At runtime, writes go to `_sessionEntries` (the in-memory layer). When the save system loads a slot, it restores the saved values on top of the authored defaults. If you exit Play Mode and re-enter without loading a save, values reset to their authored defaults.
+The authored defaults in `_persistentEntries` represent the **starting state for a new game**. They are not updated by the save system - they are the baseline. At runtime, writes go to `_sessionEntries` (the in-memory layer). When the save system loads a slot, it restores the saved values on top of the authored defaults. If you exit Play Mode and re-enter without loading a save, values reset to their authored defaults.
 :::
 
 ---
@@ -230,7 +230,7 @@ The variable store uses two internal dictionaries:
 When reading a variable, the store checks `_sessionEntries` first, then falls back to `_persistentEntries`. When writing, the value always goes into `_sessionEntries`. This ensures that authored defaults in `_persistentEntries` are never modified at runtime, even in the editor.
 
 :::info[For Advanced Users]
-The variable store editor tracks a **snapshot of authored defaults** captured when Unity exits Edit Mode. During Play Mode, any variable whose current runtime value differs from its authored default is highlighted in orange in the inspector. This **live diff** makes it easy to see at a glance which variables have been touched during a test playthrough — without running a separate debug overlay.
+The variable store editor tracks a **snapshot of authored defaults** captured when Unity exits Edit Mode. During Play Mode, any variable whose current runtime value differs from its authored default is highlighted in orange in the inspector. This **live diff** makes it easy to see at a glance which variables have been touched during a test playthrough - without running a separate debug overlay.
 
 You can also use the editor's **scope filter** and **text filter toolbar** to quickly find variables in large stores. The editor repaints at 0.1-second intervals during Play Mode so the live diff stays current without requiring manual inspector focus.
 :::
@@ -250,4 +250,4 @@ _store.ClearByScope(ConvoVariableScope.Conversation);
 _store.ResetVariable("quest_step");
 ```
 
-These are useful during scene transitions or when starting a new game — clear Conversation-scoped variables between conversations, or clear all session variables on "New Game".
+These are useful during scene transitions or when starting a new game - clear Conversation-scoped variables between conversations, or clear all session variables on "New Game".

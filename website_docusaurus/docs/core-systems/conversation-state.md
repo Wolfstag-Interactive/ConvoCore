@@ -42,7 +42,7 @@ Key rules:
 
 - `StopConversation()` always returns to `Inactive` and fires `EndedConversation`.
 - Reaching the last line transitions to `Completed` (briefly), then to `Inactive`, and fires `CompletedConversation`.
-- `PauseConversation()` and `ResumeConversation()` only affect the `Active` and `Paused` states respectively — calling them from other states has no effect.
+- `PauseConversation()` and `ResumeConversation()` only affect the `Active` and `Paused` states respectively - calling them from other states has no effect.
 
 ---
 
@@ -85,7 +85,7 @@ switch (_runner.CurrentDialogueState)
         break;
 
     case ConversationState.Completed:
-        // transitional — handle cleanup in CompletedConversation event instead
+        // transitional - handle cleanup in CompletedConversation event instead
         break;
 }
 ```
@@ -130,7 +130,7 @@ private void RefreshBackButton()
 - No conversation is running (`Inactive` or `Completed`).
 - The runner’s history stack has been cleared.
 
-Calling `ReverseOneLine()` when `CanReverseOneLine` is `false` does nothing — it will not throw an error, but it will not move anywhere.
+Calling `ReverseOneLine()` when `CanReverseOneLine` is `false` does nothing - it will not throw an error, but it will not move anywhere.
 
 ---
 
@@ -152,7 +152,7 @@ _runner.PlayConversation(newConversation);
 :::warning
 Do not confuse `EndedConversation` with `CompletedConversation`. They are distinct events with distinct meanings:
 
-- `EndedConversation` fires when `StopConversation()` is called — an **early, manual termination**.
+- `EndedConversation` fires when `StopConversation()` is called - an **early, manual termination**.
 - `CompletedConversation` fires when the conversation **finishes naturally** at its last line.
 
 If you attach cleanup logic (disabling UI, re-enabling player movement, etc.) only to `CompletedConversation`, that cleanup will not run when the conversation is stopped early. Attach it to both events, or use a shared method:
@@ -200,7 +200,7 @@ private void OnDisable()
 **Avoid anonymous delegates as event listeners.** If you write:
 
 ```csharp
-// ❌ Cannot be unsubscribed — do not use this pattern
+// ❌ Cannot be unsubscribed - do not use this pattern
 _runner.OnLineStarted += (id) => HandleLineStarted(id);
 ```
 
@@ -209,7 +209,7 @@ _runner.OnLineStarted += (id) => HandleLineStarted(id);
 Always use a named method so you can both subscribe and unsubscribe:
 
 ```csharp
-// ✅ Correct — named method can be unsubscribed
+// ✅ Correct - named method can be unsubscribed
 _runner.OnLineStarted += HandleLineStarted;
 // later in OnDisable:
 _runner.OnLineStarted -= HandleLineStarted;

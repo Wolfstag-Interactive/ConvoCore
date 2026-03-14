@@ -13,7 +13,7 @@ At runtime, ConvoCore needs to find the YAML text for a conversation before it c
 
 ### AssignedTextAsset (recommended for shipped games)
 
-The YAML text is embedded directly into the `ConvoCoreConversationData` ScriptableObject as a `TextAsset` reference. When Unity builds your game, the TextAsset is bundled with it. At runtime, reading the dialogue involves no file I/O — the text is already in memory.
+The YAML text is embedded directly into the `ConvoCoreConversationData` ScriptableObject as a `TextAsset` reference. When Unity builds your game, the TextAsset is bundled with it. At runtime, reading the dialogue involves no file I/O - the text is already in memory.
 
 In the Unity editor, the `ConvoCoreYamlWatcher` keeps this TextAsset up to date automatically. Every time you save a `.yml` file, the watcher:
 
@@ -129,7 +129,7 @@ An awaitable version for use with `async`/`await` patterns. Does not block the m
 yield return StartCoroutine(ConvoCoreYamlLoader.LoadCoroutine(conversationData, OnDone));
 ```
 
-A coroutine overload that accepts an optional callback delegate (`Action OnDone`) called when loading completes. Use this when you need coroutine-compatible async loading — for example, in a loading screen that must keep the UI responsive while dialogue data is fetched.
+A coroutine overload that accepts an optional callback delegate (`Action OnDone`) called when loading completes. Use this when you need coroutine-compatible async loading - for example, in a loading screen that must keep the UI responsive while dialogue data is fetched.
 
 ```csharp
 private IEnumerator LoadAndPlay(ConvoCoreConversationData conversationData)
@@ -158,7 +158,7 @@ The watcher registers with Unity's `AssetModifiedProcessor` to receive callbacks
 3. It calls `InitializeDialogueData()` to reparse the YAML and update `DialogueLines`.
 4. It calls `EditorUtility.SetDirty()` and `AssetDatabase.SaveAssets()` to persist the changes.
 
-At build time, the `ConversationYaml` TextAsset embedded in each Conversation Data asset is bundled with the game. The watcher never runs and is not referenced in the build — the AssignedTextAsset source reads the already-embedded text directly from the ScriptableObject.
+At build time, the `ConversationYaml` TextAsset embedded in each Conversation Data asset is bundled with the game. The watcher never runs and is not referenced in the build - the AssignedTextAsset source reads the already-embedded text directly from the ScriptableObject.
 
 :::info[For Advanced Users]
 `ConvoCoreYamlLoader.Settings` is a static property that holds the active `ConvoCoreSettings` instance. By default ConvoCore discovers the settings asset via `Resources.Load<ConvoCoreSettings>("ConvoCoreSettings")`. You can override this at application startup by assigning a custom instance:
@@ -167,5 +167,5 @@ At build time, the `ConversationYaml` TextAsset embedded in each Conversation Da
 ConvoCoreYamlLoader.Settings = myCustomSettings;
 ```
 
-This is useful when the settings asset itself is delivered as downloadable content — for example, a DLC language pack that ships its own source order configuration. Assign the downloaded settings early in your boot sequence, before any conversations are loaded, and all subsequent loads will use it.
+This is useful when the settings asset itself is delivered as downloadable content - for example, a DLC language pack that ships its own source order configuration. Assign the downloaded settings early in your boot sequence, before any conversations are loaded, and all subsequent loads will use it.
 :::

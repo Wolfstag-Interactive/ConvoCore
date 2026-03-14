@@ -5,7 +5,7 @@ title: Snapshot Migration
 
 # Snapshot Migration
 
-As you develop and ship updates to your game, the structure of your save data may change — new fields added, variables renamed, conversation GUIDs regenerated, or scope assignments altered. `ConvoCoreSnapshotMigrator` ensures that save files created with an older version of the schema can still be loaded correctly after an update.
+As you develop and ship updates to your game, the structure of your save data may change - new fields added, variables renamed, conversation GUIDs regenerated, or scope assignments altered. `ConvoCoreSnapshotMigrator` ensures that save files created with an older version of the schema can still be loaded correctly after an update.
 
 ---
 
@@ -13,7 +13,7 @@ As you develop and ship updates to your game, the structure of your save data ma
 
 `ConvoCoreSnapshotMigrator.Migrate()` is called automatically by `ConvoCoreSaveManager` inside `Load()` and `InitializeSettings()`, before the snapshot is distributed to the rest of the system. The migrator reads the `SchemaVersion` string from the snapshot and applies any registered migration steps in version order until the snapshot is current.
 
-The migration pipeline is transparent to your gameplay code — you never need to call `Migrate()` directly.
+The migration pipeline is transparent to your gameplay code - you never need to call `Migrate()` directly.
 
 ---
 
@@ -24,7 +24,7 @@ Both `ConvoCoreGameSnapshot` and `ConvoCoreSettingsSnapshot` carry a `SchemaVers
 The current schema version is `"1.0"`.
 
 :::note
-For the majority of projects, the migrator requires no configuration whatsoever. It is infrastructure for forward-compatibility — a safety net that costs nothing until you need it. You only need to register migration steps if you deliberately change the shape of the save schema between shipped versions.
+For the majority of projects, the migrator requires no configuration whatsoever. It is infrastructure for forward-compatibility - a safety net that costs nothing until you need it. You only need to register migration steps if you deliberately change the shape of the save schema between shipped versions.
 :::
 
 ---
@@ -35,7 +35,7 @@ You need a migration step when a **shipped** version of your game wrote save fil
 
 - Renaming a variable key that was previously saved to disk.
 - Changing a variable's scope (e.g. moving a key from Conversation scope to Global scope).
-- Regenerating the GUID on a `ConvoCoreConversationData` asset after it was already shipped (avoids this where possible — see the warning below).
+- Regenerating the GUID on a `ConvoCoreConversationData` asset after it was already shipped (avoids this where possible - see the warning below).
 - Adding a required field to `ConvoCoreGameSnapshot` or `ConvoCoreSettingsSnapshot` that has no sensible default value.
 - Removing a field whose presence in old saves would cause a deserialization conflict.
 
@@ -149,9 +149,9 @@ When you make a schema change:
 ```csharp
 /// <summary>
 /// Schema history:
-/// 1.0 — initial release
-/// 2.0 — renamed quest_started to main_quest_active; promoted player_class to Global scope
-/// 3.0 — added faction_standing global variable with default 0
+/// 1.0 - initial release
+/// 2.0 - renamed quest_started to main_quest_active; promoted player_class to Global scope
+/// 3.0 - added faction_standing global variable with default 0
 /// </summary>
 public class ConvoCoreGameSnapshot
 {
@@ -173,9 +173,9 @@ Migration steps are applied in ascending version order. If a save file is multip
 
 **Idempotency**: Each migration step should be safe to apply more than once. Guard all mutations with existence checks (as shown in the examples above). This protects against edge cases where the migrator is accidentally called twice on the same snapshot during development.
 
-**Statelessness**: Migration steps receive only the snapshot — they do not have access to Unity assets, the variable store, or any other runtime state. If your migration needs to look up a GUID from a `ConvoCoreConversationData` asset, bake the GUID into a constant in your migration code at the time you write the step. Do not rely on loading the asset at migration time, as it may not be available in all contexts (e.g. headless builds).
+**Statelessness**: Migration steps receive only the snapshot - they do not have access to Unity assets, the variable store, or any other runtime state. If your migration needs to look up a GUID from a `ConvoCoreConversationData` asset, bake the GUID into a constant in your migration code at the time you write the step. Do not rely on loading the asset at migration time, as it may not be available in all contexts (e.g. headless builds).
 
-**Null safety**: Always check for `null` before accessing nested collections. Old save files may be missing fields that were added in later schema versions — the deserializer initialises missing collections as `null`, not as empty lists.
+**Null safety**: Always check for `null` before accessing nested collections. Old save files may be missing fields that were added in later schema versions - the deserializer initialises missing collections as `null`, not as empty lists.
 :::
 
 ---
@@ -189,4 +189,4 @@ If `ConvoCoreSaveManager.Load()` reads a snapshot whose `SchemaVersion` is great
 The save was created with a newer version of the game. Some data may not be loaded correctly.
 ```
 
-This typically indicates a player is running an older build after saving with a newer one. There is no automatic fix for downgrade scenarios — handle this case by displaying a warning to the player or preventing the load.
+This typically indicates a player is running an older build after saving with a newer one. There is no automatic fix for downgrade scenarios - handle this case by displaying a warning to the player or preventing the load.
