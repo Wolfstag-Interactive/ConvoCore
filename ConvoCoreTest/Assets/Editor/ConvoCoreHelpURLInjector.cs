@@ -262,7 +262,18 @@ private static bool TryInjectHelpUrl(string scriptPath, out FailReason failReaso
 
     try
     {
-        File.WriteAllText(scriptPath, text.Insert(insertIndex, helpAttr));
+        string modified = text.Insert(insertIndex, helpAttr);
+
+        // Ensure 'using UnityEngine;' is present at the top of the file
+        if (!Regex.IsMatch(modified, @"^\s*using\s+UnityEngine\s*;", RegexOptions.Multiline))
+        {
+            // Insert after any leading #if / preprocessor line, or at the very start
+            var ppMatch = Regex.Match(modified, @"^[ \t]*#(if|region)\b.*$", RegexOptions.Multiline);
+            int usingInsert = ppMatch.Success ? ppMatch.Index + ppMatch.Length + 1 : 0;
+            modified = modified.Insert(usingInsert, "using UnityEngine;\n");
+        }
+
+        File.WriteAllText(scriptPath, modified);
         return true;
     }
     catch (Exception ex)

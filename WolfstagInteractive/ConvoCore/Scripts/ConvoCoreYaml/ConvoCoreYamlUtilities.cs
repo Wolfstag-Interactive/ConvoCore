@@ -50,13 +50,29 @@ namespace WolfstagInteractive.ConvoCore
             }
             catch (Exception ex)
             {
-                Debug.LogError($"Failed to parse YAML file: {ex.Message}");
+                var source = _convoCoreConversationData.ConversationYaml != null
+                    ? $"embedded TextAsset '{_convoCoreConversationData.ConversationYaml.name}'"
+                    : $"file at FilePath '{_convoCoreConversationData.FilePath}'";
+                Debug.LogError(
+                    $"ConvoCore: Failed to parse YAML for conversation key '{conversationKey}' " +
+                    $"on asset '{_convoCoreConversationData.name}' (source: {source}).\n" +
+                    $"Parser error: {ex.Message}\n" +
+                    $"Common causes:\n" +
+                    $"  • Special characters in dialogue text (e.g. ':', '#', '*', '!') that are unquoted\n" +
+                    $"  • Indentation errors (mixing tabs and spaces)\n" +
+                    $"  • A value spanning multiple lines that is not properly block-quoted\n" +
+                    $"  • A YAML document-end marker '...' or document-start marker '---' appearing in content");
                 return;
             }
 
             if (!dialoguesBySection.TryGetValue(conversationKey, out var yamlConfigs) || yamlConfigs == null)
             {
-                Debug.LogError($"Conversation key '{conversationKey}' not found in YAML.");
+                var availableKeys = string.Join(", ", dialoguesBySection.Keys);
+                Debug.LogError(
+                    $"ConvoCore: Conversation key '{conversationKey}' not found in YAML " +
+                    $"for asset '{_convoCoreConversationData.name}'. " +
+                    $"Available keys in the YAML: [{availableKeys}]. " +
+                    $"Ensure the sheet tab name (for Excel) or top-level YAML key exactly matches the ConversationKey.");
                 return;
             }
 

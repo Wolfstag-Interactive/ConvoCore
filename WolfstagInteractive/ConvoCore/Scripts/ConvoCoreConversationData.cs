@@ -20,15 +20,16 @@ namespace WolfstagInteractive.ConvoCore
 
         public List<DialogueLineInfo> DialogueLines; // Metadata for all dialogues in the YAML
 
-        [Header("YAML Source (pick one or more)")]
-        public TextAsset ConversationYaml; // sample-friendly direct reference
-
+        [Header("YAML Source")]
+        public TextAsset ConversationYaml;
         public bool AllowPersistentOverrides = true; // enable device-side hotfixes
         [Tooltip("Resources path without extension, e.g. ConvoCore/Dialogue/ForestIntro")]
         public string FilePath;
 #if UNITY_EDITOR
         [HideInInspector] public UnityEngine.Object SourceYaml; // .yaml or TextAsset
         [HideInInspector] public string SourceYamlAssetPath; // AssetDatabase path for auto-sync
+        [HideInInspector] public UnityEngine.Object SourceExcelAsset; // .xlsx for Excel-driven authoring
+        [HideInInspector] public string SourceExcelAssetPath; // AssetDatabase path for Excel auto-sync
 #endif
         [Tooltip("Define the unique key for the conversation.")]
         public string ConversationKey; // Add this field to hold the key

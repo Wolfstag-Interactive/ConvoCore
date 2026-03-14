@@ -17,6 +17,12 @@ namespace WolfstagInteractive.ConvoCore.Editor
         private SerializedProperty _conversationYaml;
         private SerializedProperty _sourceYaml;
         private SerializedProperty _sourceYamlAssetPath;
+        private SerializedProperty _sourceExcelAsset;
+        private SerializedProperty _sourceExcelAssetPath;
+        private string _lastExcelImportMessage;
+        private bool _lastExcelImportSuccess;
+        private bool _excelFoldout;
+
         private string[] _cachedSupportedLanguages;
         private string[] _cachedDisplayLanguages;
         private List<string> _cachedYamlLocales;
@@ -24,6 +30,7 @@ namespace WolfstagInteractive.ConvoCore.Editor
         private const double YAML_CHECK_INTERVAL = 1.0;
         private void OnEnable()
         {
+            _excelFoldout = EditorPrefs.GetBool("ConvoCore.ExcelSourceFoldout." + target.GetInstanceID(), false);
             CacheLanguageSettings();
         }
         private void CacheLanguageSettings()
@@ -61,6 +68,8 @@ namespace WolfstagInteractive.ConvoCore.Editor
             _conversationYaml         = serializedObject.FindProperty("ConversationYaml");
             _sourceYaml               = serializedObject.FindProperty("SourceYaml");
             _sourceYamlAssetPath      = serializedObject.FindProperty("SourceYamlAssetPath");
+            _sourceExcelAsset         = serializedObject.FindProperty("SourceExcelAsset");
+            _sourceExcelAssetPath     = serializedObject.FindProperty("SourceExcelAssetPath");
 
             // Track if any changes are made for validation
             EditorGUI.BeginChangeCheck();
@@ -106,6 +115,8 @@ namespace WolfstagInteractive.ConvoCore.Editor
 
             // YAML Linking (hidden intermediary workflow)
             DrawYamlLinkingSection();
+            // Excel Source (alternative to YAML for spreadsheet-driven authoring)
+            DrawExcelSourceSection();
             // Draw 'FilePath' field with the browse button
             DrawFilePathField();
 
@@ -172,7 +183,7 @@ namespace WolfstagInteractive.ConvoCore.Editor
             GUI.backgroundColor = prevColor;
         }
 
-private void DrawLanguagePreviewSection()
+        private void DrawLanguagePreviewSection()
 {
     EditorGUILayout.Space();
     EditorGUILayout.BeginVertical("box");
@@ -348,6 +359,92 @@ private void DrawLanguagePreviewSection()
             {
                 return null; // keep inspector resilient
             }
+        }
+
+        private void DrawExcelSourceSection()
+        {
+            if (_sourceExcelAsset == null || _sourceExcelAssetPath == null)
+                return;
+
+            EditorGUILayout.Space();
+            EditorGUILayout.BeginVertical("box");
+
+            var foldoutKey = "ConvoCore.ExcelSourceFoldout." + target.GetInstanceID();
+            _excelFoldout = EditorGUILayout.Foldout(_excelFoldout, "Excel Source", true, EditorStyles.foldoutHeader);
+            EditorPrefs.SetBool(foldoutKey, _excelFoldout);
+
+            if (_excelFoldout)
+            {
+                EditorGUILayout.Space(2);
+
+                // Show link prompt when no asset assigned
+                if (_sourceExcelAsset.objectReferenceValue == null)
+                {
+                    EditorGUILayout.HelpBox(
+                        "Link an .xlsx file to enable spreadsheet-driven dialogue authoring. " +
+                        "Each sheet tab name must match a ConversationKey. " +
+                        "Configure expected column headers in ConvoCoreSettings under the Spreadsheet tab.",
+                        MessageType.Info);
+                }
+
+                // Object field for SourceExcelAsset
+                EditorGUI.BeginChangeCheck();
+                EditorGUILayout.PropertyField(_sourceExcelAsset, new GUIContent("Source .xlsx (Editor-only)"));
+                if (EditorGUI.EndChangeCheck())
+                {
+                    serializedObject.ApplyModifiedProperties();
+                    var newObj = _sourceExcelAsset.objectReferenceValue;
+                    if (newObj != null)
+                    {
+                        var newPath = AssetDatabase.GetAssetPath(newObj);
+                        _sourceExcelAssetPath.stringValue = newPath;
+                        serializedObject.ApplyModifiedProperties();
+                    }
+                    else
+                    {
+                        _sourceExcelAssetPath.stringValue = string.Empty;
+                        serializedObject.ApplyModifiedProperties();
+                    }
+                }
+
+                // Validate extension
+                if (_sourceExcelAsset.objectReferenceValue != null)
+                {
+                    var assignedPath = _sourceExcelAssetPath.stringValue;
+                    if (!assignedPath.EndsWith(".xlsx", System.StringComparison.OrdinalIgnoreCase))
+                    {
+                        EditorGUILayout.HelpBox(
+                            "The assigned file does not appear to be an .xlsx file. Only Excel workbooks are supported.",
+                            MessageType.Warning);
+                    }
+                    else
+                    {
+                        // Show current linked path
+                        using (new EditorGUI.DisabledScope(true))
+                            EditorGUILayout.TextField("Linked Path", assignedPath);
+
+                        // Import button
+                        if (GUILayout.Button("Import from Excel", GUILayout.Height(24)))
+                        {
+                            var data = (ConvoCoreConversationData)target;
+                            bool ok = ConvoCoreExcelUtilities.RunFullPipeline(data, assignedPath, out var msg);
+                            _lastExcelImportMessage = msg;
+                            _lastExcelImportSuccess = ok;
+                        }
+
+                        // Result message
+                        if (!string.IsNullOrEmpty(_lastExcelImportMessage))
+                        {
+                            EditorGUILayout.HelpBox(
+                                _lastExcelImportMessage,
+                                _lastExcelImportSuccess ? MessageType.Info : MessageType.Error);
+                        }
+                    }
+                }
+            }
+
+            EditorGUILayout.EndVertical();
+            EditorGUILayout.Space();
         }
 
         private void DrawYamlLinkingSection()
@@ -727,8 +824,7 @@ private void DrawLanguagePreviewSection()
             }
         }
     }
-    // Add this helper in your editor file (outside the inspector class is fine).
-static class LocaleCache
+    static class LocaleCache
 {
     // One cache entry per TextAsset
     private sealed class Entry

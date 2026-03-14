@@ -77,6 +77,9 @@ namespace WolfstagInteractive.ConvoCore
         private static readonly Dictionary<ConversationContainer, int> _sequentialIndices =
             new Dictionary<ConversationContainer, int>();
 
+        [UnityEngine.RuntimeInitializeOnLoadMethod(UnityEngine.RuntimeInitializeLoadType.SubsystemRegistration)]
+        private static void ResetSequentialIndices() => _sequentialIndices.Clear();
+
         public ConversationBranchResult ResolveForBranch(IConversationContext context, string aliasOrName = null)
         {
             if (Conversations == null || Conversations.Count == 0)

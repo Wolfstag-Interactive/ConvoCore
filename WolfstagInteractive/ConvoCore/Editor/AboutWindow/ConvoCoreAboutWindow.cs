@@ -243,7 +243,8 @@ namespace WolfstagInteractive.ConvoCore.Editor
 
         public const string Credits =
             "Created by Wolfstag Interactive.\n" +
-            "Uses YamlDotNet.\n"+ "Art assets: Indonesian Gentleman\n";
+            "Uses YamlDotNet (MIT License).\n" +
+            "Sample Art assets: Indonesian Gentleman\n";
     }
     
 }
