@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace WolfstagInteractive.ConvoCore
@@ -6,24 +5,30 @@ namespace WolfstagInteractive.ConvoCore
 [UnityEngine.HelpURL("https://docs.wolfstaginteractive.com/convocore/api/classWolfstagInteractive_1_1ConvoCore_1_1SimplePrefabRepresentationDisplay.html")]
     public class SimplePrefabRepresentationDisplay : ConvoCoreCharacterDisplayBase
     {
-        private PrefabCharacterRepresentationData _catalog;
+        private CharacterRepresentationBase _representation;
+        private PrefabCharacterRepresentationData _prefabRep;
 
-        public override void BindRepresentation(PrefabCharacterRepresentationData representationAsset)
+        public override void BindRepresentation(CharacterRepresentationBase representationAsset)
         {
-            _catalog = representationAsset;
+            _representation = representationAsset;
+            _prefabRep = representationAsset as PrefabCharacterRepresentationData;
+
+            if (_prefabRep == null)
+                Debug.LogWarning($"[SimplePrefabRepresentationDisplay] Expected PrefabCharacterRepresentationData " +
+                                 $"but received '{representationAsset?.GetType().Name}'. Expression application will be skipped.");
         }
 
         public override void ApplyExpression(string expressionId)
         {
-            if (_catalog == null)
+            if (_prefabRep == null)
             {
                 Debug.LogWarning("[SimplePrefabDisplay] Catalog not bound. Call BindRepresentation first.");
                 return;
             }
 
-            if (!_catalog.TryResolveById(expressionId, out var mapping))
+            if (!_prefabRep.TryResolveById(expressionId, out var mapping))
             {
-                Debug.LogWarning($"[SimplePrefabDisplay] ExpressionId '{expressionId}' not found in '{_catalog.name}'.");
+                Debug.LogWarning($"[SimplePrefabDisplay] ExpressionId '{expressionId}' not found in '{_prefabRep.name}'.");
                 return;
             }
 
@@ -35,11 +40,12 @@ namespace WolfstagInteractive.ConvoCore
 
             // Add more payload effects as needed (SFX, particle, blend shapes...)
         }
+        // Intentionally standalone -- does not call base.ApplyDisplayOptions.
+        // Positioning is handled by the parent transform assigned in ConvoCorePrefabRepresentationSpawner.
+        // Scale and flip are applied directly to this transform.
         public override void ApplyDisplayOptions(DialogueLineDisplayOptions options)
         {
-            // Example: scale/flip local transform
-            var scale = Vector3.one;
-            scale = Vector3.Scale(scale, options.FullBodyScale);
+            var scale = Vector3.Scale(Vector3.one, options.FullBodyScale);
             transform.localScale = new Vector3(
                 options.FlipFullBodyX ? -Mathf.Abs(scale.x) : Mathf.Abs(scale.x),
                 options.FlipFullBodyY ? -Mathf.Abs(scale.y) : Mathf.Abs(scale.y),

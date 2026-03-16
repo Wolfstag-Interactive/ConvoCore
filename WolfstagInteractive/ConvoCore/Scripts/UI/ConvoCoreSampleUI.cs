@@ -12,17 +12,30 @@ using Image = UnityEngine.UI.Image;
 
 namespace WolfstagInteractive.ConvoCore
 {
+    /// <summary>
+    /// Legacy monolithic sample UI. Kept for backward compatibility with existing prefabs.
+    /// For new projects use <see cref="ConvoCoreSampleUICanvas"/> (2D/canvas) or
+    /// <see cref="ConvoCoreSampleUI3D"/> (world-space) instead.
+    /// </summary>
     [HelpURL("https://docs.wolfstaginteractive.com/convocore/api/classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSampleUI.html")]
     public class ConvoCoreSampleUI : ConvoCoreUIFoundation
     {
+        // Canvas-internal slot concept (replaces the retired DisplaySlot enum).
+        private enum CanvasSlot { Left, Right, Center }
+
+        [Header("Prefab Representation")]
+        [SerializeField] private ConvoCorePrefabRepresentationSpawner prefabRepresentationSpawner;
+        [SerializeField] private Transform prefabLeftAnchor;
+        [SerializeField] private Transform prefabRightAnchor;
+        [SerializeField] private Transform prefabCenterAnchor;
+
         [Header("Choice UI Elements")]
         [SerializeField] private GameObject ChoicePanel;
         [SerializeField] private Transform ChoiceButtonContainer;
         [SerializeField] private GameObject ChoiceButtonPrefab;
 
-        [Header("Dialogue UI Elements")] [SerializeField]
-        private TextMeshProUGUI DialogueText;
-
+        [Header("Dialogue UI Elements")]
+        [SerializeField] private TextMeshProUGUI DialogueText;
         [SerializeField] private TextMeshProUGUI SpeakerName;
         [SerializeField] private GameObject DialoguePanel;
         [SerializeField] private Image SpeakerPortraitImage;
@@ -32,8 +45,8 @@ namespace WolfstagInteractive.ConvoCore
         [SerializeField] private Button ContinueButton;
         [SerializeField] private Button PreviousLineButton;
 
-        [Header("Dialogue History UI Elements")] [SerializeField]
-        private RectTransform DialogueHistoryPanelRoot;
+        [Header("Dialogue History UI Elements")]
+        [SerializeField] private RectTransform DialogueHistoryPanelRoot;
         private string _lastSpeakerName;
         private Color _lastSpeakerColor;
         private string _lastLineText;
@@ -46,14 +59,15 @@ namespace WolfstagInteractive.ConvoCore
         [SerializeField] private TMP_Text DialogueHistoryText;
         [SerializeField] private Button ToggleDialogueHistoryButton;
 
-        [Header("Settings")] [SerializeField] private bool AllowLineAdvanceOutsideButton;
+        [Header("Settings")]
+        [SerializeField] private bool AllowLineAdvanceOutsideButton;
         [SerializeField] private bool EnableTypewriterEffect = true;
-        [SerializeField] private float TypewriterSpeed = 0.05f; // Time in seconds per character
+        [SerializeField] private float TypewriterSpeed = 0.05f;
         [SerializeField] private bool CanSkipTypewriter = true;
         public bool AutoHideUIOnStart;
 
-        [Header("Input Settings")] [SerializeField]
-        private InputAction AdvanceDialogueAction;
+        [Header("Input Settings")]
+        [SerializeField] private InputAction AdvanceDialogueAction;
         [SerializeField] private InputAction PreviousDialogueAction;
 
         private Coroutine _typewriterCoroutine;
@@ -63,28 +77,40 @@ namespace WolfstagInteractive.ConvoCore
         private bool _isWaitingForInput;
         private bool _historyVisible;
         private CanvasGroup _historyGroup;
-
         private bool _togglingGuard;
-        
-        private DisplaySlot GetSlotForIndex(int index)
+
+        private CanvasSlot GetSlotForIndex(int index)
         {
-            if (index == 0) return DisplaySlot.Left;
-            if (index == 1) return DisplaySlot.Right;
-            if (index == 2) return DisplaySlot.Center;
-            return DisplaySlot.Center;
+            if (index == 0) return CanvasSlot.Left;
+            if (index == 1) return CanvasSlot.Right;
+            return CanvasSlot.Center;
         }
+
+        private Transform GetSlotAnchor(CanvasSlot slot) => slot switch
+        {
+            CanvasSlot.Left   => prefabLeftAnchor,
+            CanvasSlot.Right  => prefabRightAnchor,
+            CanvasSlot.Center => prefabCenterAnchor,
+            _                 => null
+        };
 
         private void Start()
         {
             if (AutoHideUIOnStart)
-            {
                 HideDialogue();
-            }
         }
 
         public override void InitializeUI(ConvoCore convoCoreInstance)
         {
             base.InitializeUI(convoCoreInstance);
+
+            if (prefabRepresentationSpawner == null)
+            {
+                prefabRepresentationSpawner = GetComponent<ConvoCorePrefabRepresentationSpawner>();
+                if (prefabRepresentationSpawner == null)
+                    Debug.LogWarning($"[ConvoCoreSampleUI] No ConvoCorePrefabRepresentationSpawner assigned or found on '{gameObject.name}'. Prefab characters will not resolve.");
+            }
+
             var historyOutput = new TMPDialogueHistoryOutput(DialogueHistoryText, DialogueHistoryScrollRect);
             var ctx = new DialogueHistoryRendererContext
             {
@@ -108,7 +134,6 @@ namespace WolfstagInteractive.ConvoCore
             PreviousDialogueAction?.Enable();
             if (AdvanceDialogueAction != null) AdvanceDialogueAction.performed += OnAdvanceDialoguePerformed;
             if (PreviousDialogueAction != null) PreviousDialogueAction.performed += OnPreviousDialoguePerformed;
-
         }
 
         private void OnDisable()
@@ -118,6 +143,7 @@ namespace WolfstagInteractive.ConvoCore
             if (AdvanceDialogueAction != null) AdvanceDialogueAction.performed -= OnAdvanceDialoguePerformed;
             if (PreviousDialogueAction != null) PreviousDialogueAction.performed -= OnPreviousDialoguePerformed;
         }
+
         private void OnPreviousLineButtonPressed()
         {
             if (_isTyping && CanSkipTypewriter)
@@ -127,8 +153,8 @@ namespace WolfstagInteractive.ConvoCore
             }
             _isWaitingForInput = false;
             RaiseReverse();
-            
         }
+
         private void OnPreviousDialoguePerformed(InputAction.CallbackContext context)
         {
             if (EventSystem.current != null)
@@ -145,7 +171,6 @@ namespace WolfstagInteractive.ConvoCore
             }
 
             if (_isTyping && !CanSkipTypewriter) return;
-
             OnPreviousLineButtonPressed();
         }
 
@@ -155,14 +180,6 @@ namespace WolfstagInteractive.ConvoCore
             if (PreviousLineButton != null) PreviousLineButton.interactable = canReverse;
         }
 
-        /// <summary>
-        /// Updates the dialogue UI by displaying text, speaker information, and character representations for the current dialogue line.
-        /// </summary>
-        /// <param name="lineInfo">Data about the current dialogue line, including character representation details.</param>
-        /// <param name="localizedText">The localized text for the current dialogue line.</param>
-        /// <param name="speakerName">The name of the character currently speaking.</param>
-        /// <param name="primaryRepresentation">The primary visual representation of the speaking character.</param>
-        /// <param name="primaryProfile">The profile data of the speaking character, including display settings such as name color.</param>
         public override void UpdateDialogueUI(ConvoCoreConversationData.DialogueLineInfo lineInfo, string localizedText,
             string speakerName, CharacterRepresentationBase primaryRepresentation,
             ConvoCoreCharacterProfileBaseData primaryProfile)
@@ -170,37 +187,28 @@ namespace WolfstagInteractive.ConvoCore
             DisplayDialogue(localizedText);
             SpeakerName.text = speakerName;
             SpeakerName.color = primaryProfile.CharacterNameColor;
-            // cache for history commit on Continue
             _lastSpeakerName = speakerName;
             _lastSpeakerColor = primaryProfile.CharacterNameColor;
             _lastLineText = localizedText;
             _lastLineIndex = lineInfo.ConversationLineIndex;
-            
+
             lineInfo.EnsureCharacterRepresentationListInitialized();
 
             int uiCap = Mathf.Max(1, MaxVisibleCharacterSlots);
-            int physicalCap = 3; // this sample UI has exactly 3 slots
+            int physicalCap = 3;
             int showCount = Mathf.Min(uiCap, physicalCap, lineInfo.CharacterRepresentations.Count);
-            
-            // Hide all sprite elements
+
             HideAllSpriteImages();
             for (int i = 0; i < showCount; i++)
-            {
                 RenderRepresentation(lineInfo.CharacterRepresentations[i], GetSlotForIndex(i));
-            }
 
             ContinueButton?.gameObject.SetActive(true);
             RefreshNavButtons();
         }
 
-        /// <summary>
-        /// Renders a character's representation (e.g., sprite-based or prefab-based) in a specified display slot.
-        /// </summary>
-        /// <param name="data">The character representation data containing details about the character and its display options.</param>
-        /// <param name="slot">The display slot where the character representation should be rendered (left, right, or center).</param>
         private IConvoCoreCharacterDisplay RenderRepresentation(
             ConvoCoreConversationData.CharacterRepresentationData data,
-            DisplaySlot slot)
+            CanvasSlot slot)
         {
             ConvoCoreConversationData conversationData = ConvoCoreInstance?.GetCurrentConversationData();
             if (conversationData == null) return null;
@@ -209,54 +217,60 @@ namespace WolfstagInteractive.ConvoCore
             if (representation == null) return null;
 
             var expressionID = data.SelectedExpressionId;
-            var processed = representation.ProcessExpression(expressionID);
 
-            // Prefab based representation
             if (representation is PrefabCharacterRepresentationData prefabRep)
             {
-                var display = PrefabRepresentationSpawner?.SpawnCharacter(
+                var anchor = GetSlotAnchor(slot);
+                return prefabRepresentationSpawner?.ResolveCharacter(
                     prefabRep,
                     expressionID,
                     data.LineSpecificDisplayOptions,
-                    slot);
-
-                return display; // IConvoCoreCharacterDisplay
+                    anchor);
             }
-            // Sprite based representation
-            else if (processed is SpriteExpressionMapping spriteMapping)
+
+            var processed = representation.ProcessExpression(expressionID);
+
+            if (processed is SpriteExpressionMapping spriteMapping)
             {
-                var displayOptions = data.LineSpecificDisplayOptions ?? spriteMapping.DisplayOptions;
-
-                Image portraitImage = SpeakerPortraitImage;
-                Image fullBodyImage = GetFullBodyImage(slot);
-
-                if (portraitImage && spriteMapping.PortraitSprite)
-                {
-                    portraitImage.sprite = spriteMapping.PortraitSprite;
-                    portraitImage.rectTransform.localScale = new Vector3(
-                        displayOptions.FlipPortraitX ? -displayOptions.PortraitScale.x : displayOptions.PortraitScale.x,
-                        displayOptions.FlipPortraitY ? -displayOptions.PortraitScale.y : displayOptions.PortraitScale.y,
-                        displayOptions.PortraitScale.z);
-                    portraitImage.gameObject.SetActive(true);
-                    TryFadeIn(portraitImage);
-                }
-
-                if (fullBodyImage && spriteMapping.FullBodySprite)
-                {
-                    fullBodyImage.sprite = spriteMapping.FullBodySprite;
-                    fullBodyImage.rectTransform.localScale = new Vector3(
-                        displayOptions.FlipFullBodyX ? -displayOptions.FullBodyScale.x : displayOptions.FullBodyScale.x,
-                        displayOptions.FlipFullBodyY ? -displayOptions.FullBodyScale.y : displayOptions.FullBodyScale.y,
-                        displayOptions.FullBodyScale.z);
-                    fullBodyImage.gameObject.SetActive(true);
-                    TryFadeIn(fullBodyImage);
-                }
-
-                // For now sprite representation returns null display
+                RenderSpriteRepresentation(spriteMapping, data.LineSpecificDisplayOptions, slot);
                 return null;
             }
 
+            Debug.LogWarning($"[ConvoCoreSampleUI] Representation type '{representation.GetType().Name}' " +
+                             $"returned an unhandled result from ProcessExpression. " +
+                             $"Override RenderRepresentation in a subclass to handle custom types.");
             return null;
+        }
+
+        private void RenderSpriteRepresentation(SpriteExpressionMapping spriteMapping,
+            DialogueLineDisplayOptions lineOptions, CanvasSlot slot)
+        {
+            var displayOptions = lineOptions ?? spriteMapping.DisplayOptions;
+
+            Image portraitImage = SpeakerPortraitImage;
+            Image fullBodyImage = GetFullBodyImage(slot);
+
+            if (portraitImage && spriteMapping.PortraitSprite)
+            {
+                portraitImage.sprite = spriteMapping.PortraitSprite;
+                portraitImage.rectTransform.localScale = new Vector3(
+                    displayOptions.FlipPortraitX ? -displayOptions.PortraitScale.x : displayOptions.PortraitScale.x,
+                    displayOptions.FlipPortraitY ? -displayOptions.PortraitScale.y : displayOptions.PortraitScale.y,
+                    displayOptions.PortraitScale.z);
+                portraitImage.gameObject.SetActive(true);
+                TryFadeIn(portraitImage);
+            }
+
+            if (fullBodyImage && spriteMapping.FullBodySprite)
+            {
+                fullBodyImage.sprite = spriteMapping.FullBodySprite;
+                fullBodyImage.rectTransform.localScale = new Vector3(
+                    displayOptions.FlipFullBodyX ? -displayOptions.FullBodyScale.x : displayOptions.FullBodyScale.x,
+                    displayOptions.FlipFullBodyY ? -displayOptions.FullBodyScale.y : displayOptions.FullBodyScale.y,
+                    displayOptions.FullBodyScale.z);
+                fullBodyImage.gameObject.SetActive(true);
+                TryFadeIn(fullBodyImage);
+            }
         }
 
         private void TryFadeIn(Graphic graphic)
@@ -265,12 +279,12 @@ namespace WolfstagInteractive.ConvoCore
             fade?.FadeIn();
         }
 
-        private Image GetFullBodyImage(DisplaySlot slot) => slot switch
+        private Image GetFullBodyImage(CanvasSlot slot) => slot switch
         {
-            DisplaySlot.Left => FullBodyImageLeft,
-            DisplaySlot.Center => FullBodyImageCenter,
-            DisplaySlot.Right => FullBodyImageRight,
-            _ => null
+            CanvasSlot.Left   => FullBodyImageLeft,
+            CanvasSlot.Center => FullBodyImageCenter,
+            CanvasSlot.Right  => FullBodyImageRight,
+            _                 => null
         };
 
         private void HideAllSpriteImages()
@@ -286,9 +300,8 @@ namespace WolfstagInteractive.ConvoCore
         {
             if (!string.IsNullOrEmpty(data.SelectedCharacterID))
             {
-                var profile =
-                    convoData.ConversationParticipantProfiles.FirstOrDefault(p =>
-                        p.CharacterID == data.SelectedCharacterID);
+                var profile = convoData.ConversationParticipantProfiles.FirstOrDefault(p =>
+                    p.CharacterID == data.SelectedCharacterID);
                 return profile?.GetRepresentation(data.SelectedRepresentationName);
             }
 
@@ -297,14 +310,12 @@ namespace WolfstagInteractive.ConvoCore
 
         public override void DisplayDialogue(string text)
         {
-            fullText = text; // cache full text for typewriter skip and history
-
+            fullText = text;
             DialogueText.text = text;
             DialogueText.gameObject.SetActive(true);
             SpeakerName.gameObject.SetActive(true);
             DialoguePanel.gameObject.SetActive(true);
 
-            // Stop any existing typewriter effect
             if (_typewriterCoroutine != null)
             {
                 StopCoroutine(_typewriterCoroutine);
@@ -324,7 +335,6 @@ namespace WolfstagInteractive.ConvoCore
             }
         }
 
-
         public override void HideDialogue()
         {
             DialogueText.gameObject.SetActive(false);
@@ -342,9 +352,8 @@ namespace WolfstagInteractive.ConvoCore
             ContinueButton.gameObject.SetActive(true);
 
             while (_isWaitingForInput)
-            {
                 yield return null;
-            }
+
             ContinueButton.gameObject.SetActive(false);
         }
 
@@ -396,7 +405,7 @@ namespace WolfstagInteractive.ConvoCore
                 CompleteTypewriter();
                 return;
             }
-            // Commit this line to history only once per ConversationLineIndex
+
             if (_lastLineIndex >= 0 && !_committedLineIndices.Contains(_lastLineIndex))
             {
                 if (!string.IsNullOrEmpty(_lastSpeakerName) && !string.IsNullOrEmpty(_lastLineText))
@@ -405,6 +414,7 @@ namespace WolfstagInteractive.ConvoCore
                     _committedLineIndices.Add(_lastLineIndex);
                 }
             }
+
             _isWaitingForInput = false;
             RaiseAdvance();
         }
@@ -415,47 +425,34 @@ namespace WolfstagInteractive.ConvoCore
             {
                 if (EventSystem.current != null)
                 {
-                    // For new Input System UI, check using the pointerId
                     var inputModule = EventSystem.current.currentInputModule as InputSystemUIInputModule;
                     if (inputModule != null)
                     {
-                        // Mouse pointer id is -1 by default in InputSystemUIInputModule
-                        if (EventSystem.current.IsPointerOverGameObject(-1))
-                            return; // Ignore UI clicks (so they go to buttons)
+                        if (EventSystem.current.IsPointerOverGameObject(-1)) return;
                     }
                     else
                     {
-                        // Fallback for old input module
-                        if (EventSystem.current.IsPointerOverGameObject())
-                            return;
+                        if (EventSystem.current.IsPointerOverGameObject()) return;
                     }
                 }
             }
 
-            if (_isTyping && !CanSkipTypewriter)
-            {
-                return;
-            }
+            if (_isTyping && !CanSkipTypewriter) return;
+
             if (_isWaitingForInput && (AllowLineAdvanceOutsideButton || !IsPointerOverUIElement(ContinueButton)))
-            {
                 OnContinueButtonPressed();
-            }
             else if (_isTyping && CanSkipTypewriter)
-            {
                 CompleteTypewriter();
-            }
         }
 
         private IEnumerator TypewriterEffect(string text)
         {
             DialogueText.text = "";
-
             for (int i = 0; i < text.Length; i++)
             {
                 DialogueText.text = text.Substring(0, i + 1);
                 yield return new WaitForSeconds(TypewriterSpeed);
             }
-
             _isTyping = false;
             _typewriterCoroutine = null;
         }
@@ -467,20 +464,16 @@ namespace WolfstagInteractive.ConvoCore
                 StopCoroutine(_typewriterCoroutine);
                 _typewriterCoroutine = null;
             }
-
             DialogueText.text = fullText;
             _isTyping = false;
         }
 
-        // Call this from your button: ToggleDialogueHistoryButton?.onClick.AddListener(() => ToggleDialogueHistoryUI());
         public void ToggleDialogueHistoryUI() => ToggleDialogueHistoryUI(null);
 
-        // Explicitly show/hide by passing true/false; pass null to toggle.
         public void ToggleDialogueHistoryUI(bool? setVisible)
         {
             if (_togglingGuard) return;
 
-            // Basic safety
             if (DialogueHistoryPanelRoot == null)
             {
                 Debug.LogWarning("[ConvoCore UI] DialogueHistoryPanelRoot not assigned.");
@@ -488,47 +481,31 @@ namespace WolfstagInteractive.ConvoCore
             }
 
             bool target = setVisible ?? !_historyVisible;
-            
             _togglingGuard = true;
             _historyVisible = target;
 
-            // If you have a CanvasGroup, prefer alpha/interactable/raycast control (smoother)
             if (_historyGroup != null)
             {
                 _historyGroup.alpha = target ? 1f : 0f;
                 _historyGroup.interactable = target;
                 _historyGroup.blocksRaycasts = target;
-
-                // Keep GameObject active to preserve layout if you like, or toggle it as well:
-                DialogueHistoryPanelRoot.gameObject
-                    .SetActive(true); // keep active so layout stays; alpha=0 hides it visually
-                if (!target)
-                {
-                    // If you truly want it disabled, uncomment:
-                    // DialogueHistoryPanelRoot.gameObject.SetActive(false);
-                }
+                DialogueHistoryPanelRoot.gameObject.SetActive(true);
             }
             else
             {
-                // Fallback to SetActive when no CanvasGroup is present
                 DialogueHistoryPanelRoot.gameObject.SetActive(target);
             }
 
             if (DialogueHistoryContentBackground)
-            {
                 DialogueHistoryContentBackground.enabled = target;
-            }
 
-            // Optional: when history is open, guard against “advance” clicks bleeding through
             if (ContinueButton != null)
                 ContinueButton.interactable = !target;
 
-            // Snap scroll to bottom when opening (latest line visible)
             if (target && DialogueHistoryScrollRect != null)
             {
-                // Force a late layout update then snap
                 Canvas.ForceUpdateCanvases();
-                DialogueHistoryScrollRect.normalizedPosition = new Vector2(0f, 0f); // bottom for vertical scrolls
+                DialogueHistoryScrollRect.normalizedPosition = new Vector2(0f, 0f);
             }
 
             _togglingGuard = false;
@@ -539,27 +516,21 @@ namespace WolfstagInteractive.ConvoCore
         {
             if (uiElement == null) return false;
 
-
             RectTransform rectTransform = uiElement.GetComponent<RectTransform>();
             if (rectTransform != null)
             {
                 Vector2 mousePosition;
 #if ENABLE_INPUT_SYSTEM
                 if (Mouse.current != null)
-                {
                     mousePosition = Mouse.current.position.ReadValue();
-                }
                 else
-                {
                     mousePosition = Input.mousePosition;
-                }
 #else
                 mousePosition = Input.mousePosition;
 #endif
                 Vector2 localMousePosition = rectTransform.InverseTransformPoint(mousePosition);
                 return rectTransform.rect.Contains(localMousePosition);
             }
-
 
             return false;
         }

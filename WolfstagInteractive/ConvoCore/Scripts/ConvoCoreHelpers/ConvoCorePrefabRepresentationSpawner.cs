@@ -3,139 +3,268 @@ using UnityEngine;
 
 namespace WolfstagInteractive.ConvoCore
 {
-[HelpURL("https://docs.wolfstaginteractive.com/convocore/api/classWolfstagInteractive_1_1ConvoCore_1_1ConvoCorePrefabRepresentationSpawner.html")]
+    /// <summary>
+    /// Resolves, tracks, and releases prefab-based character displays for a single UI instance.
+    ///
+    /// Supports two resolution paths determined by <see cref="CharacterSourceMode"/> on the
+    /// representation asset:
+    /// <list type="bullet">
+    ///   <item><see cref="CharacterSourceMode.SpawnFromPrefab"/> -- instance is drawn from <see cref="ConvoCorePrefabPool"/> and returned on release.</item>
+    ///   <item><see cref="CharacterSourceMode.SceneResident"/> -- instance is located via <see cref="ConvoCoreSceneCharacterRegistry"/>. ConvoCore never spawns, pools, or destroys it.</item>
+    /// </list>
+    ///
+    /// Active entries are tracked by the <see cref="Transform"/> passed as the slot anchor.
+    /// Passing the same Transform again releases the previous occupant before placing a new one.
+    /// Scene-resident characters resolved via <see cref="TryGetSceneResident"/> are not tracked
+    /// by slot and are never pooled or destroyed by this spawner.
+    /// </summary>
+    [HelpURL("https://docs.wolfstaginteractive.com/convocore/api/classWolfstagInteractive_1_1ConvoCore_1_1ConvoCorePrefabRepresentationSpawner.html")]
     public class ConvoCorePrefabRepresentationSpawner : MonoBehaviour
     {
-        [SerializeField] private Transform leftParent;
-        [SerializeField] private Transform rightParent;
-        [SerializeField] private Transform centerParent;
+        [Tooltip("Required when any representation uses SceneResident source mode. Optional otherwise.")]
+        [SerializeField] private ConvoCoreSceneCharacterRegistry sceneCharacterRegistry;
 
-        private readonly Dictionary<DisplaySlot, GameObject> _activeInstances = new();
-        private readonly Dictionary<GameObject, GameObject> _instanceToPrefab = new();
+        // Active spawned entries keyed by the slot anchor Transform.
+        private readonly Dictionary<Transform, ActiveCharacterEntry> _activeEntries = new();
 
-        public IConvoCoreCharacterDisplay SpawnCharacter(
+        // ------------------------------------------------------------------
+        // Public API
+        // ------------------------------------------------------------------
+
+        /// <summary>
+        /// Full-service canvas UI path. Spawns (or locates) the character display, binds the
+        /// representation, applies the expression and display options, and triggers a fade-in
+        /// if the instance implements <see cref="IConvoCoreFadeIn"/>.
+        /// Passing the same <paramref name="slotTransform"/> as a previous call releases the
+        /// previous occupant before resolving the new one.
+        /// Returns null if resolution fails.
+        /// </summary>
+        public IConvoCoreCharacterDisplay ResolveCharacter(
             PrefabCharacterRepresentationData representation,
             string expressionID,
             DialogueLineDisplayOptions displayOptions,
-            DisplaySlot slot)
+            Transform slotTransform)
         {
-            // Despawn existing in that slot
-            if (_activeInstances.TryGetValue(slot, out var previous))
-            {
-                if (_instanceToPrefab.TryGetValue(previous, out var oldPrefab))
-                {
-                    if (previous.TryGetComponent<IConvoCoreFadeOut>(out var fadeOut))
-                    {
-                        fadeOut.FadeOutAndRelease(() =>
-                        {
-                            ConvoCorePrefabPool.Instance.Release(oldPrefab, previous);
-                        });
-                    }
-                    else
-                    {
-                        ConvoCorePrefabPool.Instance.Release(oldPrefab, previous);
-                    }
-                }
+            var display = ResolveDisplayCore(representation, slotTransform);
+            if (display == null) return null;
 
-                _activeInstances.Remove(slot);
-                _instanceToPrefab.Remove(previous);
-            }
-
-            var instance = ConvoCorePrefabPool.Instance.Spawn(representation.CharacterPrefab, GetParentTransform(slot));
-            instance.name = $"{representation.CharacterPrefab.name}_{slot}_{System.Guid.NewGuid().ToString("N").Substring(0, 6)}";
-
-            var display = instance.GetComponentInChildren<IConvoCoreCharacterDisplay>();
-            if (display == null)
-            {
-                Debug.LogWarning($"[{nameof(ConvoCorePrefabRepresentationSpawner)}] Prefab '{representation.CharacterPrefab.name}' has no IConvoCoreCharacterDisplay.");
-            }
-            else
-            {
-                display.BindRepresentation(representation);  
+            if (!string.IsNullOrEmpty(expressionID))
                 display.ApplyExpression(expressionID);
-                display.ApplyDisplayOptions(displayOptions);
-            }
 
-            if (instance.TryGetComponent<IConvoCoreFadeIn>(out var fadeIn))
+            if (displayOptions != null)
+                display.ApplyDisplayOptions(displayOptions);
+
+            if (_activeEntries.TryGetValue(slotTransform, out var entry) &&
+                entry.SourceInstance != null &&
+                entry.SourceInstance.TryGetComponent<IConvoCoreFadeIn>(out var fadeIn))
                 fadeIn.FadeIn();
 
-            _activeInstances[slot] = instance;
-            _instanceToPrefab[instance] = representation.CharacterPrefab;
             return display;
         }
-        
 
-
-        public void DespawnAll()
+        /// <summary>
+        /// Presence path. Spawns (or locates) the character display and binds the representation
+        /// without applying any expression or display options. The caller is responsible for
+        /// applying expression and display options after receiving the display.
+        /// Returns null if resolution fails.
+        /// </summary>
+        public IConvoCoreCharacterDisplay SpawnAndBind(
+            PrefabCharacterRepresentationData representation,
+            Transform slotTransform)
         {
-            foreach (var instance in _activeInstances.Values)
-            {
-                DespawnInstance(instance);
-            }
-
-            _activeInstances.Clear();
+            return ResolveDisplayCore(representation, slotTransform);
         }
 
-        private void DespawnInstance(GameObject instance)
+        /// <summary>
+        /// Looks up a scene-resident display by ID without tracking it in the active-entry
+        /// dictionary. The caller owns the display; ConvoCore will not pool or destroy it.
+        /// </summary>
+        public bool TryGetSceneResident(string sceneCharacterId, out IConvoCoreCharacterDisplay display)
         {
-            if (instance == null) return;
-
-            if (_instanceToPrefab.TryGetValue(instance, out var prefab))
+            display = null;
+            if (sceneCharacterRegistry == null)
             {
-                var fade = instance.GetComponentInChildren<IConvoCoreFadeOut>();
-                if (fade != null)
-                {
-                    fade.FadeOutAndRelease(() =>
+                Debug.LogWarning($"[{nameof(ConvoCorePrefabRepresentationSpawner)}] No ConvoCoreSceneCharacterRegistry assigned. Cannot look up scene-resident character '{sceneCharacterId}'.");
+                return false;
+            }
+            return sceneCharacterRegistry.TryGet(sceneCharacterId, out display);
+        }
+
+        /// <summary>
+        /// Releases all active tracked entries. Scene-resident characters are removed from
+        /// tracking only and are never pooled or destroyed.
+        /// </summary>
+        public void ReleaseAll()
+        {
+            foreach (var anchor in new List<Transform>(_activeEntries.Keys))
+                ReleaseSlot(anchor);
+
+            _activeEntries.Clear();
+        }
+
+        // ------------------------------------------------------------------
+        // Core resolution
+        // ------------------------------------------------------------------
+
+        private IConvoCoreCharacterDisplay ResolveDisplayCore(
+            PrefabCharacterRepresentationData representation,
+            Transform slotTransform)
+        {
+            if (slotTransform != null)
+                ReleaseSlot(slotTransform);
+
+            IConvoCoreCharacterDisplay display;
+            ActiveCharacterEntry entry;
+
+            switch (representation.SourceMode)
+            {
+                case CharacterSourceMode.SceneResident:
+                    display = ResolveSceneResident(representation);
+                    if (display == null) return null;
+                    entry = new ActiveCharacterEntry(display, isSceneResident: true, sourcePrefab: null);
+                    break;
+
+                case CharacterSourceMode.SpawnFromPrefab:
+                default:
+                    var instance = SpawnFromPool(representation, slotTransform);
+                    if (instance == null) return null;
+                    display = instance.GetComponentInChildren<IConvoCoreCharacterDisplay>();
+                    if (display == null)
                     {
-                        ConvoCorePrefabPool.Instance.Release(prefab, instance);
-                        _instanceToPrefab.Remove(instance);
-                    });
-                }
-                else
+                        Debug.LogWarning($"[{nameof(ConvoCorePrefabRepresentationSpawner)}] Prefab '{representation.CharacterPrefab.name}' has no IConvoCoreCharacterDisplay component.");
+                        ConvoCorePrefabPool.Instance.Release(representation.CharacterPrefab, instance);
+                        return null;
+                    }
+                    entry = new ActiveCharacterEntry(display, isSceneResident: false,
+                        sourcePrefab: representation.CharacterPrefab, sourceInstance: instance);
+                    break;
+            }
+
+            display.BindRepresentation(representation);
+
+            if (slotTransform != null)
+                _activeEntries[slotTransform] = entry;
+
+            return display;
+        }
+
+        // ------------------------------------------------------------------
+        // Private helpers
+        // ------------------------------------------------------------------
+
+        private IConvoCoreCharacterDisplay ResolveSceneResident(PrefabCharacterRepresentationData representation)
+        {
+            if (sceneCharacterRegistry == null)
+            {
+                Debug.LogWarning($"[{nameof(ConvoCorePrefabRepresentationSpawner)}] Representation '{representation.name}' uses SceneResident mode but no registry is assigned on this spawner.");
+                return null;
+            }
+
+            if (!sceneCharacterRegistry.TryGet(representation.SceneCharacterId, out var display))
+            {
+                Debug.LogWarning($"[{nameof(ConvoCorePrefabRepresentationSpawner)}] No scene character registered with ID '{representation.SceneCharacterId}'.");
+                return null;
+            }
+
+            return display;
+        }
+
+        private GameObject SpawnFromPool(PrefabCharacterRepresentationData representation, Transform parent)
+        {
+            if (representation.CharacterPrefab == null)
+            {
+                Debug.LogWarning($"[{nameof(ConvoCorePrefabRepresentationSpawner)}] Representation '{representation.name}' is set to SpawnFromPrefab but has no CharacterPrefab assigned.");
+                return null;
+            }
+
+            if (ConvoCorePrefabPool.Instance == null)
+            {
+                Debug.LogWarning($"[{nameof(ConvoCorePrefabRepresentationSpawner)}] No ConvoCorePrefabPool found in the scene. Cannot spawn prefab character.");
+                return null;
+            }
+
+            var instance = ConvoCorePrefabPool.Instance.Spawn(representation.CharacterPrefab, parent);
+            instance.name = $"{representation.CharacterPrefab.name}_{System.Guid.NewGuid().ToString("N").Substring(0, 6)}";
+            return instance;
+        }
+
+        private void ReleaseSlot(Transform anchor)
+        {
+            if (!_activeEntries.TryGetValue(anchor, out var entry))
+                return;
+
+            _activeEntries.Remove(anchor);
+
+            // Scene-resident characters are never pooled or destroyed by ConvoCore.
+            if (entry.IsSceneResident)
+                return;
+
+            if (entry.SourceInstance == null || entry.SourcePrefab == null)
+                return;
+
+            var instance = entry.SourceInstance;
+            var prefab = entry.SourcePrefab;
+
+            if (instance.TryGetComponent<IConvoCoreFadeOut>(out var fadeOut))
+            {
+                fadeOut.FadeOutAndRelease(() =>
                 {
-                    ConvoCorePrefabPool.Instance.Release(prefab, instance);
-                    _instanceToPrefab.Remove(instance);
-                }
+                    if (ConvoCorePrefabPool.Instance != null)
+                        ConvoCorePrefabPool.Instance.Release(prefab, instance);
+                    else
+                        Destroy(instance);
+                });
             }
             else
             {
-                Destroy(instance); // Fallback if we somehow lost the prefab ref
+                if (ConvoCorePrefabPool.Instance != null)
+                    ConvoCorePrefabPool.Instance.Release(prefab, instance);
+                else
+                    Destroy(instance);
             }
         }
 
-        private Transform GetParentTransform(DisplaySlot slot)
-        {
-            return slot switch
-            {
-                DisplaySlot.Left => leftParent,
-                DisplaySlot.Right => rightParent,
-                DisplaySlot.Center => centerParent,
-                _ => transform
-            };
-        }
-    }
+        // ------------------------------------------------------------------
+        // Entry tracking
+        // ------------------------------------------------------------------
 
-    public enum DisplaySlot
-    {
-        Left,
-        Right,
-        Center
+        private readonly struct ActiveCharacterEntry
+        {
+            public readonly IConvoCoreCharacterDisplay Display;
+            public readonly bool IsSceneResident;
+            public readonly GameObject SourcePrefab;
+            public readonly GameObject SourceInstance;
+
+            public ActiveCharacterEntry(
+                IConvoCoreCharacterDisplay display,
+                bool isSceneResident,
+                GameObject sourcePrefab,
+                GameObject sourceInstance = null)
+            {
+                Display = display;
+                IsSceneResident = isSceneResident;
+                SourcePrefab = sourcePrefab;
+                SourceInstance = sourceInstance;
+            }
+        }
     }
 
     public interface IConvoCoreFadeOut
     {
         /// <summary>
-        /// Called when a character is despawned from a slot and should fade out
+        /// Called when a spawned character is being released from a slot.
+        /// Invoke <paramref name="onComplete"/> when the fade is finished so the
+        /// instance can be returned to the pool. Not called for scene-resident characters.
         /// </summary>
-        /// <param name="onComplete"></param>
         void FadeOutAndRelease(System.Action onComplete);
     }
+
     public interface IConvoCoreFadeIn
     {
         /// <summary>
-        /// Called when a character is spawned into a slot and should fade in.
+        /// Called immediately after a spawned character appears in a slot.
+        /// Not called for scene-resident characters unless the developer explicitly triggers it.
         /// </summary>
-        /// <param name="onComplete">Optional callback invoked after fade-in completes.</param>
         void FadeIn(System.Action onComplete = null);
     }
 }

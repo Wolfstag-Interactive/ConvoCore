@@ -5,7 +5,7 @@ namespace WolfstagInteractive.ConvoCore
     public interface IConvoCoreCharacterDisplay
     {
         /// <summary> Inject the representation asset (expression catalog, single source of truth). </summary>
-        void BindRepresentation(PrefabCharacterRepresentationData representationAsset);
+        void BindRepresentation(CharacterRepresentationBase representationAsset);
 
         /// <summary> Apply expression by GUID. </summary>
         void ApplyExpression(string expressionId);
