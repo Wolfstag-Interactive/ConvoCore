@@ -1,3 +1,63 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="Node000000" href="$classWolfstagInteractive_1_1ConvoCore_1_1RepresentationPair.html" title=" " alt="" coords="5,5,200,45"/>
+<area shape="rect" id="Node000000" href="$interfaceWolfstagInteractive_1_1ConvoCore_1_1IEditorPreviewableRepresentation.html" title=" " alt="" coords="5,69,283,109"/>
+<area shape="rect" id="Node000001" href="$classWolfstagInteractive_1_1ConvoCore_1_1CharacterRepresentationBase.html" title="Abstract ScriptableObject base class for all character visual representations." alt="" coords="356,69,607,109"/>
+<area shape="poly" id="edge41_Node000000_Node000001" title=" " alt="" coords="297,87,356,87,356,92,297,92"/>
+<area shape="rect" id="Node000002" href="$classWolfstagInteractive_1_1ConvoCore_1_1PrefabCharacterRepresentationData.html" title="Defines how a prefab&#45;based character should be sourced and displayed by ConvoCore." alt="" coords="680,5,971,45"/>
+<area shape="poly" id="edge42_Node000001_Node000002" title=" " alt="" coords="603,64,717,43,718,48,604,69"/>
+<area shape="rect" id="Node000003" href="$classWolfstagInteractive_1_1ConvoCore_1_1SpriteCharacterRepresentationData.html" title=" " alt="" coords="682,69,969,109"/>
+<area shape="poly" id="edge43_Node000001_Node000003" title=" " alt="" coords="621,87,682,87,682,92,621,92"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="79,818,209,843"/>
+<area shape="poly" id="edge52_Node000004_Node000001" title=" " alt="" coords="152,804,221,619,272,492,328,364,404,216,466,108,470,111,409,219,333,366,277,494,226,621,157,806"/>
+<area shape="rect" id="Node000005" href="$classWolfstagInteractive_1_1ConvoCore_1_1BaseDialogueLineAction.html" title="Base ScriptableObject class for all ConvoCore dialogue line actions." alt="" coords="374,377,589,417"/>
+<area shape="poly" id="edge44_Node000004_Node000005" title=" " alt="" coords="152,804,177,745,215,665,266,578,296,536,329,497,355,472,384,450,439,415,441,420,387,454,358,476,333,500,300,539,271,581,220,668,182,747,157,806"/>
+<area shape="rect" id="Node000012" href="$classWolfstagInteractive_1_1ConvoCore_1_1BaseExpressionAction.html" title="Abstract base ScriptableObject for custom expression actions." alt="" coords="381,511,581,551"/>
+<area shape="poly" id="edge51_Node000004_Node000012" title=" " alt="" coords="153,804,177,752,214,685,265,617,296,587,329,560,354,547,380,538,382,543,356,552,332,565,299,591,269,621,219,688,181,754,158,806"/>
+<area shape="rect" id="Node000013" href="$classWolfstagInteractive_1_1ConvoCore_1_1ConversationContainer.html" title="ScriptableObject that groups one or more ConvoCoreConversationData assets into a single addressable u..." alt="" coords="379,575,584,615"/>
+<area shape="poly" id="edge53_Node000004_Node000013" title=" " alt="" coords="158,805,185,765,224,715,273,666,329,624,377,605,379,610,332,629,276,670,228,719,190,768,162,808"/>
+<area shape="rect" id="Node000014" href="$classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreCharacterExpression.html" title=" " alt="" coords="351,639,612,679"/>
+<area shape="poly" id="edge54_Node000004_Node000014" title=" " alt="" coords="166,806,235,747,281,715,330,688,361,676,363,681,332,693,284,720,239,751,170,810"/>
+<area shape="rect" id="Node000015" href="$classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreCharacterPresence.html" title="Abstract ScriptableObject base for all presence types." alt="" coords="357,703,606,743"/>
+<area shape="poly" id="edge55_Node000004_Node000015" title=" " alt="" coords="184,810,251,781,330,752,374,740,376,745,331,757,253,786,186,815"/>
+<area shape="rect" id="Node000023" href="$classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreCharacterProfileBaseData.html" title="ScriptableObject that defines a character&#39;s identity within ConvoCore: their display name,..." alt="" coords="366,767,597,822"/>
+<area shape="poly" id="edge63_Node000004_Node000023" title=" " alt="" coords="222,820,365,804,366,810,222,825"/>
+<area shape="rect" id="Node000024" href="$classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData.html" title=" " alt="" coords="359,847,603,887"/>
+<area shape="poly" id="edge64_Node000004_Node000024" title=" " alt="" coords="222,836,360,851,359,856,222,842"/>
+<area shape="rect" id="Node000025" href="$classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreHistoryRendererProfile.html" title=" " alt="" coords="344,911,619,951"/>
+<area shape="poly" id="edge65_Node000004_Node000025" title=" " alt="" coords="190,846,256,871,331,896,378,908,376,913,330,901,255,876,188,851"/>
+<area shape="rect" id="Node000026" href="$classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreLanguageSettings.html" title=" " alt="" coords="360,975,603,1015"/>
+<area shape="poly" id="edge66_Node000004_Node000026" title=" " alt="" coords="171,850,240,906,284,935,332,960,364,972,363,977,330,965,282,940,237,910,167,855"/>
+<area shape="rect" id="Node000027" href="$classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSettings.html" title="Global runtime settings ScriptableObject for ConvoCore." alt="" coords="384,1039,579,1079"/>
+<area shape="poly" id="edge67_Node000004_Node000027" title=" " alt="" coords="163,854,191,892,230,939,277,986,332,1024,357,1036,384,1044,383,1049,355,1041,329,1029,274,990,226,942,187,895,159,857"/>
+<area shape="rect" id="Node000028" href="$classWolfstagInteractive_1_1ConvoCore_1_1SaveSystem_1_1ConvoCoreSaveManager.html" title=" " alt="" coords="331,1103,632,1143"/>
+<area shape="poly" id="edge68_Node000004_Node000028" title=" " alt="" coords="158,855,182,905,220,969,270,1034,300,1063,332,1088,354,1100,352,1105,329,1093,296,1068,266,1038,215,972,177,908,153,857"/>
+<area shape="rect" id="Node000029" href="$classWolfstagInteractive_1_1ConvoCore_1_1SaveSystem_1_1ConvoSettingsState.html" title="ScriptableObject that bridges ConvoCoreLanguageManager with the save system." alt="" coords="347,1167,616,1207"/>
+<area shape="poly" id="edge69_Node000004_Node000029" title=" " alt="" coords="155,856,175,917,211,998,234,1041,263,1082,295,1120,332,1153,352,1164,349,1169,329,1157,291,1124,258,1086,230,1044,206,1001,170,919,150,857"/>
+<area shape="rect" id="Node000030" href="$classWolfstagInteractive_1_1ConvoCore_1_1SaveSystem_1_1ConvoVariableStore.html" title=" " alt="" coords="347,1231,616,1271"/>
+<area shape="poly" id="edge70_Node000004_Node000030" title=" " alt="" coords="152,856,169,929,202,1027,226,1080,255,1130,291,1177,332,1217,351,1228,348,1233,329,1221,287,1180,251,1133,221,1082,197,1029,164,931,147,858"/>
+<area shape="rect" id="Node000006" href="$classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreDialogueLineActionDialogueLineActionGroup.html" title=" " alt="" coords="699,134,952,189"/>
+<area shape="poly" id="edge45_Node000005_Node000006" title=" " alt="" coords="503,365,534,326,575,281,624,236,679,198,701,186,704,191,681,202,627,240,579,285,538,330,507,368"/>
+<area shape="rect" id="Node000007" href="$classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreDialogueLineActionEnableDisableGameObject.html" title=" " alt="" coords="699,213,952,267"/>
+<area shape="poly" id="edge46_Node000005_Node000007" title=" " alt="" coords="521,367,592,321,679,276,709,265,711,270,681,281,595,326,523,371"/>
+<area shape="rect" id="Node000008" href="$classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreDialogueLineActionFadeInOutSpriteRenderer.html" title=" " alt="" coords="699,291,952,346"/>
+<area shape="poly" id="edge47_Node000005_Node000008" title=" " alt="" coords="582,372,704,344,706,349,584,377"/>
+<area shape="rect" id="Node000009" href="$classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreDialogueLineActionInstantiatePrefab.html" title=" " alt="" coords="699,370,952,425"/>
+<area shape="poly" id="edge48_Node000005_Node000009" title=" " alt="" coords="602,395,698,395,698,400,602,400"/>
+<area shape="rect" id="Node000010" href="$classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreDialogueLineActionModifyTransform.html" title=" " alt="" coords="699,449,952,503"/>
+<area shape="poly" id="edge49_Node000005_Node000010" title=" " alt="" coords="584,418,706,446,704,451,582,423"/>
+<area shape="rect" id="Node000011" href="$classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreDialogueLineActionPlayAudioClip.html" title=" " alt="" coords="699,527,952,582"/>
+<area shape="poly" id="edge50_Node000005_Node000011" title=" " alt="" coords="523,423,595,468,681,512,715,525,713,530,679,517,593,473,521,427"/>
+<area shape="rect" id="Node000016" href="$classWolfstagInteractive_1_1ConvoCore_1_1CameraRelativePresence.html" title="Presence type that places characters at authored offsets relative to the active camera." alt="" coords="715,607,935,647"/>
+<area shape="poly" id="edge56_Node000015_Node000016" title=" " alt="" coords="610,696,631,688,655,672,679,656,714,644,716,649,681,661,657,677,633,693,612,701"/>
+<area shape="rect" id="Node000017" href="$classWolfstagInteractive_1_1ConvoCore_1_1ExternalPresence.html" title="Presence type for characters that are fully managed by the developer." alt="" coords="728,671,923,711"/>
+<area shape="poly" id="edge57_Node000015_Node000017" title=" " alt="" coords="620,707,728,697,728,702,620,712"/>
+<area shape="rect" id="Node000019" href="$classWolfstagInteractive_1_1ConvoCore_1_1FollowTargetPresence.html" title="Presence type that spawns characters and keeps them following a scene Transform during the conversati..." alt="" coords="727,735,924,775"/>
+<area shape="poly" id="edge59_Node000015_Node000019" title=" " alt="" coords="620,733,727,743,726,748,620,738"/>
+<area shape="rect" id="Node000020" href="$classWolfstagInteractive_1_1ConvoCore_1_1SequencedPresence.html" title="Presence type that wraps a list of other presence types and selects between them based on a conversat..." alt="" coords="728,799,923,839"/>
+<area shape="poly" id="edge60_Node000015_Node000020" title=" " alt="" coords="612,744,633,752,657,768,681,784,729,800,727,805,679,789,655,773,631,757,610,749"/>
+<area shape="rect" id="Node000021" href="$classWolfstagInteractive_1_1ConvoCore_1_1TransformLerpPresence.html" title="Presence type for scene&#45;resident characters that move to an authored offset position when a conversat..." alt="" coords="721,863,929,903"/>
+<area shape="poly" id="edge61_Node000015_Node000021" title=" " alt="" coords="620,743,634,753,645,764,653,777,659,802,664,826,671,838,682,849,701,861,722,869,720,874,698,865,678,853,667,841,659,828,653,803,648,779,641,768,630,757,617,748"/>
+<area shape="rect" id="Node000022" href="$classWolfstagInteractive_1_1ConvoCore_1_1WorldPointPresence.html" title="Presence type that places characters at authored world positions." alt="" coords="728,927,923,967"/>
+<area shape="poly" id="edge62_Node000015_Node000022" title=" " alt="" coords="620,742,634,753,650,773,657,793,659,835,660,875,667,894,682,913,704,928,729,938,727,943,701,932,678,917,662,897,655,876,653,835,652,794,645,775,630,757,617,746"/>
+<area shape="rect" id="Node000018" href="$classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreAnimatorPresence.html" title="Presence type for scene&#45;resident characters that are driven by an Animator." alt="" coords="1019,671,1265,711"/>
+<area shape="poly" id="edge58_Node000017_Node000018" title=" " alt="" coords="937,688,1018,688,1018,693,937,693"/>
 </map>

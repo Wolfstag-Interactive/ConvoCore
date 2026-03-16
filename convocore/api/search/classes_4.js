@@ -1,5 +1,7 @@
 var searchData=
 [
-  ['gameobjecthelper_0',['GameObjectHelper',['../classWolfstagInteractive_1_1ConvoCore_1_1GameObjectHelper.html',1,'WolfstagInteractive::ConvoCore']]],
-  ['gameobjectreference_1',['GameObjectReference',['../classWolfstagInteractive_1_1ConvoCore_1_1GameObjectReference.html',1,'WolfstagInteractive::ConvoCore']]]
+  ['entry_0',['Entry',['../classWolfstagInteractive_1_1ConvoCore_1_1ConversationContainer_1_1Entry.html',1,'WolfstagInteractive::ConvoCore::ConversationContainer']]],
+  ['expressionactioncontext_1',['ExpressionActionContext',['../structWolfstagInteractive_1_1ConvoCore_1_1ExpressionActionContext.html',1,'WolfstagInteractive::ConvoCore']]],
+  ['expressionidselectorattribute_2',['ExpressionIDSelectorAttribute',['../classWolfstagInteractive_1_1ConvoCore_1_1ExpressionIDSelectorAttribute.html',1,'WolfstagInteractive::ConvoCore']]],
+  ['externalpresence_3',['ExternalPresence',['../classWolfstagInteractive_1_1ConvoCore_1_1ExternalPresence.html',1,'WolfstagInteractive::ConvoCore']]]
 ];

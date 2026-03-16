@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['textsourcekind_0',['TextSourceKind',['../namespaceWolfstagInteractive_1_1ConvoCore.html#ae5e9633d75a8b3c6bf69f6eaa4339485',1,'WolfstagInteractive::ConvoCore']]]
+  ['linecontinuationmode_0',['LineContinuationMode',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData.html#a0aa0fdd4cefc8aad605fe6d59182a0d9',1,'WolfstagInteractive::ConvoCore::ConvoCoreConversationData']]]
 ];

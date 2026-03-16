@@ -13,7 +13,6 @@ var classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreUIFoundation =
     [ "ConvoCoreDialogueHistoryUI", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreUIFoundation.html#a3cbde91c9f6f141e4eb2294c43527ea0", null ],
     [ "ConvoCoreInstance", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreUIFoundation.html#aa4c30e2dd48976a8bfaa8b041af21524", null ],
     [ "maxVisibleCharacterSlots", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreUIFoundation.html#ab9c2ac397d38e8fe967a38f09fc329bf", null ],
-    [ "PrefabRepresentationSpawner", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreUIFoundation.html#af1e1cf07e61e9f975a2a9e6691ddae9f", null ],
     [ "MaxVisibleCharacterSlots", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreUIFoundation.html#a5efc2df5fe12db12a18f2cf99fd49c54", null ],
     [ "RequestAdvance", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreUIFoundation.html#ab5b7fb8a80010139c8206826d5b1c1ac", null ],
     [ "RequestReverse", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreUIFoundation.html#a181a70b6ed56e441caf5623431eee0bc", null ]

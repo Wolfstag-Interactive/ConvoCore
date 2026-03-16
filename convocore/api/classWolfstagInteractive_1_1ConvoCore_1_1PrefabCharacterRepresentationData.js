@@ -7,5 +7,7 @@ var classWolfstagInteractive_1_1ConvoCore_1_1PrefabCharacterRepresentationData =
     [ "ProcessExpression", "classWolfstagInteractive_1_1ConvoCore_1_1PrefabCharacterRepresentationData.html#a4af8e35b5c763328cb96a35c14f5f9cf", null ],
     [ "TryResolveById", "classWolfstagInteractive_1_1ConvoCore_1_1PrefabCharacterRepresentationData.html#a64d8795ceaa75b10d16b2bfa61828768", null ],
     [ "CharacterPrefab", "classWolfstagInteractive_1_1ConvoCore_1_1PrefabCharacterRepresentationData.html#a3d35cda8d600eb3c461782dd432b1184", null ],
-    [ "ExpressionMappings", "classWolfstagInteractive_1_1ConvoCore_1_1PrefabCharacterRepresentationData.html#aecb277562371027a6e4a097fdc318bd1", null ]
+    [ "ExpressionMappings", "classWolfstagInteractive_1_1ConvoCore_1_1PrefabCharacterRepresentationData.html#aecb277562371027a6e4a097fdc318bd1", null ],
+    [ "SceneCharacterId", "classWolfstagInteractive_1_1ConvoCore_1_1PrefabCharacterRepresentationData.html#a3312d604cf328cddfeab10ae4c812493", null ],
+    [ "SourceMode", "classWolfstagInteractive_1_1ConvoCore_1_1PrefabCharacterRepresentationData.html#a80e3905c1dd8afe17df505093d80e49e", null ]
 ];

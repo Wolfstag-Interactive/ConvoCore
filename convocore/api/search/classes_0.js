@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['basedialoguelineaction_0',['BaseDialogueLineAction',['../classWolfstagInteractive_1_1ConvoCore_1_1BaseDialogueLineAction.html',1,'WolfstagInteractive::ConvoCore']]],
-  ['baseexpressionaction_1',['BaseExpressionAction',['../classWolfstagInteractive_1_1ConvoCore_1_1BaseExpressionAction.html',1,'WolfstagInteractive::ConvoCore']]]
+  ['activecharacterentry_0',['ActiveCharacterEntry',['../structWolfstagInteractive_1_1ConvoCore_1_1ConvoCorePrefabRepresentationSpawner_1_1ActiveCharacterEntry.html',1,'WolfstagInteractive::ConvoCore::ConvoCorePrefabRepresentationSpawner']]],
+  ['animatorexpressionmapping_1',['AnimatorExpressionMapping',['../classWolfstagInteractive_1_1ConvoCore_1_1AnimatorExpressionMapping.html',1,'WolfstagInteractive::ConvoCore']]]
 ];

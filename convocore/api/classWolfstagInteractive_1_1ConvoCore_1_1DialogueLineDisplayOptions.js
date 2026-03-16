@@ -12,5 +12,5 @@ var classWolfstagInteractive_1_1ConvoCore_1_1DialogueLineDisplayOptions =
     [ "FlipPortraitY", "classWolfstagInteractive_1_1ConvoCore_1_1DialogueLineDisplayOptions.html#afb53f70a1a9c0cd34f1ecfe4be0759e5", null ],
     [ "FullBodyScale", "classWolfstagInteractive_1_1ConvoCore_1_1DialogueLineDisplayOptions.html#a8f2d310b7d4e712a52fcde7332ded1b8", null ],
     [ "PortraitScale", "classWolfstagInteractive_1_1ConvoCore_1_1DialogueLineDisplayOptions.html#a2afa35ad6a55a67a9a5dc8e89dd8ab7d", null ],
-    [ "FullBodySide", "classWolfstagInteractive_1_1ConvoCore_1_1DialogueLineDisplayOptions.html#a351a3ff45022929c359f2c51c576efa0", null ]
+    [ "SlotId", "classWolfstagInteractive_1_1ConvoCore_1_1DialogueLineDisplayOptions.html#a0cda6ee065b18ed3686743d62d5a1f99", null ]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['excelformulacellbehavior_0',['ExcelFormulaCellBehavior',['../namespaceWolfstagInteractive_1_1ConvoCore.html#a94a97dbcb9d0d470cea1b3f05679ee5e',1,'WolfstagInteractive::ConvoCore']]]
+  ['dialoguelineprogressionmethod_0',['DialogueLineProgressionMethod',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData.html#a869564b1c98a8c1cf47b60888c4adecc',1,'WolfstagInteractive::ConvoCore::ConvoCoreConversationData']]]
 ];

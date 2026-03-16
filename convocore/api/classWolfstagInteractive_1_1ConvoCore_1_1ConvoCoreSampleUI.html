@@ -93,12 +93,16 @@ $(document).ready(function(){initNavTree('classWolfstagInteractive_1_1ConvoCore_
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#pro-methods">Protected Member Functions</a> &#124;
+<a href="#pri-types">Private Types</a> &#124;
 <a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSampleUI-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">WolfstagInteractive.ConvoCore.ConvoCoreSampleUI Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Legacy monolithic sample UI.  
+ <a href="classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSampleUI.html#details">More...</a></p>
 <div class="dynheader">
 Inheritance diagram for WolfstagInteractive.ConvoCore.ConvoCoreSampleUI:</div>
 <div class="dyncontent">
@@ -107,7 +111,7 @@ Inheritance diagram for WolfstagInteractive.ConvoCore.ConvoCoreSampleUI:</div>
 <div class="dynheader">
 Collaboration diagram for WolfstagInteractive.ConvoCore.ConvoCoreSampleUI:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSampleUI__coll__graph.svg" width="2854" height="624"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSampleUI__coll__graph.svg" width="2927" height="688"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -116,7 +120,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a24435d7a1be4c6f8d3f07d710e90f1da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the UI builder and sets up required bindings.  <br /></td></tr>
 <tr class="separator:a24435d7a1be4c6f8d3f07d710e90f1da"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab41999d6e8f7608a2dc85b8da43fcd3e" id="r_ab41999d6e8f7608a2dc85b8da43fcd3e"><td class="memItemLeft" align="right" valign="top">override void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSampleUI.html#ab41999d6e8f7608a2dc85b8da43fcd3e">UpdateDialogueUI</a> (<a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData_1_1DialogueLineInfo.html">ConvoCoreConversationData.DialogueLineInfo</a> lineInfo, string localizedText, string speakerName, <a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1CharacterRepresentationBase.html">CharacterRepresentationBase</a> primaryRepresentation, <a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreCharacterProfileBaseData.html">ConvoCoreCharacterProfileBaseData</a> primaryProfile)</td></tr>
-<tr class="memdesc:ab41999d6e8f7608a2dc85b8da43fcd3e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the dialogue UI by displaying text, speaker information, and character representations for the current dialogue line.  <br /></td></tr>
+<tr class="memdesc:ab41999d6e8f7608a2dc85b8da43fcd3e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the displayed UI elements based on the ConvoCore instances current state.  <br /></td></tr>
 <tr class="separator:ab41999d6e8f7608a2dc85b8da43fcd3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a40ba1d92bafd9e0ddd88a12a3c0a7104" id="r_a40ba1d92bafd9e0ddd88a12a3c0a7104"><td class="memItemLeft" align="right" valign="top">override void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSampleUI.html#a40ba1d92bafd9e0ddd88a12a3c0a7104">DisplayDialogue</a> (string text)</td></tr>
 <tr class="separator:a40ba1d92bafd9e0ddd88a12a3c0a7104"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -157,10 +161,20 @@ Protected Member Functions</h2></td></tr>
 <tr class="memitem:a0c83cd6729c79e18cc9baa5ee0b59464 inherit pro_methods_classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreUIFoundation" id="r_a0c83cd6729c79e18cc9baa5ee0b59464"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreUIFoundation.html#a0c83cd6729c79e18cc9baa5ee0b59464">RaiseReverse</a> ()</td></tr>
 <tr class="separator:a0c83cd6729c79e18cc9baa5ee0b59464 inherit pro_methods_classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreUIFoundation"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-types" name="pri-types"></a>
+Private Types</h2></td></tr>
+<tr class="memitem:abce3af5eaea3b1b1355f89505e7ff37a" id="r_abce3af5eaea3b1b1355f89505e7ff37a"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSampleUI.html#abce3af5eaea3b1b1355f89505e7ff37a">CanvasSlot</a> { <a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSampleUI.html#abce3af5eaea3b1b1355f89505e7ff37aa945d5e233cf7d6240f6b783b36a374ff">Left</a>
+, <a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSampleUI.html#abce3af5eaea3b1b1355f89505e7ff37aa92b09c7c48c520c3c55e497875da437c">Right</a>
+, <a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSampleUI.html#abce3af5eaea3b1b1355f89505e7ff37aa4f1f6016fc9f3f2353c0cc7c67b292bd">Center</a>
+ }</td></tr>
+<tr class="separator:abce3af5eaea3b1b1355f89505e7ff37a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
-<tr class="memitem:a52912c7b687455c734c5f34f757e2aee" id="r_a52912c7b687455c734c5f34f757e2aee"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceWolfstagInteractive_1_1ConvoCore.html#a7672af973360b3e5b2b3259e3f6088ae">DisplaySlot</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSampleUI.html#a52912c7b687455c734c5f34f757e2aee">GetSlotForIndex</a> (int index)</td></tr>
-<tr class="separator:a52912c7b687455c734c5f34f757e2aee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acbee67ed0df9db5590bdd24fba02fcd2" id="r_acbee67ed0df9db5590bdd24fba02fcd2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSampleUI.html#abce3af5eaea3b1b1355f89505e7ff37a">CanvasSlot</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSampleUI.html#acbee67ed0df9db5590bdd24fba02fcd2">GetSlotForIndex</a> (int index)</td></tr>
+<tr class="separator:acbee67ed0df9db5590bdd24fba02fcd2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3dceb4bd139aec08b6b7e481dcd69748" id="r_a3dceb4bd139aec08b6b7e481dcd69748"><td class="memItemLeft" align="right" valign="top">Transform&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSampleUI.html#a3dceb4bd139aec08b6b7e481dcd69748">GetSlotAnchor</a> (<a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSampleUI.html#abce3af5eaea3b1b1355f89505e7ff37a">CanvasSlot</a> slot)</td></tr>
+<tr class="separator:a3dceb4bd139aec08b6b7e481dcd69748"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a46d4d5c0275ae939662ee8e5f1576650" id="r_a46d4d5c0275ae939662ee8e5f1576650"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSampleUI.html#a46d4d5c0275ae939662ee8e5f1576650">Start</a> ()</td></tr>
 <tr class="separator:a46d4d5c0275ae939662ee8e5f1576650"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9bf92135d58009dbace02ce87ebf75a2" id="r_a9bf92135d58009dbace02ce87ebf75a2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSampleUI.html#a9bf92135d58009dbace02ce87ebf75a2">OnEnable</a> ()</td></tr>
@@ -173,13 +187,14 @@ Private Member Functions</h2></td></tr>
 <tr class="separator:a924b1f6bcfe6ebee9b25f7132796e84f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3666e8f97a72f6acfce589da27fa8d86" id="r_a3666e8f97a72f6acfce589da27fa8d86"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSampleUI.html#a3666e8f97a72f6acfce589da27fa8d86">RefreshNavButtons</a> ()</td></tr>
 <tr class="separator:a3666e8f97a72f6acfce589da27fa8d86"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4d14198109646b90ec6a633e4bd34bc5" id="r_a4d14198109646b90ec6a633e4bd34bc5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoCoreCharacterDisplay.html">IConvoCoreCharacterDisplay</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSampleUI.html#a4d14198109646b90ec6a633e4bd34bc5">RenderRepresentation</a> (<a class="el" href="structWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData_1_1CharacterRepresentationData.html">ConvoCoreConversationData.CharacterRepresentationData</a> data, <a class="el" href="namespaceWolfstagInteractive_1_1ConvoCore.html#a7672af973360b3e5b2b3259e3f6088ae">DisplaySlot</a> slot)</td></tr>
-<tr class="memdesc:a4d14198109646b90ec6a633e4bd34bc5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renders a character's representation (e.g., sprite-based or prefab-based) in a specified display slot.  <br /></td></tr>
-<tr class="separator:a4d14198109646b90ec6a633e4bd34bc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a080250731cf2bf9070184c746fce996e" id="r_a080250731cf2bf9070184c746fce996e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoCoreCharacterDisplay.html">IConvoCoreCharacterDisplay</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSampleUI.html#a080250731cf2bf9070184c746fce996e">RenderRepresentation</a> (<a class="el" href="structWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData_1_1CharacterRepresentationData.html">ConvoCoreConversationData.CharacterRepresentationData</a> data, <a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSampleUI.html#abce3af5eaea3b1b1355f89505e7ff37a">CanvasSlot</a> slot)</td></tr>
+<tr class="separator:a080250731cf2bf9070184c746fce996e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa6950918901ee25467c3bab3765a1bcd" id="r_aa6950918901ee25467c3bab3765a1bcd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSampleUI.html#aa6950918901ee25467c3bab3765a1bcd">RenderSpriteRepresentation</a> (<a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1SpriteExpressionMapping.html">SpriteExpressionMapping</a> spriteMapping, <a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1DialogueLineDisplayOptions.html">DialogueLineDisplayOptions</a> lineOptions, <a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSampleUI.html#abce3af5eaea3b1b1355f89505e7ff37a">CanvasSlot</a> slot)</td></tr>
+<tr class="separator:aa6950918901ee25467c3bab3765a1bcd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aecd929b202b5880ad1ed8fef3ed43904" id="r_aecd929b202b5880ad1ed8fef3ed43904"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSampleUI.html#aecd929b202b5880ad1ed8fef3ed43904">TryFadeIn</a> (Graphic graphic)</td></tr>
 <tr class="separator:aecd929b202b5880ad1ed8fef3ed43904"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af0e51c3e2d5a2127c886e59cd51e4271" id="r_af0e51c3e2d5a2127c886e59cd51e4271"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ConvoCoreSampleUI_8cs.html#a608db096452b7c3af254e6770ebfdc88">Image</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSampleUI.html#af0e51c3e2d5a2127c886e59cd51e4271">GetFullBodyImage</a> (<a class="el" href="namespaceWolfstagInteractive_1_1ConvoCore.html#a7672af973360b3e5b2b3259e3f6088ae">DisplaySlot</a> slot)</td></tr>
-<tr class="separator:af0e51c3e2d5a2127c886e59cd51e4271"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a02f2d493487b7abec74fea3a7578b972" id="r_a02f2d493487b7abec74fea3a7578b972"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ConvoCoreSampleUI_8cs.html#a608db096452b7c3af254e6770ebfdc88">Image</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSampleUI.html#a02f2d493487b7abec74fea3a7578b972">GetFullBodyImage</a> (<a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSampleUI.html#abce3af5eaea3b1b1355f89505e7ff37a">CanvasSlot</a> slot)</td></tr>
+<tr class="separator:a02f2d493487b7abec74fea3a7578b972"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abe30b10a773cdcd1892f916e15cd3420" id="r_abe30b10a773cdcd1892f916e15cd3420"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSampleUI.html#abe30b10a773cdcd1892f916e15cd3420">HideAllSpriteImages</a> ()</td></tr>
 <tr class="separator:abe30b10a773cdcd1892f916e15cd3420"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac7cb69244a147405ff757d3f9fb4150e" id="r_ac7cb69244a147405ff757d3f9fb4150e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1CharacterRepresentationBase.html">CharacterRepresentationBase</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSampleUI.html#ac7cb69244a147405ff757d3f9fb4150e">GetCharacterRepresentationFromData</a> (<a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData.html">ConvoCoreConversationData</a> convoData, <a class="el" href="structWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData_1_1CharacterRepresentationData.html">ConvoCoreConversationData.CharacterRepresentationData</a> data)</td></tr>
@@ -195,6 +210,14 @@ Private Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
+<tr class="memitem:a7777ba6566edd32e242209adf6ef240b" id="r_a7777ba6566edd32e242209adf6ef240b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1ConvoCorePrefabRepresentationSpawner.html">ConvoCorePrefabRepresentationSpawner</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSampleUI.html#a7777ba6566edd32e242209adf6ef240b">prefabRepresentationSpawner</a></td></tr>
+<tr class="separator:a7777ba6566edd32e242209adf6ef240b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1d6a99e8ba7a14965e2e4a82a65252cc" id="r_a1d6a99e8ba7a14965e2e4a82a65252cc"><td class="memItemLeft" align="right" valign="top">Transform&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSampleUI.html#a1d6a99e8ba7a14965e2e4a82a65252cc">prefabLeftAnchor</a></td></tr>
+<tr class="separator:a1d6a99e8ba7a14965e2e4a82a65252cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abfc0e65b08e0502e40647b15ab3f7b4a" id="r_abfc0e65b08e0502e40647b15ab3f7b4a"><td class="memItemLeft" align="right" valign="top">Transform&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSampleUI.html#abfc0e65b08e0502e40647b15ab3f7b4a">prefabRightAnchor</a></td></tr>
+<tr class="separator:abfc0e65b08e0502e40647b15ab3f7b4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2b20aad59823ba502d72ea0181a62c3d" id="r_a2b20aad59823ba502d72ea0181a62c3d"><td class="memItemLeft" align="right" valign="top">Transform&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSampleUI.html#a2b20aad59823ba502d72ea0181a62c3d">prefabCenterAnchor</a></td></tr>
+<tr class="separator:a2b20aad59823ba502d72ea0181a62c3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a79b606cf290a5660928e573949bde6a3" id="r_a79b606cf290a5660928e573949bde6a3"><td class="memItemLeft" align="right" valign="top">GameObject&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSampleUI.html#a79b606cf290a5660928e573949bde6a3">ChoicePanel</a></td></tr>
 <tr class="separator:a79b606cf290a5660928e573949bde6a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a08c184d719d576069f25a98b93f2b10e" id="r_a08c184d719d576069f25a98b93f2b10e"><td class="memItemLeft" align="right" valign="top">Transform&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSampleUI.html#a08c184d719d576069f25a98b93f2b10e">ChoiceButtonContainer</a></td></tr>
@@ -275,8 +298,6 @@ Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pro_attribs_classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreUIFoundation"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreUIFoundation')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreUIFoundation.html">WolfstagInteractive.ConvoCore.ConvoCoreUIFoundation</a></td></tr>
 <tr class="memitem:aa4c30e2dd48976a8bfaa8b041af21524 inherit pro_attribs_classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreUIFoundation" id="r_aa4c30e2dd48976a8bfaa8b041af21524"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1ConvoCore.html">ConvoCore</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreUIFoundation.html#aa4c30e2dd48976a8bfaa8b041af21524">ConvoCoreInstance</a></td></tr>
 <tr class="separator:aa4c30e2dd48976a8bfaa8b041af21524 inherit pro_attribs_classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreUIFoundation"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af1e1cf07e61e9f975a2a9e6691ddae9f inherit pro_attribs_classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreUIFoundation" id="r_af1e1cf07e61e9f975a2a9e6691ddae9f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1ConvoCorePrefabRepresentationSpawner.html">ConvoCorePrefabRepresentationSpawner</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreUIFoundation.html#af1e1cf07e61e9f975a2a9e6691ddae9f">PrefabRepresentationSpawner</a></td></tr>
-<tr class="separator:af1e1cf07e61e9f975a2a9e6691ddae9f inherit pro_attribs_classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreUIFoundation"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3cbde91c9f6f141e4eb2294c43527ea0 inherit pro_attribs_classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreUIFoundation" id="r_a3cbde91c9f6f141e4eb2294c43527ea0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreDialogueHistoryUI.html">ConvoCoreDialogueHistoryUI</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreUIFoundation.html#a3cbde91c9f6f141e4eb2294c43527ea0">ConvoCoreDialogueHistoryUI</a></td></tr>
 <tr class="separator:a3cbde91c9f6f141e4eb2294c43527ea0 inherit pro_attribs_classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreUIFoundation"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header properties_classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreUIFoundation"><td colspan="2" onclick="javascript:toggleInherit('properties_classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreUIFoundation')"><img src="closed.png" alt="-"/>&#160;Properties inherited from <a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreUIFoundation.html">WolfstagInteractive.ConvoCore.ConvoCoreUIFoundation</a></td></tr>
@@ -288,6 +309,37 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:a181a70b6ed56e441caf5623431eee0bc inherit events_classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreUIFoundation" id="r_a181a70b6ed56e441caf5623431eee0bc"><td class="memItemLeft" align="right" valign="top">Action&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreUIFoundation.html#a181a70b6ed56e441caf5623431eee0bc">RequestReverse</a></td></tr>
 <tr class="separator:a181a70b6ed56e441caf5623431eee0bc inherit events_classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreUIFoundation"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Legacy monolithic sample UI. </p>
+<p>Kept for backward compatibility with existing prefabs. For new projects use ConvoCoreSampleUICanvas (2D/canvas) or ConvoCoreSampleUI3D (world-space) instead. </p>
+</div><h2 class="groupheader">Member Enumeration Documentation</h2>
+<a id="abce3af5eaea3b1b1355f89505e7ff37a" name="abce3af5eaea3b1b1355f89505e7ff37a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abce3af5eaea3b1b1355f89505e7ff37a">&#9670;&#160;</a></span>CanvasSlot</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSampleUI.html#abce3af5eaea3b1b1355f89505e7ff37a">WolfstagInteractive.ConvoCore.ConvoCoreSampleUI.CanvasSlot</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="abce3af5eaea3b1b1355f89505e7ff37aa945d5e233cf7d6240f6b783b36a374ff" name="abce3af5eaea3b1b1355f89505e7ff37aa945d5e233cf7d6240f6b783b36a374ff"></a>Left&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="abce3af5eaea3b1b1355f89505e7ff37aa92b09c7c48c520c3c55e497875da437c" name="abce3af5eaea3b1b1355f89505e7ff37aa92b09c7c48c520c3c55e497875da437c"></a>Right&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="abce3af5eaea3b1b1355f89505e7ff37aa4f1f6016fc9f3f2353c0cc7c67b292bd" name="abce3af5eaea3b1b1355f89505e7ff37aa4f1f6016fc9f3f2353c0cc7c67b292bd"></a>Center&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="a4750783100b4d16fac15d1e0fd74e79d" name="a4750783100b4d16fac15d1e0fd74e79d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4750783100b4d16fac15d1e0fd74e79d">&#9670;&#160;</a></span>CompleteTypewriter()</h2>
@@ -378,8 +430,8 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="af0e51c3e2d5a2127c886e59cd51e4271" name="af0e51c3e2d5a2127c886e59cd51e4271"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af0e51c3e2d5a2127c886e59cd51e4271">&#9670;&#160;</a></span>GetFullBodyImage()</h2>
+<a id="a02f2d493487b7abec74fea3a7578b972" name="a02f2d493487b7abec74fea3a7578b972"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a02f2d493487b7abec74fea3a7578b972">&#9670;&#160;</a></span>GetFullBodyImage()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -390,7 +442,7 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="ConvoCoreSampleUI_8cs.html#a608db096452b7c3af254e6770ebfdc88">Image</a> WolfstagInteractive.ConvoCore.ConvoCoreSampleUI.GetFullBodyImage </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="namespaceWolfstagInteractive_1_1ConvoCore.html#a7672af973360b3e5b2b3259e3f6088ae">DisplaySlot</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSampleUI.html#abce3af5eaea3b1b1355f89505e7ff37a">CanvasSlot</a>&#160;</td>
           <td class="paramname"><em>slot</em></td><td>)</td>
           <td></td>
         </tr>
@@ -404,8 +456,8 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="a52912c7b687455c734c5f34f757e2aee" name="a52912c7b687455c734c5f34f757e2aee"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a52912c7b687455c734c5f34f757e2aee">&#9670;&#160;</a></span>GetSlotForIndex()</h2>
+<a id="a3dceb4bd139aec08b6b7e481dcd69748" name="a3dceb4bd139aec08b6b7e481dcd69748"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3dceb4bd139aec08b6b7e481dcd69748">&#9670;&#160;</a></span>GetSlotAnchor()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -414,7 +466,33 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="namespaceWolfstagInteractive_1_1ConvoCore.html#a7672af973360b3e5b2b3259e3f6088ae">DisplaySlot</a> WolfstagInteractive.ConvoCore.ConvoCoreSampleUI.GetSlotForIndex </td>
+          <td class="memname">Transform WolfstagInteractive.ConvoCore.ConvoCoreSampleUI.GetSlotAnchor </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSampleUI.html#abce3af5eaea3b1b1355f89505e7ff37a">CanvasSlot</a>&#160;</td>
+          <td class="paramname"><em>slot</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="acbee67ed0df9db5590bdd24fba02fcd2" name="acbee67ed0df9db5590bdd24fba02fcd2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acbee67ed0df9db5590bdd24fba02fcd2">&#9670;&#160;</a></span>GetSlotForIndex()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSampleUI.html#abce3af5eaea3b1b1355f89505e7ff37a">CanvasSlot</a> WolfstagInteractive.ConvoCore.ConvoCoreSampleUI.GetSlotForIndex </td>
           <td>(</td>
           <td class="paramtype">int&#160;</td>
           <td class="paramname"><em>index</em></td><td>)</td>
@@ -762,7 +840,7 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Present a set of player choices and wait for the player to select one. </p>
-<p>Override this in subclasses to display actual choice UI. The base implementation auto-selects index 0 so conversations never hang if no choice UI has been implemented. </p>
+<p>The base implementation auto-selects index 0 so conversations never hang if no choice UI has been implemented. </p>
 
 <p>Reimplemented from <a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreUIFoundation.html#aaecb74d16301d9bfe132928eb9684129">WolfstagInteractive.ConvoCore.ConvoCoreUIFoundation</a>.</p>
 
@@ -793,8 +871,8 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="a4d14198109646b90ec6a633e4bd34bc5" name="a4d14198109646b90ec6a633e4bd34bc5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4d14198109646b90ec6a633e4bd34bc5">&#9670;&#160;</a></span>RenderRepresentation()</h2>
+<a id="a080250731cf2bf9070184c746fce996e" name="a080250731cf2bf9070184c746fce996e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a080250731cf2bf9070184c746fce996e">&#9670;&#160;</a></span>RenderRepresentation()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -811,7 +889,7 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="namespaceWolfstagInteractive_1_1ConvoCore.html#a7672af973360b3e5b2b3259e3f6088ae">DisplaySlot</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSampleUI.html#abce3af5eaea3b1b1355f89505e7ff37a">CanvasSlot</a>&#160;</td>
           <td class="paramname"><em>slot</em>&#160;</td>
         </tr>
         <tr>
@@ -827,14 +905,47 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Renders a character's representation (e.g., sprite-based or prefab-based) in a specified display slot. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">data</td><td>The character representation data containing details about the character and its display options.</td></tr>
-    <tr><td class="paramname">slot</td><td>The display slot where the character representation should be rendered (left, right, or center).</td></tr>
-  </table>
-  </dd>
-</dl>
+</div>
+</div>
+<a id="aa6950918901ee25467c3bab3765a1bcd" name="aa6950918901ee25467c3bab3765a1bcd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa6950918901ee25467c3bab3765a1bcd">&#9670;&#160;</a></span>RenderSpriteRepresentation()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void WolfstagInteractive.ConvoCore.ConvoCoreSampleUI.RenderSpriteRepresentation </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1SpriteExpressionMapping.html">SpriteExpressionMapping</a>&#160;</td>
+          <td class="paramname"><em>spriteMapping</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1DialogueLineDisplayOptions.html">DialogueLineDisplayOptions</a>&#160;</td>
+          <td class="paramname"><em>lineOptions</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSampleUI.html#abce3af5eaea3b1b1355f89505e7ff37a">CanvasSlot</a>&#160;</td>
+          <td class="paramname"><em>slot</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -970,8 +1081,8 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="memname">override void WolfstagInteractive.ConvoCore.ConvoCoreSampleUI.UpdateDialogueUI </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData_1_1DialogueLineInfo.html">ConvoCoreConversationData::DialogueLineInfo</a>&#160;</td>
-          <td class="paramname"><em>lineInfo</em>, </td>
+          <td class="paramtype"><a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData_1_1DialogueLineInfo.html">ConvoCoreConversationData.DialogueLineInfo</a>&#160;</td>
+          <td class="paramname"><em>dialogueLineInfo</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -983,13 +1094,13 @@ Additional Inherited Members</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">string&#160;</td>
-          <td class="paramname"><em>speakerName</em>, </td>
+          <td class="paramname"><em>speakingCharacterName</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype"><a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1CharacterRepresentationBase.html">CharacterRepresentationBase</a>&#160;</td>
-          <td class="paramname"><em>primaryRepresentation</em>, </td>
+          <td class="paramname"><em>expressionMappingData</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -1010,14 +1121,14 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Updates the dialogue UI by displaying text, speaker information, and character representations for the current dialogue line. </p>
+<p>Updates the displayed UI elements based on the ConvoCore instances current state. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">lineInfo</td><td>Data about the current dialogue line, including character representation details.</td></tr>
-    <tr><td class="paramname">localizedText</td><td>The localized text for the current dialogue line.</td></tr>
-    <tr><td class="paramname">speakerName</td><td>The name of the character currently speaking.</td></tr>
-    <tr><td class="paramname">primaryRepresentation</td><td>The primary visual representation of the speaking character.</td></tr>
-    <tr><td class="paramname">primaryProfile</td><td>The profile data of the speaking character, including display settings such as name color.</td></tr>
+    <tr><td class="paramname">dialogueLineInfo</td><td>Details of the current dialogue line.</td></tr>
+    <tr><td class="paramname">localizedText</td><td>The current localized text to be displayed</td></tr>
+    <tr><td class="paramname">speakingCharacterName</td><td>The name of the speaking character</td></tr>
+    <tr><td class="paramname">expressionMappingData</td><td>The speaking characters portrait</td></tr>
+    <tr><td class="paramname">primaryProfile</td><td>The primary profile data</td></tr>
   </table>
   </dd>
 </dl>
@@ -1743,6 +1854,94 @@ Additional Inherited Members</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">string WolfstagInteractive.ConvoCore.ConvoCoreSampleUI.fullText = &quot;&quot;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2b20aad59823ba502d72ea0181a62c3d" name="a2b20aad59823ba502d72ea0181a62c3d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2b20aad59823ba502d72ea0181a62c3d">&#9670;&#160;</a></span>prefabCenterAnchor</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Transform WolfstagInteractive.ConvoCore.ConvoCoreSampleUI.prefabCenterAnchor</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1d6a99e8ba7a14965e2e4a82a65252cc" name="a1d6a99e8ba7a14965e2e4a82a65252cc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1d6a99e8ba7a14965e2e4a82a65252cc">&#9670;&#160;</a></span>prefabLeftAnchor</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Transform WolfstagInteractive.ConvoCore.ConvoCoreSampleUI.prefabLeftAnchor</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7777ba6566edd32e242209adf6ef240b" name="a7777ba6566edd32e242209adf6ef240b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7777ba6566edd32e242209adf6ef240b">&#9670;&#160;</a></span>prefabRepresentationSpawner</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1ConvoCorePrefabRepresentationSpawner.html">ConvoCorePrefabRepresentationSpawner</a> WolfstagInteractive.ConvoCore.ConvoCoreSampleUI.prefabRepresentationSpawner</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="abfc0e65b08e0502e40647b15ab3f7b4a" name="abfc0e65b08e0502e40647b15ab3f7b4a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abfc0e65b08e0502e40647b15ab3f7b4a">&#9670;&#160;</a></span>prefabRightAnchor</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Transform WolfstagInteractive.ConvoCore.ConvoCoreSampleUI.prefabRightAnchor</td>
         </tr>
       </table>
   </td>

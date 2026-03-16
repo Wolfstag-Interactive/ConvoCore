@@ -95,11 +95,16 @@ $(document).ready(function(){initNavTree('interfaceWolfstagInteractive_1_1ConvoC
   <div class="headertitle"><div class="title">WolfstagInteractive.ConvoCore.IConvoCoreFadeIn Interface Reference</div></div>
 </div><!--header-->
 <div class="contents">
+<div class="dynheader">
+Inheritance diagram for WolfstagInteractive.ConvoCore.IConvoCoreFadeIn:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoCoreFadeIn__inherit__graph.svg" width="214" height="139"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a2fd9c966378ae545ba4f0b1c7e0d7bed" id="r_a2fd9c966378ae545ba4f0b1c7e0d7bed"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoCoreFadeIn.html#a2fd9c966378ae545ba4f0b1c7e0d7bed">FadeIn</a> (System.Action onComplete=null)</td></tr>
-<tr class="memdesc:a2fd9c966378ae545ba4f0b1c7e0d7bed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when a character is spawned into a slot and should fade in.  <br /></td></tr>
+<tr class="memdesc:a2fd9c966378ae545ba4f0b1c7e0d7bed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called immediately after a spawned character appears in a slot.  <br /></td></tr>
 <tr class="separator:a2fd9c966378ae545ba4f0b1c7e0d7bed"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -119,13 +124,10 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Called when a character is spawned into a slot and should fade in. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">onComplete</td><td>Optional callback invoked after fade-in completes.</td></tr>
-  </table>
-  </dd>
-</dl>
+<p>Called immediately after a spawned character appears in a slot. </p>
+<p>Not called for scene-resident characters unless the developer explicitly triggers it. </p>
+
+<p>Implemented in <a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSimpleFade.html#a585be6a0ede4f9d3681161c05cbf52ce">WolfstagInteractive.ConvoCore.ConvoCoreSimpleFade</a>.</p>
 
 </div>
 </div>

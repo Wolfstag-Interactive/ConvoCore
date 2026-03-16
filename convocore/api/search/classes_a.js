@@ -1,8 +1,9 @@
 var searchData=
 [
-  ['simpleprefabrepresentationdisplay_0',['SimplePrefabRepresentationDisplay',['../classWolfstagInteractive_1_1ConvoCore_1_1SimplePrefabRepresentationDisplay.html',1,'WolfstagInteractive::ConvoCore']]],
-  ['singleconversationinput_1',['SingleConversationInput',['../classWolfstagInteractive_1_1ConvoCore_1_1SingleConversationInput.html',1,'WolfstagInteractive::ConvoCore']]],
-  ['spreadsheetrowconfig_2',['SpreadsheetRowConfig',['../classWolfstagInteractive_1_1ConvoCore_1_1SpreadsheetRowConfig.html',1,'WolfstagInteractive::ConvoCore']]],
-  ['spritecharacterrepresentationdata_3',['SpriteCharacterRepresentationData',['../classWolfstagInteractive_1_1ConvoCore_1_1SpriteCharacterRepresentationData.html',1,'WolfstagInteractive::ConvoCore']]],
-  ['spriteexpressionmapping_4',['SpriteExpressionMapping',['../classWolfstagInteractive_1_1ConvoCore_1_1SpriteExpressionMapping.html',1,'WolfstagInteractive::ConvoCore']]]
+  ['pagedlistattribute_0',['PagedListAttribute',['../classWolfstagInteractive_1_1ConvoCore_1_1PagedListAttribute.html',1,'WolfstagInteractive::ConvoCore']]],
+  ['plaintexthistoryrenderer_1',['PlainTextHistoryRenderer',['../classWolfstagInteractive_1_1ConvoCore_1_1PlainTextHistoryRenderer.html',1,'WolfstagInteractive::ConvoCore']]],
+  ['prefabcharacterrepresentationdata_2',['PrefabCharacterRepresentationData',['../classWolfstagInteractive_1_1ConvoCore_1_1PrefabCharacterRepresentationData.html',1,'WolfstagInteractive::ConvoCore']]],
+  ['prefabdialoguehistoryoutput_3',['PrefabDialogueHistoryOutput',['../classWolfstagInteractive_1_1ConvoCore_1_1PrefabDialogueHistoryOutput.html',1,'WolfstagInteractive::ConvoCore']]],
+  ['prefabexpressionmapping_4',['PrefabExpressionMapping',['../classWolfstagInteractive_1_1ConvoCore_1_1PrefabExpressionMapping.html',1,'WolfstagInteractive::ConvoCore']]],
+  ['prefabhistoryrenderer_5',['PrefabHistoryRenderer',['../classWolfstagInteractive_1_1ConvoCore_1_1PrefabHistoryRenderer.html',1,'WolfstagInteractive::ConvoCore']]]
 ];

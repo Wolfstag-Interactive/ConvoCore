@@ -1,0 +1,10 @@
+<map id="WolfstagInteractive.ConvoCore.SequencedPresence" name="WolfstagInteractive.ConvoCore.SequencedPresence">
+<area shape="rect" id="Node000001" title="Presence type that wraps a list of other presence types and selects between them based on a conversat..." alt="" coords="533,25,728,65"/>
+<area shape="rect" id="Node000002" href="$classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreCharacterPresence.html" title="Abstract ScriptableObject base for all presence types." alt="" coords="201,5,416,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="430,25,533,34,533,39,430,31"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,35,135,60"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="148,35,205,28,206,33,149,40"/>
+<area shape="rect" id="Node000004" href="$classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreCharacterPresence.html" title="Abstract ScriptableObject base for all presence types." alt="" coords="184,55,433,95"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="149,54,184,58,184,63,148,59"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="447,60,533,51,533,57,447,65"/>
+</map>

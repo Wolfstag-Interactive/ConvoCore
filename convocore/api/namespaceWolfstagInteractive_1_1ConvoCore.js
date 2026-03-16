@@ -2,8 +2,12 @@ var namespaceWolfstagInteractive_1_1ConvoCore =
 [
     [ "Editor", "namespaceWolfstagInteractive_1_1ConvoCore_1_1Editor.html", "namespaceWolfstagInteractive_1_1ConvoCore_1_1Editor" ],
     [ "SaveSystem", "namespaceWolfstagInteractive_1_1ConvoCore_1_1SaveSystem.html", "namespaceWolfstagInteractive_1_1ConvoCore_1_1SaveSystem" ],
+    [ "AnimatorExpressionMapping", "classWolfstagInteractive_1_1ConvoCore_1_1AnimatorExpressionMapping.html", "classWolfstagInteractive_1_1ConvoCore_1_1AnimatorExpressionMapping" ],
     [ "BaseDialogueLineAction", "classWolfstagInteractive_1_1ConvoCore_1_1BaseDialogueLineAction.html", "classWolfstagInteractive_1_1ConvoCore_1_1BaseDialogueLineAction" ],
     [ "BaseExpressionAction", "classWolfstagInteractive_1_1ConvoCore_1_1BaseExpressionAction.html", "classWolfstagInteractive_1_1ConvoCore_1_1BaseExpressionAction" ],
+    [ "BlendShapeExpressionMapping", "classWolfstagInteractive_1_1ConvoCore_1_1BlendShapeExpressionMapping.html", "classWolfstagInteractive_1_1ConvoCore_1_1BlendShapeExpressionMapping" ],
+    [ "CameraRelativePresence", "classWolfstagInteractive_1_1ConvoCore_1_1CameraRelativePresence.html", "classWolfstagInteractive_1_1ConvoCore_1_1CameraRelativePresence" ],
+    [ "CharacterPresenceContext", "structWolfstagInteractive_1_1ConvoCore_1_1CharacterPresenceContext.html", "structWolfstagInteractive_1_1ConvoCore_1_1CharacterPresenceContext" ],
     [ "CharacterRepresentationBase", "classWolfstagInteractive_1_1ConvoCore_1_1CharacterRepresentationBase.html", "classWolfstagInteractive_1_1ConvoCore_1_1CharacterRepresentationBase" ],
     [ "ChoiceResult", "classWolfstagInteractive_1_1ConvoCore_1_1ChoiceResult.html", "classWolfstagInteractive_1_1ConvoCore_1_1ChoiceResult" ],
     [ "ContainerInput", "classWolfstagInteractive_1_1ConvoCore_1_1ContainerInput.html", "classWolfstagInteractive_1_1ConvoCore_1_1ContainerInput" ],
@@ -11,9 +15,15 @@ var namespaceWolfstagInteractive_1_1ConvoCore =
     [ "ConversationContainer", "classWolfstagInteractive_1_1ConvoCore_1_1ConversationContainer.html", "classWolfstagInteractive_1_1ConvoCore_1_1ConversationContainer" ],
     [ "ConversationContainerRuntime", "classWolfstagInteractive_1_1ConvoCore_1_1ConversationContainerRuntime.html", "classWolfstagInteractive_1_1ConvoCore_1_1ConversationContainerRuntime" ],
     [ "ConvoCore", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCore.html", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCore" ],
+    [ "ConvoCoreActionOnlyDisplay", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreActionOnlyDisplay.html", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreActionOnlyDisplay" ],
     [ "ConvoCoreAddressablesUtil", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreAddressablesUtil.html", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreAddressablesUtil" ],
+    [ "ConvoCoreAnimatorDisplay", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreAnimatorDisplay.html", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreAnimatorDisplay" ],
+    [ "ConvoCoreAnimatorPresence", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreAnimatorPresence.html", null ],
+    [ "ConvoCoreBlendShapeDisplay", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreBlendShapeDisplay.html", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreBlendShapeDisplay" ],
+    [ "ConvoCoreCameraRelativePosition", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreCameraRelativePosition.html", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreCameraRelativePosition" ],
     [ "ConvoCoreCharacterDisplayBase", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreCharacterDisplayBase.html", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreCharacterDisplayBase" ],
     [ "ConvoCoreCharacterExpression", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreCharacterExpression.html", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreCharacterExpression" ],
+    [ "ConvoCoreCharacterPresence", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreCharacterPresence.html", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreCharacterPresence" ],
     [ "ConvoCoreCharacterProfileBaseData", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreCharacterProfileBaseData.html", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreCharacterProfileBaseData" ],
     [ "ConvoCoreConversationData", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData.html", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData" ],
     [ "ConvoCoreDialogueHistoryUI", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreDialogueHistoryUI.html", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreDialogueHistoryUI" ],
@@ -24,6 +34,7 @@ var namespaceWolfstagInteractive_1_1ConvoCore =
     [ "ConvoCoreDialogueLineActionModifyTransform", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreDialogueLineActionModifyTransform.html", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreDialogueLineActionModifyTransform" ],
     [ "ConvoCoreDialogueLineActionPlayAudioClip", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreDialogueLineActionPlayAudioClip.html", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreDialogueLineActionPlayAudioClip" ],
     [ "ConvoCoreDialogueLocalizationHandler", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreDialogueLocalizationHandler.html", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreDialogueLocalizationHandler" ],
+    [ "ConvoCoreFollowTarget", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreFollowTarget.html", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreFollowTarget" ],
     [ "ConvoCoreHistoryRendererProfile", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreHistoryRendererProfile.html", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreHistoryRendererProfile" ],
     [ "ConvoCoreHistoryRendererRegistry", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreHistoryRendererRegistry.html", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreHistoryRendererRegistry" ],
     [ "ConvoCoreLanguageManager", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreLanguageManager.html", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreLanguageManager" ],
@@ -34,7 +45,13 @@ var namespaceWolfstagInteractive_1_1ConvoCore =
     [ "ConvoCorePrefabPool", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCorePrefabPool.html", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCorePrefabPool" ],
     [ "ConvoCorePrefabRepresentationSpawner", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCorePrefabRepresentationSpawner.html", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCorePrefabRepresentationSpawner" ],
     [ "ConvoCoreSampleUI", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSampleUI.html", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSampleUI" ],
+    [ "ConvoCoreSampleUI3D", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSampleUI3D.html", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSampleUI3D" ],
+    [ "ConvoCoreSampleUICanvas", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSampleUICanvas.html", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSampleUICanvas" ],
+    [ "ConvoCoreSceneCharacterRegistrant", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSceneCharacterRegistrant.html", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSceneCharacterRegistrant" ],
+    [ "ConvoCoreSceneCharacterRegistry", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSceneCharacterRegistry.html", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSceneCharacterRegistry" ],
     [ "ConvoCoreSettings", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSettings.html", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSettings" ],
+    [ "ConvoCoreSimpleFade", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSimpleFade.html", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSimpleFade" ],
+    [ "ConvoCoreTransformLerp", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreTransformLerp.html", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreTransformLerp" ],
     [ "ConvoCoreUIFoundation", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreUIFoundation.html", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreUIFoundation" ],
     [ "ConvoCoreYamlLoader", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreYamlLoader.html", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreYamlLoader" ],
     [ "ConvoCoreYamlParser", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreYamlParser.html", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreYamlParser" ],
@@ -48,6 +65,8 @@ var namespaceWolfstagInteractive_1_1ConvoCore =
     [ "DialogueYamlConfig", "classWolfstagInteractive_1_1ConvoCore_1_1DialogueYamlConfig.html", "classWolfstagInteractive_1_1ConvoCore_1_1DialogueYamlConfig" ],
     [ "ExpressionActionContext", "structWolfstagInteractive_1_1ConvoCore_1_1ExpressionActionContext.html", "structWolfstagInteractive_1_1ConvoCore_1_1ExpressionActionContext" ],
     [ "ExpressionIDSelectorAttribute", "classWolfstagInteractive_1_1ConvoCore_1_1ExpressionIDSelectorAttribute.html", "classWolfstagInteractive_1_1ConvoCore_1_1ExpressionIDSelectorAttribute" ],
+    [ "ExternalPresence", "classWolfstagInteractive_1_1ConvoCore_1_1ExternalPresence.html", "classWolfstagInteractive_1_1ConvoCore_1_1ExternalPresence" ],
+    [ "FollowTargetPresence", "classWolfstagInteractive_1_1ConvoCore_1_1FollowTargetPresence.html", "classWolfstagInteractive_1_1ConvoCore_1_1FollowTargetPresence" ],
     [ "GameObjectHelper", "classWolfstagInteractive_1_1ConvoCore_1_1GameObjectHelper.html", "classWolfstagInteractive_1_1ConvoCore_1_1GameObjectHelper" ],
     [ "GameObjectReference", "classWolfstagInteractive_1_1ConvoCore_1_1GameObjectReference.html", "classWolfstagInteractive_1_1ConvoCore_1_1GameObjectReference" ],
     [ "IConversationContext", "interfaceWolfstagInteractive_1_1ConvoCore_1_1IConversationContext.html", null ],
@@ -76,12 +95,25 @@ var namespaceWolfstagInteractive_1_1ConvoCore =
     [ "RepresentationExpressionOverride", "classWolfstagInteractive_1_1ConvoCore_1_1RepresentationExpressionOverride.html", "classWolfstagInteractive_1_1ConvoCore_1_1RepresentationExpressionOverride" ],
     [ "RepresentationPair", "classWolfstagInteractive_1_1ConvoCore_1_1RepresentationPair.html", "classWolfstagInteractive_1_1ConvoCore_1_1RepresentationPair" ],
     [ "RichTextHistoryRenderer", "classWolfstagInteractive_1_1ConvoCore_1_1RichTextHistoryRenderer.html", "classWolfstagInteractive_1_1ConvoCore_1_1RichTextHistoryRenderer" ],
+    [ "SequencedPresence", "classWolfstagInteractive_1_1ConvoCore_1_1SequencedPresence.html", "classWolfstagInteractive_1_1ConvoCore_1_1SequencedPresence" ],
     [ "SimplePrefabRepresentationDisplay", "classWolfstagInteractive_1_1ConvoCore_1_1SimplePrefabRepresentationDisplay.html", "classWolfstagInteractive_1_1ConvoCore_1_1SimplePrefabRepresentationDisplay" ],
     [ "SingleConversationInput", "classWolfstagInteractive_1_1ConvoCore_1_1SingleConversationInput.html", "classWolfstagInteractive_1_1ConvoCore_1_1SingleConversationInput" ],
     [ "SpreadsheetRowConfig", "classWolfstagInteractive_1_1ConvoCore_1_1SpreadsheetRowConfig.html", "classWolfstagInteractive_1_1ConvoCore_1_1SpreadsheetRowConfig" ],
     [ "SpriteCharacterRepresentationData", "classWolfstagInteractive_1_1ConvoCore_1_1SpriteCharacterRepresentationData.html", "classWolfstagInteractive_1_1ConvoCore_1_1SpriteCharacterRepresentationData" ],
     [ "SpriteExpressionMapping", "classWolfstagInteractive_1_1ConvoCore_1_1SpriteExpressionMapping.html", "classWolfstagInteractive_1_1ConvoCore_1_1SpriteExpressionMapping" ],
     [ "TMPDialogueHistoryOutput", "classWolfstagInteractive_1_1ConvoCore_1_1TMPDialogueHistoryOutput.html", "classWolfstagInteractive_1_1ConvoCore_1_1TMPDialogueHistoryOutput" ],
+    [ "TransformLerpPresence", "classWolfstagInteractive_1_1ConvoCore_1_1TransformLerpPresence.html", "classWolfstagInteractive_1_1ConvoCore_1_1TransformLerpPresence" ],
+    [ "WorldPointPresence", "classWolfstagInteractive_1_1ConvoCore_1_1WorldPointPresence.html", "classWolfstagInteractive_1_1ConvoCore_1_1WorldPointPresence" ],
+    [ "AnimatorParameterType", "namespaceWolfstagInteractive_1_1ConvoCore.html#aca0736f8a2dd132b75254076daa1baa0", [
+      [ "Bool", "namespaceWolfstagInteractive_1_1ConvoCore.html#aca0736f8a2dd132b75254076daa1baa0ac26f15e86e3de4c398a8273272aba034", null ],
+      [ "Int", "namespaceWolfstagInteractive_1_1ConvoCore.html#aca0736f8a2dd132b75254076daa1baa0a1686a6c336b71b36d77354cea19a8b52", null ],
+      [ "Float", "namespaceWolfstagInteractive_1_1ConvoCore.html#aca0736f8a2dd132b75254076daa1baa0a22ae0e2b89e5e3d477f988cc36d3272b", null ],
+      [ "Trigger", "namespaceWolfstagInteractive_1_1ConvoCore.html#aca0736f8a2dd132b75254076daa1baa0af698f67f5666aff10729d8a1cb1c14d2", null ]
+    ] ],
+    [ "CharacterSourceMode", "namespaceWolfstagInteractive_1_1ConvoCore.html#ade6fc9aa8ab2774df58f2fa4c8d00de6", [
+      [ "SpawnFromPrefab", "namespaceWolfstagInteractive_1_1ConvoCore.html#ade6fc9aa8ab2774df58f2fa4c8d00de6a6ab24e413648d05092d618872b63a08b", null ],
+      [ "SceneResident", "namespaceWolfstagInteractive_1_1ConvoCore.html#ade6fc9aa8ab2774df58f2fa4c8d00de6abe05240f4576f360c3eaa791b20e6a97", null ]
+    ] ],
     [ "ConversationContainerMode", "namespaceWolfstagInteractive_1_1ConvoCore.html#a6c70857d1accf842107cbea48908d710", [
       [ "Playlist", "namespaceWolfstagInteractive_1_1ConvoCore.html#a6c70857d1accf842107cbea48908d710abfb6800020a06f5986570499d33f3ce5", null ],
       [ "Selector", "namespaceWolfstagInteractive_1_1ConvoCore.html#a6c70857d1accf842107cbea48908d710a0c3cd33e7bf626da4897316a7158a7a4", null ]
@@ -96,16 +128,6 @@ var namespaceWolfstagInteractive_1_1ConvoCore =
       [ "Fresh", "namespaceWolfstagInteractive_1_1ConvoCore.html#ab51458c34c46dd42dd277279af380b8bafe8965a9748c1bc48af1711be837124e", null ],
       [ "Resume", "namespaceWolfstagInteractive_1_1ConvoCore.html#ab51458c34c46dd42dd277279af380b8baf1cefec9e2196c672a622347f1fbc325", null ],
       [ "Restart", "namespaceWolfstagInteractive_1_1ConvoCore.html#ab51458c34c46dd42dd277279af380b8ba51cfbcff36da74a9fc47f3a5140f99f2", null ]
-    ] ],
-    [ "DisplaySide", "namespaceWolfstagInteractive_1_1ConvoCore.html#a641e3e9ced2cb6f0f0e0ccc6e90318ca", [
-      [ "Left", "namespaceWolfstagInteractive_1_1ConvoCore.html#a641e3e9ced2cb6f0f0e0ccc6e90318caa945d5e233cf7d6240f6b783b36a374ff", null ],
-      [ "Right", "namespaceWolfstagInteractive_1_1ConvoCore.html#a641e3e9ced2cb6f0f0e0ccc6e90318caa92b09c7c48c520c3c55e497875da437c", null ],
-      [ "Center", "namespaceWolfstagInteractive_1_1ConvoCore.html#a641e3e9ced2cb6f0f0e0ccc6e90318caa4f1f6016fc9f3f2353c0cc7c67b292bd", null ]
-    ] ],
-    [ "DisplaySlot", "namespaceWolfstagInteractive_1_1ConvoCore.html#a7672af973360b3e5b2b3259e3f6088ae", [
-      [ "Left", "namespaceWolfstagInteractive_1_1ConvoCore.html#a7672af973360b3e5b2b3259e3f6088aea945d5e233cf7d6240f6b783b36a374ff", null ],
-      [ "Right", "namespaceWolfstagInteractive_1_1ConvoCore.html#a7672af973360b3e5b2b3259e3f6088aea92b09c7c48c520c3c55e497875da437c", null ],
-      [ "Center", "namespaceWolfstagInteractive_1_1ConvoCore.html#a7672af973360b3e5b2b3259e3f6088aea4f1f6016fc9f3f2353c0cc7c67b292bd", null ]
     ] ],
     [ "ExcelFormulaCellBehavior", "namespaceWolfstagInteractive_1_1ConvoCore.html#a94a97dbcb9d0d470cea1b3f05679ee5e", [
       [ "UseCachedValue", "namespaceWolfstagInteractive_1_1ConvoCore.html#a94a97dbcb9d0d470cea1b3f05679ee5ea7a8fe460a57fbb44e72aae3c2c374694", null ],

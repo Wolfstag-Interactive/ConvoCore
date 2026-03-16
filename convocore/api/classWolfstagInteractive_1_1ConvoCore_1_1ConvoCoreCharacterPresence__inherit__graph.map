@@ -1,0 +1,19 @@
+<map id="WolfstagInteractive.ConvoCore.ConvoCoreCharacterPresence" name="WolfstagInteractive.ConvoCore.ConvoCoreCharacterPresence">
+<area shape="rect" id="Node000001" title="Abstract ScriptableObject base for all presence types." alt="" coords="183,165,432,205"/>
+<area shape="rect" id="Node000003" href="$classWolfstagInteractive_1_1ConvoCore_1_1CameraRelativePresence.html" title="Presence type that places characters at authored offsets relative to the active camera." alt="" coords="480,5,700,45"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="339,154,401,104,439,78,479,55,507,43,510,48,481,60,442,82,404,108,342,158"/>
+<area shape="rect" id="Node000004" href="$classWolfstagInteractive_1_1ConvoCore_1_1ExternalPresence.html" title="Presence type for characters that are fully managed by the developer." alt="" coords="493,69,687,109"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="372,158,479,119,517,107,519,112,481,124,373,163"/>
+<area shape="rect" id="Node000006" href="$classWolfstagInteractive_1_1ConvoCore_1_1FollowTargetPresence.html" title="Presence type that spawns characters and keeps them following a scene Transform during the conversati..." alt="" coords="491,133,689,173"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="445,167,491,162,491,167,446,172"/>
+<area shape="rect" id="Node000007" href="$classWolfstagInteractive_1_1ConvoCore_1_1SequencedPresence.html" title="Presence type that wraps a list of other presence types and selects between them based on a conversat..." alt="" coords="493,197,687,237"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="446,198,493,204,492,209,445,204"/>
+<area shape="rect" id="Node000008" href="$classWolfstagInteractive_1_1ConvoCore_1_1TransformLerpPresence.html" title="Presence type for scene&#45;resident characters that move to an authored offset position when a conversat..." alt="" coords="486,261,694,301"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="373,208,481,247,519,259,517,264,479,252,372,213"/>
+<area shape="rect" id="Node000009" href="$classWolfstagInteractive_1_1ConvoCore_1_1WorldPointPresence.html" title="Presence type that places characters at authored world positions." alt="" coords="493,325,687,365"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="342,213,404,263,442,288,481,311,510,323,507,328,479,316,439,293,401,267,339,217"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,173,135,198"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="148,183,182,183,182,188,148,188"/>
+<area shape="rect" id="Node000005" href="$classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreAnimatorPresence.html" title="Presence type for scene&#45;resident characters that are driven by an Animator." alt="" coords="748,69,995,109"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="701,87,748,87,748,92,701,92"/>
+</map>

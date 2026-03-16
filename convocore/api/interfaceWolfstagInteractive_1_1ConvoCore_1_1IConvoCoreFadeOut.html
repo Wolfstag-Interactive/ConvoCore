@@ -95,11 +95,16 @@ $(document).ready(function(){initNavTree('interfaceWolfstagInteractive_1_1ConvoC
   <div class="headertitle"><div class="title">WolfstagInteractive.ConvoCore.IConvoCoreFadeOut Interface Reference</div></div>
 </div><!--header-->
 <div class="contents">
+<div class="dynheader">
+Inheritance diagram for WolfstagInteractive.ConvoCore.IConvoCoreFadeOut:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoCoreFadeOut__inherit__graph.svg" width="214" height="139"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ab48bcbaf32dc4ebb34d09cfab9caf866" id="r_ab48bcbaf32dc4ebb34d09cfab9caf866"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoCoreFadeOut.html#ab48bcbaf32dc4ebb34d09cfab9caf866">FadeOutAndRelease</a> (System.Action onComplete)</td></tr>
-<tr class="memdesc:ab48bcbaf32dc4ebb34d09cfab9caf866"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when a character is despawned from a slot and should fade out.  <br /></td></tr>
+<tr class="memdesc:ab48bcbaf32dc4ebb34d09cfab9caf866"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when a spawned character is being released from a slot.  <br /></td></tr>
 <tr class="separator:ab48bcbaf32dc4ebb34d09cfab9caf866"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -119,13 +124,10 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Called when a character is despawned from a slot and should fade out. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">onComplete</td><td></td></tr>
-  </table>
-  </dd>
-</dl>
+<p>Called when a spawned character is being released from a slot. </p>
+<p>Invoke <em>onComplete</em>  when the fade is finished so the instance can be returned to the pool. Not called for scene-resident characters. </p>
+
+<p>Implemented in <a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSimpleFade.html#a2dc51b14a84607d3976d4f3e1795ee9f">WolfstagInteractive.ConvoCore.ConvoCoreSimpleFade</a>.</p>
 
 </div>
 </div>

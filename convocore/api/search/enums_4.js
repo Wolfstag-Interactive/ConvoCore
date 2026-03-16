@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['linecontinuationmode_0',['LineContinuationMode',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData.html#a0aa0fdd4cefc8aad605fe6d59182a0d9',1,'WolfstagInteractive::ConvoCore::ConvoCoreConversationData']]]
+  ['fadetype_0',['FadeType',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreDialogueLineActionFadeInOutSpriteRenderer.html#a5ef0759b00fe79fc987ed07c3112aba7',1,'WolfstagInteractive::ConvoCore::ConvoCoreDialogueLineActionFadeInOutSpriteRenderer']]],
+  ['findmethod_1',['FindMethod',['../classWolfstagInteractive_1_1ConvoCore_1_1GameObjectReference.html#acd4e76a147f409fb4ebb98160636eaa1',1,'WolfstagInteractive::ConvoCore::GameObjectReference']]]
 ];

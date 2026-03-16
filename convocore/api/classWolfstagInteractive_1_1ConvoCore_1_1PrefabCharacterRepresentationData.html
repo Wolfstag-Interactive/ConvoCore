@@ -97,6 +97,9 @@ $(document).ready(function(){initNavTree('classWolfstagInteractive_1_1ConvoCore_
   <div class="headertitle"><div class="title">WolfstagInteractive.ConvoCore.PrefabCharacterRepresentationData Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Defines how a prefab-based character should be sourced and displayed by ConvoCore.  
+ <a href="classWolfstagInteractive_1_1ConvoCore_1_1PrefabCharacterRepresentationData.html#details">More...</a></p>
 <div class="dynheader">
 Inheritance diagram for WolfstagInteractive.ConvoCore.PrefabCharacterRepresentationData:</div>
 <div class="dyncontent">
@@ -139,8 +142,12 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
+<tr class="memitem:a80e3905c1dd8afe17df505093d80e49e" id="r_a80e3905c1dd8afe17df505093d80e49e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceWolfstagInteractive_1_1ConvoCore.html#ade6fc9aa8ab2774df58f2fa4c8d00de6">CharacterSourceMode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1PrefabCharacterRepresentationData.html#a80e3905c1dd8afe17df505093d80e49e">SourceMode</a> = <a class="el" href="namespaceWolfstagInteractive_1_1ConvoCore.html#ade6fc9aa8ab2774df58f2fa4c8d00de6a6ab24e413648d05092d618872b63a08b">CharacterSourceMode.SpawnFromPrefab</a></td></tr>
+<tr class="separator:a80e3905c1dd8afe17df505093d80e49e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3d35cda8d600eb3c461782dd432b1184" id="r_a3d35cda8d600eb3c461782dd432b1184"><td class="memItemLeft" align="right" valign="top">GameObject&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1PrefabCharacterRepresentationData.html#a3d35cda8d600eb3c461782dd432b1184">CharacterPrefab</a></td></tr>
 <tr class="separator:a3d35cda8d600eb3c461782dd432b1184"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3312d604cf328cddfeab10ae4c812493" id="r_a3312d604cf328cddfeab10ae4c812493"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1PrefabCharacterRepresentationData.html#a3312d604cf328cddfeab10ae4c812493">SceneCharacterId</a></td></tr>
+<tr class="separator:a3312d604cf328cddfeab10ae4c812493"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aecb277562371027a6e4a097fdc318bd1" id="r_aecb277562371027a6e4a097fdc318bd1"><td class="memItemLeft" align="right" valign="top">List&lt; <a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1PrefabExpressionMapping.html">PrefabExpressionMapping</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1PrefabCharacterRepresentationData.html#aecb277562371027a6e4a097fdc318bd1">ExpressionMappings</a> = new()</td></tr>
 <tr class="separator:aecb277562371027a6e4a097fdc318bd1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -149,7 +156,15 @@ Private Member Functions</h2></td></tr>
 <tr class="memitem:afae63cc5515a9fd4d3ae2f6c7e90a2c8" id="r_afae63cc5515a9fd4d3ae2f6c7e90a2c8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1PrefabCharacterRepresentationData.html#afae63cc5515a9fd4d3ae2f6c7e90a2c8">OnValidate</a> ()</td></tr>
 <tr class="separator:afae63cc5515a9fd4d3ae2f6c7e90a2c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Defines how a prefab-based character should be sourced and displayed by ConvoCore. </p>
+<p>Two source modes are supported: </p><ul>
+<li>
+CharacterSourceMode.SpawnFromPrefab &ndash; ConvoCore spawns and pools the prefab. ConvoCore owns the lifecycle. </li>
+<li>
+CharacterSourceMode.SceneResident &ndash; ConvoCore locates an already-existing scene instance via a ConvoCoreSceneCharacterRegistry. ConvoCore never spawns, pools, or destroys the instance. </li>
+</ul>
+</div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="ad7ebf18979209d14e7e45dbff0c841c0" name="ad7ebf18979209d14e7e45dbff0c841c0"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad7ebf18979209d14e7e45dbff0c841c0">&#9670;&#160;</a></span>ApplyExpression()</h2>
 
@@ -349,6 +364,34 @@ Private Member Functions</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">List&lt;<a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1PrefabExpressionMapping.html">PrefabExpressionMapping</a>&gt; WolfstagInteractive.ConvoCore.PrefabCharacterRepresentationData.ExpressionMappings = new()</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3312d604cf328cddfeab10ae4c812493" name="a3312d604cf328cddfeab10ae4c812493"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3312d604cf328cddfeab10ae4c812493">&#9670;&#160;</a></span>SceneCharacterId</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">string WolfstagInteractive.ConvoCore.PrefabCharacterRepresentationData.SceneCharacterId</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a80e3905c1dd8afe17df505093d80e49e" name="a80e3905c1dd8afe17df505093d80e49e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a80e3905c1dd8afe17df505093d80e49e">&#9670;&#160;</a></span>SourceMode</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespaceWolfstagInteractive_1_1ConvoCore.html#ade6fc9aa8ab2774df58f2fa4c8d00de6">CharacterSourceMode</a> WolfstagInteractive.ConvoCore.PrefabCharacterRepresentationData.SourceMode = <a class="el" href="namespaceWolfstagInteractive_1_1ConvoCore.html#ade6fc9aa8ab2774df58f2fa4c8d00de6a6ab24e413648d05092d618872b63a08b">CharacterSourceMode.SpawnFromPrefab</a></td>
         </tr>
       </table>
 </div><div class="memdoc">

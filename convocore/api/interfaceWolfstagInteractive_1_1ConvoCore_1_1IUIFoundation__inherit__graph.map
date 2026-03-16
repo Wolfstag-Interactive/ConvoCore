@@ -1,7 +1,11 @@
 <map id="WolfstagInteractive.ConvoCore.IUIFoundation" name="WolfstagInteractive.ConvoCore.IUIFoundation">
-<area shape="rect" id="Node000001" title="Contract between the ConvoCore runner and a dialogue UI implementation." alt="" coords="15,5,209,45"/>
-<area shape="rect" id="Node000002" href="$classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreUIFoundation.html" title="Used as a basis of any UI that can be assigned in the inspector that includes all the base functions ..." alt="" coords="5,93,219,133"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="115,59,115,93,109,93,109,59"/>
-<area shape="rect" id="Node000003" href="$classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSampleUI.html" title=" " alt="" coords="15,181,209,221"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="115,147,115,181,109,181,109,147"/>
+<area shape="rect" id="Node000001" title="Contract between the ConvoCore runner and a dialogue UI implementation." alt="" coords="5,69,200,109"/>
+<area shape="rect" id="Node000002" href="$classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreUIFoundation.html" title="Used as a basis of any UI that can be assigned in the inspector that includes all the base functions ..." alt="" coords="248,69,461,109"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="214,87,248,87,248,92,214,92"/>
+<area shape="rect" id="Node000003" href="$classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSampleUI.html" title="Legacy monolithic sample UI." alt="" coords="531,5,726,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="454,64,542,43,543,48,455,69"/>
+<area shape="rect" id="Node000004" href="$classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSampleUI3D.html" title="World&#45;space dialogue UI for 3D character conversations." alt="" coords="525,69,733,109"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="475,87,525,87,525,92,475,92"/>
+<area shape="rect" id="Node000005" href="$classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSampleUICanvas.html" title="Canvas&#45;space dialogue UI supporting both sprite and prefab&#45;in&#45;canvas character representations." alt="" coords="509,133,748,173"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="455,110,543,131,542,136,454,115"/>
 </map>
