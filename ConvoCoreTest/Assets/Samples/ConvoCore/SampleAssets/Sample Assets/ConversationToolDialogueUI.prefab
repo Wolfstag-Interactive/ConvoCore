@@ -199,7 +199,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 3388152572731170396}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.99987924
+  m_Size: 0.99999297
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -370,6 +370,7 @@ GameObject:
   - component: {fileID: 8822450874642733228}
   - component: {fileID: 1961101549865962711}
   - component: {fileID: 1421998098756297677}
+  - component: {fileID: 7830390332449809316}
   - component: {fileID: 6751505844025749556}
   m_Layer: 0
   m_Name: ConversationToolDialogueUI
@@ -474,6 +475,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5413f2d59be099247a912f4b4417ff81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  prefabRepresentationSpawner: {fileID: 1421998098756297677}
   maxVisibleCharacterSlots: 3
   ChoicePanel: {fileID: 329158845178308745}
   ChoiceButtonContainer: {fileID: 5737274151639185467}
@@ -547,6 +549,19 @@ MonoBehaviour:
   leftParent: {fileID: 7881847996088363365}
   rightParent: {fileID: 2062086089352521890}
   centerParent: {fileID: 384934901900240810}
+  sceneCharacterRegistry: {fileID: 7830390332449809316}
+--- !u!114 &7830390332449809316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 444105413700069326}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce2748753a034e69a5335782e6391272, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &6751505844025749556
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1416,7 +1431,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 191.49995}
+  m_AnchoredPosition: {x: 0, y: 191.49904}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &5467354190400067069

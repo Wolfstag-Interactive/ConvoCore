@@ -10,13 +10,9 @@ namespace WolfstagInteractive.ConvoCore
     public abstract class ConvoCoreCharacterDisplayBase : MonoBehaviour, IConvoCoreCharacterDisplay
     {
         [Header("Display Root Settings")]
-        [Tooltip("The root object to scale/flip/position. Defaults to this GameObject.")]
+        [Tooltip("The root object to scale/flip. Defaults to this GameObject.")]
         [SerializeField] protected Transform visualRoot;
 
-        [SerializeField] private Vector3 leftPositionOffset = new Vector3(-3f, 0f, 0f);
-        [SerializeField] private Vector3 rightPositionOffset = new Vector3(3f, 0f, 0f);
-        [SerializeField] private Vector3 centerPositionOffset = Vector3.zero;
-        
         [Tooltip("Should the root object be flipped horizontally for side-facing characters?")]
         [SerializeField] protected bool supportFlipX = true;
 
@@ -33,30 +29,23 @@ namespace WolfstagInteractive.ConvoCore
         public virtual void ApplyDisplayOptions(DialogueLineDisplayOptions options)
         {
             // Scale
-            visualRoot.localScale = options.FullBodyScale;
+            var scale = options.FullBodyScale;
 
-            // Flip X/Y
-            var scale = visualRoot.localScale;
+            // Flip X/Y -- applied as sign on scale axes
             if (supportFlipX && options.FlipFullBodyX)
-                scale.x *= -1;
+                scale.x *= -1f;
             if (supportFlipY && options.FlipFullBodyY)
-                scale.y *= -1;
+                scale.y *= -1f;
 
             visualRoot.localScale = scale;
 
-            // Move to anchor point
-            Vector3 offset = options.FullBodySide switch
-            {
-                DisplaySide.Left => leftPositionOffset,
-                DisplaySide.Right => rightPositionOffset,
-                DisplaySide.Center => centerPositionOffset,
-                _ => Vector3.zero
-            };
-
-            visualRoot.localPosition = offset;
+            // Positioning is intentionally not handled here.
+            // Characters are positioned by the parent transform assigned in ConvoCorePrefabRepresentationSpawner.
+            // Override ApplyDisplayOptions in a subclass if the character needs to reposition itself
+            // relative to its parent based on display options.
         }
 
-        public abstract void BindRepresentation(PrefabCharacterRepresentationData representationAsset);
+        public abstract void BindRepresentation(CharacterRepresentationBase representationAsset);
       
 
         public abstract void ApplyExpression(string expressionId);

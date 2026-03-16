@@ -18,6 +18,30 @@ namespace WolfstagInteractive.ConvoCore
                 Instance = this;
         }
 
+        private void OnEnable()
+        {
+            UnityEngine.SceneManagement.SceneManager.sceneUnloaded += OnSceneUnloaded;
+        }
+
+        private void OnDisable()
+        {
+            UnityEngine.SceneManagement.SceneManager.sceneUnloaded -= OnSceneUnloaded;
+        }
+
+        private void OnSceneUnloaded(UnityEngine.SceneManagement.Scene scene)
+        {
+            foreach (var kvp in _pool)
+            {
+                var clean = new Stack<GameObject>();
+                foreach (var go in kvp.Value)
+                {
+                    if (go != null)
+                        clean.Push(go);
+                }
+                _pool[kvp.Key] = clean;
+            }
+        }
+
         public GameObject Spawn(GameObject prefab, Transform parent = null)
         {
             if (!_pool.TryGetValue(prefab, out var stack))
@@ -26,16 +50,24 @@ namespace WolfstagInteractive.ConvoCore
                 _pool[prefab] = stack;
             }
 
-            GameObject instance;
-            if (stack.Count > 0)
+            GameObject instance = null;
+
+            // Drain stale entries before using one
+            while (stack.Count > 0)
             {
-                instance = stack.Pop();
-                instance.SetActive(true);
+                var candidate = stack.Pop();
+                if (candidate != null)
+                {
+                    instance = candidate;
+                    break;
+                }
+                // candidate was destroyed externally -- discard and keep draining
             }
-            else
-            {
+
+            if (instance == null)
                 instance = Instantiate(prefab);
-            }
+
+            instance.SetActive(true);
 
             if (parent != null)
                 instance.transform.SetParent(parent, worldPositionStays: false);

@@ -454,14 +454,14 @@ MonoBehaviour:
   Input:
     rid: 8883873189358993408
   ConversationUI: {fileID: 293130684}
-  _debugLogLines: 1
+  _debugLogLines: 0
   references:
     version: 2
     RefIds:
     - rid: 8883873189358993408
       type: {class: SingleConversationInput, ns: WolfstagInteractive.ConvoCore, asm: ConvoCore}
       data:
-        Conversation: {fileID: 11400000, guid: 0a37cee1b6901ff4e8a11815f11e990c, type: 2}
+        Conversation: {fileID: 11400000, guid: 03a826667c5d84047a7750908f8aab7e, type: 2}
 --- !u!4 &1577445918
 Transform:
   m_ObjectHideFlags: 0
@@ -546,8 +546,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2475525088512401250, guid: 37defd90b8cf4c644b832efe22df606d, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.000061035156
+      objectReference: {fileID: 0}
+    - target: {fileID: 2475525088512401250, guid: 37defd90b8cf4c644b832efe22df606d, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 191.49995
+      value: 191.49998
       objectReference: {fileID: 0}
     - target: {fileID: 2674301797292854259, guid: 37defd90b8cf4c644b832efe22df606d, type: 3}
       propertyPath: m_AnchorMax.x
