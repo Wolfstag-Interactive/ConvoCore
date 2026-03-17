@@ -5,7 +5,7 @@ title: Overview
 
 # Prefab Characters
 
-ConvoCore supports 3D prefab characters in addition to flat sprites. Where a sprite representation stores a set of images, a prefab representation stores a reference to a Unity prefab — a real GameObject that can be spawned into a scene, driven by an Animator, and fully integrated into your world.
+ConvoCore supports 3D prefab characters in addition to flat sprites. Where a sprite representation stores a set of images, a prefab representation stores a reference to a Unity prefab. The prefab is a real GameObject that can be spawned into a scene, driven by an Animator, and fully integrated into your world.
 
 This section covers the full workflow: how prefab characters are placed, how they receive expressions, and how to choose between the two display modes ConvoCore provides.
 
@@ -19,25 +19,55 @@ Prefab characters work differently depending on whether your dialogue exists in 
 Your Conversation
        │
        ├─── 2D / Canvas ───▶  ConvoCoreSampleUICanvas
-       │                           Slot anchors on a Canvas
-       │                           Sprites and prefabs side-by-side
-       │                           Fixed screen-space positions
+       │                         - Slot anchors on a Canvas
+       │                         - Sprites and prefabs side-by-side
+       │                         - Fixed screen-space positions
        │
        └─── 3D / World ────▶  ConvoCoreSampleUI3D
-                                   ConvoCoreCharacterPresence asset
-                                   Characters live in the scene
-                                   Placement is the presence's job
+                                 - ConvoCoreCharacterPresence asset
+                                 - Characters live in the scene
+                                 - Placement is the presence's job
 ```
 
 ### Canvas path
 
-Characters sit inside a Canvas. Each character slot is a `RectTransform` anchor point that the spawner parents prefab instances under. Sprite and prefab characters can appear on the same line without any extra configuration — the canvas UI handles both simultaneously.
+Characters sit inside a Canvas. Each character slot is a `RectTransform` anchor point that the spawner parents prefab instances under. Sprite and prefab characters can both appear on the same dialogue line. The canvas UI handles both types without any extra configuration.
+
+```
+Canvas
+  ├── ConvoCoreSampleUICanvas
+  │
+  ├── Slot anchors (RectTransform)
+  │     ├── SlotLeft ────▶ CharacterA (prefab instance)
+  │     │                      └── ConvoCoreAnimatorDisplay
+  │     │
+  │     └── SlotRight ───▶ CharacterB (sprite rendered into Image)
+  │
+  └── Dialogue Text, Speaker Name, Choices, ...
+```
 
 **Best for:** visual novel layouts, 2D games, UI-layer portraits, any setup where characters are screen-space elements.
 
 ### 3D world path
 
-Characters are placed in the 3D scene. A **presence** ScriptableObject decides where each character goes — at authored world positions, relative to the camera, following a target, or already standing in the scene. The UI itself has no slot concept; it delegates placement entirely to the presence.
+Characters live in the 3D scene. A [presence](presence-types) is assigned to the UI and handles all placement decisions: where to spawn characters, how they move, and when they are removed from the scene. Common built-in options cover authored world positions, camera-relative placement, following a moving target, and characters already standing in the scene. The UI has no slot concept and delegates all placement to the presence.
+
+```
+ConvoCoreSampleUI3D
+      │  conversation starts
+      ├──▶  presence.OnConversationBegin()
+      │          set up markers, spawn points, or store initial state
+      │
+      │  each dialogue line
+      ├──▶  presence.ResolvePresence(rep, context, spawner)
+      │          returns IConvoCoreCharacterDisplay
+      │              └── display.BindRepresentation()
+      │              └── display.ApplyExpression()
+      │
+      │  conversation ends
+      └──▶  presence.OnConversationEnd()
+                 release spawned instances, restore scene state
+```
 
 **Best for:** RPG dialogue, cinematic scenes, first-person games, VR, any setup where characters exist as world objects.
 
@@ -53,7 +83,7 @@ Characters are placed in the 3D scene. A **presence** ScriptableObject decides w
 | Characters need to move to specific world positions | `ConvoCoreSampleUI3D` + `WorldPointPresence` |
 | Characters follow the player | `ConvoCoreSampleUI3D` + `FollowTargetPresence` |
 | Characters are already placed in the scene by the developer | `ConvoCoreSampleUI3D` + `ExternalPresence` |
-| First-person or VR — character placed relative to the camera | `ConvoCoreSampleUI3D` + `CameraRelativePresence` |
+| First-person or VR, character positioned relative to the camera | `ConvoCoreSampleUI3D` + `CameraRelativePresence` |
 
 :::note
 Both paths use the same `PrefabCharacterRepresentationData` asset and the same display components (`ConvoCoreAnimatorDisplay`, `ConvoCoreBlendShapeDisplay`, etc.). What differs is how the spawned character gets positioned in the world.
@@ -108,8 +138,25 @@ Regardless of which path you use, the expression application sequence is the sam
 5. The display component translates the GUID into a concrete visual change: an Animator parameter, a blend shape weight, or nothing (if `ConvoCoreActionOnlyDisplay`).
 6. `PrefabCharacterRepresentationData.ApplyExpression()` also runs, which fires any `BaseExpressionAction` ScriptableObjects attached to the expression mapping. Display component changes and ScriptableObject actions run together.
 
+```
+YAML dialogue line
+  ├── CharacterID: "Guard"
+  └── Expression:  "Angry"
+            │
+            ▼
+  PrefabCharacterRepresentationData   (ScriptableObject asset)
+  └── Expression Mappings
+        └── "Angry"
+              ├──▶  BaseExpressionAction[]        (audio, VFX, events, etc.)
+              │          fired by the representation asset
+              │
+              └──▶  IConvoCoreCharacterDisplay    (component on the prefab)
+                         └── ConvoCoreAnimatorDisplay
+                                 └── Animator.SetInteger("EmotionState", 2)
+```
+
 :::note
-Expression display names are used as the join key between the `PrefabCharacterRepresentationData` asset and the display component's inspector mappings. The GUID is only used at runtime lookup. This means you configure display components by typing in the same human-readable name you gave the expression in the representation asset — not by copying an opaque GUID string.
+Expression display names are used as the join key between the `PrefabCharacterRepresentationData` asset and the display component's inspector mappings. The GUID is only used at runtime lookup. This means you configure display components using the same human-readable name you gave the expression in the representation asset. No opaque GUID strings to copy or manage.
 :::
 
 ---
