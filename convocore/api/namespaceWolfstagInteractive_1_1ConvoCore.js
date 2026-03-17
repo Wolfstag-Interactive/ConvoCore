@@ -6,6 +6,7 @@ var namespaceWolfstagInteractive_1_1ConvoCore =
     [ "BaseDialogueLineAction", "classWolfstagInteractive_1_1ConvoCore_1_1BaseDialogueLineAction.html", "classWolfstagInteractive_1_1ConvoCore_1_1BaseDialogueLineAction" ],
     [ "BaseExpressionAction", "classWolfstagInteractive_1_1ConvoCore_1_1BaseExpressionAction.html", "classWolfstagInteractive_1_1ConvoCore_1_1BaseExpressionAction" ],
     [ "BlendShapeExpressionMapping", "classWolfstagInteractive_1_1ConvoCore_1_1BlendShapeExpressionMapping.html", "classWolfstagInteractive_1_1ConvoCore_1_1BlendShapeExpressionMapping" ],
+    [ "BlendShapeTarget", "classWolfstagInteractive_1_1ConvoCore_1_1BlendShapeTarget.html", "classWolfstagInteractive_1_1ConvoCore_1_1BlendShapeTarget" ],
     [ "CameraRelativePresence", "classWolfstagInteractive_1_1ConvoCore_1_1CameraRelativePresence.html", "classWolfstagInteractive_1_1ConvoCore_1_1CameraRelativePresence" ],
     [ "CharacterPresenceContext", "structWolfstagInteractive_1_1ConvoCore_1_1CharacterPresenceContext.html", "structWolfstagInteractive_1_1ConvoCore_1_1CharacterPresenceContext" ],
     [ "CharacterRepresentationBase", "classWolfstagInteractive_1_1ConvoCore_1_1CharacterRepresentationBase.html", "classWolfstagInteractive_1_1ConvoCore_1_1CharacterRepresentationBase" ],

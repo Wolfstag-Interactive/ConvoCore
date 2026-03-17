@@ -5,6 +5,7 @@ var classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreAnimatorDisplay =
     [ "BindRepresentation", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreAnimatorDisplay.html#aa489a25e07c4c3791825e399e7947127", null ],
     [ "_animator", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreAnimatorDisplay.html#a8e85457616e4dd4705e068b812e73506", null ],
     [ "_expressionMappings", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreAnimatorDisplay.html#a5d09f5d807a1a7743139984321c39c06", null ],
+    [ "_lastBoundAsset", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreAnimatorDisplay.html#aeb96333b680bee24f151703049666a4e", null ],
     [ "_lastBoundRep", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreAnimatorDisplay.html#aa98d077eed5acb6a97ce1d66233f9de6", null ],
     [ "_runtimeLookup", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreAnimatorDisplay.html#ac15ae5398d3f230bb32f2a5b8e06c69b", null ]
 ];

@@ -6,6 +6,7 @@ var hierarchy =
       [ "WolfstagInteractive.ConvoCore.Editor.ConvoCoreYamlWatcher", "classWolfstagInteractive_1_1ConvoCore_1_1Editor_1_1ConvoCoreYamlWatcher.html", null ]
     ] ],
     [ "WolfstagInteractive.ConvoCore.BlendShapeExpressionMapping", "classWolfstagInteractive_1_1ConvoCore_1_1BlendShapeExpressionMapping.html", null ],
+    [ "WolfstagInteractive.ConvoCore.BlendShapeTarget", "classWolfstagInteractive_1_1ConvoCore_1_1BlendShapeTarget.html", null ],
     [ "WolfstagInteractive.ConvoCore.CameraRelativePresence.CameraSlotEntry", "classWolfstagInteractive_1_1ConvoCore_1_1CameraRelativePresence_1_1CameraSlotEntry.html", null ],
     [ "WolfstagInteractive.ConvoCore.CharacterPresenceContext", "structWolfstagInteractive_1_1ConvoCore_1_1CharacterPresenceContext.html", null ],
     [ "WolfstagInteractive.ConvoCore.ConvoCoreConversationData.CharacterRepresentationData", "structWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData_1_1CharacterRepresentationData.html", null ],
