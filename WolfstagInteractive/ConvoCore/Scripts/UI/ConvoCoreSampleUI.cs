@@ -18,6 +18,10 @@ namespace WolfstagInteractive.ConvoCore
     /// <see cref="ConvoCoreSampleUI3D"/> (world-space) instead.
     /// </summary>
     [HelpURL("https://docs.wolfstaginteractive.com/convocore/api/classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSampleUI.html")]
+    [System.Obsolete("ConvoCoreSampleUI is deprecated. " +
+                     "Use ConvoCoreSampleUICanvas for canvas-space dialogue (sprites and canvas prefabs) " +
+                     "or ConvoCoreSampleUI3D for world-space prefab characters. " +
+                     "ConvoCoreSampleUI will be removed in a future release.")]
     public class ConvoCoreSampleUI : ConvoCoreUIFoundation
     {
         // Canvas-internal slot concept (replaces the retired DisplaySlot enum).

@@ -39,9 +39,18 @@ namespace WolfstagInteractive.ConvoCore
                 return;
             }
 
-            // Expression actions are executed by PrefabCharacterRepresentationData.ApplyExpression,
-            // which is called by the ConvoCore runner. This component provides the IConvoCoreCharacterDisplay
-            // surface without adding its own visual changes on top.
+            // This method body is intentionally empty. ConvoCoreActionOnlyDisplay has two jobs:
+            //
+            // 1. Provide a valid IConvoCoreCharacterDisplay on the prefab so ConvoCore can call
+            //    BindRepresentation and ApplyExpression without null-checking for a display component.
+            //
+            // 2. Let PrefabCharacterRepresentationData.ApplyExpression (called separately by the
+            //    ConvoCore runner) execute any BaseExpressionAction ScriptableObjects attached to
+            //    the expression mapping. Those actions ARE the visual response -- this component
+            //    intentionally adds none of its own.
+            //
+            // If you need built-in Animator or blend shape driving, use ConvoCoreAnimatorDisplay
+            // or ConvoCoreBlendShapeDisplay instead.
         }
     }
 }
