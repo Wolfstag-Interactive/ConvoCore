@@ -200,17 +200,6 @@ MonoBehaviour:
   m_DeselectOnBackgroundClick: 1
   m_PointerBehavior: 0
   m_CursorLockBehavior: 0
---- !u!114 &293130684 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1961101549865962711, guid: 37defd90b8cf4c644b832efe22df606d, type: 3}
-  m_PrefabInstance: {fileID: 1293074658488180136}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5413f2d59be099247a912f4b4417ff81, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &364105816 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6341640318056460866, guid: 37defd90b8cf4c644b832efe22df606d, type: 3}
@@ -453,7 +442,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Input:
     rid: 8883873189358993408
-  ConversationUI: {fileID: 293130684}
+  ConversationUI: {fileID: 0}
   _debugLogLines: 0
   references:
     version: 2
@@ -541,17 +530,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: ConversationToolDialogueUI
       objectReference: {fileID: 0}
+    - target: {fileID: 1896093986946830300, guid: 37defd90b8cf4c644b832efe22df606d, type: 3}
+      propertyPath: PreviousDialogueAction.m_Name
+      value: Previous Dialogue
+      objectReference: {fileID: 0}
     - target: {fileID: 2475525088512401250, guid: 37defd90b8cf4c644b832efe22df606d, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2475525088512401250, guid: 37defd90b8cf4c644b832efe22df606d, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0.000061035156
+      value: 0.00002130866
       objectReference: {fileID: 0}
     - target: {fileID: 2475525088512401250, guid: 37defd90b8cf4c644b832efe22df606d, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 191.49998
+      value: 191.49939
       objectReference: {fileID: 0}
     - target: {fileID: 2674301797292854259, guid: 37defd90b8cf4c644b832efe22df606d, type: 3}
       propertyPath: m_AnchorMax.x
@@ -665,6 +658,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4438968453605833816, guid: 37defd90b8cf4c644b832efe22df606d, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4496239645125178625, guid: 37defd90b8cf4c644b832efe22df606d, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -699,6 +696,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6846698865680571438, guid: 37defd90b8cf4c644b832efe22df606d, type: 3}
       propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7358730962914570107, guid: 37defd90b8cf4c644b832efe22df606d, type: 3}
+      propertyPath: m_Size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8549435574733789447, guid: 37defd90b8cf4c644b832efe22df606d, type: 3}
+      propertyPath: m_Value
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

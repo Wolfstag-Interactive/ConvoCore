@@ -24,6 +24,7 @@ namespace WolfstagInteractive.ConvoCore
 
         // Runtime lookup: expression GUID -> AnimatorExpressionMapping
         private readonly Dictionary<string, AnimatorExpressionMapping> _runtimeLookup = new();
+        private CharacterRepresentationBase _lastBoundAsset;
         private PrefabCharacterRepresentationData _lastBoundRep;
 
         protected override void Awake()
@@ -35,7 +36,8 @@ namespace WolfstagInteractive.ConvoCore
 
         public override void BindRepresentation(CharacterRepresentationBase representationAsset)
         {
-            if (representationAsset == _lastBoundRep) return;
+            if (representationAsset == _lastBoundAsset) return;
+            _lastBoundAsset = representationAsset;
             _lastBoundRep = representationAsset as PrefabCharacterRepresentationData;
 
             _runtimeLookup.Clear();

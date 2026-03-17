@@ -199,7 +199,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 3388152572731170396}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.99999297
+  m_Size: 0.9999615
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -368,10 +368,11 @@ GameObject:
   - component: {fileID: 1819729542199798609}
   - component: {fileID: 6743951928966955333}
   - component: {fileID: 8822450874642733228}
-  - component: {fileID: 1961101549865962711}
   - component: {fileID: 1421998098756297677}
   - component: {fileID: 7830390332449809316}
   - component: {fileID: 6751505844025749556}
+  - component: {fileID: 1896093986946830300}
+  - component: {fileID: 174051852324576569}
   m_Layer: 0
   m_Name: ConversationToolDialogueUI
   m_TagString: Untagged
@@ -463,77 +464,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 32759
---- !u!114 &1961101549865962711
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 444105413700069326}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5413f2d59be099247a912f4b4417ff81, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefabRepresentationSpawner: {fileID: 1421998098756297677}
-  maxVisibleCharacterSlots: 3
-  ChoicePanel: {fileID: 329158845178308745}
-  ChoiceButtonContainer: {fileID: 5737274151639185467}
-  ChoiceButtonPrefab: {fileID: 3096698439550888937, guid: feb72836bda7a3c4c9f2436e0630d5d1, type: 3}
-  DialogueText: {fileID: 8770564722129453552}
-  SpeakerName: {fileID: 8398786262638070346}
-  DialoguePanel: {fileID: 6394558387167986242}
-  SpeakerPortraitImage: {fileID: 5209833270802110201}
-  FullBodyImageLeft: {fileID: 4407448410953663419}
-  FullBodyImageRight: {fileID: 3298351425223639175}
-  FullBodyImageCenter: {fileID: 7179885708336102251}
-  ContinueButton: {fileID: 1644093088017464568}
-  PreviousLineButton: {fileID: 6884883449083575030}
-  DialogueHistoryPanelRoot: {fileID: 323622142881766837}
-  DialogueHistoryScrollRect: {fileID: 3880619691109246176}
-  DialogueHistoryScrollRectContent: {fileID: 2475525088512401250}
-  DialogueHistoryContentBackground: {fileID: 8703608421288385764}
-  DialogueHistoryText: {fileID: 7479805580807005326}
-  ToggleDialogueHistoryButton: {fileID: 643014730799521447}
-  AllowLineAdvanceOutsideButton: 0
-  EnableTypewriterEffect: 1
-  TypewriterSpeed: 0.05
-  CanSkipTypewriter: 1
-  AutoHideUIOnStart: 0
-  AdvanceDialogueAction:
-    m_Name: Advance Dialogue
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 96bfacef-0ba9-4f87-8ab4-3a421d885f3f
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 
-      m_Id: 475d6fa9-0ad5-48b8-accf-ac573990b99e
-      m_Path: <Keyboard>/space
-      m_Interactions: Press
-      m_Processors: 
-      m_Groups: 
-      m_Action: Advance Dialogue
-      m_Flags: 0
-    m_Flags: 0
-  PreviousDialogueAction:
-    m_Name: Previous Dialogue
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 6b40e8b4-3292-4a39-81f5-5e433c7a52eb
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 
-      m_Id: a2147001-960e-4227-aa0b-52013901e240
-      m_Path: <Keyboard>/backspace
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Previous Dialogue
-      m_Flags: 0
-    m_Flags: 0
 --- !u!114 &1421998098756297677
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -546,9 +476,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e004d18a62a6d464c927c79dbce74c0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  leftParent: {fileID: 7881847996088363365}
-  rightParent: {fileID: 2062086089352521890}
-  centerParent: {fileID: 384934901900240810}
   sceneCharacterRegistry: {fileID: 7830390332449809316}
 --- !u!114 &7830390332449809316
 MonoBehaviour:
@@ -577,6 +504,74 @@ MonoBehaviour:
   convoCoreSettings: {fileID: 11400000, guid: 0fdc5f43fa7e2c7418c01c50ea88d5d4, type: 2}
   selectedProfileName: Plain
   maxEntries: 100
+--- !u!114 &1896093986946830300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 444105413700069326}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d690ddf67d383e34da98f159ac32fe23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxVisibleCharacterSlots: 3
+  prefabRepresentationSpawner: {fileID: 174051852324576569}
+  characterSlotAnchors: []
+  ChoicePanel: {fileID: 329158845178308745}
+  ChoiceButtonContainer: {fileID: 7485025565582962408}
+  ChoiceButtonPrefab: {fileID: 6341640318056460866}
+  DialogueText: {fileID: 8770564722129453552}
+  SpeakerName: {fileID: 8398786262638070346}
+  DialoguePanel: {fileID: 7673858324034960611}
+  SpeakerPortraitImage: {fileID: 5209833270802110201}
+  FullBodyImageLeft: {fileID: 4407448410953663419}
+  FullBodyImageRight: {fileID: 3298351425223639175}
+  FullBodyImageCenter: {fileID: 7179885708336102251}
+  ContinueButton: {fileID: 1644093088017464568}
+  PreviousLineButton: {fileID: 6884883449083575030}
+  DialogueHistoryPanelRoot: {fileID: 323622142881766837}
+  DialogueHistoryScrollRect: {fileID: 3880619691109246176}
+  DialogueHistoryContentBackground: {fileID: 5157808244682157698}
+  DialogueHistoryText: {fileID: 7479805580807005326}
+  ToggleDialogueHistoryButton: {fileID: 643014730799521447}
+  AllowLineAdvanceOutsideButton: 0
+  EnableTypewriterEffect: 1
+  TypewriterSpeed: 0.05
+  CanSkipTypewriter: 1
+  AutoHideUIOnStart: 0
+  AdvanceDialogueAction:
+    m_Name: Advance Dialogue
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: a53ed4fc-3698-432a-b8a9-bcd43c5111c4
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  PreviousDialogueAction:
+    m_Name: Previous Dialogue
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: cd8660c6-a74f-4937-82a1-fb732ca5171f
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+--- !u!114 &174051852324576569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 444105413700069326}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e004d18a62a6d464c927c79dbce74c0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneCharacterRegistry: {fileID: 0}
 --- !u!1 &935296161212900255
 GameObject:
   m_ObjectHideFlags: 0
@@ -1431,7 +1426,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 191.49904}
+  m_AnchoredPosition: {x: 0, y: 191.49995}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &5467354190400067069
