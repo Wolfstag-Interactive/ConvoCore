@@ -54,7 +54,7 @@ Right-click in the Project panel → **Create → ConvoCore → Presence** → c
 4. Drag `ConvoCorePrefabRepresentationSpawner` into the **Prefab Representation Spawner** field on `ConvoCoreSampleUI3D`.
 
 :::note
-Not all presences use the spawner. `ExternalPresence` for scene-resident characters never calls it. If you're using only `ExternalPresence`, the spawner and pool are still required fields but will be idle.
+Not all presences use the spawner. `ExternalPresence` for scene-resident characters never calls it. The spawner is a required field on `ConvoCoreSampleUI3D` so that presences which do spawn characters — such as `WorldPointPresence` or `FollowTargetPresence` — can operate without additional setup when you switch presence types. If you are certain you will only ever use `ExternalPresence`, the spawner will simply sit idle.
 :::
 
 ### 3. Assign the presence

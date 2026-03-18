@@ -203,7 +203,6 @@ MySceneCharacter.prefab / GameObject
 
 ## Writing a Custom Display Component
 
-:::info[For Advanced Users]
 Extend `ConvoCoreCharacterDisplayBase` to create a display component for any visual system:
 
 ```csharp
@@ -235,7 +234,6 @@ public class MyCustomDisplay : ConvoCoreCharacterDisplayBase
 ```
 
 `ConvoCoreCharacterDisplayBase` handles scale and flip logic (from `ApplyDisplayOptions`) for you. Override `ApplyDisplayOptions()` if your component needs additional behaviour when display options change, but call `base.ApplyDisplayOptions(options)` to preserve the default scale and flip handling.
-:::
 
 ---
 
