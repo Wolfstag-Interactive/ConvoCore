@@ -9,11 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32c649907e2db674684d795adc21be6b, type: 3}
-  m_Name: SphereCharacterRepresentation
+  m_Script: {fileID: 11500000, guid: 2167ad6c1fe78f246bed4129ec4a8604, type: 3}
+  m_Name: Sample_CameraRelativePresence
   m_EditorClassIdentifier: 
-  SharedExpressionMappings:
-  - expressionID: f1ae689039a54408857dd2e07da07a5c
-    DisplayName: Default
-    ExpressionActions: []
-  ConfigurationEntries: []
+  _slots: []
+  _mode: 0

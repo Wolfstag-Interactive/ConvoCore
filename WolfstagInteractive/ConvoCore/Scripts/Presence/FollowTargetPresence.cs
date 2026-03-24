@@ -40,7 +40,8 @@ namespace WolfstagInteractive.ConvoCore
         {
             _spawner = spawner;
 
-            if (_cachedDisplays.TryGetValue(representation.name, out var cached))
+            var cacheKey = !string.IsNullOrEmpty(context.CharacterId) ? context.CharacterId : representation.name;
+            if (_cachedDisplays.TryGetValue(cacheKey, out var cached))
                 return cached;
 
             if (context.CharacterIndex >= _slots.Count)
@@ -67,7 +68,7 @@ namespace WolfstagInteractive.ConvoCore
             }
 
             // Spawn the character with no initial parent (follow component will position it).
-            var display = spawner.SpawnAndBind(representation, null);
+            var display = spawner.SpawnAndBind(representation, context.ConfigurationEntryName, context.CharacterId, null);
             if (display == null) return null;
 
             var displayMono = display as MonoBehaviour;
@@ -77,7 +78,7 @@ namespace WolfstagInteractive.ConvoCore
                 follow.Initialize(targetMono.transform, slot.Offset);
             }
 
-            _cachedDisplays[representation.name] = display;
+            _cachedDisplays[cacheKey] = display;
             return display;
         }
 

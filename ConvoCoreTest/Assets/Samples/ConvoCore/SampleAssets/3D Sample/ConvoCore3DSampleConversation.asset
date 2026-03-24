@@ -104,6 +104,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 6d56885077f77054a92670ce5e67732f, type: 2}
   - {fileID: 11400000, guid: ccf385c6e1255124fa3b9fc536ba2206, type: 2}
   - {fileID: 11400000, guid: 4480ae89d8eb3fb409e01358ae87caec, type: 2}
+  ParticipantConfigurationDefaults:
+  - CharacterID: 
+    DefaultConfigurationEntryName: 
   DialogueLines:
   - ConversationID: 3DSampleConversation
     LineID: L_e7b1541e75ee
@@ -114,12 +117,14 @@ MonoBehaviour:
       SelectedRepresentationName: Prefab Representation
       SelectedRepresentation: {fileID: 11400000, guid: 3a653faf41f2c334fa8db7c3805d147c, type: 2}
       SelectedExpressionId: 
+      SelectedConfigurationEntryName: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
         DisplayPosition: 0
+        SlotId: 
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
@@ -150,12 +155,14 @@ MonoBehaviour:
       SelectedRepresentationName: Prefab Representation
       SelectedRepresentation: {fileID: 11400000, guid: 664b3f2510ccede488b6012d83c83d09, type: 2}
       SelectedExpressionId: 
+      SelectedConfigurationEntryName: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
         DisplayPosition: 0
+        SlotId: 
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
@@ -186,12 +193,14 @@ MonoBehaviour:
       SelectedRepresentationName: Prefab Representation
       SelectedRepresentation: {fileID: 11400000, guid: 1f68b1907135bc941abf273cec5be8c1, type: 2}
       SelectedExpressionId: 
+      SelectedConfigurationEntryName: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
         DisplayPosition: 0
+        SlotId: 
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
@@ -222,12 +231,14 @@ MonoBehaviour:
       SelectedRepresentationName: Prefab Representation
       SelectedRepresentation: {fileID: 11400000, guid: 3a653faf41f2c334fa8db7c3805d147c, type: 2}
       SelectedExpressionId: 
+      SelectedConfigurationEntryName: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
         DisplayPosition: 0
+        SlotId: 
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
@@ -258,12 +269,14 @@ MonoBehaviour:
       SelectedRepresentationName: Prefab Representation
       SelectedRepresentation: {fileID: 11400000, guid: 664b3f2510ccede488b6012d83c83d09, type: 2}
       SelectedExpressionId: 
+      SelectedConfigurationEntryName: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
         DisplayPosition: 0
+        SlotId: 
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
@@ -294,12 +307,14 @@ MonoBehaviour:
       SelectedRepresentationName: Prefab Representation
       SelectedRepresentation: {fileID: 11400000, guid: 1f68b1907135bc941abf273cec5be8c1, type: 2}
       SelectedExpressionId: 
+      SelectedConfigurationEntryName: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
         DisplayPosition: 0
+        SlotId: 
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
@@ -330,12 +345,14 @@ MonoBehaviour:
       SelectedRepresentationName: Prefab Representation
       SelectedRepresentation: {fileID: 11400000, guid: 664b3f2510ccede488b6012d83c83d09, type: 2}
       SelectedExpressionId: 
+      SelectedConfigurationEntryName: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
         DisplayPosition: 0
+        SlotId: 
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
@@ -366,12 +383,14 @@ MonoBehaviour:
       SelectedRepresentationName: Prefab Representation
       SelectedRepresentation: {fileID: 11400000, guid: 3a653faf41f2c334fa8db7c3805d147c, type: 2}
       SelectedExpressionId: 
+      SelectedConfigurationEntryName: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
         DisplayPosition: 0
+        SlotId: 
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
@@ -402,12 +421,14 @@ MonoBehaviour:
       SelectedRepresentationName: Prefab Representation
       SelectedRepresentation: {fileID: 11400000, guid: 664b3f2510ccede488b6012d83c83d09, type: 2}
       SelectedExpressionId: 
+      SelectedConfigurationEntryName: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
         DisplayPosition: 0
+        SlotId: 
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
@@ -438,12 +459,14 @@ MonoBehaviour:
       SelectedRepresentationName: Prefab Representation
       SelectedRepresentation: {fileID: 11400000, guid: 1f68b1907135bc941abf273cec5be8c1, type: 2}
       SelectedExpressionId: 
+      SelectedConfigurationEntryName: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
         DisplayPosition: 0
+        SlotId: 
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
@@ -474,12 +497,14 @@ MonoBehaviour:
       SelectedRepresentationName: Prefab Representation
       SelectedRepresentation: {fileID: 11400000, guid: 664b3f2510ccede488b6012d83c83d09, type: 2}
       SelectedExpressionId: 
+      SelectedConfigurationEntryName: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
         DisplayPosition: 0
+        SlotId: 
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
@@ -510,12 +535,14 @@ MonoBehaviour:
       SelectedRepresentationName: Prefab Representation
       SelectedRepresentation: {fileID: 11400000, guid: 3a653faf41f2c334fa8db7c3805d147c, type: 2}
       SelectedExpressionId: 
+      SelectedConfigurationEntryName: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
         DisplayPosition: 0
+        SlotId: 
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
@@ -546,12 +573,14 @@ MonoBehaviour:
       SelectedRepresentationName: Prefab Representation
       SelectedRepresentation: {fileID: 11400000, guid: 1f68b1907135bc941abf273cec5be8c1, type: 2}
       SelectedExpressionId: 
+      SelectedConfigurationEntryName: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
         DisplayPosition: 0
+        SlotId: 
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
@@ -582,12 +611,14 @@ MonoBehaviour:
       SelectedRepresentationName: Prefab Representation
       SelectedRepresentation: {fileID: 11400000, guid: 3a653faf41f2c334fa8db7c3805d147c, type: 2}
       SelectedExpressionId: 
+      SelectedConfigurationEntryName: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
         DisplayPosition: 0
+        SlotId: 
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
@@ -618,12 +649,14 @@ MonoBehaviour:
       SelectedRepresentationName: Prefab Representation
       SelectedRepresentation: {fileID: 11400000, guid: 664b3f2510ccede488b6012d83c83d09, type: 2}
       SelectedExpressionId: 
+      SelectedConfigurationEntryName: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
         DisplayPosition: 0
+        SlotId: 
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
@@ -654,12 +687,14 @@ MonoBehaviour:
       SelectedRepresentationName: Prefab Representation
       SelectedRepresentation: {fileID: 11400000, guid: 1f68b1907135bc941abf273cec5be8c1, type: 2}
       SelectedExpressionId: 
+      SelectedConfigurationEntryName: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
         DisplayPosition: 0
+        SlotId: 
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
@@ -690,12 +725,14 @@ MonoBehaviour:
       SelectedRepresentationName: Prefab Representation
       SelectedRepresentation: {fileID: 11400000, guid: 664b3f2510ccede488b6012d83c83d09, type: 2}
       SelectedExpressionId: 
+      SelectedConfigurationEntryName: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
         DisplayPosition: 0
+        SlotId: 
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
@@ -726,12 +763,14 @@ MonoBehaviour:
       SelectedRepresentationName: Prefab Representation
       SelectedRepresentation: {fileID: 11400000, guid: 3a653faf41f2c334fa8db7c3805d147c, type: 2}
       SelectedExpressionId: 
+      SelectedConfigurationEntryName: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
         DisplayPosition: 0
+        SlotId: 
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
@@ -762,12 +801,14 @@ MonoBehaviour:
       SelectedRepresentationName: Prefab Representation
       SelectedRepresentation: {fileID: 11400000, guid: 1f68b1907135bc941abf273cec5be8c1, type: 2}
       SelectedExpressionId: 
+      SelectedConfigurationEntryName: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
         DisplayPosition: 0
+        SlotId: 
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
@@ -798,12 +839,14 @@ MonoBehaviour:
       SelectedRepresentationName: Prefab Representation
       SelectedRepresentation: {fileID: 11400000, guid: 664b3f2510ccede488b6012d83c83d09, type: 2}
       SelectedExpressionId: 
+      SelectedConfigurationEntryName: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
         DisplayPosition: 0
+        SlotId: 
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
@@ -834,12 +877,14 @@ MonoBehaviour:
       SelectedRepresentationName: Prefab Representation
       SelectedRepresentation: {fileID: 11400000, guid: 3a653faf41f2c334fa8db7c3805d147c, type: 2}
       SelectedExpressionId: 
+      SelectedConfigurationEntryName: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
         DisplayPosition: 0
+        SlotId: 
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
@@ -870,12 +915,14 @@ MonoBehaviour:
       SelectedRepresentationName: Prefab Representation
       SelectedRepresentation: {fileID: 11400000, guid: 1f68b1907135bc941abf273cec5be8c1, type: 2}
       SelectedExpressionId: 
+      SelectedConfigurationEntryName: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
         DisplayPosition: 0
+        SlotId: 
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
@@ -906,12 +953,14 @@ MonoBehaviour:
       SelectedRepresentationName: Prefab Representation
       SelectedRepresentation: {fileID: 11400000, guid: 664b3f2510ccede488b6012d83c83d09, type: 2}
       SelectedExpressionId: 
+      SelectedConfigurationEntryName: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
         DisplayPosition: 0
+        SlotId: 
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
@@ -942,12 +991,14 @@ MonoBehaviour:
       SelectedRepresentationName: Prefab Representation
       SelectedRepresentation: {fileID: 11400000, guid: 3a653faf41f2c334fa8db7c3805d147c, type: 2}
       SelectedExpressionId: 
+      SelectedConfigurationEntryName: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
         DisplayPosition: 0
+        SlotId: 
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
@@ -978,12 +1029,14 @@ MonoBehaviour:
       SelectedRepresentationName: Prefab Representation
       SelectedRepresentation: {fileID: 11400000, guid: 664b3f2510ccede488b6012d83c83d09, type: 2}
       SelectedExpressionId: 
+      SelectedConfigurationEntryName: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
         DisplayPosition: 0
+        SlotId: 
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
@@ -1014,12 +1067,14 @@ MonoBehaviour:
       SelectedRepresentationName: Prefab Representation
       SelectedRepresentation: {fileID: 11400000, guid: 1f68b1907135bc941abf273cec5be8c1, type: 2}
       SelectedExpressionId: 
+      SelectedConfigurationEntryName: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
         DisplayPosition: 0
+        SlotId: 
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
@@ -1050,12 +1105,14 @@ MonoBehaviour:
       SelectedRepresentationName: Prefab Representation
       SelectedRepresentation: {fileID: 11400000, guid: 1f68b1907135bc941abf273cec5be8c1, type: 2}
       SelectedExpressionId: 
+      SelectedConfigurationEntryName: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
         DisplayPosition: 0
+        SlotId: 
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
@@ -1086,12 +1143,14 @@ MonoBehaviour:
       SelectedRepresentationName: Prefab Representation
       SelectedRepresentation: {fileID: 11400000, guid: 3a653faf41f2c334fa8db7c3805d147c, type: 2}
       SelectedExpressionId: 
+      SelectedConfigurationEntryName: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
         DisplayPosition: 0
+        SlotId: 
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
@@ -1122,12 +1181,14 @@ MonoBehaviour:
       SelectedRepresentationName: Prefab Representation
       SelectedRepresentation: {fileID: 11400000, guid: 664b3f2510ccede488b6012d83c83d09, type: 2}
       SelectedExpressionId: 
+      SelectedConfigurationEntryName: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
         DisplayPosition: 0
+        SlotId: 
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
@@ -1158,12 +1219,14 @@ MonoBehaviour:
       SelectedRepresentationName: Prefab Representation
       SelectedRepresentation: {fileID: 11400000, guid: 3a653faf41f2c334fa8db7c3805d147c, type: 2}
       SelectedExpressionId: 
+      SelectedConfigurationEntryName: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
         DisplayPosition: 0
+        SlotId: 
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
@@ -1194,12 +1257,14 @@ MonoBehaviour:
       SelectedRepresentationName: Prefab Representation
       SelectedRepresentation: {fileID: 11400000, guid: 1f68b1907135bc941abf273cec5be8c1, type: 2}
       SelectedExpressionId: 
+      SelectedConfigurationEntryName: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
         DisplayPosition: 0
+        SlotId: 
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
@@ -1230,12 +1295,14 @@ MonoBehaviour:
       SelectedRepresentationName: Prefab Representation
       SelectedRepresentation: {fileID: 11400000, guid: 3a653faf41f2c334fa8db7c3805d147c, type: 2}
       SelectedExpressionId: 
+      SelectedConfigurationEntryName: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
         DisplayPosition: 0
+        SlotId: 
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
@@ -1266,12 +1333,14 @@ MonoBehaviour:
       SelectedRepresentationName: Prefab Representation
       SelectedRepresentation: {fileID: 11400000, guid: 664b3f2510ccede488b6012d83c83d09, type: 2}
       SelectedExpressionId: 
+      SelectedConfigurationEntryName: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
         DisplayPosition: 0
+        SlotId: 
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
@@ -1302,12 +1371,14 @@ MonoBehaviour:
       SelectedRepresentationName: Prefab Representation
       SelectedRepresentation: {fileID: 11400000, guid: 3a653faf41f2c334fa8db7c3805d147c, type: 2}
       SelectedExpressionId: 
+      SelectedConfigurationEntryName: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
         DisplayPosition: 0
+        SlotId: 
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
@@ -1338,12 +1409,14 @@ MonoBehaviour:
       SelectedRepresentationName: Prefab Representation
       SelectedRepresentation: {fileID: 11400000, guid: 1f68b1907135bc941abf273cec5be8c1, type: 2}
       SelectedExpressionId: 
+      SelectedConfigurationEntryName: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
         DisplayPosition: 0
+        SlotId: 
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
@@ -1374,12 +1447,14 @@ MonoBehaviour:
       SelectedRepresentationName: Prefab Representation
       SelectedRepresentation: {fileID: 11400000, guid: 3a653faf41f2c334fa8db7c3805d147c, type: 2}
       SelectedExpressionId: 
+      SelectedConfigurationEntryName: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
         DisplayPosition: 0
+        SlotId: 
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
@@ -1410,12 +1485,14 @@ MonoBehaviour:
       SelectedRepresentationName: Prefab Representation
       SelectedRepresentation: {fileID: 11400000, guid: 664b3f2510ccede488b6012d83c83d09, type: 2}
       SelectedExpressionId: 
+      SelectedConfigurationEntryName: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
         DisplayPosition: 0
+        SlotId: 
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
@@ -1446,12 +1523,14 @@ MonoBehaviour:
       SelectedRepresentationName: Prefab Representation
       SelectedRepresentation: {fileID: 11400000, guid: 3a653faf41f2c334fa8db7c3805d147c, type: 2}
       SelectedExpressionId: 
+      SelectedConfigurationEntryName: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
         DisplayPosition: 0
+        SlotId: 
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
@@ -1478,4 +1557,8 @@ MonoBehaviour:
   FilePath: ConvoCore/Dialogue/ConvoCore3DDialogueSampleConversation
   SourceYaml: {fileID: 102900000, guid: 24d61ad70f2f49441891f99c350c0620, type: 3}
   SourceYamlAssetPath: Assets/Samples/ConvoCore/SampleAssets/3D Sample/ConvoCore3DDialogueSampleConversation.yml
+  SourceExcelAsset: {fileID: 0}
+  SourceExcelAssetPath: 
   ConversationKey: 3DSampleConversation
+  ConversationTitle: 
+  _conversationGuid: 5098f002-7eb1-424b-bf94-2608aee320c0

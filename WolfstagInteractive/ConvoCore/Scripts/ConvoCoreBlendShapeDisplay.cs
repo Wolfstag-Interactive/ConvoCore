@@ -60,7 +60,7 @@ namespace WolfstagInteractive.ConvoCore
                 return;
             }
 
-            foreach (var exprMapping in _lastBoundRep.ExpressionMappings)
+            foreach (var exprMapping in _lastBoundRep.SharedExpressionMappings)
             {
                 var bsMapping = _expressionMappings.Find(m => m.ExpressionDisplayName == exprMapping.DisplayName);
                 if (bsMapping != null)

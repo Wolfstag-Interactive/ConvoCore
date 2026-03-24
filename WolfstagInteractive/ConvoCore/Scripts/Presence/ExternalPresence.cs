@@ -6,13 +6,12 @@ namespace WolfstagInteractive.ConvoCore
     /// Presence type for characters that are fully managed by the developer.
     /// ConvoCore never spawns, parents, or destroys anything.
     ///
-    /// <list type="bullet">
-    ///   <item>Scene-resident characters: resolved via <see cref="ConvoCoreSceneCharacterRegistry"/> on the spawner.</item>
-    ///   <item>Spawn-from-prefab characters: returns null (the developer is responsible for placing and managing these).</item>
-    /// </list>
+    /// The character is resolved via <see cref="ConvoCoreSceneCharacterRegistry"/> using
+    /// <see cref="CharacterPresenceContext.CharacterId"/>. If no registrant is found for that ID
+    /// (or the ID is empty) this presence returns null.
     ///
     /// <see cref="OnConversationEnd"/> is a no-op. The developer is fully responsible for
-    /// character lifecycle in both source modes.
+    /// character lifecycle.
     ///
     /// Use case: characters already placed in the world by the developer, with no ConvoCore lifecycle involvement.
     /// </summary>
@@ -24,19 +23,13 @@ namespace WolfstagInteractive.ConvoCore
             CharacterPresenceContext context,
             ConvoCorePrefabRepresentationSpawner spawner)
         {
-            if (representation.SourceMode == CharacterSourceMode.SceneResident)
+            if (!spawner.TryGetSceneResident(context.CharacterId, out var display))
             {
-                if (!spawner.TryGetSceneResident(representation.SceneCharacterId, out var display))
-                {
-                    Debug.LogWarning($"[ExternalPresence] Scene-resident character '{representation.SceneCharacterId}' " +
-                                     $"not found in registry. Is a ConvoCoreSceneCharacterRegistrant in the scene?");
-                    return null;
-                }
-                return display;
+                Debug.LogWarning($"[ExternalPresence] Scene-resident character '{context.CharacterId}' " +
+                                 $"not found in registry. Is a ConvoCoreSceneCharacterRegistrant present in the scene?");
+                return null;
             }
-
-            // SpawnFromPrefab: this presence does not spawn. Return null.
-            return null;
+            return display;
         }
     }
 }

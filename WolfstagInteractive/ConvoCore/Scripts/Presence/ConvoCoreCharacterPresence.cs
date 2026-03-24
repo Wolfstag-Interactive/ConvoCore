@@ -17,6 +17,19 @@ namespace WolfstagInteractive.ConvoCore
 
         /// <summary>Per-line display overrides (scale, flip, SlotId). May be null.</summary>
         public DialogueLineDisplayOptions DisplayOptions;
+
+        /// <summary>
+        /// The CharacterID from the conversation participant profile. Used for scene-registry lookup
+        /// so presences can resolve scene-resident characters without depending on a removed field.
+        /// Empty when not populated by the UI (e.g. legacy 2D UI).
+        /// </summary>
+        public string CharacterId;
+
+        /// <summary>
+        /// The configuration entry name to use when spawning from a prefab.
+        /// Null or empty selects the default entry on the representation asset.
+        /// </summary>
+        public string ConfigurationEntryName;
     }
 
     /// <summary>

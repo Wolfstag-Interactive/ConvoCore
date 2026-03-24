@@ -55,7 +55,8 @@ namespace WolfstagInteractive.ConvoCore
             _spawner = spawner;
 
             // Return cached display for characters already resolved this conversation.
-            if (_cachedDisplays.TryGetValue(representation.name, out var cached))
+            var cacheKey = !string.IsNullOrEmpty(context.CharacterId) ? context.CharacterId : representation.name;
+            if (_cachedDisplays.TryGetValue(cacheKey, out var cached))
                 return cached;
 
             if (context.CharacterIndex >= _markers.Count)
@@ -66,10 +67,10 @@ namespace WolfstagInteractive.ConvoCore
             }
 
             var marker = _markers[context.CharacterIndex];
-            var display = spawner.SpawnAndBind(representation, marker);
+            var display = spawner.SpawnAndBind(representation, context.ConfigurationEntryName, context.CharacterId, marker);
 
             if (display != null)
-                _cachedDisplays[representation.name] = display;
+                _cachedDisplays[cacheKey] = display;
 
             return display;
         }

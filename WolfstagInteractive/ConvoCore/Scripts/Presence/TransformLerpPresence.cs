@@ -51,20 +51,23 @@ namespace WolfstagInteractive.ConvoCore
             CharacterPresenceContext context,
             ConvoCorePrefabRepresentationSpawner spawner)
         {
-            if (_cachedDisplays.TryGetValue(representation.name, out var cached))
+            // Use CharacterId as cache key when available; fall back to representation name.
+            var cacheKey = !string.IsNullOrEmpty(context.CharacterId) ? context.CharacterId : representation.name;
+
+            if (_cachedDisplays.TryGetValue(cacheKey, out var cached))
                 return cached;
 
-            // Find the matching slot by scene ID.
+            // Find the matching slot: try by CharacterId first, then fall back to index.
             LerpSlotEntry slot = null;
-            if (representation.SourceMode == CharacterSourceMode.SceneResident)
-                slot = _slots.Find(s => s.SceneCharacterId == representation.SceneCharacterId);
+            if (!string.IsNullOrEmpty(context.CharacterId))
+                slot = _slots.Find(s => s.SceneCharacterId == context.CharacterId);
 
             if (slot == null && context.CharacterIndex < _slots.Count)
                 slot = _slots[context.CharacterIndex];
 
             if (slot == null)
             {
-                Debug.LogWarning($"[TransformLerpPresence] No slot found for character index {context.CharacterIndex} or ID '{representation.SceneCharacterId}'.");
+                Debug.LogWarning($"[TransformLerpPresence] No slot found for character '{context.CharacterId}' (index {context.CharacterIndex}).");
                 return null;
             }
 
@@ -95,7 +98,7 @@ namespace WolfstagInteractive.ConvoCore
                 lerp.MoveTo(slot.TargetPosition, Quaternion.Euler(slot.TargetEulerRotation), slot.Duration);
             }
 
-            _cachedDisplays[representation.name] = display;
+            _cachedDisplays[cacheKey] = display;
             return display;
         }
 

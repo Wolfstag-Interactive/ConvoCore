@@ -27,10 +27,6 @@ namespace WolfstagInteractive.ConvoCore
     [HelpURL("https://docs.wolfstaginteractive.com/convocore/api/classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSampleUI3D.html")]
     public class ConvoCoreSampleUI3D : ConvoCoreUIFoundation
     {
-        [Header("Character Presence")]
-        [Tooltip("Presence asset that determines how characters are placed in the world.")]
-        [SerializeField] private ConvoCoreCharacterPresence characterPresence;
-
         [Header("Spawner")]
         [Tooltip("Spawner passed to the presence for prefab lifecycle management.")]
         [SerializeField] private ConvoCorePrefabRepresentationSpawner prefabRepresentationSpawner;
@@ -64,6 +60,9 @@ namespace WolfstagInteractive.ConvoCore
         [Header("Input")]
         [SerializeField] private InputAction AdvanceDialogueAction;
         [SerializeField] private InputAction PreviousDialogueAction;
+
+        // Per-character presence tracking: keyed by CharacterID.
+        private readonly Dictionary<string, ConvoCoreCharacterPresence> _activePresenceByCharacter = new();
 
         private Coroutine _typewriterCoroutine;
         private bool _isTyping;
@@ -122,9 +121,14 @@ namespace WolfstagInteractive.ConvoCore
             ConvoCoreDialogueHistoryUI.InitializeRenderer(ctx);
         }
 
-        private void OnConversationStarted() => characterPresence?.OnConversationBegin();
+        private void OnConversationStarted() { } // Presences are begun per-character on first appearance.
 
-        private void OnConversationEnded() => characterPresence?.OnConversationEnd();
+        private void OnConversationEnded()
+        {
+            foreach (var presence in _activePresenceByCharacter.Values)
+                presence?.OnConversationEnd();
+            _activePresenceByCharacter.Clear();
+        }
 
         private void OnEnable()
         {
@@ -161,25 +165,45 @@ namespace WolfstagInteractive.ConvoCore
 
             lineInfo.EnsureCharacterRepresentationListInitialized();
 
-            if (characterPresence != null && prefabRepresentationSpawner != null)
+            if (prefabRepresentationSpawner != null)
             {
+                var convoData = ConvoCoreInstance.GetCurrentConversationData();
                 int count = lineInfo.CharacterRepresentations.Count;
                 for (int i = 0; i < count; i++)
                 {
                     var charData = lineInfo.CharacterRepresentations[i];
-                    var rep = GetRepresentationFromData(ConvoCoreInstance.GetCurrentConversationData(), charData);
+                    var rep = GetRepresentationFromData(convoData, charData);
 
                     if (rep is not PrefabCharacterRepresentationData prefabRep)
                         continue;
 
+                    // Determine the character ID for registry-first lookup and per-character tracking.
+                    var characterId = !string.IsNullOrEmpty(charData.SelectedCharacterID)
+                        ? charData.SelectedCharacterID
+                        : rep.name;
+
+                    // Resolve the configuration entry: per-line → participant default → asset default.
+                    var entryName = ResolveEntryName(convoData, charData, characterId);
+                    var entry = prefabRep.GetEntry(entryName);
+                    if (entry?.Presence == null)
+                    {
+                        Debug.LogWarning($"[ConvoCoreSampleUI3D] Configuration entry '{entryName}' for '{rep.name}' has no Presence assigned. Skipping character {i}.");
+                        continue;
+                    }
+
+                    // Transition the presence if it changed since the last line.
+                    var presence = GetOrTransitionPresence(characterId, entry.Presence);
+
                     var ctx = new CharacterPresenceContext
                     {
-                        CharacterIndex  = i,
-                        TotalCharacters = count,
-                        DisplayOptions  = charData.LineSpecificDisplayOptions
+                        CharacterIndex         = i,
+                        TotalCharacters        = count,
+                        DisplayOptions         = charData.LineSpecificDisplayOptions,
+                        CharacterId            = characterId,
+                        ConfigurationEntryName = entry.EntryName
                     };
 
-                    var display = characterPresence.ResolvePresence(prefabRep, ctx, prefabRepresentationSpawner);
+                    var display = presence.ResolvePresence(prefabRep, ctx, prefabRepresentationSpawner);
                     if (display == null)
                     {
                         Debug.LogWarning($"[ConvoCoreSampleUI3D] Presence returned null for character {i} ('{rep.name}'). Expression will not be applied.");
@@ -418,6 +442,43 @@ namespace WolfstagInteractive.ConvoCore
         // Helpers
         // ------------------------------------------------------------------
 
+        /// <summary>
+        /// Resolves the configuration entry name using the three-level priority chain:
+        /// per-line override → participant default on the conversation → representation asset default.
+        /// Returns null to signal "use the asset default entry".
+        /// </summary>
+        private static string ResolveEntryName(
+            ConvoCoreConversationData convoData,
+            ConvoCoreConversationData.CharacterRepresentationData charData,
+            string characterId)
+        {
+            if (!string.IsNullOrEmpty(charData.SelectedConfigurationEntryName))
+                return charData.SelectedConfigurationEntryName;
+
+            var participantDefault = convoData?.GetParticipantDefaultEntry(characterId);
+            if (!string.IsNullOrEmpty(participantDefault))
+                return participantDefault;
+
+            return null; // signals GetEntry(null) → GetDefaultEntry()
+        }
+
+        /// <summary>
+        /// Returns the presence to use for the given character.
+        /// If the presence changed since the last line, the old presence is ended and the new one begun.
+        /// On first appearance the presence is begun immediately.
+        /// </summary>
+        private ConvoCoreCharacterPresence GetOrTransitionPresence(string characterId, ConvoCoreCharacterPresence newPresence)
+        {
+            if (_activePresenceByCharacter.TryGetValue(characterId, out var current))
+            {
+                if (current == newPresence) return current;
+                current.OnConversationEnd();
+            }
+            newPresence.OnConversationBegin();
+            _activePresenceByCharacter[characterId] = newPresence;
+            return newPresence;
+        }
+
         private CharacterRepresentationBase GetRepresentationFromData(ConvoCoreConversationData convoData,
             ConvoCoreConversationData.CharacterRepresentationData data)
         {
@@ -467,6 +528,7 @@ namespace WolfstagInteractive.ConvoCore
             AdvanceDialogueAction?.Disable();
             PreviousDialogueAction?.Disable();
             _committedLineIndices.Clear();
+            _activePresenceByCharacter.Clear();
         }
     }
 }
