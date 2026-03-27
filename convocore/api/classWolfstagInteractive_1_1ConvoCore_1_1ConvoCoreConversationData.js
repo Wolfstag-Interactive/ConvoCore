@@ -20,6 +20,7 @@ var classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData =
     [ "DebugCharacterProfiles", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData.html#aace06d057ec074a0abc95468f42bf7bd", null ],
     [ "DoActionsAfterDialogueLine", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData.html#a2645181e32e19eff8fd7045ebab14d7e", null ],
     [ "ForceValidateDialogueLines", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData.html#afa40ef6dcfb105bdca7ae877776b5d1a", null ],
+    [ "GetParticipantDefaultEntry", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData.html#a59901963261c61c5ff3c0260aa0d69d9", null ],
     [ "GetPlayerProfile", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData.html#a8816dc47be6d675cacf2256322727bfd", null ],
     [ "InitializeDialogueData", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData.html#a09612aa9355dacb5a44b70efec796302", null ],
     [ "OnValidate", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData.html#a333ed94391f5adec30b1f5d16d0f4af1", null ],
@@ -39,6 +40,7 @@ var classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData =
     [ "ConversationYaml", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData.html#a04a5d0636f3ece4e344c00e26530ca09", null ],
     [ "DialogueLines", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData.html#a8d3f508b211dcbed749aeb345e71f3f7", null ],
     [ "FilePath", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData.html#a739dd1a8531112c704c96fb59fe8e487", null ],
+    [ "ParticipantConfigurationDefaults", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData.html#aea705cb3a08ac188c9d2648ae7bb0693", null ],
     [ "ConversationGuid", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData.html#ae86a0e050b2e45bd6ecb47c0d29f2ceb", null ],
     [ "ConvoCoreYamlUtilities", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData.html#a243a710425c6168eda6c4181c5f9ac6d", null ]
 ];

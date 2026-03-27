@@ -131,8 +131,9 @@ Private Attributes</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Add this component to any scene GameObject that should be driven by ConvoCore as a scene-resident character (i.e. </p>
 <p>not spawned from a pool).</p>
-<p>The component resolves an IConvoCoreCharacterDisplay from this GameObject or its children and registers it with the assigned ConvoCoreSceneCharacterRegistry on enable, unregistering on disable.</p>
-<p>The CharacterId must match the Scene Character ID set on the PrefabCharacterRepresentationData asset configured in SceneResident mode. </p>
+<p>The component resolves an IConvoCoreCharacterDisplay from this GameObject or its children and registers it with a ConvoCoreSceneCharacterRegistry on enable, unregistering on disable.</p>
+<p>If no registry is explicitly assigned the component falls back to ConvoCoreSceneCharacterRegistry.Instance (the first registry that awoke in the scene).</p>
+<p>The characterId must match the CharacterID on the ConvoCoreCharacterProfileBaseData used in the conversation. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a36d09fba8fec29f88e3eaf63082c865e" name="a36d09fba8fec29f88e3eaf63082c865e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a36d09fba8fec29f88e3eaf63082c865e">&#9670;&#160;</a></span>Awake()</h2>

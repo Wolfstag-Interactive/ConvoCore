@@ -6,5 +6,5 @@ var searchData=
   ['restartfrombeginning_3',['RestartFromBeginning',['../namespaceWolfstagInteractive_1_1ConvoCore_1_1SaveSystem.html#a1145946d2893158ed508ac21bd73295ba4f566c1693cc671a6405ded69607e5f7',1,'WolfstagInteractive::ConvoCore::SaveSystem']]],
   ['resume_4',['Resume',['../namespaceWolfstagInteractive_1_1ConvoCore.html#ab51458c34c46dd42dd277279af380b8baf1cefec9e2196c672a622347f1fbc325',1,'WolfstagInteractive::ConvoCore']]],
   ['resumefromactiveline_5',['ResumeFromActiveLine',['../namespaceWolfstagInteractive_1_1ConvoCore_1_1SaveSystem.html#a1145946d2893158ed508ac21bd73295ba5bc1b9821b03775972cbeba0dc7dfe51',1,'WolfstagInteractive::ConvoCore::SaveSystem']]],
-  ['right_6',['right',['../classWolfstagInteractive_1_1ConvoCore_1_1DialogueLineDisplayOptions.html#adffa004212574b32622f09ae1c32c0c3a92b09c7c48c520c3c55e497875da437c',1,'WolfstagInteractive.ConvoCore.DialogueLineDisplayOptions.Right'],['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSampleUI.html#abce3af5eaea3b1b1355f89505e7ff37aa92b09c7c48c520c3c55e497875da437c',1,'WolfstagInteractive.ConvoCore.ConvoCoreSampleUI.Right']]]
+  ['right_6',['Right',['../classWolfstagInteractive_1_1ConvoCore_1_1DialogueLineDisplayOptions.html#adffa004212574b32622f09ae1c32c0c3a92b09c7c48c520c3c55e497875da437c',1,'WolfstagInteractive::ConvoCore::DialogueLineDisplayOptions']]]
 ];

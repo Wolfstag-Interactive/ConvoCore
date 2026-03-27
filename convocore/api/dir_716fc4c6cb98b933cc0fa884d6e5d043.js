@@ -1,10 +1,10 @@
 var dir_716fc4c6cb98b933cc0fa884d6e5d043 =
 [
+    [ "CharacterBehaviors", "dir_0544dd6d0e4618470fae1516f62963b1.html", "dir_0544dd6d0e4618470fae1516f62963b1" ],
     [ "ConvoCoreContainers", "dir_610fcbfc3bd96f3150ee927b0b681e14.html", "dir_610fcbfc3bd96f3150ee927b0b681e14" ],
     [ "ConvoCoreExcel", "dir_cf9404dafd32d86ef1740e154afde94d.html", "dir_cf9404dafd32d86ef1740e154afde94d" ],
     [ "ConvoCoreHelpers", "dir_46dfb0738a1b8b9e6b30a912d9b04ab6.html", "dir_46dfb0738a1b8b9e6b30a912d9b04ab6" ],
     [ "ConvoCoreYaml", "dir_f1ac31342a31fd6c0d822532bb9a9535.html", "dir_f1ac31342a31fd6c0d822532bb9a9535" ],
-    [ "Presence", "dir_e6ac0fc5661fc9cf5d90e1cef7dccb50.html", "dir_e6ac0fc5661fc9cf5d90e1cef7dccb50" ],
     [ "SampleActions", "dir_9b72daf09de1f33ce18b4af2f76272d3.html", "dir_9b72daf09de1f33ce18b4af2f76272d3" ],
     [ "UI", "dir_e8e5252a032b07c14d70a7941b1137c4.html", "dir_e8e5252a032b07c14d70a7941b1137c4" ],
     [ "BaseDialogueLineAction.cs", "BaseDialogueLineAction_8cs.html", "BaseDialogueLineAction_8cs" ],
@@ -29,6 +29,8 @@ var dir_716fc4c6cb98b933cc0fa884d6e5d043 =
     [ "ConvoCoreSceneCharacterRegistry.cs", "ConvoCoreSceneCharacterRegistry_8cs.html", "ConvoCoreSceneCharacterRegistry_8cs" ],
     [ "ConvoCoreSettings.cs", "ConvoCoreSettings_8cs.html", "ConvoCoreSettings_8cs" ],
     [ "ConvoCoreSimpleFade.cs", "ConvoCoreSimpleFade_8cs.html", "ConvoCoreSimpleFade_8cs" ],
+    [ "ConvoCoreSpawnPoint.cs", "ConvoCoreSpawnPoint_8cs.html", "ConvoCoreSpawnPoint_8cs" ],
+    [ "ConvoCoreSpawnPointRegistry.cs", "ConvoCoreSpawnPointRegistry_8cs.html", "ConvoCoreSpawnPointRegistry_8cs" ],
     [ "DialogueLineDisplayOptions.cs", "DialogueLineDisplayOptions_8cs.html", "DialogueLineDisplayOptions_8cs" ],
     [ "EmotionIDSelectorAttribute.cs", "EmotionIDSelectorAttribute_8cs.html", "EmotionIDSelectorAttribute_8cs" ],
     [ "IConvoCoreCharacterDisplay.cs", "IConvoCoreCharacterDisplay_8cs.html", "IConvoCoreCharacterDisplay_8cs" ],

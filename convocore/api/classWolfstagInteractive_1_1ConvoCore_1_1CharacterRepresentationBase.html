@@ -126,6 +126,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aa83c3e052546a175de00f0d60deda5f0" id="r_aa83c3e052546a175de00f0d60deda5f0"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1CharacterRepresentationBase.html#aa83c3e052546a175de00f0d60deda5f0">GetPreviewHeight</a> ()</td></tr>
 <tr class="memdesc:aa83c3e052546a175de00f0d60deda5f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Provides the height required for rendering the inline preview in the editor.  <br /></td></tr>
 <tr class="separator:aa83c3e052546a175de00f0d60deda5f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa1e36ca0271fc85dd68481a2374b0cfa" id="r_aa1e36ca0271fc85dd68481a2374b0cfa"><td class="memItemLeft" align="right" valign="top">virtual IReadOnlyList&lt; string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1CharacterRepresentationBase.html#aa1e36ca0271fc85dd68481a2374b0cfa">GetConfigurationEntryNames</a> ()</td></tr>
+<tr class="memdesc:aa1e36ca0271fc85dd68481a2374b0cfa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the named configuration entry options exposed by this representation.  <br /></td></tr>
+<tr class="separator:aa1e36ca0271fc85dd68481a2374b0cfa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Abstract ScriptableObject base class for all character visual representations. </p>
@@ -232,6 +235,37 @@ Public Member Functions</h2></td></tr>
 </dl>
 
 <p>Implements <a class="el" href="interfaceWolfstagInteractive_1_1ConvoCore_1_1IEditorPreviewableRepresentation.html#aada5e692d26a00a18ba75e812e398e71">WolfstagInteractive.ConvoCore.IEditorPreviewableRepresentation</a>.</p>
+
+</div>
+</div>
+<a id="aa1e36ca0271fc85dd68481a2374b0cfa" name="aa1e36ca0271fc85dd68481a2374b0cfa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa1e36ca0271fc85dd68481a2374b0cfa">&#9670;&#160;</a></span>GetConfigurationEntryNames()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual IReadOnlyList&lt; string &gt; WolfstagInteractive.ConvoCore.CharacterRepresentationBase.GetConfigurationEntryNames </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns the named configuration entry options exposed by this representation. </p>
+<p>Override to opt in to the <code>Participant Configuration Defaults</code> system on ConvoCoreConversationData. The inspector will show one dropdown slot per participant whose profile contains a representation that returns non-null here.</p>
+<p>Return <code>null</code> (default) to opt out entirely — no slot will be generated for participants whose representations all return <code>null</code>. </p>
+
+<p>Reimplemented in <a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1PrefabCharacterRepresentationData.html#a5acb4d73bd56df0ee7f9e1e429979d75">WolfstagInteractive.ConvoCore.PrefabCharacterRepresentationData</a>.</p>
 
 </div>
 </div>

@@ -59,11 +59,13 @@ var classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSampleUICanvas =
     [ "FullBodyImageCenter", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSampleUICanvas.html#aabafe0bb6463ec59f63cf9ecc50e383f", null ],
     [ "FullBodyImageLeft", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSampleUICanvas.html#a843716fa052e40cd322891e1d054bc10", null ],
     [ "FullBodyImageRight", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSampleUICanvas.html#a8ecad1313de7a91010205413472a6158", null ],
+    [ "maxVisibleCharacterSlots", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSampleUICanvas.html#a36942499b4560a54b08df370636a7487", null ],
     [ "prefabRepresentationSpawner", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSampleUICanvas.html#afbac8ba1b7aa886f2719415920fb3a59", null ],
     [ "PreviousDialogueAction", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSampleUICanvas.html#a915778f4848fd0527aa529ebdbe72d77", null ],
     [ "PreviousLineButton", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSampleUICanvas.html#a0c75571f9837aa3709011dbfd55461eb", null ],
     [ "SpeakerName", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSampleUICanvas.html#a3eefcce9117e193621b45ebcc0badb99", null ],
     [ "SpeakerPortraitImage", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSampleUICanvas.html#aa57f89c71dd507b370308474c753b093", null ],
     [ "ToggleDialogueHistoryButton", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSampleUICanvas.html#a926d595d5e3a996cd9378fb0223e8cb6", null ],
-    [ "TypewriterSpeed", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSampleUICanvas.html#a88ab93522d99128ee22f563952497d26", null ]
+    [ "TypewriterSpeed", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSampleUICanvas.html#a88ab93522d99128ee22f563952497d26", null ],
+    [ "MaxVisibleCharacterSlots", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSampleUICanvas.html#ab1555b2235242b3f5927c7df7f00076f", null ]
 ];

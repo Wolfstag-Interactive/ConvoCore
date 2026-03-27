@@ -99,7 +99,7 @@ $(document).ready(function(){initNavTree('classWolfstagInteractive_1_1ConvoCore_
 </div><!--header-->
 <div class="contents">
 
-<p>Added at runtime by TransformLerpPresence to smoothly move a character's Transform to a target position and rotation over a given duration.  
+<p>Added at runtime by TransformLerpBehaviour to smoothly move a character's Transform to a target position and rotation over a given duration.  
  <a href="classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreTransformLerp.html#details">More...</a></p>
 <div class="dynheader">
 Inheritance diagram for WolfstagInteractive.ConvoCore.ConvoCoreTransformLerp:</div>
@@ -114,8 +114,8 @@ Collaboration diagram for WolfstagInteractive.ConvoCore.ConvoCoreTransformLerp:<
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aae4cdf92e583cb1f6d3f0267f0ae1161" id="r_aae4cdf92e583cb1f6d3f0267f0ae1161"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreTransformLerp.html#aae4cdf92e583cb1f6d3f0267f0ae1161">MoveTo</a> (Vector3 targetPos, Quaternion targetRot, float duration)</td></tr>
-<tr class="separator:aae4cdf92e583cb1f6d3f0267f0ae1161"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1b3ffb8f5415f29ea59559cea46d78b6" id="r_a1b3ffb8f5415f29ea59559cea46d78b6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreTransformLerp.html#a1b3ffb8f5415f29ea59559cea46d78b6">MoveTo</a> (Vector3 targetPos, Quaternion targetRot, float duration, GameObject animatorTarget, string completionTrigger)</td></tr>
+<tr class="separator:a1b3ffb8f5415f29ea59559cea46d78b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="properties" name="properties"></a>
 Properties</h2></td></tr>
@@ -124,8 +124,8 @@ Properties</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
-<tr class="memitem:a4ff85c78938424ebbcfdcebb729392bc" id="r_a4ff85c78938424ebbcfdcebb729392bc"><td class="memItemLeft" align="right" valign="top">IEnumerator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreTransformLerp.html#a4ff85c78938424ebbcfdcebb729392bc">LerpRoutine</a> (Vector3 targetPos, Quaternion targetRot, float duration)</td></tr>
-<tr class="separator:a4ff85c78938424ebbcfdcebb729392bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a627f369d068d4a6dd6e4de885f51c4eb" id="r_a627f369d068d4a6dd6e4de885f51c4eb"><td class="memItemLeft" align="right" valign="top">IEnumerator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreTransformLerp.html#a627f369d068d4a6dd6e4de885f51c4eb">LerpRoutine</a> (Vector3 targetPos, Quaternion targetRot, float duration, GameObject animatorTarget, string completionTrigger)</td></tr>
+<tr class="separator:a627f369d068d4a6dd6e4de885f51c4eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -133,11 +133,11 @@ Private Attributes</h2></td></tr>
 <tr class="separator:abef8cd952b1cc9c00999d0456e28645b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Added at runtime by TransformLerpPresence to smoothly move a character's Transform to a target position and rotation over a given duration. </p>
+<div class="textblock"><p>Added at runtime by TransformLerpBehaviour to smoothly move a character's Transform to a target position and rotation over a given duration. </p>
 <p>Self-destructs when the move completes. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="a4ff85c78938424ebbcfdcebb729392bc" name="a4ff85c78938424ebbcfdcebb729392bc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4ff85c78938424ebbcfdcebb729392bc">&#9670;&#160;</a></span>LerpRoutine()</h2>
+<a id="a627f369d068d4a6dd6e4de885f51c4eb" name="a627f369d068d4a6dd6e4de885f51c4eb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a627f369d068d4a6dd6e4de885f51c4eb">&#9670;&#160;</a></span>LerpRoutine()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -161,7 +161,19 @@ Private Attributes</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>duration</em>&#160;</td>
+          <td class="paramname"><em>duration</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">GameObject&#160;</td>
+          <td class="paramname"><em>animatorTarget</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>completionTrigger</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -178,8 +190,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="aae4cdf92e583cb1f6d3f0267f0ae1161" name="aae4cdf92e583cb1f6d3f0267f0ae1161"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aae4cdf92e583cb1f6d3f0267f0ae1161">&#9670;&#160;</a></span>MoveTo()</h2>
+<a id="a1b3ffb8f5415f29ea59559cea46d78b6" name="a1b3ffb8f5415f29ea59559cea46d78b6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1b3ffb8f5415f29ea59559cea46d78b6">&#9670;&#160;</a></span>MoveTo()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -203,7 +215,19 @@ Private Attributes</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>duration</em>&#160;</td>
+          <td class="paramname"><em>duration</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">GameObject&#160;</td>
+          <td class="paramname"><em>animatorTarget</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>completionTrigger</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -267,7 +291,7 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>WolfstagInteractive/ConvoCore/Scripts/Presence/<a class="el" href="TransformLerpPresence_8cs.html">TransformLerpPresence.cs</a></li>
+<li>WolfstagInteractive/ConvoCore/Scripts/CharacterBehaviors/<a class="el" href="TransformLerpBehaviour_8cs.html">TransformLerpBehaviour.cs</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

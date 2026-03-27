@@ -1,7 +1,7 @@
 var searchData=
 [
   ['objectname_0',['objectName',['../classWolfstagInteractive_1_1ConvoCore_1_1GameObjectReference.html#a631616c00b4a1cb9508f3eee54e3aa3f',1,'WolfstagInteractive::ConvoCore::GameObjectReference']]],
-  ['offset_1',['Offset',['../classWolfstagInteractive_1_1ConvoCore_1_1FollowTargetPresence_1_1FollowSlotEntry.html#abd1a665b352088427eb629079f1bea52',1,'WolfstagInteractive::ConvoCore::FollowTargetPresence::FollowSlotEntry']]],
+  ['offset_1',['Offset',['../classWolfstagInteractive_1_1ConvoCore_1_1FollowTargetBehaviour_1_1FollowSlotEntry.html#af619dc022fa35e7c7581b90d64885500',1,'WolfstagInteractive::ConvoCore::FollowTargetBehaviour::FollowSlotEntry']]],
   ['oninitialized_2',['OnInitialized',['../classWolfstagInteractive_1_1ConvoCore_1_1SaveSystem_1_1ConvoCoreSaveManager.html#a4e8c1e7f9b8359a2a7f787ea0914ec45',1,'WolfstagInteractive::ConvoCore::SaveSystem::ConvoCoreSaveManager']]],
   ['onloadcompleted_3',['OnLoadCompleted',['../classWolfstagInteractive_1_1ConvoCore_1_1SaveSystem_1_1ConvoCoreSaveManager.html#aaf7c3b3c3e5eb5a0fb6e9eef08c759bf',1,'WolfstagInteractive::ConvoCore::SaveSystem::ConvoCoreSaveManager']]],
   ['onsavecompleted_4',['OnSaveCompleted',['../classWolfstagInteractive_1_1ConvoCore_1_1SaveSystem_1_1ConvoCoreSaveManager.html#a45222fb559e955dceca9c06af13b3512',1,'WolfstagInteractive::ConvoCore::SaveSystem::ConvoCoreSaveManager']]],
