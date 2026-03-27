@@ -4,6 +4,17 @@ using UnityEngine;
 namespace WolfstagInteractive.ConvoCore
 {
     /// <summary>
+    /// Controls when a character's prefab is resolved and placed during a conversation.
+    /// </summary>
+    public enum ConvoCoreSpawnTiming
+    {
+        /// <summary>Resolve and place the character as soon as the conversation begins.</summary>
+        OnConversationBegin,
+        /// <summary>Resolve and place the character only when they first appear in a dialogue line.</summary>
+        OnFirstAppearance
+    }
+
+    /// <summary>
     /// Associates a conversation participant (by CharacterID) with a default configuration entry
     /// name on their <see cref="PrefabCharacterRepresentationData"/> asset.
     ///
@@ -18,6 +29,9 @@ namespace WolfstagInteractive.ConvoCore
 
         [Tooltip("Default configuration entry name to use for this participant when no per-line entry is specified.")]
         public string DefaultConfigurationEntryName;
+
+        [Tooltip("When to resolve and place this character's prefab representation.")]
+        public ConvoCoreSpawnTiming SpawnTiming = ConvoCoreSpawnTiming.OnConversationBegin;
     }
 
 public partial class ConvoCoreConversationData

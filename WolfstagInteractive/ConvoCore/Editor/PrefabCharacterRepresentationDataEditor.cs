@@ -19,6 +19,19 @@ namespace WolfstagInteractive.ConvoCore.Editor
             BuildEntriesList();
         }
 
+        /// <summary>
+        /// Renders and manages the custom Inspector GUI for the
+        /// PrefabCharacterRepresentationData asset. This method handles
+        /// the layout and display of configuration entries, shared expression
+        /// mappings, and associated warnings or tooltips.
+        /// </summary>
+        /// <remarks>
+        /// Includes logic to rebuild reorderable lists (if cleared due to domain
+        /// reload), ensure unique GUIDs for shared expressions, and display warnings
+        /// for duplicate shared expression names. Custom GUI components, such as
+        /// reorderable lists and informational labels, are utilized to organize
+        /// the properties in the Inspector.
+        /// </remarks>
         public override void OnInspectorGUI()
         {
             serializedObject.Update();
@@ -32,7 +45,7 @@ namespace WolfstagInteractive.ConvoCore.Editor
             EditorGUILayout.LabelField("Configuration Entries", EditorStyles.boldLabel);
             EditorGUILayout.HelpBox(
                 "Each entry defines a prefab (spawned when the character is not in the scene registry), " +
-                "a presence that controls 3D placement, and optional expression overrides.",
+                "character behaviours that controls 3D placement or other logic, and optional expression overrides.",
                 MessageType.None);
 
             _entriesList.DoLayoutList();
@@ -60,10 +73,12 @@ namespace WolfstagInteractive.ConvoCore.Editor
             Repaint();
         }
 
-        // ------------------------------------------------------------------
-        // Shared expression pool list
-        // ------------------------------------------------------------------
-
+        /// <summary>
+        /// Configures and initializes the reorderable list used to manage
+        /// shared expression mappings within the PrefabCharacterRepresentationData editor.
+        /// The shared expression pool is available globally across all entries,
+        /// where each mapping associates an identifier with specific expression data.
+        /// </summary>
         private void BuildSharedList()
         {
             var listProp = serializedObject.FindProperty("SharedExpressionMappings");
@@ -76,10 +91,12 @@ namespace WolfstagInteractive.ConvoCore.Editor
                 DrawExpressionMappingElement(rect, listProp, index, null);
         }
 
-        // ------------------------------------------------------------------
-        // Configuration entries list
-        // ------------------------------------------------------------------
-
+        /// <summary>
+        /// Initializes and configures the reorderable list for managing
+        /// configuration entries within the PrefabCharacterRepresentationData editor.
+        /// Each entry specifies details such as the prefab, character behavior,
+        /// and optional visual expression overrides.
+        /// </summary>
         private void BuildEntriesList()
         {
             var entriesProp = serializedObject.FindProperty("ConfigurationEntries");
@@ -96,8 +113,13 @@ namespace WolfstagInteractive.ConvoCore.Editor
                 float lineH     = EditorGUIUtility.singleLineHeight;
                 float pad       = 8f;
                 float spacing   = 3f;
-                // EntryName + CharacterPrefab + Presence = 3 rows
-                float rows      = 3f * (lineH + spacing);
+                // EntryName + CharacterPrefab = 2 fixed rows
+                float rows      = 2f * (lineH + spacing);
+                // CharacterBehaviours (variable height list)
+                var charBehavioursProp = el.FindPropertyRelative("CharacterBehaviours");
+                float behavioursH = charBehavioursProp != null
+                    ? EditorGUI.GetPropertyHeight(charBehavioursProp, true) + spacing
+                    : 0f;
                 // Preview
                 float preview   = 68f;
                 // ExpressionOverrides
@@ -106,7 +128,7 @@ namespace WolfstagInteractive.ConvoCore.Editor
                     ? EditorGUI.GetPropertyHeight(overridesProp, true) + spacing
                     : 0f;
 
-                return pad + rows + preview + spacing + overridesH + pad;
+                return pad + rows + behavioursH + preview + spacing + overridesH + pad;
             };
 
             _entriesList.drawElementCallback = (rect, index, active, focused) =>
@@ -120,10 +142,10 @@ namespace WolfstagInteractive.ConvoCore.Editor
 
                 rect = new Rect(rect.x + 4f, rect.y + pad, rect.width - 8f, rect.height - pad * 2f);
 
-                var nameProp      = el.FindPropertyRelative("EntryName");
-                var prefabProp    = el.FindPropertyRelative("CharacterPrefab");
-                var presenceProp  = el.FindPropertyRelative("Presence");
-                var overridesProp = el.FindPropertyRelative("ExpressionOverrides");
+                var nameProp           = el.FindPropertyRelative("EntryName");
+                var prefabProp         = el.FindPropertyRelative("CharacterPrefab");
+                var charBehavioursProp = el.FindPropertyRelative("CharacterBehaviours");
+                var overridesProp      = el.FindPropertyRelative("ExpressionOverrides");
 
                 float y = rect.y;
 
@@ -135,9 +157,14 @@ namespace WolfstagInteractive.ConvoCore.Editor
                 EditorGUI.PropertyField(new Rect(rect.x, y, rect.width, lineH), prefabProp);
                 y += lineH + spacing;
 
-                // Row: Presence
-                EditorGUI.PropertyField(new Rect(rect.x, y, rect.width, lineH), presenceProp);
-                y += lineH + spacing;
+                // CharacterBehaviours (variable height list)
+                if (charBehavioursProp != null)
+                {
+                    float behavioursH = EditorGUI.GetPropertyHeight(charBehavioursProp, true);
+                    EditorGUI.PropertyField(new Rect(rect.x, y, rect.width, behavioursH),
+                        charBehavioursProp, new GUIContent("Character Behaviours"), true);
+                    y += behavioursH + spacing;
+                }
 
                 // Prefab preview
                 var previewRect = new Rect(rect.x, y, rect.width, 68f);
@@ -155,16 +182,19 @@ namespace WolfstagInteractive.ConvoCore.Editor
             };
         }
 
-        // ------------------------------------------------------------------
-        // Shared expression element helpers (reused for both lists)
-        // ------------------------------------------------------------------
-
+        /// <summary>
+        /// Calculates the height of an expression mapping element in a reorderable list.
+        /// This height accounts for each element's header, padding, and any associated properties,
+        /// dynamically adjusting based on the presence and expanded state of nested properties.
+        /// </summary>
+        /// <param name="listProp">The serialized property representing the list of expression mappings.</param>
+        /// <param name="index">The index of the expression mapping within the list.</param>
+        /// <returns>The calculated height in pixels required to render the specified element.</returns>
         private static float ExpressionMappingHeight(SerializedProperty listProp, int index)
         {
-            const float pad     = 6f;
-            const float preview = 68f;
-            float header        = EditorGUIUtility.singleLineHeight;
-            float height        = pad + header + 6f + preview + pad;
+            const float pad = 6f;
+            float header     = EditorGUIUtility.singleLineHeight;
+            float height     = pad + header + pad;
 
             if (listProp.isArray && index >= 0 && index < listProp.arraySize)
             {
@@ -225,13 +255,10 @@ namespace WolfstagInteractive.ConvoCore.Editor
             using (new EditorGUI.DisabledScope(true))
                 EditorGUI.SelectableLabel(guidRect, guidProp != null ? guidProp.stringValue : "(missing)");
 
-            var previewRect = new Rect(rect.x, headerRect.yMax + 6f, rect.width, 68f);
-            DrawPrefabPreview(previewRect, prefabPropOverride);
-
             if (actionsProp != null)
             {
                 float actH    = EditorGUI.GetPropertyHeight(actionsProp, true);
-                var actRect   = new Rect(rect.x, previewRect.yMax + 4f, rect.width, actH);
+                var actRect   = new Rect(rect.x, headerRect.yMax + 4f, rect.width, actH);
                 EditorGUI.PropertyField(actRect, actionsProp, new GUIContent("Expression Actions"), true);
             }
         }

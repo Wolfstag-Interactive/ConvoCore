@@ -17,5 +17,6 @@ MonoBehaviour:
   - EntryName: Unnamed Entry
     IsDefault: 0
     CharacterPrefab: {fileID: 8448542266976499721, guid: ad1f6628ca68b4b489f10c3e64004bc4, type: 3}
-    Presence: {fileID: 11400000, guid: 74b4f5bc4742355489a23f7832a8c9c9, type: 2}
+    CharacterBehaviours:
+    - {fileID: 0}
     ExpressionOverrides: []

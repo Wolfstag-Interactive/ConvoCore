@@ -100,13 +100,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 458f605aa420aee44acb27c723607006, type: 3}
   m_Name: ConvoCore3DSampleConversation
   m_EditorClassIdentifier: 
+  ConversationTitle: 
   ConversationParticipantProfiles:
   - {fileID: 11400000, guid: 6d56885077f77054a92670ce5e67732f, type: 2}
   - {fileID: 11400000, guid: ccf385c6e1255124fa3b9fc536ba2206, type: 2}
   - {fileID: 11400000, guid: 4480ae89d8eb3fb409e01358ae87caec, type: 2}
   ParticipantConfigurationDefaults:
-  - CharacterID: 
-    DefaultConfigurationEntryName: 
+  - CharacterID: capsule
+    DefaultConfigurationEntryName: Unnamed Entry
+    SpawnTiming: 1
+  - CharacterID: cube
+    DefaultConfigurationEntryName: Default
+    SpawnTiming: 0
+  - CharacterID: sphere
+    DefaultConfigurationEntryName: Default
+    SpawnTiming: 0
   DialogueLines:
   - ConversationID: 3DSampleConversation
     LineID: L_e7b1541e75ee
@@ -1560,5 +1568,4 @@ MonoBehaviour:
   SourceExcelAsset: {fileID: 0}
   SourceExcelAssetPath: 
   ConversationKey: 3DSampleConversation
-  ConversationTitle: 
   _conversationGuid: 5098f002-7eb1-424b-bf94-2608aee320c0

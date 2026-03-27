@@ -16,4 +16,9 @@ MonoBehaviour:
   - expressionID: f1ae689039a54408857dd2e07da07a5c
     DisplayName: Default
     ExpressionActions: []
-  ConfigurationEntries: []
+  ConfigurationEntries:
+  - EntryName: Default
+    IsDefault: 0
+    CharacterPrefab: {fileID: 4172563106882798453, guid: 77b044b0b5311cc448904e6b96381e34, type: 3}
+    CharacterBehaviours: []
+    ExpressionOverrides: []

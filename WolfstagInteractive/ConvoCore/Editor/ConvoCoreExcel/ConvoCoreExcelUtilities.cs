@@ -93,7 +93,6 @@ namespace WolfstagInteractive.ConvoCore.Editor
                 }
             }
 
-            // Step 7: Build YAML using a safe generator that double-quotes all localized values.
             // ConvoCoreYamlSerializer (YamlDotNet) may produce single-quoted or folded scalars for
             // strings that start with '*', '...', or are very long. Those are then corrupted by
             // ConvoCoreYamlParser.EnsureQuotesOnLocalizedValues (a \s* backtracking bug causes the

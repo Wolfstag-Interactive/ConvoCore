@@ -3,11 +3,11 @@ using UnityEngine;
 namespace WolfstagInteractive.ConvoCore
 {
     /// <summary>
-    /// Context passed to <see cref="ConvoCoreCharacterPresence.ResolvePresence"/> each time
+    /// Context passed to <see cref="ConvoCoreCharacterBehaviour.ResolvePresence"/> each time
     /// a character needs to be resolved for a dialogue line. Contains no slot concepts;
-    /// character placement is entirely the presence's responsibility.
+    /// character placement is entirely the behaviour's responsibility.
     /// </summary>
-    public struct CharacterPresenceContext
+    public struct CharacterBehaviourContext
     {
         /// <summary>Zero-based index of this character in the current line's representation list.</summary>
         public int CharacterIndex;
@@ -20,7 +20,7 @@ namespace WolfstagInteractive.ConvoCore
 
         /// <summary>
         /// The CharacterID from the conversation participant profile. Used for scene-registry lookup
-        /// so presences can resolve scene-resident characters without depending on a removed field.
+        /// so behaviours can resolve scene-resident characters without depending on a removed field.
         /// Empty when not populated by the UI (e.g. legacy 2D UI).
         /// </summary>
         public string CharacterId;
@@ -33,32 +33,32 @@ namespace WolfstagInteractive.ConvoCore
     }
 
     /// <summary>
-    /// Abstract ScriptableObject base for all presence types.
+    /// Abstract ScriptableObject base for all character behaviour types.
     ///
-    /// A presence determines how characters are placed and managed in 3D world-space conversations.
-    /// It is responsible for resolving a live <see cref="IConvoCoreCharacterDisplay"/> for each
-    /// character that appears on a line, and for cleaning up at conversation end.
+    /// A character behaviour determines how characters are placed and managed in 3D world-space
+    /// conversations. It is responsible for resolving a live <see cref="IConvoCoreCharacterDisplay"/>
+    /// for each character that appears on a line, and for cleaning up at conversation end.
     ///
-    /// The spawner is passed into <see cref="ResolvePresence"/> at call time. The presence
+    /// The spawner is passed into <see cref="ResolvePresence"/> at call time. The behaviour
     /// is a ScriptableObject and must not hold serialized references to scene objects.
     /// Runtime-only scene references may be cached in <c>[System.NonSerialized]</c> fields.
     /// </summary>
-    public abstract class ConvoCoreCharacterPresence : ScriptableObject
+    public abstract class ConvoCoreCharacterBehaviour : ScriptableObject
     {
         /// <summary>
         /// Resolve the live <see cref="IConvoCoreCharacterDisplay"/> for the given representation.
         /// Called once per character per dialogue line by <see cref="ConvoCoreSampleUI3D"/>.
         ///
-        /// Implementations that cache displays across lines (e.g. <see cref="WorldPointPresence"/>)
+        /// Implementations that cache displays across lines (e.g. <see cref="WorldPointBehaviour"/>)
         /// should return the cached instance on subsequent calls for the same character rather than
         /// requesting a new spawn from the spawner.
         ///
-        /// Return null if the character cannot or should not be resolved (e.g. ExternalPresence for
+        /// Return null if the character cannot or should not be resolved (e.g. ExternalBehaviour for
         /// a spawn-from-prefab character). The 3D UI will skip expression application when null is returned.
         /// </summary>
         public abstract IConvoCoreCharacterDisplay ResolvePresence(
             PrefabCharacterRepresentationData representation,
-            CharacterPresenceContext context,
+            CharacterBehaviourContext context,
             ConvoCorePrefabRepresentationSpawner spawner);
 
         /// <summary>Called by <see cref="ConvoCoreSampleUI3D"/> when a conversation begins.</summary>

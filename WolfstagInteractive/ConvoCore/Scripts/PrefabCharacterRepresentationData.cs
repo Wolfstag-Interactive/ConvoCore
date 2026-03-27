@@ -13,8 +13,8 @@ namespace WolfstagInteractive.ConvoCore
     /// with entry-specific expression mappings.
     ///
     /// Each configuration entry names a prefab to use as a spawn fallback when the character
-    /// is not found in the scene registry, and the <see cref="ConvoCoreCharacterPresence"/>
-    /// ScriptableObject that governs world-space placement.
+    /// is not found in the scene registry, and the <see cref="ConvoCoreCharacterBehaviour"/>
+    /// ScriptableObjects that govern world-space placement.
     ///
     /// At runtime, ConvoCore always checks the scene registry by character ID first before
     /// spawning from the entry prefab. No explicit source-mode flag is required.
@@ -265,8 +265,8 @@ namespace WolfstagInteractive.ConvoCore
 
     /// <summary>
     /// A named configuration for a prefab character: the prefab to spawn as a fallback when the
-    /// character is not found in the scene registry, the presence that controls world-space
-    /// placement, and any entry-specific expression overrides.
+    /// character is not found in the scene registry, the character behaviour ScriptableObjects that
+    /// control world-space placement, and any entry-specific expression overrides.
     /// </summary>
     [System.Serializable]
     public class PrefabCharacterConfigurationEntry
@@ -280,8 +280,8 @@ namespace WolfstagInteractive.ConvoCore
         [Tooltip("Prefab spawned when the character is not found in the scene registry. Must have an IConvoCoreCharacterDisplay component on it or a child.")]
         public GameObject CharacterPrefab;
 
-        [Tooltip("Presence ScriptableObject that controls how and where this character is placed in 3D world-space.")]
-        public ConvoCoreCharacterPresence Presence;
+        [Tooltip("Character Behaviour ScriptableObjects that control how and where this character is placed in 3D world-space. Behaviours are applied in list order.")]
+        public List<ConvoCoreCharacterBehaviour> CharacterBehaviours = new();
 
         [Tooltip("Entry-specific expression mappings. These take priority over SharedExpressionMappings on the representation asset. When empty or no match is found, the shared pool is used.")]
         public List<PrefabExpressionMapping> ExpressionOverrides = new();

@@ -33,7 +33,10 @@ namespace WolfstagInteractive.ConvoCore
         [Tooltip("Ordered list of RectTransform anchors that serve as parent slots for spawned prefab characters. " +
                  "Slot 0 is the first character, slot 1 the second, etc. Named addressing via SlotId matches by anchor name.")]
         [SerializeField] private List<RectTransform> characterSlotAnchors = new();
+        [SerializeField, Min(1)]
+        private int maxVisibleCharacterSlots = 3;
 
+        public virtual int MaxVisibleCharacterSlots => maxVisibleCharacterSlots;
         [Header("Choice UI")]
         [SerializeField] private GameObject ChoicePanel;
         [SerializeField] private Transform ChoiceButtonContainer;

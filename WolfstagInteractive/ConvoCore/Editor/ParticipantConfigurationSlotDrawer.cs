@@ -23,13 +23,14 @@ namespace WolfstagInteractive.ConvoCore.Editor
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
         {
             float line = EditorGUIUtility.singleLineHeight;
-            return line + Spacing + line + Spacing;
+            return line + Spacing + line + Spacing + line + Spacing;
         }
 
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
-            var charIdProp  = property.FindPropertyRelative("CharacterID");
-            var entryProp   = property.FindPropertyRelative("DefaultConfigurationEntryName");
+            var charIdProp    = property.FindPropertyRelative("CharacterID");
+            var entryProp     = property.FindPropertyRelative("DefaultConfigurationEntryName");
+            var timingProp    = property.FindPropertyRelative("SpawnTiming");
 
             float line  = EditorGUIUtility.singleLineHeight;
             float y     = position.y;
@@ -52,6 +53,10 @@ namespace WolfstagInteractive.ConvoCore.Editor
             {
                 EditorGUI.PropertyField(entryRect, entryProp, new GUIContent("Default Entry Name"));
             }
+            y += line + Spacing;
+
+            // Row 3 — SpawnTiming
+            EditorGUI.PropertyField(new Rect(position.x, y, position.width, line), timingProp, new GUIContent("Spawn Timing"));
         }
 
         // ------------------------------------------------------------------

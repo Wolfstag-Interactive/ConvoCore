@@ -17,10 +17,7 @@ namespace WolfstagInteractive.ConvoCore
         protected ConvoCore ConvoCoreInstance;
         protected ConvoCoreDialogueHistoryUI ConvoCoreDialogueHistoryUI;
 
-        [SerializeField, Min(1)]
-        private int maxVisibleCharacterSlots = 3;
-
-        public virtual int MaxVisibleCharacterSlots => maxVisibleCharacterSlots;
+      
 
         public event Action RequestAdvance;
         public event Action RequestReverse;
