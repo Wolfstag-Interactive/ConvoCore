@@ -24,9 +24,9 @@ Your Conversation
        │                         - Fixed screen-space positions
        │
        └─── 3D / World ────▶  ConvoCoreSampleUI3D
-                                 - ConvoCoreCharacterPresence asset
+                                 - Character Behaviour ScriptableObjects
                                  - Characters live in the scene
-                                 - Placement is the presence's job
+                                 - Placement is the behaviour's job
 ```
 
 ### Canvas path
@@ -50,24 +50,26 @@ Canvas
 
 ### 3D world path
 
-Characters live in the 3D scene. A [presence](presence-types) is assigned to the UI and handles all placement decisions: where to spawn characters, how they move, and when they are removed from the scene. Common built-in options cover authored world positions, camera-relative placement, following a moving target, and characters already standing in the scene. The UI has no slot concept and delegates all placement to the presence.
+Characters live in the 3D scene. **Character behaviours** — `ConvoCoreCharacterBehaviour` ScriptableObjects assigned to each character's configuration entry — handle all placement decisions: where to spawn characters, how they move, and when they are removed from the scene. Common built-in options cover authored world positions, camera-relative placement, following a moving target, and characters already standing in the scene. The UI has no slot concept and delegates all placement to the behaviours.
 
 ```
 ConvoCoreSampleUI3D
       │  conversation starts
-      ├──▶  presence.OnConversationBegin()
+      ├──▶  behaviour.OnConversationBegin()
       │          set up markers, spawn points, or store initial state
       │
       │  each dialogue line
-      ├──▶  presence.ResolvePresence(rep, context, spawner)
+      ├──▶  behaviour.ResolvePresence(rep, context, spawner)
       │          returns IConvoCoreCharacterDisplay
       │              └── display.BindRepresentation()
       │              └── display.ApplyExpression()
       │
       │  conversation ends
-      └──▶  presence.OnConversationEnd()
+      └──▶  behaviour.OnConversationEnd()
                  release spawned instances, restore scene state
 ```
+
+Behaviours are assigned per **configuration entry** on the `PrefabCharacterRepresentationData` asset. Each entry holds a list of behaviours, so a `"CloseUp"` entry and a `"Distant"` entry on the same character can each use different behaviours — and the active set transitions automatically when the entry changes between lines.
 
 **Best for:** RPG dialogue, cinematic scenes, first-person games, VR, any setup where characters exist as world objects.
 
@@ -80,10 +82,10 @@ ConvoCoreSampleUI3D
 | Characters rendered inside a Canvas | `ConvoCoreSampleUICanvas` |
 | Characters exist as GameObjects in the scene | `ConvoCoreSampleUI3D` |
 | Mixing sprite portraits and prefab characters on the same line | `ConvoCoreSampleUICanvas` |
-| Characters need to move to specific world positions | `ConvoCoreSampleUI3D` + `WorldPointPresence` |
-| Characters follow the player | `ConvoCoreSampleUI3D` + `FollowTargetPresence` |
-| Characters are already placed in the scene by the developer | `ConvoCoreSampleUI3D` + `ExternalPresence` |
-| First-person or VR, character positioned relative to the camera | `ConvoCoreSampleUI3D` + `CameraRelativePresence` |
+| Characters need to move to specific world positions | `ConvoCoreSampleUI3D` + `WorldPointBehaviour` |
+| Characters follow the player | `ConvoCoreSampleUI3D` + `FollowTargetBehaviour` |
+| Characters are already placed in the scene by the developer | `ConvoCoreSampleUI3D` + `ExternalBehaviour` |
+| First-person or VR, character positioned relative to the camera | `ConvoCoreSampleUI3D` + `CameraRelativeBehaviour` |
 
 :::note
 Both paths use the same `PrefabCharacterRepresentationData` asset and the same display components (`ConvoCoreAnimatorDisplay`, `ConvoCoreBlendShapeDisplay`, etc.). What differs is how the spawned character gets positioned in the world.
@@ -97,10 +99,10 @@ Both paths use the same `PrefabCharacterRepresentationData` asset and the same d
 
 | Component | What it does |
 |---|---|
-| `PrefabCharacterRepresentationData` | ScriptableObject. Holds the prefab reference and expression mappings. |
+| `PrefabCharacterRepresentationData` | ScriptableObject. Holds configuration entries, prefab references, and expression mappings. |
 | `ConvoCorePrefabRepresentationSpawner` | MonoBehaviour. Spawns, pools, and resolves prefab instances. One per UI. |
 | `ConvoCorePrefabPool` | MonoBehaviour. Object pool for prefab instances. Managed by the spawner. |
-| `ConvoCoreSceneCharacterRegistry` | MonoBehaviour. Registers scene-resident characters by ID so the spawner can find them without spawning anything. |
+| `ConvoCoreSceneCharacterRegistry` | MonoBehaviour. Registers scene-resident characters by ID so behaviours can find them without spawning anything. |
 | `ConvoCoreSceneCharacterRegistrant` | MonoBehaviour. Drop on any scene character to register it with the registry. |
 
 ### Canvas path only
@@ -113,8 +115,10 @@ Both paths use the same `PrefabCharacterRepresentationData` asset and the same d
 
 | Component | What it does |
 |---|---|
-| `ConvoCoreSampleUI3D` | The world-space UI: text and choices only. Delegates character placement to the presence. |
-| `ConvoCoreCharacterPresence` | Abstract ScriptableObject base class. Subclass determines where and how characters appear. |
+| `ConvoCoreSampleUI3D` | The world-space UI: text and choices only. Delegates character placement to behaviours on each configuration entry. |
+| `ConvoCoreCharacterBehaviour` | Abstract ScriptableObject base class. Subclass determines where and how characters appear. |
+| `ConvoCoreSpawnPoint` | MonoBehaviour scene marker. Place on any GameObject; `WorldPointBehaviour` resolves it by ID. |
+| `ConvoCoreSpawnPointRegistry` | MonoBehaviour. Tracks all active `ConvoCoreSpawnPoint` instances by ID at runtime. |
 
 ### On the character prefab
 
@@ -132,7 +136,7 @@ Both paths use the same `PrefabCharacterRepresentationData` asset and the same d
 Regardless of which path you use, the expression application sequence is the same:
 
 1. The ConvoCore runner processes a dialogue line and determines which characters are present.
-2. The UI calls `spawner.ResolveCharacter()` (canvas) or `presence.ResolvePresence()` (3D) to obtain an `IConvoCoreCharacterDisplay` for each character.
+2. The UI calls `spawner.ResolveCharacter()` (canvas) or `behaviour.ResolvePresence()` (3D) to obtain an `IConvoCoreCharacterDisplay` for each character.
 3. The UI calls `display.BindRepresentation(representationAsset)` on the returned display. The display builds an internal lookup table keyed by expression display name at this point.
 4. The UI calls `display.ApplyExpression(expressionId)` with the GUID of the expression selected in the YAML line.
 5. The display component translates the GUID into a concrete visual change: an Animator parameter, a blend shape weight, or nothing (if `ConvoCoreActionOnlyDisplay`).
@@ -156,7 +160,7 @@ YAML dialogue line
 ```
 
 :::note
-Expression display names are used as the join key between the `PrefabCharacterRepresentationData` asset and the display component's inspector mappings. The GUID is only used at runtime lookup. This means you configure display components using the same human-readable name you gave the expression in the representation asset. No opaque GUID strings to copy or manage.
+Expression display names are used as the join key between the `PrefabCharacterRepresentationData` asset and the display component's inspector mappings. The GUID is only used at runtime lookup. This means you configure display components using the same human-readable name you gave the expression in the representation asset.
 :::
 
 ---
@@ -167,5 +171,5 @@ Expression display names are used as the join key between the `PrefabCharacterRe
 |---|---|
 | Set up canvas-space prefab characters | [Canvas UI →](canvas-ui) |
 | Set up world-space prefab characters | [3D UI →](3d-ui) |
-| Understand presence types and when to use each | [Presence Types →](presence-types) |
+| Understand character behaviour types and when to use each | [Character Behaviours →](presence-types) |
 | Configure expression driving on a prefab | [Display Components →](display-components) |

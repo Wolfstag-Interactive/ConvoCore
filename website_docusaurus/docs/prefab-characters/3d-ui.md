@@ -5,7 +5,7 @@ title: 3D UI
 
 # 3D UI
 
-`ConvoCoreSampleUI3D` is the world-space dialogue UI. It handles dialogue text, speaker names, and choice buttons, but has no concept of character slots. Instead, it delegates all character placement to a **presence** — a ScriptableObject that decides where each character goes and how long they stay there.
+`ConvoCoreSampleUI3D` is the world-space dialogue UI. It handles dialogue text, speaker names, and choice buttons, but has no concept of character slots. Instead, it delegates all character placement to **character behaviours** — `ConvoCoreCharacterBehaviour` ScriptableObjects that decide where each character goes and how long they stay there.
 
 Use this class when your characters are GameObjects living in the scene, not elements rendered inside a Canvas.
 
@@ -18,12 +18,12 @@ ConvoCoreSampleUI3D
        │
        │  conversation starts
        ▼
-ConvoCoreCharacterPresence.OnConversationBegin()
+ConvoCoreCharacterBehaviour.OnConversationBegin()
        │
        │  each line begins
        ▼
-ConvoCoreCharacterPresence.ResolvePresence(rep, context, spawner)
-       │                   returns IConvoCoreCharacterDisplay
+ConvoCoreCharacterBehaviour.ResolvePresence(rep, context, spawner)
+       │                    returns IConvoCoreCharacterDisplay
        ▼
 display.BindRepresentation(representationAsset)
 display.ApplyDisplayOptions(lineOptions)
@@ -31,22 +31,46 @@ display.ApplyExpression(expressionId)
        │
        │  conversation ends
        ▼
-ConvoCoreCharacterPresence.OnConversationEnd()
+ConvoCoreCharacterBehaviour.OnConversationEnd()
 ```
 
-The UI calls `OnConversationBegin()` when the conversation starts, then calls `ResolvePresence()` for each character on each line to get an `IConvoCoreCharacterDisplay` to apply expressions to. When the conversation ends it calls `OnConversationEnd()`, which is where the presence tears down spawned instances.
+The UI calls `OnConversationBegin()` when the conversation starts, then calls `ResolvePresence()` for each character on each line to get an `IConvoCoreCharacterDisplay` to apply expressions to. When the conversation ends it calls `OnConversationEnd()`, which is where behaviours tear down spawned instances.
+
+---
+
+## Where Behaviours Live
+
+Unlike a single global "presence" field, character behaviours are assigned per **configuration entry** on each character's `PrefabCharacterRepresentationData` asset. Each entry holds a list of `ConvoCoreCharacterBehaviour` assets.
+
+```
+PrefabCharacterRepresentationData
+  └── Configuration Entries
+        ├── "Default"
+        │     ├── Character Prefab: GuardPrefab
+        │     └── Character Behaviours: [ WorldPointBehaviour_GuardPost ]
+        │
+        └── "CloseUp"
+              ├── Character Prefab: GuardPrefab
+              └── Character Behaviours: [ CameraRelativeBehaviour_FrontRight ]
+```
+
+This means different entries on the same character can use entirely different placement strategies. The active entry is resolved per line using the three-level resolution chain: per-line override → participant default → asset default.
 
 ---
 
 ## Setup
 
-### 1. Create a presence asset
+### 1. Create character behaviour assets
 
-Right-click in the Project panel → **Create → ConvoCore → Presence** → choose the type that matches your scene setup. See [Presence Types →](presence-types) for guidance on which one to use.
+Right-click in the Project panel → **Create → ConvoCore → Character Behaviour** → choose the type that matches your scene setup. See [Character Behaviours →](presence-types) for guidance on which type to use.
 
-### 2. Add the spawner and pool
+### 2. Assign behaviours to configuration entries
 
-`ConvoCoreSampleUI3D` needs a `ConvoCorePrefabRepresentationSpawner` for presences that spawn characters.
+Open your `PrefabCharacterRepresentationData` asset. In **Configuration Entries**, expand the entry you want to configure and add one or more behaviour assets to the **Character Behaviours** list.
+
+### 3. Add the spawner and pool
+
+`ConvoCoreSampleUI3D` needs a `ConvoCorePrefabRepresentationSpawner` for behaviours that spawn characters.
 
 1. Select the GameObject that holds your `ConvoCoreSampleUI3D` component.
 2. **Add Component → ConvoCorePrefabPool**.
@@ -54,12 +78,8 @@ Right-click in the Project panel → **Create → ConvoCore → Presence** → c
 4. Drag `ConvoCorePrefabRepresentationSpawner` into the **Prefab Representation Spawner** field on `ConvoCoreSampleUI3D`.
 
 :::note
-Not all presences use the spawner. `ExternalPresence` for scene-resident characters never calls it. The spawner is a required field on `ConvoCoreSampleUI3D` so that presences which do spawn characters — such as `WorldPointPresence` or `FollowTargetPresence` — can operate without additional setup when you switch presence types. If you are certain you will only ever use `ExternalPresence`, the spawner will simply sit idle.
+Not all behaviours use the spawner. `ExternalBehaviour` for scene-resident characters never calls it. The spawner is a required field on `ConvoCoreSampleUI3D` so that behaviours which do spawn characters — such as `WorldPointBehaviour` or `FollowTargetBehaviour` — can operate without additional setup when you switch behaviour types. If you are certain you will only ever use `ExternalBehaviour`, the spawner will simply sit idle.
 :::
-
-### 3. Assign the presence
-
-Drag your presence asset into the **Character Presence** field on `ConvoCoreSampleUI3D`.
 
 ### 4. Assign the remaining fields
 
@@ -75,52 +95,54 @@ When the runner processes a line:
 - Characters on that line have their expressions updated via `ApplyExpression()`.
 - Characters **not** on that line are left exactly as they are — their last applied expression remains active.
 
-Despawning is a conversation-end operation. The presence handles it in `OnConversationEnd()`.
+Despawning is a conversation-end operation. Each behaviour handles it in `OnConversationEnd()`.
 
 ---
 
 ## No Slot System
 
-`ConvoCoreSampleUI3D` does not have slot anchors, a slot list, or any concept of Left/Center/Right positioning. The presence is the only thing that decides where characters stand.
+`ConvoCoreSampleUI3D` does not have slot anchors, a slot list, or any concept of Left/Center/Right positioning. The behaviours are the only thing that decides where characters stand.
 
-`DialogueLineDisplayOptions` fields like `CharacterPosition` and `SlotId` are ignored by the 3D UI. The `DisplayOptions` struct is available to the presence via `CharacterPresenceContext` if a presence wants to read flip or scale data, but placement is never driven by those fields.
+`DialogueLineDisplayOptions` fields like `CharacterPosition` and `SlotId` are ignored by the 3D UI. The `DisplayOptions` struct is available to behaviours via `CharacterBehaviourContext` if a behaviour wants to read flip or scale data, but placement is never driven by those fields.
 
 ---
 
-## The CharacterPresenceContext
+## The CharacterBehaviourContext
 
-When `ConvoCoreSampleUI3D` calls `ResolvePresence()`, it passes a `CharacterPresenceContext` struct alongside the representation and spawner:
+When `ConvoCoreSampleUI3D` calls `ResolvePresence()`, it passes a `CharacterBehaviourContext` struct alongside the representation and spawner:
 
 | Field | Type | Description |
 |---|---|---|
 | `CharacterIndex` | `int` | Zero-based index of this character in the current line's representation list. |
 | `TotalCharacters` | `int` | Total number of characters on this line. |
+| `CharacterId` | `string` | The CharacterID from the conversation participant. Used for registry lookups and caching. |
+| `ConfigurationEntryName` | `string` | The resolved configuration entry name for this line. Null or empty means use the asset default. |
 | `DisplayOptions` | `DialogueLineDisplayOptions` | The line's display options, or `null` if none were set. |
 
-Presences can use this context for any purpose — for example, `WorldPointPresence` uses `CharacterIndex` to select which authored world position to place the character at.
+Behaviours can use any of these fields — for example, `WorldPointBehaviour` uses `CharacterIndex` to select which authored spawn point to use, and `ExternalBehaviour` uses `CharacterId` to look up the character in the scene registry.
 
 ---
 
 ## ResolvePresence Returns Null
 
-Some presences return `null` from `ResolvePresence()` — for example, `ExternalPresence` for a character that isn't registered in the scene registry. When this happens:
+Some behaviours return `null` from `ResolvePresence()` — for example, `ExternalBehaviour` for a character that isn't registered in the scene registry. When this happens:
 
 - The spawner is not called.
 - No parenting occurs.
 - No display component is bound.
 - Expression application is skipped for that character, with a warning in the Console.
 
-This is intentional and safe. The warning tells you which character was skipped and why, so you can decide whether to register the character or adjust the presence configuration.
+This is intentional and safe. The warning tells you which character was skipped and why, so you can decide whether to register the character or adjust the behaviour configuration.
 
 ---
 
 ## Scene-Resident Characters
 
-If your characters are already in the scene, use `ExternalPresence` or `TransformLerpPresence` and register each character with `ConvoCoreSceneCharacterRegistry`.
+If your characters are already in the scene, use `ExternalBehaviour` or `TransformLerpBehaviour` and register each character with `ConvoCoreSceneCharacterRegistry`.
 
 1. Add **ConvoCoreSceneCharacterRegistry** to any GameObject in the scene.
 2. Add **ConvoCoreSceneCharacterRegistrant** to the scene character's root GameObject.
-3. Set the **Character Id** on the registrant to match the `SceneCharacterId` on the character's `PrefabCharacterRepresentationData`.
+3. Set the **Character Id** on the registrant to match the character ID used in the conversation YAML.
 4. Set `CharacterSourceMode` to **Scene Resident** on the representation asset.
 5. Drag the registry into the **Scene Character Registry** field on `ConvoCorePrefabRepresentationSpawner`.
 
@@ -128,10 +150,23 @@ Scene-resident characters are never spawned, pooled, or destroyed by the 3D UI.
 
 ---
 
+## Spawn Timing
+
+Each participant slot in the conversation data has a **Spawn Timing** setting:
+
+| Setting | Behaviour |
+|---|---|
+| `OnConversationBegin` | The character's behaviours are activated as soon as the conversation starts, before any line is shown. |
+| `OnFirstAppearance` | The character's behaviours are activated on the first line where that character appears. |
+
+Use `OnConversationBegin` when characters should already be in position when the first line plays. Use `OnFirstAppearance` when a character should only appear mid-conversation.
+
+---
+
 ## Next Steps
 
 | I want to… | Go here |
 |---|---|
-| Understand which presence type fits your setup | [Presence Types →](presence-types) |
+| Understand which character behaviour type fits your setup | [Character Behaviours →](presence-types) |
 | Configure expression driving on a prefab | [Display Components →](display-components) |
 | Use canvas-space prefab characters instead | [Canvas UI →](canvas-ui) |
