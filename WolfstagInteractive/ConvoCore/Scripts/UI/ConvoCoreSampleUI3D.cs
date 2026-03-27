@@ -13,26 +13,22 @@ namespace WolfstagInteractive.ConvoCore
 {
     /// <summary>
     /// World-space dialogue UI for 3D character conversations. No sprite support; no slot system.
-    /// Character placement is entirely presence-driven via <see cref="ConvoCoreCharacterPresence"/>.
+    /// Character placement is entirely behaviour-driven via <see cref="ConvoCoreCharacterBehaviour"/>.
     ///
     /// Characters are persistent across lines. Expression application is the only per-line
     /// operation; characters are not despawned and re-spawned between lines.
     ///
-    /// <see cref="ConvoCoreCharacterPresence.OnConversationBegin"/> is called when
+    /// <see cref="ConvoCoreCharacterBehaviour.OnConversationBegin"/> is called when
     /// <see cref="ConvoCore.StartedConversation"/> fires.
-    /// <see cref="ConvoCoreCharacterPresence.OnConversationEnd"/> is called when
+    /// <see cref="ConvoCoreCharacterBehaviour.OnConversationEnd"/> is called when
     /// <see cref="ConvoCore.EndedConversation"/> fires. The spawner is never called directly
-    /// by this UI for release; that responsibility belongs to the presence.
+    /// by this UI for release; that responsibility belongs to the behaviour.
     /// </summary>
     [HelpURL("https://docs.wolfstaginteractive.com/convocore/api/classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSampleUI3D.html")]
     public class ConvoCoreSampleUI3D : ConvoCoreUIFoundation
     {
-        [Header("Character Presence")]
-        [Tooltip("Presence asset that determines how characters are placed in the world.")]
-        [SerializeField] private ConvoCoreCharacterPresence characterPresence;
-
         [Header("Spawner")]
-        [Tooltip("Spawner passed to the presence for prefab lifecycle management.")]
+        [Tooltip("Spawner passed to the behaviour for prefab lifecycle management.")]
         [SerializeField] private ConvoCorePrefabRepresentationSpawner prefabRepresentationSpawner;
 
         [Header("Choice UI")]
@@ -64,6 +60,9 @@ namespace WolfstagInteractive.ConvoCore
         [Header("Input")]
         [SerializeField] private InputAction AdvanceDialogueAction;
         [SerializeField] private InputAction PreviousDialogueAction;
+
+        // Per-character behaviour tracking: keyed by CharacterID.
+        private readonly Dictionary<string, List<ConvoCoreCharacterBehaviour>> _activeBehavioursByCharacter = new();
 
         private Coroutine _typewriterCoroutine;
         private bool _isTyping;
@@ -100,7 +99,7 @@ namespace WolfstagInteractive.ConvoCore
                     Debug.LogWarning($"[ConvoCoreSampleUI3D] No ConvoCorePrefabRepresentationSpawner assigned on '{gameObject.name}'.");
             }
 
-            // Subscribe to conversation lifecycle events so the presence can be notified.
+            // Subscribe to conversation lifecycle events so behaviours can be notified.
             ConvoCoreInstance.StartedConversation += OnConversationStarted;
             ConvoCoreInstance.EndedConversation   += OnConversationEnded;
 
@@ -122,9 +121,53 @@ namespace WolfstagInteractive.ConvoCore
             ConvoCoreDialogueHistoryUI.InitializeRenderer(ctx);
         }
 
-        private void OnConversationStarted() => characterPresence?.OnConversationBegin();
+        private void OnConversationStarted()
+        {
+            if (prefabRepresentationSpawner == null) return;
+            var convoData = ConvoCoreInstance.GetCurrentConversationData();
+            if (convoData?.ParticipantConfigurationDefaults == null) return;
 
-        private void OnConversationEnded() => characterPresence?.OnConversationEnd();
+            int total = convoData.ParticipantConfigurationDefaults.Count;
+            for (int idx = 0; idx < total; idx++)
+            {
+                var slot = convoData.ParticipantConfigurationDefaults[idx];
+                if (slot.SpawnTiming != ConvoCoreSpawnTiming.OnConversationBegin) continue;
+
+                var profile = convoData.ConversationParticipantProfiles
+                    .FirstOrDefault(p => p.CharacterID == slot.CharacterID);
+                if (profile == null) continue;
+
+                PrefabCharacterRepresentationData prefabRep = null;
+                foreach (var pair in profile.Representations)
+                {
+                    if (pair?.CharacterRepresentationType is PrefabCharacterRepresentationData p)
+                    { prefabRep = p; break; }
+                }
+                if (prefabRep == null) continue;
+
+                var entry = prefabRep.GetEntry(slot.DefaultConfigurationEntryName);
+                if (entry?.CharacterBehaviours == null || entry.CharacterBehaviours.Count == 0) continue;
+
+                var behaviours = GetOrTransitionBehaviours(slot.CharacterID, entry.CharacterBehaviours);
+                var ctx = new CharacterBehaviourContext
+                {
+                    CharacterIndex         = idx,
+                    TotalCharacters        = total,
+                    CharacterId            = slot.CharacterID,
+                    ConfigurationEntryName = entry.EntryName
+                };
+                foreach (var b in behaviours)
+                    b?.ResolvePresence(prefabRep, ctx, prefabRepresentationSpawner);
+            }
+        }
+
+        private void OnConversationEnded()
+        {
+            foreach (var behaviourList in _activeBehavioursByCharacter.Values)
+                foreach (var b in behaviourList)
+                    b?.OnConversationEnd();
+            _activeBehavioursByCharacter.Clear();
+        }
 
         private void OnEnable()
         {
@@ -161,28 +204,56 @@ namespace WolfstagInteractive.ConvoCore
 
             lineInfo.EnsureCharacterRepresentationListInitialized();
 
-            if (characterPresence != null && prefabRepresentationSpawner != null)
+            if (prefabRepresentationSpawner != null)
             {
+                var convoData = ConvoCoreInstance.GetCurrentConversationData();
                 int count = lineInfo.CharacterRepresentations.Count;
                 for (int i = 0; i < count; i++)
                 {
                     var charData = lineInfo.CharacterRepresentations[i];
-                    var rep = GetRepresentationFromData(ConvoCoreInstance.GetCurrentConversationData(), charData);
+                    var rep = GetRepresentationFromData(convoData, charData);
 
                     if (rep is not PrefabCharacterRepresentationData prefabRep)
                         continue;
 
-                    var ctx = new CharacterPresenceContext
+                    // Determine the character ID for registry-first lookup and per-character tracking.
+                    var characterId = !string.IsNullOrEmpty(charData.SelectedCharacterID)
+                        ? charData.SelectedCharacterID
+                        : rep.name;
+
+                    // Resolve the configuration entry: per-line → participant default → asset default.
+                    var entryName = ResolveEntryName(convoData, charData, characterId);
+                    var entry = prefabRep.GetEntry(entryName);
+                    if (entry?.CharacterBehaviours == null || entry.CharacterBehaviours.Count == 0)
                     {
-                        CharacterIndex  = i,
-                        TotalCharacters = count,
-                        DisplayOptions  = charData.LineSpecificDisplayOptions
+                        Debug.LogWarning($"[ConvoCoreSampleUI3D] Configuration entry '{entryName}' for '{rep.name}' has no Character Behaviours assigned. Skipping character {i}.");
+                        continue;
+                    }
+
+                    // Transition the behaviours if they changed since the last line.
+                    var behaviours = GetOrTransitionBehaviours(characterId, entry.CharacterBehaviours);
+
+                    var ctx = new CharacterBehaviourContext
+                    {
+                        CharacterIndex         = i,
+                        TotalCharacters        = count,
+                        DisplayOptions         = charData.LineSpecificDisplayOptions,
+                        CharacterId            = characterId,
+                        ConfigurationEntryName = entry.EntryName
                     };
 
-                    var display = characterPresence.ResolvePresence(prefabRep, ctx, prefabRepresentationSpawner);
+                    // Fan out across all behaviours; use the first non-null display.
+                    IConvoCoreCharacterDisplay display = null;
+                    foreach (var behaviour in behaviours)
+                    {
+                        var d = behaviour?.ResolvePresence(prefabRep, ctx, prefabRepresentationSpawner);
+                        if (display == null && d != null)
+                            display = d;
+                    }
+
                     if (display == null)
                     {
-                        Debug.LogWarning($"[ConvoCoreSampleUI3D] Presence returned null for character {i} ('{rep.name}'). Expression will not be applied.");
+                        Debug.LogWarning($"[ConvoCoreSampleUI3D] All behaviours returned null for character {i} ('{rep.name}'). Expression will not be applied.");
                         continue;
                     }
 
@@ -418,6 +489,47 @@ namespace WolfstagInteractive.ConvoCore
         // Helpers
         // ------------------------------------------------------------------
 
+        /// <summary>
+        /// Resolves the configuration entry name using the three-level priority chain:
+        /// per-line override → participant default on the conversation → representation asset default.
+        /// Returns null to signal "use the asset default entry".
+        /// </summary>
+        private static string ResolveEntryName(
+            ConvoCoreConversationData convoData,
+            ConvoCoreConversationData.CharacterRepresentationData charData,
+            string characterId)
+        {
+            if (!string.IsNullOrEmpty(charData.SelectedConfigurationEntryName))
+                return charData.SelectedConfigurationEntryName;
+
+            var participantDefault = convoData?.GetParticipantDefaultEntry(characterId);
+            if (!string.IsNullOrEmpty(participantDefault))
+                return participantDefault;
+
+            return null; // signals GetEntry(null) → GetDefaultEntry()
+        }
+
+        /// <summary>
+        /// Returns the active behaviour list for the given character.
+        /// If the behaviours changed since the last line, the old ones are ended and the new ones begun.
+        /// On first appearance the behaviours are begun immediately.
+        /// </summary>
+        private List<ConvoCoreCharacterBehaviour> GetOrTransitionBehaviours(
+            string characterId, List<ConvoCoreCharacterBehaviour> newBehaviours)
+        {
+            if (_activeBehavioursByCharacter.TryGetValue(characterId, out var current))
+            {
+                if (current == newBehaviours || current.SequenceEqual(newBehaviours))
+                    return current;
+                foreach (var b in current)
+                    b?.OnConversationEnd();
+            }
+            foreach (var b in newBehaviours)
+                b?.OnConversationBegin();
+            _activeBehavioursByCharacter[characterId] = newBehaviours;
+            return newBehaviours;
+        }
+
         private CharacterRepresentationBase GetRepresentationFromData(ConvoCoreConversationData convoData,
             ConvoCoreConversationData.CharacterRepresentationData data)
         {
@@ -467,6 +579,7 @@ namespace WolfstagInteractive.ConvoCore
             AdvanceDialogueAction?.Disable();
             PreviousDialogueAction?.Disable();
             _committedLineIndices.Clear();
+            _activeBehavioursByCharacter.Clear();
         }
     }
 }

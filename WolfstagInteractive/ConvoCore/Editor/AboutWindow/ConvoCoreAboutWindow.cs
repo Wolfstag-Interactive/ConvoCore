@@ -239,7 +239,7 @@ namespace WolfstagInteractive.ConvoCore.Editor
         public const string WebsiteUrl = "www.wolfstaginteractive.com";
         public const string DocsUrl = "www.docs.wolfstaginteractive.com";
         public const string SupportEmail = "support@wolfstaginteractive.com";
-        public const string SupportDiscordUrl = "https://discord.gg/r9KAuEpc";
+        public const string SupportDiscordUrl = "https://discord.gg/XZ5mhr7SwN";
 
         public const string Credits =
             "Created by Wolfstag Interactive.\n" +

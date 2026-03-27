@@ -50,7 +50,7 @@ namespace WolfstagInteractive.ConvoCore
             }
 
             // Build GUID -> AnimatorExpressionMapping using display name as the join key.
-            foreach (var exprMapping in _lastBoundRep.ExpressionMappings)
+            foreach (var exprMapping in _lastBoundRep.SharedExpressionMappings)
             {
                 var animMapping = _expressionMappings.Find(m => m.ExpressionDisplayName == exprMapping.DisplayName);
                 if (animMapping != null)

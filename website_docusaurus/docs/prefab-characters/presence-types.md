@@ -1,36 +1,40 @@
 ---
 sidebar_position: 4
-title: Presence Types
+title: Character Behaviours
 ---
 
-# Presence Types
+# Character Behaviours
 
-A **presence** is a ScriptableObject that decides where 3D prefab characters are positioned during a conversation and how long they remain in the scene. The 3D UI calls into the presence at conversation start, per-line, and at conversation end — the presence handles the rest.
+A **character behaviour** is a ScriptableObject that decides where 3D prefab characters are positioned during a conversation and how long they remain in the scene. The 3D UI calls into the behaviour at conversation start, per line, and at conversation end — the behaviour handles the rest.
 
-All presence types extend `ConvoCoreCharacterPresence`. ConvoCore ships with six built-in types covering the most common placement needs.
+All character behaviour types extend `ConvoCoreCharacterBehaviour`. ConvoCore ships with seven built-in types covering the most common placement needs.
+
+Character behaviours live on individual **configuration entries** inside a `PrefabCharacterRepresentationData` asset — not on the UI component. This means different configuration entries on the same character (for example `"CloseUp"` and `"Distant"`) can each carry a different set of behaviours, and the active set switches automatically when the entry changes between dialogue lines.
+
+Each configuration entry holds a **list** of behaviours. At runtime all behaviours in the list are invoked together. The first behaviour that returns a non-null display drives expression application for that character.
 
 ---
 
-## Choosing a Presence
+## Choosing a Behaviour
 
-| Situation | Presence to use |
+| Situation | Behaviour to use |
 |---|---|
-| Characters are already hand-placed in the scene | `ExternalPresence` |
-| Characters should appear at specific authored world coordinates | `WorldPointPresence` |
-| A character should follow a moving scene object | `FollowTargetPresence` |
-| Character is positioned relative to the active camera | `CameraRelativePresence` |
-| A scene character walks or turns to a spot at conversation start | `TransformLerpPresence` |
-| A scene character with an Animator needs its parameters driven | `AnimatorPresence` |
-| Different dialogue modes need different placement strategies | `SequencedPresence` |
+| Characters are already hand-placed in the scene | `ExternalBehaviour` |
+| Characters should appear at specific authored world positions | `WorldPointBehaviour` |
+| A character should follow a moving scene object | `FollowTargetBehaviour` |
+| Character is positioned relative to the active camera | `CameraRelativeBehaviour` |
+| A scene character walks or turns to a spot at conversation start | `TransformLerpBehaviour` |
+| A scene character with an Animator needs its parameters driven | `ConvoCoreAnimatorBehaviour` |
+| Different dialogue modes need different placement strategies | `SequencedBehaviour` |
 
 ---
 
-## ExternalPresence
+## ExternalBehaviour
 
 Characters are fully managed by the developer. ConvoCore does not spawn, position, move, or destroy anything.
 
 **How it works:**
-- `ResolvePresence()` looks up the character in `ConvoCoreSceneCharacterRegistry` by ID and returns the `IConvoCoreCharacterDisplay` component on that GameObject.
+- `ResolvePresence()` looks up the character in `ConvoCoreSceneCharacterRegistry` by ID (from `CharacterBehaviourContext.CharacterId`) and returns the `IConvoCoreCharacterDisplay` component on that GameObject.
 - If the character is not found in the registry, `ResolvePresence()` returns `null`, a warning is logged to the Console identifying the missing character ID, and expression application is skipped for that character on that line.
 - `OnConversationEnd()` is a no-op — cleanup is entirely your responsibility.
 
@@ -39,18 +43,18 @@ Characters are fully managed by the developer. ConvoCore does not spawn, positio
 **Use when:** characters are already standing in the scene, placed by the designer or spawned by your own systems, and you want ConvoCore to drive only their expressions.
 
 :::warning
-If you use `ExternalPresence`, every character in your conversation must be registered with `ConvoCoreSceneCharacterRegistry` at runtime before the conversation starts. If a character is missing, you'll see a warning and that character's expressions will be skipped silently.
+If you use `ExternalBehaviour`, every character in your conversation must be registered with `ConvoCoreSceneCharacterRegistry` at runtime before the conversation starts. If a character is missing, you will see a warning and that character's expressions will be skipped silently.
 :::
 
 ---
 
-## WorldPointPresence
+## WorldPointBehaviour
 
-Characters are spawned at authored world positions when they first appear in a line. Positions are set in the inspector as a list of world-space `Vector3` and `Quaternion` pairs. Characters are cached after their first line — a character that appears on multiple lines is not re-spawned.
+Characters are spawned at authored world positions when they first appear in a line. Positions are authored visually in the scene using `ConvoCoreSpawnPoint` markers and referenced here by string ID. Characters are cached after their first line — a character that appears on multiple lines is not re-spawned.
 
 **How it works:**
-- `OnConversationBegin()` creates lightweight marker `Transform` objects at each authored position.
-- `ResolvePresence()` checks whether the character has already been spawned. If not, it spawns a prefab instance via the spawner and parents it under the marker at the index matching `CharacterPresenceContext.CharacterIndex`.
+- `OnConversationBegin()` queries `ConvoCoreSpawnPointRegistry` for each configured Spawn Point ID and creates a lightweight marker `Transform` at the matching spawn point's world position and rotation.
+- `ResolvePresence()` checks whether the character has already been spawned. If not, it spawns a prefab instance via the spawner and parents it under the marker at the index matching `CharacterBehaviourContext.CharacterIndex`.
 - On subsequent lines with the same character, the cached `IConvoCoreCharacterDisplay` is returned directly.
 - `OnConversationEnd()` releases all spawned instances via the spawner and destroys the marker Transforms.
 
@@ -58,166 +62,189 @@ Characters are spawned at authored world positions when they first appear in a l
 
 | Field | Description |
 |---|---|
-| **Spawn Points** | A list of world position and rotation entries. Index 0 is used for the first character on a line (`CharacterIndex == 0`), index 1 for the second, and so on. |
+| **World Points** | A list of Spawn Point ID entries. Index 0 is used for the first character on a line (`CharacterIndex == 0`), index 1 for the second, and so on. |
 
-**Use when:** characters should appear at specific positions in the world that you can author in the ScriptableObject inspector — for example, two NPCs standing at a campfire, or a character who always appears in front of a doorway.
+**Setting up spawn points:**
+
+Position characters visually in the scene using `ConvoCoreSpawnPoint` markers:
+
+1. Add **ConvoCoreSpawnPointRegistry** to any GameObject in the scene (required once per scene).
+2. Create a new empty GameObject at the desired character position and name it descriptively (e.g. `SpawnPoint_Guard`).
+3. Add **ConvoCoreSpawnPoint**. Set a unique **Spawn Point ID** (e.g. `"Guard_Post"`).
+4. In the `WorldPointBehaviour` asset inspector, add an entry to **World Points** and type the matching Spawn Point ID.
+
+The scene-view gizmo on each `ConvoCoreSpawnPoint` shows a sphere, a forward direction ray, and a label so you can see all authored positions at a glance.
 
 :::tip
-You can author positions by typing world coordinates directly into the **Spawn Points** list in the inspector. To capture a position from the scene while working, place a temporary GameObject at the desired spot, read its world position from the Transform inspector, and type those values into the **Spawn Points** entry. Delete the temporary object when done.
+Because spawn points are GameObjects in the scene, you position characters exactly like any other object — using the standard Transform handles. No manual coordinate entry needed.
+:::
+
+:::warning
+If a Spawn Point ID has no matching `ConvoCoreSpawnPoint` active in the scene when the conversation starts, a warning is logged and that character slot is skipped. The `WorldPointBehaviour` inspector also highlights unresolved IDs while in edit mode.
 :::
 
 ---
 
-## FollowTargetPresence
+## FollowTargetBehaviour
 
 A character is spawned at conversation start and follows a scene `Transform` for the duration of the conversation. The follow target is resolved via `ConvoCoreSceneCharacterRegistry` by ID.
 
 **How it works:**
-- `OnConversationBegin()` looks up the **follow target** Transform in `ConvoCoreSceneCharacterRegistry` by the configured ID. The follow target is the scene object the spawned character will track — typically the player or a moving anchor point. The character prefab is then spawned via the spawner and begins following that Transform.
-- Each frame (or on a configurable interval), the spawned instance is moved to match the target's position and rotation.
-- `OnConversationEnd()` releases the spawned instance.
+- `ResolvePresence()` looks up the **follow target** Transform in `ConvoCoreSceneCharacterRegistry` by the configured ID. The character prefab is then spawned via the spawner and a `ConvoCoreFollowTarget` component is attached to keep it tracking the target.
+- Each frame the spawned instance is moved to match the target's position plus the configured offset.
+- `OnConversationEnd()` fires any configured completion Animator triggers, then releases the spawned instance.
 
-**Inspector fields:**
+**Inspector fields — per slot:**
 
 | Field | Description |
 |---|---|
-| **Target Registry Id** | Registry ID of the **follow target** — the scene Transform the spawned character tracks. This is the object being followed, not the character itself. Must be registered with `ConvoCoreSceneCharacterRegistry`. |
-| **Offset** | A local-space offset applied to the follow target's position. Useful for placing the character slightly ahead of or beside the target. |
+| **Target Scene Id** | Registry ID of the follow target — the scene Transform the spawned character tracks. Must be registered with `ConvoCoreSceneCharacterRegistry`. |
+| **Offset** | A world-space offset applied to the follow target's position. Useful for placing the character slightly ahead of or beside the target. |
+| **Animator Parameter Name** | Optional. Animator parameter to set on the spawned character when following begins. Leave empty to skip. |
+| **Parameter Type** | `Bool`, `Int`, `Float`, or `Trigger`. |
+| **Bool / Int / Float Value** | Value to apply depending on the selected parameter type. |
+| **Completion Trigger Name** | Optional. Animator trigger fired when the conversation ends, before the character is released. |
 
 **Use when:** a companion character should stay near the player during dialogue, or a character should appear attached to a moving vehicle or platform.
 
 ---
 
-## CameraRelativePresence
+## CameraRelativeBehaviour
 
 A character is positioned at an authored offset from the active camera. Useful for first-person games or VR, where characters should always appear at a consistent position in front of the player regardless of where they are in the world.
 
 **How it works:**
-- `OnConversationBegin()` resolves the current camera (via `Camera.main`) and spawns the character prefab.
+- `ResolvePresence()` resolves the current camera (via `Camera.main`) and spawns the character prefab.
 - The character's position is calculated from the camera's position and forward/right/up vectors using the authored offset values.
-- Position can be recalculated once at conversation start or updated each frame, depending on the **Update Mode** setting.
+- Position can be set once at conversation start or updated every frame, depending on the **Positioning Mode** setting.
 - `OnConversationEnd()` releases the spawned instance.
 
-**Inspector fields:**
+**Inspector fields — per slot:**
 
 | Field | Description |
 |---|---|
 | **Forward Distance** | How far in front of the camera the character appears, in metres. |
 | **Lateral Offset** | Left/right offset from camera centre. Negative values place the character to the left. |
-| **Height Offset** | Up/down offset from camera height. |
-| **Update Mode** | `Once` — position is set at conversation start only. `EveryFrame` — position tracks the camera continuously. |
+| **Height** | Up/down offset from camera position. |
+
+**Inspector fields — shared:**
+
+| Field | Description |
+|---|---|
+| **Positioning Mode** | `Once` — position is set at spawn only. `Continuous` — position tracks the camera every frame via a runtime component. |
 
 **Use when:** the game is first-person or VR, or whenever a character's screen position should stay fixed relative to the player's view rather than a world coordinate.
 
 ---
 
-## AnimatorPresence
+## ConvoCoreAnimatorBehaviour
 
-A scene-resident character with an Animator. The presence drives Animator parameters as part of the expression system, bridging ConvoCore's expression pipeline into an existing animation state machine.
+A scene-resident character with an Animator. The behaviour resolves the character via `ConvoCoreSceneCharacterRegistry` and returns it to the expression pipeline. Expression application is handled by a `ConvoCoreAnimatorDisplay` component on the scene object.
 
 **How it works:**
-- `ResolvePresence()` looks up the character via `ConvoCoreSceneCharacterRegistry` and returns its `IConvoCoreCharacterDisplay` component.
-- The display component on the character must be `ConvoCoreAnimatorDisplay` (or a compatible implementation) for Animator parameter driving to work.
-- `OnConversationEnd()` is a no-op — the character's Animator state is left as-is.
+- `ResolvePresence()` looks up the character via `ConvoCoreSceneCharacterRegistry` and returns its `IConvoCoreCharacterDisplay` component. This is identical to `ExternalBehaviour`.
+- `OnConversationEnd()` is a no-op.
 
-**Inspector fields:** None beyond the base class. All Animator parameter configuration lives on the `ConvoCoreAnimatorDisplay` component on the character prefab.
+**Inspector fields:** None beyond the base class.
+
+`ConvoCoreAnimatorBehaviour` is a named variant of `ExternalBehaviour` provided as a clarity signal in the Project panel. All Animator parameter configuration lives on the `ConvoCoreAnimatorDisplay` component on the character prefab.
 
 **Use when:** characters are fully animated scene objects with existing Animator controllers, and you want ConvoCore to set Animator parameters in response to dialogue expression changes.
 
 :::note
-`AnimatorPresence` and `ExternalPresence` both resolve scene-resident characters via the registry and return their `IConvoCoreCharacterDisplay`. The difference is in lifecycle hooks: `AnimatorPresence` is designed to add `OnConversationBegin` and `OnConversationEnd` behaviour specific to Animator-driven characters — for example, setting an Animator parameter to a "talking" state at conversation start and returning to idle at the end.
-
-If your characters only need expression updates per line and no conversation-level Animator transitions, `ExternalPresence` is sufficient. Use `AnimatorPresence` when you need the conversation lifecycle hooks wired to Animator state.
+Both `ConvoCoreAnimatorBehaviour` and `ExternalBehaviour` resolve scene-resident characters via the registry and return their `IConvoCoreCharacterDisplay`. Use `ConvoCoreAnimatorBehaviour` as a clarity signal that the character uses `ConvoCoreAnimatorDisplay`; use `ExternalBehaviour` when the character uses any other display component.
 :::
 
 ---
 
-## TransformLerpPresence
+## TransformLerpBehaviour
 
-A scene-resident character moves to an authored offset position at conversation start and returns to their original position at conversation end. Useful for an NPC who turns to face the player or walks a few steps to a conversation spot.
+A scene-resident character moves to an authored target position when a conversation begins and returns to their original position when it ends. Useful for an NPC who turns to face the player or walks a few steps to a conversation spot.
 
 **How it works:**
-- `OnConversationBegin()` stores the character's current world position and rotation, then smoothly interpolates to the authored target position over a configurable duration.
-- `ResolvePresence()` looks up the character via registry and returns its `IConvoCoreCharacterDisplay`.
+- `ResolvePresence()` looks up the character via the registry, records their current world position and rotation, then smoothly interpolates to the authored target over a configurable duration using a runtime `ConvoCoreTransformLerp` component.
+- Slots are matched by `CharacterId` first; index is used as a fallback.
 - `OnConversationEnd()` interpolates the character back to their original position and rotation.
 
-**Inspector fields:**
+**Inspector fields — per slot:**
 
 | Field | Description |
 |---|---|
-| **Character Registry Id** | The registry ID of the scene character to move. |
+| **Scene Character Id** | The registry ID of the scene character to move. |
 | **Target Position** | The world position to move to at conversation start. |
-| **Target Rotation** | The world rotation to adopt at conversation start. |
-| **Move Duration** | Time in seconds for the lerp, applied both at start and end of the conversation. |
+| **Target Euler Rotation** | The world rotation to adopt at conversation start, in Euler angles. |
+| **Duration** | Time in seconds for the lerp. `0` = instant. Applied both at conversation start and end. |
+| **Animator Parameter Name** | Optional. Animator parameter to set at the start of movement. Leave empty to skip. |
+| **Parameter Type** | `Bool`, `Int`, `Float`, or `Trigger`. |
+| **Bool / Int / Float Value** | Value to apply depending on the selected parameter type. |
+| **Completion Trigger Name** | Optional. Animator trigger fired when the lerp completes. |
 
 **Use when:** an NPC should step forward or turn to face the player at conversation start, then return to their idle position when the conversation ends.
 
 ---
 
-## SequencedPresence
+## SequencedBehaviour
 
-Wraps a list of other presence assets and selects between them based on a conversation index or a named condition. Useful when the same scene has multiple dialogue modes with different placement needs — for example, most conversations use `ExternalPresence`, but a specific cutscene conversation uses `WorldPointPresence`.
+Wraps a list of other behaviour assets and selects between them based on a round-robin counter. Useful when the same scene has multiple dialogue modes with different placement needs.
 
 **How it works:**
-- At conversation start, `SequencedPresence` evaluates its selection condition and delegates all `OnConversationBegin()`, `ResolvePresence()`, and `OnConversationEnd()` calls to the selected sub-presence.
-- The selected sub-presence operates exactly as if it were assigned directly.
+- At `OnConversationBegin()`, `SequencedBehaviour` increments an internal counter and selects the sub-behaviour at `counter % behaviours.Count`. All lifecycle calls are forwarded exclusively to the selected sub-behaviour, which operates exactly as if it were assigned directly.
 
 **Inspector fields:**
 
 | Field | Description |
 |---|---|
-| **Presences** | A list of `ConvoCoreCharacterPresence` assets to choose from. |
-| **Selection Mode** | `ByIndex` — selects a fixed entry from the list by index. |
-| **Index** | The list index to use when `Selection Mode` is `ByIndex`. |
+| **Behaviours** | An ordered list of `ConvoCoreCharacterBehaviour` assets to cycle through. Wraps around when the list is exhausted. |
 
-**Use when:** the same character has different placement behaviour depending on which conversation is active, or when you want to swap presence types at runtime without changing the assignment on `ConvoCoreSampleUI3D`.
+**Use when:** the same character has different placement behaviour depending on which conversation is active, or when you want to swap behaviour types between runs without changing the configuration entry.
 
 ---
 
-## Writing a Custom Presence
+## Writing a Custom Behaviour
 
-Extend `ConvoCoreCharacterPresence` (a `ScriptableObject`) to create your own placement strategy:
+Extend `ConvoCoreCharacterBehaviour` (a `ScriptableObject`) to create your own placement strategy:
 
 ```csharp
 using WolfstagInteractive.ConvoCore;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "ConvoCore/Presence/My Custom Presence")]
-public class MyCustomPresence : ConvoCoreCharacterPresence
+[CreateAssetMenu(menuName = "ConvoCore/Character Behaviour/My Custom Behaviour")]
+public class MyCustomBehaviour : ConvoCoreCharacterBehaviour
 {
     public override IConvoCoreCharacterDisplay ResolvePresence(
         PrefabCharacterRepresentationData representation,
-        CharacterPresenceContext context,
+        CharacterBehaviourContext context,
         ConvoCorePrefabRepresentationSpawner spawner)
     {
         // Spawn, locate, or return a character display here.
-        // Return null to skip expression application for this character.
+        // Return null to skip expression application for this character on this line.
 
-        // expressionId comes from the dialogue line at runtime.
-        // Pass it through from ResolvePresence's caller rather than hard-coding null.
-        // Passing null here is shown for brevity only -- in a real implementation, use
-        // the expression ID from the dialogue line data.
-        var display = spawner.ResolveCharacter(
+        // context.CharacterId            — CharacterID from the conversation participant
+        // context.CharacterIndex         — zero-based index of this character on the current line
+        // context.ConfigurationEntryName — which configuration entry the UI resolved for this line
+        // context.DisplayOptions         — per-line display overrides (scale, flip), or null
+
+        var display = spawner.SpawnAndBind(
             representation,
-            context.DisplayOptions?.SelectedExpressionId ?? string.Empty,
-            context.DisplayOptions,
-            myTransform);
+            context.ConfigurationEntryName,
+            context.CharacterId,
+            mySpawnTransform);
         return display;
     }
 
     public override void OnConversationBegin()
     {
-        // Optional. Set up scene objects, markers, or state here.
+        // Optional. Set up scene objects, markers, or runtime state here.
     }
 
     public override void OnConversationEnd()
     {
-        // Optional. Release spawned instances, destroy markers, restore state here.
+        // Optional. Release spawned instances, destroy markers, restore scene state here.
     }
 }
 ```
 
-Because presences are ScriptableObjects, they cannot hold direct references to scene objects. Use `ConvoCoreSceneCharacterRegistry` to resolve scene objects by ID at runtime, or store authored data (positions, offsets, IDs) as fields on the ScriptableObject and resolve live references inside `OnConversationBegin()`.
+Because character behaviours are ScriptableObjects, they cannot hold direct serialized references to scene objects. Use `ConvoCoreSceneCharacterRegistry` or `ConvoCoreSpawnPointRegistry` to resolve scene objects by ID at runtime, or store authored data (positions, offsets, IDs) as serialized fields and resolve live references inside `OnConversationBegin()`.
 
 ---
 
@@ -225,5 +252,5 @@ Because presences are ScriptableObjects, they cannot hold direct references to s
 
 | I want to… | Go here |
 |---|---|
-| Set up the 3D UI to use a presence | [3D UI →](3d-ui) |
+| Set up the 3D UI to use character behaviours | [3D UI →](3d-ui) |
 | Configure expression driving on a prefab | [Display Components →](display-components) |

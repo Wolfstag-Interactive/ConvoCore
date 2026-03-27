@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace WolfstagInteractive.ConvoCore
@@ -41,6 +42,17 @@ namespace WolfstagInteractive.ConvoCore
         public abstract void DrawInlineEditorPreview(object expressionMapping, Rect position);
 
         public abstract float GetPreviewHeight();
+
+        /// <summary>
+        /// Returns the named configuration entry options exposed by this representation.
+        /// Override to opt in to the <c>Participant Configuration Defaults</c> system on
+        /// <see cref="ConvoCoreConversationData"/>. The inspector will show one dropdown slot
+        /// per participant whose profile contains a representation that returns non-null here.
+        ///
+        /// Return <c>null</c> (default) to opt out entirely — no slot will be generated for
+        /// participants whose representations all return <c>null</c>.
+        /// </summary>
+        public virtual IReadOnlyList<string> GetConfigurationEntryNames() => null;
     }
     
     /// <summary>

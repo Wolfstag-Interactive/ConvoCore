@@ -15,8 +15,30 @@ namespace WolfstagInteractive.ConvoCore
         menuName = "ConvoCore/Conversation Dialogue Object")]
     public partial class ConvoCoreConversationData : ScriptableObject
     {
+        /// <summary>Human-readable title, separate from the asset file name.</summary>
+        public string ConversationTitle;
+
         public List<ConvoCoreCharacterProfileBaseData> ConversationParticipantProfiles =
             new List<ConvoCoreCharacterProfileBaseData>();
+
+        [Tooltip("Per-participant default configuration entry names for prefab representations. " +
+                 "These override the representation asset's default entry when no per-line entry name is set.")]
+        public List<ParticipantConfigurationSlot> ParticipantConfigurationDefaults =
+            new List<ParticipantConfigurationSlot>();
+
+        /// <summary>
+        /// Returns the default configuration entry name for a participant, as set in
+        /// <see cref="ParticipantConfigurationDefaults"/>. Returns null if no slot is configured
+        /// for the given character ID.
+        /// </summary>
+        public string GetParticipantDefaultEntry(string characterId)
+        {
+            if (string.IsNullOrEmpty(characterId)) return null;
+            foreach (var slot in ParticipantConfigurationDefaults)
+                if (slot.CharacterID == characterId && !string.IsNullOrEmpty(slot.DefaultConfigurationEntryName))
+                    return slot.DefaultConfigurationEntryName;
+            return null;
+        }
 
         public List<DialogueLineInfo> DialogueLines; // Metadata for all dialogues in the YAML
 
@@ -35,9 +57,6 @@ namespace WolfstagInteractive.ConvoCore
         public string ConversationKey; // Add this field to hold the key
 
         // ----- GUID Identity -----
-
-        /// <summary>Human-readable title, separate from the asset file name.</summary>
-        public string ConversationTitle;
 
         [SerializeField, HideInInspector] private string _conversationGuid;
 

@@ -1,17 +1,23 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace WolfstagInteractive.ConvoCore
 {
     /// <summary>
-    /// Defines how a prefab-based character should be sourced and displayed by ConvoCore.
+    /// Defines how a prefab-based character is displayed in a ConvoCore conversation.
     ///
-    /// Two source modes are supported:
-    /// <list type="bullet">
-    ///   <item><see cref="CharacterSourceMode.SpawnFromPrefab"/> -- ConvoCore spawns and pools the prefab. ConvoCore owns the lifecycle.</item>
-    ///   <item><see cref="CharacterSourceMode.SceneResident"/> -- ConvoCore locates an already-existing scene instance via a <see cref="ConvoCoreSceneCharacterRegistry"/>. ConvoCore never spawns, pools, or destroys the instance.</item>
-    /// </list>
+    /// A <b>shared expression pool</b> lives at the asset level. Individual
+    /// <see cref="PrefabCharacterConfigurationEntry"/> items can optionally override it
+    /// with entry-specific expression mappings.
+    ///
+    /// Each configuration entry names a prefab to use as a spawn fallback when the character
+    /// is not found in the scene registry, and the <see cref="ConvoCoreCharacterBehaviour"/>
+    /// ScriptableObjects that govern world-space placement.
+    ///
+    /// At runtime, ConvoCore always checks the scene registry by character ID first before
+    /// spawning from the entry prefab. No explicit source-mode flag is required.
     /// </summary>
     [HelpURL("https://docs.wolfstaginteractive.com/convocore/api/classWolfstagInteractive_1_1ConvoCore_1_1PrefabCharacterRepresentationData.html")]
     [CreateAssetMenu(fileName = "PrefabCharacterRepresentation",
@@ -21,28 +27,90 @@ namespace WolfstagInteractive.ConvoCore
         , IDialogueLineEditorCustomizable
 #endif
     {
-        [Header("Source Mode")]
-        [Tooltip("SpawnFromPrefab: ConvoCore instantiates and pools the prefab. ConvoCore owns the lifecycle.\n\nSceneResident: ConvoCore locates a pre-existing scene instance via a registry. ConvoCore never spawns or destroys the instance.")]
-        public CharacterSourceMode SourceMode = CharacterSourceMode.SpawnFromPrefab;
+        [Header("Shared Expression Pool")]
+        [Tooltip("Expressions shared across all configuration entries. An entry's own ExpressionOverrides take priority when the ID is found there.")]
+        [FormerlySerializedAs("ExpressionMappings")]
+        public List<PrefabExpressionMapping> SharedExpressionMappings = new();
 
-        [Tooltip("Required when Source Mode is SpawnFromPrefab. The prefab to instantiate. Must have an IConvoCoreCharacterDisplay component on it or a child.")]
-        public GameObject CharacterPrefab;
+        [Header("Configuration Entries")]
+        [Tooltip("Named sets of prefab, presence, and optional expression overrides. Exactly one entry should be marked IsDefault.")]
+        public List<PrefabCharacterConfigurationEntry> ConfigurationEntries = new();
 
-        [Tooltip("Required when Source Mode is SceneResident. Must match the Character ID on the ConvoCoreSceneCharacterRegistrant component in the scene.")]
-        public string SceneCharacterId;
+        // ------------------------------------------------------------------
+        // Entry resolution
+        // ------------------------------------------------------------------
 
-        [Header("Expressions")]
-        public List<PrefabExpressionMapping> ExpressionMappings = new();
+        /// <summary>
+        /// Returns the entry marked <see cref="PrefabCharacterConfigurationEntry.IsDefault"/>,
+        /// or the first entry if none is marked. Returns null when the list is empty.
+        /// </summary>
+        public PrefabCharacterConfigurationEntry GetDefaultEntry() =>
+            ConfigurationEntries.FirstOrDefault(e => e.IsDefault)
+            ?? ConfigurationEntries.FirstOrDefault();
 
-        // GUID catalog for editor selectors
-        public IReadOnlyList<(string id, string name)> GetExpressionCatalog() =>
-            ExpressionMappings.Select(m => (ExpressionId: m.ExpressionID, m.DisplayName)).ToList();
-
-        public bool TryResolveById(string id, out PrefabExpressionMapping mapping)
+        /// <summary>
+        /// Returns the entry whose <see cref="PrefabCharacterConfigurationEntry.EntryName"/>
+        /// matches <paramref name="entryName"/>. Falls back to <see cref="GetDefaultEntry"/>
+        /// when the name is null/empty or no match is found.
+        /// </summary>
+        public PrefabCharacterConfigurationEntry GetEntry(string entryName)
         {
-            mapping = ExpressionMappings.FirstOrDefault(m => m.ExpressionID == id);
+            if (string.IsNullOrEmpty(entryName)) return GetDefaultEntry();
+            return ConfigurationEntries.FirstOrDefault(e => e.EntryName == entryName)
+                   ?? GetDefaultEntry();
+        }
+
+        // ------------------------------------------------------------------
+        // Expression resolution
+        // ------------------------------------------------------------------
+
+        /// <summary>
+        /// Resolves an expression mapping for the given ID.
+        /// Entry-level overrides are checked first; the shared pool is the fallback.
+        /// Returns false when neither source contains the ID.
+        /// </summary>
+        public bool TryResolveExpression(string id, string entryName, out PrefabExpressionMapping mapping)
+        {
+            var entry = GetEntry(entryName);
+            if (entry?.ExpressionOverrides?.Count > 0)
+            {
+                mapping = entry.ExpressionOverrides.FirstOrDefault(m => m.ExpressionID == id);
+                if (mapping != null) return true;
+            }
+
+            mapping = SharedExpressionMappings.FirstOrDefault(m => m.ExpressionID == id);
             return mapping != null;
         }
+
+        /// <summary>Backward-compatible lookup against the shared pool only.</summary>
+        public bool TryResolveById(string id, out PrefabExpressionMapping mapping) =>
+            TryResolveExpression(id, null, out mapping);
+
+        /// <summary>
+        /// Returns the merged expression catalog for the default entry (entry overrides
+        /// first, then shared pool). Used by editor dropdowns.
+        /// </summary>
+        public IReadOnlyList<(string id, string name)> GetExpressionCatalog()
+        {
+            var result = new List<(string, string)>();
+            var seen   = new HashSet<string>();
+
+            var defaultEntry = GetDefaultEntry();
+            if (defaultEntry?.ExpressionOverrides != null)
+                foreach (var m in defaultEntry.ExpressionOverrides)
+                    if (seen.Add(m.ExpressionID))
+                        result.Add((m.ExpressionID, m.DisplayName));
+
+            foreach (var m in SharedExpressionMappings)
+                if (seen.Add(m.ExpressionID))
+                    result.Add((m.ExpressionID, m.DisplayName));
+
+            return result;
+        }
+
+        // ------------------------------------------------------------------
+        // CharacterRepresentationBase overrides
+        // ------------------------------------------------------------------
 
         public override void ApplyExpression(string expressionId, ConvoCore runtime,
             ConvoCoreConversationData conversation, int lineIndex, IConvoCoreCharacterDisplay display)
@@ -77,30 +145,37 @@ namespace WolfstagInteractive.ConvoCore
 
         public override object GetExpressionMappingByGuid(string expressionGuid)
         {
-            if (string.IsNullOrEmpty(expressionGuid))
-                return null;
-
-            return ExpressionMappings.FirstOrDefault(m => m.ExpressionID == expressionGuid);
+            if (string.IsNullOrEmpty(expressionGuid)) return null;
+            return SharedExpressionMappings.FirstOrDefault(m => m.ExpressionID == expressionGuid);
         }
 
         // Prefab flow does not use ProcessExpression directly; the spawner binds and applies by GUID.
         public override object ProcessExpression(string expressionId) => expressionId;
 
+        /// <inheritdoc/>
+        public override IReadOnlyList<string> GetConfigurationEntryNames() =>
+            ConfigurationEntries.Count > 0
+                ? ConfigurationEntries.ConvertAll(e => e.EntryName)
+                : null;
+
 #if UNITY_EDITOR
-        public override float GetPreviewHeight() => CharacterPrefab ? 80f : 0f;
+        public override float GetPreviewHeight()
+        {
+            var entry = GetDefaultEntry();
+            return entry?.CharacterPrefab ? 80f : 0f;
+        }
 
         public override void DrawInlineEditorPreview(object mappingData, Rect position)
         {
-            if (!CharacterPrefab)
+            var entry = GetDefaultEntry();
+            if (entry?.CharacterPrefab == null)
             {
-                UnityEditor.EditorGUI.LabelField(position, SourceMode == CharacterSourceMode.SceneResident
-                    ? "Scene Resident (no prefab preview)"
-                    : "No Prefab");
+                UnityEditor.EditorGUI.LabelField(position, "No Prefab (assign one in a Configuration Entry)");
                 return;
             }
 
-            var tex = UnityEditor.AssetPreview.GetAssetPreview(CharacterPrefab)
-                      ?? UnityEditor.AssetPreview.GetMiniThumbnail(CharacterPrefab);
+            var tex = UnityEditor.AssetPreview.GetAssetPreview(entry.CharacterPrefab)
+                      ?? UnityEditor.AssetPreview.GetMiniThumbnail(entry.CharacterPrefab);
 
             if (!tex)
             {
@@ -121,7 +196,7 @@ namespace WolfstagInteractive.ConvoCore
 
             if (w <= 0f || h <= 0f) return inner;
 
-            float ar = w / h;
+            float ar      = w / h;
             float targetW = inner.width;
             float targetH = targetW / ar;
             if (targetH > inner.height)
@@ -130,7 +205,7 @@ namespace WolfstagInteractive.ConvoCore
                 targetW = targetH * ar;
             }
 
-            float x = inner.x + (inner.width - targetW) * 0.5f;
+            float x = inner.x + (inner.width  - targetW) * 0.5f;
             float y = inner.y + (inner.height - targetH) * 0.5f;
             return new Rect(x, y, targetW, targetH);
         }
@@ -144,46 +219,72 @@ namespace WolfstagInteractive.ConvoCore
 
         private void OnValidate()
         {
+            // Validate shared expression pool
             var used = new HashSet<string>();
-            foreach (var m in ExpressionMappings)
+            foreach (var m in SharedExpressionMappings)
             {
                 if (m == null) continue;
                 m.EnsureValidId(used);
                 m.EnsureValidBasics();
             }
 
-#if UNITY_EDITOR
-            switch (SourceMode)
+            // Validate each entry's overrides and enforce single default
+            bool foundDefault = false;
+            foreach (var entry in ConfigurationEntries)
             {
-                case CharacterSourceMode.SpawnFromPrefab when CharacterPrefab == null:
-                    Debug.LogWarning($"[PrefabCharacterRepresentationData] '{name}' is set to SpawnFromPrefab but has no CharacterPrefab assigned.");
-                    break;
-                case CharacterSourceMode.SceneResident when string.IsNullOrEmpty(SceneCharacterId):
-                    Debug.LogWarning($"[PrefabCharacterRepresentationData] '{name}' is set to SceneResident but has no SceneCharacterId assigned.");
-                    break;
-            }
+                if (entry == null) continue;
+
+                if (string.IsNullOrEmpty(entry.EntryName))
+                    entry.EntryName = "Unnamed Entry";
+
+                var entryUsed = new HashSet<string>();
+                foreach (var m in entry.ExpressionOverrides)
+                {
+                    if (m == null) continue;
+                    m.EnsureValidId(entryUsed);
+                    m.EnsureValidBasics();
+                }
+
+                if (entry.IsDefault)
+                {
+                    if (foundDefault)
+                    {
+                        entry.IsDefault = false;
+#if UNITY_EDITOR
+                        Debug.LogWarning($"[PrefabCharacterRepresentationData] '{name}' has multiple default entries. Only the first will be treated as default.");
 #endif
+                    }
+                    else
+                    {
+                        foundDefault = true;
+                    }
+                }
+            }
         }
     }
 
     /// <summary>
-    /// Determines how ConvoCore resolves the live <see cref="IConvoCoreCharacterDisplay"/>
-    /// instance for a <see cref="PrefabCharacterRepresentationData"/> asset.
+    /// A named configuration for a prefab character: the prefab to spawn as a fallback when the
+    /// character is not found in the scene registry, the character behaviour ScriptableObjects that
+    /// control world-space placement, and any entry-specific expression overrides.
     /// </summary>
-    public enum CharacterSourceMode
+    [System.Serializable]
+    public class PrefabCharacterConfigurationEntry
     {
-        /// <summary>
-        /// ConvoCore instantiates the prefab via the pool and owns the full lifecycle.
-        /// The character is spawned when needed and returned to the pool when released.
-        /// </summary>
-        SpawnFromPrefab,
+        [Tooltip("Unique human-readable name for this configuration (shown in dropdowns and inspector selectors).")]
+        public string EntryName = "Default";
 
-        /// <summary>
-        /// ConvoCore locates an already-existing scene instance via a <see cref="ConvoCoreSceneCharacterRegistry"/>.
-        /// ConvoCore never spawns, pools, or destroys the instance.
-        /// The developer is fully responsible for the character's lifecycle.
-        /// </summary>
-        SceneResident
+        [Tooltip("Marks this as the default entry. Only one entry per asset should have this enabled; if none is marked, the first entry is used as the default.")]
+        public bool IsDefault;
+
+        [Tooltip("Prefab spawned when the character is not found in the scene registry. Must have an IConvoCoreCharacterDisplay component on it or a child.")]
+        public GameObject CharacterPrefab;
+
+        [Tooltip("Character Behaviour ScriptableObjects that control how and where this character is placed in 3D world-space. Behaviours are applied in list order.")]
+        public List<ConvoCoreCharacterBehaviour> CharacterBehaviours = new();
+
+        [Tooltip("Entry-specific expression mappings. These take priority over SharedExpressionMappings on the representation asset. When empty or no match is found, the shared pool is used.")]
+        public List<PrefabExpressionMapping> ExpressionOverrides = new();
     }
 
     [System.Serializable]

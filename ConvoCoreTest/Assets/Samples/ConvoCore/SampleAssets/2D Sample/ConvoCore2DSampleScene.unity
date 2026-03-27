@@ -402,13 +402,14 @@ MonoBehaviour:
   Input:
     rid: 7582114588999024643
   ConversationUI: {fileID: 8703669978597215545}
+  _debugLogLines: 0
   references:
     version: 2
     RefIds:
     - rid: 7582114588999024643
       type: {class: SingleConversationInput, ns: WolfstagInteractive.ConvoCore, asm: ConvoCore}
       data:
-        Conversation: {fileID: 11400000, guid: 0a37cee1b6901ff4e8a11815f11e990c, type: 2}
+        Conversation: {fileID: 11400000, guid: 939c62473d966244bab0eb28ef86023a, type: 2}
 --- !u!4 &639238755
 Transform:
   m_ObjectHideFlags: 0
@@ -941,7 +942,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2475525088512401250, guid: 37defd90b8cf4c644b832efe22df606d, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 191.49956
+      value: 191.49994
       objectReference: {fileID: 0}
     - target: {fileID: 2674301797292854259, guid: 37defd90b8cf4c644b832efe22df606d, type: 3}
       propertyPath: m_AnchorMax.x
@@ -1055,6 +1056,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4438968453605833816, guid: 37defd90b8cf4c644b832efe22df606d, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4496239645125178625, guid: 37defd90b8cf4c644b832efe22df606d, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1095,12 +1100,12 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: 37defd90b8cf4c644b832efe22df606d, type: 3}
 --- !u!114 &8703669978597215545 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1961101549865962711, guid: 37defd90b8cf4c644b832efe22df606d, type: 3}
+  m_CorrespondingSourceObject: {fileID: 1896093986946830300, guid: 37defd90b8cf4c644b832efe22df606d, type: 3}
   m_PrefabInstance: {fileID: 8703669978597215544}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5413f2d59be099247a912f4b4417ff81, type: 3}
+  m_Script: {fileID: 11500000, guid: d690ddf67d383e34da98f159ac32fe23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

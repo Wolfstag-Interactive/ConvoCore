@@ -1,5 +1,6 @@
 using System;
 using UnityEditor;
+using UnityEditorInternal;
 using UnityEngine;
 using System.IO;
 using Object = UnityEngine.Object;
@@ -28,6 +29,8 @@ namespace WolfstagInteractive.ConvoCore.Editor
         private List<string> _cachedYamlLocales;
         private double _lastYamlCheckTime;
         private const double YAML_CHECK_INTERVAL = 1.0;
+
+        private ReorderableList _participantConfigList;
         private void OnEnable()
         {
             _excelFoldout = EditorPrefs.GetBool("ConvoCore.ExcelSourceFoldout." + target.GetInstanceID(), false);
@@ -71,6 +74,9 @@ namespace WolfstagInteractive.ConvoCore.Editor
             _sourceExcelAsset         = serializedObject.FindProperty("SourceExcelAsset");
             _sourceExcelAssetPath     = serializedObject.FindProperty("SourceExcelAssetPath");
 
+            // Auto-sync ParticipantConfigurationDefaults before drawing.
+            SyncParticipantConfigurationDefaults();
+
             // Track if any changes are made for validation
             EditorGUI.BeginChangeCheck();
 
@@ -80,13 +86,23 @@ namespace WolfstagInteractive.ConvoCore.Editor
 
             do
             {
-                // Skip custom-handled properties
-                if (property.name == "FilePath" ||
+                // Skip custom-handled and internal properties
+                if (property.name == "m_Script" ||
+                    property.name == "FilePath" ||
                     property.name == "ConversationKey" ||
                     property.name == "ConversationYaml" ||
                     property.name == "SourceYaml" ||
-                    property.name == "SourceYamlAssetPath")
+                    property.name == "SourceYamlAssetPath" ||
+                    property.name == "ParticipantConfigurationDefaults")
                     continue;
+
+                if (property.name == "ConversationParticipantProfiles")
+                {
+                    // Draw participants normally, then inject configuration section directly after.
+                    EditorGUILayout.PropertyField(property, true);
+                    DrawParticipantConfigurationSection();
+                    continue;
+                }
 
                 if (property.name == "DialogueLines" || property.name == "dialogueLines")
                 {
@@ -99,7 +115,7 @@ namespace WolfstagInteractive.ConvoCore.Editor
                 }
             }
             while (property.NextVisible(false));
-            
+
             // If any changes were made, validate the data
             if (EditorGUI.EndChangeCheck())
             {
@@ -182,6 +198,118 @@ namespace WolfstagInteractive.ConvoCore.Editor
             }
             GUI.backgroundColor = prevColor;
         }
+
+        // ------------------------------------------------------------------
+        // Participant Configuration Defaults
+        // ------------------------------------------------------------------
+
+        /// <summary>
+        /// Returns the CharacterIDs of all participants that have at least one representation
+        /// returning non-null from <see cref="CharacterRepresentationBase.GetConfigurationEntryNames"/>,
+        /// in profile-list order.
+        /// </summary>
+        private List<string> GetConfigurableParticipantIds()
+        {
+            var convoData = (ConvoCoreConversationData)target;
+            var ids = new List<string>();
+            foreach (var profile in convoData.ConversationParticipantProfiles)
+            {
+                if (profile == null || string.IsNullOrEmpty(profile.CharacterID)) continue;
+                bool hasEntries = profile.Representations.Any(p =>
+                    p?.CharacterRepresentationType?.GetConfigurationEntryNames() != null);
+                if (hasEntries && !ids.Contains(profile.CharacterID))
+                    ids.Add(profile.CharacterID);
+            }
+            return ids;
+        }
+
+        /// <summary>
+        /// Ensures <c>ParticipantConfigurationDefaults</c> has exactly one slot per configurable
+        /// participant, in participant-list order, with existing entry-name values preserved.
+        /// Uses serialized-property operations so changes integrate with Unity's undo system.
+        /// </summary>
+        private void SyncParticipantConfigurationDefaults()
+        {
+            var targetIds = GetConfigurableParticipantIds();
+            var arrayProp = serializedObject.FindProperty("ParticipantConfigurationDefaults");
+
+            // Build current state.
+            var currentIds = new List<string>(arrayProp.arraySize);
+            for (int i = 0; i < arrayProp.arraySize; i++)
+            {
+                var idProp = arrayProp.GetArrayElementAtIndex(i).FindPropertyRelative("CharacterID");
+                currentIds.Add(idProp?.stringValue ?? "");
+            }
+
+            // Early-out when nothing changed.
+            if (currentIds.Count == targetIds.Count && currentIds.SequenceEqual(targetIds))
+                return;
+
+            // Cache existing entry-name values so they survive a rewrite.
+            var cache = new Dictionary<string, string>();
+            for (int i = 0; i < arrayProp.arraySize; i++)
+            {
+                var elem   = arrayProp.GetArrayElementAtIndex(i);
+                var idStr  = elem.FindPropertyRelative("CharacterID")?.stringValue ?? "";
+                var entryStr = elem.FindPropertyRelative("DefaultConfigurationEntryName")?.stringValue ?? "";
+                if (!string.IsNullOrEmpty(idStr))
+                    cache[idStr] = entryStr;
+            }
+
+            // Rewrite the array in one pass.
+            arrayProp.arraySize = targetIds.Count;
+            for (int i = 0; i < targetIds.Count; i++)
+            {
+                var id   = targetIds[i];
+                var elem = arrayProp.GetArrayElementAtIndex(i);
+                elem.FindPropertyRelative("CharacterID").stringValue = id;
+                elem.FindPropertyRelative("DefaultConfigurationEntryName").stringValue =
+                    cache.TryGetValue(id, out var saved) ? saved : "";
+            }
+
+            serializedObject.ApplyModifiedPropertiesWithoutUndo();
+            // Rebuild list so element heights are recalculated.
+            _participantConfigList = null;
+        }
+
+        private void EnsureParticipantConfigList()
+        {
+            var prop = serializedObject.FindProperty("ParticipantConfigurationDefaults");
+            _participantConfigList = new ReorderableList(serializedObject, prop,
+                draggable: false, displayHeader: true,
+                displayAddButton: false, displayRemoveButton: false);
+
+            _participantConfigList.drawHeaderCallback = rect =>
+                EditorGUI.LabelField(rect, "Participant Configuration Defaults");
+
+            _participantConfigList.elementHeightCallback = index =>
+                EditorGUI.GetPropertyHeight(prop.GetArrayElementAtIndex(index), true) + 4f;
+
+            _participantConfigList.drawElementCallback = (rect, index, active, focused) =>
+            {
+                rect.y      += 2f;
+                rect.height -= 4f;
+                EditorGUI.PropertyField(rect, prop.GetArrayElementAtIndex(index), GUIContent.none, true);
+            };
+        }
+
+        private void DrawParticipantConfigurationSection()
+        {
+            var ids = GetConfigurableParticipantIds();
+            if (ids.Count == 0) return;
+
+            EditorGUILayout.Space(8f);
+            EditorGUILayout.LabelField("Participant Configuration Defaults", EditorStyles.boldLabel);
+            EditorGUILayout.HelpBox(
+                "One entry per participant whose representation supports named configuration entries. " +
+                "CharacterID is managed automatically. Use the dropdown to set a conversation-level default entry.",
+                MessageType.None);
+
+            if (_participantConfigList == null) EnsureParticipantConfigList();
+            _participantConfigList.DoLayoutList();
+        }
+
+        // ------------------------------------------------------------------
 
         private void DrawLanguagePreviewSection()
 {

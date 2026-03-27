@@ -442,7 +442,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Input:
     rid: 8883873189358993408
-  ConversationUI: {fileID: 0}
+  ConversationUI: {fileID: 1293074658488180137}
   _debugLogLines: 0
   references:
     version: 2
@@ -544,7 +544,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2475525088512401250, guid: 37defd90b8cf4c644b832efe22df606d, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 191.49939
+      value: 191.49998
       objectReference: {fileID: 0}
     - target: {fileID: 2674301797292854259, guid: 37defd90b8cf4c644b832efe22df606d, type: 3}
       propertyPath: m_AnchorMax.x
@@ -708,6 +708,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 37defd90b8cf4c644b832efe22df606d, type: 3}
+--- !u!114 &1293074658488180137 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1896093986946830300, guid: 37defd90b8cf4c644b832efe22df606d, type: 3}
+  m_PrefabInstance: {fileID: 1293074658488180136}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d690ddf67d383e34da98f159ac32fe23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5596723618039785590
 PrefabInstance:
   m_ObjectHideFlags: 0

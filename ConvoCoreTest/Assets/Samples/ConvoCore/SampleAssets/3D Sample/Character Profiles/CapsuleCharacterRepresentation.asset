@@ -12,8 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32c649907e2db674684d795adc21be6b, type: 3}
   m_Name: CapsuleCharacterRepresentation
   m_EditorClassIdentifier: 
-  CharacterPrefab: {fileID: 8448542266976499721, guid: ad1f6628ca68b4b489f10c3e64004bc4, type: 3}
-  ExpressionMappings:
-  - expressionID: 02a9878da6304d7197fd2d06d9280ba1
-    DisplayName: Default
-    ExpressionActions: []
+  SharedExpressionMappings: []
+  ConfigurationEntries:
+  - EntryName: Unnamed Entry
+    IsDefault: 0
+    CharacterPrefab: {fileID: 8448542266976499721, guid: ad1f6628ca68b4b489f10c3e64004bc4, type: 3}
+    CharacterBehaviours:
+    - {fileID: 0}
+    ExpressionOverrides: []

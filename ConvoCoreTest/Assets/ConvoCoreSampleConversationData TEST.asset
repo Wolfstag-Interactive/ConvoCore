@@ -12,10 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 458f605aa420aee44acb27c723607006, type: 3}
   m_Name: ConvoCoreSampleConversationData TEST
   m_EditorClassIdentifier: 
+  ConversationTitle: 
   ConversationParticipantProfiles:
   - {fileID: 11400000, guid: cca04ff07be1b1a478acbfc412045f2e, type: 2}
   - {fileID: 11400000, guid: 871b502169fa7f74e9d3d3a7b87b6503, type: 2}
   - {fileID: 11400000, guid: 086dcde826a3fcb4b903e747228d482b, type: 2}
+  ParticipantConfigurationDefaults: []
   DialogueLines:
   - ConversationID: Conversation1
     LineID: L_1d81acbabbaf
@@ -26,12 +28,14 @@ MonoBehaviour:
       SelectedRepresentationName: Sprites
       SelectedRepresentation: {fileID: 11400000, guid: cf61be94e9ae46b4da28bb23d0bfa60f, type: 2}
       SelectedExpressionId: 
+      SelectedConfigurationEntryName: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
         DisplayPosition: 0
+        SlotId: 
         PortraitScale: {x: 0, y: 0, z: 0}
         FullBodyScale: {x: 0, y: 0, z: 0}
     LocalizedDialogues:
@@ -82,12 +86,14 @@ MonoBehaviour:
       SelectedRepresentationName: Sprites
       SelectedRepresentation: {fileID: 11400000, guid: 5b9d585132056d5479e01ea082d4b2be, type: 2}
       SelectedExpressionId: 
+      SelectedConfigurationEntryName: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
         DisplayPosition: 0
+        SlotId: 
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
@@ -118,12 +124,14 @@ MonoBehaviour:
       SelectedRepresentationName: Sprites
       SelectedRepresentation: {fileID: 11400000, guid: cf61be94e9ae46b4da28bb23d0bfa60f, type: 2}
       SelectedExpressionId: 
+      SelectedConfigurationEntryName: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
         DisplayPosition: 0
+        SlotId: 
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
@@ -154,12 +162,14 @@ MonoBehaviour:
       SelectedRepresentationName: Sprites
       SelectedRepresentation: {fileID: 11400000, guid: 5b9d585132056d5479e01ea082d4b2be, type: 2}
       SelectedExpressionId: 
+      SelectedConfigurationEntryName: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
         DisplayPosition: 0
+        SlotId: 
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
@@ -190,12 +200,14 @@ MonoBehaviour:
       SelectedRepresentationName: Sprites
       SelectedRepresentation: {fileID: 11400000, guid: cf61be94e9ae46b4da28bb23d0bfa60f, type: 2}
       SelectedExpressionId: 
+      SelectedConfigurationEntryName: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
         DisplayPosition: 0
+        SlotId: 
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
@@ -226,12 +238,14 @@ MonoBehaviour:
       SelectedRepresentationName: Sprites
       SelectedRepresentation: {fileID: 11400000, guid: 5b9d585132056d5479e01ea082d4b2be, type: 2}
       SelectedExpressionId: 
+      SelectedConfigurationEntryName: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
         DisplayPosition: 0
+        SlotId: 
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
@@ -262,12 +276,14 @@ MonoBehaviour:
       SelectedRepresentationName: Sprites
       SelectedRepresentation: {fileID: 11400000, guid: 52e24c290fb50014b8aee74d5f275726, type: 2}
       SelectedExpressionId: 
+      SelectedConfigurationEntryName: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
         DisplayPosition: 0
+        SlotId: 
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
@@ -299,12 +315,14 @@ MonoBehaviour:
       SelectedRepresentationName: Sprites
       SelectedRepresentation: {fileID: 11400000, guid: cf61be94e9ae46b4da28bb23d0bfa60f, type: 2}
       SelectedExpressionId: 
+      SelectedConfigurationEntryName: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
         DisplayPosition: 0
+        SlotId: 
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
@@ -335,12 +353,14 @@ MonoBehaviour:
       SelectedRepresentationName: Sprites
       SelectedRepresentation: {fileID: 11400000, guid: 5b9d585132056d5479e01ea082d4b2be, type: 2}
       SelectedExpressionId: 
+      SelectedConfigurationEntryName: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
         DisplayPosition: 0
+        SlotId: 
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
@@ -371,12 +391,14 @@ MonoBehaviour:
       SelectedRepresentationName: Sprites
       SelectedRepresentation: {fileID: 11400000, guid: 5b9d585132056d5479e01ea082d4b2be, type: 2}
       SelectedExpressionId: 
+      SelectedConfigurationEntryName: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
         DisplayPosition: 0
+        SlotId: 
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
@@ -410,12 +432,14 @@ MonoBehaviour:
       SelectedRepresentationName: Sprites
       SelectedRepresentation: {fileID: 11400000, guid: 52e24c290fb50014b8aee74d5f275726, type: 2}
       SelectedExpressionId: 
+      SelectedConfigurationEntryName: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
         DisplayPosition: 0
+        SlotId: 
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
@@ -446,12 +470,14 @@ MonoBehaviour:
       SelectedRepresentationName: Sprites
       SelectedRepresentation: {fileID: 11400000, guid: cf61be94e9ae46b4da28bb23d0bfa60f, type: 2}
       SelectedExpressionId: 
+      SelectedConfigurationEntryName: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
         DisplayPosition: 0
+        SlotId: 
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
@@ -482,12 +508,14 @@ MonoBehaviour:
       SelectedRepresentationName: Sprites
       SelectedRepresentation: {fileID: 11400000, guid: 52e24c290fb50014b8aee74d5f275726, type: 2}
       SelectedExpressionId: 
+      SelectedConfigurationEntryName: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
         DisplayPosition: 0
+        SlotId: 
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
@@ -521,12 +549,14 @@ MonoBehaviour:
       SelectedRepresentationName: Sprites
       SelectedRepresentation: {fileID: 11400000, guid: 5b9d585132056d5479e01ea082d4b2be, type: 2}
       SelectedExpressionId: 
+      SelectedConfigurationEntryName: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
         DisplayPosition: 0
+        SlotId: 
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
@@ -557,12 +587,14 @@ MonoBehaviour:
       SelectedRepresentationName: Sprites
       SelectedRepresentation: {fileID: 11400000, guid: cf61be94e9ae46b4da28bb23d0bfa60f, type: 2}
       SelectedExpressionId: 
+      SelectedConfigurationEntryName: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
         DisplayPosition: 0
+        SlotId: 
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
@@ -593,12 +625,14 @@ MonoBehaviour:
       SelectedRepresentationName: Sprites
       SelectedRepresentation: {fileID: 11400000, guid: 52e24c290fb50014b8aee74d5f275726, type: 2}
       SelectedExpressionId: 
+      SelectedConfigurationEntryName: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
         DisplayPosition: 0
+        SlotId: 
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
@@ -629,12 +663,14 @@ MonoBehaviour:
       SelectedRepresentationName: Sprites
       SelectedRepresentation: {fileID: 11400000, guid: 5b9d585132056d5479e01ea082d4b2be, type: 2}
       SelectedExpressionId: 
+      SelectedConfigurationEntryName: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
         DisplayPosition: 0
+        SlotId: 
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
@@ -665,12 +701,14 @@ MonoBehaviour:
       SelectedRepresentationName: Sprites
       SelectedRepresentation: {fileID: 11400000, guid: cf61be94e9ae46b4da28bb23d0bfa60f, type: 2}
       SelectedExpressionId: 
+      SelectedConfigurationEntryName: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
         DisplayPosition: 0
+        SlotId: 
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
@@ -701,12 +739,14 @@ MonoBehaviour:
       SelectedRepresentationName: Sprites
       SelectedRepresentation: {fileID: 11400000, guid: 52e24c290fb50014b8aee74d5f275726, type: 2}
       SelectedExpressionId: 
+      SelectedConfigurationEntryName: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
         DisplayPosition: 0
+        SlotId: 
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
@@ -740,12 +780,14 @@ MonoBehaviour:
       SelectedRepresentationName: Sprites
       SelectedRepresentation: {fileID: 11400000, guid: 5b9d585132056d5479e01ea082d4b2be, type: 2}
       SelectedExpressionId: 
+      SelectedConfigurationEntryName: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
         DisplayPosition: 0
+        SlotId: 
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
@@ -779,12 +821,14 @@ MonoBehaviour:
       SelectedRepresentationName: Sprites
       SelectedRepresentation: {fileID: 11400000, guid: cf61be94e9ae46b4da28bb23d0bfa60f, type: 2}
       SelectedExpressionId: 
+      SelectedConfigurationEntryName: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
         DisplayPosition: 0
+        SlotId: 
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
@@ -815,12 +859,14 @@ MonoBehaviour:
       SelectedRepresentationName: Sprites
       SelectedRepresentation: {fileID: 11400000, guid: 52e24c290fb50014b8aee74d5f275726, type: 2}
       SelectedExpressionId: 
+      SelectedConfigurationEntryName: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
         DisplayPosition: 0
+        SlotId: 
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
@@ -853,12 +899,14 @@ MonoBehaviour:
       SelectedRepresentationName: Sprites
       SelectedRepresentation: {fileID: 11400000, guid: 5b9d585132056d5479e01ea082d4b2be, type: 2}
       SelectedExpressionId: 
+      SelectedConfigurationEntryName: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
         DisplayPosition: 0
+        SlotId: 
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
@@ -890,12 +938,14 @@ MonoBehaviour:
       SelectedRepresentationName: Sprites
       SelectedRepresentation: {fileID: 11400000, guid: cf61be94e9ae46b4da28bb23d0bfa60f, type: 2}
       SelectedExpressionId: 
+      SelectedConfigurationEntryName: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
         DisplayPosition: 0
+        SlotId: 
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
@@ -928,7 +978,6 @@ MonoBehaviour:
   SourceExcelAsset: {fileID: 0}
   SourceExcelAssetPath: 
   ConversationKey: Conversation1
-  ConversationTitle: 
   _conversationGuid: bde237e7-af83-4511-9d84-4ac0211d6853
 --- !u!49 &5429869513228387122
 TextAsset:

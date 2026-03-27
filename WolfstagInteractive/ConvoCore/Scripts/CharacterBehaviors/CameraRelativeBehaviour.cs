@@ -4,7 +4,7 @@ using UnityEngine;
 namespace WolfstagInteractive.ConvoCore
 {
     /// <summary>
-    /// Presence type that places characters at authored offsets relative to the active camera.
+    /// Character behaviour type that places characters at authored offsets relative to the active camera.
     ///
     /// Two positioning modes:
     /// <list type="bullet">
@@ -16,8 +16,8 @@ namespace WolfstagInteractive.ConvoCore
     /// Use case: first-person games, VR, or any setup where character position should be
     /// relative to the player's view.
     /// </summary>
-    [CreateAssetMenu(fileName = "CameraRelativePresence", menuName = "ConvoCore/Presence/Camera Relative Presence")]
-    public class CameraRelativePresence : ConvoCoreCharacterPresence
+    [CreateAssetMenu(fileName = "CameraRelativeBehaviour", menuName = "ConvoCore/Character Behaviour/Camera Relative Behaviour")]
+    public class CameraRelativeBehaviour : ConvoCoreCharacterBehaviour
     {
         public enum PositioningMode { Once, Continuous }
 
@@ -44,17 +44,18 @@ namespace WolfstagInteractive.ConvoCore
 
         public override IConvoCoreCharacterDisplay ResolvePresence(
             PrefabCharacterRepresentationData representation,
-            CharacterPresenceContext context,
+            CharacterBehaviourContext context,
             ConvoCorePrefabRepresentationSpawner spawner)
         {
             _spawner = spawner;
 
-            if (_cachedDisplays.TryGetValue(representation.name, out var cached))
+            var cacheKey = !string.IsNullOrEmpty(context.CharacterId) ? context.CharacterId : representation.name;
+            if (_cachedDisplays.TryGetValue(cacheKey, out var cached))
                 return cached;
 
             if (context.CharacterIndex >= _slots.Count)
             {
-                Debug.LogWarning($"[CameraRelativePresence] No slot defined for character index {context.CharacterIndex}.");
+                Debug.LogWarning($"[CameraRelativeBehaviour] No slot defined for character index {context.CharacterIndex}.");
                 return null;
             }
 
@@ -62,11 +63,11 @@ namespace WolfstagInteractive.ConvoCore
             var cam = Camera.main;
             if (cam == null)
             {
-                Debug.LogWarning("[CameraRelativePresence] No Camera.main found in the scene.");
+                Debug.LogWarning("[CameraRelativeBehaviour] No Camera.main found in the scene.");
                 return null;
             }
 
-            var display = spawner.SpawnAndBind(representation, null);
+            var display = spawner.SpawnAndBind(representation, context.ConfigurationEntryName, context.CharacterId, null);
             if (display == null) return null;
 
             var displayMono = display as MonoBehaviour;
@@ -82,7 +83,7 @@ namespace WolfstagInteractive.ConvoCore
                 displayMono.transform.position = ComputePosition(cam, slot);
             }
 
-            _cachedDisplays[representation.name] = display;
+            _cachedDisplays[cacheKey] = display;
             return display;
         }
 
@@ -103,8 +104,8 @@ namespace WolfstagInteractive.ConvoCore
     }
 
     /// <summary>
-    /// Added at runtime to spawned characters by <see cref="CameraRelativePresence"/>
-    /// when using <see cref="CameraRelativePresence.PositioningMode.Continuous"/> mode.
+    /// Added at runtime to spawned characters by <see cref="CameraRelativeBehaviour"/>
+    /// when using <see cref="CameraRelativeBehaviour.PositioningMode.Continuous"/> mode.
     /// Repositions the character relative to Camera.main every frame.
     /// </summary>
     public class ConvoCoreCameraRelativePosition : MonoBehaviour

@@ -3,20 +3,56 @@ using System.Collections.Generic;
 using UnityEngine;
 namespace WolfstagInteractive.ConvoCore
 {
+    /// <summary>
+    /// Controls when a character's prefab is resolved and placed during a conversation.
+    /// </summary>
+    public enum ConvoCoreSpawnTiming
+    {
+        /// <summary>Resolve and place the character as soon as the conversation begins.</summary>
+        OnConversationBegin,
+        /// <summary>Resolve and place the character only when they first appear in a dialogue line.</summary>
+        OnFirstAppearance
+    }
+
+    /// <summary>
+    /// Associates a conversation participant (by CharacterID) with a default configuration entry
+    /// name on their <see cref="PrefabCharacterRepresentationData"/> asset.
+    ///
+    /// Resolution chain for an entry name: per-line <see cref="ConvoCoreConversationData.CharacterRepresentationData.SelectedConfigurationEntryName"/>
+    /// → this participant default → representation asset's default entry.
+    /// </summary>
+    [Serializable]
+    public class ParticipantConfigurationSlot
+    {
+        [Tooltip("CharacterID of the participant. Must match the profile's CharacterID.")]
+        public string CharacterID;
+
+        [Tooltip("Default configuration entry name to use for this participant when no per-line entry is specified.")]
+        public string DefaultConfigurationEntryName;
+
+        [Tooltip("When to resolve and place this character's prefab representation.")]
+        public ConvoCoreSpawnTiming SpawnTiming = ConvoCoreSpawnTiming.OnConversationBegin;
+    }
+
 public partial class ConvoCoreConversationData
     {
         [Serializable]
         public struct CharacterRepresentationData
         {
             [Tooltip("The ID of the selected character profile (for secondary/tertiary characters).")]
-            public string SelectedCharacterID; 
+            public string SelectedCharacterID;
             public string SelectedRepresentationName;
             public CharacterRepresentationBase SelectedRepresentation;
 
             // This drawer shows DisplayName but stores GUID from the representation asset.
             [ExpressionIDSelector(nameof(SelectedRepresentation))]
             public string SelectedExpressionId;
-           
+
+            [Tooltip("Name of the configuration entry to use for this line. " +
+                     "Overrides the participant default and the representation asset default. " +
+                     "Leave empty to use the participant default, or the asset's default entry if no participant default is set.")]
+            public string SelectedConfigurationEntryName;
+
             [Header("Per-Line Display Overrides")]
             [Tooltip("Display options specific to this dialogue line. These override the default expression settings.")]
             public DialogueLineDisplayOptions LineSpecificDisplayOptions;
