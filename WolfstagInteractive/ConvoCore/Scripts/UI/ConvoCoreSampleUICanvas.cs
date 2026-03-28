@@ -332,7 +332,9 @@ namespace WolfstagInteractive.ConvoCore
         {
             var displayOptions = MergeDisplayOptions(lineOptions, spriteMapping.DisplayOptions);
 
-            if (SpeakerPortraitImage && spriteMapping.PortraitSprite)
+            // Portrait image is reserved for the primary speaker (index 0) only.
+            // Secondary characters have a full-body slot but do not overwrite the speaker portrait.
+            if (index == 0 && SpeakerPortraitImage && spriteMapping.PortraitSprite)
             {
                 SpeakerPortraitImage.sprite = spriteMapping.PortraitSprite;
                 SpeakerPortraitImage.rectTransform.localScale = new Vector3(
