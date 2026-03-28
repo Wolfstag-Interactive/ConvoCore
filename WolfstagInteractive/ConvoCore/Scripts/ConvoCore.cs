@@ -26,6 +26,12 @@ namespace WolfstagInteractive.ConvoCore
         [Header("Conversation UI")]
         public ConvoCoreUIFoundation ConversationUI;
 
+        [Header("Audio")]
+        [Tooltip("Optional. Assign a ConvoCoreUnityAudioProvider or any MonoBehaviour implementing IConvoAudioProvider. If unassigned, audio playback is skipped.")]
+        [SerializeField] private MonoBehaviour _audioProviderObject;
+
+        private IConvoAudioProvider _audioProvider;
+
         [Header("Debug")]
         [Tooltip("When enabled, each dialogue line is printed to the Console. Click a log entry to highlight this runner in the Hierarchy.")]
         [SerializeField] private bool _debugLogLines;
@@ -120,7 +126,18 @@ namespace WolfstagInteractive.ConvoCore
         private void Awake()
         {
             LocalizationHandler = new ConvoCoreDialogueLocalizationHandler(ConvoCoreLanguageManager.Instance);
+
+            if (_audioProviderObject is IConvoAudioProvider provider)
+                _audioProvider = provider;
+            else if (_audioProviderObject != null)
+                Debug.LogWarning($"[ConvoCore] Audio Provider Object assigned on '{name}' does not implement IConvoAudioProvider. Audio will be skipped.", this);
         }
+
+        /// <summary>
+        /// Inject a custom audio provider at runtime. Use this for middleware integrations
+        /// that instantiate their provider via code rather than the inspector.
+        /// </summary>
+        public void SetAudioProvider(IConvoAudioProvider provider) => _audioProvider = provider;
 
         /// <summary>
         /// Main coroutine that handles the conversation flow
@@ -185,23 +202,95 @@ namespace WolfstagInteractive.ConvoCore
                     yield return StartCoroutine(ConversationData.ActionsBeforeDialogueLine(this, line, frame.Before));
                 }
 
-                // Check and get the player placeholder name and replace with the player's name in the line
-                string finalOutputString = ReplacePlayerNameInDialogueLine(localizedResult.Text);
+                // Resolve presentation flags
+                bool showText  = ConversationData.ShouldDisplayText(line);
+                bool playAudio = ConversationData.ShouldPlayAudio(line);
 
-                if (_debugLogLines)
-                    Debug.Log($"[ConvoCore] Line {_currentLineIndex} — {primaryProfile.CharacterName}: \"{finalOutputString}\"", this);
+                // Resolve audio reference
+                ConvoAudioReference audioRef = null;
+                ConvoAudioReference inlineRef = null; // transient SO destroyed after progression
+                if (playAudio && ConversationData.AudioManifest != null)
+                {
+                    var backend = ConversationData.AudioManifest.Backend;
+                    if (backend == AudioBackend.UnityAudioSource)
+                    {
+                        // Try shared ConvoAudioReference first (e.g. one asset shared across lines)
+                        audioRef = ConversationData.AudioManifest.Resolve(line.LineID, localizedResult.UsedLanguage);
 
-                // Play audio and display dialogue
-                yield return StartCoroutine(PlayAudioClipWithAction(line.clip));
-                yield return StartCoroutine(
-                    PlayDialogueLine(
-                        ConversationUI,
-                        line,
-                        finalOutputString,
-                        primaryProfile.CharacterName,
-                        primaryRepresentation,primaryProfile // Primary character should always have a representation
-                    )
-                );
+                        // Then try direct AudioClip on the manifest entry
+                        if (audioRef == null)
+                        {
+                            var clip = ConversationData.AudioManifest.ResolveClip(line.LineID, localizedResult.UsedLanguage)
+                                       ?? localizedResult.ResolvedClip;
+                            if (clip != null)
+                            {
+                                var unityRef = ScriptableObject.CreateInstance<ConvoCoreUnityAudioReference>();
+                                unityRef.Clip = clip;
+                                inlineRef = unityRef;
+                                audioRef  = unityRef;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        // FMOD / Wwise / Custom: try a ConvoAudioReference SO first (user may have assigned one)
+                        audioRef = ConversationData.AudioManifest.Resolve(line.LineID, localizedResult.UsedLanguage);
+
+                        // Fall back to EventKey string wrapped in a transient reference
+                        if (audioRef == null)
+                        {
+                            var key = ConversationData.AudioManifest.ResolveEventKey(line.LineID, localizedResult.UsedLanguage);
+                            if (!string.IsNullOrEmpty(key))
+                            {
+                                var keyRef = ScriptableObject.CreateInstance<ConvoCoreAudioEventKeyReference>();
+                                keyRef.EventKey = key;
+                                inlineRef = keyRef;
+                                audioRef  = keyRef;
+                            }
+                        }
+
+                        if (_audioProvider == null)
+                            Debug.LogWarning($"[ConvoCore] AudioManifest backend is '{backend}' but no Audio Provider is assigned on '{name}'. Assign an IConvoAudioProvider component.", this);
+                    }
+                }
+                else if (playAudio && localizedResult.ResolvedClip != null)
+                {
+                    // No manifest — fall back to clip embedded in LocalizedDialogue (Unity-only path)
+                    var unityRef = ScriptableObject.CreateInstance<ConvoCoreUnityAudioReference>();
+                    unityRef.Clip = localizedResult.ResolvedClip;
+                    inlineRef = unityRef;
+                    audioRef  = unityRef;
+                }
+
+                // Play audio
+                if (playAudio && audioRef != null && _audioProvider != null)
+                    _audioProvider.PlayVoiceLine(line, audioRef);
+
+                // Display text
+                if (showText)
+                {
+                    string finalOutputString = ReplacePlayerNameInDialogueLine(localizedResult.Text);
+
+                    if (_debugLogLines)
+                        Debug.Log($"[ConvoCore] Line {_currentLineIndex} — {primaryProfile.CharacterName}: \"{finalOutputString}\"", this);
+
+                    yield return StartCoroutine(
+                        PlayDialogueLine(
+                            ConversationUI,
+                            line,
+                            finalOutputString,
+                            primaryProfile.CharacterName,
+                            primaryRepresentation, primaryProfile
+                        )
+                    );
+                }
+                else
+                {
+                    if (_debugLogLines)
+                        Debug.Log($"[ConvoCore] Line {_currentLineIndex} — {primaryProfile.CharacterName}: [AudioOnly]", this);
+
+                    ConversationUI?.HideDialogue();
+                }
 
                 // Actions after the dialogue line
                 if (line.ActionsAfterDialogueLine is { Count: > 0 })
@@ -272,28 +361,50 @@ namespace WolfstagInteractive.ConvoCore
                     continue;
                 }
 
-                // Handle line progression method
-                if (line.UserInputMethod == ConvoCoreConversationData.DialogueLineProgressionMethod.Timed)
+                // Determine effective progression
+                var effectiveProgression = line.UserInputMethod;
+
+                // Auto-coerce UserInput to AudioComplete on AudioOnly lines —
+                // a stalled conversation with no UI and no automatic advance is a silent failure mode
+                if (!showText && effectiveProgression == ConvoCoreConversationData.DialogueLineProgressionMethod.UserInput)
                 {
-                    yield return new WaitForSeconds(line.TimeBeforeNextLine);
+                    effectiveProgression = (playAudio && _audioProvider != null)
+                        ? ConvoCoreConversationData.DialogueLineProgressionMethod.AudioComplete
+                        : ConvoCoreConversationData.DialogueLineProgressionMethod.Timed; // advances immediately (TimeBeforeNextLine = 0)
                 }
-                else
+
+                // Handle progression
+                switch (effectiveProgression)
                 {
-                    _advanceRequested = false;
-                    _reverseRequested = false;
+                    case ConvoCoreConversationData.DialogueLineProgressionMethod.AudioComplete:
+                        yield return StartCoroutine(WaitForAudioComplete());
+                        break;
 
-                    yield return StartCoroutine(ConversationUI.WaitForUserInput());
+                    case ConvoCoreConversationData.DialogueLineProgressionMethod.Timed:
+                        if (line.TimeBeforeNextLine > 0f)
+                            yield return new WaitForSeconds(line.TimeBeforeNextLine);
+                        break;
 
-                    if (_reverseRequested)
-                    {
-                        // undo current line and move back one
-                        yield return StartCoroutine(ReverseOneLineRoutine());
-                        // do not increment index here
-                        continue; // restart loop, current index now points at previous line
-                    }
+                    case ConvoCoreConversationData.DialogueLineProgressionMethod.UserInput:
+                    default:
+                        _advanceRequested = false;
+                        _reverseRequested = false;
 
-                    // any other input is treated as forward
+                        yield return StartCoroutine(ConversationUI.WaitForUserInput());
+
+                        if (_reverseRequested)
+                        {
+                            // Destroy any temporary inline audio reference before reversing
+                            if (inlineRef != null) Destroy(inlineRef);
+                            // undo current line and move back one
+                            yield return StartCoroutine(ReverseOneLineRoutine());
+                            continue; // restart loop, current index now points at previous line
+                        }
+                        break;
                 }
+
+                // Destroy temporary inline reference after line progression completes
+                if (inlineRef != null) Destroy(inlineRef);
                 // At this point the line is fully completed. Apply continuation rules.
                 if (!HandleLineContinuation(line))
                 {
@@ -463,6 +574,8 @@ namespace WolfstagInteractive.ConvoCore
 
         private IEnumerator ReverseOneLineRoutine()
         {
+            _audioProvider?.StopVoiceLine();
+
             // undo the line we are currently sitting on
             int current = _currentLineIndex;
             if (current >= 0 && current < _history.Count)
@@ -693,17 +806,27 @@ namespace WolfstagInteractive.ConvoCore
             yield return null; // Wait one frame for UI to update
         }
         /// <summary>
-        /// Plays an audio clip if provided
+        /// Waits until the audio provider reports that playback has finished, or the conversation
+        /// is no longer active, or the 5-minute safety cap is reached.
         /// </summary>
-        private IEnumerator PlayAudioClipWithAction(AudioClip clip)
+        private IEnumerator WaitForAudioComplete()
         {
-            if (clip != null)
-            {
-                // You can implement audio playing logic here
-                // For now, just wait for the clip duration
-                yield return new WaitForSeconds(clip.length);
-            }
+            if (_audioProvider == null) yield break;
+
+            // Safety guard: don't wait longer than 5 minutes regardless of clip length
+            const float maxWait = 300f;
+            float elapsed = 0f;
+
+            // Wait one frame to allow the provider to begin playback before polling
             yield return null;
+
+            while (_audioProvider.IsPlaying &&
+                   CurrentDialogueState == ConversationState.Active &&
+                   elapsed < maxWait)
+            {
+                elapsed += Time.deltaTime;
+                yield return null;
+            }
         }
         /// <summary>
         /// Replaces player name placeholders in dialogue text
@@ -781,6 +904,7 @@ namespace WolfstagInteractive.ConvoCore
             if (CurrentDialogueState == ConversationState.Active)
             {
                 CurrentDialogueState = ConversationState.Paused;
+                _audioProvider?.PauseVoiceLine();
                 Debug.Log("Conversation paused.");
                 PausedConversation?.Invoke();
             }
@@ -794,6 +918,7 @@ namespace WolfstagInteractive.ConvoCore
             if (CurrentDialogueState == ConversationState.Paused)
             {
                 CurrentDialogueState = ConversationState.Active;
+                _audioProvider?.ResumeVoiceLine();
                 Debug.Log("Conversation resumed.");
             }
         }
@@ -811,6 +936,7 @@ namespace WolfstagInteractive.ConvoCore
         public void StopConversation()
         {
             CurrentDialogueState = ConversationState.Inactive;
+            _audioProvider?.StopVoiceLine();
             EndedConversation?.Invoke();
             OnConversationEnded?.Invoke();
             _currentLineIndex = 0;
@@ -856,6 +982,19 @@ namespace WolfstagInteractive.ConvoCore
 
             _visitedLineIds.Clear();
             _currentLineIndex = 0;
+
+            // Auto-provision Unity audio provider when backend is UnityAudioSource and none assigned
+            if (_audioProvider == null &&
+                ConversationData.AudioManifest != null &&
+                ConversationData.AudioManifest.Backend == AudioBackend.UnityAudioSource)
+            {
+                var src = gameObject.GetComponent<AudioSource>()
+                          ?? gameObject.AddComponent<AudioSource>();
+                src.playOnAwake = false;
+                var prov = gameObject.GetComponent<ConvoCoreUnityAudioProvider>()
+                           ?? gameObject.AddComponent<ConvoCoreUnityAudioProvider>();
+                _audioProvider = prov;
+            }
 
             // Let a co-located IConvoStartContextProvider control how playback begins
             var provider = GetComponent<IConvoStartContextProvider>();

@@ -138,11 +138,14 @@ MonoBehaviour:
     LocalizedDialogues:
     - Language: en
       Text: Let us remain where we are.
+      Clip: {fileID: 0}
     - Language: fr
       Text: "Restons o\xF9 nous sommes."
+      Clip: {fileID: 0}
     - Language: es
       Text: Permanezcamos donde estamos.
-    clip: {fileID: 0}
+      Clip: {fileID: 0}
+    PresentationMode: 0
     ActionsBeforeDialogueLine: []
     ActionsAfterDialogueLine: []
     UserInputMethod: 0
@@ -176,11 +179,14 @@ MonoBehaviour:
     LocalizedDialogues:
     - Language: en
       Text: That sounds ominous.
+      Clip: {fileID: 0}
     - Language: fr
       Text: "Cela semble inqui\xE9tant."
+      Clip: {fileID: 0}
     - Language: es
       Text: Eso suena ominoso.
-    clip: {fileID: 0}
+      Clip: {fileID: 0}
+    PresentationMode: 0
     ActionsBeforeDialogueLine: []
     ActionsAfterDialogueLine: []
     UserInputMethod: 0
@@ -214,11 +220,14 @@ MonoBehaviour:
     LocalizedDialogues:
     - Language: en
       Text: It always does.
+      Clip: {fileID: 0}
     - Language: fr
       Text: Toujours.
+      Clip: {fileID: 0}
     - Language: es
       Text: Siempre lo es.
-    clip: {fileID: 0}
+      Clip: {fileID: 0}
+    PresentationMode: 0
     ActionsBeforeDialogueLine: []
     ActionsAfterDialogueLine: []
     UserInputMethod: 0
@@ -252,11 +261,14 @@ MonoBehaviour:
     LocalizedDialogues:
     - Language: en
       Text: Nothing is about to happen.
+      Clip: {fileID: 0}
     - Language: fr
       Text: "Rien n\u2019est sur le point de se produire."
+      Clip: {fileID: 0}
     - Language: es
       Text: "No est\xE1 a punto de pasar nada."
-    clip: {fileID: 0}
+      Clip: {fileID: 0}
+    PresentationMode: 0
     ActionsBeforeDialogueLine: []
     ActionsAfterDialogueLine: []
     UserInputMethod: 0
@@ -290,11 +302,14 @@ MonoBehaviour:
     LocalizedDialogues:
     - Language: en
       Text: Then why do I feel observed.
+      Clip: {fileID: 0}
     - Language: fr
       Text: "Alors pourquoi ai-je l\u2019impression d\u2019\xEAtre observ\xE9."
+      Clip: {fileID: 0}
     - Language: es
       Text: "Entonces por qu\xE9 me siento observado."
-    clip: {fileID: 0}
+      Clip: {fileID: 0}
+    PresentationMode: 0
     ActionsBeforeDialogueLine: []
     ActionsAfterDialogueLine: []
     UserInputMethod: 0
@@ -328,11 +343,14 @@ MonoBehaviour:
     LocalizedDialogues:
     - Language: en
       Text: You always feel that.
+      Clip: {fileID: 0}
     - Language: fr
       Text: "Tu ressens toujours \xE7a."
+      Clip: {fileID: 0}
     - Language: es
       Text: "Siempre te sientes as\xED."
-    clip: {fileID: 0}
+      Clip: {fileID: 0}
+    PresentationMode: 0
     ActionsBeforeDialogueLine: []
     ActionsAfterDialogueLine: []
     UserInputMethod: 0
@@ -366,11 +384,14 @@ MonoBehaviour:
     LocalizedDialogues:
     - Language: en
       Text: Not like this.
+      Clip: {fileID: 0}
     - Language: fr
       Text: "Pas comme \xE7a."
+      Clip: {fileID: 0}
     - Language: es
       Text: "No as\xED."
-    clip: {fileID: 0}
+      Clip: {fileID: 0}
+    PresentationMode: 0
     ActionsBeforeDialogueLine: []
     ActionsAfterDialogueLine: []
     UserInputMethod: 0
@@ -404,11 +425,14 @@ MonoBehaviour:
     LocalizedDialogues:
     - Language: en
       Text: You are being attentive.
+      Clip: {fileID: 0}
     - Language: fr
       Text: Tu es attentif.
+      Clip: {fileID: 0}
     - Language: es
       Text: "Est\xE1s siendo atento."
-    clip: {fileID: 0}
+      Clip: {fileID: 0}
+    PresentationMode: 0
     ActionsBeforeDialogueLine: []
     ActionsAfterDialogueLine: []
     UserInputMethod: 0
@@ -442,11 +466,14 @@ MonoBehaviour:
     LocalizedDialogues:
     - Language: en
       Text: I do not like what that did to me.
+      Clip: {fileID: 0}
     - Language: fr
       Text: "Je n\u2019aime pas ce que \xE7a m\u2019a fait."
+      Clip: {fileID: 0}
     - Language: es
       Text: No me gusta lo que eso me hizo.
-    clip: {fileID: 0}
+      Clip: {fileID: 0}
+    PresentationMode: 0
     ActionsBeforeDialogueLine: []
     ActionsAfterDialogueLine: []
     UserInputMethod: 0
@@ -480,11 +507,14 @@ MonoBehaviour:
     LocalizedDialogues:
     - Language: en
       Text: You look taller.
+      Clip: {fileID: 0}
     - Language: fr
       Text: "Tu as l\u2019air plus grand."
+      Clip: {fileID: 0}
     - Language: es
       Text: "Pareces m\xE1s alto."
-    clip: {fileID: 0}
+      Clip: {fileID: 0}
+    PresentationMode: 0
     ActionsBeforeDialogueLine: []
     ActionsAfterDialogueLine: []
     UserInputMethod: 0
@@ -518,11 +548,14 @@ MonoBehaviour:
     LocalizedDialogues:
     - Language: en
       Text: I feel taller.
+      Clip: {fileID: 0}
     - Language: fr
       Text: Je me sens plus grand.
+      Clip: {fileID: 0}
     - Language: es
       Text: "Me siento m\xE1s alto."
-    clip: {fileID: 0}
+      Clip: {fileID: 0}
+    PresentationMode: 0
     ActionsBeforeDialogueLine: []
     ActionsAfterDialogueLine: []
     UserInputMethod: 0
@@ -556,11 +589,14 @@ MonoBehaviour:
     LocalizedDialogues:
     - Language: en
       Text: Focus suits you.
+      Clip: {fileID: 0}
     - Language: fr
       Text: La concentration te va bien.
+      Clip: {fileID: 0}
     - Language: es
       Text: "La concentraci\xF3n te sienta bien."
-    clip: {fileID: 0}
+      Clip: {fileID: 0}
+    PresentationMode: 0
     ActionsBeforeDialogueLine: []
     ActionsAfterDialogueLine: []
     UserInputMethod: 0
@@ -594,11 +630,14 @@ MonoBehaviour:
     LocalizedDialogues:
     - Language: en
       Text: Why is the space leaning.
+      Clip: {fileID: 0}
     - Language: fr
       Text: "Pourquoi l\u2019espace penche-t-il."
+      Clip: {fileID: 0}
     - Language: es
       Text: "Por qu\xE9 el espacio se inclina."
-    clip: {fileID: 0}
+      Clip: {fileID: 0}
+    PresentationMode: 0
     ActionsBeforeDialogueLine: []
     ActionsAfterDialogueLine: []
     UserInputMethod: 0
@@ -632,11 +671,14 @@ MonoBehaviour:
     LocalizedDialogues:
     - Language: en
       Text: It is listening.
+      Clip: {fileID: 0}
     - Language: fr
       Text: "Il \xE9coute."
+      Clip: {fileID: 0}
     - Language: es
       Text: "Est\xE1 escuchando."
-    clip: {fileID: 0}
+      Clip: {fileID: 0}
+    PresentationMode: 0
     ActionsBeforeDialogueLine: []
     ActionsAfterDialogueLine: []
     UserInputMethod: 0
@@ -670,11 +712,14 @@ MonoBehaviour:
     LocalizedDialogues:
     - Language: en
       Text: That is worse.
+      Clip: {fileID: 0}
     - Language: fr
       Text: "C\u2019est pire."
+      Clip: {fileID: 0}
     - Language: es
       Text: Eso es peor.
-    clip: {fileID: 0}
+      Clip: {fileID: 0}
+    PresentationMode: 0
     ActionsBeforeDialogueLine: []
     ActionsAfterDialogueLine: []
     UserInputMethod: 0
@@ -708,11 +753,14 @@ MonoBehaviour:
     LocalizedDialogues:
     - Language: en
       Text: Something is appearing.
+      Clip: {fileID: 0}
     - Language: fr
       Text: "Quelque chose appara\xEEt."
+      Clip: {fileID: 0}
     - Language: es
       Text: "Algo est\xE1 apareciendo."
-    clip: {fileID: 0}
+      Clip: {fileID: 0}
+    PresentationMode: 0
     ActionsBeforeDialogueLine: []
     ActionsAfterDialogueLine: []
     UserInputMethod: 0
@@ -746,11 +794,14 @@ MonoBehaviour:
     LocalizedDialogues:
     - Language: en
       Text: I refuse to acknowledge it.
+      Clip: {fileID: 0}
     - Language: fr
       Text: "Je refuse de le reconna\xEEtre."
+      Clip: {fileID: 0}
     - Language: es
       Text: Me niego a reconocerlo.
-    clip: {fileID: 0}
+      Clip: {fileID: 0}
+    PresentationMode: 0
     ActionsBeforeDialogueLine: []
     ActionsAfterDialogueLine: []
     UserInputMethod: 0
@@ -784,11 +835,14 @@ MonoBehaviour:
     LocalizedDialogues:
     - Language: en
       Text: Acknowledged.
+      Clip: {fileID: 0}
     - Language: fr
       Text: Reconnu.
+      Clip: {fileID: 0}
     - Language: es
       Text: Reconocido.
-    clip: {fileID: 0}
+      Clip: {fileID: 0}
+    PresentationMode: 0
     ActionsBeforeDialogueLine: []
     ActionsAfterDialogueLine: []
     UserInputMethod: 0
@@ -822,11 +876,14 @@ MonoBehaviour:
     LocalizedDialogues:
     - Language: en
       Text: It is very present.
+      Clip: {fileID: 0}
     - Language: fr
       Text: "C\u2019est tr\xE8s pr\xE9sent."
+      Clip: {fileID: 0}
     - Language: es
       Text: Es muy presente.
-    clip: {fileID: 0}
+      Clip: {fileID: 0}
+    PresentationMode: 0
     ActionsBeforeDialogueLine: []
     ActionsAfterDialogueLine: []
     UserInputMethod: 0
@@ -860,11 +917,14 @@ MonoBehaviour:
     LocalizedDialogues:
     - Language: en
       Text: It feels closer now.
+      Clip: {fileID: 0}
     - Language: fr
       Text: "\xC7a semble plus proche maintenant."
+      Clip: {fileID: 0}
     - Language: es
       Text: "Ahora se siente m\xE1s cerca."
-    clip: {fileID: 0}
+      Clip: {fileID: 0}
+    PresentationMode: 0
     ActionsBeforeDialogueLine: []
     ActionsAfterDialogueLine: []
     UserInputMethod: 0
@@ -898,11 +958,14 @@ MonoBehaviour:
     LocalizedDialogues:
     - Language: en
       Text: Perspective.
+      Clip: {fileID: 0}
     - Language: fr
       Text: Perspective.
+      Clip: {fileID: 0}
     - Language: es
       Text: Perspectiva.
-    clip: {fileID: 0}
+      Clip: {fileID: 0}
+    PresentationMode: 0
     ActionsBeforeDialogueLine: []
     ActionsAfterDialogueLine: []
     UserInputMethod: 0
@@ -936,11 +999,14 @@ MonoBehaviour:
     LocalizedDialogues:
     - Language: en
       Text: That does not help.
+      Clip: {fileID: 0}
     - Language: fr
       Text: "\xC7a n\u2019aide pas."
+      Clip: {fileID: 0}
     - Language: es
       Text: Eso no ayuda.
-    clip: {fileID: 0}
+      Clip: {fileID: 0}
+    PresentationMode: 0
     ActionsBeforeDialogueLine: []
     ActionsAfterDialogueLine: []
     UserInputMethod: 0
@@ -974,11 +1040,14 @@ MonoBehaviour:
     LocalizedDialogues:
     - Language: en
       Text: Neither does this.
+      Clip: {fileID: 0}
     - Language: fr
       Text: Ceci non plus.
+      Clip: {fileID: 0}
     - Language: es
       Text: Esto tampoco.
-    clip: {fileID: 0}
+      Clip: {fileID: 0}
+    PresentationMode: 0
     ActionsBeforeDialogueLine: []
     ActionsAfterDialogueLine: []
     UserInputMethod: 0
@@ -1012,11 +1081,14 @@ MonoBehaviour:
     LocalizedDialogues:
     - Language: en
       Text: You are reacting.
+      Clip: {fileID: 0}
     - Language: fr
       Text: "Tu r\xE9agis."
+      Clip: {fileID: 0}
     - Language: es
       Text: "Est\xE1s reaccionando."
-    clip: {fileID: 0}
+      Clip: {fileID: 0}
+    PresentationMode: 0
     ActionsBeforeDialogueLine: []
     ActionsAfterDialogueLine: []
     UserInputMethod: 0
@@ -1050,11 +1122,14 @@ MonoBehaviour:
     LocalizedDialogues:
     - Language: en
       Text: I am adapting.
+      Clip: {fileID: 0}
     - Language: fr
       Text: "Je m\u2019adapte."
+      Clip: {fileID: 0}
     - Language: es
       Text: Me estoy adaptando.
-    clip: {fileID: 0}
+      Clip: {fileID: 0}
+    PresentationMode: 0
     ActionsBeforeDialogueLine: []
     ActionsAfterDialogueLine: []
     UserInputMethod: 0
@@ -1088,11 +1163,14 @@ MonoBehaviour:
     LocalizedDialogues:
     - Language: en
       Text: I remain unchanged.
+      Clip: {fileID: 0}
     - Language: fr
       Text: "Je reste inchang\xE9."
+      Clip: {fileID: 0}
     - Language: es
       Text: Sigo sin cambios.
-    clip: {fileID: 0}
+      Clip: {fileID: 0}
+    PresentationMode: 0
     ActionsBeforeDialogueLine: []
     ActionsAfterDialogueLine: []
     UserInputMethod: 0
@@ -1126,11 +1204,14 @@ MonoBehaviour:
     LocalizedDialogues:
     - Language: en
       Text: I spoke too soon.
+      Clip: {fileID: 0}
     - Language: fr
       Text: "J\u2019ai parl\xE9 trop vite."
+      Clip: {fileID: 0}
     - Language: es
       Text: "Habl\xE9 demasiado pronto."
-    clip: {fileID: 0}
+      Clip: {fileID: 0}
+    PresentationMode: 0
     ActionsBeforeDialogueLine: []
     ActionsAfterDialogueLine: []
     UserInputMethod: 0
@@ -1164,11 +1245,14 @@ MonoBehaviour:
     LocalizedDialogues:
     - Language: en
       Text: Good. Now we are balanced.
+      Clip: {fileID: 0}
     - Language: fr
       Text: "Bien. Nous sommes maintenant \xE9quilibr\xE9s."
+      Clip: {fileID: 0}
     - Language: es
       Text: Bien. Ahora estamos equilibrados.
-    clip: {fileID: 0}
+      Clip: {fileID: 0}
+    PresentationMode: 0
     ActionsBeforeDialogueLine: []
     ActionsAfterDialogueLine: []
     UserInputMethod: 0
@@ -1202,11 +1286,14 @@ MonoBehaviour:
     LocalizedDialogues:
     - Language: en
       Text: I do not feel balanced.
+      Clip: {fileID: 0}
     - Language: fr
       Text: "Je ne me sens pas \xE9quilibr\xE9."
+      Clip: {fileID: 0}
     - Language: es
       Text: No me siento equilibrado.
-    clip: {fileID: 0}
+      Clip: {fileID: 0}
+    PresentationMode: 0
     ActionsBeforeDialogueLine: []
     ActionsAfterDialogueLine: []
     UserInputMethod: 0
@@ -1240,11 +1327,14 @@ MonoBehaviour:
     LocalizedDialogues:
     - Language: en
       Text: That is normal.
+      Clip: {fileID: 0}
     - Language: fr
       Text: "C\u2019est normal."
+      Clip: {fileID: 0}
     - Language: es
       Text: Eso es normal.
-    clip: {fileID: 0}
+      Clip: {fileID: 0}
+    PresentationMode: 0
     ActionsBeforeDialogueLine: []
     ActionsAfterDialogueLine: []
     UserInputMethod: 0
@@ -1278,11 +1368,14 @@ MonoBehaviour:
     LocalizedDialogues:
     - Language: en
       Text: Is it ending.
+      Clip: {fileID: 0}
     - Language: fr
       Text: "Est-ce que \xE7a se termine."
+      Clip: {fileID: 0}
     - Language: es
       Text: "Est\xE1 terminando."
-    clip: {fileID: 0}
+      Clip: {fileID: 0}
+    PresentationMode: 0
     ActionsBeforeDialogueLine: []
     ActionsAfterDialogueLine: []
     UserInputMethod: 0
@@ -1316,11 +1409,14 @@ MonoBehaviour:
     LocalizedDialogues:
     - Language: en
       Text: Nearly.
+      Clip: {fileID: 0}
     - Language: fr
       Text: Presque.
+      Clip: {fileID: 0}
     - Language: es
       Text: Casi.
-    clip: {fileID: 0}
+      Clip: {fileID: 0}
+    PresentationMode: 0
     ActionsBeforeDialogueLine: []
     ActionsAfterDialogueLine: []
     UserInputMethod: 0
@@ -1354,11 +1450,14 @@ MonoBehaviour:
     LocalizedDialogues:
     - Language: en
       Text: Thank goodness.
+      Clip: {fileID: 0}
     - Language: fr
       Text: Dieu merci.
+      Clip: {fileID: 0}
     - Language: es
       Text: Menos mal.
-    clip: {fileID: 0}
+      Clip: {fileID: 0}
+    PresentationMode: 0
     ActionsBeforeDialogueLine: []
     ActionsAfterDialogueLine: []
     UserInputMethod: 0
@@ -1392,11 +1491,14 @@ MonoBehaviour:
     LocalizedDialogues:
     - Language: en
       Text: Remain composed.
+      Clip: {fileID: 0}
     - Language: fr
       Text: Reste calme.
+      Clip: {fileID: 0}
     - Language: es
       Text: "Mant\xE9n la compostura."
-    clip: {fileID: 0}
+      Clip: {fileID: 0}
+    PresentationMode: 0
     ActionsBeforeDialogueLine: []
     ActionsAfterDialogueLine: []
     UserInputMethod: 0
@@ -1430,11 +1532,14 @@ MonoBehaviour:
     LocalizedDialogues:
     - Language: en
       Text: I miss it already.
+      Clip: {fileID: 0}
     - Language: fr
       Text: "\xC7a me manque d\xE9j\xE0."
+      Clip: {fileID: 0}
     - Language: es
       Text: "Ya lo extra\xF1o."
-    clip: {fileID: 0}
+      Clip: {fileID: 0}
+    PresentationMode: 0
     ActionsBeforeDialogueLine: []
     ActionsAfterDialogueLine: []
     UserInputMethod: 0
@@ -1468,11 +1573,14 @@ MonoBehaviour:
     LocalizedDialogues:
     - Language: en
       Text: Of course you do.
+      Clip: {fileID: 0}
     - Language: fr
       Text: "Bien s\xFBr que oui."
+      Clip: {fileID: 0}
     - Language: es
       Text: "Claro que s\xED."
-    clip: {fileID: 0}
+      Clip: {fileID: 0}
+    PresentationMode: 0
     ActionsBeforeDialogueLine: []
     ActionsAfterDialogueLine: []
     UserInputMethod: 0
@@ -1506,11 +1614,14 @@ MonoBehaviour:
     LocalizedDialogues:
     - Language: en
       Text: Let us never do that again.
+      Clip: {fileID: 0}
     - Language: fr
       Text: "Ne faisons plus jamais \xE7a."
+      Clip: {fileID: 0}
     - Language: es
       Text: No volvamos a hacer eso nunca.
-    clip: {fileID: 0}
+      Clip: {fileID: 0}
+    PresentationMode: 0
     ActionsBeforeDialogueLine: []
     ActionsAfterDialogueLine: []
     UserInputMethod: 0
@@ -1544,11 +1655,14 @@ MonoBehaviour:
     LocalizedDialogues:
     - Language: en
       Text: Agreed.
+      Clip: {fileID: 0}
     - Language: fr
       Text: "D\u2019accord."
+      Clip: {fileID: 0}
     - Language: es
       Text: De acuerdo.
-    clip: {fileID: 0}
+      Clip: {fileID: 0}
+    PresentationMode: 0
     ActionsBeforeDialogueLine: []
     ActionsAfterDialogueLine: []
     UserInputMethod: 0
@@ -1560,6 +1674,8 @@ MonoBehaviour:
       PushReturnPoint: 0
       Choices: []
       AllowGoBack: 0
+  DefaultPresentationMode: 0
+  AudioManifest: {fileID: 0}
   ConversationYaml: {fileID: -7622796456671618352}
   AllowPersistentOverrides: 1
   FilePath: ConvoCore/Dialogue/ConvoCore3DDialogueSampleConversation

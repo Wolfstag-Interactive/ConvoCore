@@ -143,10 +143,10 @@ If your characters are already in the scene, use `ExternalBehaviour` or `Transfo
 1. Add **ConvoCoreSceneCharacterRegistry** to any GameObject in the scene.
 2. Add **ConvoCoreSceneCharacterRegistrant** to the scene character's root GameObject.
 3. Set the **Character Id** on the registrant to match the character ID used in the conversation YAML.
-4. Set `CharacterSourceMode` to **Scene Resident** on the representation asset.
-5. Drag the registry into the **Scene Character Registry** field on `ConvoCorePrefabRepresentationSpawner`.
 
-Scene-resident characters are never spawned, pooled, or destroyed by the 3D UI.
+No further configuration is needed. `ConvoCorePrefabRepresentationSpawner` finds the registry automatically via `ConvoCoreSceneCharacterRegistry.Instance`. The **Scene Character Registry** field on the spawner is optional — only assign it when you have multiple registries in the scene and need to target a specific one.
+
+Scene-resident characters are never spawned, pooled, or destroyed by the 3D UI. No source-mode flag is required on the representation asset; the spawner always checks the scene registry by character ID first and falls back to spawning a prefab only if no match is found.
 
 ---
 

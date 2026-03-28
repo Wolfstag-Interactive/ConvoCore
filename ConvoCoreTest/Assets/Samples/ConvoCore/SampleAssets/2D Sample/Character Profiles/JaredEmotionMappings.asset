@@ -20,11 +20,11 @@ MonoBehaviour:
     DisplayOptions:
       FlipPortraitX: 0
       FlipPortraitY: 0
-      FlipFullBodyX: 0
+      FlipFullBodyX: 1
       FlipFullBodyY: 0
-      DisplayPosition: 0
-      PortraitScale: {x: 0, y: 0, z: 0}
-      FullBodyScale: {x: 0, y: 0, z: 0}
+      DisplaySlot: 
+      PortraitScale: {x: 1, y: 1, z: 1}
+      FullBodyScale: {x: 1, y: 1, z: 1}
     ExpressionActions: []
   - expressionID: 5420ee53b56f4373890342ce8a3fa963
     DisplayName: HeartEyes
@@ -33,9 +33,9 @@ MonoBehaviour:
     DisplayOptions:
       FlipPortraitX: 0
       FlipPortraitY: 0
-      FlipFullBodyX: 0
+      FlipFullBodyX: 1
       FlipFullBodyY: 0
-      DisplayPosition: 0
-      PortraitScale: {x: 0, y: 0, z: 0}
-      FullBodyScale: {x: 0, y: 0, z: 0}
+      DisplaySlot: 
+      PortraitScale: {x: 1, y: 1, z: 1}
+      FullBodyScale: {x: 1, y: 1, z: 1}
     ExpressionActions: []

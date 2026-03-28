@@ -65,7 +65,13 @@ public partial class ConvoCoreConversationData
         public enum DialogueLineProgressionMethod
         {
             UserInput,
-            Timed
+            Timed,
+
+            /// <summary>
+            /// Advance automatically when the voice clip finishes playing.
+            /// If no clip is resolved, advances immediately.
+            /// </summary>
+            AudioComplete
         }
     }
 
@@ -75,7 +81,11 @@ public partial class ConvoCoreConversationData
         public struct LocalizedDialogue
         {
             public string Language;
-            public string Text;
+
+            [TextArea(2, 6)]
+            public string Text; // null or empty = audio-only for this locale
+
+            public AudioClip Clip; // Built-in Unity audio path. Middleware users leave this null.
         }
     }
     public partial class ConvoCoreConversationData
@@ -134,9 +144,14 @@ public partial class ConvoCoreConversationData
             [Tooltip("Ordered list of visible character representations for this line. Index 0 is the speaker.")]
             public List<CharacterRepresentationData> CharacterRepresentations = new();
 
-
             public List<LocalizedDialogue> LocalizedDialogues; // Localized dialogues per language
-            public AudioClip clip; // Audio associated with the line
+
+            // Audio is now either in LocalizedDialogue.Clip (Unity path)
+            // or resolved via ConvoCoreAudioManifest (middleware path).
+
+            [Tooltip("Controls whether this line displays text, plays audio, or both. Inherits from the conversation default on creation.")]
+            public ConversationPresentationMode PresentationMode = ConversationPresentationMode.AudioAndText;
+
             public List<BaseDialogueLineAction> ActionsBeforeDialogueLine; // Actions before the dialogue line
             public List<BaseDialogueLineAction> ActionsAfterDialogueLine; // Actions after the dialogue line
 
@@ -144,9 +159,9 @@ public partial class ConvoCoreConversationData
                 UserInputMethod; // Whether to wait for user input before continuing to the next line
 
             public float TimeBeforeNextLine; // Time in seconds to wait before continuing to the next line
-            
+
             public LineContinuation LineContinuationSettings;
-            
+
             // Add a constructor to ensure initialization
             public DialogueLineInfo(string conversationID)
             {
@@ -155,7 +170,7 @@ public partial class ConvoCoreConversationData
                 LineID = null;
                 characterID = "";
                 LocalizedDialogues = new List<LocalizedDialogue>();
-                clip = null;
+                PresentationMode = ConversationPresentationMode.AudioAndText;
                 ActionsBeforeDialogueLine = new List<BaseDialogueLineAction>();
                 ActionsAfterDialogueLine = new List<BaseDialogueLineAction>();
                 UserInputMethod = DialogueLineProgressionMethod.UserInput;
@@ -175,7 +190,7 @@ public partial class ConvoCoreConversationData
                 if (CharacterRepresentations.Count == 0)
                 {
                     CharacterRepresentations.Add(new CharacterRepresentationData());
-                }            
+                }
             }
             private static bool HasAnySelection(CharacterRepresentationData data)
             {

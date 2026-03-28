@@ -14,10 +14,26 @@ namespace WolfstagInteractive.ConvoCore
     [HelpURL("https://docs.wolfstaginteractive.com/convocore/api/classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreUIFoundation.html")]
     public class ConvoCoreUIFoundation : MonoBehaviour, IUIFoundation
     {
+        /// <summary>
+        /// A named slot entry that maps a display name to a scene object reference.
+        /// Populated on the UI Foundation prefab to define all slots available for character placement.
+        /// </summary>
+        [Serializable]
+        public class DisplaySlotDefinition
+        {
+            [Tooltip("The name shown in the inspector dropdown for this slot.")]
+            public string SlotName;
+            [Tooltip("The GameObject in the canvas hierarchy that represents this slot.")]
+            public GameObject SlotObject;
+        }
+
+        [Tooltip("Named display slots available for character placement. " +
+                 "These populate the Display Slot dropdown in the dialogue line inspector.")]
+        [SerializeField] private List<DisplaySlotDefinition> _displaySlots = new();
+        public IReadOnlyList<DisplaySlotDefinition> DisplaySlots => _displaySlots;
+
         protected ConvoCore ConvoCoreInstance;
         protected ConvoCoreDialogueHistoryUI ConvoCoreDialogueHistoryUI;
-
-      
 
         public event Action RequestAdvance;
         public event Action RequestReverse;

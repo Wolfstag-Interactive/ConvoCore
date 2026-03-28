@@ -15,13 +15,11 @@ namespace WolfstagInteractive.ConvoCore
     /// <summary>
     /// Canvas-space dialogue UI supporting both sprite and prefab-in-canvas character representations.
     ///
-    /// Mixed representation support: a single line may have sprite characters in some slots and
-    /// prefab characters in others. Slot assignment uses <see cref="DialogueLineDisplayOptions.SlotId"/>
-    /// (named addressing) first, then index-based fallback using <see cref="characterSlotAnchors"/>.
-    ///
-    /// Owns its own <see cref="ConvoCorePrefabRepresentationSpawner"/> and slot anchor list.
-    /// Slot count is determined by the length of <see cref="characterSlotAnchors"/>; there is no
-    /// hardcoded cap.
+    /// Slot configuration is driven entirely by <see cref="ConvoCoreUIFoundation.DisplaySlots"/>:
+    /// each entry's <see cref="ConvoCoreUIFoundation.DisplaySlotDefinition.SlotObject"/> serves as
+    /// the anchor for prefab characters and the Image source for sprite full-body characters.
+    /// Slot assignment uses <see cref="DialogueLineDisplayOptions.DisplaySlot"/> (named addressing)
+    /// first, then index-based fallback.
     /// </summary>
     [HelpURL("https://docs.wolfstaginteractive.com/convocore/api/classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSampleUICanvas.html")]
     public class ConvoCoreSampleUICanvas : ConvoCoreUIFoundation
@@ -30,13 +28,11 @@ namespace WolfstagInteractive.ConvoCore
         [Tooltip("Spawner used to place prefab characters into canvas slot anchors.")]
         [SerializeField] private ConvoCorePrefabRepresentationSpawner prefabRepresentationSpawner;
 
-        [Tooltip("Ordered list of RectTransform anchors that serve as parent slots for spawned prefab characters. " +
-                 "Slot 0 is the first character, slot 1 the second, etc. Named addressing via SlotId matches by anchor name.")]
-        [SerializeField] private List<RectTransform> characterSlotAnchors = new();
-        [SerializeField, Min(1)]
-        private int maxVisibleCharacterSlots = 3;
-
-        public virtual int MaxVisibleCharacterSlots => maxVisibleCharacterSlots;
+        /// <summary>
+        /// Slot count mirrors <see cref="ConvoCoreUIFoundation.DisplaySlots"/>; falls back to 1 if
+        /// no slots have been configured on the foundation.
+        /// </summary>
+        public virtual int MaxVisibleCharacterSlots => Mathf.Max(1, DisplaySlots.Count);
         [Header("Choice UI")]
         [SerializeField] private GameObject ChoicePanel;
         [SerializeField] private Transform ChoiceButtonContainer;
@@ -47,9 +43,6 @@ namespace WolfstagInteractive.ConvoCore
         [SerializeField] private TextMeshProUGUI SpeakerName;
         [SerializeField] private GameObject DialoguePanel;
         [SerializeField] private Image SpeakerPortraitImage;
-        [SerializeField] private Image FullBodyImageLeft;
-        [SerializeField] private Image FullBodyImageRight;
-        [SerializeField] private Image FullBodyImageCenter;
         [SerializeField] private Button ContinueButton;
         [SerializeField] private Button PreviousLineButton;
 
@@ -290,27 +283,54 @@ namespace WolfstagInteractive.ConvoCore
         }
 
         /// <summary>
-        /// Returns the slot anchor for a representation. Named addressing via <see cref="DialogueLineDisplayOptions.SlotId"/>
-        /// takes precedence; falls back to index-based lookup; returns null if out of range.
+        /// Returns the slot anchor (RectTransform) for a representation.
+        /// Named addressing via <see cref="DialogueLineDisplayOptions.DisplaySlot"/> takes precedence;
+        /// falls back to index-based lookup into <see cref="ConvoCoreUIFoundation.DisplaySlots"/>.
         /// </summary>
         private RectTransform GetSlotAnchor(DialogueLineDisplayOptions options, int index)
         {
-            if (options != null && !string.IsNullOrEmpty(options.SlotId))
+            if (!string.IsNullOrEmpty(options?.DisplaySlot))
             {
-                var named = characterSlotAnchors.Find(a => a != null && a.name == options.SlotId);
-                if (named != null) return named;
+                var def = DisplaySlots.FirstOrDefault(s => s?.SlotName == options.DisplaySlot);
+                var rt = def?.SlotObject?.GetComponent<RectTransform>();
+                if (rt != null) return rt;
             }
 
-            if (index >= 0 && index < characterSlotAnchors.Count)
-                return characterSlotAnchors[index];
+            if (index >= 0 && index < DisplaySlots.Count)
+                return DisplaySlots[index]?.SlotObject?.GetComponent<RectTransform>();
 
             return null;
+        }
+
+        private static DialogueLineDisplayOptions MergeDisplayOptions(
+            DialogueLineDisplayOptions perLine,
+            DialogueLineDisplayOptions expressionDefault)
+        {
+            if (perLine == null) return expressionDefault ?? new DialogueLineDisplayOptions();
+            if (expressionDefault == null) return perLine;
+
+            return new DialogueLineDisplayOptions
+            {
+                FlipPortraitX = perLine.FlipPortraitX || expressionDefault.FlipPortraitX,
+                FlipPortraitY = perLine.FlipPortraitY || expressionDefault.FlipPortraitY,
+                FlipFullBodyX = perLine.FlipFullBodyX || expressionDefault.FlipFullBodyX,
+                FlipFullBodyY = perLine.FlipFullBodyY || expressionDefault.FlipFullBodyY,
+                DisplaySlot   = !string.IsNullOrEmpty(perLine.DisplaySlot)
+                                    ? perLine.DisplaySlot
+                                    : expressionDefault.DisplaySlot,
+                PortraitScale = perLine.PortraitScale != Vector3.one
+                                    ? perLine.PortraitScale
+                                    : expressionDefault.PortraitScale,
+                FullBodyScale = perLine.FullBodyScale != Vector3.one
+                                    ? perLine.FullBodyScale
+                                    : expressionDefault.FullBodyScale,
+            };
         }
 
         private void RenderSpriteRepresentation(SpriteExpressionMapping spriteMapping,
             DialogueLineDisplayOptions lineOptions, int index)
         {
-            var displayOptions = lineOptions ?? spriteMapping.DisplayOptions;
+            var displayOptions = MergeDisplayOptions(lineOptions, spriteMapping.DisplayOptions);
 
             if (SpeakerPortraitImage && spriteMapping.PortraitSprite)
             {
@@ -323,7 +343,7 @@ namespace WolfstagInteractive.ConvoCore
                 TryFadeIn(SpeakerPortraitImage);
             }
 
-            var fullBodyImage = GetFullBodyImageForIndex(displayOptions, index);
+            var fullBodyImage = GetSpriteSlotImage(displayOptions?.DisplaySlot ?? string.Empty, index);
             if (fullBodyImage && spriteMapping.FullBodySprite)
             {
                 fullBodyImage.sprite = spriteMapping.FullBodySprite;
@@ -336,16 +356,25 @@ namespace WolfstagInteractive.ConvoCore
             }
         }
 
-        private Image GetFullBodyImageForIndex(DialogueLineDisplayOptions options, int index)
+        /// <summary>
+        /// Returns the full-body sprite Image for a slot. Looks up by slot name in
+        /// <see cref="ConvoCoreUIFoundation.DisplaySlots"/> (via <see cref="Image"/> on the
+        /// <see cref="ConvoCoreUIFoundation.DisplaySlotDefinition.SlotObject"/>), then falls back
+        /// to index.
+        /// </summary>
+        private Image GetSpriteSlotImage(string displaySlot, int index)
         {
-            // Named slot id doesn't apply to sprite Images, so use DisplayPosition or index.
-            var position = options?.DisplayPosition ?? DialogueLineDisplayOptions.CharacterPosition.Left;
-            return position switch
+            if (!string.IsNullOrEmpty(displaySlot))
             {
-                DialogueLineDisplayOptions.CharacterPosition.Right  => FullBodyImageRight,
-                DialogueLineDisplayOptions.CharacterPosition.Center => FullBodyImageCenter,
-                _                                                   => FullBodyImageLeft
-            };
+                var def = DisplaySlots.FirstOrDefault(s => s?.SlotName == displaySlot);
+                var img = def?.SlotObject?.GetComponent<Image>();
+                if (img != null) return img;
+            }
+
+            if (index >= 0 && index < DisplaySlots.Count)
+                return DisplaySlots[index]?.SlotObject?.GetComponent<Image>();
+
+            return null;
         }
 
         private void TryFadeIn(Graphic graphic) => graphic.GetComponent<IConvoCoreFadeIn>()?.FadeIn();
@@ -353,9 +382,8 @@ namespace WolfstagInteractive.ConvoCore
         private void HideAllSpriteImages()
         {
             SpeakerPortraitImage?.gameObject.SetActive(false);
-            FullBodyImageLeft?.gameObject.SetActive(false);
-            FullBodyImageCenter?.gameObject.SetActive(false);
-            FullBodyImageRight?.gameObject.SetActive(false);
+            foreach (var slot in DisplaySlots)
+                slot?.SlotObject?.GetComponent<Image>()?.gameObject.SetActive(false);
         }
 
         private CharacterRepresentationBase GetRepresentationFromData(ConvoCoreConversationData convoData,
