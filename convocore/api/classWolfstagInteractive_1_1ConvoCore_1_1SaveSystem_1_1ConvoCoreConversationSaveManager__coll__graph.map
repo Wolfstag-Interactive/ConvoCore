@@ -1,62 +1,68 @@
 <map id="WolfstagInteractive.ConvoCore.SaveSystem.ConvoCoreConversationSaveManager" name="WolfstagInteractive.ConvoCore.SaveSystem.ConvoCoreConversationSaveManager">
-<area shape="rect" id="Node000001" title="Attach alongside a ConvoCore component to persist and restore conversation state (active line,..." alt="" coords="2267,291,2565,346"/>
-<area shape="rect" id="Node000002" title=" " alt="" coords="1403,646,1527,671"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1540,648,1951,601,2146,575,2211,564,2242,556,2271,535,2299,510,2345,451,2379,393,2401,345,2406,347,2384,395,2349,454,2302,513,2275,539,2244,561,2212,570,2147,580,1951,606,1541,653"/>
-<area shape="rect" id="Node000011" href="$classWolfstagInteractive_1_1ConvoCore_1_1ConvoCore.html" title="Main conversation runner MonoBehaviour." alt="" coords="1803,493,1998,533"/>
-<area shape="poly" id="edge16_Node000011_Node000002" title=" " alt="" coords="1540,649,1568,642,1595,631,1606,620,1619,608,1654,592,1684,586,1715,581,1753,571,1853,531,1855,536,1754,576,1716,586,1685,591,1656,597,1621,613,1610,624,1597,636,1570,647,1541,654"/>
-<area shape="rect" id="Node000014" href="$classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreUIFoundation.html" title="Used as a basis of any UI that can be assigned in the inspector that includes all the base functions ..." alt="" coords="2309,639,2523,679"/>
-<area shape="poly" id="edge21_Node000014_Node000002" title=" " alt="" coords="1540,656,2309,656,2309,661,1540,661"/>
-<area shape="rect" id="Node000016" href="$classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreDialogueHistoryUI.html" title=" " alt="" coords="1777,700,2024,740"/>
-<area shape="poly" id="edge25_Node000016_Node000002" title=" " alt="" coords="1540,667,1777,700,1777,705,1540,672"/>
-<area shape="rect" id="Node000003" href="$interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoStartContextProvider.html" title="Implement on a component alongside ConvoCore to control how a conversation is started." alt="" coords="1799,393,2002,418"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="2015,392,2125,379,2242,360,2316,343,2317,349,2243,365,2126,384,2016,397"/>
-<area shape="rect" id="Node000004" href="$classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData.html" title=" " alt="" coords="1343,324,1587,364"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="1601,338,2267,320,2267,325,1601,343"/>
-<area shape="poly" id="edge18_Node000011_Node000004" title=" " alt="" coords="1564,365,1597,373,1677,393,1711,404,1754,422,1819,456,1873,491,1870,496,1817,461,1752,426,1710,409,1675,399,1595,379,1563,370"/>
-<area shape="rect" id="Node000005" title=" " alt="" coords="5,263,135,289"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="149,280,480,305,958,327,1343,339,1342,344,958,332,480,311,149,286"/>
-<area shape="rect" id="Node000006" href="$classWolfstagInteractive_1_1ConvoCore_1_1ConversationContainer.html" title="ScriptableObject that groups one or more ConvoCoreConversationData assets into a single addressable u..." alt="" coords="480,256,685,296"/>
-<area shape="poly" id="edge6_Node000006_Node000005" title=" " alt="" coords="149,273,480,273,480,279,149,279"/>
-<area shape="rect" id="Node000007" href="$classWolfstagInteractive_1_1ConvoCore_1_1SaveSystem_1_1ConvoCoreSaveManager.html" title=" " alt="" coords="709,97,1011,137"/>
-<area shape="poly" id="edge8_Node000007_Node000005" title=" " alt="" coords="77,249,92,215,114,175,144,137,183,107,224,92,279,83,343,78,415,77,568,84,709,96,709,102,567,89,415,82,344,83,279,88,225,97,185,112,148,141,119,178,97,217,82,251"/>
-<area shape="rect" id="Node000008" href="$classWolfstagInteractive_1_1ConvoCore_1_1SaveSystem_1_1ConvoVariableStore.html" title=" " alt="" coords="185,187,455,227"/>
-<area shape="poly" id="edge10_Node000008_Node000005" title=" " alt="" coords="129,257,246,224,248,229,130,262"/>
-<area shape="rect" id="Node000009" href="$classWolfstagInteractive_1_1ConvoCore_1_1SaveSystem_1_1ConvoSettingsState.html" title="ScriptableObject that bridges ConvoCoreLanguageManager with the save system." alt="" coords="185,121,455,161"/>
-<area shape="poly" id="edge12_Node000009_Node000005" title=" " alt="" coords="89,251,129,211,155,190,183,172,214,159,216,164,185,177,158,194,133,215,93,255"/>
-<area shape="rect" id="Node000017" href="$classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSettings.html" title="Global runtime settings ScriptableObject for ConvoCore." alt="" coords="223,460,417,500"/>
-<area shape="poly" id="edge27_Node000017_Node000005" title=" " alt="" coords="97,296,160,351,294,458,291,462,157,355,94,300"/>
-<area shape="rect" id="Node000019" href="$classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreHistoryRendererProfile.html" title=" " alt="" coords="1035,796,1309,836"/>
-<area shape="poly" id="edge31_Node000019_Node000005" title=" " alt="" coords="82,301,119,398,149,456,186,510,255,590,315,647,385,691,481,734,551,758,624,778,698,793,772,803,913,816,1034,818,1034,824,913,821,771,809,697,798,623,783,549,763,479,738,383,695,312,651,251,594,182,514,144,459,114,400,77,303"/>
-<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="699,275,1355,285,2243,308,2267,309,2266,314,2243,313,1355,291,699,280"/>
-<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="974,92,1081,75,1213,59,1367,46,1535,40,1713,45,1894,64,1984,80,2073,100,2160,125,2244,156,2292,183,2335,219,2371,256,2397,289,2393,293,2367,260,2332,223,2289,188,2242,161,2158,130,2071,105,1983,85,1893,69,1712,51,1535,46,1367,51,1214,64,1081,81,975,98"/>
-<area shape="poly" id="edge14_Node000001_Node000008" title=" " alt="" coords="468,198,755,189,1141,182,1580,184,1804,190,2024,200,2135,204,2183,210,2244,225,2314,255,2374,289,2372,293,2312,260,2242,231,2182,215,2135,209,2024,205,1804,195,1580,189,1141,188,755,194,468,203"/>
-<area shape="poly" id="edge9_Node000007_Node000008" title=" " alt="" coords="468,185,685,152,771,135,772,140,686,157,469,191"/>
-<area shape="poly" id="edge11_Node000007_Node000009" title=" " alt="" coords="469,132,709,121,709,127,469,137"/>
-<area shape="rect" id="Node000010" href="$interfaceWolfstagInteractive_1_1ConvoCore_1_1SaveSystem_1_1IConvoSaveProvider.html" title=" " alt="" coords="184,5,456,45"/>
-<area shape="poly" id="edge13_Node000007_Node000010" title=" " alt="" coords="470,32,577,43,686,61,747,77,804,95,802,100,746,82,685,67,576,49,470,37"/>
-<area shape="poly" id="edge15_Node000001_Node000011" title=" " alt="" coords="1999,487,2117,454,2242,410,2309,377,2369,344,2372,348,2312,382,2244,414,2118,459,2001,493"/>
-<area shape="poly" id="edge23_Node000014_Node000011" title=" " alt="" coords="2012,512,2125,523,2185,534,2244,551,2286,569,2327,592,2391,636,2388,641,2324,596,2284,574,2242,556,2184,539,2124,528,2011,517"/>
-<area shape="rect" id="Node000012" href="$interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoCoreRunner.html" title="Minimal interface implemented by ConvoCore." alt="" coords="1393,531,1536,557"/>
-<area shape="poly" id="edge17_Node000011_Node000012" title=" " alt="" coords="1550,535,1620,529,1803,517,1803,522,1620,535,1550,540"/>
-<area shape="rect" id="Node000013" href="$interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoInput.html" title="Input strategy interface." alt="" coords="1367,581,1562,621"/>
-<area shape="poly" id="edge19_Node000011_Node000013" title=" " alt="" coords="1575,581,1753,547,1821,531,1822,536,1754,552,1576,586"/>
-<area shape="poly" id="edge20_Node000011_Node000014" title=" " alt="" coords="2307,638,2182,608,2047,571,1951,536,1952,531,2049,565,2183,603,2308,633"/>
-<area shape="rect" id="Node000015" href="$interfaceWolfstagInteractive_1_1ConvoCore_1_1IUIFoundation.html" title="Contract between the ConvoCore runner and a dialogue UI implementation." alt="" coords="1845,765,1957,790"/>
-<area shape="poly" id="edge22_Node000014_Node000015" title=" " alt="" coords="1970,765,2097,745,2242,713,2360,676,2362,681,2243,719,2098,750,1971,771"/>
-<area shape="poly" id="edge24_Node000014_Node000016" title=" " alt="" coords="2037,710,2242,689,2321,676,2322,681,2243,695,2038,715"/>
-<area shape="poly" id="edge26_Node000016_Node000017" title=" " alt="" coords="416,501,587,541,814,590,1072,640,1334,681,1414,690,1476,694,1620,700,1777,710,1777,715,1620,705,1476,699,1413,696,1333,687,1071,645,813,596,585,546,415,506"/>
-<area shape="poly" id="edge28_Node000017_Node000017" title=" " alt="" coords="290,444,301,436,320,433,337,435,348,441,353,450,351,460,346,459,347,451,344,445,335,441,320,439,303,441,294,448"/>
-<area shape="rect" id="Node000021" href="$classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreLanguageManager.html" title=" " alt="" coords="737,460,983,500"/>
-<area shape="poly" id="edge35_Node000021_Node000017" title=" " alt="" coords="431,477,737,477,737,483,431,483"/>
-<area shape="rect" id="Node000018" href="$interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoCoreHistoryRenderer.html" title="Base contract for any dialogue history renderer." alt="" coords="1346,755,1583,795"/>
-<area shape="poly" id="edge29_Node000016_Node000018" title=" " alt="" coords="1597,770,1675,765,1753,756,1825,738,1827,743,1754,761,1675,771,1597,776"/>
-<area shape="poly" id="edge30_Node000016_Node000019" title=" " alt="" coords="1323,818,1333,819,1455,826,1553,832,1598,829,1645,820,1695,802,1752,774,1763,763,1776,751,1806,738,1808,742,1779,756,1767,767,1755,778,1697,807,1646,825,1599,835,1553,837,1455,831,1333,824,1323,824"/>
-<area shape="rect" id="Node000020" href="$classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreDialogueLocalizationHandler.html" title=" " alt="" coords="1333,453,1596,507"/>
-<area shape="poly" id="edge32_Node000011_Node000020" title=" " alt="" coords="1610,488,1803,503,1803,509,1609,494"/>
-<area shape="poly" id="edge33_Node000020_Node000021" title=" " alt="" coords="997,477,1333,477,1333,483,997,483"/>
-<area shape="poly" id="edge34_Node000021_Node000021" title=" " alt="" coords="810,443,828,436,860,433,888,435,906,441,914,450,911,461,906,459,909,451,903,446,887,441,860,439,829,441,812,448"/>
-<area shape="rect" id="Node000022" href="$interfaceWolfstagInteractive_1_1ConvoCore_1_1IConversationContext.html" title="Provides optional runtime context for branch evaluation." alt="" coords="1366,388,1563,428"/>
-<area shape="poly" id="edge36_Node000011_Node000022" title=" " alt="" coords="1573,428,1754,471,1829,491,1828,496,1753,476,1571,434"/>
-<area shape="rect" id="Node000023" href="$structWolfstagInteractive_1_1ConvoCore_1_1ConvoStartContext.html" title=" " alt="" coords="1803,215,1998,255"/>
-<area shape="poly" id="edge37_Node000001_Node000023" title=" " alt="" coords="2012,240,2124,252,2243,271,2321,289,2320,294,2242,276,2123,258,2012,246"/>
+<area shape="rect" id="Node000001" title="Attach alongside a ConvoCore component to persist and restore conversation state (active line,..." alt="" coords="2267,303,2565,358"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="1403,779,1527,805"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1540,782,1620,775,1936,760,2131,745,2202,734,2241,720,2283,682,2318,637,2346,586,2368,534,2385,482,2397,433,2409,358,2415,359,2402,434,2390,483,2373,535,2351,589,2323,640,2287,686,2244,725,2203,739,2132,750,1936,765,1620,780,1540,787"/>
+<area shape="rect" id="Node000012" href="$classWolfstagInteractive_1_1ConvoCore_1_1ConvoCore.html" title="Main conversation runner MonoBehaviour." alt="" coords="1803,585,1998,625"/>
+<area shape="poly" id="edge19_Node000012_Node000002" title=" " alt="" coords="1540,784,1568,777,1595,766,1606,754,1618,742,1654,724,1685,716,1715,709,1752,695,1816,659,1870,623,1873,628,1819,664,1754,700,1717,714,1686,721,1656,729,1622,746,1610,758,1597,770,1570,782,1541,789"/>
+<area shape="rect" id="Node000015" href="$classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreUIFoundation.html" title="Used as a basis of any UI that can be assigned in the inspector that includes all the base functions ..." alt="" coords="2309,772,2523,812"/>
+<area shape="poly" id="edge24_Node000015_Node000002" title=" " alt="" coords="1540,789,2309,789,2309,795,1540,795"/>
+<area shape="rect" id="Node000017" href="$classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreDialogueHistoryUI.html" title=" " alt="" coords="1777,835,2024,875"/>
+<area shape="poly" id="edge28_Node000017_Node000002" title=" " alt="" coords="1540,800,1777,834,1777,840,1540,805"/>
+<area shape="rect" id="Node000003" href="$interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoStartContextProvider.html" title="Implement on a component alongside ConvoCore to control how a conversation is started." alt="" coords="1799,231,2002,257"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="2016,254,2243,288,2304,301,2303,306,2242,293,2015,260"/>
+<area shape="rect" id="Node000004" href="$classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData.html" title=" " alt="" coords="198,333,442,373"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="437,329,480,323,635,307,757,301,1035,295,1172,292,1309,295,1441,303,1544,313,1646,323,1777,331,1901,332,2024,331,2266,329,2266,335,2024,336,1901,338,1777,336,1645,328,1543,318,1441,308,1309,300,1172,297,1035,300,757,306,636,313,480,328,437,334"/>
+<area shape="rect" id="Node000006" href="$classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreAudioManifest.html" title="Maps dialogue line IDs to audio clips or middleware references, supporting Unity AudioSource,..." alt="" coords="749,365,971,405"/>
+<area shape="poly" id="edge7_Node000006_Node000004" title=" " alt="" coords="395,375,480,393,550,399,620,401,749,395,749,400,620,406,549,405,480,399,394,380"/>
+<area shape="poly" id="edge21_Node000012_Node000004" title=" " alt="" coords="456,342,480,341,583,340,685,341,825,339,945,332,1149,316,1247,315,1350,324,1464,347,1597,387,1643,406,1687,429,1768,484,1835,539,1881,583,1878,587,1832,543,1765,488,1684,434,1640,411,1595,392,1463,352,1349,329,1247,320,1149,321,945,337,825,345,685,347,583,345,480,347,456,348"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="5,386,135,411"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="148,382,209,371,210,376,149,387"/>
+<area shape="poly" id="edge6_Node000006_Node000005" title=" " alt="" coords="149,402,389,412,537,413,685,407,749,400,749,406,686,412,537,418,388,417,149,407"/>
+<area shape="rect" id="Node000007" href="$classWolfstagInteractive_1_1ConvoCore_1_1ConversationContainer.html" title="ScriptableObject that groups one or more ConvoCoreConversationData assets into a single addressable u..." alt="" coords="480,468,685,508"/>
+<area shape="poly" id="edge9_Node000007_Node000005" title=" " alt="" coords="96,419,125,441,160,459,241,481,326,492,408,496,480,494,480,500,408,501,326,497,240,486,158,464,122,445,93,423"/>
+<area shape="rect" id="Node000008" href="$classWolfstagInteractive_1_1ConvoCore_1_1SaveSystem_1_1ConvoCoreSaveManager.html" title=" " alt="" coords="709,120,1011,160"/>
+<area shape="poly" id="edge11_Node000008_Node000005" title=" " alt="" coords="74,372,86,329,107,278,139,226,159,203,183,184,222,166,276,152,341,142,413,135,566,129,709,131,709,136,566,135,413,140,342,147,277,157,224,171,185,189,163,207,143,229,112,280,91,331,79,373"/>
+<area shape="rect" id="Node000009" href="$classWolfstagInteractive_1_1ConvoCore_1_1SaveSystem_1_1ConvoVariableStore.html" title=" " alt="" coords="185,199,455,239"/>
+<area shape="poly" id="edge13_Node000009_Node000005" title=" " alt="" coords="99,375,290,237,293,241,102,380"/>
+<area shape="rect" id="Node000010" href="$classWolfstagInteractive_1_1ConvoCore_1_1SaveSystem_1_1ConvoSettingsState.html" title="ScriptableObject that bridges ConvoCoreLanguageManager with the save system." alt="" coords="185,5,455,45"/>
+<area shape="poly" id="edge15_Node000010_Node000005" title=" " alt="" coords="69,372,74,308,91,222,105,176,124,132,150,91,182,55,199,43,202,48,186,59,154,94,129,135,110,178,96,223,80,308,74,373"/>
+<area shape="rect" id="Node000018" href="$classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSettings.html" title="Global runtime settings ScriptableObject for ConvoCore." alt="" coords="223,708,417,748"/>
+<area shape="poly" id="edge30_Node000018_Node000005" title=" " alt="" coords="91,421,306,706,301,709,87,424"/>
+<area shape="rect" id="Node000020" href="$classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreHistoryRendererProfile.html" title=" " alt="" coords="1035,937,1309,977"/>
+<area shape="poly" id="edge34_Node000020_Node000005" title=" " alt="" coords="76,424,83,489,101,577,116,624,134,672,158,717,186,758,220,797,252,827,283,851,314,869,387,896,481,923,552,940,626,953,774,968,914,971,1034,967,1034,972,914,976,774,973,625,958,551,945,479,928,385,901,312,873,280,855,248,831,216,801,182,762,153,720,129,674,111,626,96,578,78,490,70,425"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="736,381,442,363,442,358,736,375"/>
+<area shape="poly" id="edge8_Node000001_Node000007" title=" " alt="" coords="699,479,1546,429,1987,399,2147,386,2242,375,2326,355,2328,361,2243,380,2148,391,1987,404,1546,434,700,484"/>
+<area shape="poly" id="edge10_Node000001_Node000008" title=" " alt="" coords="973,115,1079,98,1211,81,1365,67,1533,61,1711,65,1892,82,1983,97,2072,117,2159,142,2244,172,2292,198,2334,233,2370,269,2397,301,2393,305,2366,273,2331,237,2289,203,2242,177,2157,147,2071,122,1982,103,1892,88,1711,70,1533,66,1365,73,1212,86,1079,103,974,120"/>
+<area shape="poly" id="edge17_Node000001_Node000009" title=" " alt="" coords="468,207,755,195,1142,187,1357,187,1580,191,1805,201,2024,216,2135,228,2243,255,2305,276,2360,301,2358,306,2303,281,2242,260,2134,233,2024,221,1804,206,1580,197,1357,192,1142,192,755,200,468,213"/>
+<area shape="poly" id="edge12_Node000008_Node000009" title=" " alt="" coords="468,200,685,171,760,157,761,163,686,176,469,205"/>
+<area shape="poly" id="edge14_Node000008_Node000010" title=" " alt="" coords="469,41,576,59,686,81,805,117,803,122,685,87,575,64,468,46"/>
+<area shape="rect" id="Node000011" href="$interfaceWolfstagInteractive_1_1ConvoCore_1_1SaveSystem_1_1IConvoSaveProvider.html" title=" " alt="" coords="184,69,456,109"/>
+<area shape="poly" id="edge16_Node000008_Node000011" title=" " alt="" coords="470,99,686,119,710,121,709,126,685,124,469,104"/>
+<area shape="poly" id="edge18_Node000001_Node000012" title=" " alt="" coords="1960,577,2091,518,2241,440,2313,397,2374,356,2377,360,2315,402,2244,445,2093,522,1963,582"/>
+<area shape="poly" id="edge26_Node000015_Node000012" title=" " alt="" coords="1945,631,1994,660,2049,687,2118,713,2189,736,2319,769,2318,775,2187,741,2116,718,2047,692,1991,664,1942,635"/>
+<area shape="rect" id="Node000013" href="$interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoCoreRunner.html" title="Minimal interface implemented by ConvoCore." alt="" coords="1393,458,1536,483"/>
+<area shape="poly" id="edge20_Node000012_Node000013" title=" " alt="" coords="1548,483,1597,493,1676,509,1754,532,1813,557,1864,583,1862,588,1811,562,1752,537,1675,515,1595,499,1547,489"/>
+<area shape="rect" id="Node000014" href="$interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoInput.html" title="Input strategy interface." alt="" coords="1367,508,1562,548"/>
+<area shape="poly" id="edge22_Node000012_Node000014" title=" " alt="" coords="1576,543,1754,573,1804,583,1803,588,1753,579,1575,548"/>
+<area shape="poly" id="edge23_Node000012_Node000015" title=" " alt="" coords="2381,765,2319,716,2281,692,2242,672,2180,650,2117,634,1998,615,1999,610,2118,629,2182,645,2244,667,2284,687,2322,712,2385,761"/>
+<area shape="rect" id="Node000016" href="$interfaceWolfstagInteractive_1_1ConvoCore_1_1IUIFoundation.html" title="Contract between the ConvoCore runner and a dialogue UI implementation." alt="" coords="1845,899,1957,925"/>
+<area shape="poly" id="edge25_Node000015_Node000016" title=" " alt="" coords="1970,900,2097,879,2242,848,2362,810,2363,815,2243,853,2098,885,1971,905"/>
+<area shape="poly" id="edge27_Node000015_Node000017" title=" " alt="" coords="2037,844,2242,823,2320,809,2321,815,2243,828,2038,849"/>
+<area shape="poly" id="edge29_Node000017_Node000018" title=" " alt="" coords="431,748,604,780,828,817,1079,853,1334,879,1465,884,1596,879,1777,865,1777,871,1596,884,1465,889,1333,884,1078,858,827,823,603,785,430,753"/>
+<area shape="poly" id="edge31_Node000018_Node000018" title=" " alt="" coords="290,692,301,684,320,681,337,683,348,689,353,698,351,708,346,707,347,699,344,693,335,689,320,687,303,689,294,696"/>
+<area shape="rect" id="Node000023" href="$classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreLanguageManager.html" title=" " alt="" coords="737,708,983,748"/>
+<area shape="poly" id="edge39_Node000023_Node000018" title=" " alt="" coords="431,725,737,725,737,731,431,731"/>
+<area shape="rect" id="Node000019" href="$interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoCoreHistoryRenderer.html" title="Base contract for any dialogue history renderer." alt="" coords="1346,829,1583,869"/>
+<area shape="poly" id="edge32_Node000017_Node000019" title=" " alt="" coords="1598,855,1620,856,1753,856,1777,856,1777,861,1753,861,1620,861,1597,860"/>
+<area shape="poly" id="edge33_Node000017_Node000020" title=" " alt="" coords="1279,977,1385,989,1445,992,1508,990,1572,984,1635,971,1695,951,1752,923,1760,915,1763,906,1767,896,1776,886,1799,872,1802,877,1779,890,1772,899,1768,908,1764,918,1755,928,1697,956,1636,976,1572,989,1508,996,1445,997,1385,995,1279,982"/>
+<area shape="rect" id="Node000021" href="$interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoAudioProvider.html" title="Interface for audio playback backends." alt="" coords="1367,572,1562,612"/>
+<area shape="poly" id="edge35_Node000012_Node000021" title=" " alt="" coords="1576,593,1803,600,1803,605,1576,598"/>
+<area shape="rect" id="Node000022" href="$classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreDialogueLocalizationHandler.html" title=" " alt="" coords="1333,701,1596,755"/>
+<area shape="poly" id="edge36_Node000012_Node000022" title=" " alt="" coords="1597,695,1753,653,1844,623,1846,628,1754,659,1599,700"/>
+<area shape="poly" id="edge37_Node000022_Node000023" title=" " alt="" coords="997,725,1333,725,1333,731,997,731"/>
+<area shape="poly" id="edge38_Node000023_Node000023" title=" " alt="" coords="810,691,828,684,860,681,888,683,906,689,914,698,911,709,906,707,909,699,903,694,887,689,860,687,829,689,812,696"/>
+<area shape="rect" id="Node000024" href="$interfaceWolfstagInteractive_1_1ConvoCore_1_1IConversationContext.html" title="Provides optional runtime context for branch evaluation." alt="" coords="1366,636,1563,676"/>
+<area shape="poly" id="edge40_Node000012_Node000024" title=" " alt="" coords="1577,640,1803,614,1803,619,1577,646"/>
+<area shape="rect" id="Node000025" href="$structWolfstagInteractive_1_1ConvoCore_1_1ConvoStartContext.html" title=" " alt="" coords="1803,281,1998,321"/>
+<area shape="poly" id="edge41_Node000001_Node000025" title=" " alt="" coords="2012,305,2266,320,2266,325,2012,310"/>
 </map>

@@ -1,5 +1,6 @@
 var dir_716fc4c6cb98b933cc0fa884d6e5d043 =
 [
+    [ "Audio", "dir_64ec4477751896e4e30c02b8e544a944.html", "dir_64ec4477751896e4e30c02b8e544a944" ],
     [ "CharacterBehaviors", "dir_0544dd6d0e4618470fae1516f62963b1.html", "dir_0544dd6d0e4618470fae1516f62963b1" ],
     [ "ConvoCoreContainers", "dir_610fcbfc3bd96f3150ee927b0b681e14.html", "dir_610fcbfc3bd96f3150ee927b0b681e14" ],
     [ "ConvoCoreExcel", "dir_cf9404dafd32d86ef1740e154afde94d.html", "dir_cf9404dafd32d86ef1740e154afde94d" ],
@@ -11,6 +12,7 @@ var dir_716fc4c6cb98b933cc0fa884d6e5d043 =
     [ "BaseExpressionAction.cs", "BaseExpressionAction_8cs.html", "BaseExpressionAction_8cs" ],
     [ "CharacterRepresentationBase.cs", "CharacterRepresentationBase_8cs.html", "CharacterRepresentationBase_8cs" ],
     [ "ChoiceResult.cs", "ChoiceResult_8cs.html", "ChoiceResult_8cs" ],
+    [ "ConversationPresentationMode.cs", "ConversationPresentationMode_8cs.html", "ConversationPresentationMode_8cs" ],
     [ "ConvoCore.cs", "ConvoCore_8cs.html", "ConvoCore_8cs" ],
     [ "ConvoCoreActionOnlyDisplay.cs", "ConvoCoreActionOnlyDisplay_8cs.html", "ConvoCoreActionOnlyDisplay_8cs" ],
     [ "ConvoCoreAddressablesUtil.cs", "ConvoCoreAddressablesUtil_8cs.html", "ConvoCoreAddressablesUtil_8cs" ],

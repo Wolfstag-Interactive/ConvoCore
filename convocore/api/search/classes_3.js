@@ -5,5 +5,6 @@ var searchData=
   ['dialoguehistoryrenderercontext_2',['DialogueHistoryRendererContext',['../structWolfstagInteractive_1_1ConvoCore_1_1DialogueHistoryRendererContext.html',1,'WolfstagInteractive::ConvoCore']]],
   ['dialoguelinedisplayoptions_3',['DialogueLineDisplayOptions',['../classWolfstagInteractive_1_1ConvoCore_1_1DialogueLineDisplayOptions.html',1,'WolfstagInteractive::ConvoCore']]],
   ['dialoguelineinfo_4',['DialogueLineInfo',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData_1_1DialogueLineInfo.html',1,'WolfstagInteractive::ConvoCore::ConvoCoreConversationData']]],
-  ['dialogueyamlconfig_5',['DialogueYamlConfig',['../classWolfstagInteractive_1_1ConvoCore_1_1DialogueYamlConfig.html',1,'WolfstagInteractive::ConvoCore']]]
+  ['dialogueyamlconfig_5',['DialogueYamlConfig',['../classWolfstagInteractive_1_1ConvoCore_1_1DialogueYamlConfig.html',1,'WolfstagInteractive::ConvoCore']]],
+  ['displayslotdefinition_6',['DisplaySlotDefinition',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreUIFoundation_1_1DisplaySlotDefinition.html',1,'WolfstagInteractive::ConvoCore::ConvoCoreUIFoundation']]]
 ];
