@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace WolfstagInteractive.ConvoCore
 {
@@ -17,8 +18,9 @@ namespace WolfstagInteractive.ConvoCore
         }
 
         /// <summary>
-        /// Gets localized text for a dialogue line, with case-insensitive and base-locale fallback.
+        /// Gets localized text and audio clip for a dialogue line, with case-insensitive and base-locale fallback.
         /// Tries: exact -> base (fr-CA -> fr) -> "en" -> base("en") -> first available.
+        /// A line succeeds if it resolves either text or a clip (or both).
         /// </summary>
         public LocalizedDialogueResult GetLocalizedDialogue(ConvoCoreConversationData.DialogueLineInfo lineInfo)
         {
@@ -32,76 +34,57 @@ namespace WolfstagInteractive.ConvoCore
                 };
             }
 
-            // Build a case-insensitive map from the list
-            var map = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+            // Build case-insensitive maps for text and clips
+            var textMap = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+            var clipMap = new Dictionary<string, AudioClip>(StringComparer.OrdinalIgnoreCase);
             foreach (var ld in lineInfo.LocalizedDialogues)
             {
-                if (!string.IsNullOrEmpty(ld.Language) && ld.Text != null)
-                    map[ld.Language] = ld.Text; // last-in wins if duplicates
+                if (string.IsNullOrEmpty(ld.Language)) continue;
+                if (ld.Text != null)
+                    textMap[ld.Language] = ld.Text; // last-in wins if duplicates
+                if (ld.Clip != null)
+                    clipMap[ld.Language] = ld.Clip;
             }
 
             string requested = _convoCoreLanguageManager?.CurrentLanguage ?? "en";
             string fallback = "en";
 
-            // 1) exact
-            if (map.TryGetValue(requested, out var text))
+            // Run the 5-step fallback chain and return the first hit
+            string[] candidates = BuildCandidates(requested, fallback);
+            foreach (var lang in candidates)
             {
-                return new LocalizedDialogueResult { Success = true, Text = text, UsedLanguage = requested };
-            }
+                bool hasText = textMap.TryGetValue(lang, out var text);
+                bool hasClip = clipMap.TryGetValue(lang, out var clip);
 
-            // 2) base of requested (fr-CA -> fr)
-            var baseReq = BaseLang(requested);
-            if (!baseReq.Equals(requested, StringComparison.OrdinalIgnoreCase) &&
-                map.TryGetValue(baseReq, out text))
-            {
+                if (!hasText && !hasClip) continue;
+
+                bool isFallback = !string.Equals(lang, requested, StringComparison.OrdinalIgnoreCase);
                 return new LocalizedDialogueResult
                 {
                     Success = true,
-                    Text = text,
-                    UsedLanguage = baseReq,
-                    IsFallback = true,
-                    ErrorMessage = $"Missing '{requested}', using '{baseReq}'."
+                    Text = hasText ? text : null,
+                    ResolvedClip = hasClip ? clip : null,
+                    UsedLanguage = lang,
+                    IsFallback = isFallback,
+                    ErrorMessage = isFallback ? $"Missing '{requested}', using '{lang}'." : null
                 };
             }
 
-            // 3) fallback ("en")
-            if (map.TryGetValue(fallback, out text))
+            // Last resort: first entry that has anything
+            foreach (var ld in lineInfo.LocalizedDialogues)
             {
-                return new LocalizedDialogueResult
-                {
-                    Success = true,
-                    Text = text,
-                    UsedLanguage = fallback,
-                    IsFallback = true,
-                    ErrorMessage = $"Missing '{requested}', using '{fallback}'."
-                };
-            }
+                bool hasText = !string.IsNullOrEmpty(ld.Text);
+                bool hasClip = ld.Clip != null;
+                if (!hasText && !hasClip) continue;
 
-            // 4) base of fallback
-            var baseFb = BaseLang(fallback);
-            if (!baseFb.Equals(fallback, StringComparison.OrdinalIgnoreCase) &&
-                map.TryGetValue(baseFb, out text))
-            {
                 return new LocalizedDialogueResult
                 {
                     Success = true,
-                    Text = text,
-                    UsedLanguage = baseFb,
+                    Text = hasText ? ld.Text : null,
+                    ResolvedClip = hasClip ? ld.Clip : null,
+                    UsedLanguage = ld.Language,
                     IsFallback = true,
-                    ErrorMessage = $"Missing '{requested}', using '{baseFb}'."
-                };
-            }
-
-            // 5) first available
-            foreach (var kv in map)
-            {
-                return new LocalizedDialogueResult
-                {
-                    Success = true,
-                    Text = kv.Value,
-                    UsedLanguage = kv.Key,
-                    IsFallback = true,
-                    ErrorMessage = $"Missing '{requested}', using '{kv.Key}'."
+                    ErrorMessage = $"Missing '{requested}', using '{ld.Language}'."
                 };
             }
 
@@ -112,6 +95,22 @@ namespace WolfstagInteractive.ConvoCore
                 Text = "[Missing Translation]",
                 ErrorMessage = $"No translations available for line {lineInfo.ConversationLineIndex} in '{lineInfo.ConversationID}'"
             };
+        }
+
+        private static string[] BuildCandidates(string requested, string fallback)
+        {
+            var baseReq = BaseLang(requested);
+            var baseFb  = BaseLang(fallback);
+
+            // Deduplicated ordered list
+            var list = new List<string>(5) { requested };
+            if (!baseReq.Equals(requested, StringComparison.OrdinalIgnoreCase)) list.Add(baseReq);
+            if (!fallback.Equals(requested, StringComparison.OrdinalIgnoreCase)  &&
+                !fallback.Equals(baseReq,   StringComparison.OrdinalIgnoreCase))  list.Add(fallback);
+            if (!baseFb.Equals(fallback,   StringComparison.OrdinalIgnoreCase)   &&
+                !baseFb.Equals(baseReq,    StringComparison.OrdinalIgnoreCase)   &&
+                !baseFb.Equals(requested,  StringComparison.OrdinalIgnoreCase))  list.Add(baseFb);
+            return list.ToArray();
         }
 
         private static string BaseLang(string code)
@@ -126,6 +125,8 @@ namespace WolfstagInteractive.ConvoCore
     {
         public bool Success { get; set; }
         public string Text { get; set; }
+        public AudioClip ResolvedClip { get; set; }
+        public bool IsAudioOnly => string.IsNullOrEmpty(Text) && ResolvedClip != null;
         public string UsedLanguage { get; set; }
         public bool IsFallback { get; set; }
         public string ErrorMessage { get; set; }

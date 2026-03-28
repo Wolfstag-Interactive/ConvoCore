@@ -40,7 +40,31 @@ namespace WolfstagInteractive.ConvoCore
             return null;
         }
 
+        /// <summary>
+        /// Returns true if the given line should display text in the UI.
+        /// </summary>
+        public bool ShouldDisplayText(DialogueLineInfo line)
+        {
+            return line.PresentationMode != ConversationPresentationMode.AudioOnly;
+        }
+
+        /// <summary>
+        /// Returns true if the given line should trigger audio playback.
+        /// </summary>
+        public bool ShouldPlayAudio(DialogueLineInfo line)
+        {
+            return line.PresentationMode != ConversationPresentationMode.TextOnly;
+        }
+
         public List<DialogueLineInfo> DialogueLines; // Metadata for all dialogues in the YAML
+
+        [Header("Presentation")]
+        [Tooltip("Default presentation mode applied to new lines created during YAML sync. Does not retroactively change existing lines.")]
+        public ConversationPresentationMode DefaultPresentationMode = ConversationPresentationMode.AudioAndText;
+
+        [Header("Audio")]
+        [Tooltip("Optional. Assign an audio manifest to enable voice clip playback for this conversation.")]
+        public ConvoCoreAudioManifest AudioManifest;
 
         [Header("YAML Source")]
         public TextAsset ConversationYaml;

@@ -45,7 +45,8 @@ namespace WolfstagInteractive.ConvoCore.Editor
         private static readonly GUIContent GC_CharacterID = new("Character ID");
         private static readonly GUIContent GC_InputMethod = new("Input Method:");
         private static readonly GUIContent GC_DisplayDuration = new("Display Duration (seconds):");
-        private static readonly GUIContent GC_AudioClip = new("Audio Clip:");
+        private static readonly GUIContent GC_PresentationMode = new("Presentation Mode:",
+            "Controls whether this line displays text, plays audio, or both.");
         private static readonly GUIContent GC_BeforeActions = new("Actions Before Line:");
         private static readonly GUIContent GC_AfterActions = new("Actions After Line:");
         private static readonly GUIContent GC_Expression = new("Expression");
@@ -123,7 +124,7 @@ namespace WolfstagInteractive.ConvoCore.Editor
 
             rect = DrawBasicInfo(rect, property);
             rect = DrawInputMethod(rect, property);
-            rect = DrawAudioClip(rect, property);
+            rect = DrawPresentationMode(rect, property);
             rect = DrawLocalizedDialogues(rect, property);
             rect = DrawActionsList(rect, property);
             rect = DrawCharacterRepresentation(rect, property);
@@ -336,7 +337,7 @@ namespace WolfstagInteractive.ConvoCore.Editor
 
             total += GetBasicInfoHeight();
             total += GetInputMethodHeight(property);
-            total += GetAudioClipHeight(property);
+            total += GetPresentationModeHeight(property);
             total += GetLocalizedDialoguesHeight(property);
             total += GetActionsListHeight(property);
             total += GetCharacterRepresentationSectionHeight(property);
@@ -400,10 +401,23 @@ namespace WolfstagInteractive.ConvoCore.Editor
             return h;
         }
 
-        private float GetAudioClipHeight(SerializedProperty property)
+        private float GetPresentationModeHeight(SerializedProperty property)
         {
-            var clipProp = property.FindPropertyRelative("clip");
-            return EditorGUI.GetPropertyHeight(clipProp) + k_Spacing;
+            float h = EditorGUIUtility.singleLineHeight + k_Spacing;
+            // Add helpbox for AudioOnly + UserInput warning
+            var modeProp   = property.FindPropertyRelative("PresentationMode");
+            var methodProp = property.FindPropertyRelative("UserInputMethod");
+            if (modeProp != null && methodProp != null)
+            {
+                var mode   = (ConversationPresentationMode)modeProp.enumValueIndex;
+                var method = (ConvoCoreConversationData.DialogueLineProgressionMethod)methodProp.enumValueIndex;
+                if (mode == ConversationPresentationMode.AudioOnly &&
+                    method == ConvoCoreConversationData.DialogueLineProgressionMethod.UserInput)
+                    h += EditorStyles.helpBox.CalcHeight(
+                             new GUIContent("UserInput progression on an AudioOnly line will stall the conversation. The runner will auto-coerce this to AudioComplete at runtime, but consider setting it explicitly."),
+                             EditorGUIUtility.currentViewWidth - 40f) + k_Spacing;
+            }
+            return h;
         }
 
         /// <summary>
@@ -415,6 +429,11 @@ namespace WolfstagInteractive.ConvoCore.Editor
         /// <returns>The height, in pixels, needed to render the localized dialogues section, including text wrapping for the selected or fallback dialogue.</returns>
         private float GetLocalizedDialoguesHeight(SerializedProperty property)
         {
+            var modeProp = property.FindPropertyRelative("PresentationMode");
+            if (modeProp != null &&
+                (ConversationPresentationMode)modeProp.enumValueIndex == ConversationPresentationMode.AudioOnly)
+                return 0f;
+
             var localizedDialoguesProp = property.FindPropertyRelative("LocalizedDialogues");
             if (localizedDialoguesProp == null || !localizedDialoguesProp.isArray ||
                 localizedDialoguesProp.arraySize == 0)
@@ -712,16 +731,43 @@ namespace WolfstagInteractive.ConvoCore.Editor
             return rect;
         }
 
-        private static Rect DrawAudioClip(Rect rect, SerializedProperty property)
+        private static Rect DrawPresentationMode(Rect rect, SerializedProperty property)
         {
-            var clipProp = property.FindPropertyRelative("clip");
-            EditorGUI.ObjectField(rect, clipProp, typeof(AudioClip), GC_AudioClip);
+            var modeProp = property.FindPropertyRelative("PresentationMode");
+            if (modeProp == null) return rect;
+
+            EditorGUI.PropertyField(new Rect(rect.x, rect.y, rect.width, EditorGUIUtility.singleLineHeight),
+                modeProp, GC_PresentationMode);
             rect.y += EditorGUIUtility.singleLineHeight + k_Spacing;
+
+            // HelpBox warning: AudioOnly + UserInput will stall the conversation
+            var methodProp = property.FindPropertyRelative("UserInputMethod");
+            if (methodProp != null)
+            {
+                var mode   = (ConversationPresentationMode)modeProp.enumValueIndex;
+                var method = (ConvoCoreConversationData.DialogueLineProgressionMethod)methodProp.enumValueIndex;
+                if (mode == ConversationPresentationMode.AudioOnly &&
+                    method == ConvoCoreConversationData.DialogueLineProgressionMethod.UserInput)
+                {
+                    const string msg = "UserInput progression on an AudioOnly line will stall the conversation. " +
+                                       "The runner will auto-coerce this to AudioComplete at runtime, but consider setting it explicitly.";
+                    float boxH = EditorStyles.helpBox.CalcHeight(new GUIContent(msg), rect.width) + k_Spacing;
+                    EditorGUI.HelpBox(new Rect(rect.x, rect.y, rect.width, boxH), msg, MessageType.Warning);
+                    rect.y += boxH + k_Spacing;
+                }
+            }
+
             return rect;
         }
 
         private static Rect DrawLocalizedDialogues(Rect rect, SerializedProperty property)
         {
+            // Hide dialogue section entirely for AudioOnly lines
+            var modeProp = property.FindPropertyRelative("PresentationMode");
+            if (modeProp != null &&
+                (ConversationPresentationMode)modeProp.enumValueIndex == ConversationPresentationMode.AudioOnly)
+                return rect;
+
             var localizedDialoguesProp = property.FindPropertyRelative("LocalizedDialogues");
             if (localizedDialoguesProp == null || !localizedDialoguesProp.isArray)
             {

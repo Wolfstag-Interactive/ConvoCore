@@ -186,7 +186,7 @@ namespace WolfstagInteractive.ConvoCore
                         ? new List<BaseDialogueLineAction>(existing.ActionsAfterDialogueLine)
                         : new List<BaseDialogueLineAction>(),
 
-                    clip = existing?.clip,
+                    PresentationMode = existing?.PresentationMode ?? _convoCoreConversationData.DefaultPresentationMode,
 
                     UserInputMethod = existing != null
                         ? existing.UserInputMethod
