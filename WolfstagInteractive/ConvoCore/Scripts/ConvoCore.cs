@@ -208,7 +208,7 @@ namespace WolfstagInteractive.ConvoCore
 
                 // Resolve audio reference
                 ConvoAudioReference audioRef = null;
-                ConvoCoreUnityAudioReference inlineRef = null;
+                ConvoAudioReference inlineRef = null; // transient SO destroyed after progression
                 if (playAudio && ConversationData.AudioManifest != null)
                 {
                     var backend = ConversationData.AudioManifest.Backend;
@@ -224,16 +224,31 @@ namespace WolfstagInteractive.ConvoCore
                                        ?? localizedResult.ResolvedClip;
                             if (clip != null)
                             {
-                                inlineRef = ScriptableObject.CreateInstance<ConvoCoreUnityAudioReference>();
-                                inlineRef.Clip = clip;
-                                audioRef = inlineRef;
+                                var unityRef = ScriptableObject.CreateInstance<ConvoCoreUnityAudioReference>();
+                                unityRef.Clip = clip;
+                                inlineRef = unityRef;
+                                audioRef  = unityRef;
                             }
                         }
                     }
                     else
                     {
-                        // FMOD / Wwise / Custom — ConvoAudioReference may or may not be set; provider uses LineID
+                        // FMOD / Wwise / Custom: try a ConvoAudioReference SO first (user may have assigned one)
                         audioRef = ConversationData.AudioManifest.Resolve(line.LineID, localizedResult.UsedLanguage);
+
+                        // Fall back to EventKey string wrapped in a transient reference
+                        if (audioRef == null)
+                        {
+                            var key = ConversationData.AudioManifest.ResolveEventKey(line.LineID, localizedResult.UsedLanguage);
+                            if (!string.IsNullOrEmpty(key))
+                            {
+                                var keyRef = ScriptableObject.CreateInstance<ConvoCoreAudioEventKeyReference>();
+                                keyRef.EventKey = key;
+                                inlineRef = keyRef;
+                                audioRef  = keyRef;
+                            }
+                        }
+
                         if (_audioProvider == null)
                             Debug.LogWarning($"[ConvoCore] AudioManifest backend is '{backend}' but no Audio Provider is assigned on '{name}'. Assign an IConvoAudioProvider component.", this);
                     }
@@ -241,9 +256,10 @@ namespace WolfstagInteractive.ConvoCore
                 else if (playAudio && localizedResult.ResolvedClip != null)
                 {
                     // No manifest — fall back to clip embedded in LocalizedDialogue (Unity-only path)
-                    inlineRef = ScriptableObject.CreateInstance<ConvoCoreUnityAudioReference>();
-                    inlineRef.Clip = localizedResult.ResolvedClip;
-                    audioRef = inlineRef;
+                    var unityRef = ScriptableObject.CreateInstance<ConvoCoreUnityAudioReference>();
+                    unityRef.Clip = localizedResult.ResolvedClip;
+                    inlineRef = unityRef;
+                    audioRef  = unityRef;
                 }
 
                 // Play audio

@@ -61,6 +61,14 @@ namespace WolfstagInteractive.ConvoCore
             public AudioClip Clip;
 
             /// <summary>
+            /// Middleware event identifier. For FMOD: full event path e.g.
+            /// <c>"event:/VO/CharA/Line001"</c>. For Wwise: event name e.g.
+            /// <c>"VO_CharA_Intro_01"</c>. For custom backends: any string your provider
+            /// interprets. Ignored by the <see cref="AudioBackend.UnityAudioSource"/> backend.
+            /// </summary>
+            public string EventKey;
+
+            /// <summary>
             /// Optional. Assign a <see cref="ConvoAudioReference"/> subtype for custom middleware
             /// integrations, or to share a single reference asset across multiple lines.
             /// When assigned, takes priority over <see cref="Clip"/> at runtime.
@@ -106,6 +114,37 @@ namespace WolfstagInteractive.ConvoCore
                     string.IsNullOrEmpty(entry.Language) &&
                     entry.Reference != null)
                     return entry.Reference;
+            }
+
+            return null;
+        }
+
+        /// <summary>
+        /// Resolve the middleware event key string for a given line ID and language.
+        /// Used by FMOD, Wwise, and Custom backend paths. Tries exact locale match first,
+        /// then language-agnostic fallback. Returns <c>null</c> if no matching entry has an
+        /// <see cref="AudioEntry.EventKey"/> assigned.
+        /// </summary>
+        public string ResolveEventKey(string lineID, string language)
+        {
+            if (Entries == null) return null;
+
+            // Pass 1: exact locale match
+            foreach (var entry in Entries)
+            {
+                if (entry.LineID == lineID &&
+                    string.Equals(entry.Language, language, StringComparison.OrdinalIgnoreCase) &&
+                    !string.IsNullOrEmpty(entry.EventKey))
+                    return entry.EventKey;
+            }
+
+            // Pass 2: language-agnostic fallback
+            foreach (var entry in Entries)
+            {
+                if (entry.LineID == lineID &&
+                    string.IsNullOrEmpty(entry.Language) &&
+                    !string.IsNullOrEmpty(entry.EventKey))
+                    return entry.EventKey;
             }
 
             return null;

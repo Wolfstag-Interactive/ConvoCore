@@ -106,7 +106,7 @@ namespace WolfstagInteractive.ConvoCore.Editor
 
                 var el = listProp.GetArrayElementAtIndex(i);
                 var optsProp = el.FindPropertyRelative("DisplayOptions");
-                float optsH = optsProp != null ? EditorGUI.GetPropertyHeight(optsProp, true) : 0f;
+                float optsH = optsProp != null ? GetDisplayOptionsHeightExcludingPosition(optsProp) : 0f;
 
                 // NEW: account for ExpressionActions height
                 var actionsProp = el.FindPropertyRelative("ExpressionActions");
@@ -213,9 +213,9 @@ namespace WolfstagInteractive.ConvoCore.Editor
                 float currentY = topY + totalColH + 4f;
                 if (optsProp != null)
                 {
-                    float optsH = EditorGUI.GetPropertyHeight(optsProp, true);
+                    float optsH = GetDisplayOptionsHeightExcludingPosition(optsProp);
                     var optsRect = new Rect(rect.x, currentY, rect.width, optsH);
-                    EditorGUI.PropertyField(optsRect, optsProp, new GUIContent("Default Display Options"), true);
+                    DrawDisplayOptionsExcludingPosition(optsRect, optsProp, new GUIContent("Default Display Options"));
                     currentY += optsH + 4f;
                 }
                 if (actionsProp != null)
@@ -225,6 +225,52 @@ namespace WolfstagInteractive.ConvoCore.Editor
                     EditorGUI.PropertyField(actionsRect, actionsProp, new GUIContent("Expression Actions"), true);
                 }
             };
+        }
+
+        private static float GetDisplayOptionsHeightExcludingPosition(SerializedProperty optsProp)
+        {
+            float h = EditorGUIUtility.singleLineHeight; // foldout header
+            if (!optsProp.isExpanded) return h;
+
+            var iter = optsProp.Copy();
+            var end  = optsProp.GetEndProperty();
+            if (iter.NextVisible(true))
+            {
+                do
+                {
+                    if (SerializedProperty.EqualContents(iter, end)) break;
+                    if (iter.name == "DisplaySlot") continue;
+                    h += EditorGUI.GetPropertyHeight(iter, true) + EditorGUIUtility.standardVerticalSpacing;
+                }
+                while (iter.NextVisible(false));
+            }
+            return h;
+        }
+
+        private static void DrawDisplayOptionsExcludingPosition(Rect rect, SerializedProperty optsProp, GUIContent label)
+        {
+            var foldRect = new Rect(rect.x, rect.y, rect.width, EditorGUIUtility.singleLineHeight);
+            optsProp.isExpanded = EditorGUI.Foldout(foldRect, optsProp.isExpanded, label, true);
+            if (!optsProp.isExpanded) return;
+
+            EditorGUI.indentLevel++;
+            float y = foldRect.yMax + EditorGUIUtility.standardVerticalSpacing;
+
+            var iter = optsProp.Copy();
+            var end  = optsProp.GetEndProperty();
+            if (iter.NextVisible(true))
+            {
+                do
+                {
+                    if (SerializedProperty.EqualContents(iter, end)) break;
+                    if (iter.name == "DisplaySlot") continue;
+                    float propH = EditorGUI.GetPropertyHeight(iter, true);
+                    EditorGUI.PropertyField(new Rect(rect.x, y, rect.width, propH), iter, true);
+                    y += propH + EditorGUIUtility.standardVerticalSpacing;
+                }
+                while (iter.NextVisible(false));
+            }
+            EditorGUI.indentLevel--;
         }
 
         private static void DrawSpriteFieldWithPreview(Rect rect, SerializedProperty spriteProp, string label)

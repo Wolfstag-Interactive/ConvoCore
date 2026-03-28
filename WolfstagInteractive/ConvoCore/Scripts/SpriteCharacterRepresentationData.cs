@@ -80,10 +80,51 @@ namespace WolfstagInteractive.ConvoCore
         }
 
 #if UNITY_EDITOR
-        public Rect DrawDialogueLineOptions(Rect rect, string expressionID, SerializedProperty displayOptionsProperty,
-            float spacing) => rect;
+        private static IReadOnlyList<ConvoCoreUIFoundation.DisplaySlotDefinition> GetFoundationSlots()
+        {
+            var runner = Object.FindFirstObjectByType<ConvoCore>();
+            var foundation = runner != null ? runner.ConversationUI : null;
+            return foundation != null ? foundation.DisplaySlots : null;
+        }
 
-        public float GetDialogueLineOptionsHeight(string expressionID, SerializedProperty displayOptionsProperty) => 0f;
+        public Rect DrawDialogueLineOptions(Rect rect, string expressionID, SerializedProperty displayOptionsProperty,
+            float spacing)
+        {
+            var slotProp = displayOptionsProperty?.FindPropertyRelative("DisplaySlot");
+            if (slotProp == null) return rect;
+
+            var fieldRect = new Rect(rect.x, rect.y, rect.width, EditorGUIUtility.singleLineHeight);
+            var slots = GetFoundationSlots();
+
+            if (slots != null && slots.Count > 0)
+            {
+                var names = new string[slots.Count];
+                for (int i = 0; i < slots.Count; i++)
+                    names[i] = slots[i]?.SlotName ?? $"Slot {i}";
+
+                string currentName = slotProp.stringValue;
+                int currentIndex = System.Array.IndexOf(names, currentName);
+                if (currentIndex < 0) currentIndex = 0;
+
+                int newIndex = EditorGUI.Popup(fieldRect, "Display Slot", currentIndex, names);
+                if (newIndex != currentIndex || string.IsNullOrEmpty(slotProp.stringValue))
+                    slotProp.stringValue = names[newIndex];
+            }
+            else
+            {
+                EditorGUI.PropertyField(fieldRect, slotProp, new GUIContent("Display Slot"));
+            }
+
+            rect.y = fieldRect.yMax + spacing;
+            return rect;
+        }
+
+        public float GetDialogueLineOptionsHeight(string expressionID, SerializedProperty displayOptionsProperty)
+        {
+            return displayOptionsProperty?.FindPropertyRelative("DisplaySlot") != null
+                ? EditorGUIUtility.singleLineHeight + EditorGUIUtility.standardVerticalSpacing
+                : 0f;
+        }
 
         public override float GetPreviewHeight() => 84f;
 
@@ -185,7 +226,7 @@ namespace WolfstagInteractive.ConvoCore
 
         [Tooltip("Full body sprite for the expression.")]
         public Sprite FullBodySprite;
-      
+
         [Header("Default Display Options")]
         public DialogueLineDisplayOptions DisplayOptions = new DialogueLineDisplayOptions();
         [Tooltip("Actions that run when this expression is applied on this representation")]

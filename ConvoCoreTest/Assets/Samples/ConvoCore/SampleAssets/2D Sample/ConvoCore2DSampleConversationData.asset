@@ -106,10 +106,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 458f605aa420aee44acb27c723607006, type: 3}
   m_Name: ConvoCore2DSampleConversationData
   m_EditorClassIdentifier: 
+  ConversationTitle: 
   ConversationParticipantProfiles:
   - {fileID: 11400000, guid: cca04ff07be1b1a478acbfc412045f2e, type: 2}
   - {fileID: 11400000, guid: 871b502169fa7f74e9d3d3a7b87b6503, type: 2}
   - {fileID: 11400000, guid: 086dcde826a3fcb4b903e747228d482b, type: 2}
+  ParticipantConfigurationDefaults: []
   DialogueLines:
   - ConversationID: Conversation1
     LineID: L_04d64b899837
@@ -120,52 +122,45 @@ MonoBehaviour:
       SelectedRepresentationName: Sprites
       SelectedRepresentation: {fileID: 11400000, guid: cf61be94e9ae46b4da28bb23d0bfa60f, type: 2}
       SelectedExpressionId: 8d0977f727bc4b5cbeabe8d221b234ee
+      SelectedConfigurationEntryName: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
-        DisplayPosition: 0
-        PortraitScale: {x: 0, y: 0, z: 0}
-        FullBodyScale: {x: 0, y: 0, z: 0}
+        DisplaySlot: Left
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
     - SelectedCharacterID: Jared
       SelectedRepresentationName: Sprites
       SelectedRepresentation: {fileID: 11400000, guid: 5b9d585132056d5479e01ea082d4b2be, type: 2}
       SelectedExpressionId: 
+      SelectedConfigurationEntryName: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
-        DisplayPosition: 0
-        PortraitScale: {x: 0, y: 0, z: 0}
-        FullBodyScale: {x: 0, y: 0, z: 0}
-    - SelectedCharacterID: Jared
-      SelectedRepresentationName: Sprites
-      SelectedRepresentation: {fileID: 11400000, guid: 5b9d585132056d5479e01ea082d4b2be, type: 2}
-      SelectedExpressionId: 
-      LineSpecificDisplayOptions:
-        FlipPortraitX: 0
-        FlipPortraitY: 0
-        FlipFullBodyX: 0
-        FlipFullBodyY: 0
-        DisplayPosition: 0
-        PortraitScale: {x: 0, y: 0, z: 0}
-        FullBodyScale: {x: 0, y: 0, z: 0}
+        DisplaySlot: Center
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
     - Language: en
       Text: "Jared... we\u2019re definitely off-trail."
+      Clip: {fileID: 0}
     - Language: fr
       Text: "Jared... on s'est clairement \xE9gar\xE9s."
+      Clip: {fileID: 0}
     - Language: es
       Text: Jared... definitivamente nos perdimos del sendero.
-    clip: {fileID: 0}
+      Clip: {fileID: 0}
+    PresentationMode: 2
     ActionsBeforeDialogueLine: []
     ActionsAfterDialogueLine: []
     UserInputMethod: 0
     TimeBeforeNextLine: 0
     LineContinuationSettings:
-      Mode: 2
+      Mode: 0
       TargetContainer: {fileID: 0}
       TargetAliasOrName: 
       PushReturnPoint: 0
@@ -180,22 +175,26 @@ MonoBehaviour:
       SelectedRepresentationName: Sprites
       SelectedRepresentation: {fileID: 11400000, guid: 5b9d585132056d5479e01ea082d4b2be, type: 2}
       SelectedExpressionId: 
+      SelectedConfigurationEntryName: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
-        DisplayPosition: 0
-        PortraitScale: {x: 0, y: 0, z: 0}
-        FullBodyScale: {x: 0, y: 0, z: 0}
+        DisplaySlot: Left
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
     - Language: en
       Text: "Technically, we\u2019re *still* in the forest. Nature counts."
+      Clip: {fileID: 0}
     - Language: fr
       Text: "Techniquement, on est toujours dans la for\xEAt. \xC7a compte, non?"
+      Clip: {fileID: 0}
     - Language: es
       Text: "T\xE9cnicamente, seguimos en el bosque. Eso cuenta."
-    clip: {fileID: 0}
+      Clip: {fileID: 0}
+    PresentationMode: 2
     ActionsBeforeDialogueLine: []
     ActionsAfterDialogueLine: []
     UserInputMethod: 0
@@ -216,22 +215,26 @@ MonoBehaviour:
       SelectedRepresentationName: Sprites
       SelectedRepresentation: {fileID: 11400000, guid: cf61be94e9ae46b4da28bb23d0bfa60f, type: 2}
       SelectedExpressionId: 
+      SelectedConfigurationEntryName: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
-        DisplayPosition: 0
+        DisplaySlot: Left
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
     - Language: en
       Text: "We\u2019ve circled that tree three times now."
+      Clip: {fileID: 0}
     - Language: fr
       Text: "On a tourn\xE9 autour de cet arbre trois fois."
+      Clip: {fileID: 0}
     - Language: es
       Text: "Hemos rodeado ese \xE1rbol tres veces."
-    clip: {fileID: 0}
+      Clip: {fileID: 0}
+    PresentationMode: 2
     ActionsBeforeDialogueLine: []
     ActionsAfterDialogueLine: []
     UserInputMethod: 0
@@ -252,22 +255,26 @@ MonoBehaviour:
       SelectedRepresentationName: Sprites
       SelectedRepresentation: {fileID: 11400000, guid: 5b9d585132056d5479e01ea082d4b2be, type: 2}
       SelectedExpressionId: 
+      SelectedConfigurationEntryName: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
-        DisplayPosition: 0
+        DisplaySlot: Left
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
     - Language: en
       Text: "It\u2019s a popular tree. Five stars on TreeAdvisor."
+      Clip: {fileID: 0}
     - Language: fr
       Text: "C\u2019est un arbre populaire. Cinq \xE9toiles sur TreeAdvisor."
+      Clip: {fileID: 0}
     - Language: es
       Text: "Es un \xE1rbol famoso. Cinco estrellas en TreeAdvisor."
-    clip: {fileID: 0}
+      Clip: {fileID: 0}
+    PresentationMode: 2
     ActionsBeforeDialogueLine: []
     ActionsAfterDialogueLine: []
     UserInputMethod: 0
@@ -288,22 +295,39 @@ MonoBehaviour:
       SelectedRepresentationName: Sprites
       SelectedRepresentation: {fileID: 11400000, guid: cf61be94e9ae46b4da28bb23d0bfa60f, type: 2}
       SelectedExpressionId: 
+      SelectedConfigurationEntryName: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
-        DisplayPosition: 0
+        DisplaySlot: Left
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    - SelectedCharacterID: Jared
+      SelectedRepresentationName: Sprites
+      SelectedRepresentation: {fileID: 11400000, guid: 5b9d585132056d5479e01ea082d4b2be, type: 2}
+      SelectedExpressionId: 
+      SelectedConfigurationEntryName: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplaySlot: Center
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
     - Language: en
       Text: Shh! Did you hear that?
+      Clip: {fileID: 0}
     - Language: fr
       Text: "Chut! T\u2019as entendu \xE7a ?"
+      Clip: {fileID: 0}
     - Language: es
       Text: "\xA1Shh! \xBFEscuchaste eso?"
-    clip: {fileID: 0}
+      Clip: {fileID: 0}
+    PresentationMode: 0
     ActionsBeforeDialogueLine: []
     ActionsAfterDialogueLine: []
     UserInputMethod: 0
@@ -324,22 +348,39 @@ MonoBehaviour:
       SelectedRepresentationName: Sprites
       SelectedRepresentation: {fileID: 11400000, guid: 5b9d585132056d5479e01ea082d4b2be, type: 2}
       SelectedExpressionId: 
+      SelectedConfigurationEntryName: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
-        DisplayPosition: 0
+        DisplaySlot: Center
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    - SelectedCharacterID: Ava
+      SelectedRepresentationName: Sprites
+      SelectedRepresentation: {fileID: 11400000, guid: cf61be94e9ae46b4da28bb23d0bfa60f, type: 2}
+      SelectedExpressionId: 
+      SelectedConfigurationEntryName: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplaySlot: Left
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
     - Language: en
       Text: "Maybe it\u2019s a bear. Or a ranger with snacks."
+      Clip: {fileID: 0}
     - Language: fr
       Text: "Peut-\xEAtre un ours. Ou un garde forestier avec des snacks."
+      Clip: {fileID: 0}
     - Language: es
       Text: "Quiz\xE1s un oso. O un guardabosques con bocadillos."
-    clip: {fileID: 0}
+      Clip: {fileID: 0}
+    PresentationMode: 0
     ActionsBeforeDialogueLine: []
     ActionsAfterDialogueLine: []
     UserInputMethod: 0
@@ -360,23 +401,27 @@ MonoBehaviour:
       SelectedRepresentationName: Sprites
       SelectedRepresentation: {fileID: 11400000, guid: 52e24c290fb50014b8aee74d5f275726, type: 2}
       SelectedExpressionId: 
+      SelectedConfigurationEntryName: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
-        DisplayPosition: 0
+        DisplaySlot: Right
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
     - Language: en
       Text: '*A towering silhouette appears between the trees. Antlers like twisted
         branches.*'
+      Clip: {fileID: 0}
     - Language: fr
       Text: "*Une silhouette massive \xE9merge entre les arbres. Des bois torsad\xE9s.*"
+      Clip: {fileID: 0}
     - Language: es
       Text: "*Una silueta imponente aparece entre los \xE1rboles. Astas retorcidas.*"
-    clip: {fileID: 0}
+      Clip: {fileID: 0}
+    PresentationMode: 0
     ActionsBeforeDialogueLine: []
     ActionsAfterDialogueLine: []
     UserInputMethod: 0
@@ -396,23 +441,27 @@ MonoBehaviour:
     - SelectedCharacterID: 
       SelectedRepresentationName: Sprites
       SelectedRepresentation: {fileID: 11400000, guid: cf61be94e9ae46b4da28bb23d0bfa60f, type: 2}
-      SelectedExpressionId: 
+      SelectedExpressionId: e39607be15b742a68fb56f49c95e0aa9
+      SelectedConfigurationEntryName: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
-        DisplayPosition: 0
+        DisplaySlot: Left
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
     - Language: en
       Text: What is *that?!*
+      Clip: {fileID: 0}
     - Language: fr
       Text: "C\u2019est quoi *\xE7a* ?!"
+      Clip: {fileID: 0}
     - Language: es
       Text: "\xBF\xA1Qu\xE9 es *eso*!?"
-    clip: {fileID: 0}
+      Clip: {fileID: 0}
+    PresentationMode: 0
     ActionsBeforeDialogueLine: []
     ActionsAfterDialogueLine: []
     UserInputMethod: 0
@@ -432,23 +481,27 @@ MonoBehaviour:
     - SelectedCharacterID: 
       SelectedRepresentationName: Sprites
       SelectedRepresentation: {fileID: 11400000, guid: 5b9d585132056d5479e01ea082d4b2be, type: 2}
-      SelectedExpressionId: 
+      SelectedExpressionId: 5420ee53b56f4373890342ce8a3fa963
+      SelectedConfigurationEntryName: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
-        DisplayPosition: 0
+        DisplaySlot: Center
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
     - Language: en
       Text: '*gasps* Whoooooa. Look at you!'
+      Clip: {fileID: 0}
     - Language: fr
       Text: "*hal\xE8tement* Wooooow. Regarde-moi \xE7a!"
+      Clip: {fileID: 0}
     - Language: es
       Text: "*jadea* \xA1Wooooow! \xA1M\xEDrate!"
-    clip: {fileID: 0}
+      Clip: {fileID: 0}
+    PresentationMode: 0
     ActionsBeforeDialogueLine: []
     ActionsAfterDialogueLine: []
     UserInputMethod: 0
@@ -468,26 +521,30 @@ MonoBehaviour:
     - SelectedCharacterID: 
       SelectedRepresentationName: Sprites
       SelectedRepresentation: {fileID: 11400000, guid: 5b9d585132056d5479e01ea082d4b2be, type: 2}
-      SelectedExpressionId: 
+      SelectedExpressionId: 5420ee53b56f4373890342ce8a3fa963
+      SelectedConfigurationEntryName: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
-        DisplayPosition: 0
+        DisplaySlot: Center
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
     - Language: en
       Text: "Are you lost too, buddy? You need scritches? Huh? Who\u2019s a majestic
         forest beast? *You* are!"
+      Clip: {fileID: 0}
     - Language: fr
       Text: "Tu t\u2019es perdu aussi, mon grand ? Tu veux des gratouilles ? Qui
         est une b\xEAte majestueuse ? *C\u2019est toi!*"
+      Clip: {fileID: 0}
     - Language: es
       Text: "\xBFTambi\xE9n est\xE1s perdido, amigo? \xBFQuieres caricias? \xBFQui\xE9n
         es una bestia majestuosa? \xA1*T\xFA*!"
-    clip: {fileID: 0}
+      Clip: {fileID: 0}
+    PresentationMode: 0
     ActionsBeforeDialogueLine: []
     ActionsAfterDialogueLine: []
     UserInputMethod: 0
@@ -508,22 +565,26 @@ MonoBehaviour:
       SelectedRepresentationName: Sprites
       SelectedRepresentation: {fileID: 11400000, guid: 52e24c290fb50014b8aee74d5f275726, type: 2}
       SelectedExpressionId: 
+      SelectedConfigurationEntryName: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
-        DisplayPosition: 0
+        DisplaySlot: Right
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
     - Language: en
       Text: '*It tilts its head slightly. Curious.*'
+      Clip: {fileID: 0}
     - Language: fr
       Text: "*Il incline l\xE9g\xE8rement la t\xEAte. Curieux.*"
+      Clip: {fileID: 0}
     - Language: es
       Text: '*Inclina ligeramente la cabeza. Curioso.*'
-    clip: {fileID: 0}
+      Clip: {fileID: 0}
+    PresentationMode: 0
     ActionsBeforeDialogueLine: []
     ActionsAfterDialogueLine: []
     UserInputMethod: 0
@@ -543,23 +604,40 @@ MonoBehaviour:
     - SelectedCharacterID: 
       SelectedRepresentationName: Sprites
       SelectedRepresentation: {fileID: 11400000, guid: cf61be94e9ae46b4da28bb23d0bfa60f, type: 2}
-      SelectedExpressionId: 
+      SelectedExpressionId: e39607be15b742a68fb56f49c95e0aa9
+      SelectedConfigurationEntryName: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
-        DisplayPosition: 0
+        DisplaySlot: Left
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    - SelectedCharacterID: Jared
+      SelectedRepresentationName: Sprites
+      SelectedRepresentation: {fileID: 11400000, guid: 5b9d585132056d5479e01ea082d4b2be, type: 2}
+      SelectedExpressionId: 5420ee53b56f4373890342ce8a3fa963
+      SelectedConfigurationEntryName: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplaySlot: Center
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
     - Language: en
       Text: "Jared\u2026 stop trying to pet the antler demon!"
+      Clip: {fileID: 0}
     - Language: fr
       Text: "Jared\u2026 arr\xEAte d\u2019essayer de caresser le d\xE9mon \xE0 bois!"
+      Clip: {fileID: 0}
     - Language: es
       Text: "\xA1Jared... deja de intentar acariciar al demonio de los cuernos!"
-    clip: {fileID: 0}
+      Clip: {fileID: 0}
+    PresentationMode: 0
     ActionsBeforeDialogueLine: []
     ActionsAfterDialogueLine: []
     UserInputMethod: 0
@@ -579,26 +657,30 @@ MonoBehaviour:
     - SelectedCharacterID: 
       SelectedRepresentationName: Sprites
       SelectedRepresentation: {fileID: 11400000, guid: 52e24c290fb50014b8aee74d5f275726, type: 2}
-      SelectedExpressionId: 
+      SelectedExpressionId: 30aaa7a47b3a477489ba405c1b4e5502
+      SelectedConfigurationEntryName: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
-        DisplayPosition: 0
+        DisplaySlot: Right
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
     - Language: en
       Text: "*The shadows melt away. The creature\u2019s full form is revealed\u2014fur
         glows silver in the moonlight.*"
+      Clip: {fileID: 0}
     - Language: fr
       Text: "*Les ombres se dissipent. La cr\xE9ature se d\xE9voile \u2014 sa fourrure
         luit \xE0 la lumi\xE8re lunaire.*"
+      Clip: {fileID: 0}
     - Language: es
       Text: "*Las sombras se desvanecen. Su forma completa aparece \u2014 su pelaje
         brilla bajo la luna.*"
-    clip: {fileID: 0}
+      Clip: {fileID: 0}
+    PresentationMode: 0
     ActionsBeforeDialogueLine: []
     ActionsAfterDialogueLine: []
     UserInputMethod: 0
@@ -618,23 +700,27 @@ MonoBehaviour:
     - SelectedCharacterID: 
       SelectedRepresentationName: Sprites
       SelectedRepresentation: {fileID: 11400000, guid: 5b9d585132056d5479e01ea082d4b2be, type: 2}
-      SelectedExpressionId: 
+      SelectedExpressionId: 5420ee53b56f4373890342ce8a3fa963
+      SelectedConfigurationEntryName: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
-        DisplayPosition: 0
+        DisplaySlot: Center
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
     - Language: en
       Text: "Oh my god. He\u2019s gorgeous. I want ten of him."
+      Clip: {fileID: 0}
     - Language: fr
       Text: "Oh mon dieu. Il est splendide. J\u2019en veux dix."
+      Clip: {fileID: 0}
     - Language: es
       Text: "Dios m\xEDo. Es hermoso. Quiero diez."
-    clip: {fileID: 0}
+      Clip: {fileID: 0}
+    PresentationMode: 0
     ActionsBeforeDialogueLine: []
     ActionsAfterDialogueLine: []
     UserInputMethod: 0
@@ -655,22 +741,26 @@ MonoBehaviour:
       SelectedRepresentationName: Sprites
       SelectedRepresentation: {fileID: 11400000, guid: cf61be94e9ae46b4da28bb23d0bfa60f, type: 2}
       SelectedExpressionId: 
+      SelectedConfigurationEntryName: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
-        DisplayPosition: 0
+        DisplaySlot: Left
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
     - Language: en
       Text: "...I think he\u2019s leading us somewhere."
+      Clip: {fileID: 0}
     - Language: fr
       Text: "...Je crois qu\u2019il nous guide quelque part."
+      Clip: {fileID: 0}
     - Language: es
       Text: "...Creo que nos est\xE1 guiando."
-    clip: {fileID: 0}
+      Clip: {fileID: 0}
+    PresentationMode: 0
     ActionsBeforeDialogueLine: []
     ActionsAfterDialogueLine: []
     UserInputMethod: 0
@@ -690,23 +780,27 @@ MonoBehaviour:
     - SelectedCharacterID: 
       SelectedRepresentationName: Sprites
       SelectedRepresentation: {fileID: 11400000, guid: 52e24c290fb50014b8aee74d5f275726, type: 2}
-      SelectedExpressionId: 
+      SelectedExpressionId: 30aaa7a47b3a477489ba405c1b4e5502
+      SelectedConfigurationEntryName: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
-        DisplayPosition: 0
+        DisplaySlot: Left
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
     - Language: en
       Text: '*He glances back, takes a few careful steps, then waits.*'
+      Clip: {fileID: 0}
     - Language: fr
       Text: "*Il jette un regard en arri\xE8re, avance lentement, puis s\u2019arr\xEAte.*"
+      Clip: {fileID: 0}
     - Language: es
       Text: "*Mira hacia atr\xE1s, da unos pasos y espera.*"
-    clip: {fileID: 0}
+      Clip: {fileID: 0}
+    PresentationMode: 0
     ActionsBeforeDialogueLine: []
     ActionsAfterDialogueLine: []
     UserInputMethod: 0
@@ -727,22 +821,26 @@ MonoBehaviour:
       SelectedRepresentationName: Sprites
       SelectedRepresentation: {fileID: 11400000, guid: 5b9d585132056d5479e01ea082d4b2be, type: 2}
       SelectedExpressionId: 
+      SelectedConfigurationEntryName: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
-        DisplayPosition: 0
+        DisplaySlot: Left
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
     - Language: en
       Text: "Look at him! He\u2019s so polite. Trail angel confirmed."
+      Clip: {fileID: 0}
     - Language: fr
       Text: "Regarde-le ! Trop poli. Ange du sentier confirm\xE9."
+      Clip: {fileID: 0}
     - Language: es
       Text: "\xA1M\xEDralo! Tan educado. \xC1ngel del sendero confirmado."
-    clip: {fileID: 0}
+      Clip: {fileID: 0}
+    PresentationMode: 0
     ActionsBeforeDialogueLine: []
     ActionsAfterDialogueLine: []
     UserInputMethod: 0
@@ -763,22 +861,26 @@ MonoBehaviour:
       SelectedRepresentationName: Sprites
       SelectedRepresentation: {fileID: 11400000, guid: cf61be94e9ae46b4da28bb23d0bfa60f, type: 2}
       SelectedExpressionId: 
+      SelectedConfigurationEntryName: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
-        DisplayPosition: 0
+        DisplaySlot: Left
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
     - Language: en
       Text: I think he wants us to follow. And... I think we should.
+      Clip: {fileID: 0}
     - Language: fr
       Text: "Il veut qu\u2019on le suive. Et... je crois qu\u2019on devrait."
+      Clip: {fileID: 0}
     - Language: es
       Text: Quiere que lo sigamos. Y... creo que debemos hacerlo.
-    clip: {fileID: 0}
+      Clip: {fileID: 0}
+    PresentationMode: 0
     ActionsBeforeDialogueLine: []
     ActionsAfterDialogueLine: []
     UserInputMethod: 0
@@ -798,26 +900,30 @@ MonoBehaviour:
     - SelectedCharacterID: 
       SelectedRepresentationName: Sprites
       SelectedRepresentation: {fileID: 11400000, guid: 52e24c290fb50014b8aee74d5f275726, type: 2}
-      SelectedExpressionId: 
+      SelectedExpressionId: 30aaa7a47b3a477489ba405c1b4e5502
+      SelectedConfigurationEntryName: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
-        DisplayPosition: 0
+        DisplaySlot: Right
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
     - Language: en
       Text: '*The creature moves ahead again, parting the brush. Bits of a path peek
         through behind him.*'
+      Clip: {fileID: 0}
     - Language: fr
       Text: "*La cr\xE9ature avance \xE0 nouveau, \xE9cartant les buissons. Un sentier
         appara\xEEt derri\xE8re lui.*"
+      Clip: {fileID: 0}
     - Language: es
       Text: "*La criatura avanza, apartando los arbustos. Se revela un sendero detr\xE1s
         de \xE9l.*"
-    clip: {fileID: 0}
+      Clip: {fileID: 0}
+    PresentationMode: 0
     ActionsBeforeDialogueLine: []
     ActionsAfterDialogueLine: []
     UserInputMethod: 0
@@ -838,25 +944,29 @@ MonoBehaviour:
       SelectedRepresentationName: Sprites
       SelectedRepresentation: {fileID: 11400000, guid: 5b9d585132056d5479e01ea082d4b2be, type: 2}
       SelectedExpressionId: 
+      SelectedConfigurationEntryName: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
-        DisplayPosition: 0
+        DisplaySlot: Center
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
     - Language: en
       Text: "Wait... this looks familiar. That\u2019s the ridge! That\u2019s the
         way back!"
+      Clip: {fileID: 0}
     - Language: fr
       Text: "Attends... \xE7a me dit quelque chose. C\u2019est la cr\xEAte ! C\u2019est
         le bon chemin!"
+      Clip: {fileID: 0}
     - Language: es
       Text: "Espera... esto me suena. \xA1Esa es la cresta! \xA1Ese es el camino
         de regreso!"
-    clip: {fileID: 0}
+      Clip: {fileID: 0}
+    PresentationMode: 0
     ActionsBeforeDialogueLine: []
     ActionsAfterDialogueLine: []
     UserInputMethod: 0
@@ -877,22 +987,26 @@ MonoBehaviour:
       SelectedRepresentationName: Sprites
       SelectedRepresentation: {fileID: 11400000, guid: cf61be94e9ae46b4da28bb23d0bfa60f, type: 2}
       SelectedExpressionId: 
+      SelectedConfigurationEntryName: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
-        DisplayPosition: 0
+        DisplaySlot: Left
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
     - Language: en
       Text: He really *is* guiding us...
+      Clip: {fileID: 0}
     - Language: fr
       Text: Il nous guide vraiment...
+      Clip: {fileID: 0}
     - Language: es
       Text: "De verdad nos est\xE1 guiando..."
-    clip: {fileID: 0}
+      Clip: {fileID: 0}
+    PresentationMode: 0
     ActionsBeforeDialogueLine: []
     ActionsAfterDialogueLine: []
     UserInputMethod: 0
@@ -912,25 +1026,29 @@ MonoBehaviour:
     - SelectedCharacterID: 
       SelectedRepresentationName: Sprites
       SelectedRepresentation: {fileID: 11400000, guid: 52e24c290fb50014b8aee74d5f275726, type: 2}
-      SelectedExpressionId: 
+      SelectedExpressionId: 30aaa7a47b3a477489ba405c1b4e5502
+      SelectedConfigurationEntryName: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
-        DisplayPosition: 0
+        DisplaySlot: Right
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
     - Language: en
       Text: '*He pauses at the clearing''s edge, makes eye contact, then silently
         disappears into the mist.*'
+      Clip: {fileID: 0}
     - Language: fr
       Text: "*Il s\u2019arr\xEAte \xE0 la lisi\xE8re de la clairi\xE8re, nous regarde,
         puis dispara\xEEt dans la brume.*"
+      Clip: {fileID: 0}
     - Language: es
       Text: '*Se detiene en el borde del claro, nos mira y desaparece entre la niebla.*'
-    clip: {fileID: 0}
+      Clip: {fileID: 0}
+    PresentationMode: 0
     ActionsBeforeDialogueLine:
     - {fileID: 11400000, guid: 2650ad23580b61540b4a53f42fee53d2, type: 2}
     - {fileID: 11400000, guid: dc2451cb96191d84db05170eea3a7d5f, type: 2}
@@ -953,23 +1071,40 @@ MonoBehaviour:
       SelectedRepresentationName: Sprites
       SelectedRepresentation: {fileID: 11400000, guid: 5b9d585132056d5479e01ea082d4b2be, type: 2}
       SelectedExpressionId: 
+      SelectedConfigurationEntryName: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
-        DisplayPosition: 0
+        DisplaySlot: Center
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    - SelectedCharacterID: Ava
+      SelectedRepresentationName: Sprites
+      SelectedRepresentation: {fileID: 11400000, guid: cf61be94e9ae46b4da28bb23d0bfa60f, type: 2}
+      SelectedExpressionId: 
+      SelectedConfigurationEntryName: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplaySlot: Left
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
     - Language: en
       Text: ...Goodbye, magic antler puppy. I hope you find your own trail home.
+      Clip: {fileID: 0}
     - Language: fr
       Text: "...Adieu, chien magique \xE0 bois. J\u2019esp\xE8re que tu retrouveras
         ton chemin."
+      Clip: {fileID: 0}
     - Language: es
       Text: "...Adi\xF3s, cachorro m\xE1gico de astas. Ojal\xE1 encuentres tu camino."
-    clip: {fileID: 0}
+      Clip: {fileID: 0}
+    PresentationMode: 2
     ActionsBeforeDialogueLine: []
     ActionsAfterDialogueLine: []
     UserInputMethod: 0
@@ -990,25 +1125,42 @@ MonoBehaviour:
       SelectedRepresentationName: Sprites
       SelectedRepresentation: {fileID: 11400000, guid: cf61be94e9ae46b4da28bb23d0bfa60f, type: 2}
       SelectedExpressionId: 
+      SelectedConfigurationEntryName: 
       LineSpecificDisplayOptions:
         FlipPortraitX: 0
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
-        DisplayPosition: 0
+        DisplaySlot: Center
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    - SelectedCharacterID: Jared
+      SelectedRepresentationName: Sprites
+      SelectedRepresentation: {fileID: 11400000, guid: 5b9d585132056d5479e01ea082d4b2be, type: 2}
+      SelectedExpressionId: 
+      SelectedConfigurationEntryName: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplaySlot: Left
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
     - Language: en
       Text: "...Next time, I\u2019m bringing a map and a compass. And maybe pepper
         spray."
+      Clip: {fileID: 0}
     - Language: fr
       Text: ...La prochaine fois, je prends une carte, une boussole... et du spray
         au poivre.
+      Clip: {fileID: 0}
     - Language: es
       Text: "...La pr\xF3xima vez, llevar\xE9 un mapa, una br\xFAjula... y tal vez
         gas pimienta."
-    clip: {fileID: 0}
+      Clip: {fileID: 0}
+    PresentationMode: 2
     ActionsBeforeDialogueLine: []
     ActionsAfterDialogueLine: []
     UserInputMethod: 0
@@ -1020,6 +1172,8 @@ MonoBehaviour:
       PushReturnPoint: 0
       Choices: []
       AllowGoBack: 0
+  DefaultPresentationMode: 2
+  AudioManifest: {fileID: 0}
   ConversationYaml: {fileID: -4732311180001108802}
   AllowPersistentOverrides: 1
   FilePath: DialogueScriptSample.yml
@@ -1028,5 +1182,4 @@ MonoBehaviour:
   SourceExcelAsset: {fileID: 0}
   SourceExcelAssetPath: 
   ConversationKey: Conversation1
-  ConversationTitle: 
   _conversationGuid: ed8dd2e7-9336-4ec4-b74c-36ec4f3c4b5d

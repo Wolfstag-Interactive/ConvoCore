@@ -521,7 +521,8 @@ namespace WolfstagInteractive.ConvoCore.Editor
 
     string key =
         $"{property.serializedObject.targetObject.GetInstanceID()}_{property.propertyPath}_CharacterRep";
-    if (CharacterRepresentationFoldouts.TryGetValue(key, out bool open) && open)
+    bool open = !CharacterRepresentationFoldouts.TryGetValue(key, out bool stored) || stored;
+    if (open)
     {
         h += 1 + k_Spacing * 3; // separator
 
@@ -647,7 +648,7 @@ namespace WolfstagInteractive.ConvoCore.Editor
                     // Representation-specific options
                     string emoId = selectedExpressionGuidProp?.stringValue ?? string.Empty;
                     var repType = profile.GetRepresentation(selectedRepNameProp?.stringValue ?? string.Empty);
-                    if (repType != null && !string.IsNullOrEmpty(emoId))
+                    if (repType != null)
                     {
                         h += GetRepresentationSpecificOptionsHeight(repType, emoId, repProp);
                     }
@@ -679,7 +680,7 @@ namespace WolfstagInteractive.ConvoCore.Editor
                 // Representation-specific options
                 string emoId = selectedExpressionGuidProp?.stringValue ?? string.Empty;
                 var repType = profile.GetRepresentation(selectedRepNameProp?.stringValue ?? string.Empty);
-                if (repType != null && !string.IsNullOrEmpty(emoId))
+                if (repType != null)
                 {
                     h += GetRepresentationSpecificOptionsHeight(repType, emoId, repProp);
                 }
@@ -751,7 +752,7 @@ namespace WolfstagInteractive.ConvoCore.Editor
                 {
                     const string msg = "UserInput progression on an AudioOnly line will stall the conversation. " +
                                        "The runner will auto-coerce this to AudioComplete at runtime, but consider setting it explicitly.";
-                    float boxH = EditorStyles.helpBox.CalcHeight(new GUIContent(msg), rect.width) + k_Spacing;
+                    float boxH = EditorStyles.helpBox.CalcHeight(new GUIContent(msg), EditorGUIUtility.currentViewWidth - 40f) + k_Spacing;
                     EditorGUI.HelpBox(new Rect(rect.x, rect.y, rect.width, boxH), msg, MessageType.Warning);
                     rect.y += boxH + k_Spacing;
                 }
@@ -799,7 +800,7 @@ namespace WolfstagInteractive.ConvoCore.Editor
                 EditorGUI.LabelField(rect, $"Localized Dialogue ({lang}):");
                 rect.y += EditorGUIUtility.singleLineHeight + k_Spacing;
 
-                float textHeight = s_WrappedLabel.CalcHeight(new GUIContent(text), rect.width);
+                float textHeight = s_WrappedLabel.CalcHeight(new GUIContent(text), Mathf.Max(10f, EditorGUIUtility.currentViewWidth - 80f));
                 EditorGUI.LabelField(new Rect(rect.x, rect.y, rect.width, textHeight), text, s_WrappedLabel);
                 rect.y += textHeight + k_Spacing;
             }
@@ -1349,8 +1350,7 @@ namespace WolfstagInteractive.ConvoCore.Editor
                 }
             }
 
-            if (selectedRepresentation != null && selectedExpressionGuidProp != null &&
-                !string.IsNullOrEmpty(selectedExpressionGuidProp.stringValue))
+            if (selectedRepresentation != null && selectedExpressionGuidProp != null)
             {
                 rect = DrawRepresentationSpecificOptions(rect, representationProp, selectedRepresentation,
                     selectedExpressionGuidProp.stringValue, spacing);

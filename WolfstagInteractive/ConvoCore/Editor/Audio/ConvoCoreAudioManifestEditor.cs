@@ -45,24 +45,42 @@ namespace WolfstagInteractive.ConvoCore.Editor
             for (int i = 0; i < entriesProp.arraySize; i++)
             {
                 var ep = entriesProp.GetArrayElementAtIndex(i);
-                if (backend == AudioBackend.UnityAudioSource)
+                switch (backend)
                 {
-                    var clipProp = ep.FindPropertyRelative("Clip");
-                    var refProp  = ep.FindPropertyRelative("Reference");
-                    bool hasClip = clipProp != null && clipProp.objectReferenceValue != null;
-                    bool hasRef  = refProp  != null && refProp.objectReferenceValue  != null;
-                    if (!hasClip && !hasRef) missingCount++;
-                }
-                else if (backend == AudioBackend.Custom)
-                {
-                    var refProp = ep.FindPropertyRelative("Reference");
-                    if (refProp != null && refProp.objectReferenceValue == null) missingCount++;
+                    case AudioBackend.UnityAudioSource:
+                    {
+                        var clipProp = ep.FindPropertyRelative("Clip");
+                        var refProp  = ep.FindPropertyRelative("Reference");
+                        bool hasClip = clipProp != null && clipProp.objectReferenceValue != null;
+                        bool hasRef  = refProp  != null && refProp.objectReferenceValue  != null;
+                        if (!hasClip && !hasRef) missingCount++;
+                        break;
+                    }
+                    case AudioBackend.FMOD:
+                    case AudioBackend.Wwise:
+                    {
+                        var keyProp = ep.FindPropertyRelative("EventKey");
+                        if (keyProp != null && string.IsNullOrEmpty(keyProp.stringValue)) missingCount++;
+                        break;
+                    }
+                    case AudioBackend.Custom:
+                    {
+                        var refProp = ep.FindPropertyRelative("Reference");
+                        if (refProp != null && refProp.objectReferenceValue == null) missingCount++;
+                        break;
+                    }
                 }
             }
             if (missingCount > 0)
             {
-                string slotLabel = backend == AudioBackend.UnityAudioSource ? "audio clip" : "audio reference";
-                EditorGUILayout.HelpBox($"{missingCount} locale slot(s) are missing a{(slotLabel.StartsWith("a") ? "n" : "")} {slotLabel}.", MessageType.Warning);
+                string slotLabel = backend switch
+                {
+                    AudioBackend.FMOD    => "FMOD event path",
+                    AudioBackend.Wwise   => "Wwise event name",
+                    AudioBackend.Custom  => "audio reference",
+                    _                   => "audio clip"
+                };
+                EditorGUILayout.HelpBox($"{missingCount} locale slot(s) are missing {(slotLabel.StartsWith("a") || slotLabel.StartsWith("F") || slotLabel.StartsWith("W") ? "a" : "an")} {slotLabel}.", MessageType.Warning);
             }
 
             EditorGUILayout.PropertyField(serializedObject.FindProperty("Mode"));
@@ -240,6 +258,7 @@ namespace WolfstagInteractive.ConvoCore.Editor
                         var ep       = entriesProp.GetArrayElementAtIndex(flatIdx);
                         var langProp = ep.FindPropertyRelative("Language");
                         var clipProp = ep.FindPropertyRelative("Clip");
+                        var keyProp  = ep.FindPropertyRelative("EventKey");
                         var refProp  = ep.FindPropertyRelative("Reference");
 
                         EditorGUILayout.BeginHorizontal();
@@ -264,22 +283,27 @@ namespace WolfstagInteractive.ConvoCore.Editor
                                 break;
 
                             case AudioBackend.FMOD:
+                                // User types the full FMOD event path
+                                EditorGUILayout.PropertyField(keyProp,
+                                    new GUIContent("Event Path", "FMOD event path, e.g. \"event:/VO/CharA/Line001\""));
+                                break;
+
                             case AudioBackend.Wwise:
-                                // Event key is the LineID — show it read-only as a hint
-                                GUI.enabled = false;
-                                EditorGUILayout.TextField(
-                                    new GUIContent("Event key", "The LineID is passed as the event key to the middleware provider."),
-                                    ep.FindPropertyRelative("LineID")?.stringValue ?? "");
-                                GUI.enabled = true;
+                                // User types the Wwise event name
+                                EditorGUILayout.PropertyField(keyProp,
+                                    new GUIContent("Event Name", "Wwise event name, e.g. \"VO_CharA_Intro_01\""));
                                 break;
 
                             case AudioBackend.Custom:
-                                // Both Clip and Reference visible
+                                // All three slots visible — custom provider decides what to use
                                 EditorGUILayout.PropertyField(clipProp,
-                                    new GUIContent("Clip", "Optional AudioClip (custom provider may use this)."),
-                                    GUILayout.MaxWidth(120));
+                                    new GUIContent("Clip", "AudioClip (optional, custom provider may use this)."),
+                                    GUILayout.MaxWidth(110));
+                                EditorGUILayout.PropertyField(keyProp,
+                                    new GUIContent("Key", "Arbitrary event key string for custom providers."),
+                                    GUILayout.MaxWidth(110));
                                 EditorGUILayout.PropertyField(refProp,
-                                    new GUIContent("Ref", "ConvoAudioReference for custom middleware."));
+                                    new GUIContent("Ref", "ConvoAudioReference ScriptableObject for custom middleware."));
                                 break;
                         }
 
@@ -308,10 +332,11 @@ namespace WolfstagInteractive.ConvoCore.Editor
                             int insertAt = flatIdxes[flatIdxes.Count - 1] + 1;
                             entriesProp.InsertArrayElementAtIndex(insertAt);
                             var newEntry = entriesProp.GetArrayElementAtIndex(insertAt);
-                            newEntry.FindPropertyRelative("LineID").stringValue       = lineId;
-                            newEntry.FindPropertyRelative("CharacterID").stringValue  = charId;
-                            newEntry.FindPropertyRelative("Language").stringValue     = "";
+                            newEntry.FindPropertyRelative("LineID").stringValue             = lineId;
+                            newEntry.FindPropertyRelative("CharacterID").stringValue        = charId;
+                            newEntry.FindPropertyRelative("Language").stringValue           = "";
                             newEntry.FindPropertyRelative("Clip").objectReferenceValue      = null;
+                            newEntry.FindPropertyRelative("EventKey").stringValue           = "";
                             newEntry.FindPropertyRelative("Reference").objectReferenceValue = null;
                             serializedObject.ApplyModifiedProperties();
                             needsRebuild = true;
@@ -370,6 +395,7 @@ namespace WolfstagInteractive.ConvoCore.Editor
                         if (existing.TryGetValue(key, out var prev))
                         {
                             entry.Clip      = prev.Clip;
+                            entry.EventKey  = prev.EventKey;
                             entry.Reference = prev.Reference;
                         }
                         updated.Add(entry);
@@ -389,6 +415,7 @@ namespace WolfstagInteractive.ConvoCore.Editor
                     if (existing.TryGetValue(key, out var prev))
                     {
                         entry.Clip      = prev.Clip;
+                        entry.EventKey  = prev.EventKey;
                         entry.Reference = prev.Reference;
                     }
                     updated.Add(entry);
