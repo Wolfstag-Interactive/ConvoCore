@@ -154,7 +154,7 @@ MonoBehaviour:
     - Language: es
       Text: Jared... definitivamente nos perdimos del sendero.
       Clip: {fileID: 0}
-    PresentationMode: 2
+    PresentationMode: 0
     ActionsBeforeDialogueLine: []
     ActionsAfterDialogueLine: []
     UserInputMethod: 0

@@ -228,7 +228,7 @@ namespace WolfstagInteractive.ConvoCore
                 m.EnsureValidBasics();
             }
 
-            // Validate each entry's overrides and enforce single default
+            // Validate each entry's overrides and enforce a single default
             bool foundDefault = false;
             foreach (var entry in ConfigurationEntries)
             {
@@ -265,7 +265,7 @@ namespace WolfstagInteractive.ConvoCore
 
     /// <summary>
     /// A named configuration for a prefab character: the prefab to spawn as a fallback when the
-    /// character is not found in the scene registry, the character behaviour ScriptableObjects that
+    /// character is not found in the scene registry, the character behavior ScriptableObjects that
     /// control world-space placement, and any entry-specific expression overrides.
     /// </summary>
     [System.Serializable]
