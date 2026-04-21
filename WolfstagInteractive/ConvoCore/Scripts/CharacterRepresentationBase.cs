@@ -11,8 +11,10 @@ namespace WolfstagInteractive.ConvoCore
     /// </summary>
     [HelpURL("https://docs.wolfstaginteractive.com/convocore/api/classWolfstagInteractive_1_1ConvoCore_1_1CharacterRepresentationBase.html")]
 
-    public abstract class CharacterRepresentationBase : ScriptableObject,
-        IEditorPreviewableRepresentation
+    public abstract class CharacterRepresentationBase : ScriptableObject 
+        #if UNITY_EDITOR
+         ,IEditorPreviewableRepresentation
+        #endif
     {
         /// <summary>
         /// Processes the given expression and returns UI-relevant data (e.g., a sprite or GameObject).
@@ -38,11 +40,10 @@ namespace WolfstagInteractive.ConvoCore
         /// <param name="expressionGuid">The GUID of the expression to retrieve.</param>
         /// <returns>The expression mapping object, or null if not found.</returns>
         public abstract object GetExpressionMappingByGuid(string expressionGuid);
-        
+        #if UNITY_EDITOR
         public abstract void DrawInlineEditorPreview(object expressionMapping, Rect position);
-
         public abstract float GetPreviewHeight();
-
+        #endif
         /// <summary>
         /// Returns the named configuration entry options exposed by this representation.
         /// Override to opt in to the <c>Participant Configuration Defaults</c> system on

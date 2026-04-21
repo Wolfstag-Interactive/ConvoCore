@@ -1,5 +1,5 @@
+#if UNITY_EDITOR
 using UnityEngine;
-
 namespace WolfstagInteractive.ConvoCore
 {
     public interface IEditorPreviewableRepresentation
@@ -18,3 +18,4 @@ namespace WolfstagInteractive.ConvoCore
         float GetPreviewHeight();
     }
 }
+#endif

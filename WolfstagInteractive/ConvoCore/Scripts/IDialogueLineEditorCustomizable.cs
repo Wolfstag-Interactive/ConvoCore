@@ -1,3 +1,4 @@
+#if UNITY_EDITOR
 using UnityEngine;
 
 namespace WolfstagInteractive.ConvoCore
@@ -26,3 +27,4 @@ namespace WolfstagInteractive.ConvoCore
         float GetDialogueLineOptionsHeight(string expressionID, UnityEditor.SerializedProperty displayOptionsProperty);
     }
 }
+#endif
