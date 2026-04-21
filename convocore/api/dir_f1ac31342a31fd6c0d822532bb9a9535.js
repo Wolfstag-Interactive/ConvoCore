@@ -5,6 +5,6 @@ var dir_f1ac31342a31fd6c0d822532bb9a9535 =
     [ "ConvoCoreYamlParser.cs", "ConvoCoreYamlParser_8cs.html", "ConvoCoreYamlParser_8cs" ],
     [ "ConvoCoreYamlSerializer.cs", "ConvoCoreYamlSerializer_8cs.html", "ConvoCoreYamlSerializer_8cs" ],
     [ "ConvoCoreYamlUtilities.cs", "ConvoCoreYamlUtilities_8cs.html", "ConvoCoreYamlUtilities_8cs" ],
-    [ "ConvoCoreYamlWatcher.cs", "ConvoCoreYamlWatcher_8cs.html", "ConvoCoreYamlWatcher_8cs" ],
+    [ "ConvoCoreYamlWatcher.cs", "ConvoCoreYamlWatcher_8cs.html", null ],
     [ "DialogueYamlConfig.cs", "DialogueYamlConfig_8cs.html", "DialogueYamlConfig_8cs" ]
 ];

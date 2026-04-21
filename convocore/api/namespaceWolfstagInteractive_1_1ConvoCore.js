@@ -1,6 +1,5 @@
 var namespaceWolfstagInteractive_1_1ConvoCore =
 [
-    [ "Editor", "namespaceWolfstagInteractive_1_1ConvoCore_1_1Editor.html", "namespaceWolfstagInteractive_1_1ConvoCore_1_1Editor" ],
     [ "SaveSystem", "namespaceWolfstagInteractive_1_1ConvoCore_1_1SaveSystem.html", "namespaceWolfstagInteractive_1_1ConvoCore_1_1SaveSystem" ],
     [ "AnimatorExpressionMapping", "classWolfstagInteractive_1_1ConvoCore_1_1AnimatorExpressionMapping.html", "classWolfstagInteractive_1_1ConvoCore_1_1AnimatorExpressionMapping" ],
     [ "BaseDialogueLineAction", "classWolfstagInteractive_1_1ConvoCore_1_1BaseDialogueLineAction.html", "classWolfstagInteractive_1_1ConvoCore_1_1BaseDialogueLineAction" ],
@@ -90,8 +89,6 @@ var namespaceWolfstagInteractive_1_1ConvoCore =
     [ "IConvoStartContextProvider", "interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoStartContextProvider.html", "interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoStartContextProvider" ],
     [ "IDialogueHistoryOutput", "interfaceWolfstagInteractive_1_1ConvoCore_1_1IDialogueHistoryOutput.html", "interfaceWolfstagInteractive_1_1ConvoCore_1_1IDialogueHistoryOutput" ],
     [ "IDialogueHistoryOutputPrefab", "interfaceWolfstagInteractive_1_1ConvoCore_1_1IDialogueHistoryOutputPrefab.html", "interfaceWolfstagInteractive_1_1ConvoCore_1_1IDialogueHistoryOutputPrefab" ],
-    [ "IDialogueLineEditorCustomizable", "interfaceWolfstagInteractive_1_1ConvoCore_1_1IDialogueLineEditorCustomizable.html", "interfaceWolfstagInteractive_1_1ConvoCore_1_1IDialogueLineEditorCustomizable" ],
-    [ "IEditorPreviewableRepresentation", "interfaceWolfstagInteractive_1_1ConvoCore_1_1IEditorPreviewableRepresentation.html", "interfaceWolfstagInteractive_1_1ConvoCore_1_1IEditorPreviewableRepresentation" ],
     [ "IUIFoundation", "interfaceWolfstagInteractive_1_1ConvoCore_1_1IUIFoundation.html", "interfaceWolfstagInteractive_1_1ConvoCore_1_1IUIFoundation" ],
     [ "LocalizedDialogueResult", "classWolfstagInteractive_1_1ConvoCore_1_1LocalizedDialogueResult.html", "classWolfstagInteractive_1_1ConvoCore_1_1LocalizedDialogueResult" ],
     [ "PagedListAttribute", "classWolfstagInteractive_1_1ConvoCore_1_1PagedListAttribute.html", "classWolfstagInteractive_1_1ConvoCore_1_1PagedListAttribute" ],

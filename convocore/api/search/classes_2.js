@@ -69,9 +69,8 @@ var searchData=
   ['convocoreyamlparser_66',['ConvoCoreYamlParser',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreYamlParser.html',1,'WolfstagInteractive::ConvoCore']]],
   ['convocoreyamlserializer_67',['ConvoCoreYamlSerializer',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreYamlSerializer.html',1,'WolfstagInteractive::ConvoCore']]],
   ['convocoreyamlutilities_68',['ConvoCoreYamlUtilities',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreYamlUtilities.html',1,'WolfstagInteractive::ConvoCore']]],
-  ['convocoreyamlwatcher_69',['ConvoCoreYamlWatcher',['../classWolfstagInteractive_1_1ConvoCore_1_1Editor_1_1ConvoCoreYamlWatcher.html',1,'WolfstagInteractive::ConvoCore::Editor']]],
-  ['convosettingsstate_70',['ConvoSettingsState',['../classWolfstagInteractive_1_1ConvoCore_1_1SaveSystem_1_1ConvoSettingsState.html',1,'WolfstagInteractive::ConvoCore::SaveSystem']]],
-  ['convostartcontext_71',['ConvoStartContext',['../structWolfstagInteractive_1_1ConvoCore_1_1ConvoStartContext.html',1,'WolfstagInteractive::ConvoCore']]],
-  ['convovariableentry_72',['ConvoVariableEntry',['../classWolfstagInteractive_1_1ConvoCore_1_1SaveSystem_1_1ConvoVariableEntry.html',1,'WolfstagInteractive::ConvoCore::SaveSystem']]],
-  ['convovariablestore_73',['ConvoVariableStore',['../classWolfstagInteractive_1_1ConvoCore_1_1SaveSystem_1_1ConvoVariableStore.html',1,'WolfstagInteractive::ConvoCore::SaveSystem']]]
+  ['convosettingsstate_69',['ConvoSettingsState',['../classWolfstagInteractive_1_1ConvoCore_1_1SaveSystem_1_1ConvoSettingsState.html',1,'WolfstagInteractive::ConvoCore::SaveSystem']]],
+  ['convostartcontext_70',['ConvoStartContext',['../structWolfstagInteractive_1_1ConvoCore_1_1ConvoStartContext.html',1,'WolfstagInteractive::ConvoCore']]],
+  ['convovariableentry_71',['ConvoVariableEntry',['../classWolfstagInteractive_1_1ConvoCore_1_1SaveSystem_1_1ConvoVariableEntry.html',1,'WolfstagInteractive::ConvoCore::SaveSystem']]],
+  ['convovariablestore_72',['ConvoVariableStore',['../classWolfstagInteractive_1_1ConvoCore_1_1SaveSystem_1_1ConvoVariableStore.html',1,'WolfstagInteractive::ConvoCore::SaveSystem']]]
 ];

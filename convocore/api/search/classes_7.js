@@ -15,7 +15,5 @@ var searchData=
   ['iconvostartcontextprovider_12',['IConvoStartContextProvider',['../interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoStartContextProvider.html',1,'WolfstagInteractive::ConvoCore']]],
   ['idialoguehistoryoutput_13',['IDialogueHistoryOutput',['../interfaceWolfstagInteractive_1_1ConvoCore_1_1IDialogueHistoryOutput.html',1,'WolfstagInteractive::ConvoCore']]],
   ['idialoguehistoryoutputprefab_14',['IDialogueHistoryOutputPrefab',['../interfaceWolfstagInteractive_1_1ConvoCore_1_1IDialogueHistoryOutputPrefab.html',1,'WolfstagInteractive::ConvoCore']]],
-  ['idialoguelineeditorcustomizable_15',['IDialogueLineEditorCustomizable',['../interfaceWolfstagInteractive_1_1ConvoCore_1_1IDialogueLineEditorCustomizable.html',1,'WolfstagInteractive::ConvoCore']]],
-  ['ieditorpreviewablerepresentation_16',['IEditorPreviewableRepresentation',['../interfaceWolfstagInteractive_1_1ConvoCore_1_1IEditorPreviewableRepresentation.html',1,'WolfstagInteractive::ConvoCore']]],
-  ['iuifoundation_17',['IUIFoundation',['../interfaceWolfstagInteractive_1_1ConvoCore_1_1IUIFoundation.html',1,'WolfstagInteractive::ConvoCore']]]
+  ['iuifoundation_15',['IUIFoundation',['../interfaceWolfstagInteractive_1_1ConvoCore_1_1IUIFoundation.html',1,'WolfstagInteractive::ConvoCore']]]
 ];

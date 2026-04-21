@@ -2,9 +2,6 @@ var annotated_dup =
 [
     [ "WolfstagInteractive", "namespaceWolfstagInteractive.html", [
       [ "ConvoCore", "namespaceWolfstagInteractive_1_1ConvoCore.html", [
-        [ "Editor", "namespaceWolfstagInteractive_1_1ConvoCore_1_1Editor.html", [
-          [ "ConvoCoreYamlWatcher", "classWolfstagInteractive_1_1ConvoCore_1_1Editor_1_1ConvoCoreYamlWatcher.html", "classWolfstagInteractive_1_1ConvoCore_1_1Editor_1_1ConvoCoreYamlWatcher" ]
-        ] ],
         [ "SaveSystem", "namespaceWolfstagInteractive_1_1ConvoCore_1_1SaveSystem.html", [
           [ "ConversationSnapshot", "classWolfstagInteractive_1_1ConvoCore_1_1SaveSystem_1_1ConversationSnapshot.html", "classWolfstagInteractive_1_1ConvoCore_1_1SaveSystem_1_1ConversationSnapshot" ],
           [ "ConvoCoreCharacterProfileExtensions", "classWolfstagInteractive_1_1ConvoCore_1_1SaveSystem_1_1ConvoCoreCharacterProfileExtensions.html", "classWolfstagInteractive_1_1ConvoCore_1_1SaveSystem_1_1ConvoCoreCharacterProfileExtensions" ],
@@ -110,8 +107,6 @@ var annotated_dup =
         [ "IConvoStartContextProvider", "interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoStartContextProvider.html", "interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoStartContextProvider" ],
         [ "IDialogueHistoryOutput", "interfaceWolfstagInteractive_1_1ConvoCore_1_1IDialogueHistoryOutput.html", "interfaceWolfstagInteractive_1_1ConvoCore_1_1IDialogueHistoryOutput" ],
         [ "IDialogueHistoryOutputPrefab", "interfaceWolfstagInteractive_1_1ConvoCore_1_1IDialogueHistoryOutputPrefab.html", "interfaceWolfstagInteractive_1_1ConvoCore_1_1IDialogueHistoryOutputPrefab" ],
-        [ "IDialogueLineEditorCustomizable", "interfaceWolfstagInteractive_1_1ConvoCore_1_1IDialogueLineEditorCustomizable.html", "interfaceWolfstagInteractive_1_1ConvoCore_1_1IDialogueLineEditorCustomizable" ],
-        [ "IEditorPreviewableRepresentation", "interfaceWolfstagInteractive_1_1ConvoCore_1_1IEditorPreviewableRepresentation.html", "interfaceWolfstagInteractive_1_1ConvoCore_1_1IEditorPreviewableRepresentation" ],
         [ "IUIFoundation", "interfaceWolfstagInteractive_1_1ConvoCore_1_1IUIFoundation.html", "interfaceWolfstagInteractive_1_1ConvoCore_1_1IUIFoundation" ],
         [ "LocalizedDialogueResult", "classWolfstagInteractive_1_1ConvoCore_1_1LocalizedDialogueResult.html", "classWolfstagInteractive_1_1ConvoCore_1_1LocalizedDialogueResult" ],
         [ "PagedListAttribute", "classWolfstagInteractive_1_1ConvoCore_1_1PagedListAttribute.html", "classWolfstagInteractive_1_1ConvoCore_1_1PagedListAttribute" ],
