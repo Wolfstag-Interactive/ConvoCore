@@ -2,8 +2,8 @@
   "name": "com.wolfstaginteractive.convocore",
   "version": "1.0.0",
   "displayName": "ConvoCore",
-  "description": "A Dialogue Tool",
-  "unity": "2021.3",
+  "description": "ConvoCore is a Unity native dialogue framework for building the dialogue system your project deserves, in any genre, at any scale, while staying in its lane.",
+  "unity": "2024.0",
   "author": {
     "name": "Dylan Alter",
     "email": "support@wolfstaginteractive.com"
