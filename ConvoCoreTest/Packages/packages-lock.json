@@ -191,7 +191,7 @@
       "url": "https://packages.unity.com"
     },
     "com.wolfstaginteractive.convocore": {
-      "version": "file:D:/Convocore/WolfstagInteractive/ConvoCore",
+      "version": "file:\\UnityProjects\\WolfstagInteractive\\ConvoCore\\WolfstagInteractive\\ConvoCore",
       "depth": 0,
       "source": "local",
       "dependencies": {}

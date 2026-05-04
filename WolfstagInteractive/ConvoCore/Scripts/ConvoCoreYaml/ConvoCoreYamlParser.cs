@@ -49,8 +49,9 @@ namespace WolfstagInteractive.ConvoCore
             const RegexOptions opts = RegexOptions.Multiline;
 
             // Pass 1: wrap completely unquoted values in double quotes.
+            // Fixed: Use single escaped quote in character class, and require at least one non-whitespace after colon
             yaml = Regex.Replace(yaml,
-                @"^(\s*)([a-z]{2,3}):\s*([^""'\r\n][^\r\n]*)",
+                @"^(\s*)([a-z]{2,3}):\s+([^""\x27\r\n][^\r\n]*)",
                 m =>
                 {
                     string prefix = m.Groups[1].Value;

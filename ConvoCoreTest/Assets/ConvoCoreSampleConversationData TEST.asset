@@ -1,5 +1,887 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!49 &-8146579704001286351
+TextAsset:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: EmbeddedYaml
+  m_Script: "IntroCutscene:\r\n- CharacterID: Narrator\r\n  LineID: L_b7ccedadd676\r\n 
+    LocalizedDialogue:\r\n    en: '...'\r\n- CharacterID: Narrator\r\n  LineID: L_263f2abe027a\r\n 
+    LocalizedDialogue:\r\n    en: My eyes slowly adjust to the light as I regain
+    consciousness.\r\n- CharacterID: Everie\r\n  LineID: L_06daaf51cc3f\r\n  LocalizedDialogue:\r\n   
+    en: Where am I?\r\n- CharacterID: Everie\r\n  LineID: L_e89bcd909306\r\n  LocalizedDialogue:\r\n   
+    en: What... is this... place?\r\n- CharacterID: Stranger\r\n  LineID: L_00b15bb46cc6\r\n 
+    LocalizedDialogue:\r\n    en: We can't let her fall into their hands.\r\n- CharacterID:
+    Narrator\r\n  LineID: L_d9e9e388716d\r\n  LocalizedDialogue:\r\n    en: I'm trying
+    to stay awake, but the darkness keeps pulling at me...\r\n- CharacterID: Stranger\r\n 
+    LineID: L_b5a6ae714a2e\r\n  LocalizedDialogue:\r\n    en: Get the pod prepped
+    now! We don't have much time!\r\n- CharacterID: Narrator\r\n  LineID: L_ce2eb6a21002\r\n 
+    LocalizedDialogue:\r\n    en: My chest burns and my eyes start to dim...\r\n-
+    CharacterID: Stranger\r\n  LineID: L_a3ad46c3f99c\r\n  LocalizedDialogue:\r\n   
+    en: She's starting to pass out! We have to stabilize her before it's too late.\r\n-
+    CharacterID: Stranger\r\n  LineID: L_8438b66803eb\r\n  LocalizedDialogue:\r\n   
+    en: You won't die today, Everieerie! Not on my watch.\r\n- CharacterID: Everie\r\n 
+    LineID: L_f416805da731\r\n  LocalizedDialogue:\r\n    en: '...Everieerie...?'\r\n-
+    CharacterID: Stranger\r\n  LineID: L_83722840b7f0\r\n  LocalizedDialogue:\r\n   
+    en: We're going to keep you safe, Everieerie. Prepare the pod before they get
+    in here!\r\n- CharacterID: Stranger\r\n  LineID: L_38e56e9bdb5e\r\n  LocalizedDialogue:\r\n   
+    en: We need to go! Now!\r\n- CharacterID: Stranger\r\n  LineID: L_69286e98d8f6\r\n 
+    LocalizedDialogue:\r\n    en: Setting her course towards Forgaris...\r\n- CharacterID:
+    Narrator\r\n  LineID: L_2b7b6f2e6fe3\r\n  LocalizedDialogue:\r\n    en: 500 YEARS
+    LATER\r\n- CharacterID: Fae\r\n  LineID: L_62debe73a9ef\r\n  LocalizedDialogue:\r\n   
+    en: How do you manage to keep fucking up the simplest things?!\r\n- CharacterID:
+    Player\r\n  LineID: L_2beb314e70f8\r\n  LocalizedDialogue:\r\n    en: Hey! It's
+    not my fault you can't keep your lab under control.\r\n- CharacterID: Fae\r\n 
+    LineID: L_16abf84dfa4d\r\n  LocalizedDialogue:\r\n    en: That was months of
+    work that you just...completely ruined.\r\n- CharacterID: Fae\r\n  LineID: L_54ce0f1ab6db\r\n 
+    LocalizedDialogue:\r\n    en: You better fix this or I'm doing my next experiment
+    on you.\r\n- CharacterID: Player\r\n  LineID: L_5f7915b87341\r\n  LocalizedDialogue:\r\n   
+    en: Calm down. I can figure out a way to get your little \"experiments\" back
+    to normal.\r\n- CharacterID: Fae\r\n  LineID: L_da4099f001bf\r\n  LocalizedDialogue:\r\n   
+    en: You'd better. Considering it was YOU who put us in this situation.\r\n- CharacterID:
+    Player\r\n  LineID: L_cb809ce83ca1\r\n  LocalizedDialogue:\r\n    en: Hey now.
+    It was both of our ideas, remember? We'll get the ship working better once we
+    get some money.\r\n- CharacterID: Player\r\n  LineID: L_85258736255b\r\n  LocalizedDialogue:\r\n   
+    en: '...wait, what did you mean by \"next experiment on you\"?'\r\n- CharacterID:
+    Fae\r\n  LineID: L_f296a049667d\r\n  LocalizedDialogue:\r\n    en: Perfect timing...
+    I thought you said you knew how to work a spaceship.\r\n- CharacterID: Player\r\n 
+    LineID: L_5242b4851992\r\n  LocalizedDialogue:\r\n    en: I told you I knew how
+    to work one in theory, Fae. This is just a little outside of my, uh, area of
+    expertise.\r\n- CharacterID: Player\r\n  LineID: L_8643de3b7352\r\n  LocalizedDialogue:\r\n   
+    en: We don't have enough money for parts, so we're just going to have to make
+    do with what we have.\r\n- CharacterID: Fae\r\n  LineID: L_6712c86ebc2c\r\n 
+    LocalizedDialogue:\r\n    en: Well, you better figure out something soon, because
+    I'm freezing my tits off.\r\nDay1LightsRestored:\r\n- CharacterID: Fae\r\n  LineID:
+    L_ba9107119059\r\n  LocalizedDialogue:\r\n    en: Amazing! You actually managed
+    to do something useful for a change!\r\n- CharacterID: Player\r\n  LineID: L_405b3e3dcecc\r\n 
+    LocalizedDialogue:\r\n    en: Oh, ha ha ha. I don't see you trying to fix the
+    ship.\r\n- CharacterID: Fae\r\n  LineID: L_b5a755ff92ea\r\n  LocalizedDialogue:\r\n   
+    en: I'm busy with more important things.\r\n- CharacterID: Player\r\n  LineID:
+    L_8670923dc93b\r\n  LocalizedDialogue:\r\n    en: Like your little lab experiments?\r\n-
+    CharacterID: Fae\r\n  LineID: L_9413a0cfd679\r\n  LocalizedDialogue:\r\n    en:
+    Well, maybe if you didn't waste my time ruining them with your shitty, broken,
+    rundown ship...\r\n- CharacterID: Player\r\n  LineID: L_162834e7cfda\r\n  LocalizedDialogue:\r\n   
+    en: I told you I'd figure it out!\r\n- CharacterID: Fae\r\n  LineID: L_3fc17193f883\r\n 
+    LocalizedDialogue:\r\n    en: Well, I'll be up here in the recroom while you
+    do that.\r\n- CharacterID: Player\r\n  LineID: L_f8afe36e644a\r\n  LocalizedDialogue:\r\n   
+    en: I'll head down and see what the problem is.\r\n- CharacterID: Player\r\n 
+    LineID: L_763852883249\r\n  LocalizedDialogue:\r\n    en: I think the generator
+    might be on the fritz again.\r\n- CharacterID: Player\r\n  LineID: L_bb3e7c94461b\r\n 
+    LocalizedDialogue:\r\n    en: And don't mess with my shampoo again! My hair was
+    green for months last time.\r\n- CharacterID: Fae\r\n  LineID: L_777c2cb4627a\r\n 
+    LocalizedDialogue:\r\n    en: You're going to hold that over my head forever,
+    aren't you?\r\n- CharacterID: Player\r\n  LineID: L_542b30061f42\r\n  LocalizedDialogue:\r\n   
+    en: Only when it's convenient.\r\n- CharacterID: Fae\r\n  LineID: L_55c5554c615f\r\n 
+    LocalizedDialogue:\r\n    en: You'd better figure out what's wrong with the ship
+    soon.\r\n- CharacterID: Fae\r\n  LineID: L_fdeb61573360\r\n  LocalizedDialogue:\r\n   
+    en: I can't keep dealing with the lights turning off every few days! Just think
+    about my specimens!\r\n- CharacterID: Player\r\n  LineID: L_b70451406d5c\r\n 
+    LocalizedDialogue:\r\n    en: Also...our own lives?\r\n- CharacterID: Fae\r\n 
+    LineID: L_a9c1b53c4422\r\n  LocalizedDialogue:\r\n    en: Yeah, that too.\r\n-
+    CharacterID: Player\r\n  LineID: L_32170156a9bb\r\n  LocalizedDialogue:\r\n   
+    en: Right...I'm going go look around the ship.\r\n- CharacterID: Fae\r\n  LineID:
+    L_d39341d18290\r\n  LocalizedDialogue:\r\n    en: Let me know what you find.
+    We're in this mess because of you in the first place.\r\n- CharacterID: Player\r\n 
+    LineID: L_73d45a22cb13\r\n  LocalizedDialogue:\r\n    en: It takes two to tango,
+    Fae. You did manage to steal those coordinates, right?\r\n- CharacterID: Fae\r\n 
+    LineID: L_b80519580939\r\n  LocalizedDialogue:\r\n    en: Mhm.\r\n- CharacterID:
+    Player\r\n  LineID: L_a4dc2da1e096\r\n  LocalizedDialogue:\r\n    en: See, our
+    fortunes are looking up already. I'll let you know if--WHEN--I figure out the
+    problem.\r\nDay1FaeCouchConvo:\r\n- CharacterID: Player\r\n  LineID: L_32eb21f2905a\r\n 
+    LocalizedDialogue:\r\n    en: All right, I've had a hell of a day and I need
+    to pass the fuck out.\r\n- CharacterID: Fae\r\n  LineID: L_ca4046cda87d\r\n 
+    LocalizedDialogue:\r\n    en: Thanks a ton for all your work, [var:75]. Also,
+    you're sleeping in the living room tonight.\r\n- CharacterID: Player\r\n  LineID:
+    L_c3f2a76db744\r\n  LocalizedDialogue:\r\n    en: And why the hell is that?\r\n-
+    CharacterID: Fae\r\n  LineID: L_7ea2632d3f22\r\n  LocalizedDialogue:\r\n    en:
+    The power shitting itself earlier ruined my specimens' cooling systems and now
+    the lab needs time to air out.\r\n- CharacterID: Fae\r\n  LineID: L_130ea4cdb967\r\n 
+    LocalizedDialogue:\r\n    en: We're gonna need to upgrade the vents at some point.
+    Unless you enjoy sleeping on the couch?\r\n- CharacterID: Player\r\n  LineID:
+    L_2da5e6d41730\r\n  LocalizedDialogue:\r\n    en: Why can't you just use one
+    of the spare rooms?\r\n- CharacterID: Fae\r\n  LineID: L_49d4124f8b08\r\n  LocalizedDialogue:\r\n   
+    en: Do you want to clear out all the crap from there? And look. I even got you
+    a nice blanket.\r\n- CharacterID: Player\r\n  LineID: L_fc1f701ea942\r\n  LocalizedDialogue:\r\n   
+    en: You're lucky I'm too tired to fight you over this.\r\n- CharacterID: Fae\r\n 
+    LineID: L_e2863596db7d\r\n  LocalizedDialogue:\r\n    en: Goodnight, then.\r\n-
+    CharacterID: Player\r\n  LineID: L_6d3fb647840e\r\n  LocalizedDialogue:\r\n   
+    en: Guess we're sleeping here tonight, bud.\r\n- CharacterID: DD\r\n  LineID:
+    L_da153d3089a8\r\n  LocalizedDialogue:\r\n    en: '*Sad Beep*'\r\n- CharacterID:
+    Player\r\n  LineID: L_f600e7a2fee1\r\n  LocalizedDialogue:\r\n    en: Don't be
+    dramatic. How bad could it really be?\r\n- CharacterID: Narrator\r\n  LineID:
+    L_97d2d0ef13ef\r\n  LocalizedDialogue:\r\n    en: I look around and realize there's
+    no blanket.\r\n- CharacterID: Player\r\n  LineID: L_76c80e52fb1e\r\n  LocalizedDialogue:\r\n   
+    en: Oh, great. I'm kicked out of my room and get to be cold all night.\r\n- CharacterID:
+    Player\r\n  LineID: L_92317e627bf6\r\n  LocalizedDialogue:\r\n    en: Screw this.
+    I'm going back to my room and grabbing a blanket.\r\n- CharacterID: DD\r\n  LineID:
+    L_dce746558f77\r\n  LocalizedDialogue:\r\n    en: '*Beeps*'\r\n- CharacterID:
+    Player\r\n  LineID: L_65bfaf06ea57\r\n  LocalizedDialogue:\r\n    en: Damn right
+    buddy.\r\nDay1JukaryaLanding:\r\n- CharacterID: Fae\r\n  LineID: L_162ded9d8041\r\n 
+    LocalizedDialogue:\r\n    en: Looks like there used to be some sort of civilization
+    here.\r\n- CharacterID: Player\r\n  LineID: L_91841c5aa75a\r\n  LocalizedDialogue:\r\n   
+    en: Whatever it was, it got wiped out pretty quick.\r\n- CharacterID: Player\r\n 
+    LineID: L_eb6964c5bc0f\r\n  LocalizedDialogue:\r\n    en: Pretty sure we know
+    who did it...\r\n- CharacterID: Fae\r\n  LineID: L_5b48ef5d14fa\r\n  LocalizedDialogue:\r\n   
+    en: Let's not think about it. My tracker says that whatever it is, it's somewhere
+    up in those mountains.\r\n- CharacterID: Player\r\n  LineID: L_bdff0c1b5d77\r\n 
+    LocalizedDialogue:\r\n    en: Definitely a bit jealous of you right now, DD.\r\n-
+    CharacterID: DD\r\n  LineID: L_c6d7ad387b68\r\n  LocalizedDialogue:\r\n    en:
+    '*beeps smugly*'\r\n- CharacterID: Player\r\n  LineID: L_66d82eeb6270\r\n  LocalizedDialogue:\r\n   
+    en: Laugh it up, why don't you?\r\nDay1JukaryaLanderFix:\r\n- CharacterID: Player\r\n 
+    LineID: L_9397591bc690\r\n  LocalizedDialogue:\r\n    en: I didn't have a huge
+    amount of luck finding anything high tech. But I did find this old USB stick.\r\n-
+    CharacterID: Junky\r\n  LineID: L_bcd9d4af23d3\r\n  LocalizedDialogue:\r\n   
+    en: That's perfect, boy! That's exactly what I was looking for!\r\n- CharacterID:
+    Player\r\n  LineID: L_7a52483f8b38\r\n  LocalizedDialogue:\r\n    en: '...Really?'\r\n-
+    CharacterID: Junky\r\n  LineID: L_ceb8ecaa561b\r\n  LocalizedDialogue:\r\n   
+    en: Yes, these are exactly the type of things I've been searching for. If you
+    find any more around, let me know.\r\n- CharacterID: Player\r\n  LineID: L_d715541533b4\r\n 
+    LocalizedDialogue:\r\n    en: What's so special about them?\r\n- CharacterID:
+    Junky\r\n  LineID: L_1395ad524aed\r\n  LocalizedDialogue:\r\n    en: That's a
+    story for another day.\r\n- CharacterID: Player\r\n  LineID: L_a7fdf8e13b20\r\n 
+    LocalizedDialogue:\r\n    en: Alright... How's my lander doing?\r\n- CharacterID:
+    Junky\r\n  LineID: L_1be8644123bd\r\n  LocalizedDialogue:\r\n    en: I got the
+    piece you wanted. Also managed to install a new shield generator on it.\r\n-
+    CharacterID: Junky\r\n  LineID: L_82a699c71fe0\r\n  LocalizedDialogue:\r\n   
+    en: Just be careful with it. It's a bit of an older model.\r\n- CharacterID:
+    Narrator\r\n  LineID: L_f29e82dc296a\r\n  LocalizedDialogue:\r\n    en: You got
+    the generator part!\r\n- CharacterID: Player\r\n  LineID: L_af4e11a43445\r\n 
+    LocalizedDialogue:\r\n    en: Can't thank you enough, Junky.\r\n- CharacterID:
+    Junky\r\n  LineID: L_a0965b871d92\r\n  LocalizedDialogue:\r\n    en: Let me know
+    if you're around these parts again!\r\n- CharacterID: Junky\r\n  LineID: L_73685167eb80\r\n 
+    LocalizedDialogue:\r\n    en: And if you're ever looking for work, I got a job
+    that needs some extra hands in the near future.\r\n- CharacterID: Player\r\n 
+    LineID: L_28f1d60aa623\r\n  LocalizedDialogue:\r\n    en: Does it involve more
+    junk?\r\n- CharacterID: Junky\r\n  LineID: L_bd841e44dc1a\r\n  LocalizedDialogue:\r\n   
+    en: Does the pope shit in the woods?\r\n- CharacterID: Player\r\n  LineID: L_7a82d3d7148a\r\n 
+    LocalizedDialogue:\r\n    en: I don't... yeah, sure. Whatever.\r\n- CharacterID:
+    DD-9\r\n  LineID: L_a39cd4566e95\r\n  LocalizedDialogue:\r\n    en: '*beeps in
+    agreement*'\r\n- CharacterID: Player\r\n  LineID: L_ef19bbbb9dd6\r\n  LocalizedDialogue:\r\n   
+    en: Not you too buddy.\r\nDay1JukaryaMeeting:\r\n- CharacterID: Narrator\r\n 
+    LineID: L_6ff25261b551\r\n  LocalizedDialogue:\r\n    en: After a few minutes
+    of rummaging through some trash.\r\n- CharacterID: Player\r\n  LineID: L_3f29b1d59c79\r\n 
+    LocalizedDialogue:\r\n    en: This is hopeless. Do you have any idea where we
+    can find what we need, DD-9:?\r\n- CharacterID: DD-9\r\n  LineID: L_d406a1d06650\r\n 
+    LocalizedDialogue:\r\n    en: '*beeps sadly*'\r\n- CharacterID: Player\r\n  LineID:
+    L_4ac7598cbcab\r\n  LocalizedDialogue:\r\n    en: Yeah, I thought as much. It's
+    okay, buddy. We'll figure it out.\r\n- CharacterID: Junky\r\n  LineID: L_a4b05e7d0017\r\n 
+    LocalizedDialogue:\r\n    en: What the hell are ya doing, messing with my junk?\r\n-
+    CharacterID: Player\r\n  LineID: L_a1854a00e674\r\n  LocalizedDialogue:\r\n   
+    en: I beg your pardon?\r\n- CharacterID: Junky\r\n  LineID: L_9a83bbb695a6\r\n 
+    LocalizedDialogue:\r\n    en: Junk, lad!\r\n- CharacterID: Junky\r\n  LineID:
+    L_f1428149fcb3\r\n  LocalizedDialogue:\r\n    en: Junk trading is serious business
+    among these parts, and you just wandered into my turf.\r\n- CharacterID: Junky\r\n 
+    LineID: L_d34424182add\r\n  LocalizedDialogue:\r\n    en: So you'd better have
+    a damn good reason for intruding.\r\n- CharacterID: Player\r\n  LineID: L_3c5a3a4462e1\r\n 
+    LocalizedDialogue:\r\n    en: Ah...I'm sorry... My ship is in a rough state right
+    now and I really need a new fuel rod.\r\n- CharacterID: Player\r\n  LineID: L_a3354f18ff48\r\n 
+    LocalizedDialogue:\r\n    en: I even flew down here in that unshielded lander.
+    That's how desperate I am.\r\n- CharacterID: Junky\r\n  LineID: L_8e6eba93eb45\r\n 
+    LocalizedDialogue:\r\n    en: Boy, there's no way in hell you flew down here
+    unshielded. That scrap would have ripped apart your ship apart in seconds.\r\n-
+    CharacterID: Player\r\n  LineID: L_e36deb729a8e\r\n  LocalizedDialogue:\r\n   
+    en: You want to bet? Go check out my lander and tell me what you find.\r\n- CharacterID:
+    Narrator\r\n  LineID: L_5a10fe4f6e4d\r\n  LocalizedDialogue:\r\n    en: The old
+    man comes back a few minutes later\r\n- CharacterID: Junky\r\n  LineID: L_6a85bfdb30d7\r\n 
+    LocalizedDialogue:\r\n    en: Boy, do you have a death wish?\r\n- CharacterID:
+    Player\r\n  LineID: L_f2f4cbb1db39\r\n  LocalizedDialogue:\r\n    en: I wasn't
+    joking, uh...what's your name again?\r\n- CharacterID: Junky\r\n  LineID: L_b081fff466d8\r\n 
+    LocalizedDialogue:\r\n    en: The name's Junky.\r\n- CharacterID: Player\r\n 
+    LineID: L_7103a73a3d37\r\n  LocalizedDialogue:\r\n    en: I suppose that makes
+    sense'\r\n- CharacterID: Junky\r\n  LineID: L_18de7ff1c901\r\n  LocalizedDialogue:\r\n   
+    en: Dammit, lad. I can't just let you fly out of here with no shield generator
+    again. Would be a bit of a strain on my conscience.\r\n- CharacterID: Junky\r\n 
+    LineID: L_e41e4686fa6e\r\n  LocalizedDialogue:\r\n    en: How about this? You
+    do a little work for me and I'll get you what you need.\r\n- CharacterID: Player\r\n 
+    LineID: L_8c325e3472a3\r\n  LocalizedDialogue:\r\n    en: Thank you so much,
+    Junky! You have no idea how much this means to me.\r\n- CharacterID: Junky\r\n 
+    LineID: L_f6dad2fa7b6e\r\n  LocalizedDialogue:\r\n    en: Don't give me those
+    puppy dog eyes. My heart can't take it!\r\n- CharacterID: DD-9\r\n  LineID: L_9cec922a862e\r\n 
+    LocalizedDialogue:\r\n    en: '*beeps sarcastically*'\r\n- CharacterID: Player\r\n 
+    LineID: L_7d32a044f09a\r\n  LocalizedDialogue:\r\n    en: I'm not crying, I swear.\r\n-
+    CharacterID: Junky\r\n  LineID: L_3dbb09375bc9\r\n  LocalizedDialogue:\r\n   
+    en: I'm searching for some old technology. Ancient Earth stuff, to be precise.\r\n-
+    CharacterID: Junky\r\n  LineID: L_2eeccf58e40f\r\n  LocalizedDialogue:\r\n   
+    en: Go search the piles of scrap and I'll find those parts you need.\r\n- CharacterID:
+    Player\r\n  LineID: L_31bd07018e26\r\n  LocalizedDialogue:\r\n    en: Will do.\r\n-
+    CharacterID: Junky\r\n  LineID: L_3ab5a7e8a3da\r\n  LocalizedDialogue:\r\n   
+    en: Hop to it then!\r\nDay1ShipJukaryaPrep:\r\n- CharacterID: Fae\r\n  LineID:
+    L_b24595afd273\r\n  LocalizedDialogue:\r\n    en: Well?\r\n- CharacterID: Player\r\n 
+    LineID: L_d687af712511\r\n  LocalizedDialogue:\r\n    en: So, I've got good news
+    and bad news.\r\n- CharacterID: Fae\r\n  LineID: L_8f897d9e6794\r\n  LocalizedDialogue:\r\n   
+    en: What's the good news?\r\n- CharacterID: Player\r\n  LineID: L_0dced63913e2\r\n 
+    LocalizedDialogue:\r\n    en: We're still flying.\r\n- CharacterID: Fae\r\n 
+    LineID: L_8b883ad09723\r\n  LocalizedDialogue:\r\n    en: And the bad news is...?\r\n-
+    CharacterID: Player\r\n  LineID: L_f0eb2082b24f\r\n  LocalizedDialogue:\r\n   
+    en: The main rotor is fucked and we need a new fuel rod for the particle vortex
+    engine.\r\n- CharacterID: Fae\r\n  LineID: L_2d33911aa717\r\n  LocalizedDialogue:\r\n   
+    en: How the fuck are we going to pay for that?\r\n- CharacterID: Player\r\n 
+    LineID: L_1c8c9ace7ea7\r\n  LocalizedDialogue:\r\n    en: Well, I mean, we can
+    always head to Jukarya?\r\n- CharacterID: Fae\r\n  LineID: L_3177ef362242\r\n 
+    LocalizedDialogue:\r\n    en: No way in hell am I going to that dumpster fire
+    of a planet.\r\n- CharacterID: Player\r\n  LineID: L_5531649c26e0\r\n  LocalizedDialogue:\r\n   
+    en: We don't have much of a choice, Fae. If we can't find a working part, we're
+    not going to be alive for very long.\r\n- CharacterID: Fae\r\n  LineID: L_7ab9e8011f3c\r\n 
+    LocalizedDialogue:\r\n    en: You can fly down there, but I'm staying on the
+    ship. Especially since the lander's shields aren't working.\r\n- CharacterID:
+    Player\r\n  LineID: L_5f225f5dca9d\r\n  LocalizedDialogue:\r\n    en: You're
+    kidding, right? It's suicide to fly down there without a working shield drive.\r\n-
+    CharacterID: Fae\r\n  LineID: L_006333dc69cd\r\n  LocalizedDialogue:\r\n    en:
+    Well, I guess somebody's gotta do a bit of praying then.\r\n- CharacterID: Player\r\n 
+    LineID: L_b2b53cf8d502\r\n  LocalizedDialogue:\r\n    en: '...Fine, but you owe
+    me. Also, you better be guiding me down on comms.'\r\n- CharacterID: Fae\r\n 
+    LineID: L_e37a6d9035d5\r\n  LocalizedDialogue:\r\n    en: Set a course for Jukarya
+    in the cockpit when you're ready.\r\nDay2FaeLabConvo:\r\n- CharacterID: Player\r\n 
+    LineID: L_47a1589f2819\r\n  LocalizedDialogue:\r\n    en: How are you holding
+    up?\r\n- CharacterID: Fae\r\n  LineID: L_d5eb16b4b71a\r\n  LocalizedDialogue:\r\n   
+    en: Not well.\r\n- CharacterID: Player\r\n  LineID: L_2b68fc60084c\r\n  LocalizedDialogue:\r\n   
+    en: Wanna talk about it?\r\n- CharacterID: Fae\r\n  LineID: L_05071c2fd51d\r\n 
+    LocalizedDialogue:\r\n    en: Look... I just really needed this to work.\r\n-
+    CharacterID: Player\r\n  LineID: L_62f80c07d0a7\r\n  LocalizedDialogue:\r\n   
+    en: We can figure out other ways to make money, Fae.\r\n- CharacterID: Fae\r\n 
+    LineID: L_e2bc5985e631\r\n  LocalizedDialogue:\r\n    en: No, you idiot! This
+    was our only chance to get rich. Our one chance to finally be free and happy.\r\n-
+    CharacterID: Fae\r\n  LineID: L_2bded92f5f24\r\n  LocalizedDialogue:\r\n    en:
+    We gambled our lives on this. We stole a whole goddamn ship from the Syndicate,
+    and it's all for fucking nothing.\r\n- CharacterID: Player\r\n  LineID: L_ec004b26e28d\r\n 
+    LocalizedDialogue:\r\n    en: It's okay, Fae. Sure, this might have been a bust,
+    but we're in this together.\r\n- CharacterID: Fae\r\n  LineID: L_42897f15dabf\r\n 
+    LocalizedDialogue:\r\n    en: That's easy for you to say! I was the Syndicate's
+    best scientist. I led the galaxy in bioaugmentation research.\r\n- CharacterID:
+    Fae\r\n  LineID: L_e9aa8c3bf159\r\n  LocalizedDialogue:\r\n    en: Now look at
+    me.\r\n- CharacterID: Fae\r\n  LineID: L_84c6ac527725\r\n  LocalizedDialogue:\r\n   
+    en: Wandering around space on a rust bucket with only an idiot for company.\r\n-
+    CharacterID: Player\r\n  LineID: L_dfc247e2a8ba\r\n  LocalizedDialogue:\r\n   
+    en: '...Harsh.'\r\n- CharacterID: Player\r\n  LineID: L_1ebe6798aa6c\r\n  LocalizedDialogue:\r\n   
+    en: By the way, what exactly did you find on their system that led us to this,
+    uh, place?\r\n- CharacterID: Fae\r\n  LineID: L_fb7e63f40bac\r\n  LocalizedDialogue:\r\n   
+    en: While you were distracting the guards, I used that login I stole to access
+    their private records.\r\n- CharacterID: Fae\r\n  LineID: L_687f3d72cb9f\r\n 
+    LocalizedDialogue:\r\n    en: I didn't have time to really look into it, but
+    these coordinates had the highest level security encryption the Syndicate has.\r\n-
+    CharacterID: Player\r\n  LineID: L_acaa9147f3a8\r\n  LocalizedDialogue:\r\n   
+    en: Really? All that effort to hide a workshop?\r\n- CharacterID: Fae\r\n  LineID:
+    L_dc5eb751a479\r\n  LocalizedDialogue:\r\n    en: I don't understand it either.
+    I'm going to look at that stone you grabbed from there.\r\n- CharacterID: Narrator\r\n 
+    LineID: L_f39a6391e4f4\r\n  LocalizedDialogue:\r\n    en: You hand over the weird
+    rock to Fae\r\n- CharacterID: Player\r\n  LineID: L_1ba0d420f444\r\n  LocalizedDialogue:\r\n   
+    en: Best chance we got. On the bright side, it'll make a neat paper weight.\r\n-
+    CharacterID: Fae\r\n  LineID: L_fcb0b5623a8b\r\n  LocalizedDialogue:\r\n    en:
+    I'm sure that's the best use for it... but I also really want to know what's
+    behind that door.\r\n- CharacterID: Player\r\n  LineID: L_bcd83dfea688\r\n  LocalizedDialogue:\r\n   
+    en: See, we still have a chance of getting rich!\r\nDay2ForgarisBaseInteriorConvo:\r\n-
+    CharacterID: Fae\r\n  LineID: L_3af3a76844ea\r\n  LocalizedDialogue:\r\n    en:
+    Oh, thank fuck we're somewhere a little warmer. Though this place is a little
+    dark...and it's giving me a strange feeling.\r\n- CharacterID: Fae\r\n  LineID:
+    L_c7668fc8a3ef\r\n  LocalizedDialogue:\r\n    en: Maybe there's a backup generator
+    somewhere we could get running?\r\n- CharacterID: Fae\r\n  LineID: L_10e4324b43fa\r\n 
+    LocalizedDialogue:\r\n    en: Well, that works! Now what do we have here?\r\n-
+    CharacterID: Player\r\n  LineID: L_c72324e2e416\r\n  LocalizedDialogue:\r\n   
+    en: Congratulations on finding some nerd's hobby den, Fae!\r\n- CharacterID:
+    Fae\r\n  LineID: L_8c505464fc52\r\n  LocalizedDialogue:\r\n    en: I swear, those
+    coordinates were from the most encrypted file I've ever cracked. There HAS to
+    be something here. Look around and see if you can find anything decent.\r\n-
+    CharacterID: Player\r\n  LineID: L_01ac8214d183\r\n  LocalizedDialogue:\r\n   
+    en: I'll try, but don't get your hopes up.\r\nDay2ForgarisFoundCore:\r\n- CharacterID:
+    Player\r\n  LineID: L_0370f92b86a0\r\n  LocalizedDialogue:\r\n    en: It looks
+    like... a shiny rock!\r\n- CharacterID: Fae\r\n  LineID: L_29ef21489605\r\n 
+    LocalizedDialogue:\r\n    en: You idiot; there's definitely more to it than that.
+    Hand it over to me.\r\n- CharacterID: Narrator\r\n  LineID: L_d4484585e137\r\n 
+    LocalizedDialogue:\r\n    en: Fae takes the weird rock from me.\r\n- CharacterID:
+    Player\r\n  LineID: L_6459de60e33b\r\n  LocalizedDialogue:\r\n    en: Not sure
+    if it's going be worth anything, but it sure is shiny.\r\n- CharacterID: Fae\r\n 
+    LineID: L_32a4cc6007c0\r\n  LocalizedDialogue:\r\n    en: You might have actually
+    found something here... I need some time in my lab to examine this.\r\n- CharacterID:
+    Player\r\n  LineID: L_957a9d36ff87\r\n  LocalizedDialogue:\r\n    en: Just admit
+    it, this place is a bust.\r\n- CharacterID: Fae\r\n  LineID: L_b7d25f17b025\r\n 
+    LocalizedDialogue:\r\n    en: \"Then explain to me why there's this random lab
+    on a backwater planet with no colonies or communication sources. \"\r\n- CharacterID:
+    Fae\r\n  LineID: L_f00e4b8beda3\r\n  LocalizedDialogue:\r\n    en: AND why the
+    coordinates to it were hidden under super tight encryption.\r\n- CharacterID:
+    Player\r\n  LineID: L_880e349e2f40\r\n  LocalizedDialogue:\r\n    en: Maybe they
+    just wanted to hide it because it SUCKED so damn badly.\r\n- CharacterID: Fae\r\n 
+    LineID: L_cee4adb9e948\r\n  LocalizedDialogue:\r\n    en: \"Haha, very funny.
+    Let's just head back to the ship. \"\r\n- CharacterID: Fae\r\n  LineID: L_e02927c6e9ab\r\n 
+    LocalizedDialogue:\r\n    en: We've got to figure out some way to make some money
+    soon, or we\uFFFDre dead.\r\n- CharacterID: Player\r\n  LineID: L_14478fcd4544\r\n 
+    LocalizedDialogue:\r\n    en: Look, I'm sorry. It just feels like we're really
+    down on our luck lately. Maybe we could go to Jukarya and hunt for some parts
+    to make a miner?\r\n- CharacterID: Fae\r\n  LineID: L_53402e47a9cc\r\n  LocalizedDialogue:\r\n   
+    en: Not a half-bad plan.\r\n- CharacterID: Fae\r\n  LineID: L_7228a1724f3f\r\n 
+    LocalizedDialogue:\r\n    en: '...'\r\n- CharacterID: Fae\r\n  LineID: L_37cae6dbafdd\r\n 
+    LocalizedDialogue:\r\n    en: '...Wait, hold on a second.'\r\n- CharacterID:
+    Player\r\n  LineID: L_190838b20e95\r\n  LocalizedDialogue:\r\n    en: Did you
+    find something?\r\n- CharacterID: Fae\r\n  LineID: L_302ace408cc8\r\n  LocalizedDialogue:\r\n   
+    en: \"There's this weird door back here. It has some sort of symbol on it. \"\r\n-
+    CharacterID: Fae\r\n  LineID: L_6fe53122bbec\r\n  LocalizedDialogue:\r\n    en:
+    I've never seen anything like it.\r\n- CharacterID: Player\r\n  LineID: L_f5cd7130d9d8\r\n 
+    LocalizedDialogue:\r\n    en: That could be something. Do you think you can open
+    it?\r\n- CharacterID: Fae\r\n  LineID: L_faaf7ede6548\r\n  LocalizedDialogue:\r\n   
+    en: Of course I can. It's a door, you dumbass.\r\n- CharacterID: Player\r\n 
+    LineID: L_30a5114b9859\r\n  LocalizedDialogue:\r\n    en: Can you do it now then?\r\n-
+    CharacterID: Fae\r\n  LineID: L_7be8c935aff5\r\n  LocalizedDialogue:\r\n    en:
+    Oh, you mean NOW...\r\n- CharacterID: Fae\r\n  LineID: L_8ecb287db86b\r\n  LocalizedDialogue:\r\n   
+    en: No... But maybe if I can get the right parts, I can make something to break
+    through that door somehow. Just give me some time to look at that rock you found.\r\n-
+    CharacterID: Player\r\n  LineID: L_e2b4435968d6\r\n  LocalizedDialogue:\r\n   
+    en: Well, I guess that's a good enough reason to head back.\r\n- CharacterID:
+    Fae\r\n  LineID: L_09ce4e95b53a\r\n  LocalizedDialogue:\r\n    en: Also! Can
+    you get off your lazy ass and clean up the ship a bit? Or at least your clean
+    your room.\r\n- CharacterID: Fae\r\n  LineID: L_8d249cee086d\r\n  LocalizedDialogue:\r\n   
+    en: I'm pretty sure I saw your laundry move last night.\r\n- CharacterID: Player\r\n 
+    LineID: L_2ad2ea840b36\r\n  LocalizedDialogue:\r\n    en: Point taken.\r\nDay2ForgarisBaseConvo:\r\n-
+    CharacterID: Player\r\n  LineID: L_95710c180f82\r\n  LocalizedDialogue:\r\n   
+    en: Wow, looks like you might have been onto something with those coordinates.\r\n-
+    CharacterID: Fae\r\n  LineID: L_01b58f1c64cc\r\n  LocalizedDialogue:\r\n    en:
+    Oh, are you still doubting me?\r\n- CharacterID: Player\r\n  LineID: L_aff65a1f92d4\r\n 
+    LocalizedDialogue:\r\n    en: Hold your horses! We haven't even opened the door
+    yet. There's still a chance this is all for nothing.\r\n- CharacterID: Fae\r\n 
+    LineID: L_5f5334804738\r\n  LocalizedDialogue:\r\n    en: Well, hurry up. I'm
+    freezing here.\r\n- CharacterID: Fae\r\n  LineID: L_3df150b9ebc2\r\n  LocalizedDialogue:\r\n   
+    en: Can you at least be a gentleman and offer me your jacket?\r\n- CharacterID:
+    Player\r\n  LineID: L_92d155433c2c\r\n  LocalizedDialogue:\r\n    en: Well, maybe
+    if SOMEONE wore a little more than just an oversized shirt, they'd be a little
+    warmer.\r\n- CharacterID: Player\r\n  LineID: L_96ec1552ef03\r\n  LocalizedDialogue:\r\n   
+    en: \"...But I'll admit that I'm cold as fuck out here too.\"\r\n- CharacterID:
+    DD\r\n  LineID: L_1742420a6852\r\n  LocalizedDialogue:\r\n    en: Hey DD, can
+    you come check out this door?\r\n- CharacterID: DD\r\n  LineID: L_b7d8dccf2b18\r\n 
+    LocalizedDialogue:\r\n    en: '*beeps*'\r\n- CharacterID: Player\r\n  LineID:
+    L_0bb3340a38da\r\n  LocalizedDialogue:\r\n    en: Quit with the attitude. I'll
+    get you a shiny new battery if we find something good.\r\n- CharacterID: DD\r\n 
+    LineID: L_f677251b1faf\r\n  LocalizedDialogue:\r\n    en: '*beeps happily*'\r\nDay2ShipConvo:\r\n-
+    CharacterID: Fae\r\n  LineID: L_870f305315c8\r\n  LocalizedDialogue:\r\n    en:
+    Morning sunshine!\r\n- CharacterID: Player\r\n  LineID: L_3128c22acaf6\r\n  LocalizedDialogue:\r\n   
+    en: If I could feel my back, I'd get up and strangle you.\r\n- CharacterID: Fae\r\n 
+    LineID: L_aa742dd89b8d\r\n  LocalizedDialogue:\r\n    en: Look who woke up on
+    the wrong side of the bed--oops, I mean couch.\r\n- CharacterID: Fae\r\n  LineID:
+    L_07cc1186a654\r\n  LocalizedDialogue:\r\n    en: I brought you some coffee.\r\n-
+    CharacterID: Player\r\n  LineID: L_e8d7da080369\r\n  LocalizedDialogue:\r\n   
+    en: That's... actually pretty nice. Thanks, Fae.\r\n- CharacterID: Fae\r\n  LineID:
+    L_488bbddb55bf\r\n  LocalizedDialogue:\r\n    en: Don't mention it! It's custom
+    brewed with a high-tech drip feed and a quantum-stabilized roaster for the perfect
+    taste.\r\n- CharacterID: Fae\r\n  LineID: L_a32a711f5366\r\n  LocalizedDialogue:\r\n   
+    en: '...'\r\n- CharacterID: Fae\r\n  LineID: L_fd74bdf4569d\r\n  LocalizedDialogue:\r\n   
+    en: '...Also, if you stop feeling your pancreas, let me know.'\r\n- CharacterID:
+    Player\r\n  LineID: L_a74df3650caf\r\n  LocalizedDialogue:\r\n    en: My what?
+    Wait, what the hell is in this coffee?\r\n- CharacterID: Fae\r\n  LineID: L_102d95678939\r\n 
+    LocalizedDialogue:\r\n    en: Don't worry about it!\r\n- CharacterID: Player\r\n 
+    LineID: L_bc3d3f2bedc2\r\n  LocalizedDialogue:\r\n    en: Mmhmm...\r\n- CharacterID:
+    Narrator\r\n  LineID: L_7c0a33c03cf7\r\n  LocalizedDialogue:\r\n    en: '*I sip
+    my coffee, still slightly worried.*'\r\n- CharacterID: Fae\r\n  LineID: L_0a30d0ef2ca6\r\n 
+    LocalizedDialogue:\r\n    en: I've already set the coordinates, so just meet
+    me in the cockpit when you're ready to go.\r\nDay3ShipLabDoor:\r\n- CharacterID:
+    Fae\r\n  LineID: L_2dc319d9b787\r\n  LocalizedDialogue:\r\n    en: Fascinating...just
+    fascinating. Completely robotic. But you're...completely sentient?\r\n- CharacterID:
+    Everie\r\n  LineID: L_69475eea72bb\r\n  LocalizedDialogue:\r\n    en: Uh, I don't
+    really know what that means...but I guess so?\r\n- CharacterID: Fae\r\n  LineID:
+    L_5b2d0c182fd4\r\n  LocalizedDialogue:\r\n    en: You named yourself. At least,
+    that's what he said. Cyborgs and androids don't just name themselves.\r\n- CharacterID:
+    Narrator\r\n  LineID: L_2a1071d8bd64\r\n  LocalizedDialogue:\r\n    en: '*Fae
+    leans in, suddenly very excited*'\r\n- CharacterID: Fae\r\n  LineID: L_3a781d9f8227\r\n 
+    LocalizedDialogue:\r\n    en: Say, what do you think about doing some more...tests
+    with me? In exchange for some privileges, of course. I'll let you see all my
+    little specimens, and I'll Everieen make sure that {g_Player} gives you a clean
+    room.\r\n- CharacterID: Everie\r\n  LineID: L_abfc9c9ff834\r\n  LocalizedDialogue:\r\n   
+    en: Umm...\r\n- CharacterID: Player\r\n  LineID: L_8b449f88f8fa\r\n  LocalizedDialogue:\r\n   
+    en: Fae! Stop scaring Everie. You know you're not allowed to experiment on cabinmates.
+    And Everie, feel free to say no to her.\r\n- CharacterID: Fae\r\n  LineID: L_aaccd3ab5d66\r\n 
+    LocalizedDialogue:\r\n    en: \"Correction: I'm not allowed to experiment without
+    consent. But Everie was just about to say yes, weren't you, Everie?\"\r\n- CharacterID:
+    Everie\r\n  LineID: L_3c59ac6d8719\r\n  LocalizedDialogue:\r\n    en: Actually...I'm
+    not sure how much I want to, um, be on that lab table again...\r\n- CharacterID:
+    Player\r\n  LineID: L_74874a8b20f4\r\n  LocalizedDialogue:\r\n    en: Stop bullying
+    her, Fae.\r\n- CharacterID: Fae\r\n  LineID: L_9fac7a685cbf\r\n  LocalizedDialogue:\r\n   
+    en: Fucking fine. Now get the fuck out of my lab!\r\n- CharacterID: Fae\r\n 
+    LineID: L_66a4cd801ccb\r\n  LocalizedDialogue:\r\n    en: Now that you've cleaned
+    up that rat's nest, go show Everie her new room.\r\n- CharacterID: Player\r\n 
+    LineID: L_cbab395bb0a7\r\n  LocalizedDialogue:\r\n    en: Can't you do it for
+    a change?\r\n- CharacterID: Fae\r\n  LineID: L_228d1e13ae40\r\n  LocalizedDialogue:\r\n   
+    en: '...'\r\n- CharacterID: Fae\r\n  LineID: L_149fac1066b8\r\n  LocalizedDialogue:\r\n   
+    en: You know I'm the only one doing important shit around here. Shut up and get
+    your ass out of my lab.\r\n- CharacterID: Player\r\n  LineID: L_3ef2ff14dcae\r\n 
+    LocalizedDialogue:\r\n    en: Fine, fine.\r\n- CharacterID: Fae\r\n  LineID:
+    L_e2eaf6885459\r\n  LocalizedDialogue:\r\n    en: And don't forget to come back
+    here later for your checkup!\r\n- CharacterID: Player\r\n  LineID: L_72cc0b234236\r\n 
+    LocalizedDialogue:\r\n    en: I thought you didn't want me around?\r\n- CharacterID:
+    Fae\r\n  LineID: L_0db10cc49535\r\n  LocalizedDialogue:\r\n    en: '...'\r\n-
+    CharacterID: Fae\r\n  LineID: L_d481dae8ae71\r\n  LocalizedDialogue:\r\n    en:
+    I hate you!\r\nDay3MeetingEverie:\r\n- CharacterID: Everie\r\n  LineID: L_613e13f7d155\r\n 
+    LocalizedDialogue:\r\n    en: ACTIVATING PROMETHEUS PROTOCOL - SYSTEM REBOOTING\r\n-
+    CharacterID: Everie\r\n  LineID: L_d2575470ef41\r\n  LocalizedDialogue:\r\n   
+    en: Where am I... Who are you?\r\n- CharacterID: Player\r\n  LineID: L_61e190c94fc0\r\n 
+    LocalizedDialogue:\r\n    en: I should ask you the same thing. Why is an android
+    like you sitting around in a pile of junk?\r\n- CharacterID: Everie\r\n  LineID:
+    L_7d7629762f4b\r\n  LocalizedDialogue:\r\n    en: Android? Am I an android?\r\n-
+    CharacterID: Player\r\n  LineID: L_af3fae576db2\r\n  LocalizedDialogue:\r\n   
+    en: Oh. You don't know you're an android? That's a little unusual. Do you have
+    any memories of how you were made?\r\n- CharacterID: Everie\r\n  LineID: L_dba850400ac6\r\n 
+    LocalizedDialogue:\r\n    en: All I remember is a bunch of bright lights and
+    some loud noises. And my chest really hurts for some reason.\r\n- CharacterID:
+    Player\r\n  LineID: L_f6d4a8abd315\r\n  LocalizedDialogue:\r\n    en: Hurts?
+    That's...\r\n- CharacterID: Player\r\n  LineID: L_532065291443\r\n  LocalizedDialogue:\r\n   
+    en: You're the first android I've seen that can feel pain. Like, every other
+    one I've ever seen were always programmed to be mindless workers.\r\n- CharacterID:
+    Everie\r\n  LineID: L_6a0c31caf60b\r\n  LocalizedDialogue:\r\n    en: '...'\r\n-
+    CharacterID: Everie\r\n  LineID: L_99a89d9dcc11\r\n  LocalizedDialogue:\r\n   
+    en: I don't...remember...\r\n- CharacterID: Player\r\n  LineID: L_7c84a708ec44\r\n 
+    LocalizedDialogue:\r\n    en: That reminds me. What's your name?\r\n- CharacterID:
+    Everie\r\n  LineID: L_bd91f80454db\r\n  LocalizedDialogue:\r\n    en: Name?\r\n-
+    CharacterID: Player\r\n  LineID: L_8cfad7fb23de\r\n  LocalizedDialogue:\r\n   
+    en: You know. What should I call you?\r\n- CharacterID: Everie\r\n  LineID: L_7dbceed572c7\r\n 
+    LocalizedDialogue:\r\n    en: I don't think I have a name.\r\n- CharacterID:
+    Player\r\n  LineID: L_0d13f4ee562e\r\n  LocalizedDialogue:\r\n    en: You're
+    kidding. Everyone has a name. Even DD-9 has a name! Every baby is given one when
+    they're born.\r\n- CharacterID: Everie\r\n  LineID: L_17d8d73b3e87\r\n  LocalizedDialogue:\r\n   
+    en: I like that word. \"every.\" Can that be my name?\r\n- CharacterID: Player\r\n 
+    LineID: L_26b822270f60\r\n  LocalizedDialogue:\r\n    en: I mean, it's your name.
+    I guess it can be whatever you want it to be.\r\n- CharacterID: Everie\r\n  LineID:
+    L_a67416c5acc3\r\n  LocalizedDialogue:\r\n    en: Okay, then I'll be Everie.\r\n-
+    CharacterID: Player\r\n  LineID: L_63803736a7b6\r\n  LocalizedDialogue:\r\n   
+    en: Okay. Everie it is!\r\n- CharacterID: Everie\r\n  LineID: L_8dd1ff2b9d2c\r\n 
+    LocalizedDialogue:\r\n    en: If that's my name now...what's yours?\r\n- CharacterID:
+    Player\r\n  LineID: L_b282aa7fbc9d\r\n  LocalizedDialogue:\r\n    en: Oh, I'm
+    [var:75].\r\n- CharacterID: Everie\r\n  LineID: L_5d83a8dd67c8\r\n  LocalizedDialogue:\r\n   
+    en: What are you doing here?\r\n- CharacterID: Player\r\n  LineID: L_4f3bb0c99339\r\n 
+    LocalizedDialogue:\r\n    en: I was exploring a lab with my friend and found
+    that little blue thing in your chest. We were trying to figure it out, and somehow
+    it led me to you!\r\n- CharacterID: Everie\r\n  LineID: L_b9e1b9624ff4\r\n  LocalizedDialogue:\r\n   
+    en: Oh wow! Do you think I could go to where you found this?\r\n- CharacterID:
+    Player\r\n  LineID: L_34e245647ad6\r\n  LocalizedDialogue:\r\n    en: I'm sure
+    we can, but first things first. I gotta introduce you to my friend and we need
+    to get my lander fixed.\r\n- CharacterID: Everie\r\n  LineID: L_5eeda28fc681\r\n 
+    LocalizedDialogue:\r\n    en: I don't know what a lander is, but fixing it sounds
+    fun!\r\n- CharacterID: Player\r\n  LineID: L_a16e0cb09c8b\r\n  LocalizedDialogue:\r\n   
+    en: That's the spirit. Now, I crashed pretty close to here, so we should see
+    it soon.\r\n- CharacterID: Everie\r\n  LineID: L_d030f2daedf5\r\n  LocalizedDialogue:\r\n   
+    en: Is it blue and smoking?\r\n- CharacterID: Player\r\n  LineID: L_609d650073ab\r\n 
+    LocalizedDialogue:\r\n    en: Actually, yeah. That's exactly what it looks like.
+    How'd you know?\r\n- CharacterID: Everie\r\n  LineID: L_729c7ad8f73b\r\n  LocalizedDialogue:\r\n   
+    en: Looks like it's already moving again!\r\n- CharacterID: Player\r\n  LineID:
+    L_3da037c42f58\r\n  LocalizedDialogue:\r\n    en: Wait a second...\r\n- CharacterID:
+    Player\r\n  LineID: L_123dba157efc\r\n  LocalizedDialogue:\r\n    en: GET BACK
+    HERE WITH MY LANDER!\r\n- CharacterID: Junky\r\n  LineID: L_19aac2ab41f6\r\n 
+    LocalizedDialogue:\r\n    en: Oh, I thought you were okay. That crash looked
+    pretty bad. I didn't think you made it.\r\n- CharacterID: Player\r\n  LineID:
+    L_0208efd51101\r\n  LocalizedDialogue:\r\n    en: So you thought you should take
+    my lander?\r\n- CharacterID: Junky\r\n  LineID: L_aefcfca02525\r\n  LocalizedDialogue:\r\n   
+    en: Look, we all have tough days, boy.\r\n- CharacterID: Player\r\n  LineID:
+    L_e86d5029264a\r\n  LocalizedDialogue:\r\n    en: I crashed after the shield
+    generator you installed failed and my ship got damaged!\r\n- CharacterID: Junky\r\n 
+    LineID: L_756a4bcef69d\r\n  LocalizedDialogue:\r\n    en: Ah, I am so sorry boy.
+    Tell you what, I'll fix up your ship for free. Though while you're waiting...\r\n-
+    CharacterID: Player\r\n  LineID: L_c1d063145946\r\n  LocalizedDialogue:\r\n   
+    en: I don't think you're in a position to be asking me for favors right now.\r\n-
+    CharacterID: Junky\r\n  LineID: L_8d4becb9684c\r\n  LocalizedDialogue:\r\n   
+    en: Look, I'll be honest, boy. I've been looking for something for the past few
+    months and I finally got a lead on it. Can you find it for me?\r\n- CharacterID:
+    Player\r\n  LineID: L_5dbc0fa2da46\r\n  LocalizedDialogue:\r\n    en: What could
+    be so special that someone like you has been looking for it for months?\r\n-
+    CharacterID: Junky\r\n  LineID: L_bd357a026354\r\n  LocalizedDialogue:\r\n   
+    en: There are certain hidden treasures among the junk, you see.\r\n- CharacterID:
+    Player\r\n  LineID: L_57b70f4ee67f\r\n  LocalizedDialogue:\r\n    en: Go on...\r\n-
+    CharacterID: Junky\r\n  LineID: L_c825f2a934f2\r\n  LocalizedDialogue:\r\n   
+    en: Ancient Earth USB sticks are what I'm after.\r\n- CharacterID: Player\r\n 
+    LineID: L_f5ffac092be8\r\n  LocalizedDialogue:\r\n    en: USBs? I didn't think
+    any of them still existed anymore. Don't they have some sort of special images
+    on them?\r\n- CharacterID: Junky\r\n  LineID: L_7e71a2a5b977\r\n  LocalizedDialogue:\r\n   
+    en: Not just images. Some of them have rare data and old files.\r\n- CharacterID:
+    Player\r\n  LineID: L_12c7c7cce50e\r\n  LocalizedDialogue:\r\n    en: Interesting.
+    I'll see what I can find.\r\n- CharacterID: Junky\r\n  LineID: L_dd7e57f1d3a0\r\n 
+    LocalizedDialogue:\r\n    en: Do you want your ship fixed or not?\r\n- CharacterID:
+    Player\r\n  LineID: L_624db103e762\r\n  LocalizedDialogue:\r\n    en: Yeah, yeah,
+    I'll try and find your USBs.\r\n- CharacterID: Junky\r\n  LineID: L_c1ee9b6d4871\r\n 
+    LocalizedDialogue:\r\n    en: That's the spirit. I'll get your lander fixed up
+    in no time, and I'll throw in my best shield generator to keep this from happening
+    again.\r\n- CharacterID: Player\r\n  LineID: L_a0609f2258da\r\n  LocalizedDialogue:\r\n   
+    en: Well, I suppose that's the least you can do... Pretty generous of you.\r\n-
+    CharacterID: Junky\r\n  LineID: L_59c7e4a415b0\r\n  LocalizedDialogue:\r\n   
+    en: It's no problem, boy. Any time you find any of those USBs, I'll pay top dollar.
+    I'll give you a direct connection in case you need to contact me. It'll work
+    anywhere, anytime.\r\n- CharacterID: Player\r\n  LineID: L_880900697140\r\n 
+    LocalizedDialogue:\r\n    en: Think I'll be doing that a lot after this?\r\n-
+    CharacterID: Junky\r\n  LineID: L_36cc5395c7fa\r\n  LocalizedDialogue:\r\n   
+    en: Considering the state of your lander and the way you've described your ship?
+    I think you need any money you can get.\r\n- CharacterID: Player\r\n  LineID:
+    L_7bb11e5433ed\r\n  LocalizedDialogue:\r\n    en: Well, thank you anyways...\r\n-
+    CharacterID: Junky\r\n  LineID: L_d41899b44c11\r\n  LocalizedDialogue:\r\n   
+    en: Now get to hunting!\r\n- CharacterID: Player\r\n  LineID: L_6451308f367f\r\n 
+    LocalizedDialogue:\r\n    en: Yes, sir.\r\nDay3JukaryaCrashLanding:\r\n- CharacterID:
+    Fae\r\n  LineID: L_04a550d3f4e1\r\n  LocalizedDialogue:\r\n    en: You're looking
+    good. Just keep weaving through the debris.\r\n- CharacterID: Player\r\n  LineID:
+    L_28bd645672ad\r\n  LocalizedDialogue:\r\n    en: Okay, I got it!\r\n- CharacterID:
+    Fae\r\n  LineID: L_3fb127252498\r\n  LocalizedDialogue:\r\n    en: Watch it!
+    One wrong move and that'll tear the ship in half. Though that new shield generator
+    should solve that problem.\r\n- CharacterID: Player\r\n  LineID: L_4ef8825ea8f4\r\n 
+    LocalizedDialogue:\r\n    en: You think I don't know that?!\r\n- CharacterID:
+    Fae\r\n  LineID: L_cf80c81396eb\r\n  LocalizedDialogue:\r\n    en: I think you've
+    made it out.\r\n- CharacterID: Player\r\n  LineID: L_0a2a616a1794\r\n  LocalizedDialogue:\r\n   
+    en: That was lucky! I'm never going to do that again...\r\n- CharacterID: Player\r\n 
+    LineID: L_fb3646aeb1df\r\n  LocalizedDialogue:\r\n    en: HOLY SHIT!\r\n- CharacterID:
+    Player\r\n  LineID: L_faf2e7dd2a10\r\n  LocalizedDialogue:\r\n    en: The shield
+    generator didn't work! The ship's hit bad! I'm gonna crash!\r\n- CharacterID:
+    Fae\r\n  LineID: L_fef8b8b1a2a3\r\n  LocalizedDialogue:\r\n    en: '[var:75]!
+    Are you okay?! [var:75]!'\r\n- CharacterID: Narrator\r\n  LineID: L_23d003a7967c\r\n 
+    LocalizedDialogue:\r\n    en: Hours later, I finally slowly drift back awake...\r\n-
+    CharacterID: Player\r\n  LineID: L_ccbc78b9e805\r\n  LocalizedDialogue:\r\n   
+    en: That really hurt...\r\n- CharacterID: Player\r\n  LineID: L_a25bddfe9c9a\r\n 
+    LocalizedDialogue:\r\n    en: Oh my God, I lost my arm!\r\n- CharacterID: DD\r\n 
+    LineID: L_922e9d621cd9\r\n  LocalizedDialogue:\r\n    en: '*beeps angrily*'\r\n-
+    CharacterID: Player\r\n  LineID: L_cd654556b6e2\r\n  LocalizedDialogue:\r\n   
+    en: Oh right...\r\n- CharacterID: Player\r\n  LineID: L_35a40613c22f\r\n  LocalizedDialogue:\r\n   
+    en: Well, at least I'm still mostly in one piece.\r\n- CharacterID: DD\r\n  LineID:
+    L_5aec9c7bff95\r\n  LocalizedDialogue:\r\n    en: '*beeps in concern*'\r\n- CharacterID:
+    Player\r\n  LineID: L_d7f29b799fd7\r\n  LocalizedDialogue:\r\n    en: Ah, you're
+    right, buddy. I should call Fae.\r\n- CharacterID: Player\r\n  LineID: L_fcd9470de9d1\r\n 
+    LocalizedDialogue:\r\n    en: Now that I think about it, she probably thinks
+    I'm dead after that crash.\r\n- CharacterID: DD\r\n  LineID: L_72398f534ab4\r\n 
+    LocalizedDialogue:\r\n    en: '*beeps in agreement*'\r\n- CharacterID: Player\r\n 
+    LineID: L_720ce19430fc\r\n  LocalizedDialogue:\r\n    en: Yeah, I'll let her
+    know that we're okay. I think the comms on the lander should still work.\r\nDay3LanderToFae:\r\n-
+    CharacterID: Fae\r\n  LineID: L_651a2c59f089\r\n  LocalizedDialogue:\r\n    en:
+    Holy shit, you're alive!\r\n- CharacterID: Fae\r\n  LineID: L_54a59985b58a\r\n 
+    LocalizedDialogue:\r\n    en: I thought you were dead and it was all my fault.
+    Please tell me you still have most of your body.\r\n- CharacterID: Player\r\n 
+    LineID: L_ed11259839fc\r\n  LocalizedDialogue:\r\n    en: Yeah, I'm all right,
+    I'm all right. I blacked out as I was crashing, but I landed in a soft pile.
+    Lucky, I guess.\r\n- CharacterID: DD\r\n  LineID: L_d3074328dfc9\r\n  LocalizedDialogue:\r\n   
+    en: '*beeps*'\r\n- CharacterID: Player\r\n  LineID: L_68100db1ae54\r\n  LocalizedDialogue:\r\n   
+    en: You guided the ship down after I blacked out?\r\n- CharacterID: Player\r\n 
+    LineID: L_d83aa82d6ca5\r\n  LocalizedDialogue:\r\n    en: You saved my life,
+    DD!\r\n- CharacterID: DD\r\n  LineID: L_90ce9a01bfe8\r\n  LocalizedDialogue:\r\n   
+    en: '*blushes and beeps*'\r\n- CharacterID: Player\r\n  LineID: L_5ef9c78af9b5\r\n 
+    LocalizedDialogue:\r\n    en: I'll talk to Junky about getting you something
+    nice for the trouble.\r\n- CharacterID: DD\r\n  LineID: L_8efaed6c5cec\r\n  LocalizedDialogue:\r\n   
+    en: '*beeps happily*'\r\n- CharacterID: Fae\r\n  LineID: L_711788b9c42e\r\n 
+    LocalizedDialogue:\r\n    en: Thank God you're okay. I really didn't know how
+    I was going to live with myself if you'd...\r\n- CharacterID: Player\r\n  LineID:
+    L_59e6da47d534\r\n  LocalizedDialogue:\r\n    en: It's okay, Fae, really. I'm
+    fine. Glad to know you like me at least a little bit.\r\n- CharacterID: Fae\r\n 
+    LineID: L_9c2ddc11e697\r\n  LocalizedDialogue:\r\n    en: I--I don't--! Whatever!
+    Just find that signal location.\r\n- CharacterID: Player\r\n  LineID: L_2e34c182c3e2\r\n 
+    LocalizedDialogue:\r\n    en: Will do!\r\n- CharacterID: Player\r\n  LineID:
+    L_8ed631062ff7\r\n  LocalizedDialogue:\r\n    en: She definitely likes me.\r\n-
+    CharacterID: DD\r\n  LineID: L_18c5e7b3e71d\r\n  LocalizedDialogue:\r\n    en:
+    '*beeps sarcastically*'\r\n- CharacterID: Player\r\n  LineID: L_42a492734304\r\n 
+    LocalizedDialogue:\r\n    en: Sure, I'm the delusional one.\r\n- CharacterID:
+    Player\r\n  LineID: L_c618fa5d96df\r\n  LocalizedDialogue:\r\n    en: Let's go
+    find that signal.\r\n- CharacterID: Narrator\r\n  LineID: L_5a761f25d39c\r\n 
+    LocalizedDialogue:\r\n    en: I look down at the power core. It flashes, indicating
+    that the coordinates are nearby.\r\n- CharacterID: Player\r\n  LineID: L_2aadb256487c\r\n 
+    LocalizedDialogue:\r\n    en: Huh, it's actually pretty close. Guess we got one
+    good thing out of crashing.\r\nDay3ShipConvo:\r\n- CharacterID: Fae\r\n  LineID:
+    L_1e8b52ade9cf\r\n  LocalizedDialogue:\r\n    en: I figured it out!\r\n- CharacterID:
+    Player\r\n  LineID: L_19a30248d843\r\n  LocalizedDialogue:\r\n    en: Did you
+    sleep at all? You look like shit.\r\n- CharacterID: Fae\r\n  LineID: L_b09132312c34\r\n 
+    LocalizedDialogue:\r\n    en: That doesn't matter! I spent the whole night in
+    my lab researching that little rock you found.\r\n- CharacterID: Player\r\n 
+    LineID: L_5363597c4b4a\r\n  LocalizedDialogue:\r\n    en: \"...And judging by
+    your expression, I'm guessing it's pretty big?\"\r\n- CharacterID: Fae\r\n  LineID:
+    L_aad1b448aaa2\r\n  LocalizedDialogue:\r\n    en: So I was messing with it and
+    found out that it had coordinates pointing towards something. It also seems to
+    be some sort of power dEverieice.\r\n- CharacterID: Player\r\n  LineID: L_ff0c27bafbe0\r\n 
+    LocalizedDialogue:\r\n    en: Holy shit, really? We gotta head there! Like right
+    now!\r\n- CharacterID: Fae\r\n  LineID: L_b4f589da3815\r\n  LocalizedDialogue:\r\n   
+    en: \"So that's the thing... \"\r\n- CharacterID: Fae\r\n  LineID: L_ffb73e6d41c5\r\n 
+    LocalizedDialogue:\r\n    en: You're not going to like where it's pointing.\r\n-
+    CharacterID: Player\r\n  LineID: L_b1932967cbfa\r\n  LocalizedDialogue:\r\n   
+    en: Oh, come on. I'm sure it's not that bad.\r\n- CharacterID: Fae\r\n  LineID:
+    L_1707025e95f2\r\n  LocalizedDialogue:\r\n    en: It's Jukarya.\r\n- CharacterID:
+    Player\r\n  LineID: L_dd7370b55866\r\n  LocalizedDialogue:\r\n    en: \"...You're
+    joking right?\"\r\n- CharacterID: Fae\r\n  LineID: L_72819b39a10e\r\n  LocalizedDialogue:\r\n   
+    en: \"I know it sounds ridiculous, but when I relayed the coordinates on our
+    ship's starmap, it points right to the surface of Jukarya. \"\r\n- CharacterID:
+    Fae\r\n  LineID: L_b0fc59616fbe\r\n  LocalizedDialogue:\r\n    en: We just have
+    to figure out what's hidden underneath all that junk.\r\n- CharacterID: Player\r\n 
+    LineID: L_5bab8e529dd2\r\n  LocalizedDialogue:\r\n    en: I barely survived the
+    last time I flew down there, Fae. I'm sure as hell not doing that again.\r\n-
+    CharacterID: Fae\r\n  LineID: L_6653bbbe029b\r\n  LocalizedDialogue:\r\n    en:
+    Do you not want to pay back our debt and be free of this crap?\r\n- CharacterID:
+    Player\r\n  LineID: L_5181202c33d2\r\n  LocalizedDialogue:\r\n    en: Oh, sure.
+    But I also still want to be alive.\r\n- CharacterID: Fae\r\n  LineID: L_3d439f2c6a91\r\n 
+    LocalizedDialogue:\r\n    en: Tell you what. If we get rich off this, I'll get
+    you that thing you always wanted.\r\n- CharacterID: Player\r\n  LineID: L_cd7d01bbc00c\r\n 
+    LocalizedDialogue:\r\n    en: You're bluffing.\r\n- CharacterID: Fae\r\n  LineID:
+    L_d226bb32541e\r\n  LocalizedDialogue:\r\n    en: I'll get you the ultra premium
+    super special deluxe mega rare edition Solar Man you always wanted.\r\n- CharacterID:
+    Player\r\n  LineID: L_61be9f87942b\r\n  LocalizedDialogue:\r\n    en: That's
+    impossible. They were all destroyed after the recall. I've been looking for it
+    for over a decade.\r\n- CharacterID: Fae\r\n  LineID: L_9f84bb5f9a6a\r\n  LocalizedDialogue:\r\n   
+    en: Let's just say that I have a contact that has exactly one left. It's right
+    there...just waiting for you.\r\n- CharacterID: Player\r\n  LineID: L_e530e8039e5d\r\n 
+    LocalizedDialogue:\r\n    en: Fine, fine! You'd better be guiding me perfectly
+    down there.\r\n- CharacterID: Fae\r\n  LineID: L_b1e7a44d9596\r\n  LocalizedDialogue:\r\n   
+    en: Have I ever failed you before?\r\n- CharacterID: Player\r\n  LineID: L_dbbb2409684b\r\n 
+    LocalizedDialogue:\r\n    en: Let's not get into that right now.\r\n- CharacterID:
+    Fae\r\n  LineID: L_da3e761d99e7\r\n  LocalizedDialogue:\r\n    en: \"*scoffs*
+    Meet me in the cockpit when you're ready to go.\"\r\n- CharacterID: Fae\r\n 
+    LineID: L_a6a275841dfd\r\n  LocalizedDialogue:\r\n    en: And take this with
+    you.\r\n- CharacterID: Narrator\r\n  LineID: L_4f50f1e06447\r\n  LocalizedDialogue:\r\n   
+    en: You received a weird rock!\r\n- CharacterID: Narrator\r\n  LineID: L_2dffb0932c56\r\n 
+    LocalizedDialogue:\r\n    en: Fae heads to the cockpit\r\n- CharacterID: DD\r\n 
+    LineID: L_127be28bd208\r\n  LocalizedDialogue:\r\n    en: '*beeps in confusion*'\r\n-
+    CharacterID: Player\r\n  LineID: L_7cd6be87fb2d\r\n  LocalizedDialogue:\r\n   
+    en: It's not just a toy!\r\nDay3ShipJukaryaDebrief:\r\n- CharacterID: Fae\r\n 
+    LineID: L_6222cd4ccea1\r\n  LocalizedDialogue:\r\n    en: So why were you looking
+    at that weird guy's junk?\r\n- CharacterID: Player\r\n  LineID: L_34ca1484aefc\r\n 
+    LocalizedDialogue:\r\n    en: I was not looking at his junk... I mean, technically,
+    if you count the whole planet as his junkyard...That's besides the point!\r\n-
+    CharacterID: Fae\r\n  LineID: L_9e99de39ea2b\r\n  LocalizedDialogue:\r\n    en:
+    So you're telling me you found this... what did you say your name was?\r\n- CharacterID:
+    Everie\r\n  LineID: L_61107951e686\r\n  LocalizedDialogue:\r\n    en: Everie!\r\n-
+    CharacterID: Fae\r\n  LineID: L_c8209a16dac6\r\n  LocalizedDialogue:\r\n    en:
+    Everie... You found Everie just lying in a hyper advanced storage container in
+    the middle of a junk planet?\r\n- CharacterID: Player\r\n  LineID: L_b5188742304c\r\n 
+    LocalizedDialogue:\r\n    en: Yeah, I couldn't tell you why either. The coordinates
+    pointed to her pod and that weird blue rock fit perfectly in her chest.\r\n-
+    CharacterID: Fae\r\n  LineID: L_d0268c8624d7\r\n  LocalizedDialogue:\r\n    en:
+    Are you sure you didn't just come up with an elaborate excuse to buy a weird
+    sex robot?\r\n- CharacterID: Player\r\n  LineID: L_f1cb64d106ad\r\n  LocalizedDialogue:\r\n   
+    en: No! Unless...\r\n- CharacterID: Everie\r\n  LineID: L_a9c5d7b950c3\r\n  LocalizedDialogue:\r\n   
+    en: I may not have many memories, but I know I'm not one of those!\r\n- CharacterID:
+    Fae\r\n  LineID: L_593bc8922250\r\n  LocalizedDialogue:\r\n    en: It doesn't
+    look like you're a normal android either; you're far too advanced and human-like.
+    Could I run a few tests on you?\r\n- CharacterID: Everie\r\n  LineID: L_139fa5ae768b\r\n 
+    LocalizedDialogue:\r\n    en: As long as they don't hurt too much, sure.\r\n-
+    CharacterID: Fae\r\n  LineID: L_ab7ad5ca74ca\r\n  LocalizedDialogue:\r\n    en:
+    Of course not! Make yourself useful and go clean up one of the spare rooms. And
+    clean up the rest of the ship while you're at it.\r\n- CharacterID: Player\r\n 
+    LineID: L_cc2c9fdbad1e\r\n  LocalizedDialogue:\r\n    en: You're really going
+    to make me do that after the day I've had?\r\n- CharacterID: Fae\r\n  LineID:
+    L_b3259da47bcc\r\n  LocalizedDialogue:\r\n    en: Someone's gotta do it, and
+    I've got to figure out what's going on here with your new friend.\r\n- CharacterID:
+    Everie\r\n  LineID: L_761ec1259237\r\n  LocalizedDialogue:\r\n    en: Thank you
+    so much. I really appreciate everything that you guys are doing for me.\r\n-
+    CharacterID: Player\r\n  LineID: L_0f7353817253\r\n  LocalizedDialogue:\r\n   
+    en: Ah, I suppose a bit of cleaning can't hurt. Let me head up to the rooms.\r\n-
+    CharacterID: Narrator\r\n  LineID: L_7235e3d04713\r\n  LocalizedDialogue:\r\n   
+    en: Before you head up you listen by the door\r\n- CharacterID: Fae\r\n  LineID:
+    L_3545ac6e8ba7\r\n  LocalizedDialogue:\r\n    en: Say...Everie. Where did you
+    say you were from again?\r\n- CharacterID: Everie\r\n  LineID: L_bac076ffda22\r\n 
+    LocalizedDialogue:\r\n    en: Oh, I didn't say! Actually...I don't remember.\r\n-
+    CharacterID: Fae\r\n  LineID: L_94e98505e86f\r\n  LocalizedDialogue:\r\n    en:
+    Well, in any case, if you're going to be on this ship, you're going to have to
+    get a check up first. By me. Since I'm the only doctor on board this ship.\r\n-
+    CharacterID: Everie\r\n  LineID: L_69138e1dba35\r\n  LocalizedDialogue:\r\n   
+    en: Oh, that's totally okay! Thank you so much again for letting me onboard-your
+    hair is really lovely, you know?\r\n- CharacterID: Fae\r\n  LineID: L_9117b50964e2\r\n 
+    LocalizedDialogue:\r\n    en: '*blushes*'\r\n- CharacterID: Fae\r\n  LineID:
+    L_eaabfa8fbaf1\r\n  LocalizedDialogue:\r\n    en: Sh-shut up! It's nothing to
+    write home about. It's just some hair. Now, follow me and let's get started with
+    your checkup.\r\nDay3ShipTestResults:\r\n- CharacterID: Fae\r\n  LineID: L_8c0b402d5d5b\r\n 
+    LocalizedDialogue:\r\n    en: So I ran those tests, and Everie is something incredible.\r\n-
+    CharacterID: Player\r\n  LineID: L_a3dec4a24a26\r\n  LocalizedDialogue:\r\n   
+    en: Yeah, I know. She's so hot.\r\n- CharacterID: Fae\r\n  LineID: L_4492b97d0fd6\r\n 
+    LocalizedDialogue:\r\n    en: That's not what I meant, you pervert! I ran those
+    tests, and she's not just an android. At least, not the kind we're used to.\r\n-
+    CharacterID: Player\r\n  LineID: L_498d7be86745\r\n  LocalizedDialogue:\r\n   
+    en: Then what is she?\r\n- CharacterID: Fae\r\n  LineID: L_bc8b84b4cedb\r\n 
+    LocalizedDialogue:\r\n    en: I really don't know. Her neural pathways are complex
+    enough to be human. And get this--complete sentience, conscious thought, and
+    completely machine.\r\n- CharacterID: Fae\r\n  LineID: L_7016199be4df\r\n  LocalizedDialogue:\r\n   
+    en: You're just saying you found her in that random pod? There was nothing else?\r\n-
+    CharacterID: Player\r\n  LineID: L_ad36c0f0e80e\r\n  LocalizedDialogue:\r\n   
+    en: When I put the power thing in her chest, I saw her eyes light up bright blue.
+    Said some words that I didn't quite understand.\r\n- CharacterID: Fae\r\n  LineID:
+    L_a3e0474dfa04\r\n  LocalizedDialogue:\r\n    en: Did she say anything specific?\r\n-
+    CharacterID: Player\r\n  LineID: L_6dc3f43cad7e\r\n  LocalizedDialogue:\r\n   
+    en: Something Project...Prometheus? I have no idea what that means.\r\n- CharacterID:
+    Fae\r\n  LineID: L_a4a03f2109df\r\n  LocalizedDialogue:\r\n    en: Hmm. That's
+    really interesting.\r\n- CharacterID: Fae\r\n  LineID: L_dfa2bfd35443\r\n  LocalizedDialogue:\r\n   
+    en: Whatever it is, the Syndicate is putting in an awful lot of effort to try
+    and hide it.\r\n- CharacterID: Player\r\n  LineID: L_12990b33a476\r\n  LocalizedDialogue:\r\n   
+    en: Maybe we can get some money out of it after all. Now we just gotta get that
+    door at the lab to open.\r\n- CharacterID: Fae\r\n  LineID: L_f635e8a1577a\r\n 
+    LocalizedDialogue:\r\n    en: I think we should bring Everie down there to see
+    if anything happens.\r\n- CharacterID: Player\r\n  LineID: L_27f86085cdeb\r\n 
+    LocalizedDialogue:\r\n    en: Yeah, that's a good idea. Probably the best chance
+    we have at opening that door without blowing it up.\r\n- CharacterID: Fae\r\n 
+    LineID: L_7ecb95ad3a15\r\n  LocalizedDialogue:\r\n    en: Good, because I don't
+    think we could afford the tools we need to open it the hard way.\r\n- CharacterID:
+    Player\r\n  LineID: L_529e337cae82\r\n  LocalizedDialogue:\r\n    en: Well, I
+    guess this really is our best shot.\r\n- CharacterID: Fae\r\n  LineID: L_578bb17ce9d7\r\n 
+    LocalizedDialogue:\r\n    en: I'm going head back into my lab. Just take the
+    ship back to that planet when you're ready.\r\n- CharacterID: Player\r\n  LineID:
+    L_769ebd024cec\r\n  LocalizedDialogue:\r\n    en: Will do.\r\nDay4EverieForgarisLanding:\r\n-
+    CharacterID: Player\r\n  LineID: L_0d2ad0e4f57e\r\n  LocalizedDialogue:\r\n   
+    en: Hope it wasn't too scary flying with Fae, DD.\r\n- CharacterID: DD\r\n  LineID:
+    L_f0d0620930de\r\n  LocalizedDialogue:\r\n    en: '*beeps quietly*'\r\n- CharacterID:
+    Player\r\n  LineID: L_68dec134109f\r\n  LocalizedDialogue:\r\n    en: That bad,
+    huh? Guess I owe you another upgrade.\r\n- CharacterID: DD\r\n  LineID: L_835f33e826c9\r\n 
+    LocalizedDialogue:\r\n    en: '*beeps happily*'\r\n- CharacterID: Everie\r\n 
+    LineID: L_9bb689a1bf4e\r\n  LocalizedDialogue:\r\n    en: This place is incredible!
+    Are all planets as beautiful as this?\r\n- CharacterID: Player\r\n  LineID: L_7bb91f638b0d\r\n 
+    LocalizedDialogue:\r\n    en: Not all of them. This place sure is vibrant though.\r\n-
+    CharacterID: Everie\r\n  LineID: L_777ba7fcaae4\r\n  LocalizedDialogue:\r\n   
+    en: Thanks for bringing me here, [var:75].\r\n- CharacterID: Player\r\n  LineID:
+    L_97211f13b340\r\n  LocalizedDialogue:\r\n    en: No problem, Everie.\r\n- CharacterID:
+    Player\r\n  LineID: L_c3590a43406a\r\n  LocalizedDialogue:\r\n    en: Now let's
+    head to the mountain and meet up with Fae before she tears me a new one.\r\n-
+    CharacterID: Everie\r\n  LineID: L_a873236a43e3\r\n  LocalizedDialogue:\r\n   
+    en: Tear you a new what?\r\n- CharacterID: Player\r\n  LineID: L_b285d4b21921\r\n 
+    LocalizedDialogue:\r\n    en: You know. Like a hole in...ah, whatever. It doesn't
+    matter right now. I'll explain it another time.\r\n- CharacterID: Everie\r\n 
+    LineID: L_93e7bae6284e\r\n  LocalizedDialogue:\r\n    en: Okay! You'd better!\r\n-
+    CharacterID: DD\r\n  LineID: L_10a8432ad07e\r\n  LocalizedDialogue:\r\n    en:
+    '*beeps smugly*'\r\n- CharacterID: Player\r\n  LineID: L_f63327c237e8\r\n  LocalizedDialogue:\r\n   
+    en: Oh, be quiet.\r\nDay4EverieForgarisBase:\r\n- CharacterID: Everie\r\n  LineID:
+    L_ca3fcb8effb9\r\n  LocalizedDialogue:\r\n    en: Something about this feels
+    oddly... familiar.\r\n- CharacterID: Player\r\n  LineID: L_cdc977a2910a\r\n 
+    LocalizedDialogue:\r\n    en: Do you remember anything about this place?\r\n-
+    CharacterID: Everie\r\n  LineID: L_a1249d0f0033\r\n  LocalizedDialogue:\r\n   
+    en: Not really... Just feels like I've been here before. But I don't remember
+    anything.\r\n- CharacterID: Player\r\n  LineID: L_8543fea1089e\r\n  LocalizedDialogue:\r\n   
+    en: Huh, that's kind of strange. Maybe we can find something inside that'll help
+    you remember.\r\n- CharacterID: Player\r\n  LineID: L_5539848da968\r\n  LocalizedDialogue:\r\n   
+    en: Either way, let's go in.\r\nDay4EverieFlashbackForgaris:\r\n- CharacterID:
+    Stranger\r\n  LineID: L_0533e726a2cb\r\n  LocalizedDialogue:\r\n    en: \"...she's
+    going into a code red!\"\r\n- CharacterID: Stranger\r\n  LineID: L_e1979af26a2d\r\n 
+    LocalizedDialogue:\r\n    en: Not on my watch, do you hear me, Everie?\r\n- CharacterID:
+    Stranger\r\n  LineID: L_509226a3aaaa\r\n  LocalizedDialogue:\r\n    en: Oh, if
+    we fuck this up, she's going to have our heads.\r\n- CharacterID: Narrator\r\n 
+    LineID: L_cc3f4b5ad600\r\n  LocalizedDialogue:\r\n    en: '*Strange...I can barely
+    feel my body...*'\r\n- CharacterID: Narrator\r\n  LineID: L_e8289f3936c5\r\n 
+    LocalizedDialogue:\r\n    en: '*I hear voices, but they all sound fuzzy...*'\r\n-
+    CharacterID: Narrator\r\n  LineID: L_42daf19517a1\r\n  LocalizedDialogue:\r\n   
+    en: '*I can barely make anything out...*'\r\n- CharacterID: Everie\r\n  LineID:
+    L_043726ce5aeb\r\n  LocalizedDialogue:\r\n    en: Wh...what...\r\n- CharacterID:
+    Stranger\r\n  LineID: L_4f6fbeaabf80\r\n  LocalizedDialogue:\r\n    en: Hush.
+    It'll be okay. Dean? Dean!!\r\n- CharacterID: Stranger\r\n  LineID: L_345123889eb4\r\n 
+    LocalizedDialogue:\r\n    en: Oh God...\r\n- CharacterID: Narrator\r\n  LineID:
+    L_014fed0e92b3\r\n  LocalizedDialogue:\r\n    en: '*The voices fade out again,
+    sound buzzing around my brain.*'\r\n- CharacterID: Stranger\r\n  LineID: L_8ecc531dbf28\r\n 
+    LocalizedDialogue:\r\n    en: We have to...Cyberia...\r\n- CharacterID: Narrator\r\n 
+    LineID: L_62a3bda6d8b1\r\n  LocalizedDialogue:\r\n    en: '*My vision quickly
+    fades to black, plunging me into a sea of silence.*'\r\n- CharacterID: Fae\r\n 
+    LineID: L_38335ed6b423\r\n  LocalizedDialogue:\r\n    en: What the fuck was that?\r\n-
+    CharacterID: Everie\r\n  LineID: L_ec22afafff25\r\n  LocalizedDialogue:\r\n   
+    en: Where...where am I?\r\n- CharacterID: Player\r\n  LineID: L_2dc195f50667\r\n 
+    LocalizedDialogue:\r\n    en: You're with us in the lab on Forgaris. Remember?\r\n-
+    CharacterID: Everie\r\n  LineID: L_88a2e8baae92\r\n  LocalizedDialogue:\r\n   
+    en: I..\r\n- CharacterID: Fae\r\n  LineID: L_3f482d9d1c12\r\n  LocalizedDialogue:\r\n   
+    en: You just collapsed.\r\n- CharacterID: Everie\r\n  LineID: L_95457f3ab1a4\r\n 
+    LocalizedDialogue:\r\n    en: I didn't mean to. I'm sorry.\r\n- CharacterID:
+    Fae\r\n  LineID: L_eeb5773f1f46\r\n  LocalizedDialogue:\r\n    en: And you said
+    something. Cyberia?\r\n- CharacterID: Everie\r\n  LineID: L_3c3ea77f0580\r\n 
+    LocalizedDialogue:\r\n    en: Cyberia...I don't...\r\n- CharacterID: Everie\r\n 
+    LineID: L_ffa300605848\r\n  LocalizedDialogue:\r\n    en: Could we go back to
+    the ship?\r\n- CharacterID: Fae\r\n  LineID: L_94e2942f640a\r\n  LocalizedDialogue:\r\n   
+    en: No, no. There's something more here. I need to check the systems.\r\n- CharacterID:
+    Player\r\n  LineID: L_0c881ab74fad\r\n  LocalizedDialogue:\r\n    en: For what?\r\n-
+    CharacterID: Fae\r\n  LineID: L_07ccf4badf19\r\n  LocalizedDialogue:\r\n    en:
+    For Cyberia, of course.\r\n- CharacterID: Everie\r\n  LineID: L_fe153e0f16ec\r\n 
+    LocalizedDialogue:\r\n    en: I'm...I'm sorry, but I don't think I can handle
+    being here anymore.\r\n- CharacterID: Fae\r\n  LineID: L_da21c83f49fa\r\n  LocalizedDialogue:\r\n   
+    en: Fine. You and him can go back to the ship. I need to see if there's anything
+    else I can pull from here.\r\n- CharacterID: Everie\r\n  LineID: L_9fdc25efcce9\r\n 
+    LocalizedDialogue:\r\n    en: \"...Okay. Then, if that's all...\"\r\n- CharacterID:
+    Narrator\r\n  LineID: L_1d1689c44a0e\r\n  LocalizedDialogue:\r\n    en: '*I watch
+    as Everie slowly makes her way out of the lab.*'\r\nDay4FaeAfterFlashback:\r\n-
+    CharacterID: Fae\r\n  LineID: L_9ef1645ecfd9\r\n  LocalizedDialogue:\r\n    en:
+    Something's up with her.\r\n- CharacterID: Player\r\n  LineID: L_409bd35b078c\r\n 
+    LocalizedDialogue:\r\n    en: No shit. She just had, like, some sort of PTSD
+    flashback or something.\r\n- CharacterID: Fae\r\n  LineID: L_407f0bb04ff7\r\n 
+    LocalizedDialogue:\r\n    en: Something about this place triggered her memories.
+    I wonder...\r\n- CharacterID: Player\r\n  LineID: L_c9cbaacac458\r\n  LocalizedDialogue:\r\n   
+    en: Fae. We are not forcing more flashbacks on her in the name of science.\r\n-
+    CharacterID: Fae\r\n  LineID: L_c9cb36f3c89e\r\n  LocalizedDialogue:\r\n    en:
+    Whatever. I'm going to stay here for a little while. You go back and make sure
+    she doesn't hurt herself or something.\r\n- CharacterID: Fae\r\n  LineID: L_18a67df85d9e\r\n 
+    LocalizedDialogue:\r\n    en: Or worse, get into my lab and ruin my experiments.\r\n-
+    CharacterID: Player\r\n  LineID: L_4f3e6c2acd1a\r\n  LocalizedDialogue:\r\n   
+    en: Would it kill you to admit that you care?\r\n- CharacterID: Fae\r\n  LineID:
+    L_857d79db6a1c\r\n  LocalizedDialogue:\r\n    en: I don't care. Now get out.\r\n-
+    CharacterID: Player\r\n  LineID: L_a3b07654f056\r\n  LocalizedDialogue:\r\n   
+    en: All right, all right. You be careful too. I don't want two girls having a
+    breakdown on me today.\r\n- CharacterID: Fae\r\n  LineID: L_d779f2f84411\r\n 
+    LocalizedDialogue:\r\n    en: Of course. Who do you take me for?\r\n- CharacterID:
+    Narrator\r\n  LineID: L_8d61e2d59952\r\n  LocalizedDialogue:\r\n    en: \"*She
+    smiles, something genuine and soft. It's a rare expression, something that I've
+    only seen a few times before.*\"\r\n- CharacterID: Player\r\n  LineID: L_cb5a2abd1053\r\n 
+    LocalizedDialogue:\r\n    en: Okay. I'll go check on Everie, then.\r\n- CharacterID:
+    Fae\r\n  LineID: L_211da3e47c5f\r\n  LocalizedDialogue:\r\n    en: Mm.\r\n- CharacterID:
+    Narrator\r\n  LineID: L_a7250c754dda\r\n  LocalizedDialogue:\r\n    en: \"*She's
+    already turned away, no longer paying attention to me.*\"\r\nDay4EverieHeadsBackToShip:\r\n-
+    CharacterID: Everie\r\n  LineID: L_c1ebfd8a1501\r\n  LocalizedDialogue:\r\n   
+    en: '...Can we go back to the ship now?'\r\n- CharacterID: Player\r\n  LineID:
+    L_41c4ad4c676c\r\n  LocalizedDialogue:\r\n    en: Of course. Are you okay, though?\r\n-
+    CharacterID: Everie\r\n  LineID: L_998b7fc10e37\r\n  LocalizedDialogue:\r\n   
+    en: '...I think...I... just need some time, is all.'\r\n- CharacterID: Player\r\n 
+    LineID: L_49248203565e\r\n  LocalizedDialogue:\r\n    en: Okay, we can talk about
+    it some other time. Let's head back.\r\nDay5EverieGiveGift:\r\n- CharacterID:
+    Player\r\n  LineID: L_ebd39ffa27d9\r\n  LocalizedDialogue:\r\n    en: Hey, Everie.
+    I got you something.\r\n- CharacterID: Narrator\r\n  LineID: L_bcfe35063e12\r\n 
+    LocalizedDialogue:\r\n    en: '*She opens the door, fully dressed this time.
+    Kind of a shame.*'\r\n- CharacterID: Everie\r\n  LineID: L_a1b7039b818e\r\n 
+    LocalizedDialogue:\r\n    en: Oh, um, thank you. You didn't have to.\r\n- CharacterID:
+    Narrator\r\n  LineID: L_fd5c4f7aa3cc\r\n  LocalizedDialogue:\r\n    en: \"*A
+    blush paints itself across Everie's cheeks. She still seems a little embarrassed
+    by what happened earlier.*\"\r\n- CharacterID: Player\r\n  LineID: L_eedf32ef2c89\r\n 
+    LocalizedDialogue:\r\n    en: It was no problem. Do you like it?\r\n- CharacterID:
+    Everie\r\n  LineID: L_973843508a25\r\n  LocalizedDialogue:\r\n    en: I've never
+    seen anything like it before'it's kind of cute, though. I like it a lot.\r\n-
+    CharacterID: Narrator\r\n  LineID: L_ff95133f3aa4\r\n  LocalizedDialogue:\r\n   
+    en: '*She pokes around at the toy before smiling at me.*'\r\n- CharacterID: Narrator\r\n 
+    LineID: L_ddbb306adc00\r\n  LocalizedDialogue:\r\n    en: '*That face! Too cute..!*'\r\n-
+    CharacterID: Player\r\n  LineID: L_1e7563ef8807\r\n  LocalizedDialogue:\r\n   
+    en: Well, I'm glad you like it. And no hard feelings, right?\r\n- CharacterID:
+    Everie\r\n  LineID: L_ecfa8e9992ec\r\n  LocalizedDialogue:\r\n    en: There were
+    none to begin with. Thanks again'\r\n- CharacterID: Player\r\n  LineID: L_6bd0b00c6b26\r\n 
+    LocalizedDialogue:\r\n    en: I'll be on my way, then. See ya.\r\n- CharacterID:
+    Everie\r\n  LineID: L_507f36596317\r\n  LocalizedDialogue:\r\n    en: See you!\r\n-
+    CharacterID: Narrator\r\n  LineID: L_0ac70dbcd4b2\r\n  LocalizedDialogue:\r\n   
+    en: Everie goes back into her room.\r\n- CharacterID: Player\r\n  LineID: L_81aec6b4b5df\r\n 
+    LocalizedDialogue:\r\n    en: Now that that's all settled'it's time to go find
+    Fae again.\r\n- CharacterID: Player\r\n  LineID: L_47ca124ab851\r\n  LocalizedDialogue:\r\n   
+    en: DD, you with me?\r\n- CharacterID: DD\r\n  LineID: L_4d3b4c60f601\r\n  LocalizedDialogue:\r\n   
+    en: '*beeps dejectedly*'\r\n- CharacterID: Player\r\n  LineID: L_b9d10a8d79fe\r\n 
+    LocalizedDialogue:\r\n    en: Don't worry, DD. I won't let Fae do anything to
+    you.\r\n- CharacterID: Player\r\n  LineID: L_90cb35efb6ae\r\n  LocalizedDialogue:\r\n   
+    en: But we have to go see her and figure out what we're doing next.\r\n- CharacterID:
+    Player\r\n  LineID: L_c876e5beba21\r\n  LocalizedDialogue:\r\n    en: So. Shall
+    we?\r\nDay5FaeInnerLabConvo:\r\n- CharacterID: Fae\r\n  LineID: L_3a949b2f5f74\r\n 
+    LocalizedDialogue:\r\n    en: You're back. Finally.\r\n- CharacterID: Player\r\n 
+    LineID: L_b8636e93eaef\r\n  LocalizedDialogue:\r\n    en: Nice to see you too,
+    Fae.\r\n- CharacterID: Fae\r\n  LineID: L_03d5baa7c7a7\r\n  LocalizedDialogue:\r\n   
+    en: I was right-there was something here after all.\r\n- CharacterID: Player\r\n 
+    LineID: L_3dcb592c4b4a\r\n  LocalizedDialogue:\r\n    en: Was it riches beyond
+    our wildest dreams?\r\n- CharacterID: Fae\r\n  LineID: L_858723ae0fb7\r\n  LocalizedDialogue:\r\n   
+    en: There's not enough riches in the universe to fulfill that dream. But no,
+    I found some coordinates.\r\n- CharacterID: Fae\r\n  LineID: L_f1dbef60ca49\r\n 
+    LocalizedDialogue:\r\n    en: '...To a planet called Cyberia.'\r\n- CharacterID:
+    Player\r\n  LineID: L_10f29258fdfe\r\n  LocalizedDialogue:\r\n    en: The same
+    place that Everie was talking about when she collapsed here?\r\n- CharacterID:
+    Fae\r\n  LineID: L_939461fe307b\r\n  LocalizedDialogue:\r\n    en: The very same.\r\n-
+    CharacterID: Player\r\n  LineID: L_9bab6fb739f0\r\n  LocalizedDialogue:\r\n   
+    en: Great. Let's head over, then.\r\n- CharacterID: Fae\r\n  LineID: L_68b7a51e2794\r\n 
+    LocalizedDialogue:\r\n    en: Not so fast, idiot.\r\n- CharacterID: Player\r\n 
+    LineID: L_ea8656c24cb7\r\n  LocalizedDialogue:\r\n    en: What now?!\r\n- CharacterID:
+    Fae\r\n  LineID: L_d73e0741ffb4\r\n  LocalizedDialogue:\r\n    en: Cyberia's
+    a freezing wasteland. We're going to need jackets if we're going there.\r\n-
+    CharacterID: Player\r\n  LineID: L_201dc073e66a\r\n  LocalizedDialogue:\r\n   
+    en: '...Jackets?'\r\n- CharacterID: Fae\r\n  LineID: L_1ea15b25ebda\r\n  LocalizedDialogue:\r\n   
+    en: Jackets. The high-tech ones made for uber-cold environments, thick enough
+    to withstand the coldest storms in the galaxy.\r\n- CharacterID: Player\r\n 
+    LineID: L_42499876f4f7\r\n  LocalizedDialogue:\r\n    en: We don't have those.\r\n-
+    CharacterID: Fae\r\n  LineID: L_af782ee38a10\r\n  LocalizedDialogue:\r\n    en:
+    I KNOW!\r\n- CharacterID: Fae\r\n  LineID: L_ab0a58f1bb6d\r\n  LocalizedDialogue:\r\n   
+    en: I'm telling you that you need to get them for us!\r\n- CharacterID: Player\r\n 
+    LineID: L_ab44765ad88f\r\n  LocalizedDialogue:\r\n    en: Where am I going to
+    get jackets?\r\n- CharacterID: Fae\r\n  LineID: L_6e2f01d5cb43\r\n  LocalizedDialogue:\r\n   
+    en: That's up to you.\r\n- CharacterID: Player\r\n  LineID: L_74d6d4b3b5d7\r\n 
+    LocalizedDialogue:\r\n    en: \"...Okay, whatever. I'll get jackets for all of
+    us.\"\r\n- CharacterID: Fae\r\n  LineID: L_425ddfe0c59c\r\n  LocalizedDialogue:\r\n   
+    en: Good. Let's head back to the ship. I'm mostly done here, anyways.\r\n- CharacterID:
+    Fae\r\n  LineID: L_de1b4b946173\r\n  LocalizedDialogue:\r\n    en: Also I'm gonna
+    need you to clean up the shower.\r\n- CharacterID: Player\r\n  LineID: L_9dfd7bc69a88\r\n 
+    LocalizedDialogue:\r\n    en: '...why?'\r\n- CharacterID: Fae\r\n  LineID: L_6d8f1ebee621\r\n 
+    LocalizedDialogue:\r\n    en: Do you really need to ask that after I've been
+    here for the past two days?\r\n- CharacterID: Player\r\n  LineID: L_a4bf31d0bf26\r\n 
+    LocalizedDialogue:\r\n    en: Gotcha I'll get on that.\r\nConversationTest:\r\n-
+    CharacterID: Fae\r\n  LineID: L_2365df89bb55\r\n  LocalizedDialogue:\r\n    en:
+    You're back. Finally.\r\n- CharacterID: Player\r\n  LineID: L_7ddc9726f10d\r\n 
+    LocalizedDialogue:\r\n    en: Nice to see you too, Fae.\r\n"
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18,1138 +900,15 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 871b502169fa7f74e9d3d3a7b87b6503, type: 2}
   - {fileID: 11400000, guid: 086dcde826a3fcb4b903e747228d482b, type: 2}
   ParticipantConfigurationDefaults: []
-  DialogueLines:
-  - ConversationID: Conversation1
-    LineID: L_1d81acbabbaf
-    ConversationLineIndex: 0
-    characterID: Ava
-    CharacterRepresentations:
-    - SelectedCharacterID: 
-      SelectedRepresentationName: Sprites
-      SelectedRepresentation: {fileID: 11400000, guid: cf61be94e9ae46b4da28bb23d0bfa60f, type: 2}
-      SelectedExpressionId: 
-      SelectedConfigurationEntryName: 
-      LineSpecificDisplayOptions:
-        FlipPortraitX: 0
-        FlipPortraitY: 0
-        FlipFullBodyX: 0
-        FlipFullBodyY: 0
-        DisplayPosition: 0
-        SlotId: 
-        PortraitScale: {x: 0, y: 0, z: 0}
-        FullBodyScale: {x: 0, y: 0, z: 0}
-    LocalizedDialogues:
-    - Language: en
-      Text: "Jared... we\u2019re definitely off-trail."
-      Clip: {fileID: 0}
-    - Language: fr
-      Text: "Jared... on s'est clairement \xE9gar\xE9s."
-      Clip: {fileID: 0}
-    - Language: es
-      Text: Jared... definitivamente nos perdimos del sendero.
-      Clip: {fileID: 0}
-    PresentationMode: 1
-    ActionsBeforeDialogueLine: []
-    ActionsAfterDialogueLine: []
-    UserInputMethod: 2
-    TimeBeforeNextLine: 0
-    LineContinuationSettings:
-      Mode: 0
-      TargetContainer: {fileID: 11400000, guid: c15e437cbe731e040b035d6f06005974, type: 2}
-      TargetAliasOrName: 
-      PushReturnPoint: 0
-      Choices:
-      - Labels:
-        - Language: EN
-          Text: Convo1
-          Clip: {fileID: 0}
-        - Language: FR
-          Text: test in french
-          Clip: {fileID: 0}
-        - Language: ES
-          Text: test in spanish
-          Clip: {fileID: 0}
-        TargetContainer: {fileID: 11400000, guid: c15e437cbe731e040b035d6f06005974, type: 2}
-        TargetAliasOrName: Convo1
-        PushReturnPoint: 0
-      - Labels:
-        - Language: EN
-          Text: Convo2
-          Clip: {fileID: 0}
-        - Language: FR
-          Text: test in french
-          Clip: {fileID: 0}
-        - Language: ES
-          Text: test in spanish
-          Clip: {fileID: 0}
-        TargetContainer: {fileID: 11400000, guid: c15e437cbe731e040b035d6f06005974, type: 2}
-        TargetAliasOrName: Convo2
-        PushReturnPoint: 0
-      AllowGoBack: 0
-  - ConversationID: Conversation1
-    LineID: L_f911037a3afe
-    ConversationLineIndex: 1
-    characterID: Jared
-    CharacterRepresentations:
-    - SelectedCharacterID: 
-      SelectedRepresentationName: Sprites
-      SelectedRepresentation: {fileID: 11400000, guid: 5b9d585132056d5479e01ea082d4b2be, type: 2}
-      SelectedExpressionId: 
-      SelectedConfigurationEntryName: 
-      LineSpecificDisplayOptions:
-        FlipPortraitX: 0
-        FlipPortraitY: 0
-        FlipFullBodyX: 0
-        FlipFullBodyY: 0
-        DisplayPosition: 0
-        SlotId: 
-        PortraitScale: {x: 1, y: 1, z: 1}
-        FullBodyScale: {x: 1, y: 1, z: 1}
-    LocalizedDialogues:
-    - Language: en
-      Text: "Technically, we\u2019re *still* in the forest. Nature counts."
-      Clip: {fileID: 0}
-    - Language: fr
-      Text: "Techniquement, on est toujours dans la for\xEAt. \xC7a compte, non?"
-      Clip: {fileID: 0}
-    - Language: es
-      Text: "T\xE9cnicamente, seguimos en el bosque. Eso cuenta."
-      Clip: {fileID: 0}
-    PresentationMode: 0
-    ActionsBeforeDialogueLine: []
-    ActionsAfterDialogueLine: []
-    UserInputMethod: 0
-    TimeBeforeNextLine: 0
-    LineContinuationSettings:
-      Mode: 0
-      TargetContainer: {fileID: 0}
-      TargetAliasOrName: 
-      PushReturnPoint: 0
-      Choices: []
-      AllowGoBack: 0
-  - ConversationID: Conversation1
-    LineID: L_e347a5993728
-    ConversationLineIndex: 2
-    characterID: Ava
-    CharacterRepresentations:
-    - SelectedCharacterID: 
-      SelectedRepresentationName: Sprites
-      SelectedRepresentation: {fileID: 11400000, guid: cf61be94e9ae46b4da28bb23d0bfa60f, type: 2}
-      SelectedExpressionId: 
-      SelectedConfigurationEntryName: 
-      LineSpecificDisplayOptions:
-        FlipPortraitX: 0
-        FlipPortraitY: 0
-        FlipFullBodyX: 0
-        FlipFullBodyY: 0
-        DisplayPosition: 0
-        SlotId: 
-        PortraitScale: {x: 1, y: 1, z: 1}
-        FullBodyScale: {x: 1, y: 1, z: 1}
-    LocalizedDialogues:
-    - Language: en
-      Text: "We\u2019ve circled that tree three times now."
-      Clip: {fileID: 0}
-    - Language: fr
-      Text: "On a tourn\xE9 autour de cet arbre trois fois."
-      Clip: {fileID: 0}
-    - Language: es
-      Text: "Hemos rodeado ese \xE1rbol tres veces."
-      Clip: {fileID: 0}
-    PresentationMode: 0
-    ActionsBeforeDialogueLine: []
-    ActionsAfterDialogueLine: []
-    UserInputMethod: 0
-    TimeBeforeNextLine: 0
-    LineContinuationSettings:
-      Mode: 0
-      TargetContainer: {fileID: 0}
-      TargetAliasOrName: 
-      PushReturnPoint: 0
-      Choices: []
-      AllowGoBack: 0
-  - ConversationID: Conversation1
-    LineID: L_20ab123c7986
-    ConversationLineIndex: 3
-    characterID: Jared
-    CharacterRepresentations:
-    - SelectedCharacterID: 
-      SelectedRepresentationName: Sprites
-      SelectedRepresentation: {fileID: 11400000, guid: 5b9d585132056d5479e01ea082d4b2be, type: 2}
-      SelectedExpressionId: 
-      SelectedConfigurationEntryName: 
-      LineSpecificDisplayOptions:
-        FlipPortraitX: 0
-        FlipPortraitY: 0
-        FlipFullBodyX: 0
-        FlipFullBodyY: 0
-        DisplayPosition: 0
-        SlotId: 
-        PortraitScale: {x: 1, y: 1, z: 1}
-        FullBodyScale: {x: 1, y: 1, z: 1}
-    LocalizedDialogues:
-    - Language: en
-      Text: "It\u2019s a popular tree. Five stars on TreeAdvisor."
-      Clip: {fileID: 0}
-    - Language: fr
-      Text: "C\u2019est un arbre populaire. Cinq \xE9toiles sur TreeAdvisor."
-      Clip: {fileID: 0}
-    - Language: es
-      Text: "Es un \xE1rbol famoso. Cinco estrellas en TreeAdvisor."
-      Clip: {fileID: 0}
-    PresentationMode: 0
-    ActionsBeforeDialogueLine: []
-    ActionsAfterDialogueLine: []
-    UserInputMethod: 0
-    TimeBeforeNextLine: 0
-    LineContinuationSettings:
-      Mode: 0
-      TargetContainer: {fileID: 0}
-      TargetAliasOrName: 
-      PushReturnPoint: 0
-      Choices: []
-      AllowGoBack: 0
-  - ConversationID: Conversation1
-    LineID: L_d7c77faffa6d
-    ConversationLineIndex: 4
-    characterID: Ava
-    CharacterRepresentations:
-    - SelectedCharacterID: 
-      SelectedRepresentationName: Sprites
-      SelectedRepresentation: {fileID: 11400000, guid: cf61be94e9ae46b4da28bb23d0bfa60f, type: 2}
-      SelectedExpressionId: 
-      SelectedConfigurationEntryName: 
-      LineSpecificDisplayOptions:
-        FlipPortraitX: 0
-        FlipPortraitY: 0
-        FlipFullBodyX: 0
-        FlipFullBodyY: 0
-        DisplayPosition: 0
-        SlotId: 
-        PortraitScale: {x: 1, y: 1, z: 1}
-        FullBodyScale: {x: 1, y: 1, z: 1}
-    LocalizedDialogues:
-    - Language: en
-      Text: Shh! Did you hear that?
-      Clip: {fileID: 0}
-    - Language: fr
-      Text: "Chut! T\u2019as entendu \xE7a ?"
-      Clip: {fileID: 0}
-    - Language: es
-      Text: "\xA1Shh! \xBFEscuchaste eso?"
-      Clip: {fileID: 0}
-    PresentationMode: 0
-    ActionsBeforeDialogueLine: []
-    ActionsAfterDialogueLine: []
-    UserInputMethod: 0
-    TimeBeforeNextLine: 0
-    LineContinuationSettings:
-      Mode: 0
-      TargetContainer: {fileID: 0}
-      TargetAliasOrName: 
-      PushReturnPoint: 0
-      Choices: []
-      AllowGoBack: 0
-  - ConversationID: Conversation1
-    LineID: L_482679d42ab5
-    ConversationLineIndex: 5
-    characterID: Jared
-    CharacterRepresentations:
-    - SelectedCharacterID: 
-      SelectedRepresentationName: Sprites
-      SelectedRepresentation: {fileID: 11400000, guid: 5b9d585132056d5479e01ea082d4b2be, type: 2}
-      SelectedExpressionId: 
-      SelectedConfigurationEntryName: 
-      LineSpecificDisplayOptions:
-        FlipPortraitX: 0
-        FlipPortraitY: 0
-        FlipFullBodyX: 0
-        FlipFullBodyY: 0
-        DisplayPosition: 0
-        SlotId: 
-        PortraitScale: {x: 1, y: 1, z: 1}
-        FullBodyScale: {x: 1, y: 1, z: 1}
-    LocalizedDialogues:
-    - Language: en
-      Text: "Maybe it\u2019s a bear. Or a ranger with snacks."
-      Clip: {fileID: 0}
-    - Language: fr
-      Text: "Peut-\xEAtre un ours. Ou un garde forestier avec des snacks."
-      Clip: {fileID: 0}
-    - Language: es
-      Text: "Quiz\xE1s un oso. O un guardabosques con bocadillos."
-      Clip: {fileID: 0}
-    PresentationMode: 0
-    ActionsBeforeDialogueLine: []
-    ActionsAfterDialogueLine: []
-    UserInputMethod: 0
-    TimeBeforeNextLine: 0
-    LineContinuationSettings:
-      Mode: 0
-      TargetContainer: {fileID: 0}
-      TargetAliasOrName: 
-      PushReturnPoint: 0
-      Choices: []
-      AllowGoBack: 0
-  - ConversationID: Conversation1
-    LineID: L_bc6e5fd287da
-    ConversationLineIndex: 6
-    characterID: Wolfstag
-    CharacterRepresentations:
-    - SelectedCharacterID: 
-      SelectedRepresentationName: Sprites
-      SelectedRepresentation: {fileID: 11400000, guid: 52e24c290fb50014b8aee74d5f275726, type: 2}
-      SelectedExpressionId: 
-      SelectedConfigurationEntryName: 
-      LineSpecificDisplayOptions:
-        FlipPortraitX: 0
-        FlipPortraitY: 0
-        FlipFullBodyX: 0
-        FlipFullBodyY: 0
-        DisplayPosition: 0
-        SlotId: 
-        PortraitScale: {x: 1, y: 1, z: 1}
-        FullBodyScale: {x: 1, y: 1, z: 1}
-    LocalizedDialogues:
-    - Language: en
-      Text: '*A towering silhouette appears between the trees. Antlers like twisted
-        branches.*'
-      Clip: {fileID: 0}
-    - Language: fr
-      Text: "*Une silhouette massive \xE9merge entre les arbres. Des bois torsad\xE9s.*"
-      Clip: {fileID: 0}
-    - Language: es
-      Text: "*Una silueta imponente aparece entre los \xE1rboles. Astas retorcidas.*"
-      Clip: {fileID: 0}
-    PresentationMode: 0
-    ActionsBeforeDialogueLine: []
-    ActionsAfterDialogueLine: []
-    UserInputMethod: 0
-    TimeBeforeNextLine: 0
-    LineContinuationSettings:
-      Mode: 0
-      TargetContainer: {fileID: 0}
-      TargetAliasOrName: 
-      PushReturnPoint: 0
-      Choices: []
-      AllowGoBack: 0
-  - ConversationID: Conversation1
-    LineID: L_666f70295cdf
-    ConversationLineIndex: 7
-    characterID: Ava
-    CharacterRepresentations:
-    - SelectedCharacterID: 
-      SelectedRepresentationName: Sprites
-      SelectedRepresentation: {fileID: 11400000, guid: cf61be94e9ae46b4da28bb23d0bfa60f, type: 2}
-      SelectedExpressionId: 
-      SelectedConfigurationEntryName: 
-      LineSpecificDisplayOptions:
-        FlipPortraitX: 0
-        FlipPortraitY: 0
-        FlipFullBodyX: 0
-        FlipFullBodyY: 0
-        DisplayPosition: 0
-        SlotId: 
-        PortraitScale: {x: 1, y: 1, z: 1}
-        FullBodyScale: {x: 1, y: 1, z: 1}
-    LocalizedDialogues:
-    - Language: en
-      Text: What is *that?!*
-      Clip: {fileID: 0}
-    - Language: fr
-      Text: "C\u2019est quoi *\xE7a* ?!"
-      Clip: {fileID: 0}
-    - Language: es
-      Text: "\xBF\xA1Qu\xE9 es *eso*!?"
-      Clip: {fileID: 0}
-    PresentationMode: 0
-    ActionsBeforeDialogueLine: []
-    ActionsAfterDialogueLine: []
-    UserInputMethod: 0
-    TimeBeforeNextLine: 0
-    LineContinuationSettings:
-      Mode: 0
-      TargetContainer: {fileID: 0}
-      TargetAliasOrName: 
-      PushReturnPoint: 0
-      Choices: []
-      AllowGoBack: 0
-  - ConversationID: Conversation1
-    LineID: L_caa4532dcc86
-    ConversationLineIndex: 8
-    characterID: Jared
-    CharacterRepresentations:
-    - SelectedCharacterID: 
-      SelectedRepresentationName: Sprites
-      SelectedRepresentation: {fileID: 11400000, guid: 5b9d585132056d5479e01ea082d4b2be, type: 2}
-      SelectedExpressionId: 
-      SelectedConfigurationEntryName: 
-      LineSpecificDisplayOptions:
-        FlipPortraitX: 0
-        FlipPortraitY: 0
-        FlipFullBodyX: 0
-        FlipFullBodyY: 0
-        DisplayPosition: 0
-        SlotId: 
-        PortraitScale: {x: 1, y: 1, z: 1}
-        FullBodyScale: {x: 1, y: 1, z: 1}
-    LocalizedDialogues:
-    - Language: en
-      Text: '*gasps* Whoooooa. Look at you!'
-      Clip: {fileID: 0}
-    - Language: fr
-      Text: "*hal\xE8tement* Wooooow. Regarde-moi \xE7a!"
-      Clip: {fileID: 0}
-    - Language: es
-      Text: "*jadea* \xA1Wooooow! \xA1M\xEDrate!"
-      Clip: {fileID: 0}
-    PresentationMode: 0
-    ActionsBeforeDialogueLine: []
-    ActionsAfterDialogueLine: []
-    UserInputMethod: 0
-    TimeBeforeNextLine: 0
-    LineContinuationSettings:
-      Mode: 0
-      TargetContainer: {fileID: 0}
-      TargetAliasOrName: 
-      PushReturnPoint: 0
-      Choices: []
-      AllowGoBack: 0
-  - ConversationID: Conversation1
-    LineID: L_e76cb91cb1b9
-    ConversationLineIndex: 9
-    characterID: Jared
-    CharacterRepresentations:
-    - SelectedCharacterID: 
-      SelectedRepresentationName: Sprites
-      SelectedRepresentation: {fileID: 11400000, guid: 5b9d585132056d5479e01ea082d4b2be, type: 2}
-      SelectedExpressionId: 
-      SelectedConfigurationEntryName: 
-      LineSpecificDisplayOptions:
-        FlipPortraitX: 0
-        FlipPortraitY: 0
-        FlipFullBodyX: 0
-        FlipFullBodyY: 0
-        DisplayPosition: 0
-        SlotId: 
-        PortraitScale: {x: 1, y: 1, z: 1}
-        FullBodyScale: {x: 1, y: 1, z: 1}
-    LocalizedDialogues:
-    - Language: en
-      Text: "Are you lost too, buddy? You need scritches? Huh? Who\u2019s a majestic
-        forest beast? *You* are!"
-      Clip: {fileID: 0}
-    - Language: fr
-      Text: "Tu t\u2019es perdu aussi, mon grand ? Tu veux des gratouilles ? Qui
-        est une b\xEAte majestueuse ? *C\u2019est toi!*"
-      Clip: {fileID: 0}
-    - Language: es
-      Text: "\xBFTambi\xE9n est\xE1s perdido, amigo? \xBFQuieres caricias? \xBFQui\xE9n
-        es una bestia majestuosa? \xA1*T\xFA*!"
-      Clip: {fileID: 0}
-    PresentationMode: 0
-    ActionsBeforeDialogueLine: []
-    ActionsAfterDialogueLine: []
-    UserInputMethod: 0
-    TimeBeforeNextLine: 0
-    LineContinuationSettings:
-      Mode: 0
-      TargetContainer: {fileID: 0}
-      TargetAliasOrName: 
-      PushReturnPoint: 0
-      Choices: []
-      AllowGoBack: 0
-  - ConversationID: Conversation1
-    LineID: L_3985fb81d5da
-    ConversationLineIndex: 10
-    characterID: Wolfstag
-    CharacterRepresentations:
-    - SelectedCharacterID: 
-      SelectedRepresentationName: Sprites
-      SelectedRepresentation: {fileID: 11400000, guid: 52e24c290fb50014b8aee74d5f275726, type: 2}
-      SelectedExpressionId: 
-      SelectedConfigurationEntryName: 
-      LineSpecificDisplayOptions:
-        FlipPortraitX: 0
-        FlipPortraitY: 0
-        FlipFullBodyX: 0
-        FlipFullBodyY: 0
-        DisplayPosition: 0
-        SlotId: 
-        PortraitScale: {x: 1, y: 1, z: 1}
-        FullBodyScale: {x: 1, y: 1, z: 1}
-    LocalizedDialogues:
-    - Language: en
-      Text: '*It tilts its head slightly. Curious.*'
-      Clip: {fileID: 0}
-    - Language: fr
-      Text: "*Il incline l\xE9g\xE8rement la t\xEAte. Curieux.*"
-      Clip: {fileID: 0}
-    - Language: es
-      Text: '*Inclina ligeramente la cabeza. Curioso.*'
-      Clip: {fileID: 0}
-    PresentationMode: 0
-    ActionsBeforeDialogueLine: []
-    ActionsAfterDialogueLine: []
-    UserInputMethod: 0
-    TimeBeforeNextLine: 0
-    LineContinuationSettings:
-      Mode: 0
-      TargetContainer: {fileID: 0}
-      TargetAliasOrName: 
-      PushReturnPoint: 0
-      Choices: []
-      AllowGoBack: 0
-  - ConversationID: Conversation1
-    LineID: L_c92941416c34
-    ConversationLineIndex: 11
-    characterID: Ava
-    CharacterRepresentations:
-    - SelectedCharacterID: 
-      SelectedRepresentationName: Sprites
-      SelectedRepresentation: {fileID: 11400000, guid: cf61be94e9ae46b4da28bb23d0bfa60f, type: 2}
-      SelectedExpressionId: 
-      SelectedConfigurationEntryName: 
-      LineSpecificDisplayOptions:
-        FlipPortraitX: 0
-        FlipPortraitY: 0
-        FlipFullBodyX: 0
-        FlipFullBodyY: 0
-        DisplayPosition: 0
-        SlotId: 
-        PortraitScale: {x: 1, y: 1, z: 1}
-        FullBodyScale: {x: 1, y: 1, z: 1}
-    LocalizedDialogues:
-    - Language: en
-      Text: "Jared\u2026 stop trying to pet the antler demon!"
-      Clip: {fileID: 0}
-    - Language: fr
-      Text: "Jared\u2026 arr\xEAte d\u2019essayer de caresser le d\xE9mon \xE0 bois!"
-      Clip: {fileID: 0}
-    - Language: es
-      Text: "\xA1Jared... deja de intentar acariciar al demonio de los cuernos!"
-      Clip: {fileID: 0}
-    PresentationMode: 0
-    ActionsBeforeDialogueLine: []
-    ActionsAfterDialogueLine: []
-    UserInputMethod: 0
-    TimeBeforeNextLine: 0
-    LineContinuationSettings:
-      Mode: 0
-      TargetContainer: {fileID: 0}
-      TargetAliasOrName: 
-      PushReturnPoint: 0
-      Choices: []
-      AllowGoBack: 0
-  - ConversationID: Conversation1
-    LineID: L_ba59115903c7
-    ConversationLineIndex: 12
-    characterID: Wolfstag
-    CharacterRepresentations:
-    - SelectedCharacterID: 
-      SelectedRepresentationName: Sprites
-      SelectedRepresentation: {fileID: 11400000, guid: 52e24c290fb50014b8aee74d5f275726, type: 2}
-      SelectedExpressionId: 
-      SelectedConfigurationEntryName: 
-      LineSpecificDisplayOptions:
-        FlipPortraitX: 0
-        FlipPortraitY: 0
-        FlipFullBodyX: 0
-        FlipFullBodyY: 0
-        DisplayPosition: 0
-        SlotId: 
-        PortraitScale: {x: 1, y: 1, z: 1}
-        FullBodyScale: {x: 1, y: 1, z: 1}
-    LocalizedDialogues:
-    - Language: en
-      Text: "*The shadows melt away. The creature\u2019s full form is revealed\u2014fur
-        glows silver in the moonlight.*"
-      Clip: {fileID: 0}
-    - Language: fr
-      Text: "*Les ombres se dissipent. La cr\xE9ature se d\xE9voile \u2014 sa fourrure
-        luit \xE0 la lumi\xE8re lunaire.*"
-      Clip: {fileID: 0}
-    - Language: es
-      Text: "*Las sombras se desvanecen. Su forma completa aparece \u2014 su pelaje
-        brilla bajo la luna.*"
-      Clip: {fileID: 0}
-    PresentationMode: 0
-    ActionsBeforeDialogueLine: []
-    ActionsAfterDialogueLine: []
-    UserInputMethod: 0
-    TimeBeforeNextLine: 0
-    LineContinuationSettings:
-      Mode: 0
-      TargetContainer: {fileID: 0}
-      TargetAliasOrName: 
-      PushReturnPoint: 0
-      Choices: []
-      AllowGoBack: 0
-  - ConversationID: Conversation1
-    LineID: L_f752b67800ba
-    ConversationLineIndex: 13
-    characterID: Jared
-    CharacterRepresentations:
-    - SelectedCharacterID: 
-      SelectedRepresentationName: Sprites
-      SelectedRepresentation: {fileID: 11400000, guid: 5b9d585132056d5479e01ea082d4b2be, type: 2}
-      SelectedExpressionId: 
-      SelectedConfigurationEntryName: 
-      LineSpecificDisplayOptions:
-        FlipPortraitX: 0
-        FlipPortraitY: 0
-        FlipFullBodyX: 0
-        FlipFullBodyY: 0
-        DisplayPosition: 0
-        SlotId: 
-        PortraitScale: {x: 1, y: 1, z: 1}
-        FullBodyScale: {x: 1, y: 1, z: 1}
-    LocalizedDialogues:
-    - Language: en
-      Text: "Oh my god. He\u2019s gorgeous. I want ten of him."
-      Clip: {fileID: 0}
-    - Language: fr
-      Text: "Oh mon dieu. Il est splendide. J\u2019en veux dix."
-      Clip: {fileID: 0}
-    - Language: es
-      Text: "Dios m\xEDo. Es hermoso. Quiero diez."
-      Clip: {fileID: 0}
-    PresentationMode: 0
-    ActionsBeforeDialogueLine: []
-    ActionsAfterDialogueLine: []
-    UserInputMethod: 0
-    TimeBeforeNextLine: 0
-    LineContinuationSettings:
-      Mode: 0
-      TargetContainer: {fileID: 0}
-      TargetAliasOrName: 
-      PushReturnPoint: 0
-      Choices: []
-      AllowGoBack: 0
-  - ConversationID: Conversation1
-    LineID: L_60bce86b2283
-    ConversationLineIndex: 14
-    characterID: Ava
-    CharacterRepresentations:
-    - SelectedCharacterID: 
-      SelectedRepresentationName: Sprites
-      SelectedRepresentation: {fileID: 11400000, guid: cf61be94e9ae46b4da28bb23d0bfa60f, type: 2}
-      SelectedExpressionId: 
-      SelectedConfigurationEntryName: 
-      LineSpecificDisplayOptions:
-        FlipPortraitX: 0
-        FlipPortraitY: 0
-        FlipFullBodyX: 0
-        FlipFullBodyY: 0
-        DisplayPosition: 0
-        SlotId: 
-        PortraitScale: {x: 1, y: 1, z: 1}
-        FullBodyScale: {x: 1, y: 1, z: 1}
-    LocalizedDialogues:
-    - Language: en
-      Text: "...I think he\u2019s leading us somewhere."
-      Clip: {fileID: 0}
-    - Language: fr
-      Text: "...Je crois qu\u2019il nous guide quelque part."
-      Clip: {fileID: 0}
-    - Language: es
-      Text: "...Creo que nos est\xE1 guiando."
-      Clip: {fileID: 0}
-    PresentationMode: 0
-    ActionsBeforeDialogueLine: []
-    ActionsAfterDialogueLine: []
-    UserInputMethod: 0
-    TimeBeforeNextLine: 0
-    LineContinuationSettings:
-      Mode: 0
-      TargetContainer: {fileID: 0}
-      TargetAliasOrName: 
-      PushReturnPoint: 0
-      Choices: []
-      AllowGoBack: 0
-  - ConversationID: Conversation1
-    LineID: L_b9bf0bd0afad
-    ConversationLineIndex: 15
-    characterID: Wolfstag
-    CharacterRepresentations:
-    - SelectedCharacterID: 
-      SelectedRepresentationName: Sprites
-      SelectedRepresentation: {fileID: 11400000, guid: 52e24c290fb50014b8aee74d5f275726, type: 2}
-      SelectedExpressionId: 
-      SelectedConfigurationEntryName: 
-      LineSpecificDisplayOptions:
-        FlipPortraitX: 0
-        FlipPortraitY: 0
-        FlipFullBodyX: 0
-        FlipFullBodyY: 0
-        DisplayPosition: 0
-        SlotId: 
-        PortraitScale: {x: 1, y: 1, z: 1}
-        FullBodyScale: {x: 1, y: 1, z: 1}
-    LocalizedDialogues:
-    - Language: en
-      Text: '*He glances back, takes a few careful steps, then waits.*'
-      Clip: {fileID: 0}
-    - Language: fr
-      Text: "*Il jette un regard en arri\xE8re, avance lentement, puis s\u2019arr\xEAte.*"
-      Clip: {fileID: 0}
-    - Language: es
-      Text: "*Mira hacia atr\xE1s, da unos pasos y espera.*"
-      Clip: {fileID: 0}
-    PresentationMode: 0
-    ActionsBeforeDialogueLine: []
-    ActionsAfterDialogueLine: []
-    UserInputMethod: 0
-    TimeBeforeNextLine: 0
-    LineContinuationSettings:
-      Mode: 0
-      TargetContainer: {fileID: 0}
-      TargetAliasOrName: 
-      PushReturnPoint: 0
-      Choices: []
-      AllowGoBack: 0
-  - ConversationID: Conversation1
-    LineID: L_d7abfe986f2c
-    ConversationLineIndex: 16
-    characterID: Jared
-    CharacterRepresentations:
-    - SelectedCharacterID: 
-      SelectedRepresentationName: Sprites
-      SelectedRepresentation: {fileID: 11400000, guid: 5b9d585132056d5479e01ea082d4b2be, type: 2}
-      SelectedExpressionId: 
-      SelectedConfigurationEntryName: 
-      LineSpecificDisplayOptions:
-        FlipPortraitX: 0
-        FlipPortraitY: 0
-        FlipFullBodyX: 0
-        FlipFullBodyY: 0
-        DisplayPosition: 0
-        SlotId: 
-        PortraitScale: {x: 1, y: 1, z: 1}
-        FullBodyScale: {x: 1, y: 1, z: 1}
-    LocalizedDialogues:
-    - Language: en
-      Text: "Look at him! He\u2019s so polite. Trail angel confirmed."
-      Clip: {fileID: 0}
-    - Language: fr
-      Text: "Regarde-le ! Trop poli. Ange du sentier confirm\xE9."
-      Clip: {fileID: 0}
-    - Language: es
-      Text: "\xA1M\xEDralo! Tan educado. \xC1ngel del sendero confirmado."
-      Clip: {fileID: 0}
-    PresentationMode: 0
-    ActionsBeforeDialogueLine: []
-    ActionsAfterDialogueLine: []
-    UserInputMethod: 0
-    TimeBeforeNextLine: 0
-    LineContinuationSettings:
-      Mode: 0
-      TargetContainer: {fileID: 0}
-      TargetAliasOrName: 
-      PushReturnPoint: 0
-      Choices: []
-      AllowGoBack: 0
-  - ConversationID: Conversation1
-    LineID: L_bf426c45fe1d
-    ConversationLineIndex: 17
-    characterID: Ava
-    CharacterRepresentations:
-    - SelectedCharacterID: 
-      SelectedRepresentationName: Sprites
-      SelectedRepresentation: {fileID: 11400000, guid: cf61be94e9ae46b4da28bb23d0bfa60f, type: 2}
-      SelectedExpressionId: 
-      SelectedConfigurationEntryName: 
-      LineSpecificDisplayOptions:
-        FlipPortraitX: 0
-        FlipPortraitY: 0
-        FlipFullBodyX: 0
-        FlipFullBodyY: 0
-        DisplayPosition: 0
-        SlotId: 
-        PortraitScale: {x: 1, y: 1, z: 1}
-        FullBodyScale: {x: 1, y: 1, z: 1}
-    LocalizedDialogues:
-    - Language: en
-      Text: I think he wants us to follow. And... I think we should.
-      Clip: {fileID: 0}
-    - Language: fr
-      Text: "Il veut qu\u2019on le suive. Et... je crois qu\u2019on devrait."
-      Clip: {fileID: 0}
-    - Language: es
-      Text: Quiere que lo sigamos. Y... creo que debemos hacerlo.
-      Clip: {fileID: 0}
-    PresentationMode: 0
-    ActionsBeforeDialogueLine: []
-    ActionsAfterDialogueLine: []
-    UserInputMethod: 0
-    TimeBeforeNextLine: 0
-    LineContinuationSettings:
-      Mode: 0
-      TargetContainer: {fileID: 0}
-      TargetAliasOrName: 
-      PushReturnPoint: 0
-      Choices: []
-      AllowGoBack: 0
-  - ConversationID: Conversation1
-    LineID: L_3939192ad898
-    ConversationLineIndex: 18
-    characterID: Wolfstag
-    CharacterRepresentations:
-    - SelectedCharacterID: 
-      SelectedRepresentationName: Sprites
-      SelectedRepresentation: {fileID: 11400000, guid: 52e24c290fb50014b8aee74d5f275726, type: 2}
-      SelectedExpressionId: 
-      SelectedConfigurationEntryName: 
-      LineSpecificDisplayOptions:
-        FlipPortraitX: 0
-        FlipPortraitY: 0
-        FlipFullBodyX: 0
-        FlipFullBodyY: 0
-        DisplayPosition: 0
-        SlotId: 
-        PortraitScale: {x: 1, y: 1, z: 1}
-        FullBodyScale: {x: 1, y: 1, z: 1}
-    LocalizedDialogues:
-    - Language: en
-      Text: '*The creature moves ahead again, parting the brush. Bits of a path peek
-        through behind him.*'
-      Clip: {fileID: 0}
-    - Language: fr
-      Text: "*La cr\xE9ature avance \xE0 nouveau, \xE9cartant les buissons. Un sentier
-        appara\xEEt derri\xE8re lui.*"
-      Clip: {fileID: 0}
-    - Language: es
-      Text: "*La criatura avanza, apartando los arbustos. Se revela un sendero detr\xE1s
-        de \xE9l.*"
-      Clip: {fileID: 0}
-    PresentationMode: 0
-    ActionsBeforeDialogueLine: []
-    ActionsAfterDialogueLine: []
-    UserInputMethod: 0
-    TimeBeforeNextLine: 0
-    LineContinuationSettings:
-      Mode: 0
-      TargetContainer: {fileID: 0}
-      TargetAliasOrName: 
-      PushReturnPoint: 0
-      Choices: []
-      AllowGoBack: 0
-  - ConversationID: Conversation1
-    LineID: L_c8e675243847
-    ConversationLineIndex: 19
-    characterID: Jared
-    CharacterRepresentations:
-    - SelectedCharacterID: 
-      SelectedRepresentationName: Sprites
-      SelectedRepresentation: {fileID: 11400000, guid: 5b9d585132056d5479e01ea082d4b2be, type: 2}
-      SelectedExpressionId: 
-      SelectedConfigurationEntryName: 
-      LineSpecificDisplayOptions:
-        FlipPortraitX: 0
-        FlipPortraitY: 0
-        FlipFullBodyX: 0
-        FlipFullBodyY: 0
-        DisplayPosition: 0
-        SlotId: 
-        PortraitScale: {x: 1, y: 1, z: 1}
-        FullBodyScale: {x: 1, y: 1, z: 1}
-    LocalizedDialogues:
-    - Language: en
-      Text: "Wait... this looks familiar. That\u2019s the ridge! That\u2019s the
-        way back!"
-      Clip: {fileID: 0}
-    - Language: fr
-      Text: "Attends... \xE7a me dit quelque chose. C\u2019est la cr\xEAte ! C\u2019est
-        le bon chemin!"
-      Clip: {fileID: 0}
-    - Language: es
-      Text: "Espera... esto me suena. \xA1Esa es la cresta! \xA1Ese es el camino
-        de regreso!"
-      Clip: {fileID: 0}
-    PresentationMode: 0
-    ActionsBeforeDialogueLine: []
-    ActionsAfterDialogueLine: []
-    UserInputMethod: 0
-    TimeBeforeNextLine: 0
-    LineContinuationSettings:
-      Mode: 0
-      TargetContainer: {fileID: 0}
-      TargetAliasOrName: 
-      PushReturnPoint: 0
-      Choices: []
-      AllowGoBack: 0
-  - ConversationID: Conversation1
-    LineID: L_9cbaef22248f
-    ConversationLineIndex: 20
-    characterID: Ava
-    CharacterRepresentations:
-    - SelectedCharacterID: 
-      SelectedRepresentationName: Sprites
-      SelectedRepresentation: {fileID: 11400000, guid: cf61be94e9ae46b4da28bb23d0bfa60f, type: 2}
-      SelectedExpressionId: 
-      SelectedConfigurationEntryName: 
-      LineSpecificDisplayOptions:
-        FlipPortraitX: 0
-        FlipPortraitY: 0
-        FlipFullBodyX: 0
-        FlipFullBodyY: 0
-        DisplayPosition: 0
-        SlotId: 
-        PortraitScale: {x: 1, y: 1, z: 1}
-        FullBodyScale: {x: 1, y: 1, z: 1}
-    LocalizedDialogues:
-    - Language: en
-      Text: He really *is* guiding us...
-      Clip: {fileID: 0}
-    - Language: fr
-      Text: Il nous guide vraiment...
-      Clip: {fileID: 0}
-    - Language: es
-      Text: "De verdad nos est\xE1 guiando..."
-      Clip: {fileID: 0}
-    PresentationMode: 0
-    ActionsBeforeDialogueLine: []
-    ActionsAfterDialogueLine: []
-    UserInputMethod: 0
-    TimeBeforeNextLine: 0
-    LineContinuationSettings:
-      Mode: 0
-      TargetContainer: {fileID: 0}
-      TargetAliasOrName: 
-      PushReturnPoint: 0
-      Choices: []
-      AllowGoBack: 0
-  - ConversationID: Conversation1
-    LineID: L_c596ce6ddc52
-    ConversationLineIndex: 21
-    characterID: Wolfstag
-    CharacterRepresentations:
-    - SelectedCharacterID: 
-      SelectedRepresentationName: Sprites
-      SelectedRepresentation: {fileID: 11400000, guid: 52e24c290fb50014b8aee74d5f275726, type: 2}
-      SelectedExpressionId: 
-      SelectedConfigurationEntryName: 
-      LineSpecificDisplayOptions:
-        FlipPortraitX: 0
-        FlipPortraitY: 0
-        FlipFullBodyX: 0
-        FlipFullBodyY: 0
-        DisplayPosition: 0
-        SlotId: 
-        PortraitScale: {x: 1, y: 1, z: 1}
-        FullBodyScale: {x: 1, y: 1, z: 1}
-    LocalizedDialogues:
-    - Language: en
-      Text: '*He pauses at the clearing''s edge, makes eye contact, then silently
-        disappears into the mist.*'
-      Clip: {fileID: 0}
-    - Language: fr
-      Text: "*Il s\u2019arr\xEAte \xE0 la lisi\xE8re de la clairi\xE8re, nous regarde,
-        puis dispara\xEEt dans la brume.*"
-      Clip: {fileID: 0}
-    - Language: es
-      Text: '*Se detiene en el borde del claro, nos mira y desaparece entre la niebla.*'
-      Clip: {fileID: 0}
-    PresentationMode: 0
-    ActionsBeforeDialogueLine: []
-    ActionsAfterDialogueLine: []
-    UserInputMethod: 0
-    TimeBeforeNextLine: 0
-    LineContinuationSettings:
-      Mode: 0
-      TargetContainer: {fileID: 0}
-      TargetAliasOrName: 
-      PushReturnPoint: 0
-      Choices: []
-      AllowGoBack: 0
-  - ConversationID: Conversation1
-    LineID: L_8b152df2138c
-    ConversationLineIndex: 22
-    characterID: Jared
-    CharacterRepresentations:
-    - SelectedCharacterID: 
-      SelectedRepresentationName: Sprites
-      SelectedRepresentation: {fileID: 11400000, guid: 5b9d585132056d5479e01ea082d4b2be, type: 2}
-      SelectedExpressionId: 
-      SelectedConfigurationEntryName: 
-      LineSpecificDisplayOptions:
-        FlipPortraitX: 0
-        FlipPortraitY: 0
-        FlipFullBodyX: 0
-        FlipFullBodyY: 0
-        DisplayPosition: 0
-        SlotId: 
-        PortraitScale: {x: 1, y: 1, z: 1}
-        FullBodyScale: {x: 1, y: 1, z: 1}
-    LocalizedDialogues:
-    - Language: en
-      Text: ...Goodbye, magic antler puppy. I hope you find your own trail home.
-      Clip: {fileID: 0}
-    - Language: fr
-      Text: "...Adieu, chien magique \xE0 bois. J\u2019esp\xE8re que tu retrouveras
-        ton chemin."
-      Clip: {fileID: 0}
-    - Language: es
-      Text: "...Adi\xF3s, cachorro m\xE1gico de astas. Ojal\xE1 encuentres tu camino."
-      Clip: {fileID: 0}
-    PresentationMode: 0
-    ActionsBeforeDialogueLine: []
-    ActionsAfterDialogueLine: []
-    UserInputMethod: 0
-    TimeBeforeNextLine: 0
-    LineContinuationSettings:
-      Mode: 0
-      TargetContainer: {fileID: 0}
-      TargetAliasOrName: 
-      PushReturnPoint: 0
-      Choices: []
-      AllowGoBack: 0
-  - ConversationID: Conversation1
-    LineID: L_4c2845dd0ba4
-    ConversationLineIndex: 23
-    characterID: Ava
-    CharacterRepresentations:
-    - SelectedCharacterID: 
-      SelectedRepresentationName: Sprites
-      SelectedRepresentation: {fileID: 11400000, guid: cf61be94e9ae46b4da28bb23d0bfa60f, type: 2}
-      SelectedExpressionId: 
-      SelectedConfigurationEntryName: 
-      LineSpecificDisplayOptions:
-        FlipPortraitX: 0
-        FlipPortraitY: 0
-        FlipFullBodyX: 0
-        FlipFullBodyY: 0
-        DisplayPosition: 0
-        SlotId: 
-        PortraitScale: {x: 1, y: 1, z: 1}
-        FullBodyScale: {x: 1, y: 1, z: 1}
-    LocalizedDialogues:
-    - Language: en
-      Text: "...Next time, I\u2019m bringing a map and a compass. And maybe pepper
-        spray."
-      Clip: {fileID: 0}
-    - Language: fr
-      Text: ...La prochaine fois, je prends une carte, une boussole... et du spray
-        au poivre.
-      Clip: {fileID: 0}
-    - Language: es
-      Text: "...La pr\xF3xima vez, llevar\xE9 un mapa, una br\xFAjula... y tal vez
-        gas pimienta."
-      Clip: {fileID: 0}
-    PresentationMode: 0
-    ActionsBeforeDialogueLine: []
-    ActionsAfterDialogueLine: []
-    UserInputMethod: 0
-    TimeBeforeNextLine: 0
-    LineContinuationSettings:
-      Mode: 0
-      TargetContainer: {fileID: 0}
-      TargetAliasOrName: 
-      PushReturnPoint: 0
-      Choices: []
-      AllowGoBack: 0
+  DialogueLines: []
   DefaultPresentationMode: 0
   AudioManifest: {fileID: 11400000, guid: 2e8c6e3aed53bbe44adfb275049e1155, type: 2}
-  ConversationYaml: {fileID: 5429869513228387122}
+  ConversationYaml: {fileID: -8146579704001286351}
   AllowPersistentOverrides: 1
   FilePath: DialogueScriptSample.yml
-  SourceYaml: {fileID: 102900000, guid: 4612376414d9cc742be9c4b790213e6a, type: 3}
-  SourceYamlAssetPath: Assets/Samples/ConvoCore/SampleAssets/2D Sample/DialogueScriptSample.yml
+  SourceYaml: {fileID: 102900000, guid: 804444e899ca1f647a8483b9f983bfaf, type: 3}
+  SourceYamlAssetPath: Assets/Test EJ Yaml.yml
   SourceExcelAsset: {fileID: 0}
   SourceExcelAssetPath: 
-  ConversationKey: Conversation1
+  ConversationKey: IntroCutscene
   _conversationGuid: bde237e7-af83-4511-9d84-4ac0211d6853
---- !u!49 &5429869513228387122
-TextAsset:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: EmbeddedYaml
-  m_Script: "Conversation1:\r\n- CharacterID: Ava\r\n  LineID: L_04d64b899837\r\n 
-    LocalizedDialogue:\r\n    en: Jared... we\u2019re definitely off-trail.\r\n   
-    fr: Jared... on s'est clairement \xE9gar\xE9s.\r\n    es: Jared... definitivamente
-    nos perdimos del sendero.\r\n- CharacterID: Jared\r\n  LineID: L_cb8d04d73eed\r\n 
-    LocalizedDialogue:\r\n    en: Technically, we\u2019re *still* in the forest.
-    Nature counts.\r\n    fr: Techniquement, on est toujours dans la for\xEAt. \xC7a
-    compte, non?\r\n    es: T\xE9cnicamente, seguimos en el bosque. Eso cuenta.\r\n-
-    CharacterID: Ava\r\n  LineID: L_8205ac8c4e8a\r\n  LocalizedDialogue:\r\n    en:
-    We\u2019ve circled that tree three times now.\r\n    fr: On a tourn\xE9 autour
-    de cet arbre trois fois.\r\n    es: Hemos rodeado ese \xE1rbol tres veces.\r\n-
-    CharacterID: Jared\r\n  LineID: L_9cd861a48566\r\n  LocalizedDialogue:\r\n   
-    en: It\u2019s a popular tree. Five stars on TreeAdvisor.\r\n    fr: C\u2019est
-    un arbre populaire. Cinq \xE9toiles sur TreeAdvisor.\r\n    es: Es un \xE1rbol
-    famoso. Cinco estrellas en TreeAdvisor.\r\n- CharacterID: Ava\r\n  LineID: L_e01c38d35e8f\r\n 
-    LocalizedDialogue:\r\n    en: Shh! Did you hear that?\r\n    fr: Chut! T\u2019as
-    entendu \xE7a ?\r\n    es: \xA1Shh! \xBFEscuchaste eso?\r\n- CharacterID: Jared\r\n 
-    LineID: L_8e7776524b04\r\n  LocalizedDialogue:\r\n    en: Maybe it\u2019s a bear.
-    Or a ranger with snacks.\r\n    fr: Peut-\xEAtre un ours. Ou un garde forestier
-    avec des snacks.\r\n    es: Quiz\xE1s un oso. O un guardabosques con bocadillos.\r\n-
-    CharacterID: Wolfstag\r\n  LineID: L_ec0dec9027e2\r\n  LocalizedDialogue:\r\n   
-    en: *A towering silhouette appears between the trees. Antlers like twisted branches.*\r\n   
-    fr: *Une silhouette massive \xE9merge entre les arbres. Des bois torsad\xE9s.*\r\n   
-    es: *Una silueta imponente aparece entre los \xE1rboles. Astas retorcidas.*\r\n-
-    CharacterID: Ava\r\n  LineID: L_603c3f4ba4d6\r\n  LocalizedDialogue:\r\n    en:
-    What is *that?!*\r\n    fr: C\u2019est quoi *\xE7a* ?!\r\n    es: \xBF\xA1Qu\xE9
-    es *eso*!?\r\n- CharacterID: Jared\r\n  LineID: L_d1cfb2aa2db7\r\n  LocalizedDialogue:\r\n   
-    en: *gasps* Whoooooa. Look at you!\r\n    fr: *hal\xE8tement* Wooooow. Regarde-moi
-    \xE7a!\r\n    es: *jadea* \xA1Wooooow! \xA1M\xEDrate!\r\n- CharacterID: Jared\r\n 
-    LineID: L_16a17b3396e4\r\n  LocalizedDialogue:\r\n    en: Are you lost too, buddy?
-    You need scritches? Huh? Who\u2019s a majestic forest beast? *You* are!\r\n   
-    fr: Tu t\u2019es perdu aussi, mon grand ? Tu veux des gratouilles ? Qui est une
-    b\xEAte majestueuse ? *C\u2019est toi!*\r\n    es: \xBFTambi\xE9n est\xE1s perdido,
-    amigo? \xBFQuieres caricias? \xBFQui\xE9n es una bestia majestuosa? \xA1*T\xFA*!\r\n-
-    CharacterID: Wolfstag\r\n  LineID: L_fecc5a327214\r\n  LocalizedDialogue:\r\n   
-    en: *It tilts its head slightly. Curious.*\r\n    fr: *Il incline l\xE9g\xE8rement
-    la t\xEAte. Curieux.*\r\n    es: *Inclina ligeramente la cabeza. Curioso.*\r\n-
-    CharacterID: Ava\r\n  LineID: L_4e12510204f1\r\n  LocalizedDialogue:\r\n    en:
-    Jared\u2026 stop trying to pet the antler demon!\r\n    fr: Jared\u2026 arr\xEAte
-    d\u2019essayer de caresser le d\xE9mon \xE0 bois!\r\n    es: \xA1Jared... deja
-    de intentar acariciar al demonio de los cuernos!\r\n- CharacterID: Wolfstag\r\n 
-    LineID: L_81d918d79d10\r\n  LocalizedDialogue:\r\n    en: *The shadows melt away.
-    The creature\u2019s full form is revealed\u2014fur glows silver in the moonlight.*\r\n   
-    fr: *Les ombres se dissipent. La cr\xE9ature se d\xE9voile \u2014 sa fourrure
-    luit \xE0 la lumi\xE8re lunaire.*\r\n    es: *Las sombras se desvanecen. Su forma
-    completa aparece \u2014 su pelaje brilla bajo la luna.*\r\n- CharacterID: Jared\r\n 
-    LineID: L_44b11d6cd642\r\n  LocalizedDialogue:\r\n    en: Oh my god. He\u2019s
-    gorgeous. I want ten of him.\r\n    fr: Oh mon dieu. Il est splendide. J\u2019en
-    veux dix.\r\n    es: Dios m\xEDo. Es hermoso. Quiero diez.\r\n- CharacterID:
-    Ava\r\n  LineID: L_b06da097d428\r\n  LocalizedDialogue:\r\n    en: ...I think
-    he\u2019s leading us somewhere.\r\n    fr: ...Je crois qu\u2019il nous guide
-    quelque part.\r\n    es: ...Creo que nos est\xE1 guiando.\r\n- CharacterID: Wolfstag\r\n 
-    LineID: L_9379a5301f7e\r\n  LocalizedDialogue:\r\n    en: *He glances back, takes
-    a few careful steps, then waits.*\r\n    fr: *Il jette un regard en arri\xE8re,
-    avance lentement, puis s\u2019arr\xEAte.*\r\n    es: *Mira hacia atr\xE1s, da
-    unos pasos y espera.*\r\n- CharacterID: Jared\r\n  LineID: L_b5e5b1e08f68\r\n 
-    LocalizedDialogue:\r\n    en: Look at him! He\u2019s so polite. Trail angel confirmed.\r\n   
-    fr: Regarde-le ! Trop poli. Ange du sentier confirm\xE9.\r\n    es: \xA1M\xEDralo!
-    Tan educado. \xC1ngel del sendero confirmado.\r\n- CharacterID: Ava\r\n  LineID:
-    L_6c2df39ca769\r\n  LocalizedDialogue:\r\n    en: I think he wants us to follow.
-    And... I think we should.\r\n    fr: Il veut qu\u2019on le suive. Et... je crois
-    qu\u2019on devrait.\r\n    es: Quiere que lo sigamos. Y... creo que debemos hacerlo.\r\n-
-    CharacterID: Wolfstag\r\n  LineID: L_ff77ae8df82b\r\n  LocalizedDialogue:\r\n   
-    en: *The creature moves ahead again, parting the brush. Bits of a path peek through
-    behind him.*\r\n    fr: *La cr\xE9ature avance \xE0 nouveau, \xE9cartant les
-    buissons. Un sentier appara\xEEt derri\xE8re lui.*\r\n    es: *La criatura avanza,
-    apartando los arbustos. Se revela un sendero detr\xE1s de \xE9l.*\r\n- CharacterID:
-    Jared\r\n  LineID: L_dc490e2592df\r\n  LocalizedDialogue:\r\n    en: Wait...
-    this looks familiar. That\u2019s the ridge! That\u2019s the way back!\r\n   
-    fr: Attends... \xE7a me dit quelque chose. C\u2019est la cr\xEAte ! C\u2019est
-    le bon chemin!\r\n    es: Espera... esto me suena. \xA1Esa es la cresta! \xA1Ese
-    es el camino de regreso!\r\n- CharacterID: Ava\r\n  LineID: L_2e2673368a71\r\n 
-    LocalizedDialogue:\r\n    en: He really *is* guiding us...\r\n    fr: Il nous
-    guide vraiment...\r\n    es: De verdad nos est\xE1 guiando...\r\n- CharacterID:
-    Wolfstag\r\n  LineID: L_4c04459eaeba\r\n  LocalizedDialogue:\r\n    en: *He pauses
-    at the clearing's edge, makes eye contact, then silently disappears into the
-    mist.*\r\n    fr: *Il s\u2019arr\xEAte \xE0 la lisi\xE8re de la clairi\xE8re,
-    nous regarde, puis dispara\xEEt dans la brume.*\r\n    es: *Se detiene en el
-    borde del claro, nos mira y desaparece entre la niebla.*\r\n- CharacterID: Jared\r\n 
-    LineID: L_6e955da171a6\r\n  LocalizedDialogue:\r\n    en: ...Goodbye, magic antler
-    puppy. I hope you find your own trail home.\r\n    fr: ...Adieu, chien magique
-    \xE0 bois. J\u2019esp\xE8re que tu retrouveras ton chemin.\r\n    es: ...Adi\xF3s,
-    cachorro m\xE1gico de astas. Ojal\xE1 encuentres tu camino.\r\n- CharacterID:
-    Ava\r\n  LineID: L_1d54676a6a5b\r\n  LocalizedDialogue:\r\n    en: ...Next time,
-    I\u2019m bringing a map and a compass. And maybe pepper spray.\r\n    fr: ...La
-    prochaine fois, je prends une carte, une boussole... et du spray au poivre.\r\n   
-    es: ...La pr\xF3xima vez, llevar\xE9 un mapa, una br\xFAjula... y tal vez gas
-    pimienta."
