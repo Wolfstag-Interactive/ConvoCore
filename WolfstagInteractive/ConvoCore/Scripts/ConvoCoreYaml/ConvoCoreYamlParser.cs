@@ -51,7 +51,13 @@ namespace WolfstagInteractive.ConvoCore
             // Pass 1: wrap completely unquoted values in double quotes.
             yaml = Regex.Replace(yaml,
                 @"^(\s*)([a-z]{2,3}):\s*([^""'\r\n][^\r\n]*)",
-                "$1$2: \"$3\"", opts);
+                m =>
+                {
+                    string prefix = m.Groups[1].Value;
+                    string key    = m.Groups[2].Value;
+                    string value  = m.Groups[3].Value.Replace("\"", "\\\"");
+                    return $"{prefix}{key}: \"{value}\"";
+                }, opts);
 
             // Pass 2: find single-quoted values — pattern captures everything between the outer quotes.
             // If the captured inner text contains a ' that is NOT part of a '' escape pair, the string
