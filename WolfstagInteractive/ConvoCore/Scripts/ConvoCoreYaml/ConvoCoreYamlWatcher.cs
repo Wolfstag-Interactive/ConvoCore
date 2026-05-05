@@ -101,11 +101,23 @@ namespace WolfstagInteractive.ConvoCore.Editor
                 return false;
 
             // Parse
-            if (!ConvoCoreYamlParser.TryParse(srcText, out var dict, out var parseErr))
+            if (!ConvoCoreYamlParser.TryParse(srcText, out var dict,
+                    out IReadOnlyList<ConvoCoreYamlDiagnostic> parseDiagnostics))
             {
-                Debug.LogError($"ConvoCore: YAML parse failed, cannot embed. {parseErr}\nSource: {sourcePath}", data);
+                // Errors always surface regardless of VerboseLogs.
+                Debug.LogError(
+                    $"ConvoCore: YAML parse failed, cannot embed.\n" +
+                    ConvoCoreYamlDiagnostic.Format(sourcePath, parseDiagnostics),
+                    data);
                 return false;
             }
+
+            // Surface any warnings (smart quotes, duplicate locales, etc.) only when verbose logging is on.
+            if ((ConvoCoreYamlLoader.Settings?.VerboseLogs ?? false) && parseDiagnostics.Count > 0)
+                Debug.LogWarning(
+                    $"ConvoCore: YAML parsed with warnings.\n" +
+                    ConvoCoreYamlDiagnostic.Format(sourcePath, parseDiagnostics),
+                    data);
 
             // Ensure IDs (and validate uniqueness)
             bool changed = ConvoCoreLineIDUtility.EnsureLineIds(dict, out var idErr);

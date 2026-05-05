@@ -461,8 +461,15 @@ namespace WolfstagInteractive.ConvoCore.Editor
                 var yamlText = data.ConversationYaml.text;
                 if (string.IsNullOrEmpty(yamlText)) return null;
 
-                // Uses your runtime parser (already normalizes keys to case-insensitive dictionary)
-                var dict = ConvoCoreYamlParser.Parse(yamlText);
+                // Uses the runtime parser (already normalizes keys to case-insensitive dictionary).
+                // TryParse is used here so a broken YAML file surfaces a warning rather than
+                // silently returning null and leaving the inspector with no locale options.
+                if (!ConvoCoreYamlParser.TryParse(yamlText, out var dict, out string parseErr))
+                {
+                    UnityEngine.Debug.LogWarning(
+                        $"[ConvoCore] Could not read locales from embedded YAML:\n{parseErr}", data);
+                    return null;
+                }
                 var set = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
 
                 foreach (var kv in dict)
@@ -483,9 +490,12 @@ namespace WolfstagInteractive.ConvoCore.Editor
 
                 return set.OrderBy(s => s, StringComparer.OrdinalIgnoreCase).ToList();
             }
-            catch
+            catch (Exception ex)
             {
-                return null; // keep inspector resilient
+                // Keep the inspector resilient against unexpected runtime errors.
+                UnityEngine.Debug.LogWarning(
+                    $"[ConvoCore] Unexpected error reading locale keys from embedded YAML: {ex.Message}", data);
+                return null;
             }
         }
 

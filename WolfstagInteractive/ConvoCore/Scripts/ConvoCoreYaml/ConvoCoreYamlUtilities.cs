@@ -43,27 +43,30 @@ namespace WolfstagInteractive.ConvoCore
                 return;
             }
             
+            bool verboseLogs = ConvoCoreYamlLoader.Settings?.VerboseLogs ?? false;
+
+            var source = _convoCoreConversationData.ConversationYaml != null
+                ? $"embedded TextAsset '{_convoCoreConversationData.ConversationYaml.name}'"
+                : $"file at FilePath '{_convoCoreConversationData.FilePath}'";
+
             Dictionary<string, List<DialogueYamlConfig>> dialoguesBySection;
-            try
+            if (!ConvoCoreYamlParser.TryParse(yamlData, out dialoguesBySection,
+                    out IReadOnlyList<ConvoCoreYamlDiagnostic> parseDiagnostics))
             {
-                dialoguesBySection = ConvoCoreYamlParser.Parse(yamlData);
-            }
-            catch (Exception ex)
-            {
-                var source = _convoCoreConversationData.ConversationYaml != null
-                    ? $"embedded TextAsset '{_convoCoreConversationData.ConversationYaml.name}'"
-                    : $"file at FilePath '{_convoCoreConversationData.FilePath}'";
+                // Errors always surface regardless of VerboseLogs.
                 Debug.LogError(
                     $"ConvoCore: Failed to parse YAML for conversation key '{conversationKey}' " +
                     $"on asset '{_convoCoreConversationData.name}' (source: {source}).\n" +
-                    $"Parser error: {ex.Message}\n" +
-                    $"Common causes:\n" +
-                    $"  • Special characters in dialogue text (e.g. ':', '#', '*', '!') that are unquoted\n" +
-                    $"  • Indentation errors (mixing tabs and spaces)\n" +
-                    $"  • A value spanning multiple lines that is not properly block-quoted\n" +
-                    $"  • A YAML document-end marker '...' or document-start marker '---' appearing in content");
+                    ConvoCoreYamlDiagnostic.Format(null, parseDiagnostics));
                 return;
             }
+
+            // Surface any warnings only when verbose logging is on.
+            if (verboseLogs && parseDiagnostics.Count > 0)
+                Debug.LogWarning(
+                    $"ConvoCore: YAML for '{conversationKey}' on '{_convoCoreConversationData.name}' " +
+                    $"(source: {source}) parsed with warnings.\n" +
+                    ConvoCoreYamlDiagnostic.Format(null, parseDiagnostics));
 
             if (!dialoguesBySection.TryGetValue(conversationKey, out var yamlConfigs) || yamlConfigs == null)
             {
@@ -137,7 +140,8 @@ namespace WolfstagInteractive.ConvoCore
             }
 #endif
 
-            Debug.Log($"Importing {yamlConfigs.Count} lines for conversation key '{conversationKey}'.");
+            if (verboseLogs)
+                Debug.Log($"Importing {yamlConfigs.Count} lines for conversation key '{conversationKey}'.");
 
             if (_convoCoreConversationData.DialogueLines == null)
                 _convoCoreConversationData.DialogueLines = new List<ConvoCoreConversationData.DialogueLineInfo>();
@@ -147,6 +151,12 @@ namespace WolfstagInteractive.ConvoCore
             for (int i = 0; i < yamlConfigs.Count; i++)
             {
                 var yamlConfig = yamlConfigs[i] ?? new DialogueYamlConfig();
+
+                // Loop 1 skips null entries so they never receive a generated LineID.
+                // Guard here so those entries (and any other edge case) don't produce a
+                // DialogueLineInfo with an empty LineID that triggers a false-positive error.
+                if (string.IsNullOrWhiteSpace(yamlConfig.LineID))
+                    yamlConfig.LineID = ConvoCoreLineID.NewLineID();
 
                 var localizedDialogueList = new List<ConvoCoreConversationData.LocalizedDialogue>();
                 if (yamlConfig.LocalizedDialogue != null)

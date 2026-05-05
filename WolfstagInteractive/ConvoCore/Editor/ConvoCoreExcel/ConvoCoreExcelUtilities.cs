@@ -101,7 +101,7 @@ namespace WolfstagInteractive.ConvoCore.Editor
             var yamlText = BuildSafeYaml(configDict);
 
             // Validate that the generated YAML round-trips through the parser before embedding it.
-            if (!ConvoCoreYamlParser.TryParse(yamlText, out _, out var yamlValidationError))
+            if (!ConvoCoreYamlParser.TryParse(yamlText, out _, out string yamlValidationError))
             {
                 diagnosticMessage =
                     $"ConvoCore Excel: Internal YAML generation error for '{fileName}'. " +
