@@ -24,8 +24,10 @@ var hierarchy =
     [ "WolfstagInteractive.ConvoCore.SaveSystem.ConvoCoreSettingsSnapshot", "classWolfstagInteractive_1_1ConvoCore_1_1SaveSystem_1_1ConvoCoreSettingsSnapshot.html", null ],
     [ "WolfstagInteractive.ConvoCore.SaveSystem.ConvoCoreSnapshotMigrator", "classWolfstagInteractive_1_1ConvoCore_1_1SaveSystem_1_1ConvoCoreSnapshotMigrator.html", null ],
     [ "WolfstagInteractive.ConvoCore.SaveSystem.ConvoCoreVariable", "classWolfstagInteractive_1_1ConvoCore_1_1SaveSystem_1_1ConvoCoreVariable.html", null ],
+    [ "WolfstagInteractive.ConvoCore.ConvoCoreYamlDiagnostic", "structWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreYamlDiagnostic.html", null ],
     [ "WolfstagInteractive.ConvoCore.ConvoCoreYamlLoader", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreYamlLoader.html", null ],
     [ "WolfstagInteractive.ConvoCore.ConvoCoreYamlParser", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreYamlParser.html", null ],
+    [ "WolfstagInteractive.ConvoCore.ConvoCoreYamlPreprocessor", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreYamlPreprocessor.html", null ],
     [ "WolfstagInteractive.ConvoCore.ConvoCoreYamlSerializer", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreYamlSerializer.html", null ],
     [ "WolfstagInteractive.ConvoCore.ConvoCoreYamlUtilities", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreYamlUtilities.html", null ],
     [ "WolfstagInteractive.ConvoCore.ConvoStartContext", "structWolfstagInteractive_1_1ConvoCore_1_1ConvoStartContext.html", null ],
@@ -126,6 +128,7 @@ var hierarchy =
     [ "WolfstagInteractive.ConvoCore.ParticipantConfigurationSlot", "classWolfstagInteractive_1_1ConvoCore_1_1ParticipantConfigurationSlot.html", null ],
     [ "WolfstagInteractive.ConvoCore.PrefabCharacterConfigurationEntry", "classWolfstagInteractive_1_1ConvoCore_1_1PrefabCharacterConfigurationEntry.html", null ],
     [ "WolfstagInteractive.ConvoCore.PrefabExpressionMapping", "classWolfstagInteractive_1_1ConvoCore_1_1PrefabExpressionMapping.html", null ],
+    [ "WolfstagInteractive.ConvoCore.PreprocessorResult", "classWolfstagInteractive_1_1ConvoCore_1_1PreprocessorResult.html", null ],
     [ "PropertyAttribute", null, [
       [ "WolfstagInteractive.ConvoCore.ExpressionIDSelectorAttribute", "classWolfstagInteractive_1_1ConvoCore_1_1ExpressionIDSelectorAttribute.html", null ],
       [ "WolfstagInteractive.ConvoCore.PagedListAttribute", "classWolfstagInteractive_1_1ConvoCore_1_1PagedListAttribute.html", null ]

@@ -5,5 +5,6 @@ var searchData=
   ['binduievents_2',['BindUIEvents',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCore.html#abfb9eb63d0d6b7c6f591794c40e5f430',1,'WolfstagInteractive::ConvoCore::ConvoCore']]],
   ['blendto_3',['BlendTo',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreBlendShapeDisplay.html#a0068653287839e0ac33d97a27a871cbd',1,'WolfstagInteractive::ConvoCore::ConvoCoreBlendShapeDisplay']]],
   ['buildcandidates_4',['BuildCandidates',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreDialogueLocalizationHandler.html#a443e06bba9a3cae5fc97a74ac95c8174',1,'WolfstagInteractive::ConvoCore::ConvoCoreDialogueLocalizationHandler']]],
-  ['buildsnapshot_5',['BuildSnapshot',['../classWolfstagInteractive_1_1ConvoCore_1_1SaveSystem_1_1ConvoCoreConversationSaveManager.html#a44db7986dff61595e1521bc9871acf31',1,'WolfstagInteractive::ConvoCore::SaveSystem::ConvoCoreConversationSaveManager']]]
+  ['buildsnapshot_5',['BuildSnapshot',['../classWolfstagInteractive_1_1ConvoCore_1_1SaveSystem_1_1ConvoCoreConversationSaveManager.html#a44db7986dff61595e1521bc9871acf31',1,'WolfstagInteractive::ConvoCore::SaveSystem::ConvoCoreConversationSaveManager']]],
+  ['buildyamlexceptiondiagnostic_6',['BuildYamlExceptionDiagnostic',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreYamlParser.html#aaa1ca84f518960e021843c5444141d69',1,'WolfstagInteractive::ConvoCore::ConvoCoreYamlParser']]]
 ];

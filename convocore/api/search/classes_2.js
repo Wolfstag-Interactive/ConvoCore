@@ -65,12 +65,14 @@ var searchData=
   ['convocoreunityaudioprovider_62',['ConvoCoreUnityAudioProvider',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreUnityAudioProvider.html',1,'WolfstagInteractive::ConvoCore']]],
   ['convocoreunityaudioreference_63',['ConvoCoreUnityAudioReference',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreUnityAudioReference.html',1,'WolfstagInteractive::ConvoCore']]],
   ['convocorevariable_64',['ConvoCoreVariable',['../classWolfstagInteractive_1_1ConvoCore_1_1SaveSystem_1_1ConvoCoreVariable.html',1,'WolfstagInteractive::ConvoCore::SaveSystem']]],
-  ['convocoreyamlloader_65',['ConvoCoreYamlLoader',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreYamlLoader.html',1,'WolfstagInteractive::ConvoCore']]],
-  ['convocoreyamlparser_66',['ConvoCoreYamlParser',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreYamlParser.html',1,'WolfstagInteractive::ConvoCore']]],
-  ['convocoreyamlserializer_67',['ConvoCoreYamlSerializer',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreYamlSerializer.html',1,'WolfstagInteractive::ConvoCore']]],
-  ['convocoreyamlutilities_68',['ConvoCoreYamlUtilities',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreYamlUtilities.html',1,'WolfstagInteractive::ConvoCore']]],
-  ['convosettingsstate_69',['ConvoSettingsState',['../classWolfstagInteractive_1_1ConvoCore_1_1SaveSystem_1_1ConvoSettingsState.html',1,'WolfstagInteractive::ConvoCore::SaveSystem']]],
-  ['convostartcontext_70',['ConvoStartContext',['../structWolfstagInteractive_1_1ConvoCore_1_1ConvoStartContext.html',1,'WolfstagInteractive::ConvoCore']]],
-  ['convovariableentry_71',['ConvoVariableEntry',['../classWolfstagInteractive_1_1ConvoCore_1_1SaveSystem_1_1ConvoVariableEntry.html',1,'WolfstagInteractive::ConvoCore::SaveSystem']]],
-  ['convovariablestore_72',['ConvoVariableStore',['../classWolfstagInteractive_1_1ConvoCore_1_1SaveSystem_1_1ConvoVariableStore.html',1,'WolfstagInteractive::ConvoCore::SaveSystem']]]
+  ['convocoreyamldiagnostic_65',['ConvoCoreYamlDiagnostic',['../structWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreYamlDiagnostic.html',1,'WolfstagInteractive::ConvoCore']]],
+  ['convocoreyamlloader_66',['ConvoCoreYamlLoader',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreYamlLoader.html',1,'WolfstagInteractive::ConvoCore']]],
+  ['convocoreyamlparser_67',['ConvoCoreYamlParser',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreYamlParser.html',1,'WolfstagInteractive::ConvoCore']]],
+  ['convocoreyamlpreprocessor_68',['ConvoCoreYamlPreprocessor',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreYamlPreprocessor.html',1,'WolfstagInteractive::ConvoCore']]],
+  ['convocoreyamlserializer_69',['ConvoCoreYamlSerializer',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreYamlSerializer.html',1,'WolfstagInteractive::ConvoCore']]],
+  ['convocoreyamlutilities_70',['ConvoCoreYamlUtilities',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreYamlUtilities.html',1,'WolfstagInteractive::ConvoCore']]],
+  ['convosettingsstate_71',['ConvoSettingsState',['../classWolfstagInteractive_1_1ConvoCore_1_1SaveSystem_1_1ConvoSettingsState.html',1,'WolfstagInteractive::ConvoCore::SaveSystem']]],
+  ['convostartcontext_72',['ConvoStartContext',['../structWolfstagInteractive_1_1ConvoCore_1_1ConvoStartContext.html',1,'WolfstagInteractive::ConvoCore']]],
+  ['convovariableentry_73',['ConvoVariableEntry',['../classWolfstagInteractive_1_1ConvoCore_1_1SaveSystem_1_1ConvoVariableEntry.html',1,'WolfstagInteractive::ConvoCore::SaveSystem']]],
+  ['convovariablestore_74',['ConvoVariableStore',['../classWolfstagInteractive_1_1ConvoCore_1_1SaveSystem_1_1ConvoVariableStore.html',1,'WolfstagInteractive::ConvoCore::SaveSystem']]]
 ];

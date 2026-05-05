@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['fadein_0',['fadein',['../interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoCoreFadeIn.html#a2fd9c966378ae545ba4f0b1c7e0d7bed',1,'WolfstagInteractive.ConvoCore.IConvoCoreFadeIn.FadeIn()'],['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSimpleFade.html#a585be6a0ede4f9d3681161c05cbf52ce',1,'WolfstagInteractive.ConvoCore.ConvoCoreSimpleFade.FadeIn()']]],
+  ['fadein_0',['fadein',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSimpleFade.html#a585be6a0ede4f9d3681161c05cbf52ce',1,'WolfstagInteractive.ConvoCore.ConvoCoreSimpleFade.FadeIn()'],['../interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoCoreFadeIn.html#a2fd9c966378ae545ba4f0b1c7e0d7bed',1,'WolfstagInteractive.ConvoCore.IConvoCoreFadeIn.FadeIn()']]],
   ['fadeoutandrelease_1',['fadeoutandrelease',['../interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoCoreFadeOut.html#ab48bcbaf32dc4ebb34d09cfab9caf866',1,'WolfstagInteractive.ConvoCore.IConvoCoreFadeOut.FadeOutAndRelease()'],['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSimpleFade.html#a2dc51b14a84607d3976d4f3e1795ee9f',1,'WolfstagInteractive.ConvoCore.ConvoCoreSimpleFade.FadeOutAndRelease(System.Action onComplete)']]],
   ['faderoutine_2',['FadeRoutine',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSimpleFade.html#a2d4dde4dc77c787b8a60797fae0fa94c',1,'WolfstagInteractive::ConvoCore::ConvoCoreSimpleFade']]],
   ['findallbyname_3',['FindAllByName',['../classWolfstagInteractive_1_1ConvoCore_1_1GameObjectHelper.html#a466a468aa2cc5c9f9197a64becbe66c4',1,'WolfstagInteractive::ConvoCore::GameObjectHelper']]],
@@ -13,5 +13,6 @@ var searchData=
   ['findinchildrenrecursive_10',['FindInChildrenRecursive',['../classWolfstagInteractive_1_1ConvoCore_1_1GameObjectHelper.html#a4fad508f95be15637f3413154fc014e4',1,'WolfstagInteractive::ConvoCore::GameObjectHelper']]],
   ['fireanimatortrigger_11',['FireAnimatorTrigger',['../classWolfstagInteractive_1_1ConvoCore_1_1TransformLerpBehaviour.html#a247bf857af8d1ff06161e9038c6795fa',1,'WolfstagInteractive::ConvoCore::TransformLerpBehaviour']]],
   ['forcescrolltobottom_12',['ForceScrollToBottom',['../classWolfstagInteractive_1_1ConvoCore_1_1PlainTextHistoryRenderer.html#adfe66489ddda8ec2df1107e5c565656e',1,'WolfstagInteractive::ConvoCore::PlainTextHistoryRenderer']]],
-  ['forcevalidatedialoguelines_13',['ForceValidateDialogueLines',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData.html#afa40ef6dcfb105bdca7ae877776b5d1a',1,'WolfstagInteractive::ConvoCore::ConvoCoreConversationData']]]
+  ['forcevalidatedialoguelines_13',['ForceValidateDialogueLines',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData.html#afa40ef6dcfb105bdca7ae877776b5d1a',1,'WolfstagInteractive::ConvoCore::ConvoCoreConversationData']]],
+  ['format_14',['Format',['../structWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreYamlDiagnostic.html#afccba1c166d3bff6004423177b3eceab',1,'WolfstagInteractive::ConvoCore::ConvoCoreYamlDiagnostic']]]
 ];

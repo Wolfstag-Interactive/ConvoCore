@@ -59,8 +59,10 @@ var namespaceWolfstagInteractive_1_1ConvoCore =
     [ "ConvoCoreUIFoundation", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreUIFoundation.html", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreUIFoundation" ],
     [ "ConvoCoreUnityAudioProvider", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreUnityAudioProvider.html", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreUnityAudioProvider" ],
     [ "ConvoCoreUnityAudioReference", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreUnityAudioReference.html", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreUnityAudioReference" ],
+    [ "ConvoCoreYamlDiagnostic", "structWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreYamlDiagnostic.html", "structWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreYamlDiagnostic" ],
     [ "ConvoCoreYamlLoader", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreYamlLoader.html", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreYamlLoader" ],
     [ "ConvoCoreYamlParser", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreYamlParser.html", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreYamlParser" ],
+    [ "ConvoCoreYamlPreprocessor", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreYamlPreprocessor.html", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreYamlPreprocessor" ],
     [ "ConvoCoreYamlSerializer", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreYamlSerializer.html", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreYamlSerializer" ],
     [ "ConvoCoreYamlUtilities", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreYamlUtilities.html", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreYamlUtilities" ],
     [ "ConvoStartContext", "structWolfstagInteractive_1_1ConvoCore_1_1ConvoStartContext.html", "structWolfstagInteractive_1_1ConvoCore_1_1ConvoStartContext" ],
@@ -99,6 +101,7 @@ var namespaceWolfstagInteractive_1_1ConvoCore =
     [ "PrefabDialogueHistoryOutput", "classWolfstagInteractive_1_1ConvoCore_1_1PrefabDialogueHistoryOutput.html", "classWolfstagInteractive_1_1ConvoCore_1_1PrefabDialogueHistoryOutput" ],
     [ "PrefabExpressionMapping", "classWolfstagInteractive_1_1ConvoCore_1_1PrefabExpressionMapping.html", "classWolfstagInteractive_1_1ConvoCore_1_1PrefabExpressionMapping" ],
     [ "PrefabHistoryRenderer", "classWolfstagInteractive_1_1ConvoCore_1_1PrefabHistoryRenderer.html", "classWolfstagInteractive_1_1ConvoCore_1_1PrefabHistoryRenderer" ],
+    [ "PreprocessorResult", "classWolfstagInteractive_1_1ConvoCore_1_1PreprocessorResult.html", "classWolfstagInteractive_1_1ConvoCore_1_1PreprocessorResult" ],
     [ "RepresentationExpressionOverride", "classWolfstagInteractive_1_1ConvoCore_1_1RepresentationExpressionOverride.html", "classWolfstagInteractive_1_1ConvoCore_1_1RepresentationExpressionOverride" ],
     [ "RepresentationPair", "classWolfstagInteractive_1_1ConvoCore_1_1RepresentationPair.html", "classWolfstagInteractive_1_1ConvoCore_1_1RepresentationPair" ],
     [ "RichTextHistoryRenderer", "classWolfstagInteractive_1_1ConvoCore_1_1RichTextHistoryRenderer.html", "classWolfstagInteractive_1_1ConvoCore_1_1RichTextHistoryRenderer" ],
@@ -150,6 +153,10 @@ var namespaceWolfstagInteractive_1_1ConvoCore =
       [ "Fresh", "namespaceWolfstagInteractive_1_1ConvoCore.html#ab51458c34c46dd42dd277279af380b8bafe8965a9748c1bc48af1711be837124e", null ],
       [ "Resume", "namespaceWolfstagInteractive_1_1ConvoCore.html#ab51458c34c46dd42dd277279af380b8baf1cefec9e2196c672a622347f1fbc325", null ],
       [ "Restart", "namespaceWolfstagInteractive_1_1ConvoCore.html#ab51458c34c46dd42dd277279af380b8ba51cfbcff36da74a9fc47f3a5140f99f2", null ]
+    ] ],
+    [ "DiagnosticSeverity", "namespaceWolfstagInteractive_1_1ConvoCore.html#a6267fa7a81633d66a667dc58b5ee9e5e", [
+      [ "Error", "namespaceWolfstagInteractive_1_1ConvoCore.html#a6267fa7a81633d66a667dc58b5ee9e5ea902b0d55fddef6f8d651fe1035b7d4bd", null ],
+      [ "Warning", "namespaceWolfstagInteractive_1_1ConvoCore.html#a6267fa7a81633d66a667dc58b5ee9e5ea0eaadb4fcb48a0a0ed7bc9868be9fbaa", null ]
     ] ],
     [ "ExcelFormulaCellBehavior", "namespaceWolfstagInteractive_1_1ConvoCore.html#a94a97dbcb9d0d470cea1b3f05679ee5e", [
       [ "UseCachedValue", "namespaceWolfstagInteractive_1_1ConvoCore.html#a94a97dbcb9d0d470cea1b3f05679ee5ea7a8fe460a57fbb44e72aae3c2c374694", null ],

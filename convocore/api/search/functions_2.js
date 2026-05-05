@@ -15,6 +15,8 @@ var searchData=
   ['convocoreconversationdata_12',['ConvoCoreConversationData',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreConversationData.html#ac82fad577df98effb74caf7c7bd0d52b',1,'WolfstagInteractive::ConvoCore::ConvoCoreConversationData']]],
   ['convocoredialoguelocalizationhandler_13',['ConvoCoreDialogueLocalizationHandler',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreDialogueLocalizationHandler.html#abb0e327e9da37ffe3619b27a617f9fea',1,'WolfstagInteractive::ConvoCore::ConvoCoreDialogueLocalizationHandler']]],
   ['convocorelanguagemanager_14',['ConvoCoreLanguageManager',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreLanguageManager.html#a65442194492a521ed82e7f78439447ce',1,'WolfstagInteractive::ConvoCore::ConvoCoreLanguageManager']]],
-  ['convocoreyamlutilities_15',['ConvoCoreYamlUtilities',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreYamlUtilities.html#ae654a6338995e5250cb27a84d0fbbfba',1,'WolfstagInteractive::ConvoCore::ConvoCoreYamlUtilities']]],
-  ['createinstance_16',['CreateInstance',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreHistoryRendererRegistry.html#aec97f395cf9001b363768c1a52771868',1,'WolfstagInteractive::ConvoCore::ConvoCoreHistoryRendererRegistry']]]
+  ['convocoreyamldiagnostic_15',['ConvoCoreYamlDiagnostic',['../structWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreYamlDiagnostic.html#a3613f7b08a85716478fbd7dcea0f840e',1,'WolfstagInteractive::ConvoCore::ConvoCoreYamlDiagnostic']]],
+  ['convocoreyamlutilities_16',['ConvoCoreYamlUtilities',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreYamlUtilities.html#ae654a6338995e5250cb27a84d0fbbfba',1,'WolfstagInteractive::ConvoCore::ConvoCoreYamlUtilities']]],
+  ['countleadingspaces_17',['CountLeadingSpaces',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreYamlPreprocessor.html#a4aa5978cb3c699e504f8a5ed81a1f6f6',1,'WolfstagInteractive::ConvoCore::ConvoCoreYamlPreprocessor']]],
+  ['createinstance_18',['CreateInstance',['../classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreHistoryRendererRegistry.html#aec97f395cf9001b363768c1a52771868',1,'WolfstagInteractive::ConvoCore::ConvoCoreHistoryRendererRegistry']]]
 ];

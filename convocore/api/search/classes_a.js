@@ -7,5 +7,6 @@ var searchData=
   ['prefabcharacterrepresentationdata_4',['PrefabCharacterRepresentationData',['../classWolfstagInteractive_1_1ConvoCore_1_1PrefabCharacterRepresentationData.html',1,'WolfstagInteractive::ConvoCore']]],
   ['prefabdialoguehistoryoutput_5',['PrefabDialogueHistoryOutput',['../classWolfstagInteractive_1_1ConvoCore_1_1PrefabDialogueHistoryOutput.html',1,'WolfstagInteractive::ConvoCore']]],
   ['prefabexpressionmapping_6',['PrefabExpressionMapping',['../classWolfstagInteractive_1_1ConvoCore_1_1PrefabExpressionMapping.html',1,'WolfstagInteractive::ConvoCore']]],
-  ['prefabhistoryrenderer_7',['PrefabHistoryRenderer',['../classWolfstagInteractive_1_1ConvoCore_1_1PrefabHistoryRenderer.html',1,'WolfstagInteractive::ConvoCore']]]
+  ['prefabhistoryrenderer_7',['PrefabHistoryRenderer',['../classWolfstagInteractive_1_1ConvoCore_1_1PrefabHistoryRenderer.html',1,'WolfstagInteractive::ConvoCore']]],
+  ['preprocessorresult_8',['PreprocessorResult',['../classWolfstagInteractive_1_1ConvoCore_1_1PreprocessorResult.html',1,'WolfstagInteractive::ConvoCore']]]
 ];
