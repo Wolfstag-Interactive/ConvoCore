@@ -5,6 +5,8 @@ using System.IO;
 using UnityEditor;
 using UnityEngine;
 
+[assembly: System.Runtime.CompilerServices.InternalsVisibleTo("ConvoCoreEditor")]
+
 namespace WolfstagInteractive.ConvoCore.Editor
 {
     [HelpURL(
@@ -84,7 +86,7 @@ namespace WolfstagInteractive.ConvoCore.Editor
             }
         }
 
-        private static bool TryEmbedFromPath(ConvoCoreConversationData data, string sourcePath)
+        internal static bool TryEmbedFromPath(ConvoCoreConversationData data, string sourcePath)
         {
             if (data == null) return false;
             if (string.IsNullOrEmpty(sourcePath)) return false;

@@ -18,10 +18,216 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 871b502169fa7f74e9d3d3a7b87b6503, type: 2}
   - {fileID: 11400000, guid: 086dcde826a3fcb4b903e747228d482b, type: 2}
   ParticipantConfigurationDefaults: []
-  DialogueLines: []
+  DialogueLines:
+  - ConversationID: LabIntroPart2
+    LineID: L_de250d5f6295
+    ConversationLineIndex: 0
+    characterID: Player
+    CharacterRepresentations:
+    - SelectedCharacterID: 
+      SelectedRepresentationName: Sprites
+      SelectedRepresentation: {fileID: 11400000, guid: cf61be94e9ae46b4da28bb23d0bfa60f, type: 2}
+      SelectedExpressionId: 
+      SelectedConfigurationEntryName: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplaySlot: Left
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    LocalizedDialogues:
+    - Language: en
+      Text: Well, I got good news and bad news.
+      Clip: {fileID: 0}
+    PresentationMode: 0
+    ActionsBeforeDialogueLine: []
+    ActionsAfterDialogueLine: []
+    UserInputMethod: 0
+    TimeBeforeNextLine: 0
+    LineContinuationSettings:
+      Mode: 0
+      TargetContainer: {fileID: 0}
+      TargetAliasOrName: 
+      PushReturnPoint: 0
+      Choices: []
+      AllowGoBack: 0
+  - ConversationID: LabIntroPart2
+    LineID: L_79a74b9db137
+    ConversationLineIndex: 1
+    characterID: Fae
+    CharacterRepresentations:
+    - SelectedCharacterID: 
+      SelectedRepresentationName: Sprites
+      SelectedRepresentation: {fileID: 11400000, guid: cf61be94e9ae46b4da28bb23d0bfa60f, type: 2}
+      SelectedExpressionId: 
+      SelectedConfigurationEntryName: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplaySlot: Left
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    LocalizedDialogues:
+    - Language: en
+      Text: What is it?
+      Clip: {fileID: 0}
+    PresentationMode: 0
+    ActionsBeforeDialogueLine: []
+    ActionsAfterDialogueLine: []
+    UserInputMethod: 0
+    TimeBeforeNextLine: 0
+    LineContinuationSettings:
+      Mode: 0
+      TargetContainer: {fileID: 0}
+      TargetAliasOrName: 
+      PushReturnPoint: 0
+      Choices: []
+      AllowGoBack: 0
+  - ConversationID: LabIntroPart2
+    LineID: L_08ae1ae0db6b
+    ConversationLineIndex: 2
+    characterID: Player
+    CharacterRepresentations:
+    - SelectedCharacterID: 
+      SelectedRepresentationName: Sprites
+      SelectedRepresentation: {fileID: 11400000, guid: cf61be94e9ae46b4da28bb23d0bfa60f, type: 2}
+      SelectedExpressionId: 
+      SelectedConfigurationEntryName: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplaySlot: Left
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    LocalizedDialogues:
+    - Language: en
+      Text: Good news is, I found what might be the power switch to this place. Bad
+        news is, it's being held down by this robot-hand thingy.
+      Clip: {fileID: 0}
+    PresentationMode: 0
+    ActionsBeforeDialogueLine: []
+    ActionsAfterDialogueLine: []
+    UserInputMethod: 0
+    TimeBeforeNextLine: 0
+    LineContinuationSettings:
+      Mode: 0
+      TargetContainer: {fileID: 0}
+      TargetAliasOrName: 
+      PushReturnPoint: 0
+      Choices: []
+      AllowGoBack: 0
+  - ConversationID: LabIntroPart2
+    LineID: L_daebc046eeb9
+    ConversationLineIndex: 3
+    characterID: Player
+    CharacterRepresentations:
+    - SelectedCharacterID: 
+      SelectedRepresentationName: Sprites
+      SelectedRepresentation: {fileID: 11400000, guid: cf61be94e9ae46b4da28bb23d0bfa60f, type: 2}
+      SelectedExpressionId: 
+      SelectedConfigurationEntryName: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplaySlot: Left
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    LocalizedDialogues:
+    - Language: en
+      Text: Sooo uhhh... any ideas?
+      Clip: {fileID: 0}
+    PresentationMode: 0
+    ActionsBeforeDialogueLine: []
+    ActionsAfterDialogueLine: []
+    UserInputMethod: 0
+    TimeBeforeNextLine: 0
+    LineContinuationSettings:
+      Mode: 0
+      TargetContainer: {fileID: 0}
+      TargetAliasOrName: 
+      PushReturnPoint: 0
+      Choices: []
+      AllowGoBack: 0
+  - ConversationID: LabIntroPart2
+    LineID: L_95abc946605d
+    ConversationLineIndex: 4
+    characterID: Fae
+    CharacterRepresentations:
+    - SelectedCharacterID: 
+      SelectedRepresentationName: Sprites
+      SelectedRepresentation: {fileID: 11400000, guid: cf61be94e9ae46b4da28bb23d0bfa60f, type: 2}
+      SelectedExpressionId: 
+      SelectedConfigurationEntryName: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplaySlot: Left
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    LocalizedDialogues:
+    - Language: en
+      Text: '*sigh*... Maybe you find something to activate the motors in the arm
+        to let go.'
+      Clip: {fileID: 0}
+    PresentationMode: 0
+    ActionsBeforeDialogueLine: []
+    ActionsAfterDialogueLine: []
+    UserInputMethod: 0
+    TimeBeforeNextLine: 0
+    LineContinuationSettings:
+      Mode: 0
+      TargetContainer: {fileID: 0}
+      TargetAliasOrName: 
+      PushReturnPoint: 0
+      Choices: []
+      AllowGoBack: 0
+  - ConversationID: LabIntroPart2
+    LineID: L_423f905b9953
+    ConversationLineIndex: 5
+    characterID: Player
+    CharacterRepresentations:
+    - SelectedCharacterID: 
+      SelectedRepresentationName: Sprites
+      SelectedRepresentation: {fileID: 11400000, guid: cf61be94e9ae46b4da28bb23d0bfa60f, type: 2}
+      SelectedExpressionId: 
+      SelectedConfigurationEntryName: 
+      LineSpecificDisplayOptions:
+        FlipPortraitX: 0
+        FlipPortraitY: 0
+        FlipFullBodyX: 0
+        FlipFullBodyY: 0
+        DisplaySlot: Left
+        PortraitScale: {x: 1, y: 1, z: 1}
+        FullBodyScale: {x: 1, y: 1, z: 1}
+    LocalizedDialogues:
+    - Language: en
+      Text: Got it.
+      Clip: {fileID: 0}
+    PresentationMode: 0
+    ActionsBeforeDialogueLine: []
+    ActionsAfterDialogueLine: []
+    UserInputMethod: 0
+    TimeBeforeNextLine: 0
+    LineContinuationSettings:
+      Mode: 0
+      TargetContainer: {fileID: 0}
+      TargetAliasOrName: 
+      PushReturnPoint: 0
+      Choices: []
+      AllowGoBack: 0
   DefaultPresentationMode: 0
   AudioManifest: {fileID: 11400000, guid: 2e8c6e3aed53bbe44adfb275049e1155, type: 2}
-  ConversationYaml: {fileID: 0}
+  ConversationYaml: {fileID: 1306475549269283182}
   AllowPersistentOverrides: 1
   FilePath: DialogueScriptSample.yml
   SourceYaml: {fileID: 102900000, guid: d664d0cc9ec7c80428bfa0d051ad829e, type: 3}
