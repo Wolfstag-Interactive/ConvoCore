@@ -22,7 +22,7 @@ namespace WolfstagInteractive.ConvoCore.Editor
             // Normalize to forward slashes and strip trailing slash
             inputFolderPath = inputFolderPath.Replace('\\', '/').TrimEnd('/');
 
-            // AssetDatabase.FindAssets("") is unreliable in Unity 2021 — it can return nothing
+            // AssetDatabase.FindAssets("") is unreliable in Unity 2021 as it can return nothing
             // even when files exist. Use the filesystem directly and convert back to asset paths.
             var dataPath = Application.dataPath.Replace('\\', '/').TrimEnd('/');
             var absoluteInput = dataPath.Substring(0, dataPath.Length - "Assets".Length) + inputFolderPath;
