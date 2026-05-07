@@ -27,6 +27,9 @@ namespace WolfstagInteractive.ConvoCore.Editor
         private List<BulkImportManifestEntry> _manifest;
         private Vector2 _previewScroll;
         private BulkImportManifestEntry _selectedDetailEntry;
+        private Vector2 _detailPanelScroll;
+        private float _detailPanelHeight = 60f;
+        private bool _draggingDetailHandle;
 
         // ---- Results ----
 
@@ -268,9 +271,10 @@ namespace WolfstagInteractive.ConvoCore.Editor
                 GUILayout.Label("Detail",           _headerStyle, GUILayout.Width(ColDetail));
                 EditorGUILayout.EndHorizontal();
 
-                // Explicit height keeps floating windows from growing to fit all rows.
-                // ~160 px covers summary label, optional helpboxes, toolbar, buttons, and spacing.
-                float previewScrollH = Mathf.Max(position.height - 160f, 80f);
+                bool detailVisible = _selectedDetailEntry != null &&
+                                     !string.IsNullOrEmpty(_selectedDetailEntry.StatusDetail);
+                float detailReserved = detailVisible ? _detailPanelHeight + 5f : 0f;
+                float previewScrollH = Mathf.Max(position.height - 160f - detailReserved, 80f);
                 _previewScroll = EditorGUILayout.BeginScrollView(_previewScroll, GUILayout.Height(previewScrollH));
                 DrawPreviewRows();
                 EditorGUILayout.EndScrollView();
@@ -279,7 +283,13 @@ namespace WolfstagInteractive.ConvoCore.Editor
             // ---- fixed bottom ----
 
             if (_selectedDetailEntry != null && !string.IsNullOrEmpty(_selectedDetailEntry.StatusDetail))
+            {
+                DrawDetailPanelHandle();
+                _detailPanelScroll = EditorGUILayout.BeginScrollView(
+                    _detailPanelScroll, GUILayout.Height(_detailPanelHeight));
                 EditorGUILayout.HelpBox(_selectedDetailEntry.StatusDetail, MessageType.Warning);
+                EditorGUILayout.EndScrollView();
+            }
 
             EditorGUILayout.Space(6);
 
@@ -455,6 +465,44 @@ namespace WolfstagInteractive.ConvoCore.Editor
 
             EditorGUILayout.EndHorizontal();
             EditorGUILayout.Space(4);
+        }
+
+        // ===== DETAIL PANEL RESIZE HANDLE =====
+
+        private void DrawDetailPanelHandle()
+        {
+            var rect = GUILayoutUtility.GetRect(
+                GUIContent.none, GUIStyle.none, GUILayout.Height(5f), GUILayout.ExpandWidth(true));
+
+            EditorGUIUtility.AddCursorRect(rect, MouseCursor.ResizeVertical);
+
+            if (Event.current.type == EventType.Repaint)
+            {
+                EditorStyles.toolbar.Draw(rect, GUIContent.none, false, false, false, false);
+                float cx = rect.center.x;
+                float cy = rect.center.y;
+                var dotColor = EditorGUIUtility.isProSkin
+                    ? new Color(0.55f, 0.55f, 0.55f, 1f)
+                    : new Color(0.35f, 0.35f, 0.35f, 1f);
+                for (int i = -1; i <= 1; i++)
+                    EditorGUI.DrawRect(new Rect(cx + i * 6 - 1f, cy - 1f, 2f, 2f), dotColor);
+            }
+
+            switch (Event.current.type)
+            {
+                case EventType.MouseDown when rect.Contains(Event.current.mousePosition):
+                    _draggingDetailHandle = true;
+                    Event.current.Use();
+                    break;
+                case EventType.MouseUp:
+                    _draggingDetailHandle = false;
+                    break;
+                case EventType.MouseDrag when _draggingDetailHandle:
+                    _detailPanelHeight = Mathf.Clamp(_detailPanelHeight - Event.current.delta.y, 40f, 300f);
+                    Event.current.Use();
+                    Repaint();
+                    break;
+            }
         }
 
         // ===== HELPERS =====
