@@ -204,6 +204,13 @@
       },
       "url": "https://packages.unity.com"
     },
+    "com.wolfstaginteractive.convocore": {
+      "version": "https://github.com/Wolfstag-Interactive/ConvoCore.git?path=WolfstagInteractive/ConvoCore",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "5a9b96ff8a560493f58cc5d1bd979e0b3f925a9a"
+    },
     "com.unity.modules.accessibility": {
       "version": "1.0.0",
       "depth": 0,

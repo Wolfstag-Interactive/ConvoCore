@@ -120,6 +120,8 @@ namespace WolfstagInteractive.ConvoCore
             // 4. Create one automatically if none exists
             _instance = CreateInstance<ConvoCoreSettings>();
             string assetPath = "Assets/Resources/ConvoCoreSettings.asset";
+            if (!UnityEditor.AssetDatabase.IsValidFolder("Assets/Resources"))
+                UnityEditor.AssetDatabase.CreateFolder("Assets", "Resources");
             UnityEditor.AssetDatabase.CreateAsset(_instance, assetPath);
             UnityEditor.AssetDatabase.SaveAssets();
             UnityEditor.AssetDatabase.Refresh();
