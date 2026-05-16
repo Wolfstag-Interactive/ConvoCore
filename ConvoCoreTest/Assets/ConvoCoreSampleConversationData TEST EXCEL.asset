@@ -114,7 +114,7 @@ MonoBehaviour:
   ParticipantConfigurationDefaults: []
   DialogueLines:
   - ConversationID: Conversation1
-    LineID: L_eb24286502b8
+    LineID: L_04d64b899837
     ConversationLineIndex: 0
     characterID: Ava
     CharacterRepresentations:
@@ -133,7 +133,7 @@ MonoBehaviour:
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
     - Language: en
-      Text: Jared... we're definitely off-trail.
+      Text: "Jared... we\u2019re definitely off-trail."
       Clip: {fileID: 0}
     - Language: fr
       Text: "Jared... on s'est clairement \xE9gar\xE9s."
@@ -154,7 +154,7 @@ MonoBehaviour:
       Choices: []
       AllowGoBack: 0
   - ConversationID: Conversation1
-    LineID: L_a5f15816cde2
+    LineID: L_cb8d04d73eed
     ConversationLineIndex: 1
     characterID: Jared
     CharacterRepresentations:
@@ -173,7 +173,7 @@ MonoBehaviour:
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
     - Language: en
-      Text: Technically, we're *still* in the forest. Nature counts.
+      Text: "Technically, we\u2019re *still* in the forest. Nature counts."
       Clip: {fileID: 0}
     - Language: fr
       Text: "Techniquement, on est toujours dans la for\xEAt. \xC7a compte, non?"
@@ -194,7 +194,7 @@ MonoBehaviour:
       Choices: []
       AllowGoBack: 0
   - ConversationID: Conversation1
-    LineID: L_1a39d08ee5ae
+    LineID: L_8205ac8c4e8a
     ConversationLineIndex: 2
     characterID: Ava
     CharacterRepresentations:
@@ -213,7 +213,7 @@ MonoBehaviour:
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
     - Language: en
-      Text: We've circled that tree three times now.
+      Text: "We\u2019ve circled that tree three times now."
       Clip: {fileID: 0}
     - Language: fr
       Text: "On a tourn\xE9 autour de cet arbre trois fois."
@@ -234,7 +234,7 @@ MonoBehaviour:
       Choices: []
       AllowGoBack: 0
   - ConversationID: Conversation1
-    LineID: L_2ffe5ce2626e
+    LineID: L_9cd861a48566
     ConversationLineIndex: 3
     characterID: Jared
     CharacterRepresentations:
@@ -253,10 +253,10 @@ MonoBehaviour:
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
     - Language: en
-      Text: It's a popular tree. Five stars on TreeAdvisor.
+      Text: "It\u2019s a popular tree. Five stars on TreeAdvisor."
       Clip: {fileID: 0}
     - Language: fr
-      Text: "C'est un arbre populaire. Cinq \xE9toiles sur TreeAdvisor."
+      Text: "C\u2019est un arbre populaire. Cinq \xE9toiles sur TreeAdvisor."
       Clip: {fileID: 0}
     - Language: es
       Text: "Es un \xE1rbol famoso. Cinco estrellas en TreeAdvisor."
@@ -274,7 +274,7 @@ MonoBehaviour:
       Choices: []
       AllowGoBack: 0
   - ConversationID: Conversation1
-    LineID: L_112bf2e87589
+    LineID: L_e01c38d35e8f
     ConversationLineIndex: 4
     characterID: Ava
     CharacterRepresentations:
@@ -296,7 +296,7 @@ MonoBehaviour:
       Text: Shh! Did you hear that?
       Clip: {fileID: 0}
     - Language: fr
-      Text: "Chut! T'as entendu \xE7a ?"
+      Text: "Chut! T\u2019as entendu \xE7a ?"
       Clip: {fileID: 0}
     - Language: es
       Text: "\xA1Shh! \xBFEscuchaste eso?"
@@ -314,7 +314,7 @@ MonoBehaviour:
       Choices: []
       AllowGoBack: 0
   - ConversationID: Conversation1
-    LineID: L_c44c7409c2ef
+    LineID: L_8e7776524b04
     ConversationLineIndex: 5
     characterID: Jared
     CharacterRepresentations:
@@ -333,7 +333,7 @@ MonoBehaviour:
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
     - Language: en
-      Text: Maybe it's a bear. Or a ranger with snacks.
+      Text: "Maybe it\u2019s a bear. Or a ranger with snacks."
       Clip: {fileID: 0}
     - Language: fr
       Text: "Peut-\xEAtre un ours. Ou un garde forestier avec des snacks."
@@ -354,7 +354,7 @@ MonoBehaviour:
       Choices: []
       AllowGoBack: 0
   - ConversationID: Conversation1
-    LineID: L_1c7e5ac65392
+    LineID: L_ec0dec9027e2
     ConversationLineIndex: 6
     characterID: Wolfstag
     CharacterRepresentations:
@@ -395,7 +395,7 @@ MonoBehaviour:
       Choices: []
       AllowGoBack: 0
   - ConversationID: Conversation1
-    LineID: L_3bb8eeae38a4
+    LineID: L_603c3f4ba4d6
     ConversationLineIndex: 7
     characterID: Ava
     CharacterRepresentations:
@@ -417,7 +417,7 @@ MonoBehaviour:
       Text: What is *that?!*
       Clip: {fileID: 0}
     - Language: fr
-      Text: "C'est quoi *\xE7a* ?!"
+      Text: "C\u2019est quoi *\xE7a* ?!"
       Clip: {fileID: 0}
     - Language: es
       Text: "\xBF\xA1Qu\xE9 es *eso*!?"
@@ -435,7 +435,7 @@ MonoBehaviour:
       Choices: []
       AllowGoBack: 0
   - ConversationID: Conversation1
-    LineID: L_9f46070601ab
+    LineID: L_d1cfb2aa2db7
     ConversationLineIndex: 8
     characterID: Jared
     CharacterRepresentations:
@@ -475,7 +475,7 @@ MonoBehaviour:
       Choices: []
       AllowGoBack: 0
   - ConversationID: Conversation1
-    LineID: L_dba9fd3bc92d
+    LineID: L_16a17b3396e4
     ConversationLineIndex: 9
     characterID: Jared
     CharacterRepresentations:
@@ -494,12 +494,12 @@ MonoBehaviour:
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
     - Language: en
-      Text: Are you lost too, buddy? You need scritches? Huh? Who's a majestic forest
-        beast? *You* are!
+      Text: "Are you lost too, buddy? You need scritches? Huh? Who\u2019s a majestic
+        forest beast? *You* are!"
       Clip: {fileID: 0}
     - Language: fr
-      Text: "Tu t'es perdu aussi, mon grand ? Tu veux des gratouilles ? Qui est une
-        b\xEAte majestueuse ? *C'est toi!*"
+      Text: "Tu t\u2019es perdu aussi, mon grand ? Tu veux des gratouilles ? Qui
+        est une b\xEAte majestueuse ? *C\u2019est toi!*"
       Clip: {fileID: 0}
     - Language: es
       Text: "\xBFTambi\xE9n est\xE1s perdido, amigo? \xBFQuieres caricias? \xBFQui\xE9n
@@ -518,7 +518,7 @@ MonoBehaviour:
       Choices: []
       AllowGoBack: 0
   - ConversationID: Conversation1
-    LineID: L_bf5d37ca2a32
+    LineID: L_fecc5a327214
     ConversationLineIndex: 10
     characterID: Wolfstag
     CharacterRepresentations:
@@ -558,7 +558,7 @@ MonoBehaviour:
       Choices: []
       AllowGoBack: 0
   - ConversationID: Conversation1
-    LineID: L_bf8a1eb8aa0a
+    LineID: L_4e12510204f1
     ConversationLineIndex: 11
     characterID: Ava
     CharacterRepresentations:
@@ -580,7 +580,7 @@ MonoBehaviour:
       Text: "Jared\u2026 stop trying to pet the antler demon!"
       Clip: {fileID: 0}
     - Language: fr
-      Text: "Jared\u2026 arr\xEAte d'essayer de caresser le d\xE9mon \xE0 bois!"
+      Text: "Jared\u2026 arr\xEAte d\u2019essayer de caresser le d\xE9mon \xE0 bois!"
       Clip: {fileID: 0}
     - Language: es
       Text: "\xA1Jared... deja de intentar acariciar al demonio de los cuernos!"
@@ -598,7 +598,7 @@ MonoBehaviour:
       Choices: []
       AllowGoBack: 0
   - ConversationID: Conversation1
-    LineID: L_13b0e5e2ffdd
+    LineID: L_81d918d79d10
     ConversationLineIndex: 12
     characterID: Wolfstag
     CharacterRepresentations:
@@ -617,7 +617,7 @@ MonoBehaviour:
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
     - Language: en
-      Text: "*The shadows melt away. The creature's full form is revealed\u2014fur
+      Text: "*The shadows melt away. The creature\u2019s full form is revealed\u2014fur
         glows silver in the moonlight.*"
       Clip: {fileID: 0}
     - Language: fr
@@ -641,7 +641,7 @@ MonoBehaviour:
       Choices: []
       AllowGoBack: 0
   - ConversationID: Conversation1
-    LineID: L_92dfaaba4797
+    LineID: L_44b11d6cd642
     ConversationLineIndex: 13
     characterID: Jared
     CharacterRepresentations:
@@ -660,10 +660,10 @@ MonoBehaviour:
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
     - Language: en
-      Text: Oh my god. He's gorgeous. I want ten of him.
+      Text: "Oh my god. He\u2019s gorgeous. I want ten of him."
       Clip: {fileID: 0}
     - Language: fr
-      Text: Oh mon dieu. Il est splendide. J'en veux dix.
+      Text: "Oh mon dieu. Il est splendide. J\u2019en veux dix."
       Clip: {fileID: 0}
     - Language: es
       Text: "Dios m\xEDo. Es hermoso. Quiero diez."
@@ -681,7 +681,7 @@ MonoBehaviour:
       Choices: []
       AllowGoBack: 0
   - ConversationID: Conversation1
-    LineID: L_085560b0636b
+    LineID: L_b06da097d428
     ConversationLineIndex: 14
     characterID: Ava
     CharacterRepresentations:
@@ -700,10 +700,10 @@ MonoBehaviour:
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
     - Language: en
-      Text: ...I think he's leading us somewhere.
+      Text: "...I think he\u2019s leading us somewhere."
       Clip: {fileID: 0}
     - Language: fr
-      Text: ...Je crois qu'il nous guide quelque part.
+      Text: "...Je crois qu\u2019il nous guide quelque part."
       Clip: {fileID: 0}
     - Language: es
       Text: "...Creo que nos est\xE1 guiando."
@@ -721,7 +721,7 @@ MonoBehaviour:
       Choices: []
       AllowGoBack: 0
   - ConversationID: Conversation1
-    LineID: L_43754d2364f0
+    LineID: L_9379a5301f7e
     ConversationLineIndex: 15
     characterID: Wolfstag
     CharacterRepresentations:
@@ -743,7 +743,7 @@ MonoBehaviour:
       Text: '*He glances back, takes a few careful steps, then waits.*'
       Clip: {fileID: 0}
     - Language: fr
-      Text: "*Il jette un regard en arri\xE8re, avance lentement, puis s'arr\xEAte.*"
+      Text: "*Il jette un regard en arri\xE8re, avance lentement, puis s\u2019arr\xEAte.*"
       Clip: {fileID: 0}
     - Language: es
       Text: "*Mira hacia atr\xE1s, da unos pasos y espera.*"
@@ -761,7 +761,7 @@ MonoBehaviour:
       Choices: []
       AllowGoBack: 0
   - ConversationID: Conversation1
-    LineID: L_64bb810760fa
+    LineID: L_b5e5b1e08f68
     ConversationLineIndex: 16
     characterID: Jared
     CharacterRepresentations:
@@ -780,7 +780,7 @@ MonoBehaviour:
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
     - Language: en
-      Text: Look at him! He's so polite. Trail angel confirmed.
+      Text: "Look at him! He\u2019s so polite. Trail angel confirmed."
       Clip: {fileID: 0}
     - Language: fr
       Text: "Regarde-le ! Trop poli. Ange du sentier confirm\xE9."
@@ -801,7 +801,7 @@ MonoBehaviour:
       Choices: []
       AllowGoBack: 0
   - ConversationID: Conversation1
-    LineID: L_8c74f64fbda9
+    LineID: L_6c2df39ca769
     ConversationLineIndex: 17
     characterID: Ava
     CharacterRepresentations:
@@ -823,7 +823,7 @@ MonoBehaviour:
       Text: I think he wants us to follow. And... I think we should.
       Clip: {fileID: 0}
     - Language: fr
-      Text: Il veut qu'on le suive. Et... je crois qu'on devrait.
+      Text: "Il veut qu\u2019on le suive. Et... je crois qu\u2019on devrait."
       Clip: {fileID: 0}
     - Language: es
       Text: Quiere que lo sigamos. Y... creo que debemos hacerlo.
@@ -841,7 +841,7 @@ MonoBehaviour:
       Choices: []
       AllowGoBack: 0
   - ConversationID: Conversation1
-    LineID: L_e9dc14c0ea88
+    LineID: L_ff77ae8df82b
     ConversationLineIndex: 18
     characterID: Wolfstag
     CharacterRepresentations:
@@ -884,7 +884,7 @@ MonoBehaviour:
       Choices: []
       AllowGoBack: 0
   - ConversationID: Conversation1
-    LineID: L_06bfb201f71e
+    LineID: L_dc490e2592df
     ConversationLineIndex: 19
     characterID: Jared
     CharacterRepresentations:
@@ -903,11 +903,12 @@ MonoBehaviour:
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
     - Language: en
-      Text: Wait... this looks familiar. That's the ridge! That's the way back!
+      Text: "Wait... this looks familiar. That\u2019s the ridge! That\u2019s the
+        way back!"
       Clip: {fileID: 0}
     - Language: fr
-      Text: "Attends... \xE7a me dit quelque chose. C'est la cr\xEAte ! C'est le
-        bon chemin!"
+      Text: "Attends... \xE7a me dit quelque chose. C\u2019est la cr\xEAte ! C\u2019est
+        le bon chemin!"
       Clip: {fileID: 0}
     - Language: es
       Text: "Espera... esto me suena. \xA1Esa es la cresta! \xA1Ese es el camino
@@ -926,7 +927,7 @@ MonoBehaviour:
       Choices: []
       AllowGoBack: 0
   - ConversationID: Conversation1
-    LineID: L_9b259bdc23c5
+    LineID: L_2e2673368a71
     ConversationLineIndex: 20
     characterID: Ava
     CharacterRepresentations:
@@ -966,7 +967,7 @@ MonoBehaviour:
       Choices: []
       AllowGoBack: 0
   - ConversationID: Conversation1
-    LineID: L_0be9debd88d5
+    LineID: L_4c04459eaeba
     ConversationLineIndex: 21
     characterID: Wolfstag
     CharacterRepresentations:
@@ -989,7 +990,7 @@ MonoBehaviour:
         disappears into the mist.*'
       Clip: {fileID: 0}
     - Language: fr
-      Text: "*Il s'arr\xEAte \xE0 la lisi\xE8re de la clairi\xE8re, nous regarde,
+      Text: "*Il s\u2019arr\xEAte \xE0 la lisi\xE8re de la clairi\xE8re, nous regarde,
         puis dispara\xEEt dans la brume.*"
       Clip: {fileID: 0}
     - Language: es
@@ -1008,7 +1009,7 @@ MonoBehaviour:
       Choices: []
       AllowGoBack: 0
   - ConversationID: Conversation1
-    LineID: L_6823bc528fb1
+    LineID: L_6e955da171a6
     ConversationLineIndex: 22
     characterID: Jared
     CharacterRepresentations:
@@ -1030,8 +1031,8 @@ MonoBehaviour:
       Text: ...Goodbye, magic antler puppy. I hope you find your own trail home.
       Clip: {fileID: 0}
     - Language: fr
-      Text: "...Adieu, chien magique \xE0 bois. J'esp\xE8re que tu retrouveras ton
-        chemin."
+      Text: "...Adieu, chien magique \xE0 bois. J\u2019esp\xE8re que tu retrouveras
+        ton chemin."
       Clip: {fileID: 0}
     - Language: es
       Text: "...Adi\xF3s, cachorro m\xE1gico de astas. Ojal\xE1 encuentres tu camino."
@@ -1049,7 +1050,7 @@ MonoBehaviour:
       Choices: []
       AllowGoBack: 0
   - ConversationID: Conversation1
-    LineID: L_a67f079b7895
+    LineID: L_1d54676a6a5b
     ConversationLineIndex: 23
     characterID: Ava
     CharacterRepresentations:
@@ -1068,7 +1069,8 @@ MonoBehaviour:
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
     - Language: en
-      Text: ...Next time, I'm bringing a map and a compass. And maybe pepper spray.
+      Text: "...Next time, I\u2019m bringing a map and a compass. And maybe pepper
+        spray."
       Clip: {fileID: 0}
     - Language: fr
       Text: ...La prochaine fois, je prends une carte, une boussole... et du spray
@@ -1096,8 +1098,8 @@ MonoBehaviour:
   AllowPersistentOverrides: 1
   FilePath: DialogueScriptSample.yml
   SourceYaml: {fileID: 102900000, guid: 4612376414d9cc742be9c4b790213e6a, type: 3}
-  SourceYamlAssetPath: Assets/Samples/ConvoCore/SampleAssets/2D Sample/DialogueScriptSample.yml
+  SourceYamlAssetPath: Assets/SampleAssetsRepo/1.0.0/Sample Assets/2D Sample/DialogueScriptSample.yml
   SourceExcelAsset: {fileID: 102900000, guid: a79679a730ab0764186a757b802eee1e, type: 3}
-  SourceExcelAssetPath: Assets/Samples/ConvoCore/SampleAssets/2D Sample/DialogueScriptSample2D.xlsx
+  SourceExcelAssetPath: Assets/SampleAssetsRepo/1.0.0/Sample Assets/2D Sample/DialogueScriptSample2D.xlsx
   ConversationKey: Conversation1
   _conversationGuid: bde237e7-af83-4511-9d84-4ac0211d6853

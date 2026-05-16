@@ -131,8 +131,7 @@ MonoBehaviour:
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
-        DisplayPosition: 0
-        SlotId: 
+        DisplaySlot: 
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
@@ -172,8 +171,7 @@ MonoBehaviour:
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
-        DisplayPosition: 0
-        SlotId: 
+        DisplaySlot: 
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
@@ -213,8 +211,7 @@ MonoBehaviour:
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
-        DisplayPosition: 0
-        SlotId: 
+        DisplaySlot: 
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
@@ -254,8 +251,7 @@ MonoBehaviour:
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
-        DisplayPosition: 0
-        SlotId: 
+        DisplaySlot: 
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
@@ -295,8 +291,7 @@ MonoBehaviour:
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
-        DisplayPosition: 0
-        SlotId: 
+        DisplaySlot: 
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
@@ -336,8 +331,7 @@ MonoBehaviour:
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
-        DisplayPosition: 0
-        SlotId: 
+        DisplaySlot: 
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
@@ -377,8 +371,7 @@ MonoBehaviour:
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
-        DisplayPosition: 0
-        SlotId: 
+        DisplaySlot: 
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
@@ -418,8 +411,7 @@ MonoBehaviour:
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
-        DisplayPosition: 0
-        SlotId: 
+        DisplaySlot: 
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
@@ -459,8 +451,7 @@ MonoBehaviour:
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
-        DisplayPosition: 0
-        SlotId: 
+        DisplaySlot: 
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
@@ -500,8 +491,7 @@ MonoBehaviour:
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
-        DisplayPosition: 0
-        SlotId: 
+        DisplaySlot: 
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
@@ -541,8 +531,7 @@ MonoBehaviour:
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
-        DisplayPosition: 0
-        SlotId: 
+        DisplaySlot: 
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
@@ -582,8 +571,7 @@ MonoBehaviour:
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
-        DisplayPosition: 0
-        SlotId: 
+        DisplaySlot: 
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
@@ -623,8 +611,7 @@ MonoBehaviour:
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
-        DisplayPosition: 0
-        SlotId: 
+        DisplaySlot: 
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
@@ -664,8 +651,7 @@ MonoBehaviour:
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
-        DisplayPosition: 0
-        SlotId: 
+        DisplaySlot: 
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
@@ -705,8 +691,7 @@ MonoBehaviour:
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
-        DisplayPosition: 0
-        SlotId: 
+        DisplaySlot: 
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
@@ -746,8 +731,7 @@ MonoBehaviour:
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
-        DisplayPosition: 0
-        SlotId: 
+        DisplaySlot: 
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
@@ -787,8 +771,7 @@ MonoBehaviour:
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
-        DisplayPosition: 0
-        SlotId: 
+        DisplaySlot: 
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
@@ -828,8 +811,7 @@ MonoBehaviour:
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
-        DisplayPosition: 0
-        SlotId: 
+        DisplaySlot: 
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
@@ -869,8 +851,7 @@ MonoBehaviour:
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
-        DisplayPosition: 0
-        SlotId: 
+        DisplaySlot: 
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
@@ -910,8 +891,7 @@ MonoBehaviour:
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
-        DisplayPosition: 0
-        SlotId: 
+        DisplaySlot: 
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
@@ -951,8 +931,7 @@ MonoBehaviour:
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
-        DisplayPosition: 0
-        SlotId: 
+        DisplaySlot: 
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
@@ -992,8 +971,7 @@ MonoBehaviour:
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
-        DisplayPosition: 0
-        SlotId: 
+        DisplaySlot: 
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
@@ -1033,8 +1011,7 @@ MonoBehaviour:
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
-        DisplayPosition: 0
-        SlotId: 
+        DisplaySlot: 
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
@@ -1074,8 +1051,7 @@ MonoBehaviour:
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
-        DisplayPosition: 0
-        SlotId: 
+        DisplaySlot: 
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
@@ -1115,8 +1091,7 @@ MonoBehaviour:
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
-        DisplayPosition: 0
-        SlotId: 
+        DisplaySlot: 
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
@@ -1156,8 +1131,7 @@ MonoBehaviour:
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
-        DisplayPosition: 0
-        SlotId: 
+        DisplaySlot: 
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
@@ -1197,8 +1171,7 @@ MonoBehaviour:
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
-        DisplayPosition: 0
-        SlotId: 
+        DisplaySlot: 
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
@@ -1238,8 +1211,7 @@ MonoBehaviour:
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
-        DisplayPosition: 0
-        SlotId: 
+        DisplaySlot: 
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
@@ -1279,8 +1251,7 @@ MonoBehaviour:
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
-        DisplayPosition: 0
-        SlotId: 
+        DisplaySlot: 
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
@@ -1320,8 +1291,7 @@ MonoBehaviour:
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
-        DisplayPosition: 0
-        SlotId: 
+        DisplaySlot: 
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
@@ -1361,8 +1331,7 @@ MonoBehaviour:
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
-        DisplayPosition: 0
-        SlotId: 
+        DisplaySlot: 
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
@@ -1402,8 +1371,7 @@ MonoBehaviour:
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
-        DisplayPosition: 0
-        SlotId: 
+        DisplaySlot: 
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
@@ -1443,8 +1411,7 @@ MonoBehaviour:
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
-        DisplayPosition: 0
-        SlotId: 
+        DisplaySlot: 
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
@@ -1484,8 +1451,7 @@ MonoBehaviour:
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
-        DisplayPosition: 0
-        SlotId: 
+        DisplaySlot: 
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
@@ -1525,8 +1491,7 @@ MonoBehaviour:
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
-        DisplayPosition: 0
-        SlotId: 
+        DisplaySlot: 
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
@@ -1566,8 +1531,7 @@ MonoBehaviour:
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
-        DisplayPosition: 0
-        SlotId: 
+        DisplaySlot: 
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
@@ -1607,8 +1571,7 @@ MonoBehaviour:
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
-        DisplayPosition: 0
-        SlotId: 
+        DisplaySlot: 
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
@@ -1648,8 +1611,7 @@ MonoBehaviour:
         FlipPortraitY: 0
         FlipFullBodyX: 0
         FlipFullBodyY: 0
-        DisplayPosition: 0
-        SlotId: 
+        DisplaySlot: 
         PortraitScale: {x: 1, y: 1, z: 1}
         FullBodyScale: {x: 1, y: 1, z: 1}
     LocalizedDialogues:
@@ -1680,7 +1642,7 @@ MonoBehaviour:
   AllowPersistentOverrides: 1
   FilePath: DialogueScriptSample.yml
   SourceYaml: {fileID: 102900000, guid: 24d61ad70f2f49441891f99c350c0620, type: 3}
-  SourceYamlAssetPath: Assets/Samples/ConvoCore/SampleAssets/3D Sample/ConvoCore3DDialogueSampleConversation.yml
+  SourceYamlAssetPath: Assets/SampleAssetsRepo/1.0.0/Sample Assets/3D Sample/ConvoCore3DDialogueSampleConversation.yml
   SourceExcelAsset: {fileID: 0}
   SourceExcelAssetPath: 
   ConversationKey: 3DSampleConversation
