@@ -149,7 +149,7 @@ namespace WolfstagInteractive.ConvoCore
                 if (line == null) continue;
                 if (string.IsNullOrEmpty(line.LineID))
                 {
-                    Debug.LogError($"Dialogue Line ID {line.ConversationLineIndex} is empty. " +
+                    Debug.LogError($"[Conversation file {name}] Dialogue Line ID {line.ConversationLineIndex} is empty. " +
                                    $"Re-embed the conversation on this conversation object and reimport the dialogue lines.",this);
                 }
                 line.EnsureCharacterRepresentationListInitialized();
