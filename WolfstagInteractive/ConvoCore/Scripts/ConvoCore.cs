@@ -173,10 +173,22 @@ namespace WolfstagInteractive.ConvoCore
 
                 if (primaryRepresentation == null)
                 {
-                    Debug.LogError($"Cannot resolve primary character representation for '{primaryProfile.CharacterName}'. " +
-                                   $"Line index: {_currentLineIndex}. " +
-                                   $"CharacterID: '{line.characterID}'. " +
-                                   $"Primary characters must have a valid representation. Skipping line.");
+                    if (primaryProfile && string.IsNullOrEmpty(primaryProfile.CharacterName) ||
+                        string.IsNullOrWhiteSpace(primaryProfile.CharacterName))
+                    {
+                        Debug.LogError($"Cannot resolve primary character representation for character representation asset'{primaryProfile.name}'. " +
+                                       $"Line index: {_currentLineIndex}. " +
+                                       $"CharacterID: '{line.characterID}'. " +
+                                       $"Primary characters must have a valid representation. Skipping line.",primaryProfile);
+                    }
+                    else
+                    {
+                        Debug.LogError($"Cannot resolve primary character representation for '{primaryProfile.CharacterName}'. " +
+                                       $"Line index: {_currentLineIndex}. " +
+                                       $"CharacterID: '{line.characterID}'. " +
+                                       $"Primary characters must have a valid representation. Skipping line.",primaryProfile);
+                    }
+                    
                     _currentLineIndex++;
                     continue;
                 }
