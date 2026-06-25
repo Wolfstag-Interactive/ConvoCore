@@ -71,6 +71,7 @@ namespace WolfstagInteractive.ConvoCore
         private bool _historyVisible;
         private CanvasGroup _historyGroup;
         private bool _togglingGuard;
+        private readonly List<GameObject> _spawnedChoiceButtons = new();
 
         private string _lastSpeakerName;
         private Color _lastSpeakerColor;
@@ -199,6 +200,11 @@ namespace WolfstagInteractive.ConvoCore
             ContinueButton.gameObject.SetActive(false);
             ToggleDialogueHistoryUI(false);
             RefreshNavButtons();
+
+            foreach (var btn in _spawnedChoiceButtons)
+                if (btn != null) Destroy(btn);
+            _spawnedChoiceButtons.Clear();
+            ChoicePanel?.SetActive(false);
         }
 
         public override IEnumerator WaitForUserInput()
@@ -227,12 +233,12 @@ namespace WolfstagInteractive.ConvoCore
             ChoicePanel.SetActive(true);
             ContinueButton?.gameObject.SetActive(false);
 
-            var spawnedButtons = new List<GameObject>();
+            _spawnedChoiceButtons.Clear();
             for (int i = 0; i < localizedLabels.Count; i++)
             {
                 int captured = i;
                 var instance = Instantiate(ChoiceButtonPrefab, ChoiceButtonContainer);
-                spawnedButtons.Add(instance);
+                _spawnedChoiceButtons.Add(instance);
                 var btn = instance.GetComponent<Button>();
                 var label = instance.GetComponentInChildren<TextMeshProUGUI>();
                 if (label != null) label.text = localizedLabels[captured];
@@ -241,8 +247,9 @@ namespace WolfstagInteractive.ConvoCore
 
             yield return new WaitUntil(() => result.IsResolved);
 
-            foreach (var btn in spawnedButtons)
+            foreach (var btn in _spawnedChoiceButtons)
                 if (btn != null) Destroy(btn);
+            _spawnedChoiceButtons.Clear();
 
             ChoicePanel.SetActive(false);
             ContinueButton?.gameObject.SetActive(true);
