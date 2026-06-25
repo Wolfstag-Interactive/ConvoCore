@@ -1,5 +1,9 @@
 var NAVTREEINDEX8 =
 {
+"classWolfstagInteractive_1_1ConvoCore_1_1SaveSystem_1_1ConvoCoreSaveManager.html#a795e4eda138ea9ad432d164cb9c204ac":[0,0,0,0,0,4,12],
+"classWolfstagInteractive_1_1ConvoCore_1_1SaveSystem_1_1ConvoCoreSaveManager.html#a7b5cd9610f881b6cad47ca5b7bf54e8f":[0,0,0,0,0,4,13],
+"classWolfstagInteractive_1_1ConvoCore_1_1SaveSystem_1_1ConvoCoreSaveManager.html#a7b5cd9610f881b6cad47ca5b7bf54e8f":[1,0,0,0,0,4,13],
+"classWolfstagInteractive_1_1ConvoCore_1_1SaveSystem_1_1ConvoCoreSaveManager.html#a7ce9a4deedd604e8e1b1ef9800969e4b":[0,0,0,0,0,4,9],
 "classWolfstagInteractive_1_1ConvoCore_1_1SaveSystem_1_1ConvoCoreSaveManager.html#a7ce9a4deedd604e8e1b1ef9800969e4b":[1,0,0,0,0,4,9],
 "classWolfstagInteractive_1_1ConvoCore_1_1SaveSystem_1_1ConvoCoreSaveManager.html#a8560de6a56bc32ef4026bcdbe4c5ed15":[0,0,0,0,0,4,20],
 "classWolfstagInteractive_1_1ConvoCore_1_1SaveSystem_1_1ConvoCoreSaveManager.html#a8560de6a56bc32ef4026bcdbe4c5ed15":[1,0,0,0,0,4,20],
@@ -245,9 +249,5 @@ var NAVTREEINDEX8 =
 "classWolfstagInteractive_1_1ConvoCore_1_1SimplePrefabRepresentationDisplay.html":[0,0,0,0,106],
 "classWolfstagInteractive_1_1ConvoCore_1_1SimplePrefabRepresentationDisplay.html#a0779e817c075b3c7b1f7c6882ef4f998":[0,0,0,0,106,2],
 "classWolfstagInteractive_1_1ConvoCore_1_1SimplePrefabRepresentationDisplay.html#a0779e817c075b3c7b1f7c6882ef4f998":[1,0,0,0,106,2],
-"classWolfstagInteractive_1_1ConvoCore_1_1SimplePrefabRepresentationDisplay.html#a66de020543c95ed1a2d17a750ba3d509":[0,0,0,0,106,3],
-"classWolfstagInteractive_1_1ConvoCore_1_1SimplePrefabRepresentationDisplay.html#a66de020543c95ed1a2d17a750ba3d509":[1,0,0,0,106,3],
-"classWolfstagInteractive_1_1ConvoCore_1_1SimplePrefabRepresentationDisplay.html#a6971f61ffdc837c268f3c9a94769085f":[1,0,0,0,106,0],
-"classWolfstagInteractive_1_1ConvoCore_1_1SimplePrefabRepresentationDisplay.html#a6971f61ffdc837c268f3c9a94769085f":[0,0,0,0,106,0],
-"classWolfstagInteractive_1_1ConvoCore_1_1SimplePrefabRepresentationDisplay.html#a75a316c04a6a89016ea74cabaf938ee9":[0,0,0,0,106,4]
+"classWolfstagInteractive_1_1ConvoCore_1_1SimplePrefabRepresentationDisplay.html#a66de020543c95ed1a2d17a750ba3d509":[0,0,0,0,106,3]
 };

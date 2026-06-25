@@ -1,5 +1,9 @@
 var NAVTREEINDEX10 =
 {
+"interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoAudioProvider.html#ae4f49800c9c4438b7025378b59924293":[0,0,0,0,78,4],
+"interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoCoreCharacterDisplay.html":[1,0,0,0,79],
+"interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoCoreCharacterDisplay.html":[0,0,0,0,79],
+"interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoCoreCharacterDisplay.html#a6efab112a6539959b3c58bfce6fc9a5f":[1,0,0,0,79,2],
 "interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoCoreCharacterDisplay.html#a6efab112a6539959b3c58bfce6fc9a5f":[0,0,0,0,79,2],
 "interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoCoreCharacterDisplay.html#aa7c6ee3ad3d102ff122396a51789bff0":[0,0,0,0,79,0],
 "interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoCoreCharacterDisplay.html#aa7c6ee3ad3d102ff122396a51789bff0":[1,0,0,0,79,0],
@@ -245,9 +249,5 @@ var NAVTREEINDEX10 =
 "structWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreYamlDiagnostic.html#a3613f7b08a85716478fbd7dcea0f840e":[0,0,0,0,59,0],
 "structWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreYamlDiagnostic.html#a8c07f3c3046712ac10896d3238711478":[0,0,0,0,59,6],
 "structWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreYamlDiagnostic.html#a8c07f3c3046712ac10896d3238711478":[1,0,0,0,59,6],
-"structWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreYamlDiagnostic.html#a943ddaf723374c0e462eb6d3b06c2ea7":[0,0,0,0,59,2],
-"structWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreYamlDiagnostic.html#a943ddaf723374c0e462eb6d3b06c2ea7":[1,0,0,0,59,2],
-"structWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreYamlDiagnostic.html#a9dd185882e9e193e57fbcf3d013d6f37":[0,0,0,0,59,5],
-"structWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreYamlDiagnostic.html#a9dd185882e9e193e57fbcf3d013d6f37":[1,0,0,0,59,5],
-"structWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreYamlDiagnostic.html#aa5fe4ce6ec62fbdccf0fb24c0be429fa":[0,0,0,0,59,3]
+"structWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreYamlDiagnostic.html#a943ddaf723374c0e462eb6d3b06c2ea7":[0,0,0,0,59,2]
 };

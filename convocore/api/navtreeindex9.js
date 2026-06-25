@@ -1,5 +1,9 @@
 var NAVTREEINDEX9 =
 {
+"classWolfstagInteractive_1_1ConvoCore_1_1SimplePrefabRepresentationDisplay.html#a66de020543c95ed1a2d17a750ba3d509":[1,0,0,0,106,3],
+"classWolfstagInteractive_1_1ConvoCore_1_1SimplePrefabRepresentationDisplay.html#a6971f61ffdc837c268f3c9a94769085f":[1,0,0,0,106,0],
+"classWolfstagInteractive_1_1ConvoCore_1_1SimplePrefabRepresentationDisplay.html#a6971f61ffdc837c268f3c9a94769085f":[0,0,0,0,106,0],
+"classWolfstagInteractive_1_1ConvoCore_1_1SimplePrefabRepresentationDisplay.html#a75a316c04a6a89016ea74cabaf938ee9":[0,0,0,0,106,4],
 "classWolfstagInteractive_1_1ConvoCore_1_1SimplePrefabRepresentationDisplay.html#a75a316c04a6a89016ea74cabaf938ee9":[1,0,0,0,106,4],
 "classWolfstagInteractive_1_1ConvoCore_1_1SimplePrefabRepresentationDisplay.html#ad3aaafabc1e8201edfb5b9f4fdc8aa9c":[0,0,0,0,106,1],
 "classWolfstagInteractive_1_1ConvoCore_1_1SimplePrefabRepresentationDisplay.html#ad3aaafabc1e8201edfb5b9f4fdc8aa9c":[1,0,0,0,106,1],
@@ -245,9 +249,5 @@ var NAVTREEINDEX9 =
 "interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoAudioProvider.html#a91dc36bc858c4b58a68f08cc627b6283":[0,0,0,0,78,3],
 "interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoAudioProvider.html#ac449f7c0ad567b335f4a8a34c3cbabad":[1,0,0,0,78,1],
 "interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoAudioProvider.html#ac449f7c0ad567b335f4a8a34c3cbabad":[0,0,0,0,78,1],
-"interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoAudioProvider.html#ae4f49800c9c4438b7025378b59924293":[1,0,0,0,78,4],
-"interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoAudioProvider.html#ae4f49800c9c4438b7025378b59924293":[0,0,0,0,78,4],
-"interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoCoreCharacterDisplay.html":[1,0,0,0,79],
-"interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoCoreCharacterDisplay.html":[0,0,0,0,79],
-"interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoCoreCharacterDisplay.html#a6efab112a6539959b3c58bfce6fc9a5f":[1,0,0,0,79,2]
+"interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoAudioProvider.html#ae4f49800c9c4438b7025378b59924293":[1,0,0,0,78,4]
 };

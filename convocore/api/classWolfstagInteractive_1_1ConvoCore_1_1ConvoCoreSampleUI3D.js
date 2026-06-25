@@ -37,6 +37,7 @@ var classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSampleUI3D =
     [ "_lastLineText", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSampleUI3D.html#af7ded4af7854ca402dfada6485b2c2d0", null ],
     [ "_lastSpeakerColor", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSampleUI3D.html#aa2c7441ac655aa8e5517916c97049a81", null ],
     [ "_lastSpeakerName", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSampleUI3D.html#a6bbddd49fe4ae91bff362abad71f1c91", null ],
+    [ "_spawnedChoiceButtons", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSampleUI3D.html#a31ce36cc6129153d41f5a59ff6659d79", null ],
     [ "_togglingGuard", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSampleUI3D.html#a2303af6fea5fa95e82e7d5ddff90dde7", null ],
     [ "_typewriterCoroutine", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSampleUI3D.html#a9ff8a5765b414b4d23e9718a0565818d", null ],
     [ "AdvanceDialogueAction", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreSampleUI3D.html#aa7688a10a56875554049d93d14f644d5", null ],
