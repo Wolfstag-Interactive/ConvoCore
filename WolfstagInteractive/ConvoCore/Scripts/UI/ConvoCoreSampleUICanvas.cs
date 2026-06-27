@@ -270,11 +270,14 @@ namespace WolfstagInteractive.ConvoCore
             if (representation is PrefabCharacterRepresentationData prefabRep)
             {
                 var anchor = GetSlotAnchor(data.LineSpecificDisplayOptions, index);
-                prefabRepresentationSpawner?.ResolveCharacter(
+                var display = prefabRepresentationSpawner?.ResolveCharacter(
                     prefabRep,
                     data.SelectedExpressionId,
                     data.LineSpecificDisplayOptions,
                     anchor);
+
+                // Run any BaseExpressionAction ScriptableObjects attached to this expression.
+                RunExpressionActions(prefabRep, data.SelectedExpressionId, _lastLineIndex, display);
                 return;
             }
 
@@ -282,6 +285,9 @@ namespace WolfstagInteractive.ConvoCore
             if (processed is SpriteExpressionMapping spriteMapping)
             {
                 RenderSpriteRepresentation(spriteMapping, data.LineSpecificDisplayOptions, index);
+
+                // Sprite visuals are applied above; now run the representation's expression actions.
+                RunExpressionActions(representation, data.SelectedExpressionId, _lastLineIndex, display: null);
                 return;
             }
 

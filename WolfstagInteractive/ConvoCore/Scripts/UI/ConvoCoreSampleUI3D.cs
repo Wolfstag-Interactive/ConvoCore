@@ -265,6 +265,11 @@ namespace WolfstagInteractive.ConvoCore
 
                     if (!string.IsNullOrEmpty(charData.SelectedExpressionId))
                         display.ApplyExpression(charData.SelectedExpressionId);
+
+                    // Run any BaseExpressionAction ScriptableObjects attached to this expression.
+                    // The display only handles built-in visuals; the representation owns the actions.
+                    RunExpressionActions(
+                        rep, charData.SelectedExpressionId, lineInfo.ConversationLineIndex, display);
                 }
             }
 

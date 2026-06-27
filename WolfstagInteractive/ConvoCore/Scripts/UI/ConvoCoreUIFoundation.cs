@@ -63,6 +63,38 @@ namespace WolfstagInteractive.ConvoCore
         {
         }
 
+        /// <summary>
+        /// Runs the <see cref="BaseExpressionAction"/> ScriptableObjects attached to the given
+        /// expression on the representation. Call this from <see cref="UpdateDialogueUI"/> once a
+        /// character's display has been resolved, after applying the built-in visual expression.
+        ///
+        /// The display side (<see cref="IConvoCoreCharacterDisplay.ApplyExpression"/>) only handles
+        /// built-in visuals; the representation owns the action list, so custom UI subclasses must
+        /// call this to give those actions a chance to run. Safe to call with a null
+        /// <paramref name="display"/> (e.g. sprite representations) or a null/empty
+        /// <paramref name="expressionId"/> — both are no-ops.
+        /// </summary>
+        /// <param name="representation">The representation whose expression actions should run.</param>
+        /// <param name="expressionId">The expression being applied on this line.</param>
+        /// <param name="lineIndex">The conversation line index, passed to the action context.</param>
+        /// <param name="display">The resolved display for this character, or null if none.</param>
+        protected void RunExpressionActions(
+            CharacterRepresentationBase representation,
+            string expressionId,
+            int lineIndex,
+            IConvoCoreCharacterDisplay display)
+        {
+            if (representation == null || string.IsNullOrEmpty(expressionId))
+                return;
+
+            representation.ApplyExpression(
+                expressionId,
+                ConvoCoreInstance,
+                ConvoCoreInstance != null ? ConvoCoreInstance.GetCurrentConversationData() : null,
+                lineIndex,
+                display);
+        }
+
         public virtual IEnumerator WaitForUserInput()
         {
             yield return null;
