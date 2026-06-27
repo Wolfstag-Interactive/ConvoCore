@@ -1,5 +1,7 @@
 var NAVTREEINDEX10 =
 {
+"interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoAudioProvider.html#ac449f7c0ad567b335f4a8a34c3cbabad":[0,0,0,0,78,1],
+"interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoAudioProvider.html#ae4f49800c9c4438b7025378b59924293":[1,0,0,0,78,4],
 "interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoAudioProvider.html#ae4f49800c9c4438b7025378b59924293":[0,0,0,0,78,4],
 "interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoCoreCharacterDisplay.html":[1,0,0,0,79],
 "interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoCoreCharacterDisplay.html":[0,0,0,0,79],
@@ -247,7 +249,5 @@ var NAVTREEINDEX10 =
 "structWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreYamlDiagnostic.html#a1539b94b72288472b24636f76ecddd9f":[0,0,0,0,59,8],
 "structWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreYamlDiagnostic.html#a3613f7b08a85716478fbd7dcea0f840e":[1,0,0,0,59,0],
 "structWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreYamlDiagnostic.html#a3613f7b08a85716478fbd7dcea0f840e":[0,0,0,0,59,0],
-"structWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreYamlDiagnostic.html#a8c07f3c3046712ac10896d3238711478":[0,0,0,0,59,6],
-"structWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreYamlDiagnostic.html#a8c07f3c3046712ac10896d3238711478":[1,0,0,0,59,6],
-"structWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreYamlDiagnostic.html#a943ddaf723374c0e462eb6d3b06c2ea7":[0,0,0,0,59,2]
+"structWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreYamlDiagnostic.html#a8c07f3c3046712ac10896d3238711478":[0,0,0,0,59,6]
 };

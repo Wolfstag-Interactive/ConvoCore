@@ -152,6 +152,9 @@ Protected Member Functions</h2></td></tr>
 <tr class="separator:a5714c4d7d8622434afb0fcd4abcd5cf4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0c83cd6729c79e18cc9baa5ee0b59464" id="r_a0c83cd6729c79e18cc9baa5ee0b59464"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreUIFoundation.html#a0c83cd6729c79e18cc9baa5ee0b59464">RaiseReverse</a> ()</td></tr>
 <tr class="separator:a0c83cd6729c79e18cc9baa5ee0b59464"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac5c1e44ec595071957aa8d53e6c470f7" id="r_ac5c1e44ec595071957aa8d53e6c470f7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreUIFoundation.html#ac5c1e44ec595071957aa8d53e6c470f7">RunExpressionActions</a> (<a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1CharacterRepresentationBase.html">CharacterRepresentationBase</a> representation, string expressionId, int lineIndex, <a class="el" href="interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoCoreCharacterDisplay.html">IConvoCoreCharacterDisplay</a> display)</td></tr>
+<tr class="memdesc:ac5c1e44ec595071957aa8d53e6c470f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Runs the BaseExpressionAction ScriptableObjects attached to the given expression on the representation.  <br /></td></tr>
+<tr class="separator:ac5c1e44ec595071957aa8d53e6c470f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
@@ -399,6 +402,67 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac5c1e44ec595071957aa8d53e6c470f7" name="ac5c1e44ec595071957aa8d53e6c470f7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac5c1e44ec595071957aa8d53e6c470f7">&#9670;&#160;</a></span>RunExpressionActions()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void WolfstagInteractive.ConvoCore.ConvoCoreUIFoundation.RunExpressionActions </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classWolfstagInteractive_1_1ConvoCore_1_1CharacterRepresentationBase.html">CharacterRepresentationBase</a>&#160;</td>
+          <td class="paramname"><em>representation</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>expressionId</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>lineIndex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoCoreCharacterDisplay.html">IConvoCoreCharacterDisplay</a>&#160;</td>
+          <td class="paramname"><em>display</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Runs the BaseExpressionAction ScriptableObjects attached to the given expression on the representation. </p>
+<p>Call this from UpdateDialogueUI once a character's display has been resolved, after applying the built-in visual expression.</p>
+<p>The display side (IConvoCoreCharacterDisplay.ApplyExpression) only handles built-in visuals; the representation owns the action list, so custom UI subclasses must call this to give those actions a chance to run. Safe to call with a null <em>display</em>  (e.g. sprite representations) or a null/empty <em>expressionId</em>  — both are no-ops.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">representation</td><td>The representation whose expression actions should run.</td></tr>
+    <tr><td class="paramname">expressionId</td><td>The expression being applied on this line.</td></tr>
+    <tr><td class="paramname">lineIndex</td><td>The conversation line index, passed to the action context.</td></tr>
+    <tr><td class="paramname">display</td><td>The resolved display for this character, or null if none.</td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

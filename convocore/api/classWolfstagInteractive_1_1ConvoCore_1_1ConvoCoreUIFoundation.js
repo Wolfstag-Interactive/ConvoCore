@@ -8,6 +8,7 @@ var classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreUIFoundation =
     [ "PresentChoices", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreUIFoundation.html#aaecb74d16301d9bfe132928eb9684129", null ],
     [ "RaiseAdvance", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreUIFoundation.html#a5714c4d7d8622434afb0fcd4abcd5cf4", null ],
     [ "RaiseReverse", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreUIFoundation.html#a0c83cd6729c79e18cc9baa5ee0b59464", null ],
+    [ "RunExpressionActions", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreUIFoundation.html#ac5c1e44ec595071957aa8d53e6c470f7", null ],
     [ "UpdateDialogueUI", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreUIFoundation.html#ab41db2fa70934e61ce34d20a20edcf31", null ],
     [ "UpdateForLanguageChange", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreUIFoundation.html#a9f915f46c92b1997e4cea3623b3a21da", null ],
     [ "WaitForUserInput", "classWolfstagInteractive_1_1ConvoCore_1_1ConvoCoreUIFoundation.html#a89767cb4203f1e2059e27643bd929f21", null ],

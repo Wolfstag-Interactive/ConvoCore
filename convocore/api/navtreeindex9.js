@@ -1,5 +1,7 @@
 var NAVTREEINDEX9 =
 {
+"classWolfstagInteractive_1_1ConvoCore_1_1SimplePrefabRepresentationDisplay.html#a0779e817c075b3c7b1f7c6882ef4f998":[1,0,0,0,106,2],
+"classWolfstagInteractive_1_1ConvoCore_1_1SimplePrefabRepresentationDisplay.html#a66de020543c95ed1a2d17a750ba3d509":[0,0,0,0,106,3],
 "classWolfstagInteractive_1_1ConvoCore_1_1SimplePrefabRepresentationDisplay.html#a66de020543c95ed1a2d17a750ba3d509":[1,0,0,0,106,3],
 "classWolfstagInteractive_1_1ConvoCore_1_1SimplePrefabRepresentationDisplay.html#a6971f61ffdc837c268f3c9a94769085f":[1,0,0,0,106,0],
 "classWolfstagInteractive_1_1ConvoCore_1_1SimplePrefabRepresentationDisplay.html#a6971f61ffdc837c268f3c9a94769085f":[0,0,0,0,106,0],
@@ -247,7 +249,5 @@ var NAVTREEINDEX9 =
 "interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoAudioProvider.html#a5b82423b8bbfa9116bda8a3ad24a12c5":[0,0,0,0,78,0],
 "interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoAudioProvider.html#a91dc36bc858c4b58a68f08cc627b6283":[1,0,0,0,78,3],
 "interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoAudioProvider.html#a91dc36bc858c4b58a68f08cc627b6283":[0,0,0,0,78,3],
-"interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoAudioProvider.html#ac449f7c0ad567b335f4a8a34c3cbabad":[1,0,0,0,78,1],
-"interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoAudioProvider.html#ac449f7c0ad567b335f4a8a34c3cbabad":[0,0,0,0,78,1],
-"interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoAudioProvider.html#ae4f49800c9c4438b7025378b59924293":[1,0,0,0,78,4]
+"interfaceWolfstagInteractive_1_1ConvoCore_1_1IConvoAudioProvider.html#ac449f7c0ad567b335f4a8a34c3cbabad":[1,0,0,0,78,1]
 };

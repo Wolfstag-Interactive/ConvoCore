@@ -1,5 +1,7 @@
 var NAVTREEINDEX8 =
 {
+"classWolfstagInteractive_1_1ConvoCore_1_1SaveSystem_1_1ConvoCoreSaveManager.html#a7889f2c49cb2fdf2dc6aa95ca551310c":[1,0,0,0,0,4,28],
+"classWolfstagInteractive_1_1ConvoCore_1_1SaveSystem_1_1ConvoCoreSaveManager.html#a795e4eda138ea9ad432d164cb9c204ac":[1,0,0,0,0,4,12],
 "classWolfstagInteractive_1_1ConvoCore_1_1SaveSystem_1_1ConvoCoreSaveManager.html#a795e4eda138ea9ad432d164cb9c204ac":[0,0,0,0,0,4,12],
 "classWolfstagInteractive_1_1ConvoCore_1_1SaveSystem_1_1ConvoCoreSaveManager.html#a7b5cd9610f881b6cad47ca5b7bf54e8f":[0,0,0,0,0,4,13],
 "classWolfstagInteractive_1_1ConvoCore_1_1SaveSystem_1_1ConvoCoreSaveManager.html#a7b5cd9610f881b6cad47ca5b7bf54e8f":[1,0,0,0,0,4,13],
@@ -247,7 +249,5 @@ var NAVTREEINDEX8 =
 "classWolfstagInteractive_1_1ConvoCore_1_1SequencedBehaviour.html#ae0f2c8455100ce8d3584bf3bd9137da4":[1,0,0,0,105,1],
 "classWolfstagInteractive_1_1ConvoCore_1_1SimplePrefabRepresentationDisplay.html":[1,0,0,0,106],
 "classWolfstagInteractive_1_1ConvoCore_1_1SimplePrefabRepresentationDisplay.html":[0,0,0,0,106],
-"classWolfstagInteractive_1_1ConvoCore_1_1SimplePrefabRepresentationDisplay.html#a0779e817c075b3c7b1f7c6882ef4f998":[0,0,0,0,106,2],
-"classWolfstagInteractive_1_1ConvoCore_1_1SimplePrefabRepresentationDisplay.html#a0779e817c075b3c7b1f7c6882ef4f998":[1,0,0,0,106,2],
-"classWolfstagInteractive_1_1ConvoCore_1_1SimplePrefabRepresentationDisplay.html#a66de020543c95ed1a2d17a750ba3d509":[0,0,0,0,106,3]
+"classWolfstagInteractive_1_1ConvoCore_1_1SimplePrefabRepresentationDisplay.html#a0779e817c075b3c7b1f7c6882ef4f998":[0,0,0,0,106,2]
 };
