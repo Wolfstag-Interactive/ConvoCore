@@ -658,7 +658,7 @@ namespace WolfstagInteractive.ConvoCore
                     continue;
                 }
 
-                if (core.ShouldExecuteAction(action, lineInfo.ConversationLineIndex))
+                if (!core.ShouldExecuteAction(action, lineInfo.ConversationLineIndex))
                 {
                     continue;
                 }
@@ -683,7 +683,7 @@ namespace WolfstagInteractive.ConvoCore
                     continue;
                 }
 
-                if (core.ShouldExecuteAction(action, lineInfo.ConversationLineIndex))
+                if (!core.ShouldExecuteAction(action, lineInfo.ConversationLineIndex))
                 {
                     continue;
                 }
