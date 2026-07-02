@@ -304,12 +304,8 @@ namespace WolfstagInteractive.ConvoCore
                     ConversationUI?.HideDialogue();
                 }
 
-                // Actions after the dialogue line
-                if (line.ActionsAfterDialogueLine is { Count: > 0 })
-                {
-                    yield return StartCoroutine(ConversationData.DoActionsAfterDialogueLine(this, line, frame.After));
-                }
-                // push frame after the line has been fully shown
+                // Push the frame now (before progression) so a reverse request can locate it.
+                // frame.After is populated later, once the line has actually been presented.
                 if (_history.Count == frame.LineIndex)
                     _history.Add(frame);
                 else if (_history.Count > frame.LineIndex)
@@ -366,6 +362,12 @@ namespace WolfstagInteractive.ConvoCore
                     }
 
                     selected = Mathf.Clamp(selected, 0, choiceCount - 1);
+
+                    // Line is fully presented once the player has made a selection —
+                    // run the after-line actions before branching.
+                    if (line.ActionsAfterDialogueLine is { Count: > 0 })
+                        yield return StartCoroutine(ConversationData.DoActionsAfterDialogueLine(this, line, frame.After));
+
                     OnChoiceMade?.Invoke(selected);
                     if (!HandleChoiceBranch(choices[selected]))
                         break;
@@ -417,6 +419,12 @@ namespace WolfstagInteractive.ConvoCore
 
                 // Destroy temporary inline reference after line progression completes
                 if (inlineRef != null) Destroy(inlineRef);
+
+                // The line is now fully presented and the user has advanced —
+                // run the after-line actions before applying continuation rules.
+                if (line.ActionsAfterDialogueLine is { Count: > 0 })
+                    yield return StartCoroutine(ConversationData.DoActionsAfterDialogueLine(this, line, frame.After));
+
                 // At this point the line is fully completed. Apply continuation rules.
                 if (!HandleLineContinuation(line))
                 {
